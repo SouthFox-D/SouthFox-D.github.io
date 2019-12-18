@@ -25,10 +25,4 @@ script:
 
 after_success:
 # 部署到 GitHub Pages
-- cd ./public
-- git init
-- git add --all .
-- git commit -m "Travis CI Auto Builder"
-# 这里的 REPO_TOKEN 即之前在 travis 项目的环境变量里添加的
-- git push --quiet --force https://$REPO_TOKEN@github.com/SouthFox09/SouthFox09.github.io.git
-  master
+- hexo d
