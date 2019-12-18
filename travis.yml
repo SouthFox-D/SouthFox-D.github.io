@@ -26,6 +26,5 @@ script:
 after_success:
 # 部署到 GitHub Pages
 - hexo deploy
-- sshpass -p $AUTO_PUSHA rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 64223' public/ upload@$AUTO_PUSHB
 
 
