@@ -8,14 +8,14 @@ subtitle: '狐狸反走矣'
 description: ''
 keywords:
 author: SouthFox
-language: zh
+language: default
 timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: http://yoursite.com
 root: /
-permalink: :year/:month/:title/
+permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
@@ -93,7 +93,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: adagio
+theme: bootstrap
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
