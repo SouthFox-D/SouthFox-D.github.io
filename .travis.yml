@@ -25,4 +25,8 @@ script:
 
 after_success:
 # 部署到 GitHub Pages
-- hexo d
+- cd ./public
+- git add --all .
+- git commit -m "Travis CI Auto Builder"
+- git push --quiet --force https://$REPO_TOKEN@github.com/SouthFox09/SouthFox09.github.io.git
+  master
