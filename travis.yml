@@ -26,6 +26,6 @@ script:
 after_success:
 # 部署到 GitHub Pages
 - hexo deploy
-# 这里的 REPO_TOKEN 即之前在 travis 项目的环境变量里添加的
-# git push --quiet --force https://$REPO_TOKEN@github.com/SouthFox09/SouthFox09.github.io.git master
-$AUTO_PUSH
+- sshpass -p $AUTO_PUSHA rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 64223' public/ upload@$AUTO_PUSHB
+
+
