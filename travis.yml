@@ -1,7 +1,7 @@
 language: node_js
 node_js: lts/*
 
-# 只监听 source 分支的改动
+# 只监听 hexo 分支的改动
 branches:
   only:
   - hexo
@@ -12,10 +12,11 @@ cache: npm
 before_install:
 - git config --global user.name "SouthFox09"
 - git config --global user.email "southfoxdreamer@gmail.com"
+- npm install -g hexo-cli
 
 install:
 # 安装 Hexo 及其依赖
-- npm install -g hexo-cli
+- npm install
 
 script:
 # 生成静态页面
