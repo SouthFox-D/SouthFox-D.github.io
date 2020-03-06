@@ -141,6 +141,8 @@ code {
   margin-bottom: 0;
   font-size: 60px;
   font-weight: normal;
+  text-decoration: none;
+  color: #000000;
 }
 .blog-description {
   font-size: 20px;
