@@ -1,6 +1,6 @@
 ---
 author: SouthFox
-title: Marzipan_Solitude
+title: Marzipan Solitude
 date: 2020-01-30 23:56:35
 tags: 
 - 动画
