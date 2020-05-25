@@ -24,10 +24,12 @@ script:
 - hexo generate
 
 after_success:
-# 部署到 GitHub Pages
+# 部署到 GitHub Pages\GItee Pages
 - cd ./public
 - git init
 - git add --all .
 - git commit -m "Travis CI Auto Builder"
 - git push --quiet --force https://$REPO_TOKEN@github.com/SouthFox09/SouthFox09.github.io.git
+  master
+- git push --quiet --force https://$REPO_TOKEN2@gitee.com/southfox/blog.git
   master
