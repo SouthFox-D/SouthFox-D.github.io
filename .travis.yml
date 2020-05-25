@@ -31,5 +31,5 @@ after_success:
 - git commit -m "Travis CI Auto Builder"
 - git push --quiet --force https://$REPO_TOKEN@github.com/SouthFox09/SouthFox09.github.io.git
   master
-- git push --quiet --force https://$REPO_TOKEN2@gitee.com/southfox/blog.git
+- git push --quiet --force https://southfox:$REPO_TOKEN2@gitee.com/southfox/blog.git
   master
