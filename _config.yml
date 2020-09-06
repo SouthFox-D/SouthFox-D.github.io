@@ -95,6 +95,14 @@ ignore:
 ## Themes: https://hexo.io/themes/
 theme: inside
 
+plugins:
+    hexo-generator-feed
+#Feed
+feed:
+    type: rss2
+    path: rss2.xml
+    limit: 20
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
