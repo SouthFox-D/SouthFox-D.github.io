@@ -1,0 +1,73 @@
+slogan: "Keep and carry on."
+
+show_heart: true
+
+show_slogan: true
+
+menu:
+  - title: 归档
+    url: archives
+    intro: "All the articles."
+    # icon: "fa fa-archive"
+  - title: 分类
+    url: categories
+    intro: "All the categories."
+    # icon: "fa fa-folder"
+  - title: 标签
+    url: tags
+    intro: "All the tags."
+    # icon: "fa fa-tags"
+  # - title: About
+  #   url: about
+  #   intro: "About me."
+  #   # icon: "fa fa-user"
+  - title: RSS
+    url: rss2.xml
+    intro: "Subscribe me."
+    # icon: "fa fa-user"
+
+# links:
+#   - title: RSS
+#     url: /rss2.xml
+#     intro: "RSS"
+#     icon: "fa fa-github"
+#   - title: BOOTSTRA.386
+#     url: https://github.com/kristopolous/BOOTSTRA.386
+#     intro: "BOOTSTRA.386's Github repository."
+#     icon: "fa fa-github"
+#   - title: Freemind.386
+#     url: https://github.com/blackshow/hexo-theme-freemind.386
+#     intro: "Freemind.386's Github repository."
+#     icon: "fa fa-github"
+#   - title: "My Github"
+#     url: http://www.github.com/blackshow
+#     intro: "My Github account."
+#     icon: "fa fa-github"
+  # - title: "My LinkedIn"
+  #   url: http://www.linkedin.com/in/xxx
+  #   intro: "My Linkin account."
+  #   icon: "fa fa-linkedin"
+
+widgets:
+# - search
+- category
+- tagcloud
+# - recent_posts
+# - links
+
+rss: 
+fancybox: true
+favicon: favicon.png
+duoshuo_shortname:
+
+
+# Analytics (change to yours)
+google_analytics:
+  enable: false
+  siteid: stub
+baidu_tongji:
+  enable: false
+  siteid: stun
+
+# search
+#swiftype_key: ZP2ZSuHgipSZfRyU8uTR
