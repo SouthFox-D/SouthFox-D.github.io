@@ -3,7 +3,7 @@ title: travellings
 date: 2021-03-23 23:45:06
 ---
 
- <meta http-equiv="refresh" content="5;url=https://travellings.now.sh"> 
+ <meta http-equiv="refresh" content="3;url=https://travellings.now.sh"> 
 
 
 ![](https://travellings.now.sh/assets/logo.gif)
