@@ -17,24 +17,23 @@ menu:
     url: tags
     intro: "All the tags."
     # icon: "fa fa-tags"
-  # - title: About
-  #   url: about
-  #   intro: "About me."
-  #   # icon: "fa fa-user"
   - title: RSS
     url: rss2.xml
     intro: "Subscribe me."
-    # icon: "fa fa-user"
+  - title : 开往
+    url: travellings
+    intro: "一群狼走得更远"
+    icon: "fas fa-subway"
 
-# links:
-#   - title: RSS
-#     url: /rss2.xml
-#     intro: "RSS"
-#     icon: "fa fa-github"
-#   - title: BOOTSTRA.386
-#     url: https://github.com/kristopolous/BOOTSTRA.386
-#     intro: "BOOTSTRA.386's Github repository."
-#     icon: "fa fa-github"
+links:
+  - title: RSS
+    url: rss2.xml
+    intro: "Subscribe me."
+    icon: "fas fa-rss"
+  - title : 开往
+    url: https://travellings.now.sh
+    intro: "一群狼走得更远"
+    icon: "fas fa-subway"
 #   - title: Freemind.386
 #     url: https://github.com/blackshow/hexo-theme-freemind.386
 #     intro: "Freemind.386's Github repository."
@@ -53,7 +52,7 @@ widgets:
 - category
 - tagcloud
 # - recent_posts
-# - links
+- links
 
 rss: 
 fancybox: true
