@@ -103,6 +103,10 @@ feed:
     path: rss2.xml
     limit: 20
 
+search:
+  path: search.xml
+  field: post
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:

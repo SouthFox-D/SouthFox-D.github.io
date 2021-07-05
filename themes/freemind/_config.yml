@@ -48,7 +48,7 @@ links:
   #   icon: "fa fa-linkedin"
 
 widgets:
-# - search
+- search
 - category
 - tagcloud
 # - recent_posts
