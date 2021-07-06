@@ -23,6 +23,8 @@ DNS 作为互联网世界的电话簿，重要性不言而喻。但是平常使�
 
 
 
+
+
 ### Coredns
 
 安卓自从 9 版本之后就内置了 Dns Over Tls 「dot」 配置，叫做 `私人DNS` ，这样进行配置就不用一个一个改 wifi 设定，同时还对蜂窝网络起效果，所以可以用 `CoreDNS`  来加密设备到服务器之间的请求……
@@ -41,6 +43,8 @@ tls://.:853 {
 作用是将 853 端口的 dot 请求转发到 53 端口所运行的服务上……
 
 证书用 `certbot` 申请，偷偷摸摸的用 853 ，国内的云服务商应该不会注意到（毕竟盯着的是 443 和 80 端口的情况多一点……吧）
+
+
 
 
 
@@ -88,11 +92,15 @@ services:
 
 
 
+
+
 #### 列表
 
 装了 pihole 要发挥最大的作用就得找一个优质的屏蔽列表。
 
-可以使用 [anti-AD](https://github.com/privacy-protection-tools/anti-AD) ，能屏蔽国内大部分追踪器和广告地址，对于 pihole 的配置文件是 https://anti-ad.net/domains.txt 。
+可以使用 [anti-AD](https://github.com/privacy-protection-tools/anti-AD) ，能屏蔽国内大部分追踪器和广告地址，对于 pihole 的配置文件在 [这](https://anti-ad.net/domains.txt) 。
+
+
 
 
 
@@ -100,9 +108,11 @@ services:
 
 打开配置文件，更改 `port` 监听端口， `server`  写上游 dns 地址（`:` 要用 `#` 代替）。
 
-无日志的 `dot` , `doh` 服务器一般都是在国外，一般延迟都很糟糕，所以对于国内的域名来说访问延迟将会很大。可以用 `Dnsmasq` 搭配 https://github.com/felixonmars/dnsmasq-china-list 项目，起到分流的作用，国内的常用域名送到国内的公共 DNS 服务解析，除此之外走加密的 DNS 服务。
+无日志的 `dot` , `doh` 服务器一般都是在国外，一般延迟都很糟糕，所以对于国内的域名来说访问延迟将会很大。可以用 `Dnsmasq` 搭配 [dnsmasq-china-list](https://github.com/felixonmars/dnsmasq-china-list) 项目，起到分流的作用，国内的常用域名送到国内的公共 DNS 服务解析，除此之外走加密的 DNS 服务。
 
-不想装 `pihole` 的话，可以使用 [anti-AD](https://github.com/privacy-protection-tools/anti-AD) 项目里的 https://anti-ad.net/anti-ad-for-dnsmasq.conf 配置文件……
+不想装 `pihole` 的话，可以使用 [anti-AD](https://github.com/privacy-protection-tools/anti-AD) 项目里的 [anti-ad-for-dnsmasq.conf](https://anti-ad.net/anti-ad-for-dnsmasq.conf) 配置文件……
+
+
 
 
 
@@ -110,9 +120,11 @@ services:
 
 转发到上游的 dot 、 doh 请求。
 
-项目地址是：https://github.com/AdguardTeam/dnsproxy ，而且似乎没有提供服务文件，所以得用 `screen` 挂着了。
+项目地址在 [这里](https://github.com/AdguardTeam/dnsproxy ) ，而且似乎没有提供服务文件，所以得用 `screen` 挂着了。
 
 基本上能用的 dot  、 doh 服务器被 [封](https://www.solidot.org/story?sid=67104) 的差不多了，能用的 只有 `Cloudflare` 的了，如果对无日志不在意的话可以用腾讯云的 `dnspod` 。
+
+
 
 
 
