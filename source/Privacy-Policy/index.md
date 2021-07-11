@@ -16,7 +16,9 @@ date: 2021-03-13 19:54:14
 
 作为静态网站，我不会使用 Cookie 。
 
-但是如果你是通过 Cloudflare Pages 服务进行访问的话， Cloudflare 会使用名叫 `__cfduid` 的 Cookie ， 详见 Cloudflare 相关 [Document](https://support.cloudflare.com/hc/en-us/articles/200170156-Understanding-the-Cloudflare-Cookies) 和 [Privacy polic](https://www.cloudflare.com/privacypolicy/) 。
+如果浏览了基于 `LeanCloud` 搭建的 [狐说](/foxsay)  页面，则有可能会使用 Cookie 。
+
+如果你是通过 Cloudflare Pages 服务进行访问的话， Cloudflare 有可能会使用 Cookie ， 详见 Cloudflare 相关 [Document](https://support.cloudflare.com/hc/en-us/articles/200170156-Understanding-the-Cloudflare-Cookies) 和 [Privacy polic](https://www.cloudflare.com/privacypolicy/) 。
 
 
 

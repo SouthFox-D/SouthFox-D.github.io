@@ -20,6 +20,9 @@ menu:
   - title: RSS
     url: rss2.xml
     intro: "Subscribe me."
+  - title: 狐说
+    url: foxsay
+    intro: "狐说"
   - title : 开往
     url: travellings
     intro: "一群狼走得更远"
@@ -30,6 +33,9 @@ links:
     url: rss2.xml
     intro: "Subscribe me."
     icon: "fas fa-rss"
+  - title: 狐说
+    url: foxsay
+    icon: "fas fa-hiking"
   - title : 开往
     url: https://travellings.link
     intro: "一群狼走得更远"

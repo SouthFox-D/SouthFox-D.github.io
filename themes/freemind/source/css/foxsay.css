@@ -1,0 +1,93 @@
+/* @media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+    body .item {
+        border-top: 6px solid #888888;
+        background-color: rgb(21, 32, 43);
+        color: #ccc;
+    }
+    body time {
+        color: #aaa;
+    }
+    h1 {
+        color: #ffffff;
+    }
+    aside {
+        color: #ccc;
+    }
+    body .load-btn {
+        background-color: #000;
+        color: #ddd;
+    }
+    body .load-btn:hover:active {
+        background: #1DA1F2;
+        color: #fff;
+    }
+} */
+
+[v-cloak] {
+    display: none;
+}
+
+body,
+button {
+    font-family: 'Noto Serif SC', serif;
+}
+
+aside {
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.8rem;
+}
+
+#app,
+header,
+footer {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.tip {
+    color: #999;
+}
+
+.item {
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.8rem;
+    border-radius: 5px;
+    box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
+    margin-top: 20px;
+    text-align: justify;
+    background: #000;
+}
+
+.item a {
+    text-decoration: none;
+    color: #5dafd5;
+}
+
+time {
+    font-weight: 200;
+    color: #bbb;
+    font-size: 15px;
+}
+
+bb {
+    font-family: 'Noto Serif SC', serif;
+    font-size: 20px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.load-ctn {
+    margin-top: 15px;
+    width: 100%;
+}
