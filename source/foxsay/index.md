@@ -14,7 +14,7 @@ date: 2021-07-11 17:45:57
         </section>
         <div class="load-ctn">
             <button class="btn btn-default " v-on:click="loadMore" v-if="contents" v-cloak>加载更多</button>
-            <p class="tip" v-else>别急，加载呢</p>
+            <p class="tip" v-else>加载中……</p>
         </div>
     </main>
 <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
