@@ -68,6 +68,8 @@ location / {
 >
 > 
 
+
+
 # 设置服务
 
 新建并编辑 `/etc/systemd/system/gotify.service`。
@@ -110,7 +112,7 @@ systemctl enable gotify
 curl 'https://server_url/_matrix/client/r0/pushers/set' -H 'Authorization: Bearer access_token' -H 'Content-Type: application/json' -X POST -d '{"lang": "en","kind": "http","app_display_name": "Gotify","device_display_name": "Gotify","pushkey": "Gotify-PushKey","app_id": "zh.xxx.gotify","data": {"url": "https://Push_url/_matrix/push/v1/notify","format": "full_event"}}'
 ```
 
-详细说明请查阅官方 [文档](https://spec.matrix.org/v1.1/client-server-api/#post_matrixclientv3pushersset) , 其中 `access_token` 可以在应用里拿到，`pushkey ` 设置成 `Gotify-PushKey` 的样子是为了后续处理方便……现阶段推送地址必须包含 `/_matrix/push/v1/notify ` 路径，否则会报错，所以不得不进行额外的处理了……
+详细说明请查阅官方 [文档](https://spec.matrix.org/v1.1/client-server-api/#post_matrixclientv3pushersset) , 其中 `access_token` 可以在应用里拿到，`pushkey ` 设置成 `Gotify-PushKey` 的样子是为了后续处理方便……现阶段推送地址必须包含 `/_matrix/push/v1/notify ` 路径，否则会报错，所以不得不进行额外处理了……
 
 
 
@@ -217,7 +219,9 @@ def hello_world():
 
 基本逻辑就是接收 `JSON` 拿到发送者名称和推送令牌，判断是哪项服务，然后等待三十秒推送到对应的应用令牌上去，期间要是判断用户已经阅读了消息，就移除推送作业。
 
-到此无意外的话，应该就能正常推送了，麻烦……希望以后能够又更友好便捷的方式吧。
+到此无意外的话，应该就能正常推送了，麻烦……希望以后能够有更友好便捷的方式吧。
+
+
 
 ## 参考
 
