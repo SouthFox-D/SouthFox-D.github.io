@@ -19,13 +19,13 @@ toc: true
 
 
 
-## Gotify
+# Gotify
 
 推送用到的工具为 `Gotify` ，特点是使用 `GO` 编写，高效快速，不过缺点就是安卓得常驻后台接收推送，不过至少要比腾讯全家桶吃的电要少。
 
 
 
-### 下载
+## 下载
 
 去 [Releases ](https://github.com/gotify/server/releases)处找到对应版本的下载链接，解压到`/opt/gotify/`。
 
@@ -223,6 +223,6 @@ def hello_world():
 
 
 
-## 参考
+# 参考
 
 1 在树莓派上部署消息推送软件Gotify - https://blog.mjyai.com/2021/02/24/raspberry-pi-gotify/
