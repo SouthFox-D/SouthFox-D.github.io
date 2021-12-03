@@ -7,11 +7,10 @@ branches:
   - hexo
 
 before_install:
-- PYTHON_BUILD_VERSION=3.9.7
 - git config --global user.name "SouthFox09"
 - git config --global user.email "southfoxdreamer@gmail.com"
 - npm install -g hexo-cli
-- pip3 install fonttools brotli
+- pip install fonttools brotli
 
 install:
 # 安装 Hexo 及其依赖
