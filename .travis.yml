@@ -7,7 +7,7 @@ branches:
   - hexo
 
 before_install:
-- pyenv global 3.7.1
+- PYTHON_BUILD_VERSION=3.9.7
 - git config --global user.name "SouthFox09"
 - git config --global user.email "southfoxdreamer@gmail.com"
 - npm install -g hexo-cli
