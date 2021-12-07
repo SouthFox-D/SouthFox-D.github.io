@@ -41,23 +41,15 @@
   <% } %>
 
   <% if (theme.rss){ %>
-    <link rel="alternative" href="<%- config.root %><%- theme.rss %>" title="<%= config.title %>" type="application/atom+xml">
+    <link rel="alternative" href="<%- url_for('./') %><%- theme.rss %>" title="<%= config.title %>" type="application/atom+xml">
   <% } %>
   <% if (theme.favicon){ %>
-    <link href="<%- config.root %><%- theme.favicon %>" rel="icon">
+    <link href="<%- url_for('./') %><%- theme.favicon %>" rel="icon">
   <% } %>
   
-  <link rel="stylesheet" href="<%- config.root %>css/bootstrap.min.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="<%- config.root %>css/font-awesome.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="<%- config.root %>css/style.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="<%- config.root %>css/responsive.css" media="screen" type="text/css">
-  <link rel="stylesheet" href="<%- config.root %>css/highlight.css" media="screen" type="text/css">
-  <!-- <link rel="stylesheet" href="<%- config.root %>css/google-fonts.css" media="screen" type="text/css"> -->
-  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-
-  <script src="<%- config.root %>js/jquery-2.0.3.min.js"></script>
-
-  <!-- analytics -->
-  <%- partial('post/analytics') %>
-
+  <link rel="stylesheet" href="<%- url_for('./css/bootstrap.min.css') %>" media="screen" type="text/css">
+  <link rel="stylesheet" href="<%- url_for('./css/style.css') %>" media="screen" type="text/css">
+  <link rel="stylesheet" href="<%- url_for('./css/responsive.css') %>" media="screen" type="text/css">
+  <link rel="stylesheet" href="<%- url_for('./css/highlight.css') %>" media="screen" type="text/css">
+  <script src="<%- url_for('./js/jquery-2.0.3.min.js') %>"></script>
 </head>
