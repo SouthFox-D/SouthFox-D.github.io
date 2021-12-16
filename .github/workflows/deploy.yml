@@ -10,20 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
-      matrix:
-        python-version: ["3.8", "3.9", "3.10"]
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python 3.9
       uses: actions/setup-python@v2
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: 3.9
         
     - name: Set up Node.js
       uses: actions/setup-node@v1
       with:
         node-version: 17
+      run: |
+        npm install -g hexo-cli
+        npm install
         
     - name: Install dependencies
       run: |
@@ -36,7 +37,6 @@ jobs:
       run: |
         git config --global user.name "SouthFox09"
         git config --global user.email "southfoxdreamer@gmail.com"
-        npm install -g hexo-cli
         hexo clean
         hexo generate
         python3 str.py
