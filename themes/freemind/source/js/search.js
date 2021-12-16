@@ -116,7 +116,7 @@ var searchFunc = function (path, search_id, content_id) {
     });
   }
   
-  var getSearchFile = function(){
-      var path = "/search.xml";
+  var getSearchFile = function(path){
+      // var path = "/search.xml";
       searchFunc(path, 'local-search-input', 'local-search-result');
   }
