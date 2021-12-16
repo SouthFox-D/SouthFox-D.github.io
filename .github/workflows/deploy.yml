@@ -29,7 +29,7 @@ jobs:
         python -m pip install fonttools brotli
         npm install -g hexo-cli
         npm install
-        git config --global user.name "SouthFox09"
+        git config --global user.name "SouthFox-D"
         git config --global user.email "southfoxdreamer@gmail.com"
 
     - name: Deploy
@@ -47,5 +47,5 @@ jobs:
         git init
         git add --all .
         git commit -m "GitHub action Auto Builder"
-        git push --quiet --force https://$DEPLOY_KEY@github.com/SouthFox09/SouthFox09.github.io.git master
+        git push --quiet --force https://$DEPLOY_KEY@github.com/SouthFox-D/SouthFox-D.github.io.git master
         
