@@ -19,5 +19,5 @@ date: 2021-07-11 17:45:57
     </main>
 <script src="https://cdn.bootcss.com/vue/2.6.11/vue.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/leancloud-storage@4.5.3/dist/av-min.js"></script>
-<script src="/js/foxsay.js"></script>
+<script src="../js/foxsay.js"></script>
 </html>

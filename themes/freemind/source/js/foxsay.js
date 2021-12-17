@@ -26,7 +26,11 @@
         var re = /(http|ftp|https):\/\/[\w-]+(.[\w-]+)+([\w-.,@?^=%&:/~+#]*[\w-\@?^=%&/~+#])?/g;;
     
         str = str.replace(re, function(website) {
+            if (str.indexOf("cf-ipfs") != -1 ) {
+                return "<img src='" + website + "' alt='图片'></img>"
+            } else {
             return "<a href='" + website + "' target='_blank'> <i class='iconfont icon-lianjie-copy'></i>链接 </a>";
+            }
         });
         return str;
     }
