@@ -29,7 +29,7 @@ menu:
     icon: "fas fa-subway"
   - title : 虫洞
     url: go
-    intrp : "十年之约"
+    intro : "十年之约"
     icon: "fas fa-bahai"
 
 links:
