@@ -40,6 +40,9 @@ links:
   - title: 狐说
     url: foxsay
     icon: "fas fa-hiking"
+  - title: Friends
+    url: friends
+    icon: "fas fa-user-friends"
   - title : 开往
     url: https://travellings.link
     intro: "一群狼走得更远"
