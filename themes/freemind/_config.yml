@@ -70,7 +70,7 @@ widgets:
 rss: 
 fancybox: true
 favicon: favicon.png
-duoshuo_shortname:
+enable_comment: true
 
 
 # Analytics (change to yours)
