@@ -20,9 +20,9 @@ menu:
   - title: RSS
     url: rss2.xml
     intro: "Subscribe me."
-  - title: 狐说
-    url: foxsay
-    intro: "狐说"
+  - title: 友链
+    url: friends
+    intro: "朋友们"
   - title : 开往
     url: travellings
     intro: "一群狼走得更远"
@@ -33,17 +33,14 @@ menu:
     icon: "fas fa-bahai"
 
 links:
+  - title: Friends
+    url: /friends
+    icon: "fas fa-user-friends"
   - title: RSS
-    url: rss2.xml
+    url: /rss2.xml
     intro: "Subscribe me."
     icon: "fas fa-rss"
-  - title: 狐说
-    url: foxsay
-    icon: "fas fa-hiking"
-  - title: Friends
-    url: friends
-    icon: "fas fa-user-friends"
-  - title : 开往
+  - title: 开往
     url: https://travellings.link
     intro: "一群狼走得更远"
     icon: "fas fa-subway"
