@@ -26,7 +26,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        python -m pip install fonttools brotli
+        python -m pip install fonttools brotli requests
         npm install -g hexo-cli
         npm install
         git config --global user.name "SouthFox-D"
@@ -35,10 +35,11 @@ jobs:
     - name: Deploy
       env:
         DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY }}
+        DISCUSSIONS_TOKEN: ${{ secrets.DISCUSSIONS_TOKEN }}
       run: |
         hexo clean
         hexo generate
-        python3 str.py
+        python3 utils.py
         pyftsubset Zpix.ttf --text-file=strdb.txt
         fonttools ttLib.woff2 compress -o Zpix.woff2 Zpix.subset.ttf
         mv Zpix.woff2 ./public/css/fonts
