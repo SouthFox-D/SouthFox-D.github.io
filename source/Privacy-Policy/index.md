@@ -10,13 +10,14 @@ date: 2021-03-13 19:54:14
 
  **除非我引用了第三方资源**（包括图床、视频、音乐等）。
 
+不排除这些外部资源进行追踪。
 
 
 ## Cookie 
 
 作为静态网站，我不会使用 Cookie 。
 
-如果浏览了基于 `LeanCloud` 搭建的 [狐说](/foxsay)  页面，则有可能会使用 Cookie 。
+本站使用 `Gissus` 做为评论功能，其隐私政策参见 [这](https://github.com/giscus/giscus/blob/main/PRIVACY-POLICY.md) 。
 
 如果你是通过 Cloudflare Pages 服务进行访问的话， Cloudflare 有可能会使用 Cookie ， 详见 Cloudflare 相关 [Document](https://support.cloudflare.com/hc/en-us/articles/200170156-Understanding-the-Cloudflare-Cookies) 和 [Privacy polic](https://www.cloudflare.com/privacypolicy/) 。
 
