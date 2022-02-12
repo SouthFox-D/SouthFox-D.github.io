@@ -1,12 +1,14 @@
 import os
 import requests
 import json
+from datetime import datetime
 
 repo_id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
 category_id="DIC_kwDODaJZAM4CA7bf"
 DISCUSSIONS_TOKEN=os.environ.get('DISCUSSIONS_TOKEN')
 
 path = os.getcwd()
+currentYear = datetime.now().year
 
 filelist = []
 postlist = []
@@ -20,7 +22,8 @@ for filename in  filelist:
     if filename.endswith('.md'):
         if "_posts/" in filename:
             post = filename.split("_posts/")[-1]
-            postlist.append(post[:-3] + '/')
+            if currentYear in post:
+                postlist.append(post[:-3] + '/')
 
         with open(filename, "r",encoding='utf-8') as f:
             for subset in f.read():
@@ -63,6 +66,7 @@ for i in discussions:
     discu_list.append(i["title"])
 
 for post in postlist:
+
     if post not in discu_list:
         data = {
         'query': """mutation{
