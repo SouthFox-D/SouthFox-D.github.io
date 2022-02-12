@@ -8,7 +8,7 @@ category_id="DIC_kwDODaJZAM4CA7bf"
 DISCUSSIONS_TOKEN=os.environ.get('DISCUSSIONS_TOKEN')
 
 path = os.getcwd()
-currentYear = datetime.now().year
+currentYear = str(datetime.now().year)
 
 filelist = []
 postlist = []
