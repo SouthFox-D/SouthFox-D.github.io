@@ -1,0 +1,45 @@
+name: Backup Blog Img
+
+on:
+  push:
+    branches: [ hexo ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+        
+    - name: Install dependencies
+      run: |
+        sudo apt-get install wget
+        python -m pip install --upgrade pip
+        python -m pip install fonttools brotli requests
+        git config --global user.name "SouthFox-D"
+        git config --global user.email "southfoxdreamer@gmail.com"
+
+    - name: Check Img
+      run: |
+        wget https://raw.githubusercontent.com/SouthFox-D/blog_img/main/imgList.json
+        python3 utils.py -b
+
+    - name: Backup
+      env:
+        DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY }}
+      run: |
+        rm -rf .git
+        git clone https://github.com/SouthFox-D/blog_img.git blog_img
+        cp -frp newimg/* blog_img/
+        cd blog_img
+        git add .
+        git diff --exit-code || git commit -am "Auto backup"
+        git push --force https://$DEPLOY_KEY@github.com/SouthFox-D/blog_img.git
+        

@@ -1,0 +1,82 @@
+slogan: "KEEP CALM AND CARRY ON."
+
+show_heart: true
+
+show_slogan: true
+
+menu:
+  - title: 归档
+    url: archives
+    intro: "All the articles."
+    # icon: "fa fa-archive"
+  - title: 分类
+    url: categories
+    intro: "All the categories."
+    # icon: "fa fa-folder"
+  - title: 标签
+    url: tags
+    intro: "All the tags."
+    # icon: "fa fa-tags"
+  - title: RSS
+    url: rss2.xml
+    intro: "Subscribe me."
+  - title: 友链
+    url: friends
+    intro: "朋友们"
+  - title : 开往
+    url: travellings
+    intro: "一群狼走得更远"
+    icon: "fas fa-subway"
+  - title : 虫洞
+    url: go
+    intro : "十年之约"
+    icon: "fas fa-bahai"
+
+links:
+  - title: Friends
+    url: /friends
+    icon: "fas fa-user-friends"
+  - title: RSS
+    url: /rss2.xml
+    intro: "Subscribe me."
+    icon: "fas fa-rss"
+  - title: 开往
+    url: https://travellings.link
+    intro: "一群狼走得更远"
+    icon: "fas fa-subway"
+  - title: 虫洞
+    url: https://foreverblog.cn/go.html
+    intro: "Freemind.386's Github repository."
+    icon: "fas fa-bahai"
+#   - title: "My Github"
+#     url: http://www.github.com/blackshow
+#     intro: "My Github account."
+#     icon: "fa fa-github"
+  # - title: "My LinkedIn"
+  #   url: http://www.linkedin.com/in/xxx
+  #   intro: "My Linkin account."
+  #   icon: "fa fa-linkedin"
+
+widgets:
+- search
+- category
+- tagcloud
+# - recent_posts
+- links
+
+rss: 
+fancybox: true
+favicon: favicon.png
+enable_comment: true
+
+
+# Analytics (change to yours)
+google_analytics:
+  enable: false
+  siteid: stub
+baidu_tongji:
+  enable: false
+  siteid: stun
+
+# search
+#swiftype_key: ZP2ZSuHgipSZfRyU8uTR
