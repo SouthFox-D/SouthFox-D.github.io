@@ -15,3 +15,12 @@ date: 2022-1-16 23:00:00
 
 [Albert's Blog - 逆水行舟 不进则退](https://blog.lingyf.com)
 
+---
+
+- <img src="https://cdn.jsdelivr.net/gh/Mantyke/photo@master/star_min.png" style="float:left" width=50 height=50 />
+
+[小球飞鱼 - 我们会遇见鲸鱼吗？](https://mantyke.icu)
+
+---
+
+- [此方方有限公司 - Everything is interesting if you go into it deeply enough.](https://blog.konata.co)
