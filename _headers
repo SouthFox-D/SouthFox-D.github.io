@@ -1,0 +1,6 @@
+/*
+  X-Frame-Options: allow-from https://mantyke.icu/
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer
+  Permissions-Policy: document-domain=()
+  Content-Security-Policy: script-src 'self'; frame-ancestors 'none';
