@@ -3,4 +3,4 @@
   X-Content-Type-Options: nosniff
   Referrer-Policy: no-referrer
   Permissions-Policy: document-domain=()
-  Content-Security-Policy: script-src 'self'; frame-ancestors 'none';
+  Content-Security-Policy: script-src 'self' https://giscus.app; frame-ancestors https://mantyke.icu;
