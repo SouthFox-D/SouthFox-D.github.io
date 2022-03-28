@@ -13,14 +13,22 @@ date: 2022-1-16 23:00:00
 
 - <img src="https://blog.lingyf.com/images/icon.svg" style="float:left" width=50 height=50 /> 
 
-[Albert's Blog - 逆水行舟 不进则退](https://blog.lingyf.com)
+[Albert's Blog | 逆水行舟 不进则退](https://blog.lingyf.com)
 
 ---
 
 - <img src="https://cdn.jsdelivr.net/gh/Mantyke/photo@master/star_min.png" style="float:left" width=50 height=50 />
 
-[小球飞鱼 - 我们会遇见鲸鱼吗？](https://mantyke.icu)
+[小球飞鱼 | 我们会遇见鲸鱼吗？](https://mantyke.icu)
 
 ---
 
-- [此方方有限公司 - Everything is interesting if you go into it deeply enough.](https://blog.konata.co)
+- <img src="https://picsum.photos/50/50" style="float:left" width=50 height=50 />
+
+[此方方有限公司 | Everything is interesting if you go into it deeply enough.](https://blog.konata.co)
+
+---
+
+- <img src="https://picsum.photos/52/52" style="float:left" width=50 height=50 />
+
+[Yoozy | 一花一世界，一叶一菩提](http://blog.sharktale.xyz/)
