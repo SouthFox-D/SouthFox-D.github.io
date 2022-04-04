@@ -35,7 +35,6 @@ jobs:
       env:
         DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY }}
       run: |
-        rm -rf .git
         git clone https://github.com/SouthFox-D/blog_img.git blog_img
         cp -frp newimg/* blog_img/
         cd blog_img
