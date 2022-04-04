@@ -40,6 +40,6 @@ jobs:
         cp -frp newimg/* blog_img/
         cd blog_img
         git add .
-        git diff --exit-code || git commit -am "Auto backup"
+        git diff --exit-code || git commit -m "Auto backup"
         git push --force https://$DEPLOY_KEY@github.com/SouthFox-D/blog_img.git
         
