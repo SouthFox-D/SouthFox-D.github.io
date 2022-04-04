@@ -39,6 +39,6 @@ jobs:
         cp -frp newimg/ blog_img
         cd blog_img
         git add .
-        git commit -m "Auto backup"
+        git commit -m "Auto backup" || echo "Nothing to push"
         git push --force https://$DEPLOY_KEY@github.com/SouthFox-D/blog_img.git
         
