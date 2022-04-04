@@ -223,10 +223,10 @@ jobs:
       run: |
         rm -rf .git #删除 Hexo 的 .git 文件夹防止后续冲突
         git clone https://github.com/SouthFox-D/blog_img.git blog_img #备份仓库
-        cp -frp newimg/* blog_img/ #合并文件夹
+        cp -f newimg/* blog_img/ #合并文件夹
         cd blog_img
         git add .
-        git diff --exit-code || git commit -am "Auto backup" #防止报错
+        git commit -am "Auto backup" || echo "Nothing to push" #防止报错
         git push --force https://$DEPLOY_KEY@github.com/SouthFox-D/blog_img.git #根据实际情况而定
 ```
 
