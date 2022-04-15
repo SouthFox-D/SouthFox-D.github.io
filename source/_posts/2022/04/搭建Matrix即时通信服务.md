@@ -126,7 +126,7 @@ redis:
         default_type application/json;
         add_header Access-Control-Allow-Origin *;
     }
-#注意替换前端后端地址
+#注意替换自己的前端后端地址
 ```
 
 - 新建 `synapse.matrix.org` 的 `dns` ，指向服务器地址，再 `certbot certonly --nginx -d synapse.matrix.org` 申请证书
@@ -146,7 +146,7 @@ server {
     # https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
     ssl_protocols TLSv1.2 TLSv1.3;
     ssl_prefer_server_ciphers on;
-    ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDH>
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
     ssl_session_timeout  10m;
     ssl_session_cache shared:SSL:10m;
     ssl_session_tickets on;
