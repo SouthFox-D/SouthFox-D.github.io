@@ -1,9 +1,8 @@
 ---
 title: Friends
 date: 2022-1-16 23:00:00
+
 ---
-
-
 
 - <img src="https://suicablog.cobaltkiss.blue/images/profile%20picture.png" style="float:left" width=50 height=50 /> 
 
@@ -23,12 +22,14 @@ date: 2022-1-16 23:00:00
 
 ---
 
-- <img src="https://picsum.photos/50/50" style="float:left" width=50 height=50 />
-
-[此方方有限公司 | Everything is interesting if you go into it deeply enough.](https://blog.konata.co)
+- [此方方有限公司 | Everything is interesting if you go into it deeply enough.](https://blog.konata.co)
 
 ---
 
 - <img src="https://picsum.photos/52/52" style="float:left" width=50 height=50 />
 
 [Yoozy | 一花一世界，一叶一菩提](http://blog.sharktale.xyz/)
+
+---
+
+- [瓠樽 | 以瓠為樽而浮乎江湖](https://blog.dylanwu.space)
