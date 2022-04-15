@@ -139,7 +139,20 @@ server {
 
     server_name synapse.matrix.org;
 
-    root /home/admin/synapse/web;
+    ssl_certificate /etc/letsencrypt/live/synapse.matrix.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/synapse.matrix.org/privkey.pem;
+
+    # Various TLS hardening settings
+    # https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDH>
+    ssl_session_timeout  10m;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets on;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+
 
     location ~ ^(/_matrix|/_synapse/client) {
         # note: do not add a path (even a single /) after the port in `proxy_pass`,
