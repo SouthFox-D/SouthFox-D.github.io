@@ -16,7 +16,7 @@ category: 技术
 - 新建文件夹，在里面新建一个 `docker-compose.yml` 文件，往里写入
 
 ```yaml
-#也感谢糖苗提供的配置文件~
+#也感谢糖喵提供的配置文件~
 version: "3.4"
 
 services:
