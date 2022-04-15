@@ -16,6 +16,7 @@ category: 技术
 - 新建文件夹，在里面新建一个 `docker-compose.yml` 文件，往里写入
 
 ```yaml
+#也感谢糖苗提供的配置文件~
 version: "3.4"
 
 services:
@@ -70,7 +71,7 @@ networks:
   external_network:
 ```
 
-- 之后运行 `docker-compoe up -d` 将其运行，之后在 `./synapse/data` 路径下有叫 `homeserver.yaml` 的配置文件，编辑之 `nano ./synapse/data/homeserver.yaml`
+- 之后运行 `docker-compoe up -d` 命令将其启动，之后在 `./synapse/data` 路径下有叫 `homeserver.yaml` 的配置文件，编辑之 `nano ./synapse/data/homeserver.yaml`
 
 ```yaml
 # 重点改以下配置
