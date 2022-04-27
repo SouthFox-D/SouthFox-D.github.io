@@ -60,29 +60,36 @@ git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
 
 | Emacs 功能键 | 缩写 | 对应键盘按键(PC/Mac) |
 | ------------ | ---- | -------------------- |
+| Space        | Spc  | Space(空格)          |
 | Control      | C    | Ctrl / Control       |
 | Meta         | M    | Alt / Option         |
 | Shift        | S    | Shift / Shift        |
-| Super        | s    | Win / Command        |
-| Hyper        | H    | N / A                |
 
 例如：
 
- `S .` 是先按下 `空格` 键再按下 `.` 键。
+ `Spc .` 是先按下 `空格` 键**再**按下 `.` 键。
 
-`M-x` 是按下 `Alt` 键同时按下 `x` 键。
+`M-x` 是按下 `Alt` 键**同时**按下 `x` 键。
 
 #### 实际操作
 
-很难说学习 `Emacs` 到底该用什么方式，是先提前看完一整套教学视频，还是马上直接开始用在边查资料……（毕竟我现在对 `Emacs` 了解也不够多）
+对于入门而言，使用 `S .` 即可打开文件管理，之后就可以选择一个文件进行打开了。
 
-不过对于入门而言，`S .` 即可打开文件夹管理，之后就可以选择一个文件进行打开了。`Vim` 编辑模式可能对于入门来说也是有点痛苦，不过初始时掌握 `i` 和 `:w` 也够用了。
+`Vim` 编辑模式可能对于入门来说也是有点痛苦，不过初始时掌握 `i` 和 `:w` 也够用了。
+
+不用特地去记快捷键，使用 `M-x` 搜索相应的命令大部分足够了，当知道自己在高频使用某个命令，那么这时候才稍微用一下快捷键并记忆就足够了。
+
+找到自己想要的功能用兴趣做导向是最优的，`org-mode` 就是个不错的选择。
 
 #### 参考教程
 
 [Vim 教程 - Oeasy](https://github.com/overmind1980/oeasyvim)
 
 [Doom Emacs 视频教程 - Zaiste Programming](https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj) [B 站搬运](https://space.bilibili.com/432142040/channel/seriesdetail?sid=432482)
+
+[一年成为Emacs高手 (像神一样使用编辑器)](https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org)
+
+[怎么学习 Emacs ? 达到真正融汇贯通的境界? ](https://manateelazycat.github.io/emacs/2018/12/11/study-emacs.html)
 
 ## 总结
 
