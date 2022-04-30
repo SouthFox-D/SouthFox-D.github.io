@@ -71,7 +71,7 @@ networks:
   external_network:
 ```
 
-- 之后运行 `docker-compoe up -d` 命令将其启动，之后检查在 `./synapse/data` 路径下有叫 `homeserver.yaml` 的配置文件，停止容器 `docker-compose stop` ，再编辑配置文件 `nano ./synapse/data/homeserver.yaml`
+- 之后运行 `docker-compose run --rm -e SYNAPSE_SERVER_NAME=前端地址 synapse generate` 命令生成配置文件，之后检查在 `./synapse/data` 路径下是否有叫 `homeserver.yaml` 的配置文件，编辑配置文件 `nano ./synapse/data/homeserver.yaml`
 
 ```yaml
 # 重点改以下配置
