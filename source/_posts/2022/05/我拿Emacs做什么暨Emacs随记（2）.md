@@ -153,3 +153,8 @@ toc: true
 在一个代办标题上使用 `SPC t t` 即可番茄计时，默认二十五分钟倒计时，还附带一个有点浮夸的敲钟音效（
 
 ![](https://cf-ipfs.com/ipfs/bafkreieirqmdin4xhx57druv47vt64goyjbohwbumuahq5z5xg3y7bjxke)
+
+## 参考
+1. [How I Take Notes with Org-roam](https://jethrokuan.github.io/org-roam-guide/)
+2. 卡片笔记写作法：如何实现从阅读到写作
+3. [用“卡片笔记写作法”读《卡片笔记写作法》 译者现身说法并完整示范 | 学习骇客 ](https://mp.weixin.qq.com/s/jM6OoQLxKE4dT_ZWLibowA) 
