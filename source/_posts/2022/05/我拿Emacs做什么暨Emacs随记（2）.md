@@ -117,8 +117,7 @@ toc: true
 
 按下 `SPC n r i` 既是在正文中插入一条笔记链接，`SPC n r r` 既是打开显示双向链接的菜单，能帮助我更好地查看笔记之间的联系。
 
-而通过 `SPC n r a` 即可随机跳转到一条笔记上，方便我回顾笔记（可惜我太菜了不知道怎么设置成过滤，只显示仅某一类笔记orz
-）。
+而通过 `SPC n r a` 即可随机跳转到一条笔记上，方便我回顾笔记（可惜我太菜了不知道怎么设置成过滤，只显示仅某一类笔记orz）。
 
 同时 `org-roam` 里还附带了一个日志功能，可以像 `Logseq` 那样写日志，其前缀是 `SPC n r d`，但由于太长我一般都是通过 `M-x` 来进行选择对应功能的，现在我的一些想法和梦记都是录入到其中的。
 
@@ -140,6 +139,30 @@ toc: true
 
 ![](https://cf-ipfs.com/ipfs/bafkreicodyiisf7hstovxpkw5excjlmdltlxgjjqbvsghrhmrfxc5hrytm)
 
+### 任务管理
+`Emacs` 自带了个 `org-mode`，是做任务管理的一把好手，当然要提前配置好任务模板。
+#### 任务模板
+```lisp
+;; org-capture
+(setq org-agenda-files '("~/Nextcloud/gtd/inbox.org"
+                         "~/Nextcloud/gtd/gtd.org"
+                         "~/Nextcloud/gtd/tickler.org"))
+
+(after! org
+  (setq org-capture-templates '(("t" "Todo [inbox]" entry
+                               (file+weektree "~/Nextcloud/gtd/inbox.org")
+                               "* TODO %i%?")
+                              ("T" "Tickler" entry
+                               (file+headline "~/Nextcloud/gtd/tickler.org" "Tickler")
+                               "* %i%? \n %U"))))
+```
+其中 `org-agenda-file` 是设置将哪些文件拉入到日历试图的计算中，`org-agenda` 视图可以很方便地查看任务分布情况，可设可不设。
+`org-capture-templates` 是设置任务模板，要用 `after!` 关键字括起来以免被延后加载的默认配置覆盖，其中我将 `Todo` 的格式设成了 `weektree` 的格式，这会将任务归类成 `年-XX周-星期X` 的格式，方便进行定位以及用 `org-archive-subtree` 的命令将已完成的任务存档。 
+更多关于任务模板的相关介绍可看[这里](https://www.zmonster.me/2018/02/28/org-mode-capture.html)
+
+#### 使用
+这样配置下来，使用 `SPC X` 即可打开一个缓冲，按下 `t` 即可选择预先配置的 `Todo` 模板，接下来输入任务名称，按下 `C-c C-c` 即可将缓冲中的内容送入文件，同时关闭缓存。这个过程不需要去打开其他文件，适合在一个工作流中突然想起某事而花最小的打断代价去写下代办事项。
+
 ### 番茄钟
 #### 安装
 在 `~/.doom.d/init.el` 中加上 `pomodoro` 即可。
@@ -158,3 +181,4 @@ toc: true
 1. [How I Take Notes with Org-roam](https://jethrokuan.github.io/org-roam-guide/)
 2. 卡片笔记写作法：如何实现从阅读到写作
 3. [用“卡片笔记写作法”读《卡片笔记写作法》 译者现身说法并完整示范 | 学习骇客 ](https://mp.weixin.qq.com/s/jM6OoQLxKE4dT_ZWLibowA) 
+4. [强大的 Org mode(4): 使用 capture 功能快速记录](https://www.zmonster.me/2018/02/28/org-mode-capture.html)
