@@ -158,11 +158,12 @@ toc: true
 ```
 其中 `org-agenda-file` 是设置将哪些文件拉入到日历试图的计算中，`org-agenda` 视图可以很方便地查看任务分布情况，可设可不设。
 `org-capture-templates` 是设置任务模板，要用 `after!` 关键字括起来以免被延后加载的默认配置覆盖，其中我将 `Todo` 的格式设成了 `weektree` 的格式，这会将任务归类成 `年-XX周-星期X` 的格式，方便进行定位以及用 `org-archive-subtree` 的命令将已完成的任务存档。 
-更多关于任务模板的相关介绍可看[这里](https://www.zmonster.me/2018/02/28/org-mode-capture.html)
+更多关于任务模板的相关介绍可看[这里](https://www.zmonster.me/2018/02/28/org-mode-capture.html)。
 
 #### 使用
 这样配置下来，使用 `SPC X` 即可打开一个缓冲，按下 `t` 即可选择预先配置的 `Todo` 模板，接下来输入任务名称，按下 `C-c C-c` 即可将缓冲中的内容送入文件，同时关闭缓存。这个过程不需要去打开其他文件，适合在一个工作流中突然想起某事而花最小的打断代价去写下代办事项。
-
+#### 移动端使用
+目前我在安卓端上使用的是 [Orgzly](https://f-droid.org/packages/com.orgzly/) 搭配 `Nextcloud` 进行任务同步，利用小组件功能也能方便一览任务（就是小组件的刷新是个问题）。
 ### 番茄钟
 #### 安装
 在 `~/.doom.d/init.el` 中加上 `pomodoro` 即可。
