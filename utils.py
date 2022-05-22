@@ -134,7 +134,7 @@ def downloadImg(imgList):
         if img_url == "":
             continue
         # download img
-        ipfs_gateWay = ['https://cf-ipfs.com/ipfs/', 'https://ipfs.io/ipfs/', 'https://ipfs.fleek.co/ipfs/']
+        ipfs_gateWay = ['https://cf-ipfs.com/ipfs/', 'https://ipfs.io/ipfs/', 'https://dweb.link/ipfs/']
         if 'ipfs' in img_url:
             img_url = random.choice(ipfs_gateWay) + img_name
 
