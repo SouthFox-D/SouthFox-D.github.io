@@ -104,8 +104,11 @@ def backupImg():
                     result = re.findall('!\[(.*?)\]\((.*?)\)', mdText)
 
                     for i in range(len(result)):
-                        img_quote = result[i][0]
+                        #img_quote = result[i][0]
                         img_url = result[i][1]
+                        if 'ipfs' in img_url:
+                            urlname = img_url.split(u"/")
+                            img_url = str(urlname[-1])
                         nowImgList.append(img_url)
 
     downLoadList = list(set(nowImgList).difference((set(imgJson["img"]))))
@@ -126,16 +129,14 @@ def backupImg():
 
 
 
-def downloadImg(imgList):    
+def downloadImg(imgList):
+    ipfs_gateWay = ['https://cf-ipfs.com/ipfs/', 'https://ipfs.io/ipfs/', 'https://dweb.link/ipfs/']
     for img_url in imgList:
-        # img name spell
-        urlname = img_url.split(u"/")
-        img_name = str(urlname[-1])
+        img_name = img_url
         if img_url == "":
             continue
         # download img
-        ipfs_gateWay = ['https://cf-ipfs.com/ipfs/', 'https://ipfs.io/ipfs/', 'https://dweb.link/ipfs/']
-        if 'ipfs' in img_url:
+        if 'https' not in img_url:
             img_url = random.choice(ipfs_gateWay) + img_name
 
         response = requests.get(img_url)
