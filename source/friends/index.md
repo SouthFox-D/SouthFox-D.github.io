@@ -33,3 +33,11 @@ date: 2022-1-16 23:00:00
 ---
 
 - [瓠樽 | 以瓠為樽而浮乎江湖](https://blog.dylanwu.space)
+
+---
+
+- <img src="https://sogola.com/images/avatar.jpeg" style="float:left" width=50 height=50 />
+
+[王小嗨 | A Marxist inside.](https://sogola.com)
+
+---
