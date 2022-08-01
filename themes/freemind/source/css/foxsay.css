@@ -31,10 +31,6 @@
     display: none;
 }
 
-body,
-button {
-    font-family: 'Noto Serif SC', serif;
-}
 
 aside {
     font-weight: 300;
@@ -60,11 +56,15 @@ footer {
     font-weight: 300;
     font-style: normal;
     line-height: 1.8rem;
+    background: #000;
+    padding: 10px 20px;
     border-radius: 5px;
     box-shadow: 0 1px 6px rgba(32, 33, 36, 0.28);
     margin-top: 20px;
+    border-top-color: coral !important;
+    border-top: 6px solid;
     text-align: justify;
-    background: #000;
+    white-space: pre-line;
 }
 
 .item a {
@@ -76,18 +76,4 @@ time {
     font-weight: 200;
     color: #bbb;
     font-size: 15px;
-}
-
-bb {
-    font-family: 'Noto Serif SC', serif;
-    font-size: 20px;
-}
-
-.center-text {
-    text-align: center;
-}
-
-.load-ctn {
-    margin-top: 15px;
-    width: 100%;
 }

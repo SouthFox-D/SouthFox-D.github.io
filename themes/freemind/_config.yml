@@ -23,6 +23,9 @@ menu:
   - title: 友链
     url: friends
     intro: "朋友们"
+  - title: 狐说
+    url: foxsay
+    intro: "狐狸怎么叫？"
   - title : 开往
     url: travellings
     intro: "一群狼走得更远"
@@ -40,6 +43,10 @@ links:
     url: /rss2.xml
     intro: "Subscribe me."
     icon: "fas fa-rss"
+  - title: Foxsay
+    url: /foxsay
+    intro: "OWO"
+    icon: "fa fa-paw"
   - title: 开往
     url: https://travellings.link
     intro: "一群狼走得更远"
