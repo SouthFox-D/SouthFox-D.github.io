@@ -61,31 +61,32 @@ def addDiscussion():
     if r.status_code == 200:
         discussions = r.json()
 
-    discussions = discussions["data"]["repository"]["discussions"]["nodes"]
+        discussions = discussions["data"]["repository"]["discussions"]["nodes"]
 
-    discu_list = []
-    for i in discussions:
-        discu_list.append(i["title"])
+        discu_list = []
+        for i in discussions:
+            discu_list.append(i["title"])
 
-    for post in postlist:
-        if currentYear not in post:
-            continue
+        for post in postlist:
+            if currentYear not in post:
+                continue
 
-        if post not in discu_list:
-            data = {
-            'query': """mutation{
-            createDiscussion(input: {repositoryId: "%s", categoryId: "%s", body: "%s", title: "%s"}) {
-                discussion {
-                    id
+            if post not in discu_list:
+                data = {
+                'query': """mutation{
+                createDiscussion(input: {repositoryId: "%s", categoryId: "%s", body: "%s", title: "%s"}) {
+                    discussion {
+                        id
+                            }
                         }
-                    }
-                }""" % (repo_id, category_id, 'https://blog.southfox.me/' + post, post)
-            }
+                    }""" % (repo_id, category_id, 'https://blog.southfox.me/' + post, post)
+                }
 
-            r = requests.post(url, headers=header, data=json.dumps(data))
-            if r.status_code == 200:
-                print(f"初始化对应讨论！ {post}")
-                print(r.text)
+                r = requests.post(url, headers=header, data=json.dumps(data))
+                if r.status_code == 200:
+                    print(f"==========\n初始化对应讨论！ {post}\n==========")
+    else:
+        print("错误！")
 
 def backupImg():
     path = os.getcwd()
