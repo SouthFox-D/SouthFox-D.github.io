@@ -1,6 +1,8 @@
 ---
 title: 狐说
 date: 2021-07-11 17:45:57
+no_comment: true
+toc: true
 ---
 
 <link rel="stylesheet" href="/css/foxsay.css" media="screen" type="text/css">

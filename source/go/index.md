@@ -1,6 +1,7 @@
 ---
 title: go
 date: 2021-12-31 22:00:00
+no_comment: true
 ---
 
  <meta http-equiv="refresh" content="3;url=https://foreverblog.cn/go.html"> 

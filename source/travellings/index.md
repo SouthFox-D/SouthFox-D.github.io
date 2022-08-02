@@ -1,6 +1,7 @@
 ---
 title: travellings
 date: 2021-03-23 23:45:06
+no_comment: true
 ---
 
  <meta http-equiv="refresh" content="3;url=https://travellings.link"> 

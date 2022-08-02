@@ -1,18 +1,22 @@
-<blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
-<% if (theme.enable_comment) { %>
-  <script src="https://giscus.app/client.js"
-  data-repo="SouthFox-D/SouthFox-D.github.io"
-  data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
-  data-category="博客评论"
-  data-category-id="DIC_kwDODaJZAM4CA7bf"
-  data-mapping="og:title"
-  data-reactions-enabled="0"
-  data-emit-metadata="0"
-  data-input-position="top"
-  data-theme="dark_dimmed"
-  data-lang="zh-CN"
-  crossorigin="anonymous"
-  async>
-</script>
-<noscript>Enable JavaScript to view the comments.</a></noscript>
+<% if (item.no_comment){ %>
+			<!-- no comment -->
+<% } else { %>
+  <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+  <% if (theme.enable_comment) { %>
+    <script src="https://giscus.app/client.js"
+    data-repo="SouthFox-D/SouthFox-D.github.io"
+    data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+    data-category="博客评论"
+    data-category-id="DIC_kwDODaJZAM4CA7bf"
+    data-mapping="og:title"
+    data-reactions-enabled="0"
+    data-emit-metadata="0"
+    data-input-position="top"
+    data-theme="dark_dimmed"
+    data-lang="zh-CN"
+    crossorigin="anonymous"
+    async>
+  </script>
+  <noscript>Enable JavaScript to view the comments.</a></noscript>
+  <% } %>
 <% } %>
