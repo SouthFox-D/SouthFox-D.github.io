@@ -41,3 +41,9 @@ date: 2022-1-16 23:00:00
 [王小嗨 | A Marxist inside.](https://sogola.com)
 
 ---
+
+- <img src="https://blognas.hwb0307.com/logo.jpg" style="float:left" width=50 height=50 />
+
+[浮云翩迁之间 | 百代繁华一朝都，谁非过客；千秋明月吹角寒，花是主人。](https://blognas.hwb0307.com)
+
+---
