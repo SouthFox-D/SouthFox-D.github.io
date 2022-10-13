@@ -90,7 +90,7 @@ def addDiscussion():
 
 def backupImg():
     path = os.getcwd()
-    for root, dirs, files in os.walk(path + '/source'):
+    for root, dirs, files in os.walk(path + '/source/_posts'):
         for name in files :
             filelist.append(os.path.join(root, name))
 
