@@ -10,8 +10,6 @@ date: 2022-1-16 23:00:00
 
 ---
 
-- <img src="https://blog.lingyf.com/images/icon.svg" style="float:left" width=50 height=50 /> 
-
 [Albert's Blog | 逆水行舟 不进则退](https://blog.lingyf.com)
 
 ---
@@ -26,8 +24,6 @@ date: 2022-1-16 23:00:00
 
 ---
 
-- <img src="https://picsum.photos/52/52" style="float:left" width=50 height=50 />
-
 [Yoozy | 一花一世界，一叶一菩提](http://blog.sharktale.xyz/)
 
 ---
@@ -36,8 +32,6 @@ date: 2022-1-16 23:00:00
 
 ---
 
-- <img src="https://sogola.com/images/avatar.jpeg" style="float:left" width=50 height=50 />
-
 [王小嗨 | A Marxist inside.](https://sogola.com)
 
 ---
@@ -45,5 +39,17 @@ date: 2022-1-16 23:00:00
 - <img src="https://blognas.hwb0307.com/logo.jpg" style="float:left" width=50 height=50 />
 
 [浮云翩迁之间 | 百代繁华一朝都，谁非过客；千秋明月吹角寒，花是主人。](https://blognas.hwb0307.com)
+
+---
+
+- <img src="https://cdn.kclub.fun/wp-content/uploads/2022/08/1660213171-colorful.jpg" style="float:left" width=50 height=50 />
+
+[迷失的小K | Just for fun](http://www.kclub.fun/)
+
+---
+
+- <img src="https://pic.gene-yp.com/i/2022/07/25/c2axpo.jpeg" style="float:left" width=50 height=50 />
+
+[歪皮 |Just love, understanding and positivity ](http://www.gene-yp.com/)
 
 ---
