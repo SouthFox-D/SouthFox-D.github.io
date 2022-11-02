@@ -50,6 +50,12 @@ date: 2022-1-16 23:00:00
 
 - <img src="https://pic.gene-yp.com/i/2022/07/25/c2axpo.jpeg" style="float:left" width=50 height=50 />
 
-[歪皮 |Just love, understanding and positivity ](http://www.gene-yp.com/)
+[歪皮 | Just love, understanding and positivity ](http://www.gene-yp.com/)
+
+---
+
+- <img src="https://vip2.loli.io/2022/08/21/uAtbEg63IdVoBZc.webp" style="float:left" width=50 height=50 />
+
+[L3ON | 不可勝在己，可勝在敵](https://l3on.site)
 
 ---
