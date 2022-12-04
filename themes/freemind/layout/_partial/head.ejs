@@ -20,7 +20,7 @@
   <title><%= title.join(' | ') %></title>
   <% if (config.author){ %><meta name="author" content="<%= config.author %>"><% } %>
   <% if (page.description){ %>
-  <meta name="description" content="<%= page.description %>">
+    <meta name="description" content="<%= page.description %>">
   <% } else if (config.description){ %>
   <meta name="description" content="<%= config.description %>">
   <% } else if (page.excerpt){ %>
@@ -37,7 +37,7 @@
   <% if(page.cover) { %>
     <meta property="og:image" content="<%= page.cover %>" />
   <% } else { %>
-    <meta property="og:image" content="<%- url_for('./favicon.png') %>"/>
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png"
   <% } %>
 
   <% if (theme.rss){ %>
