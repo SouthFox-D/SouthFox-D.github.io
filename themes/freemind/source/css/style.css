@@ -26,12 +26,11 @@ body {
   -moz-border-radius: 6px 6px 6px 6px;
   border-radius: 6px 6px 6px 6px;
 }
-#sidebar {
-  font-size: 0.9em;
-}
+#sidebar,
 #side_meta {
-   position: sticky;
-   top: 10px;
+  font-size: 0.9em;
+  position: sticky;
+  top: 10px;
 }
 .post {
   font-size: 1em;
