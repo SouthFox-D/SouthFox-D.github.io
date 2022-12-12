@@ -29,6 +29,10 @@ body {
 #sidebar {
   font-size: 0.9em;
 }
+#side_meta {
+   position: sticky;
+   top: 10px;
+}
 .post {
   font-size: 1em;
 }
