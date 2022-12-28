@@ -123,7 +123,7 @@ toc: true
 
 而对于文献笔记，因为没琢磨透 `Emacs` 相关文献管理包怎么用，那我就用自带的大纲模式进行折腾了，具体就是用各个标题层级对应书的不同目录，并在最后加上页码，这样也方便我进行回读。
 
-![](https://crustwebsites.net/ipfs/bafkreidapw5bcu6ix2nxxi7uhbaiwnc23nukqfyzububigmk4hfcancc3u)
+![](https://w3s.link/ipfs/bafkreidapw5bcu6ix2nxxi7uhbaiwnc23nukqfyzububigmk4hfcancc3u)
 #### 连接
 `org-roam` 第 2 个大版本将里面的链接机制换成了基于 `org-mode` 的 `link`,所以让 `org-roam` 有了跟其他基于文章的双链笔记不同的，有更加精细的操控能力了。
 
@@ -137,7 +137,7 @@ toc: true
 #### MORE!
 当然还有其他的扩展包可以用，比如 `org roam ui`，这个包可以分析笔记文件形成一个网页，让 `Emacs` 用户也能享受到其他双链笔记软件的那个「花里胡哨」的链接分析图。
 
-![](https://crustwebsites.net/ipfs/bafkreicodyiisf7hstovxpkw5excjlmdltlxgjjqbvsghrhmrfxc5hrytm)
+![](https://w3s.link/ipfs/bafkreicodyiisf7hstovxpkw5excjlmdltlxgjjqbvsghrhmrfxc5hrytm)
 
 ### 任务管理
 `Emacs` 自带了个 `org-mode`，是做任务管理的一把好手，当然要提前配置好任务模板。
@@ -176,7 +176,7 @@ toc: true
 #### 使用
 在一个待办标题上使用 `SPC t t` 即可开启番茄计时，默认二十五分钟倒计时，还附带一个有点浮夸的敲钟音效（
 
-![](https://crustwebsites.net/ipfs/bafkreieirqmdin4xhx57druv47vt64goyjbohwbumuahq5z5xg3y7bjxke)
+![](https://w3s.link/ipfs/bafkreieirqmdin4xhx57druv47vt64goyjbohwbumuahq5z5xg3y7bjxke)
 
 ## 参考
 1. [How I Take Notes with Org-roam](https://jethrokuan.github.io/org-roam-guide/)

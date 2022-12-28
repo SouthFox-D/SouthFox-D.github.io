@@ -8,7 +8,7 @@ tags:
 category: 随笔
 ---
 
-![](https://crustwebsites.net/ipfs/QmX1zANXfhKWaT8CxZZNMVdQAqsv9yQGjqQUaWjyRi9Jsy)
+![](https://w3s.link/ipfs/QmX1zANXfhKWaT8CxZZNMVdQAqsv9yQGjqQUaWjyRi9Jsy)
 
 从前在6号楼的一间房间内，有一只杏仁糖做的小猪，某一天被扬起的窗帘拍在了沙发后面，个把月没有人理会它。可怜的小猪等啊等，但还是没有人过来……突然有一天，它听到了吱吱叫的声音，难道，救援来了吗？
 
