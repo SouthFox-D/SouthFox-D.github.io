@@ -33,7 +33,7 @@ toc: true
 
 ### 使用
 
-当然如果是如果是使用 `Doom emacs` 配置集的话，自带的 `vim` 按键绑定会覆盖掉 `mastodon.el` 的自带按键设定，所以还是得自己设置一下。
+当然如果是使用 `Doom emacs` 配置集的话，自带的 `vim` 按键绑定会覆盖掉 `mastodon.el` 的自带按键设定，所以还是得自己设置一下。
 
 ```lisp
 (map! :leader
@@ -85,9 +85,9 @@ toc: true
       )
 ```
 
-第一处就是使用 `SPC o M` 来打开 `mastodon.el` 这个包，实现快速摸鱼，第二处设置则是照虎画猫其他人的[配置](https://github.com/coutego/evil-collection/blob/master/modes/mastodon/evil-collection-mastodon.el)来实现的，虽然没看文档（坏习惯），但是猜测 `:map mastodon-mode-map` 是选择指定那个模式下的按键配置；`:n` 是覆盖 `vim` 那个模式下的按键绑定，`n` 应该是普通模式。
+第一处就是使用 `SPC o M` 来打开 `mastodon.el` 这个包，实现快速摸鱼，第二处设置则是照虎画猫其他人的[配置](https://github.com/coutego/evil-collection/blob/master/modes/mastodon/evil-collection-mastodon.el)来实现的，虽然没看文档（坏习惯），但是猜测 `:map mastodon-mode-map` 是选择指定那个模式下的按键配置，`:n` 是覆盖 `vim` 那个模式下的按键绑定，`n` 应该是普通模式。
 
-按键绑定改来改去，要在不影响原本的 `hjkl` 和 `wby` 常用指令还要做到方便（自己）记忆还是有点难的，毕竟兼容了原本按键绑定复制粘贴起来也比较好操作。
+按键绑定改来改去，要在不影响原本的 `hjkl` 和 `wby` 常用指令还要做到方便（自己）记忆还是有点难的，毕竟能兼容了原本按键绑定进行复制粘贴起也比较好操作。
 
 总体来看还是倾向于一个补充，毕竟 `Emacs` 网络相关的操作确实不太行，跟 `Web`  端确实是不能比的，但是能够快速摸鱼外加和其它包联携的潜力（比如打开收藏夹进行进行分析；直接拷贝嘟文内容送入待办等），还要啥自行车呢。
 
@@ -127,13 +127,13 @@ IgnoreVerification = True
 
 之后再启动程序 `pantalaimon --log-level debug` ，但是现在还没有真正运行，首先在 `Emacs` 里进行登陆并且指定使用的地址:
 
-按下 `M-S ；` 运行指令指定本地反代的地址
+按下 `M-S ；` 运行指定本地反代的地址的指令：
 
 ```lisp
 (ement-connect :uri-prefix "http://localhost:8009")
 ```
 
-然后输入帐号密码进行登陆，看日志应该能发现有所输出，等待到数据同步后 `Emacs` 显示了房间列表后。切换到另一个已经登陆的客户端上应该能发现两个设备进行登陆，一个叫 `pantalaimon` 另一个是随机字符串是 `ement.el` 使用的。两个都显示未支持加密功能。这时先用 `Emacs` 进入一个开启加密的房间然后用 `ement-room-send-message` 指令发送一条消息，理所当然的不会成功，因为 `pantalaimon` 还没通过验证，但现在应该会显示 `pantalaimon` 设备尝试申请验证了。
+然后输入帐号密码进行登陆，看日志应该能发现有所输出，等待到数据同步后 `Emacs` 显示了房间列表后。切换到另一个已经登陆的客户端上应该能发现两个设备进行登陆，一个叫 `pantalaimon` 另一个是随机字符串是 `ement.el` 使用的。两个都显示未支持加密功能。这时先用 `Emacs` 进入一个开启加密的房间然后用 `ement-room-send-message` 指令发送一条消息，理所当然的不会成功，因为 `pantalaimon` 还没通过验证，但现在应该会显示 `pantalaimon` 设备变成支持加密的未知设备了。
 
 这时在开启一个终端输入 `panctl` 指令进入控制，参考[这篇文章](https://www.cogitri.dev/posts/10-pantalaimon-setup/)进行验证操作 ，具体来说就是用指令 `start-verification @自己帐号:自己实例 @自己帐号:自己实例 已经登陆的设备的设备号` 发起验证，然后用那一个已经登陆的设备确实验证请求开启交叉验证……其中可能会卡住或许要多发起几次。
 
@@ -149,7 +149,7 @@ IgnoreVerification = True
 UI_ENABLED = False
 ```
 
-然后就能当作 `service` 进行管理理，代价就是无法使用 `panctl` 命令，不过只要没有再配置的需求还是能接收的，或是从一开始就使用 `Docker` 然后安装这[说法](https://github.com/matrix-org/pantalaimon/issues/144#issuecomment-1376163550)进行配置。
+然后就能当作 `service` 进行管理理，代价就是无法使用 `panctl` 命令，不过只要没有再配置的需求还是能接受的，或是从一开始就使用 `Docker` 然后按照这[说法](https://github.com/matrix-org/pantalaimon/issues/144#issuecomment-1376163550)进行配置。
 
 ### 再再配置
 
@@ -161,7 +161,7 @@ UI_ENABLED = False
 
 将会话数据保留下来，要不然每次登陆都会新申请一个设备，每开一次 `Emacs` 来这样一次那很快就要达到上百个设备了。
 
-配置此选项后关闭 `Emacs` 应该能注意到关闭 `Emacs` 会将会话数据写入，没有的话还得使用`(ement-connect :uri-prefix "http://localhost:8009")` 指令再登陆几次。检查 `ement-sessions-file` 变量是否设置，默认 `"~/.cache/ement.el"` ，到改路径检查，有没有设置反代地址和保存了相关 `token` ，有的话就完事大吉了，之后也可以直接用 `ement-connect` 直接登陆，因为反代地址已经保存了所以也不用特意指定。
+配置此选项后关闭 `Emacs` 应该能注意到关闭 `Emacs` 会将会话数据写入，没有的话还得重启 `Emacs` 使用`(ement-connect :uri-prefix "http://localhost:8009")` 指令再登陆几次。检查 `ement-sessions-file` 变量是否有被设置，默认是 `"~/.cache/ement.el"` ，到该路径检查，有没有设置反代地址和保存了相关 `token` ，有的话就万事大吉了，之后也可以直接用 `ement-connect` 直接登陆，因为反代地址已经保存了所以也不用再去特意指定。
 
 ### 再再再配置
 
@@ -169,4 +169,4 @@ UI_ENABLED = False
 
 ## 总结
 
-两款常用服务配置下来那就挺让人舒适的了，快速刷轴摸鱼，聊天也可以在 `Emacs` 实现，主要优点是不走 `Web` 端的话，资源是比较省的，不用再加载几兆几十兆的脚本外加浏览器吃掉的内存了，两种喜欢的事加起来，多是一键美事啊。
+两款常用服务配置下来那就挺让人舒适的了，快速刷轴摸鱼，聊天也可以在 `Emacs` 实现，主要优点是不走 `Web` 端的话，资源是比较省的，不用再加载几兆几十兆的脚本外加浏览器吃掉的内存了，两种喜欢的事加起来，多是一件美事啊。
