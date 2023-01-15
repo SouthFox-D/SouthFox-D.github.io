@@ -18,18 +18,18 @@ toc: true
 
 ## Mastodon
 
-[Mastodon.el](https://codeberg.org/martianh/mastodon.el) 是一个 `Emacs` 平台的 `Mastodon` 客户端，为什么啥事都要用 `Emacs` 来实现了，因为只要将文字送入 `Emacs` 解析，那么就能够和其它包进行联动，这可是很诱人的事啊。
+[Mastodon.el](https://codeberg.org/martianh/mastodon.el) 是一个 `Emacs` 平台的 `Mastodon` 客户端，为什么啥事都要用 `Emacs` 来实现呢？因为只要将文字送入 `Emacs` 解析，那么就能够和其它包进行联动，这可是很诱人的事啊。
 
 ### 安装
 
-`Mastodon.el` 也已经上传到了 `MELPA` 上面，可以直接进行安装。使用时只要指定了实例地址和用户名：
+`Mastodon.el` 也已经上传到了 `MELPA` 上面，可以直接进行安装。使用时只要指定实例地址和用户名：
 
 ```lisp
 (setq mastodon-instance-url "https://social.instance.org"
       mastodon-active-user "example_user")
 ```
 
-然后直接 `M-x mastodon` 运行指令，然后就会复制一串授权地址，粘贴到登陆的了实例浏览器进行打开，获取授权码再复制回 `Emacs` 就能完全授权了。
+然后直接 `M-x mastodon` 运行指令，然后就会往剪贴板复制一串授权地址，粘贴到登陆的了实例浏览器进行打开，获取授权码再复制回 `Emacs` 就能完全授权了。
 
 ### 使用
 
@@ -93,7 +93,7 @@ toc: true
 
 ## Matrix
 
-接下来就是聊天了，其实作为同一个时代的产品，`IRC` 自然是支持众多的，不过我已经选择另一款聊天协议了 [Matrix](https://matrix.org/) 。
+接下来就是聊天了，其实作为和 `Emacs` 同一个时代的产品，`IRC` 自然是支持众多的，不过我已经选择另一款聊天协议了 [Matrix](https://matrix.org/) 。
 
 ### 安装
 
@@ -109,7 +109,7 @@ toc: true
 
 ### 配置
 
-不过索性还有曲线救国方案就是用 [pantalaimon](https://github.com/matrix-org/pantalaimon) ，一个代理程序，可以将加密消息解密提供给其它不支持加密的客户端使用。
+不过还有曲线救国方案就是用 [pantalaimon](https://github.com/matrix-org/pantalaimon) ，一个代理程序，可以将加密消息解密提供给其它不支持加密的客户端使用。
 
 安装上可以直接用 `pip` 进行安装 `pip install pantalaimon` 之后得编辑 `~/.config/pantalaimon/pantalaimon.conf` 下的配置文件指定实例地址和相关配置。
 
@@ -133,7 +133,7 @@ IgnoreVerification = True
 (ement-connect :uri-prefix "http://localhost:8009")
 ```
 
-然后输入帐号密码进行登陆，看日志应该能发现有所输出，等待到数据同步后 `Emacs` 显示了房间列表后，切换到另一个已经登陆的客户端上应该能发现两个设备进行登陆，一个叫 `pantalaimon` 另一个是随机字符串是 `ement.el` 使用的，两个都显示未支持加密功能。这时先用 `Emacs` 进入一个开启加密的房间然后用 `ement-room-send-message` 指令发送一条消息，理所当然的不会成功，因为 `pantalaimon` 还没通过验证，但现在应该会显示 `pantalaimon` 设备尝试申请验证了。
+然后输入帐号密码进行登陆，看日志应该能发现有所输出，等待到数据同步后 `Emacs` 显示了房间列表后。切换到另一个已经登陆的客户端上应该能发现两个设备进行登陆，一个叫 `pantalaimon` 另一个是随机字符串是 `ement.el` 使用的。两个都显示未支持加密功能。这时先用 `Emacs` 进入一个开启加密的房间然后用 `ement-room-send-message` 指令发送一条消息，理所当然的不会成功，因为 `pantalaimon` 还没通过验证，但现在应该会显示 `pantalaimon` 设备尝试申请验证了。
 
 这时在开启一个终端输入 `panctl` 指令进入控制，参考[这篇文章](https://www.cogitri.dev/posts/10-pantalaimon-setup/)进行验证操作 ，具体来说就是用指令 `start-verification @自己帐号:自己实例 @自己帐号:自己实例 已经登陆的设备的设备号` 发起验证，然后用那一个已经登陆的设备确实验证请求开启交叉验证……其中可能会卡住或许要多发起几次。
 
@@ -143,7 +143,7 @@ IgnoreVerification = True
 
 之后如果希望将 `pantalaimon` 作为系统服务开机自启的话就发现不行，会遇到相关总线问题，因为其中一些 `pyDbus` 什么的调用导致无法挂在后台吧。
 
-权益之际是按照这个[说法](https://github.com/matrix-org/pantalaimon/issues/144#issuecomment-1345473181)手动编辑 `pantalaimon` 包下的 `ui.py` 文件关闭 `UI` 功能：
+权宜之计是按照这个[说法](https://github.com/matrix-org/pantalaimon/issues/144#issuecomment-1345473181)手动编辑 `pantalaimon` 包下的 `ui.py` 文件关闭 `UI` 功能：
 
 ```py
 UI_ENABLED = False
@@ -155,7 +155,7 @@ UI_ENABLED = False
 
 然后记得配置
 
-```li
+```lisp
 (setq ement-save-sessions t)
 ```
 
