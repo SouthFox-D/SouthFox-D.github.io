@@ -159,7 +159,7 @@ if __name__ == '__main__':
             filelist = []
             postlist = []
             fontChar()
-            addDiscussion()
+            # addDiscussion()
         elif opt in ('-b', '--backupimg'):
             filelist = []
 
