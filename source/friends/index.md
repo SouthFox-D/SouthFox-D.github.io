@@ -59,3 +59,7 @@ date: 2022-1-16 23:00:00
 [L3ON | 不可勝在己，可勝在敵](https://l3on.site)
 
 ---
+
+[江尚寒 | 一潭星动](https://jiangshanghan.art.blog)
+
+---
