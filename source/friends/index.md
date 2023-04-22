@@ -16,7 +16,7 @@ date: 2022-1-16 23:00:00
 
 ---
 
-[Yoozy | 一花一世界，一叶一菩提](http://blog.sharktale.xyz/)
+[Yoozy | 一花一世界，一叶一菩提](http://woods.sharktale.xyz/)
 
 ---
 
