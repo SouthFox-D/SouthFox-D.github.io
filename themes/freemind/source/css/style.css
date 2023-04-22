@@ -1392,7 +1392,7 @@ code {
   animation: wrench 3.75s ease infinite;
 }
 #cusdis_thread {
-  background: #bbb;
+  background: #c6c6c6;
   box-shadow: 0 0 0 5px, 11px 13px 0 4px black;
   border: 2px solid #000000;
 }
