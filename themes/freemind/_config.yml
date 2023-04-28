@@ -36,6 +36,9 @@ menu:
     icon: "fas fa-bahai"
 
 links:
+  - title: About
+    url: /about
+    icon: "fas fa-question"
   - title: Friends
     url: /friends
     icon: "fas fa-user-friends"
