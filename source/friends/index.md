@@ -43,3 +43,7 @@ date: 2022-1-16 23:00:00
 [江尚寒 | 一潭星动](https://jiangshanghan.art.blog)
 
 ---
+
+[s0urce's Lab | No black and white in the blue.](https://blog.src.moe/)
+
+---
