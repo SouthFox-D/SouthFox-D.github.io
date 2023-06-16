@@ -4,7 +4,7 @@
   <% if (item.fedi_url){ %>
     <div id="comments">
       <p id="mastodon-comments-list"></p>
-      <script src="<%- url_for('./js/fedicomment.js') %>" post-url="<%- item.comment_url %>"> async</script>
+      <script src="<%- url_for('./js/fedicomment.js') %>" post-url="<%- item.fedi_url %>"> async</script>
     </div>
     <noscript>Enable JavaScript to view the comments.</a></noscript>
   <% } else { %>

@@ -1392,6 +1392,45 @@ code {
   animation: wrench 3.75s ease infinite;
 }
 
+dialog {
+    width: 30em;
+    padding: 1em;
+    color: black;
+    background: gainsboro;
+}
+dialog::backdrop {
+    background-color: rgba(0,0,0,0.5);
+}
+dialog #close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0.5em;
+    font: inherit;
+    outline: inherit;
+}
+.input-row {
+    display: flex;
+}
+.input-row > * {
+    display: block;
+}
+.input-row > input {
+    flex-grow: 1;
+    margin-right: 0.5em;
+}
+.input-row > button {
+    flex-basis: 3em;
+}
+.addComment {
+    display: block;
+    width: 100%;
+    font-size: 100%;
+    text-align: center;
+}
 .mastodon-comment {
   border-radius: 3px;
   border: 1px #ededf0 solid;
