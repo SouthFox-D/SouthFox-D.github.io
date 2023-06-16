@@ -1457,6 +1457,7 @@ dialog #close {
 .mastodon-comment .author .details {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 .mastodon-comment .author .details .name {
   font-weight: bold;
@@ -1469,12 +1470,13 @@ dialog #close {
   margin-left: auto;
   font-size: small;
 }
-/* .mastodon-comment .content { */
-/*   margin: 15px 20px; */
-/* } */
 .mastodon-comment .content p:first-child {
   margin-top:0;
   margin-bottom:0;
+}
+.mastodon-comment .content {
+  padding: 10px;
+  margin: 5px;
 }
 .mastodon-comment .status > div {
   display: inline-block;
