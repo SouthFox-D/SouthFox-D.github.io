@@ -1441,6 +1441,7 @@ dialog #close {
 }
 .mastodon-comment p {
   margin-bottom: 0px;
+  font-family: unset;
 }
 .mastodon-comment .author {
   padding-top:0;
