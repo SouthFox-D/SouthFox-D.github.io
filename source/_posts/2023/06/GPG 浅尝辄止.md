@@ -6,6 +6,7 @@ tags:
 - GPG
 - 自托管
 category: 技术
+fedi_url: https://foxsay.southfox.me/@SouthFox/110595035535673468
 ---
 
 成为 `Geek` 众多步的其中一步，捣鼓 `GPG` (
