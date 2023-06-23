@@ -31,20 +31,17 @@
   <% if (page.keywords){ %><meta name="keywords" content="<%= page.keywords %>"><% } %>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <% if (page.title){ %><meta property="og:title" content="<%= page.path %>"/><% } %>
-  <meta property="og:site_name" content="<%= config.title %>"/>
-
-
   <% if (page.title){ %>
     <meta name="og:title" content="<%= page.title %>">
+    <meta property="og:site_name" content="<%= config.title %>">
   <% } %>
   <% if(page.cover) { %>
-    <meta property="og:image" content="<%= page.cover %>" />
+    <meta property="og:image" content="<%= page.cover %>">
   <% } else { %>
-    <meta property="og:image" content="https://blog.southfox.me/favicon.png"
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
   <% } %>
   <% if (page.description){ %>
-    <meta name="og:description" content="<%= page.description %>">
+    <meta name="og:description" content="<%= page.description %>" />
   <% } %>
 
   <% if (theme.rss){ %>
