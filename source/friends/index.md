@@ -47,3 +47,7 @@ date: 2022-1-16 23:00:00
 [s0urce's Lab | No black and white in the blue.](https://blog.src.moe/)
 
 ---
+
+[JIPA233の小窝 | Deed divides beings into lower and higher ones.](https://jipa.uk)
+
+---
