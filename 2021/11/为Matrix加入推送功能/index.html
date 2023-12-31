@@ -1,0 +1,309 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>为 Matrix 加入自定义推送功能 | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="Matrix 是一个开源的聊天协议，和 XMPP 一样的联邦制设计也保证了像电子邮件一样的通信便捷。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2021/11/为Matrix加入推送功能/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 为 Matrix 加入自定义推送功能</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p><code>Matrix</code> 是一个开源的聊天协议，和 <code>XMPP</code> 一样的联邦制设计也保证了像电子邮件一样的通信便捷。</p>
+<span id="more"></span>
+
+<p>好的地方很多，但最明显坏处就是推送了，对于即时通信来说，没有推送是非常大的不便……虽然搭建 <code>Matrix</code> 的应用 <code>Synapse</code> 配置文件启用邮箱的话可以启用邮件通知，不过鉴于邮件时效性也不是很高，所以需要个其他的推送手段。（谷歌市场下的 <code>Element</code> 附带了谷歌的消息推送，不过很遗憾在国内处于残废状态。）</p>
+<p>所幸 <code>Synapse</code> 自带的 <a target="_blank" rel="noopener" href="https://spec.matrix.org/v1.1/client-server-api/">API</a> 可以定义推送规则，定义后帐号收到消息，服务器就可以将消息以 <code>JSON</code> 的形式推送到自定义的地址，来个曲线救国。</p>
+<h1 id="Gotify"><a href="#Gotify" class="headerlink" title="Gotify"></a>Gotify</h1><p>推送用到的工具为 <code>Gotify</code> ，特点是使用 <code>GO</code> 编写，高效快速，不过缺点就是安卓得常驻后台接收推送，不过至少要比腾讯全家桶吃的电要少。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>去 <a target="_blank" rel="noopener" href="https://github.com/gotify/server/releases">Releases </a>处找到对应版本的下载链接，解压到<code>/opt/gotify/</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip gotify-file -d /opt/gotify/</span><br></pre></td></tr></table></figure>
+
+<p>然后下载配置样板。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> /etc/gotify</span><br><span class="line">wget -O /etc/gotify/config.yml https://raw.githubusercontent.com/gotify/server/master/config.example.yml</span><br></pre></td></tr></table></figure>
+
+<p>编辑 <code>/etc/gotify/config.yml</code>。将 <code>port</code> 改为没有占用的端口， <code>name</code> 和 <code>pass</code> 是管理员的用户名和密码。</p>
+<h1 id="Nginx-反代"><a href="#Nginx-反代" class="headerlink" title="Nginx 反代"></a>Nginx 反代</h1><p>在 <code>nginx</code> 的新建一个虚拟主机并在配置文件增加以下内容：</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">location</span> / &#123;</span><br><span class="line">  <span class="attribute">proxy_pass</span>         http://localhost:8080;</span><br><span class="line">  <span class="attribute">rewrite</span><span class="regexp"> ^/gotify(/.*)</span> <span class="variable">$1</span> <span class="literal">break</span>;</span><br><span class="line">  <span class="attribute">proxy_http_version</span> <span class="number">1</span>.<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment"># Ensuring it can use websockets</span></span><br><span class="line">  <span class="attribute">proxy_set_header</span>   Upgrade <span class="variable">$http_upgrade</span>;</span><br><span class="line">  <span class="attribute">proxy_set_header</span>   Connection <span class="string">&quot;upgrade&quot;</span>;</span><br><span class="line">  <span class="attribute">proxy_set_header</span>   X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">  <span class="attribute">proxy_set_header</span>   X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">  <span class="attribute">proxy_set_header</span>   X-Forwarded-Proto http;</span><br><span class="line">  <span class="attribute">proxy_redirect</span>     http:// <span class="variable">$scheme</span>://;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>proxy_set_header   Connection “upgrade”; 这一栏不要漏了……要不然开启 WS 时会报错……</p>
+</blockquote>
+<h1 id="设置服务"><a href="#设置服务" class="headerlink" title="设置服务"></a>设置服务</h1><p>新建并编辑 <code>/etc/systemd/system/gotify.service</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=gotify service</span><br><span class="line">After=network.target</span><br><span class="line">Wants=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">PIDFile=/run/gotify.pid</span><br><span class="line">WorkingDirectory=/opt/gotify</span><br><span class="line">ExecStart=/opt/gotify/gotify-file</span><br><span class="line">RestartPreventExitStatus=23</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=10s</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+
+<p>然后开启服务并设置成开机启动。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start gotify</span><br><span class="line">systemctl enable gotify</span><br></pre></td></tr></table></figure>
+
+<p>没有报错的话就可以打开 <code>Nginx</code> 里所设置的域名进入管理页面了，（改密码）之后就可以新建应用了，拿到推送令牌，就可以向服务器设置推送规则了。</p>
+<h2 id="设置推送"><a href="#设置推送" class="headerlink" title="设置推送"></a>设置推送</h2><p>在官方文档里，通过 &#x2F;_matrix&#x2F;client&#x2F;v3&#x2F;pushers&#x2F;set <code>API</code> 就可以设置推送规则了，通过 <code>curl</code> ，或者其他方式向服务器对应地址发送 <code>POST</code> 请求即可使用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl <span class="string">&#x27;https://server_url/_matrix/client/r0/pushers/set&#x27;</span> -H <span class="string">&#x27;Authorization: Bearer access_token&#x27;</span> -H <span class="string">&#x27;Content-Type: application/json&#x27;</span> -X POST -d <span class="string">&#x27;&#123;&quot;lang&quot;: &quot;en&quot;,&quot;kind&quot;: &quot;http&quot;,&quot;app_display_name&quot;: &quot;Gotify&quot;,&quot;device_display_name&quot;: &quot;Gotify&quot;,&quot;pushkey&quot;: &quot;Gotify-PushKey&quot;,&quot;app_id&quot;: &quot;zh.xxx.gotify&quot;,&quot;data&quot;: &#123;&quot;url&quot;: &quot;https://Push_url/_matrix/push/v1/notify&quot;,&quot;format&quot;: &quot;full_event&quot;&#125;&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p>详细说明请查阅官方 <a target="_blank" rel="noopener" href="https://spec.matrix.org/v1.1/client-server-api/#post_matrixclientv3pushersset">文档</a> , 其中 <code>access_token</code> 可以在应用里拿到，<code>pushkey </code> 设置成 <code>Gotify-PushKey</code> 的样子是为了后续处理方便……现阶段推送地址必须包含 <code>/_matrix/push/v1/notify </code> 路径，否则会报错，所以不得不进行额外处理了……</p>
+<h2 id="接收推送"><a href="#接收推送" class="headerlink" title="接收推送"></a>接收推送</h2><p>服务器设置推送规则之后就会向对应地址发送数据了，因为推送地址现阶段必须包含 <code>/_matrix/push/v1/notify </code> 路径，所以不得不再设置一个接收服务然后进行处理了。</p>
+<p>接下来使用 <code>python</code> 的 <code>flask</code> 框架简单搭一个服务，首先先安装环境。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip3 install flask</span><br><span class="line">pip3 install flask-apscheduler</span><br></pre></td></tr></table></figure>
+
+<p>然后是代码：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> flask <span class="keyword">import</span> Flask, jsonify, request</span><br><span class="line"><span class="keyword">from</span> flask_apscheduler <span class="keyword">import</span> APScheduler</span><br><span class="line">app = Flask(__name__)</span><br><span class="line">scheduler = APScheduler()</span><br><span class="line"></span><br><span class="line">scheduler.start()</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">push_notification</span>(<span class="params">push_data</span>):</span><br><span class="line">    <span class="keyword">if</span> push_data[<span class="string">&quot;push_way&quot;</span>] == <span class="string">&#x27;Gotify&#x27;</span>:</span><br><span class="line">        resp = requests.post(<span class="string">f&#x27;https://push.xxx.xxx/message?token=<span class="subst">&#123;push_data[<span class="string">&quot;push_token&quot;</span>]&#125;</span>&#x27;</span>, json=&#123;</span><br><span class="line">        <span class="string">&quot;message&quot;</span>: <span class="string">f&#x27;「<span class="subst">&#123;push_data[<span class="string">&quot;sender&quot;</span>]&#125;</span>」发送了消息给你。&#x27;</span>,</span><br><span class="line">        <span class="string">&quot;priority&quot;</span>: <span class="number">8</span>,</span><br><span class="line">        <span class="string">&quot;title&quot;</span>: <span class="string">&quot;新消息！&quot;</span></span><br><span class="line">        &#125;)</span><br><span class="line">        <span class="built_in">print</span>(resp)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">if</span> push_data[<span class="string">&quot;push_way&quot;</span>] == <span class="string">&#x27;Bary&#x27;</span>:</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            response = requests.post(</span><br><span class="line">                url=<span class="string">&quot;https://api.day.app/push&quot;</span>,</span><br><span class="line">                headers=&#123;</span><br><span class="line">                    <span class="string">&quot;Content-Type&quot;</span>: <span class="string">&quot;application/json; charset=utf-8&quot;</span>,</span><br><span class="line">                &#125;,</span><br><span class="line">                data=json.dumps(&#123;</span><br><span class="line">                    <span class="string">&quot;body&quot;</span>: <span class="string">f&#x27;「<span class="subst">&#123;push_data[<span class="string">&quot;sender&quot;</span>]&#125;</span>」发送了消息给你。&#x27;</span>,</span><br><span class="line">                    <span class="string">&quot;device_key&quot;</span>: push_data[<span class="string">&quot;push_token&quot;</span>],</span><br><span class="line">                    <span class="string">&quot;title&quot;</span>: <span class="string">&quot;新消息！&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;category&quot;</span>: <span class="string">&quot;category&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;sound&quot;</span>: <span class="string">&quot;minuet.caf&quot;</span>,</span><br><span class="line">                &#125;)</span><br><span class="line">            )</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Response HTTP Status Code: &#123;status_code&#125;&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">                status_code=response.status_code))</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Response HTTP Response Body: &#123;content&#125;&#x27;</span>.<span class="built_in">format</span>(</span><br><span class="line">                content=response.content))</span><br><span class="line">        <span class="keyword">except</span> requests.exceptions.RequestException:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;HTTP Request failed&#x27;</span>)</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Our route that will receive the webhooks from Duffel&#x27;s servers</span></span><br><span class="line"><span class="meta">@app.route(<span class="params"><span class="string">&#x27;/_matrix/push/v1/notify&#x27;</span>, methods=[<span class="string">&#x27;POST&#x27;</span>]</span>)</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">hello_world</span>():</span><br><span class="line">    push_data = &#123;&#125;</span><br><span class="line">    event = <span class="literal">None</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        event = request.json</span><br><span class="line">        <span class="built_in">print</span>(event)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">except</span>:</span><br><span class="line">        <span class="keyword">return</span> jsonify(success=<span class="literal">False</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Handle the event</span></span><br><span class="line">    <span class="keyword">if</span> event[<span class="string">&quot;notification&quot;</span>][<span class="string">&quot;type&quot;</span>] == <span class="string">&#x27;m.room.message&#x27;</span> <span class="keyword">or</span> event[<span class="string">&quot;notification&quot;</span>][<span class="string">&quot;type&quot;</span>] == <span class="string">&#x27;m.room.encrypted&#x27;</span>:</span><br><span class="line">        app_id = event[<span class="string">&quot;notification&quot;</span>][<span class="string">&quot;devices&quot;</span>][<span class="number">0</span>][<span class="string">&quot;app_id&quot;</span>]</span><br><span class="line">        push_data[<span class="string">&quot;push_way&quot;</span>], push_data[<span class="string">&quot;push_token&quot;</span>] = event[<span class="string">&quot;notification&quot;</span>][<span class="string">&quot;devices&quot;</span>][<span class="number">0</span>][<span class="string">&quot;pushkey&quot;</span>].split(<span class="string">&#x27;-&#x27;</span>)</span><br><span class="line">        push_data[<span class="string">&quot;sender&quot;</span>] = event[<span class="string">&quot;notification&quot;</span>][<span class="string">&quot;sender_display_name&quot;</span>]</span><br><span class="line"></span><br><span class="line">        scheduler.add_job(</span><br><span class="line">            func=push_notification,</span><br><span class="line">            args=(push_data,),</span><br><span class="line">            <span class="comment"># trigger=&quot;date&quot;,</span></span><br><span class="line">            next_run_time=datetime.datetime.now() + datetime.timedelta(seconds=<span class="number">25</span>),</span><br><span class="line">            <span class="built_in">id</span>=app_id,</span><br><span class="line">            replace_existing=<span class="literal">True</span>,</span><br><span class="line">        )</span><br><span class="line"></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;✅add push job!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> event[<span class="string">&quot;notification&quot;</span>][<span class="string">&quot;type&quot;</span>] == <span class="literal">None</span> <span class="keyword">and</span> event[<span class="string">&quot;notification&quot;</span>][<span class="string">&quot;id&quot;</span>] == <span class="string">&#x27;&#x27;</span>:</span><br><span class="line">        app_id = event[<span class="string">&quot;notification&quot;</span>][<span class="string">&quot;devices&quot;</span>][<span class="number">0</span>][<span class="string">&quot;app_id&quot;</span>]</span><br><span class="line">        <span class="keyword">try</span>:</span><br><span class="line">            scheduler.remove_job(<span class="built_in">id</span>=app_id)</span><br><span class="line">        <span class="keyword">except</span>:</span><br><span class="line">            <span class="keyword">pass</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;✅remove push!&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> jsonify(success=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+<p>然后用命令 <code>FLASK_ENV=development FLASK_RUN_PORT=4567 FLASK_APP=webhook.py flask run</code> 就可启用。再然后再用 <code>Nginx</code> 反代一下 <code>4567</code> 端口就行了，因为 <code>Synapse</code> 默认禁止本机访问，为了规范一点就另外开个站点接收请求吧……</p>
+<p>基本逻辑就是接收 <code>JSON</code> 拿到发送者名称和推送令牌，判断是哪项服务，然后等待三十秒推送到对应的应用令牌上去，期间要是判断用户已经阅读了消息，就移除推送作业。</p>
+<p>到此无意外的话，应该就能正常推送了，麻烦……希望以后能够有更友好便捷的方式吧。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.mjyai.com/2021/02/24/raspberry-pi-gotify/">在树莓派上部署消息推送软件Gotify</a></li>
+</ol>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="../../.././2021/12/二一年十二月份梦记/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2021/11/二一年十一月梦记/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+    <script src="https://giscus.app/client.js"
+            data-repo="SouthFox-D/SouthFox-D.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+            data-category="博客评论"
+            data-category-id="DIC_kwDODaJZAM4CA7bf"
+            data-mapping="og:title"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2021-11-22 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>18</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/技术/">技术<span>14</span></a></li> <li><a href="/tags/Matrix/">Matrix<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">目录</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#Gotify"><span class="toc-article-text">Gotify</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-article-text">下载</span></a></li></ol></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#Nginx-%E5%8F%8D%E4%BB%A3"><span class="toc-article-text">Nginx 反代</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#%E8%AE%BE%E7%BD%AE%E6%9C%8D%E5%8A%A1"><span class="toc-article-text">设置服务</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E8%AE%BE%E7%BD%AE%E6%8E%A8%E9%80%81"><span class="toc-article-text">设置推送</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E6%8E%A5%E6%94%B6%E6%8E%A8%E9%80%81"><span class="toc-article-text">接收推送</span></a></li></ol></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#%E5%8F%82%E8%80%83"><span class="toc-article-text">参考</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2023 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+<script src="../../.././js/cursor-effects.js"> async</script>
+
+
+
+
+</body>
+   </html>
