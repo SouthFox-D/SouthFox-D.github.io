@@ -48,6 +48,6 @@ date: 2022-1-16 23:00:00
 
 ---
 
-[JIPA233の小窝 | Deed divides beings into lower and higher ones.](https://jipa.uk)
+[JIPA233の小窝 | Deed divides beings into lower and higher ones.](https://jipa.moe/)
 
 ---
