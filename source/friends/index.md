@@ -51,3 +51,5 @@ date: 2022-1-16 23:00:00
 [JIPA233の小窝 | Deed divides beings into lower and higher ones.](https://jipa.moe/)
 
 ---
+
+[无叶之境 | 这是一个非常正常的网站，像教科书一样正常(๑•̀ω•́๑)](https://lonleaf.com/)
