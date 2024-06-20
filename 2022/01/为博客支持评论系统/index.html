@@ -1,0 +1,302 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>为博客支持评论系统 | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="突然发现加入十年之约的博客评论区都好热闹……似乎都是随机访问过来的，所以还是有必要为博客加上评论系统的？">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2022/01/为博客支持评论系统/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 6.2.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 为博客支持评论系统</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>突然发现加入十年之约的博客评论区都好热闹……似乎都是随机访问过来的，所以还是有必要为博客加上评论系统的？</p>
+<span id="more"></span>
+
+<p>考察了一番选择了依靠 <code>GitHub Discussions</code> 的 <code>Giscus</code> 做为博客的评论系统。</p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>👍 优点：</p>
+<ul>
+<li>比起 <code>Gitalk</code> ，拥有更小的权限请求</li>
+<li>部署也方便，十分钟内都能轻松搞定</li>
+<li>数据安全也有 <code>GitHub</code> 做背书，至少比自建强</li>
+<li>拉取 <code>Discussions</code> 数据的脚本是放在 <code>vercel</code> 上，国内看评论至少是没问题的</li>
+</ul>
+<p>🙃 缺点：</p>
+<ul>
+<li>评论得需要个 <code>GitHub</code> 帐号，对于没有相关经验的人真可谓叹息之墙了，但是也不全是坏事，倒垃圾评论也能隔绝掉大部分。</li>
+</ul>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><ol start="0">
+<li>为仓库开启 <code>Discussions</code> ，仓库 Setting –&gt; Features –&gt; 勾选 Discussions 。</li>
+<li>先去 <a target="_blank" rel="noopener" href="https://github.com/apps/giscus">GitHub 应用页</a> 安装 <code>Giscus</code> ，可以仅给指定的仓库授权。</li>
+<li>在到 <a target="_blank" rel="noopener" href="https://giscus.app/zh-CN">Giscus 官网</a> 进行配置，输入仓库名，决定映射方式等、评论样式等。</li>
+<li>最后生成一个脚本代码，嵌入到博客文章模板底部，搞定！</li>
+</ol>
+<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><p>如果映射方式选择 <code>pathname</code>，而 uri 里包含中文，将会被解码，搞得非常乱。所以可以自己麻烦一点，手动指定。</p>
+<p>如 <code>Hexo</code> ，在 <code>head</code> 模板中插入到 <code>&lt;head&gt;</code> 标签里：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (page.title)&#123; %&gt;&lt;meta property=&quot;og:title&quot; content=&quot;&lt;%= page.path %&gt;&quot;/&gt;&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+
+<p>之后 <code>Giscus</code> 选择为 <code>og:title</code> ，这样就确保标题不会被转码了。</p>
+<h2 id="自动初始化"><a href="#自动初始化" class="headerlink" title="自动初始化"></a>自动初始化</h2><p>总体来说还是不错的，再折腾一下可以选择自建，这样可以避开对脚本所在域名的封锁，或者部署时自动创建对应帖子，<del>不过挺麻烦，以后在摸吧 🐟 。</del></p>
+<p><strong>3-13 更新：</strong></p>
+<p>其实很早就摸了，只是我憋着不放而已（</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line"><span class="keyword">import</span> getopt</span><br><span class="line"><span class="keyword">import</span> re</span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">from</span> datetime <span class="keyword">import</span> datetime</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">addDiscussion</span>():</span><br><span class="line">    currentYear = <span class="built_in">str</span>(datetime.now().year)</span><br><span class="line">    repo_id=<span class="string">&quot;aaabbb&quot;</span></span><br><span class="line">    category_id=<span class="string">&quot;cccddd&quot;</span></span><br><span class="line">    DISCUSSIONS_TOKEN=os.environ.get(<span class="string">&#x27;DISCUSSIONS_TOKEN&#x27;</span>) <span class="comment">#根据自己实际情况选择</span></span><br><span class="line"></span><br><span class="line">    header = &#123;</span><br><span class="line">        <span class="string">&quot;Authorization&quot;</span>: <span class="string">f&quot;Bearer <span class="subst">&#123;DISCUSSIONS_TOKEN&#125;</span>&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">&#x27;query&#x27;</span>: <span class="string">&quot;&quot;&quot;query&#123;repository(owner:&quot;name&quot;,name:&quot;repo_name&quot;)&#123;</span></span><br><span class="line"><span class="string">                id discussions(first:100, categoryId: &quot;aaabbb&quot;)&#123;</span></span><br><span class="line"><span class="string">                    nodes&#123;</span></span><br><span class="line"><span class="string">                        title</span></span><br><span class="line"><span class="string">                    &#125;</span></span><br><span class="line"><span class="string">                &#125;</span></span><br><span class="line"><span class="string">            &#125;</span></span><br><span class="line"><span class="string">        &#125;&quot;&quot;&quot;</span></span><br><span class="line">    &#125;</span><br><span class="line">    url = <span class="string">&#x27;https://api.github.com/graphql&#x27;</span></span><br><span class="line"></span><br><span class="line">    r = requests.post(url, headers=header, data=json.dumps(data))</span><br><span class="line">    <span class="keyword">if</span> r.status_code == <span class="number">200</span>:</span><br><span class="line">        discussions = r.json()</span><br><span class="line"></span><br><span class="line">    discussions = discussions[<span class="string">&quot;data&quot;</span>][<span class="string">&quot;repository&quot;</span>][<span class="string">&quot;discussions&quot;</span>][<span class="string">&quot;nodes&quot;</span>]</span><br><span class="line"></span><br><span class="line">    discu_list = []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> discussions:</span><br><span class="line">        discu_list.append(i[<span class="string">&quot;title&quot;</span>])</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> post <span class="keyword">in</span> postlist:</span><br><span class="line">        <span class="keyword">if</span> currentYear <span class="keyword">not</span> <span class="keyword">in</span> post:</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> post <span class="keyword">not</span> <span class="keyword">in</span> discu_list:</span><br><span class="line">            data = &#123;</span><br><span class="line">            <span class="string">&#x27;query&#x27;</span>: <span class="string">&quot;&quot;&quot;mutation&#123;</span></span><br><span class="line"><span class="string">            createDiscussion(input: &#123;repositoryId: &quot;%s&quot;, categoryId: &quot;%s&quot;, body: &quot;%s&quot;, title: &quot;%s&quot;&#125;) &#123;</span></span><br><span class="line"><span class="string">                discussion &#123;</span></span><br><span class="line"><span class="string">                    id</span></span><br><span class="line"><span class="string">                        &#125;</span></span><br><span class="line"><span class="string">                    &#125;</span></span><br><span class="line"><span class="string">                &#125;&quot;&quot;&quot;</span> % (repo_id, category_id, <span class="string">&#x27;blog url&#x27;</span> + post, post)</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            r = requests.post(url, headers=header, data=json.dumps(data))</span><br><span class="line">            <span class="keyword">if</span> r.status_code == <span class="number">200</span>:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">f&quot;初始化对应讨论！ <span class="subst">&#123;post&#125;</span>&quot;</span>)</span><br><span class="line">                <span class="built_in">print</span>(r.text)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    filelist = []</span><br><span class="line">    postlist = []</span><br><span class="line">    addDiscussion()</span><br></pre></td></tr></table></figure>
+
+<p>学了一下新玩意…… <code>graphql</code> 似乎比基于 <code>REST</code> 形式的更强大一点？</p>
+<p>其中是根据对应的 <code>access token</code> 进行部署，所以要为对应部署的 <code>access token</code> 指定 <code>discussions</code> 权限……</p>
+<p>注意其中的 <code>currentYear</code> 那里，因为只获取了最新的 <code>100</code> 条数据，要是文章数据超过 <code>100</code> 条的话或许会重复创建？所以就仅仅只判断当年的文章了，第一次部署时请去掉此判断。除非你想当超时空战士为以往年份写文章或者是一年能写 <code>100</code> 篇文章的人，那么此逻辑应该没问题……吧。</p>
+<p>是为了 <code>GitHub Actions</code> 准备的，不知道是什么的话可以看<a href="../../03/Github-Actions-%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2">这</a>。</p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>最后，欢迎你能访问到我这荒岛，请友善评论哦~</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="../../.././2022/02/22年2月梦记/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2021/12/2021-总结/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+    <script src="https://giscus.app/client.js"
+            data-repo="SouthFox-D/SouthFox-D.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+            data-category="博客评论"
+            data-category-id="DIC_kwDODaJZAM4CA7bf"
+            data-mapping="og:title"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2022-01-31 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>18</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/技术/">技术<span>14</span></a></li> <li><a href="/tags/建站/">建站<span>3</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">目录</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-article-text">特点</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E9%83%A8%E7%BD%B2"><span class="toc-article-text">部署</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%9D%91"><span class="toc-article-text">坑</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E8%87%AA%E5%8A%A8%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-article-text">自动初始化</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E6%9C%80%E5%90%8E"><span class="toc-article-text">最后</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2024 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+<script src="../../.././js/cursor-effects.js"> async</script>
+
+
+
+
+</body>
+   </html>
