@@ -131,7 +131,7 @@ def backupImg():
 
 
 def downloadImg(imgList):
-    ipfs_gateWay = ['https://cf-ipfs.com/ipfs/', 'https://ipfs.io/ipfs/', 'https://dweb.link/ipfs/']
+    ipfs_gateWay = ['https://ipfs.io/ipfs/', 'https://dweb.link/ipfs/']
     for img_url in imgList:
         img_name = img_url
         if img_url == "":
