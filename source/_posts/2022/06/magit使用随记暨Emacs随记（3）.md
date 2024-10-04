@@ -22,7 +22,7 @@ category: 技术
 
 `Git` 的精髓在于它的设计，工作区、暂存区以及版本库，用 `Git` 进行工作一般如下所示（图出自 Pro Git）。
 
-![](https://w3s.link/ipfs/bafkreidcpqxgpknpmc5nmtjqzulncjwfdauiorlt6lcggxfswjh36rjelq)
+![](https://media.southfox.me/ipfs/bafkreidcpqxgpknpmc5nmtjqzulncjwfdauiorlt6lcggxfswjh36rjelq)
 
 用小学生写作业做比喻的话，草稿纸即是工作区，做好相关计算后把结果誊抄到作业本上，作业本既是暂存区（`Index`、`Stage`），最后确认无误后即可把作业本放入书包，书包既是版本库了。
 
@@ -34,11 +34,11 @@ category: 技术
 
 在 `Doom Emacs` 下，使用 `SPC g g` 即可选择一个 `Git` 仓库（如果已经打开了一个 `Git` 仓库的的文件即可直接打开当前仓库下的 `Magit` 界面）打开 `Magit` 界面。
 
-![](https://w3s.link/ipfs/bafkreiele2ihm55y4rbemvz4dojlnukapibj4zn5isssj2x5huqsq76qdq)
+![](https://media.southfox.me/ipfs/bafkreiele2ihm55y4rbemvz4dojlnukapibj4zn5isssj2x5huqsq76qdq)
 
 在 `Magit` 界面下，可以很方便看到工作区发生变动的文件（Unstaged changes），以及已经加入到暂存区的文件（Staged changes）。
 
-![](https://w3s.link/ipfs/bafkreicttv7rkuzq5ishn6x3lix4rwdtkka7dubm5rjh67teehgcbh7nzy)
+![](https://media.southfox.me/ipfs/bafkreicttv7rkuzq5ishn6x3lix4rwdtkka7dubm5rjh67teehgcbh7nzy)
 
 光标在某个文件上时，按下 `TAB` 即可展示文件的变动，按下回车即可直接跳转到文件进行编辑，按下 `s` 即可将文件暂存，对处于暂存区文件按下 `u` 即可取消暂存（`S` 和 `U` 则是应用于全体文件）。忘掉 `git add xxx` 吧，谁会怀念它？
 
@@ -62,23 +62,23 @@ category: 技术
 
 接着开始检索对方仓库的提交，检出自己需要的提交，按下 `l` 打开 `log` 界面，按下 `- F` 搜索提交消息，之后输入想检索的提交消息，例如 `exclusive list`，再按下 `o` ，选择搜索其他（other）分支的历史记录，选择之前添加的 `Remote` 仓库的分支。
 
-![](https://w3s.link/ipfs/bafkreiduuqcpezsvunsggij4gfahdn53kxiacwewsbmciglk62v44yoane)
+![](https://media.southfox.me/ipfs/bafkreiduuqcpezsvunsggij4gfahdn53kxiacwewsbmciglk62v44yoane)
 
 可以看到搜索出了相关的三条结果，从最旧的开始合并，将光标移动到最旧的提交，按下 `A A` 进行一次 `cherry-pick` 。
 
-![](https://w3s.link/ipfs/bafkreifkslyzgyvcm5zkapevoxkrnkdubh7uwbwwjjpjrkmwur43k4ji7i)
+![](https://media.southfox.me/ipfs/bafkreifkslyzgyvcm5zkapevoxkrnkdubh7uwbwwjjpjrkmwur43k4ji7i)
 
 啊啊啊……！一大堆冲突，毕竟这次的提交很老旧了，是三年前的提交，发生变化很正常……
 
 感叹一句没有银弹，`Git` 对于冲突也从不僭越，会去自作主张搞定。所以只能自己上了，对于这种老旧的提交，可以前去 `GitHub` 的那次提交消息里查看改动了哪些文件，再前去最新版本文件下仔细比对最新的样子是什么。当然 `Magit` 同时也提供了一个命令 `magit-log-buffer-file`（`SPC g L`）查看当前文件下有那些提交，
 
-![检出更改](https://w3s.link/ipfs/bafkreied5lnnuofc7isxw3ufrg6j7gbs4ptzs27pkuxq54tcicnltl3k5e)
+![检出更改](https://media.southfox.me/ipfs/bafkreied5lnnuofc7isxw3ufrg6j7gbs4ptzs27pkuxq54tcicnltl3k5e)
 
 不过用这种方式查看双方提交记录的话，得先 `Stash` 修改再切换到对方分支查看历史记录又切换回来，感觉挺麻烦……所以我就先用 `GitHub` 查看历史了，或许有更快速方便的方法？
 
 总之，确定该怎样合并后即可进入 `Unstaged changes` 上的任一文件按下 `E` 打开 `Ediff` 选单，再按下 `m` 解决冲突。
 
-![](https://w3s.link/ipfs/bafkreie5it6wivelcnp63l34epa377lijrksptmodz7nwsb7325n4g4zsq)
+![](https://media.southfox.me/ipfs/bafkreie5it6wivelcnp63l34epa377lijrksptmodz7nwsb7325n4g4zsq)
 
 进入冲突选单后，用 `n` 键跳转到下一冲突处（`p` 为上一个），接着按下 `a` 或 `b` 选择保留那一方的修改，这次的提交要结合两者，所以首先选择一方，然后用 `SPC w k` 将焦点移动到上方文件编辑区进行编辑，编辑完后再用 `SPC w j` 将焦点移回 `Ediff` 区。处理完全部冲突后，按下 `q` 退出，再处理其他文件的冲突。
 
