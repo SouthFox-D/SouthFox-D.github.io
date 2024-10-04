@@ -122,7 +122,7 @@ def backupImg():
             os.makedirs('./newimg')
 
         nowImgJson = {}
-        nowImgJson["img"] = nowImgList
+        nowImgJson["img"] = sorted(nowImgList)
         with open('./newimg/imgList.json', 'w', encoding='utf-8') as f:
             json.dump(nowImgJson, f)
 
