@@ -73,6 +73,7 @@ widgets:
 - tagcloud
 # - recent_posts
 - links
+- fsf_member
 
 rss: 
 fancybox: false
