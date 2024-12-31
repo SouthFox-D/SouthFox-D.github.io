@@ -12,13 +12,13 @@ category: 技术
 
 <!--more-->
 
-在移动端使用 emacs 是有能见到的好处的，例如随时随地开集一点笔记，然后处理一些脚本，而且随着原生安卓移植版的推出，在安卓 emacs 里查看多媒体也成了可能的事……不过需要折腾的量吗……
+在移动端使用 emacs 是有能见到的好处的，例如随时随地开记一点笔记或者处理一些脚本，而且随着原生安卓移植版的推出，在安卓 emacs 里查看多媒体也成了可能的事……不过这里面需要折腾的量嘛……
 
 ## Syncthing
 
 ### 安装
 
-在折腾了众多方案后，最终还是选择了 Syncthing 来作为同步方案，因为它在同步后文件就是文件了，如果走一众网络协议在 org-roam 这种需要不断监听文件修改的应用场景会让延迟变得难以忍受。
+在折腾了众多方案后，最终还是选择了 Syncthing 来作为同步方案，因为它是以文件的形式存在本地，同步只是修改，如果走一众网络协议在 org-roam 这种需要不断监听文件修改的应用场景会让延迟变得难以忍受。
 
 Arch 系统的话简单使用 `sudo pacman -S syncthing` 即可，如果是用 Debian 系的话，首先要换成官方源确保安装最新版本：
 
@@ -38,11 +38,11 @@ sudo systemctl start syncthing@$USER
 
 命令将软件设成开机启动。
 
-安卓端 Syncthing 同步使用 Syncthing-fork ，因为里面由针对移动端的优化，如果使用 Syncthing 安卓端很容易收到系统的后台管理限制导致半天冻住无法进行同步， Syncthing-fork 有始终同步和间隔同步的设置能应付后台管理限制严格的系统。
+安卓端 Syncthing 同步使用 Syncthing-fork ，因为里面由针对移动端的优化，如果使用 Syncthing 安卓端很容易收到系统的后台管理限制导致软件冻住然后半天无法进行同步，而 Syncthing-fork 有始终同步和间隔同步的设置能应付后台管理限制严格的系统。
 
-<https://github.com/Catfriend1/syncthing-android-fdroid>
+[GitHub](https://f-droid.org/packages/com.github.catfriend1.syncthingandroid/)
 
-<https://f-droid.org/packages/com.github.catfriend1.syncthingandroid/>
+[F-droid](https://github.com/Catfriend1/syncthing-android-fdroid)
 
 ### 概览
 
@@ -71,7 +71,7 @@ syncthing cli config folders add --id org --label org --path ~/Sync/org
 syncthing cli config folders org devices add --device-id $添加设备ID
 ```
 
-命令将设备添加到共享设备中，设备 B 做一次相同的操作但将设备 ID 换成对方就性了：
+命令将设备添加到共享设备中，设备 B 做一次相同的操作但将设备 ID 换成对方就行了：
 
 ```bash
 syncthing cli config devices add --device-id $设备A ID
@@ -84,21 +84,21 @@ syncthing cli config folders org devices add --device-id $设备A ID
 
 Org-mode 很强大，但很多功能都得依托于 Emacs 环境，而且对于 GTD 功能上的提醒和展示功能，安卓 Emacs 也很难做到，索性 Org-mode 只是些纯文件，所以可以通过安卓上 Orgzly Revived 这个 App 来解析文件并调用安卓系统来补足这方面的不足（闹钟、通知提醒；桌面小组件展示待办）。
 
-<https://github.com/orgzly-revived/orgzly-android-revived>
+[GitHub](https://github.com/orgzly-revived/orgzly-android-revived)
 
-<https://f-droid.org/packages/com.orgzlyrevived/>
+[F-droid](https://f-droid.org/packages/com.orgzlyrevived/)
 
-在设置了 Syncthing 同步后，移动端就有同步过后的 Org 文件了，然后可在「设置-同步-存储库-右上角加号-目录」添加一个本地目录（会解析目录下所有的 org 文件所以建议将相关 GTD 文件放到单独的目录里）。然后在「设置- 同步设置」将相关的自动同步开上，因为 Orgzly Revived 设计上也是将数据记录在自己应用的数据库里，不会立马回刷到文件中。
+在设置了 Syncthing 同步后，移动端就有同步过后的 Org 文件了，然后可在「设置->同步->存储库->右上角加号->目录」添加一个本地目录（会解析目录下所有的 org 文件所以建议将相关 GTD 文件放到单独的目录里）。然后在「设置->同步设置」将相关的自动同步开上，因为 Orgzly Revived 设计上也是将数据记录在自己应用的数据库里，不会立马回刷到文件中。
 
 ## Emacs
 
-Emacs 原生安卓版了其项目主页在（建议读读主页的描述文件的 FAQ）：
+Emacs 原生安卓版项目主页在（建议读读主页的描述文件的 FAQ）：
 
-<https://sourceforge.net/projects/android-ports-for-gnu-emacs/files/>
+[Android ports for GNU Emacs - Browse Files at SourceForge.net](https://sourceforge.net/projects/android-ports-for-gnu-emacs/files/)
 
 上，里面包含了具有相同签名的 Termux 安装包（在项目主页 Termux 目录下），这样 Emacs 即可访问相同 ID Termux 里 pkg install 安装的应用，不过因为签名问题需要卸载掉原先的 Termux，所以之前有安装过 Termux 的话需要做好数据备份然后卸载装上项目里的 Termux 。
 
-安装 emacs 好后就可启动了，当然再次之前需要给 emacs 赋予访问全部文件的权限，在较高版本安卓，文件权限可以分目录级粒度赋予，所以需要「全部文件访问权限」，如果能在系统的设置菜单找到就直接赋予 emacs, 如果不行，可以打开 emacs 后在主页菜单栏 Edit-Execute Command 里（相当于 M-x ，是的，在安卓上还是得尽量依赖菜单栏）然后输入 `android-request-storage-access` 申请获取「全部文件访问权限」。
+安装 emacs 好后就可启动了，当然再次之前需要给 emacs 赋予访问全部文件的权限，在较高版本安卓，文件权限可以分目录级粒度赋予，所以需要「全部文件访问权限」。如果能在系统的设置菜单找到相应配置就直接赋予 emacs, 如果不行，可以打开 emacs 后在主页菜单栏 Edit->Execute Command 里（相当于 M-x ，是的，在安卓上还是得尽量依赖菜单栏）然后输入 `android-request-storage-access` 申请获取「全部文件访问权限」。
 
 然后接下来就是激动的配置时间了，可以在 termux 里安装一个 vim 然后编辑 `/data/data/org.gnu.emacs/files/.emacs.d/init.el`（这何尝不是一种……）或者在 emacs 里直接打开编辑 `.emacs/.emacs.d/` 里的文件。
 
@@ -234,11 +234,11 @@ Emacs 原生安卓版了其项目主页在（建议读读主页的描述文件�
 (load-theme 'ef-winter)
 ```
 
-改得地方并不多，主要还是一些修改源添加一些常用包（vertico + orderlessv 真是谁用谁知道！）和用工具栏进行一些操作，说来也是感叹，在 PC 上大家都不怎么开的工具栏和菜单栏，在安卓这种很难借入键盘输入的场景下反而是重度依赖了起来。
+改得地方并不多，主要还是一些修改源添加一些常用包（vertico + orderlessv 真是谁用谁知道！）和用工具栏进行一些操作。说来也是感叹，在 PC 上大家都不怎么开的工具栏和菜单栏，在安卓这种很难接入键盘输入的场景下反而是重度依赖了起来。
 
 # 参考
 
 - [syncthing setup exclusively with CLI · GitHub](https://gist.github.com/Jonny-exe/9bad76c3adc6e916434005755ea70389)
 - [Install and Use Syncthing on Ubuntu 22.04|20.04|18.04 | ComputingForGeeks](https://computingforgeeks.com/how-to-install-and-use-syncthing-on-ubuntu/)
-- [在 Android Emacs 中使用 doom-emacs | 跬步](https://yuchen-lea.github.io/2024-02-04-android-emacs-with-doom-emacs/) （是的，当然也可以在安卓上装 doom emacs 但是不是很推荐，因为 doom emacs 大量使用调用子进程进行安装而安卓系统不是很支持这种「玩法」导致安装在网络流畅的情况下可能也要耗时半小时之多，而且相关键位在没有键盘输入情况下也难以分配）
+- [在 Android Emacs 中使用 doom-emacs | 跬步](https://yuchen-lea.github.io/2024-02-04-android-emacs-with-doom-emacs/) （是的，当然也可以在安卓上装 doom emacs 但不是很推荐，因为 doom emacs 大量使用调用子进程进行安装而安卓系统不是很支持这种「玩法」导致安装在网络流畅的情况下也可能耗时半小时之多，而且相关键位在没有键盘输入情况下也难以分配）
 - [用安卓native emacs+termux emacs，抛砖引玉说一下我体验emacs everywhere的个人指南 - #23，来自 DR MING](https://emacs-china.org/t/native-emacs-termux-emacs-emacs-everywhere/27135/23?u=southfox)
