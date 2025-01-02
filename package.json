@@ -10,10 +10,10 @@
     "new_post": "hexo new post dump"
   },
   "hexo": {
-    "version": "6.3.0"
+    "version": "7.3.0"
   },
   "dependencies": {
-    "hexo": "^6.2.0",
+    "hexo": "^7.3.0",
     "hexo-cli": "^4.3.2",
     "hexo-deployer-git": "^3.0.0",
     "hexo-generator-archive": "^1.0.0",
