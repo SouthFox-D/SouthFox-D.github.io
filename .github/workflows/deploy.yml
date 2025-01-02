@@ -46,6 +46,7 @@ jobs:
         mv Zpix.subset.ttf ./public/css/fonts/Zpix.ttf
         mv _headers ./public
         cd ./public
+        echo "blog.southfox.me" > CNAME
         git init
         git add --all .
         git commit -m "GitHub action Auto Builder"
