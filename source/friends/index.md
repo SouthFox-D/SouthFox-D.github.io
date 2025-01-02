@@ -57,3 +57,9 @@ date: 2022-1-16 23:00:00
 ---
 
 [滑翔闪 | 正在学习经济学的二次元|](https://blog.huaxiangshan.com/zh-cn/)
+
+---
+
+以下是失联的星球……
+
+[失效链接](./tombstone.html)
