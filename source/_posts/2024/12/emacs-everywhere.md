@@ -104,7 +104,7 @@ Emacs 原生安卓版项目主页在（建议读读主页的描述文件的 FAQ�
 
 我现在的配置文件如下：
 
-```lisp
+```elisp
 ;; BASIC SETUP:
 ;; package setup - bootstrap the package system
 (require 'package)
@@ -170,7 +170,7 @@ Emacs 原生安卓版项目主页在（建议读读主页的描述文件的 FAQ�
         completion-category-overrides '((file (styles partial-completion)))))
 
 ;; 使用工具栏来做一些特定操作
-(defun android-toggle-keyboard()
+(defun android-toggle-keyboard ()
     (interactive)
     (if touch-screen-display-keyboard
         (progn
@@ -187,7 +187,7 @@ Emacs 原生安卓版项目主页在（建议读读主页的描述文件的 FAQ�
         :help "Toggle keyboard")
     (message "Enable virtual keyboard")))
 
-(defun android-tool-bar-configs()
+(defun android-tool-bar-configs ()
     (when (and (fboundp 'tool-bar-mode)
                 (string-equal system-type "android"))
     (tool-bar-mode +1)
