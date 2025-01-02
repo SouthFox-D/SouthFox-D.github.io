@@ -12,11 +12,11 @@ date: 2022-1-16 23:00:00
 
 ---
 
-[此方方有限公司 | Everything is interesting if you go into it deeply enough.](https://blog.konata.co)
+[此方方有限公司 | Everything is interesting if you go into it deeply enough.](https://blog.konata.vip)
 
 ---
 
-[Yoozy | 一花一世界，一叶一菩提](http://woods.sharktale.xyz/)
+[Yoozy | 一花一世界，一叶一菩提](http://woods.sharktale.xyz)
 
 ---
 
@@ -32,7 +32,7 @@ date: 2022-1-16 23:00:00
 
 ---
 
-[迷失的小K | Just for fun](http://www.kclub.fun/)
+[迷失的小K | Just for fun](https://blog.kclub.tech)
 
 ---
 
@@ -44,15 +44,15 @@ date: 2022-1-16 23:00:00
 
 ---
 
-[s0urce's Lab | No black and white in the blue.](https://blog.src.moe/)
+[s0urce's Lab | No black and white in the blue.](https://blog.src.moe)
 
 ---
 
-[JIPA233の小窝 | Deed divides beings into lower and higher ones.](https://jipa.moe/)
+[JIPA233の小窝 | Deed divides beings into lower and higher ones.](https://jipa.moe)
 
 ---
 
-[无叶之境 | 这是一个非常正常的网站，像教科书一样正常(๑•̀ω•́๑)](https://lonleaf.com/)
+[无叶之境 | 这是一个非常正常的网站，像教科书一样正常(๑•̀ω•́๑)](https://lonleaf.com)
 
 ---
 
