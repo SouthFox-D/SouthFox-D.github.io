@@ -98,10 +98,9 @@
           (when (in "ipfs" img-url)
             (now-img-list.append (. (img_url.split "/") [-1])))))))
   (setv download-need-img (list (. (set now-img-list) (difference (set (:img img-json))))))
-  (when download-need-img
-    (with [f (open "newimg/imgList.json" "w" :encoding "utf-8")]
-      (json.dump {"img" (sorted now-img-list)} f))
-    (download-ipfs-img download-need-img)))
+  (with [f (open "newimg/imgList.json" "w" :encoding "utf-8")]
+    (json.dump {"img" (sorted now-img-list)} f))
+  (download-ipfs-img download-need-img))
 
 (setv parser (argparse.ArgumentParser))
 (parser.add_argument "-d" :dest "deploy" :action "store_true")
