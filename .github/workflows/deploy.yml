@@ -13,20 +13,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.9
-      uses: actions/setup-python@v2
+    - name: Set up Python 3.13
+      uses: actions/setup-python@v5
       with:
-        python-version: 3.9
-        
-    - name: Set up Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: 17
-        
+        python-version: 3.13
+
     - name: Install dependencies
       run: |
-        python -m pip install --upgrade pip
-        python -m pip install fonttools brotli requests
+        sudo apt-get install wget
+        python -m pip install fonttools brotli requests hy
         npm install -g hexo-cli
         npm install
         git config --global user.name "SouthFox-D"
@@ -39,7 +34,7 @@ jobs:
       run: |
         hexo clean
         hexo generate
-        python3 utils.py -d
+        hy utils.hy -d
         pyftsubset Zpix.ttf --text-file=strdb.txt
         fonttools ttLib.woff2 compress -o Zpix.woff2 Zpix.subset.ttf
         mv Zpix.woff2 ./public/css/fonts
