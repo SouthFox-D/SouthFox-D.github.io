@@ -52,10 +52,10 @@
         url "https://api.github.com/graphql"
         header {"Authorization" f"Bearer {(os.environ.get "DISCUSSIONS_TOKEN")}"}
         query-data {"query" "query{repository(owner: \"southfox-d\", name: \"southfox-d.github.io\"){id discussions(first:100, categoryId: \"DIC_kwDODaJZAM4CA7bf\"){nodes{title}}}}"}
-        query-request (requests.post url :headers header :json query-data)]
-    (query-request.raise_for_status)
+        query-response (requests.post url :headers header :json query-data)]
+    (query-response.raise_for_status)
     (let [current-year (str (. (datetime.now) year))
-          discussion-post (-> (r.json) :data :repository :discussions :nodes)
+          discussion-post (-> (query-response.json) :data :repository :discussions :nodes)
           discussion-post-titles (lfor x discussion-post (:title x))
           local-post-titles (lfor-> it post-files
                              (. (it.split "_posts/") [-1])
@@ -66,8 +66,8 @@
           (continue))
         (when (not-in post-title discussion-post-titles)
           (let [create-data {"query" f"mutation{{createDiscussion(input: {{repositoryId: \"{repo-id}\", categoryId: \"{category-id}\", body: \"{(+ "https://blog.southfox.me/" post-title)}\", title: \"{post-title}\" }}) {{discussion {{id}}}}}}"}
-                create-request (requests.post url :headers header :json create-data)]
-            (create-request.raise_for_status)
+                create-response (requests.post url :headers header :json create-data)]
+            (create-response.raise_for_status)
             (print f"Create post {post-title} discussion!")))))))
 
 (defn download-ipfs-img [img-list]
