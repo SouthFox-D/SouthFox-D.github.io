@@ -70,11 +70,48 @@
             (create-request.raise_for_status)
             (print f"Create post {post-title} discussion!")))))))
 
+(defn download-ipfs-img [img-list]
+  (let [ipfs-gateway ["https://ipfs.io/ipfs/" "https://dweb.link/ipfs/"]]
+    (for [img-name img-list]
+      (when (= "" img-name)
+        (continue))
+      (setv img-url (+ (random.choice ipfs-gateway) img-name))
+      (setv r (requests.get img-url))
+      (r.raise_for_status)
+      (with [f (open (+ "./newimg/" img-name) "wb")]
+        (f.write (. r content))))))
+
+(defn backup-ipfs-img [post-files]
+  (if (os.path.exists "imgList.json")
+      (setv img-json (with [f (open "imgList.json" "r" :encoding "utf-8")]
+                       (json.load f)))
+      (setv img-json {"img" []}))
+  (setv now-img-list [])
+
+  (for [post-file post-files]
+    (with [f (open post-file "r" :encoding "utf-8")]
+      (let [post-text (f.read)
+            img-result (re.findall r"!\[(.*?)\]\((.*?)\)" post-text)]
+        (for [[_ img-url] img-result]
+          (when (= "" img-url)
+            (continue))
+          (when (in "ipfs" img-url)
+            (now-img-list.append (. (img_url.split "/") [-1])))))))
+  (setv download-need-img (list (. (set now-img-list) (difference (set (:img img-json))))))
+  (when download-need-img
+    (with [f (open "newimg/imgList.json" "w" :encoding "utf-8")]
+      (json.dump {"img" (sorted now-img-list)} f))
+    (download-ipfs-img download-need-img)))
+
 (setv parser (argparse.ArgumentParser))
 (parser.add_argument "-d" :dest "deploy" :action "store_true")
+(parser.add_argument "-b" :dest "backup" :action "store_true")
 (setv args (parser.parse_args))
 
-(when args.deploy
-  (let [post-files (get-post-files)]
+(let [post-files (get-post-files)]
+  (when args.deploy
     (subset-font-file post-files)
-    (add-github-discussion post-files)))
+    (add-github-discussion post-files))
+  (when args.backup
+    (os.makedirs "newimg" :exist_ok True)
+    (backup-ipfs-img post-files)))
