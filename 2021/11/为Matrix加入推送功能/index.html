@@ -1,0 +1,421 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>为 Matrix 加入自定义推送功能 | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="Matrix 是一个开源的聊天协议，和 XMPP 一样的联邦制设计也保证了像电子邮件一样的通信便捷。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2021/11/为Matrix加入推送功能/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  <meta name=fediverse:creator content="SouthFox@foxsay.southfox.me">
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 为 Matrix 加入自定义推送功能</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p><code>Matrix</code> 是一个开源的聊天协议，和 <code>XMPP</code> 一样的联邦制设计也保证了像电子邮件一样的通信便捷。</p>
+<span id="more"></span>
+
+<p>好的地方很多，但最明显坏处就是推送了，对于即时通信来说，没有推送是非常大的不便……虽然搭建 <code>Matrix</code> 的应用 <code>Synapse</code> 配置文件启用邮箱的话可以启用邮件通知，不过鉴于邮件时效性也不是很高，所以需要个其他的推送手段。（谷歌市场下的 <code>Element</code> 附带了谷歌的消息推送，不过很遗憾在国内处于残废状态。）</p>
+<p>所幸 <code>Synapse</code> 自带的 <a target="_blank" rel="noopener" href="https://spec.matrix.org/v1.1/client-server-api/">API</a> 可以定义推送规则，定义后帐号收到消息，服务器就可以将消息以 <code>JSON</code> 的形式推送到自定义的地址，来个曲线救国。</p>
+<h1 id="Gotify"><a href="#Gotify" class="headerlink" title="Gotify"></a>Gotify</h1><p>推送用到的工具为 <code>Gotify</code> ，特点是使用 <code>GO</code> 编写，高效快速，不过缺点就是安卓得常驻后台接收推送，不过至少要比腾讯全家桶吃的电要少。</p>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><p>去 <a target="_blank" rel="noopener" href="https://github.com/gotify/server/releases">Releases </a>处找到对应版本的下载链接，解压到<code>/opt/gotify/</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">unzip</span> gotify-file <span class="token parameter variable">-d</span> /opt/gotify/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后下载配置样板。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /etc/gotify
+<span class="token function">wget</span> <span class="token parameter variable">-O</span> /etc/gotify/config.yml https://raw.githubusercontent.com/gotify/server/master/config.example.yml<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>编辑 <code>/etc/gotify/config.yml</code>。将 <code>port</code> 改为没有占用的端口， <code>name</code> 和 <code>pass</code> 是管理员的用户名和密码。</p>
+<h1 id="Nginx-反代"><a href="#Nginx-反代" class="headerlink" title="Nginx 反代"></a>Nginx 反代</h1><p>在 <code>nginx</code> 的新建一个虚拟主机并在配置文件增加以下内容：</p>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">location</span> /</span> <span class="token punctuation">&#123;</span>
+  <span class="token directive"><span class="token keyword">proxy_pass</span>         http://localhost:8080</span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">rewrite</span> ^/gotify(/.*) <span class="token variable">$1</span> break</span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">proxy_http_version</span> 1.1</span><span class="token punctuation">;</span>
+
+  <span class="token comment"># Ensuring it can use websockets</span>
+  <span class="token directive"><span class="token keyword">proxy_set_header</span>   Upgrade <span class="token variable">$http_upgrade</span></span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">proxy_set_header</span>   Connection <span class="token string">"upgrade"</span></span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">proxy_set_header</span>   X-Real-IP <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">proxy_set_header</span>   X-Forwarded-For <span class="token variable">$proxy_add_x_forwarded_for</span></span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">proxy_set_header</span>   X-Forwarded-Proto http</span><span class="token punctuation">;</span>
+  <span class="token directive"><span class="token keyword">proxy_redirect</span>     http:// <span class="token variable">$scheme</span>://</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>proxy_set_header   Connection “upgrade”; 这一栏不要漏了……要不然开启 WS 时会报错……</p>
+</blockquote>
+<h1 id="设置服务"><a href="#设置服务" class="headerlink" title="设置服务"></a>设置服务</h1><p>新建并编辑 <code>/etc/systemd/system/gotify.service</code>。</p>
+<pre class="line-numbers language-none"><code class="language-none">[Unit]
+Description&#x3D;gotify service
+After&#x3D;network.target
+Wants&#x3D;network.target
+
+[Service]
+Type&#x3D;simple
+PIDFile&#x3D;&#x2F;run&#x2F;gotify.pid
+WorkingDirectory&#x3D;&#x2F;opt&#x2F;gotify
+ExecStart&#x3D;&#x2F;opt&#x2F;gotify&#x2F;gotify-file
+RestartPreventExitStatus&#x3D;23
+Restart&#x3D;always
+RestartSec&#x3D;10s
+
+[Install]
+WantedBy&#x3D;multi-user.target<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后开启服务并设置成开机启动。</p>
+<pre class="line-numbers language-none"><code class="language-none">systemctl start gotify
+systemctl enable gotify<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>没有报错的话就可以打开 <code>Nginx</code> 里所设置的域名进入管理页面了，（改密码）之后就可以新建应用了，拿到推送令牌，就可以向服务器设置推送规则了。</p>
+<h2 id="设置推送"><a href="#设置推送" class="headerlink" title="设置推送"></a>设置推送</h2><p>在官方文档里，通过 &#x2F;_matrix&#x2F;client&#x2F;v3&#x2F;pushers&#x2F;set <code>API</code> 就可以设置推送规则了，通过 <code>curl</code> ，或者其他方式向服务器对应地址发送 <code>POST</code> 请求即可使用。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> <span class="token string">'https://server_url/_matrix/client/r0/pushers/set'</span> <span class="token parameter variable">-H</span> <span class="token string">'Authorization: Bearer access_token'</span> <span class="token parameter variable">-H</span> <span class="token string">'Content-Type: application/json'</span> <span class="token parameter variable">-X</span> POST <span class="token parameter variable">-d</span> <span class="token string">'&#123;"lang": "en","kind": "http","app_display_name": "Gotify","device_display_name": "Gotify","pushkey": "Gotify-PushKey","app_id": "zh.xxx.gotify","data": &#123;"url": "https://Push_url/_matrix/push/v1/notify","format": "full_event"&#125;&#125;'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>详细说明请查阅官方 <a target="_blank" rel="noopener" href="https://spec.matrix.org/v1.1/client-server-api/#post_matrixclientv3pushersset">文档</a> , 其中 <code>access_token</code> 可以在应用里拿到，<code>pushkey </code> 设置成 <code>Gotify-PushKey</code> 的样子是为了后续处理方便……现阶段推送地址必须包含 <code>/_matrix/push/v1/notify </code> 路径，否则会报错，所以不得不进行额外处理了……</p>
+<h2 id="接收推送"><a href="#接收推送" class="headerlink" title="接收推送"></a>接收推送</h2><p>服务器设置推送规则之后就会向对应地址发送数据了，因为推送地址现阶段必须包含 <code>/_matrix/push/v1/notify </code> 路径，所以不得不再设置一个接收服务然后进行处理了。</p>
+<p>接下来使用 <code>python</code> 的 <code>flask</code> 框架简单搭一个服务，首先先安装环境。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">pip3 install flask
+pip3 install flask<span class="token operator">-</span>apscheduler<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>然后是代码：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> json
+<span class="token keyword">import</span> requests
+<span class="token keyword">import</span> datetime
+
+<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> jsonify<span class="token punctuation">,</span> request
+<span class="token keyword">from</span> flask_apscheduler <span class="token keyword">import</span> APScheduler
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+scheduler <span class="token operator">=</span> APScheduler<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+scheduler<span class="token punctuation">.</span>start<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">push_notification</span><span class="token punctuation">(</span>push_data<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> push_data<span class="token punctuation">[</span><span class="token string">"push_way"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'Gotify'</span><span class="token punctuation">:</span>
+        resp <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f'https://push.xxx.xxx/message?token=</span><span class="token interpolation"><span class="token punctuation">&#123;</span>push_data<span class="token punctuation">[</span><span class="token string">"push_token"</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span></span><span class="token string">'</span></span><span class="token punctuation">,</span> json<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+        <span class="token string">"message"</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f'「</span><span class="token interpolation"><span class="token punctuation">&#123;</span>push_data<span class="token punctuation">[</span><span class="token string">"sender"</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span></span><span class="token string">」发送了消息给你。'</span></span><span class="token punctuation">,</span>
+        <span class="token string">"priority"</span><span class="token punctuation">:</span> <span class="token number">8</span><span class="token punctuation">,</span>
+        <span class="token string">"title"</span><span class="token punctuation">:</span> <span class="token string">"新消息！"</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>resp<span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+    <span class="token keyword">if</span> push_data<span class="token punctuation">[</span><span class="token string">"push_way"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'Bary'</span><span class="token punctuation">:</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            response <span class="token operator">=</span> requests<span class="token punctuation">.</span>post<span class="token punctuation">(</span>
+                url<span class="token operator">=</span><span class="token string">"https://api.day.app/push"</span><span class="token punctuation">,</span>
+                headers<span class="token operator">=</span><span class="token punctuation">&#123;</span>
+                    <span class="token string">"Content-Type"</span><span class="token punctuation">:</span> <span class="token string">"application/json; charset=utf-8"</span><span class="token punctuation">,</span>
+                <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+                data<span class="token operator">=</span>json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+                    <span class="token string">"body"</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f'「</span><span class="token interpolation"><span class="token punctuation">&#123;</span>push_data<span class="token punctuation">[</span><span class="token string">"sender"</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span></span><span class="token string">」发送了消息给你。'</span></span><span class="token punctuation">,</span>
+                    <span class="token string">"device_key"</span><span class="token punctuation">:</span> push_data<span class="token punctuation">[</span><span class="token string">"push_token"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+                    <span class="token string">"title"</span><span class="token punctuation">:</span> <span class="token string">"新消息！"</span><span class="token punctuation">,</span>
+                    <span class="token string">"category"</span><span class="token punctuation">:</span> <span class="token string">"category"</span><span class="token punctuation">,</span>
+                    <span class="token string">"sound"</span><span class="token punctuation">:</span> <span class="token string">"minuet.caf"</span><span class="token punctuation">,</span>
+                <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+            <span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Response HTTP Status Code: &#123;status_code&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>
+                status_code<span class="token operator">=</span>response<span class="token punctuation">.</span>status_code<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Response HTTP Response Body: &#123;content&#125;'</span><span class="token punctuation">.</span><span class="token builtin">format</span><span class="token punctuation">(</span>
+                content<span class="token operator">=</span>response<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        <span class="token keyword">except</span> requests<span class="token punctuation">.</span>exceptions<span class="token punctuation">.</span>RequestException<span class="token punctuation">:</span>
+            <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'HTTP Request failed'</span><span class="token punctuation">)</span>
+        <span class="token keyword">return</span>
+
+
+<span class="token comment"># Our route that will receive the webhooks from Duffel's servers</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/_matrix/push/v1/notify'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">hello_world</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    push_data <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+    event <span class="token operator">=</span> <span class="token boolean">None</span>
+
+    <span class="token keyword">try</span><span class="token punctuation">:</span>
+        event <span class="token operator">=</span> request<span class="token punctuation">.</span>json
+        <span class="token keyword">print</span><span class="token punctuation">(</span>event<span class="token punctuation">)</span>
+
+    <span class="token keyword">except</span><span class="token punctuation">:</span>
+        <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span>success<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Handle the event</span>
+    <span class="token keyword">if</span> event<span class="token punctuation">[</span><span class="token string">"notification"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"type"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'m.room.message'</span> <span class="token keyword">or</span> event<span class="token punctuation">[</span><span class="token string">"notification"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"type"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'m.room.encrypted'</span><span class="token punctuation">:</span>
+        app_id <span class="token operator">=</span> event<span class="token punctuation">[</span><span class="token string">"notification"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"devices"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"app_id"</span><span class="token punctuation">]</span>
+        push_data<span class="token punctuation">[</span><span class="token string">"push_way"</span><span class="token punctuation">]</span><span class="token punctuation">,</span> push_data<span class="token punctuation">[</span><span class="token string">"push_token"</span><span class="token punctuation">]</span> <span class="token operator">=</span> event<span class="token punctuation">[</span><span class="token string">"notification"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"devices"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"pushkey"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'-'</span><span class="token punctuation">)</span>
+        push_data<span class="token punctuation">[</span><span class="token string">"sender"</span><span class="token punctuation">]</span> <span class="token operator">=</span> event<span class="token punctuation">[</span><span class="token string">"notification"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"sender_display_name"</span><span class="token punctuation">]</span>
+
+        scheduler<span class="token punctuation">.</span>add_job<span class="token punctuation">(</span>
+            func<span class="token operator">=</span>push_notification<span class="token punctuation">,</span>
+            args<span class="token operator">=</span><span class="token punctuation">(</span>push_data<span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token comment"># trigger="date",</span>
+            next_run_time<span class="token operator">=</span>datetime<span class="token punctuation">.</span>datetime<span class="token punctuation">.</span>now<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> datetime<span class="token punctuation">.</span>timedelta<span class="token punctuation">(</span>seconds<span class="token operator">=</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+            <span class="token builtin">id</span><span class="token operator">=</span>app_id<span class="token punctuation">,</span>
+            replace_existing<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+        <span class="token punctuation">)</span>
+
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'✅add push job!'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> event<span class="token punctuation">[</span><span class="token string">"notification"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"type"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token boolean">None</span> <span class="token keyword">and</span> event<span class="token punctuation">[</span><span class="token string">"notification"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"id"</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">''</span><span class="token punctuation">:</span>
+        app_id <span class="token operator">=</span> event<span class="token punctuation">[</span><span class="token string">"notification"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"devices"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">"app_id"</span><span class="token punctuation">]</span>
+        <span class="token keyword">try</span><span class="token punctuation">:</span>
+            scheduler<span class="token punctuation">.</span>remove_job<span class="token punctuation">(</span><span class="token builtin">id</span><span class="token operator">=</span>app_id<span class="token punctuation">)</span>
+        <span class="token keyword">except</span><span class="token punctuation">:</span>
+            <span class="token keyword">pass</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'✅remove push!'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span>success<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后用命令 <code>FLASK_ENV=development FLASK_RUN_PORT=4567 FLASK_APP=webhook.py flask run</code> 就可启用。再然后再用 <code>Nginx</code> 反代一下 <code>4567</code> 端口就行了，因为 <code>Synapse</code> 默认禁止本机访问，为了规范一点就另外开个站点接收请求吧……</p>
+<p>基本逻辑就是接收 <code>JSON</code> 拿到发送者名称和推送令牌，判断是哪项服务，然后等待三十秒推送到对应的应用令牌上去，期间要是判断用户已经阅读了消息，就移除推送作业。</p>
+<p>到此无意外的话，应该就能正常推送了，麻烦……希望以后能够有更友好便捷的方式吧。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.mjyai.com/2021/02/24/raspberry-pi-gotify/">在树莓派上部署消息推送软件Gotify</a></li>
+</ol>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="../../.././2021/12/二一年十二月份梦记/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2021/11/二一年十一月梦记/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+    <script src="https://giscus.app/client.js"
+            data-repo="SouthFox-D/SouthFox-D.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+            data-category="博客评论"
+            data-category-id="DIC_kwDODaJZAM4CA7bf"
+            data-mapping="og:title"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2021-11-22 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>19</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/技术/">技术<span>12</span></a></li> <li><a href="/tags/Matrix/">Matrix<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">目录</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#Gotify"><span class="toc-article-text">Gotify</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-article-text">下载</span></a></li></ol></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#Nginx-%E5%8F%8D%E4%BB%A3"><span class="toc-article-text">Nginx 反代</span></a></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#%E8%AE%BE%E7%BD%AE%E6%9C%8D%E5%8A%A1"><span class="toc-article-text">设置服务</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E8%AE%BE%E7%BD%AE%E6%8E%A8%E9%80%81"><span class="toc-article-text">设置推送</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E6%8E%A5%E6%94%B6%E6%8E%A8%E9%80%81"><span class="toc-article-text">接收推送</span></a></li></ol></li><li class="toc-article-item toc-article-level-1"><a class="toc-article-link" href="#%E5%8F%82%E8%80%83"><span class="toc-article-text">参考</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+
+
+
+
+</body>
+   </html>

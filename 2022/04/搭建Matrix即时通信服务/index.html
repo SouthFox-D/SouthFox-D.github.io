@@ -1,0 +1,434 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>搭建Matrix即时通信服务 | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="总之稍微记录一下。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2022/04/搭建Matrix即时通信服务/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  <meta name=fediverse:creator content="SouthFox@foxsay.southfox.me">
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 搭建Matrix即时通信服务</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>总之稍微记录一下。</p>
+<span id="more"></span>
+
+<ul>
+<li><p>事先约定 <code>matrix.org</code> 是前端地址 <code>synapse.matrix.org</code> 是后端地址，实际请改成自己的……具体为啥这么做可以看<a target="_blank" rel="noopener" href="https://matrix-org.github.io/synapse/latest/delegate.html">官方文档</a>，如果嫌麻烦也可以不启用这功能……</p>
+</li>
+<li><p>新建文件夹，在里面新建一个 <code>docker-compose.yml</code> 文件，往里写入</p>
+</li>
+</ul>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment">#也感谢糖喵提供的配置文件~</span>
+<span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">"3.4"</span>
+
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">synapse</span><span class="token punctuation">:</span>
+    <span class="token key atrule">hostname</span><span class="token punctuation">:</span> matrix
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> matrixdotorg/synapse<span class="token punctuation">:</span>latest
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> matrix_server   
+    <span class="token key atrule">depends_on</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> db
+      <span class="token punctuation">-</span> redis
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"127.0.0.1:8001:8008"</span>
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./synapse/data<span class="token punctuation">:</span>/data
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> synapse_network
+      <span class="token punctuation">-</span> external_network
+    <span class="token key atrule">healthcheck</span><span class="token punctuation">:</span>
+      <span class="token key atrule">test</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"CMD-SHELL"</span><span class="token punctuation">,</span> <span class="token string">"curl -s localhost:8008/health || exit 1"</span><span class="token punctuation">]</span>
+
+  <span class="token key atrule">db</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> postgres
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> matrix_db
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./synapse/db<span class="token punctuation">:</span>/var/lib/postgresql/data
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">POSTGRES_USER</span><span class="token punctuation">:</span> synapse
+      <span class="token key atrule">POSTGRES_PASSWORD</span><span class="token punctuation">:</span> 随便什么密码
+      <span class="token key atrule">POSTGRES_DB</span><span class="token punctuation">:</span> synapse
+      <span class="token key atrule">POSTGRES_INITDB_ARGS</span><span class="token punctuation">:</span> <span class="token string">"--encoding='UTF8' --lc-collate='C' --lc-ctype='C'"</span>
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> synapse_network
+    <span class="token key atrule">healthcheck</span><span class="token punctuation">:</span>
+      <span class="token key atrule">test</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"CMD"</span><span class="token punctuation">,</span> <span class="token string">"pg_isready"</span><span class="token punctuation">,</span> <span class="token string">"-U"</span><span class="token punctuation">,</span> <span class="token string">"synapse"</span><span class="token punctuation">]</span>
+
+  <span class="token key atrule">redis</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> redis<span class="token punctuation">:</span>6.0<span class="token punctuation">-</span>alpine
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">container_name</span><span class="token punctuation">:</span> matrix_redis  
+    <span class="token key atrule">volumes</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ./synapse/redis<span class="token punctuation">:</span>/data
+    <span class="token key atrule">networks</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> synapse_network
+    <span class="token key atrule">healthcheck</span><span class="token punctuation">:</span>
+      <span class="token key atrule">test</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"CMD"</span><span class="token punctuation">,</span> <span class="token string">"redis-cli"</span><span class="token punctuation">,</span> <span class="token string">"ping"</span><span class="token punctuation">]</span>
+
+<span class="token key atrule">networks</span><span class="token punctuation">:</span>
+  <span class="token key atrule">synapse_network</span><span class="token punctuation">:</span>
+    <span class="token key atrule">internal</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  external_network<span class="token punctuation">:</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>之后运行 <code>docker-compose run --rm -e SYNAPSE_SERVER_NAME=前端地址 synapse generate</code> 命令生成配置文件，之后检查在 <code>./synapse/data</code> 路径下是否有叫 <code>homeserver.yaml</code> 的配置文件，编辑配置文件 <code>nano ./synapse/data/homeserver.yaml</code></li>
+</ul>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token comment"># 重点改以下配置</span>
+<span class="token key atrule">server_name</span><span class="token punctuation">:</span> <span class="token string">"matrix.org"</span>
+
+<span class="token key atrule">public_baseurl</span><span class="token punctuation">:</span> https<span class="token punctuation">:</span>//synapse.matrix.org/
+
+<span class="token key atrule">serve_server_wellknown</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+
+<span class="token key atrule">database</span><span class="token punctuation">:</span>
+  <span class="token key atrule">name</span><span class="token punctuation">:</span> psycopg2
+  <span class="token key atrule">txn_limit</span><span class="token punctuation">:</span> <span class="token number">10000</span>
+  <span class="token key atrule">args</span><span class="token punctuation">:</span>
+    <span class="token key atrule">user</span><span class="token punctuation">:</span> synapse
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> docker 配置写的随便什么密码
+    <span class="token key atrule">database</span><span class="token punctuation">:</span> synapse
+    <span class="token key atrule">host</span><span class="token punctuation">:</span> db
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">5432</span>
+    <span class="token key atrule">cp_min</span><span class="token punctuation">:</span> <span class="token number">5</span>
+    <span class="token key atrule">cp_max</span><span class="token punctuation">:</span> <span class="token number">10</span>
+
+<span class="token comment">#database:</span>
+<span class="token comment">#  name: sqlite3</span>
+<span class="token comment">#  args:</span>
+<span class="token comment">#    database: /data/homeserver.db</span>
+<span class="token comment">#↑注释掉使用 sqlite3 的配置</span>
+
+<span class="token key atrule">redis</span><span class="token punctuation">:</span>
+  <span class="token comment"># Uncomment the below to enable Redis support.</span>
+  <span class="token comment">#</span>
+  <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+
+  <span class="token comment"># Optional host and port to use to connect to redis. Defaults to</span>
+  <span class="token comment"># localhost and 6379</span>
+  <span class="token comment">#</span>
+  <span class="token key atrule">host</span><span class="token punctuation">:</span> redis
+  <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">6379</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>之后再启动服务，<code>docker-compose start</code></li>
+<li>编辑 <code>matrix.org</code> 的 <code>nginx</code> 配置文件加入以下配置</li>
+</ul>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx">    <span class="token directive"><span class="token keyword">location</span> /.well-known/matrix/client</span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">return</span> <span class="token number">200</span> <span class="token string">'&#123;"m.homeserver": &#123;"base_url": "synapse.matrix.org"&#125;&#125;'</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">default_type</span> application/json</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">add_header</span> Access-Control-Allow-Origin *</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token directive"><span class="token keyword">location</span> /.well-known/matrix/server</span> <span class="token punctuation">&#123;</span>
+        <span class="token directive"><span class="token keyword">return</span> <span class="token number">200</span> <span class="token string">'&#123;"m.server": "synapse.matrix.org:443"&#125;'</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">default_type</span> application/json</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">add_header</span> Access-Control-Allow-Origin *</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token comment">#注意替换自己的前端后端地址</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>新建 <code>synapse.matrix.org</code> 的 <code>dns</code> ，指向服务器地址，再 <code>certbot certonly --nginx -d synapse.matrix.org</code> 申请证书</li>
+<li>新建一个 <code>synapse.matrix.org</code> 的配置文件</li>
+</ul>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">server</span></span> <span class="token punctuation">&#123;</span>
+    <span class="token directive"><span class="token keyword">listen</span> <span class="token number">443</span> ssl http2</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">listen</span> [::]:443 ssl http2</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">server_name</span> synapse.matrix.org</span><span class="token punctuation">;</span>
+
+    <span class="token directive"><span class="token keyword">ssl_certificate</span> /etc/letsencrypt/live/synapse.matrix.org/fullchain.pem</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_certificate_key</span> /etc/letsencrypt/live/synapse.matrix.org/privkey.pem</span><span class="token punctuation">;</span>
+
+    <span class="token comment"># Various TLS hardening settings</span>
+    <span class="token comment"># https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html</span>
+    <span class="token directive"><span class="token keyword">ssl_protocols</span> TLSv1.2 TLSv1.3</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_prefer_server_ciphers</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_ciphers</span> ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_session_timeout</span>  <span class="token number">10m</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_session_cache</span> shared:SSL:10m</span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_session_tickets</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_stapling</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+    <span class="token directive"><span class="token keyword">ssl_stapling_verify</span> <span class="token boolean">on</span></span><span class="token punctuation">;</span>
+
+
+    <span class="token directive"><span class="token keyword">location</span> ~ ^(/_matrix|/_synapse/client)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment"># note: do not add a path (even a single /) after the port in `proxy_pass`,</span>
+        <span class="token comment"># otherwise nginx will canonicalise the URI and cause signature verification</span>
+        <span class="token comment"># errors.</span>
+        <span class="token directive"><span class="token keyword">proxy_pass</span> http://127.0.0.1:8001</span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-For <span class="token variable">$remote_addr</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> X-Forwarded-Proto <span class="token variable">$scheme</span></span><span class="token punctuation">;</span>
+        <span class="token directive"><span class="token keyword">proxy_set_header</span> Host <span class="token variable">$host</span></span><span class="token punctuation">;</span>
+
+        <span class="token comment"># Nginx by default only allows file uploads up to 1M in size</span>
+        <span class="token comment"># Increase client_max_body_size to match max_upload_size defined in homeserver.yaml</span>
+        <span class="token directive"><span class="token keyword">client_max_body_size</span> <span class="token number">500M</span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>重载 <code>nginx</code> 配置文件，<code>nginx -s reload</code></li>
+<li>之后去<a target="_blank" rel="noopener" href="https://federationtester.matrix.org/">检查服务</a>（需科学）输入自己的前端地址 <code>matrix.org</code> 检查是否正常</li>
+<li>用 <code>docker-compose exec synapse /bin/bash</code> 进入 <code>synapse</code> 容器</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> data
+<span class="token comment">#注册新用户</span>
+register_new_matrix_user <span class="token parameter variable">-c</span> homeserver.yaml http://localhost:8008 
+<span class="token comment">#注册完后用 exit 退出容器</span>
+<span class="token builtin class-name">exit</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>完成后用任意一个客户端登陆即可使用，注意登陆用的地址是后端地址 <code>synapse.matrix.org</code></li>
+</ul>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="../../.././2022/04/Emacs随记（1）/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2022/04/EFK-日志-All-in-one/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+    <script src="https://giscus.app/client.js"
+            data-repo="SouthFox-D/SouthFox-D.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+            data-category="博客评论"
+            data-category-id="DIC_kwDODaJZAM4CA7bf"
+            data-mapping="og:title"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2022-04-15 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>19</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/技术/">技术<span>12</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+
+
+
+
+</body>
+   </html>

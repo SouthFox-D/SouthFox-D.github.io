@@ -1,0 +1,287 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>在自己电脑上搭建 Peertube | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="Peertube 是一个自由、去中心化、邦联制运作的视频平台。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2021/06/Peertube/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  <meta name=fediverse:creator content="SouthFox@foxsay.southfox.me">
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 在自己电脑上搭建 Peertube</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>Peertube 是一个自由、去中心化、邦联制运作的视频平台。</p>
+<span id="more"></span>
+
+<p>具体的介绍可以看视频：</p>
+<iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" title="What is PeerTube?" src="https://framatube.org/videos/embed/9c9de5e8-0a1e-484a-b099-e80766180a6d?subtitle=zh" frameborder="0" allowfullscreen></iframe>
+
+<p>比起搭建在托管服务器上，搭建在自己电脑上可以有诸多好处，最大的好处就是存储空间和管理的自由。当然服务的运行会随着电脑的休眠而暂停，要是想一直运行的话得不间断开机……（当然也可以使用树莓派、 NAS 的方式来做到不间断开机）</p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><h3 id="公网-IP"><a href="#公网-IP" class="headerlink" title="公网 IP"></a>公网 IP</h3><p>想要将自己电脑上的服务开放至整个互联网，公网 IP 是大前提，这一点请咨询运营商，有一些比较宽松，有一些就很扯皮了。不过珠三角地区电信运营商可以在宽带帐号 at 后加 <code>pub.</code>，重启猫后就是公网 IP 了。</p>
+<p>当然，也可以使用 IPV6 ，不过 2021 年，IPV6 的普及率也不足百分之三十。就算自己的服务能够建起来，能访问的地区也是少数，所以还是满怀希望的等待吧！ </p>
+<p>拿到公网 IP 后，如果是用了 WIFI 模式或者有路由器的，得先在设备面板里启用端口映射，才能确保访问。</p>
+<p>PS：国情所在，就算有了公网 IP ，也是封了 <code>80</code>,<code>443</code>,<code>8080</code>这些端口的，所以得使用不常用的高位端口。</p>
+<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>家用的宽带就算拿到了公网 IP ，也会不定时更换地址，所以要固定访问地址和配置 HTTPS 首先得需要一个域名 ，当然要是不计较这个的话，这一点可以略过。但是这种方式搭建出来的实例适合运行在内网上，因为  “<strong>PeerTube does not support webserver host change</strong>”（不支持域名改变），第一次运行之后再次更改域名将导致报错……</p>
+<p>域名可以去域名商寻找，当然也可以使用免费域名，最主流的是使用 <a target="_blank" rel="noopener" href="https://www.freenom.com/zh/index.html?lang=zh">Freenom</a> ，可以免费申请到 .cf .ga .tk 三种类型的域名。</p>
+<h3 id="DDNS"><a href="#DDNS" class="headerlink" title="DDNS"></a>DDNS</h3><p>之后就是将公网 IP 绑定到域名上， Cloudflare 关闭了 .cf .ga .tk 使用 API 更改解析的方式，要更改得去网页面板更改。所以得用别家的，我使用的是 <a target="_blank" rel="noopener" href="https://www.vultr.com/docs/how-to-setup-dynamic-dns">Vultr</a> 。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>根据官方的 <a target="_blank" rel="noopener" href="https://docs.joinpeertube.org/">文档</a> 走就是了，搭建一般都是在 Linux 下， Win 系统可以尝试用 <code>WSL</code> ，我采用的方式是用 Docker 安装，毕竟这样不容易搞乱原本日常用的环境。</p>
+<p>不过在使用 certbot 镜像时，注意将命令替换成 <code>--preferred-challenges dns -d example.com</code> 因为国内家用宽带无法拿到 443 端口，所以得用 DNs 方式申请域名。</p>
+<h3 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h3><p>安装时倒是有一些坑陷了好久……</p>
+<p>第一点就是端口要配置成一致的，不能容器和外面的不一样，要不然会因为不一致而报错。</p>
+<p>但是就算这样也会导致 <code>Cannot retrieve OAuth Client credentials: undefined. Ensure you have correctly configured PeerTube (config/ directory), in particular the &quot;webserver&quot; section.</code> 错误，解决方式是在官方 nginx 模板 <code>location @api</code> 处 <code>proxy_set_header Host $host</code> 后面添加 <code>:所使用的端口</code> 才能解决问题[参考]（<a target="_blank" rel="noopener" href="https://github.com/Chocobozzz/PeerTube/issues/3608%EF%BC%89%E3%80%82">https://github.com/Chocobozzz/PeerTube/issues/3608）。</a></p>
+<p>第二就是修改了 Docker 配置文件之后不自知，导致一直报错，非常脑残……所以有时候得全面检查配置文件才行…… </p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>期待数据自主的那天吧！不用忍受寡头背后叔叔的气，希望去中心化的互联网的环境到来……</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="../../.././2021/07/搭建无污染的DNS服务/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2021/06/躺平？/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+    <script src="https://giscus.app/client.js"
+            data-repo="SouthFox-D/SouthFox-D.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+            data-category="博客评论"
+            data-category-id="DIC_kwDODaJZAM4CA7bf"
+            data-mapping="og:title"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2021-06-17 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>19</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/技术/">技术<span>12</span></a></li> <li><a href="/tags/建站/">建站<span>3</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">目录</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%87%86%E5%A4%87"><span class="toc-article-text">准备</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%85%AC%E7%BD%91-IP"><span class="toc-article-text">公网 IP</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%9F%9F%E5%90%8D"><span class="toc-article-text">域名</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#DDNS"><span class="toc-article-text">DDNS</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-article-text">安装</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%9D%91"><span class="toc-article-text">坑</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-article-text">总结</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+
+
+
+
+</body>
+   </html>

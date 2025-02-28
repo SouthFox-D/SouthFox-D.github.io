@@ -1,0 +1,290 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>使用 Mastodon 作为博客的评论系统 | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="又在博客的评论系统上左右摇摆了，就算没有人来评论。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2023/06/使用 Mastodon 作为博客的评论系统/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  <meta name=fediverse:creator content="SouthFox@foxsay.southfox.me">
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 使用 Mastodon 作为博客的评论系统</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>又在博客的评论系统上左右摇摆了，就算没有人来评论。</p>
+<span id="more"></span>
+
+<p>之前写过一篇<a href="https://blog.southfox.me/2022/01/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%94%AF%E6%8C%81%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/">使用 Giscus 作为博客评论系统</a>的文章，一年下来的使用体验感受良好，只需要经过一点点配置就能为博客嵌入一个支持 <code>Markdown</code> 支持、代码高亮、表情回应、邮件通知、数据背靠 <code>GitHub</code>的评论系统，性价比十分之高。但代价也是背靠 <code>GitHub</code> ，作为一个大商业公司「发病」是一个不断扔骰子的过程，随着时间流逝，扔出个「大发病」的概率将会趋近于必然。可能是什么「大会员」或是「API 收大费」。为了避免最坏情况发生所以有必要准备一些备选方案。</p>
+<p>比如 <a target="_blank" rel="noopener" href="https://cusdis.com/">Cusdis</a> 是我之前尝试过一阵的评论系统方案，虽然各方面都比较优秀，但是它上面的一些小小「毛刺」最终让我放弃继续使用（主要是一些样式问题），更大的原因也是我开始觉得为了一年不到十多条的评论是否有必要开一个数据库+评论系统。</p>
+<p>所以最后是打算复用一些已经建立的应用作为博客的评论系统，例如 <a target="_blank" rel="noopener" href="https://cactus.chat/">cactus</a> 评论系统就可以使用 <code>Matrix</code> 聊天协议作为博客的评论系统。不过我觉得着有点「重」了，而且 <code>Matrix</code> 主流实现 <code>Synapse</code> 对于房间、媒体管理这些支持并不算太好，要是被恶意刷请求之后很难清理干净。</p>
+<p>所以最后将目光放向了 <code>Mastodon</code> ，现在谷歌上搜索 <code>mastodon blog comment</code>  就能搜索出很多方案，本次我也是参（tou）考（qie）整（feng）合（he）了其中两篇的解决方案：</p>
+<p><a target="_blank" rel="noopener" href="https://blog.thms.uk/2023/02/mastodon-comments">Adding comments to your blog, powered by mastodon</a></p>
+<p><a target="_blank" rel="noopener" href="https://danielpecos.com/2022/12/25/mastodon-as-comment-system-for-your-static-blog/">Mastodon as comment system for your static blog </a></p>
+<p>主要思想就是利用 <code>Mastodon</code> 的帖子 <code>API</code> 获取一条博文下的所有回复，然后处理后插入的指定位置，并不是太复杂。</p>
+<h2 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h2><p>作为一个备选方案我并没有删掉之前基于 <code>Giscus</code> 的评论方案，现在是处于共存状态。要启用基于 <code>Mastodon</code> 的方案就在文章的元数据中指定 <code>fedi_url</code> 这个变量：</p>
+<pre class="line-numbers language-ejs" data-language="ejs"><code class="language-ejs"><span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%</span><span class="token language-javascript"> <span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span>no_comment<span class="token punctuation">)</span><span class="token punctuation">&#123;</span> </span><span class="token delimiter punctuation">%></span></span>
+  <span class="token comment">&lt;!-- no comment --></span>
+<span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%</span><span class="token language-javascript"> <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> </span><span class="token delimiter punctuation">%></span></span>
+  <span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%</span><span class="token language-javascript"> <span class="token keyword">if</span> <span class="token punctuation">(</span>item<span class="token punctuation">.</span>fedi_url<span class="token punctuation">)</span><span class="token punctuation">&#123;</span> </span><span class="token delimiter punctuation">%></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>comments<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>mastodon-comments-list<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%-</span><span class="token language-javascript"> <span class="token function">url_for</span><span class="token punctuation">(</span><span class="token string">'./js/fedicomment.js'</span><span class="token punctuation">)</span> </span><span class="token delimiter punctuation">%></span></span><span class="token punctuation">"</span></span> <span class="token attr-name">post-url</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%-</span><span class="token language-javascript"> item<span class="token punctuation">.</span>fedi_url </span><span class="token delimiter punctuation">%></span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"> <span class="token keyword">async</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>noscript</span><span class="token punctuation">></span></span>Enable JavaScript to view the comments.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>noscript</span><span class="token punctuation">></span></span>
+  <span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%</span><span class="token language-javascript"> <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> </span><span class="token delimiter punctuation">%></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://giscus.app/client.js<span class="token punctuation">"</span></span>
+				<span class="token attr-name">data-*</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>……<span class="token punctuation">"</span></span>
+            <span class="token attr-name">async</span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript">
+    </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+  <span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%</span><span class="token language-javascript"> <span class="token punctuation">&#125;</span> </span><span class="token delimiter punctuation">%></span></span>
+<span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%</span><span class="token language-javascript"> <span class="token punctuation">&#125;</span> </span><span class="token delimiter punctuation">%></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后引入 <code>fedicomment.js</code> 这个文件，不直接通过模板直接写入主要还是因为自己自找没趣设置了 <code>CSP</code> 禁止 <code>inline javascript</code> 。</p>
+  <pre class="line-numbers language-ejs" data-language="ejs"><code class="language-ejs"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%-</span><span class="token language-javascript"> <span class="token function">url_for</span><span class="token punctuation">(</span><span class="token string">'./js/fedicomment.js'</span><span class="token punctuation">)</span> </span><span class="token delimiter punctuation">%></span></span><span class="token punctuation">"</span></span> <span class="token attr-name">post-url</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token ejs language-ejs"><span class="token delimiter punctuation">&lt;%-</span><span class="token language-javascript"> item<span class="token punctuation">.</span>fedi_url </span><span class="token delimiter punctuation">%></span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"><span class="token language-javascript"> <span class="token keyword">async</span></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这一段指定了 <code>post-url</code> 这个属性，作为一个变量传入脚本文件里，参见：<a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/14904378/get-data-attribute-of-script-tag">Get data attribute of script tag?</a></p>
+<p>之后在脚本文件里将作为全局变量调用：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> post_url <span class="token operator">=</span> document<span class="token punctuation">.</span>currentScript<span class="token punctuation">.</span><span class="token function">getAttribute</span><span class="token punctuation">(</span><span class="token string">"post-url"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>实际的脚本文件课参见 <code>GitHub</code> 上： <a target="_blank" rel="noopener" href="https://github.com/SouthFox-D/SouthFox-D.github.io/blob/hexo/themes/freemind/source/js/fedicomment.js">fedicomment.js</a> （毕竟要是直接复制过来也太凑字数了），不过实际也是整合了前面提到的两篇参考文章。</p>
+<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p><strong>麻烦：</strong>使用这套方案的最大特点就是要多一步操作，因为 <code>Mastodon</code> 的帖子 <code>id</code> 是根据时间戳生成的，不能提前知晓。所以得在 Mastodon 发好文然后获取帖子链接才能插入到博文这里。或许通过配置自动构建的形式使用帐号的 <code>token</code> 预先发好帖然后自动插回文件再提交是种解决办法，但是肯定少不了折腾。而且虽说是在博客上的评论系统但是不能在博客上直接评论。</p>
+<p><strong>管理：</strong>如果不是身为站点管理员的话，那么将无法管理帖文下恶意评论，只能在站点层面的封禁才能移除评论。而且即使身为管理，想要删除单条帖文还得先进行「检举」操作标记这条帖文，然后在管理后台才能删除单条帖文的操作。</p>
+<p><strong>限制：</strong>如果站点开启了「安全模式」的话，那么将无法直接调用帖文的 <code>API</code> ，这样自然谈不上在博客中显示评论了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>总体来说，对于想复用服务的人或是联邦爱好者来说可以一试，不过其实相比 <code>Mastodon</code> ，直接在博客上用 <code>Serveless</code> 函数平台服务兼容 <code>ActivityPub</code> 协议似乎是个更好的选择？不过这就相当于从依赖 <code>GitHub</code> 改为依赖其它平台了……</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="../../.././2023/06/GPG 浅尝辄止/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2023/02/2022年终总结/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <div id="comments">
+      <p id="mastodon-comments-list"></p>
+      <script src="../../.././js/fedicomment.js" post-url="https://foxsay.southfox.me/@SouthFox/110552875318585284"> async</script>
+    </div>
+    <noscript>Enable JavaScript to view the comments.</a></noscript>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2023-06-16 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>19</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/技术/">技术<span>12</span></a></li> <li><a href="/tags/Mastodon/">Mastodon<span>2</span></a></li> <li><a href="/tags/联邦宇宙/">联邦宇宙<span>2</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+
+
+
+
+</body>
+   </html>
