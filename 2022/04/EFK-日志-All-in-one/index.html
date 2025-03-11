@@ -1,0 +1,446 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>EFK:日志 All in one……？ | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="突然发现自己搭的应用似乎上了两位数了。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2022/04/EFK-日志-All-in-one/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  <meta name=fediverse:creator content="SouthFox@foxsay.southfox.me">
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> EFK:日志 All in one……？</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>突然发现自己搭的应用似乎上了两位数了。</p>
+<span id="more"></span>
+
+<p>其中也不乏一些日志大户，每次排错时都要自己进去用日志命令脑死 <code>PgUp, PgDn</code> 一页一页翻找吗？</p>
+<p>刚好最近看的书里提出了一种日志管理实现：<code>ELK</code>，即 <code>Elasticsearch, Logstash, Kibana</code> 三种开源应用的简称，其中:</p>
+<p><code>Elasticsearch</code>：负责给日志数据产生索引，方便检索。</p>
+<p><code>Logstash</code>：接收并处理日志，方便其他应用使用。</p>
+<p><code>Kibana</code>：一个展示前端，有酷炫的一众图表模板用来可视化数据。</p>
+<p>似乎名头一直都在很多年了，使用起来似乎比较重量级，不知道有没有其他更轻量的实现……不过我也找不到其他实现就先这么用吧……</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>因为搭建的应用以 <code>Docker</code> 居多，其中默认支持的日志方式有 <code>Fluentd</code>，所以就用这个代替 <code>Logstash</code> 了，所以是 <code>EFK</code> 方案。</p>
+<p><code>Fluentd</code> 采用包安装的方式安装，毕竟要用它处理宿主机上的一些日志，就不考虑塞到 <code>Docker</code> 里折腾自己了。</p>
+<h3 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h3><p>参见<a target="_blank" rel="noopener" href="https://docs.fluentd.org/installation/before-install">官网文档</a>：</p>
+<h4 id="安装-chrony"><a href="#安装-chrony" class="headerlink" title="安装 chrony"></a>安装 chrony</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">apt-get</span> <span class="token function">install</span> chrony<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>此步骤是为了日志消息能有更准确的时间戳的样子？</p>
+<h4 id="调高文件描述符"><a href="#调高文件描述符" class="headerlink" title="调高文件描述符"></a>调高文件描述符</h4><p>执行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">ulimit</span> <span class="token parameter variable">-n</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>命令，要是显示 <code>1024</code> 的话，那么就得调高一点，防止文件描述符用完报错，</p>
+<p>编辑 <code>/etc/security/limits.conf</code> 文件，在最后面加上：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root soft nofile <span class="token number">65536</span>
+root hard nofile <span class="token number">65536</span>
+* soft nofile <span class="token number">65536</span>
+* hard nofile <span class="token number">65536</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>之后重启，再次执行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">ulimit</span> <span class="token parameter variable">-n</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>命令，显示 <code>65536</code> 即可成功。</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>其他的网络调优懒得搞了……问就是摸了！</p>
+<h3 id="安装-Fluentd"><a href="#安装-Fluentd" class="headerlink" title="安装 Fluentd"></a>安装 Fluentd</h3><p>用的是 <code>Ububtu 20.04</code> ，参照<a target="_blank" rel="noopener" href="https://docs.fluentd.org/installation/install-by-deb">官方文档</a>，执行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://toolbelt.treasuredata.com/sh/install-ubuntu-focal-td-agent4.sh <span class="token operator">|</span> <span class="token function">sh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>而且里面的版本描述是用大版本号的英文描述的，还得我翻<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh/Ubuntu">维基</a>查，好好用阿拉伯数字不好嘛……</p>
+<h3 id="安装-EK"><a href="#安装-EK" class="headerlink" title="安装 EK"></a>安装 EK</h3><p>这里就用 <code>Docker</code> 省点力了……</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">elasticsearch</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> elasticsearch<span class="token punctuation">:</span>tag
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"127.0.0.1:9200:9200"</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">ES_JAVA_OPTS</span><span class="token punctuation">:</span> <span class="token string">"-Xmx256m -Xms256m"</span>
+      <span class="token key atrule">ELASTIC_PASSWORD</span><span class="token punctuation">:</span> <span class="token string">"you_password"</span>
+      <span class="token key atrule">http.cors.enabled</span><span class="token punctuation">:</span> <span class="token string">"true"</span>
+      <span class="token key atrule">http.cors.allow-origin</span><span class="token punctuation">:</span> <span class="token string">"*"</span>
+      <span class="token key atrule">xpack.security.enabled</span><span class="token punctuation">:</span> <span class="token string">"true"</span>
+      <span class="token key atrule">discovery.type</span><span class="token punctuation">:</span> <span class="token string">"single-node"</span>
+      <span class="token key atrule">xpack.security.authc.api_key.enabled</span><span class="token punctuation">:</span> <span class="token string">"true"</span>
+
+  <span class="token key atrule">kibana</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> kibana<span class="token punctuation">:</span>tag
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">links</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"elasticsearch"</span>
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">"127.0.0.1:5601:5601"</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> ELASTICSEARCH_USERNAME=elastic
+      <span class="token punctuation">-</span> ELASTICSEARCH_PASSWORD="you_password"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p> 其中 <code>tag</code> 应该去 <a target="_blank" rel="noopener" href="https://hub.docker.com/_/elasticsearch"><code>Docker Hub</code> 页面</a>寻找，因为没有默认标签的样子只能手动指定版本了……而且注意要选择修了高危漏洞的版本。</p>
+<p>之后 <code>up</code> 起来待用。</p>
+<p>（<strong>注意</strong>这里没做数据持久化处理，有兴趣的可以自行找找要挂载哪些路径……）</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="Fluentd"><a href="#Fluentd" class="headerlink" title="Fluentd"></a>Fluentd</h3><p>配置文件路径是 <code>/etc/td-agent/td-agent.conf</code> ，</p>
+<p>其中分为 <code>Input</code> 端，用 <code>&lt;sourec&gt;</code> 表示，<code>Output</code> 端，用 <code>&lt;match&gt;</code> 处理。</p>
+<p>首先增加以下：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>source<span class="token operator">></span>
+  @type forward
+  port <span class="token number">24224</span>
+  <span class="token builtin class-name">bind</span> <span class="token number">127.0</span>.0.1
+<span class="token operator">&lt;</span>/source<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>match *.**<span class="token operator">></span>
+  @type copy
+
+  <span class="token operator">&lt;</span>store<span class="token operator">></span>
+    @type elasticsearch
+    <span class="token function">host</span> <span class="token number">127.0</span>.0.1
+    port <span class="token number">9200</span>
+    user elastic
+    password you_password
+    logstash_format <span class="token boolean">true</span>
+    logstash_prefix fluentd
+    logstash_dateformat %Y%m%d
+    include_tag_key <span class="token boolean">true</span>
+    type_name access_log
+    tag_key @log_name
+    flush_interval 1s
+  <span class="token operator">&lt;</span>/store<span class="token operator">></span>
+
+  <span class="token operator">&lt;</span>store<span class="token operator">></span>
+    @type stdout
+  <span class="token operator">&lt;</span>/store<span class="token operator">></span>
+<span class="token operator">&lt;</span>/match<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>并且 <code>systemctl restart td-agent</code> 重启应用，开放<code>24224</code> 端口让 <code>Docker</code>  能够进行联协，并将相应数据通过 <code>9200</code> 端口汇入到 <code>Elasticsearch</code> 进行处理。</p>
+<h3 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h3><p>管理每个 <code>docker-compose.yml</code> 文件，在每个服务后面加上相应的 <code>logging</code> 块：</p>
+<pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">xxx</span><span class="token punctuation">:</span>
+  <span class="token punctuation">...</span><span class="token punctuation">...</span>
+  <span class="token punctuation">...</span><span class="token punctuation">...</span>
+  <span class="token key atrule">logging</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> fluentd
+  
+  <span class="token key atrule">yyy</span><span class="token punctuation">:</span>
+  <span class="token punctuation">...</span><span class="token punctuation">...</span>
+  <span class="token punctuation">...</span><span class="token punctuation">...</span>
+  <span class="token key atrule">logging</span><span class="token punctuation">:</span>
+    <span class="token key atrule">driver</span><span class="token punctuation">:</span> fluentd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>(是的，感觉这样确实有点蠢，不过没找到其他更好实现而且只要做一次就先忍了……)</p>
+<p>之后 <code>down</code> 再 <code>up</code> 重建容器即可。</p>
+<h3 id="Kibana"><a href="#Kibana" class="headerlink" title="Kibana"></a>Kibana</h3><p>没出错的话现在日志应该源源不断汇入到 <code>Elasticsearch</code> 并在处理了，现在该浏览成果了。</p>
+<p>老调重弹之申请域名、指向域名、申请证书、反代 <code>5601</code> 端口，完成后访问对应域名应该就能进到管理面板了。</p>
+<p>展开左边的菜单栏 <code>Management~Stack Management -&gt;  Kibana~Index patterns -&gt; Create index patterns </code> 应该能看到有类似 <code>fluentd-YYMMDD</code> 形式的数据了，新建一个名叫 <code>fluentd-*</code> 的索引将数据囊括进来，就搞定了，之后可以去 <code>Analytics~Discover</code> 查看数据了……</p>
+<p>到此，管理 <code>Docker</code> 产生的日志就这样搞定了……</p>
+<h2 id="额外"><a href="#额外" class="headerlink" title="额外"></a>额外</h2><p>当然还没结束，毕竟还要更多！</p>
+<h3 id="Nginx"><a href="#Nginx" class="headerlink" title="Nginx"></a>Nginx</h3><p><code>Fluentd</code> 直接安装就是为了更方便处理相应日志的，但是针对 <code>nginx</code> 来说，因为 <code>Fluentd</code> 使用的用户 <code>td-agent</code> 没有相应访问 <code>nginx</code> 日志的权限，那么首先要用</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">usermod</span> <span class="token parameter variable">-aG</span> adm td-agent<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>命令放行对应目录，<a target="_blank" rel="noopener" href="https://docs.fluentd.org/parser#how-to-use">参见</a>。</p>
+<p>之后在 <code>/etc/td-agent/td-agent.conf</code> 配置文件中新增以下配置：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>source<span class="token operator">></span>
+  @type <span class="token function">tail</span>
+  path /var/log/nginx/*access.log,/var/log/nginx/*access.log.1
+  pos_file /var/log/td-agent/httpd-access.log.pos
+  tag nginx.access
+  <span class="token operator">&lt;</span>parse<span class="token operator">></span>
+    @type nginx
+  <span class="token operator">&lt;</span>/parse<span class="token operator">></span>
+<span class="token operator">&lt;</span>/source<span class="token operator">></span>
+
+<span class="token operator">&lt;</span>source<span class="token operator">></span>
+  @type <span class="token function">tail</span>
+  path /var/log/nginx/*error.log,/var/log/nginx/*erroe.log.1
+  pos_file /var/log/td-agent/httpd-error.log.pos
+  tag nginx.error
+  <span class="token operator">&lt;</span>parse<span class="token operator">></span>
+    @type nginx
+  <span class="token operator">&lt;</span>/parse<span class="token operator">></span>
+<span class="token operator">&lt;</span>/source<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后 <code>systemctl restart td-agent</code> 重启应用。</p>
+<p>其中一个小问题就是 <code>error</code> 日志会因为不能格式化而导致不能正确处理，当然只限 <code>error</code> 日志，所以就……眼不见为净了……反正这也算单独一个分类了……吧。</p>
+<h3 id="网络传输"><a href="#网络传输" class="headerlink" title="网络传输"></a>网络传输</h3><p>既然 <code>All in one</code>，自然要处理好其他主机的服务了， <code>Fluentd</code> 也自带一个 <code>http</code> 方式进行传输。</p>
+<h4 id="主机"><a href="#主机" class="headerlink" title="主机"></a>主机</h4><p>在 <code>/etc/td-agent/td-agent.conf</code> 配置文件中新增以下配置：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>source<span class="token operator">></span>
+  @type http
+  port <span class="token number">9880</span>
+  <span class="token builtin class-name">bind</span> <span class="token number">127.0</span>.0.1
+  body_size_limit 32m
+  keepalive_timeout 10s
+<span class="token operator">&lt;</span>/source<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后 <code>systemctl restart td-agent</code> 重启应用，再老调重弹之申请域名、指向域名、申请证书、反代 <code>9800</code> 端口。</p>
+<h4 id="客机"><a href="#客机" class="headerlink" title="客机"></a>客机</h4><p>在 <code>/etc/td-agent/td-agent.conf</code> 配置文件中新增以下配置：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>match **<span class="token operator">></span>
+  @type http
+
+    endpoint https://申请的域名:443/api
+    open_timeout <span class="token number">3</span>
+
+    <span class="token operator">&lt;</span>format<span class="token operator">></span>
+      @type json
+    <span class="token operator">&lt;</span>/format<span class="token operator">></span>
+    json_array <span class="token boolean">true</span>
+    <span class="token operator">&lt;</span>buffer<span class="token operator">></span>
+      flush_interval 10s
+    <span class="token operator">&lt;</span>/buffer<span class="token operator">></span>
+<span class="token operator">&lt;</span>/match<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后 <code>systemctl restart td-agent</code> 重启应用，</p>
+<p>之后观察 <code>Kibana</code> 面板，发现有 <code>@logname</code> 为 <code>api</code> 的数据就算成功……这个 <code>logname</code> 发现不知道怎么改……算了，就当作区分不同机子了吧……</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这么处理下来，就应该能愉快的探索自己产生的日志了，能够直接指定时间段和按属性过滤条目已经暴杀直接翻找日志文件的方式了……</p>
+<p>感觉能摸索的地方还有挺多的呢，不用各种追踪脚本仅凭日志文件也能发现很多东西呢……</p>
+<p>不过难受的点就是，<code>EFK</code> 名头那么大，但是相关文档真的很少（就算用英文搜索）……感觉自己在用一个过气项目的样子，不知道是不是我不得要领……</p>
+<p>最后附张图，用面板五分钟就搭出来的看板,感觉还能再挖掘点东西呢。</p>
+<p><img src="https://media.southfox.me/ipfs/bafkreicf4fknbhjyqw5dgh5vgg5pfl6fx2bwiiw745pun7ap7zf3tzdqdy" alt="看板"></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="../../.././2022/04/搭建Matrix即时通信服务/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2022/03/二二年三月梦记/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+    <script src="https://giscus.app/client.js"
+            data-repo="SouthFox-D/SouthFox-D.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+            data-category="博客评论"
+            data-category-id="DIC_kwDODaJZAM4CA7bf"
+            data-mapping="og:title"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2022-04-04 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>19</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/技术/">技术<span>12</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">目录</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-article-text">安装</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%89%8D%E6%9C%9F%E5%87%86%E5%A4%87"><span class="toc-article-text">前期准备</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%AE%89%E8%A3%85-chrony"><span class="toc-article-text">安装 chrony</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E8%B0%83%E9%AB%98%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="toc-article-text">调高文件描述符</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-article-text">其他</span></a></li></ol></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%AE%89%E8%A3%85-Fluentd"><span class="toc-article-text">安装 Fluentd</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%AE%89%E8%A3%85-EK"><span class="toc-article-text">安装 EK</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-article-text">配置</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Fluentd"><span class="toc-article-text">Fluentd</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Docker"><span class="toc-article-text">Docker</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Kibana"><span class="toc-article-text">Kibana</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E9%A2%9D%E5%A4%96"><span class="toc-article-text">额外</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Nginx"><span class="toc-article-text">Nginx</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E7%BD%91%E7%BB%9C%E4%BC%A0%E8%BE%93"><span class="toc-article-text">网络传输</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E4%B8%BB%E6%9C%BA"><span class="toc-article-text">主机</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%AE%A2%E6%9C%BA"><span class="toc-article-text">客机</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-article-text">总结</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+
+
+
+
+</body>
+   </html>

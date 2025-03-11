@@ -1,0 +1,304 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Emacs再记（1）：传教二度 | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="论都 2022 年了为什么要用 Emacs 。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2022/08/Emacs再记（1）：传教二度/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  <meta name=fediverse:creator content="SouthFox@foxsay.southfox.me">
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Emacs再记（1）：传教二度</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>论都 2022 年了为什么要用 Emacs 。</p>
+<span id="more"></span>
+
+<p><code>Emacs</code> 最早可以追溯到 <code>1975</code>年，经过多年发展诞生了许多分支，不过现在都是特指 <code>GNU Emacs</code>，时间没有葬送这款软件，直至现在也有不少人在使用它。</p>
+<h2 id="Emacs-之世界观"><a href="#Emacs-之世界观" class="headerlink" title="Emacs 之世界观"></a>Emacs 之世界观</h2><p>经过将近一年的使用，我对于 <code>Emacs</code> 也有了更多的了解，索性再写一遍第（1）篇吧。</p>
+<p><code>Emacs</code> ，其<a target="_blank" rel="noopener" href="https://www.gnu.org/software/emacs/">官网</a>对它的描述是：一个可拓展的、客制化的自由（免费）文本编辑器—and more。当然这么多天用下来，我发现其实 <code>Emacs</code> 本质并不是一个文本编辑器，因为它有一片自己的世界……</p>
+<p>举个不恰当的例子来说，其它文本编辑器里编辑文本像是挥舞武器，安装一个插件并运用其功能像是吟唱一个魔法，其底层实现方式大家都一样，之间的区别不是很大。</p>
+<p>而 <code>Emacs</code>，表面看是挥舞武器，但实际是因为心中有战斗的决心所以才能具现一把专属武器并战斗，表面上看是吟唱魔法，但实际上是因为其所在世界是一个失落的高科技世界，吟唱魔法其实是在和空中散落的纳米单元进行沟通然后由单元实现具体效果……虽然最后 <code>Emacs</code> 和其他文本编辑器实现了同样效果，但是它们的「世界观」是有根本不同的。</p>
+<h2 id="自由"><a href="#自由" class="headerlink" title="自由"></a>自由</h2><p>查看 <code>Emacs</code> 代码仓库就能发现，其构成代码有近六成是由一个叫作 <code>Emacs Lisp</code> 的语言构成的，<code>Emacs</code> 以其说是一款文本编辑器倒不如说是作为 <code>Emacs Lisp</code> 的运行环境，打开软件那出现的窗口和菜单，是 <code>Emacs</code> 自己不断修改自己的体现。</p>
+<p>这样的实现方式，更是让 <code>Emacs</code> 对于用户的态度和其他编辑器有很大不同，再举个不恰当的例子来说：</p>
+<p>其它文本编辑器就像一个人类：</p>
+<ul>
+<li><p>想要其它功能的话请指定，比如沟通语言从英语切换成汉语……什么？想要克林贡语，不好意思，没有，请自行查询插件商店吧。</p>
+</li>
+<li><p>商店里没有？请自己参照接口标准自行实现一个吧？什么，你还想要修改大脑的核心功能？不可能！太危险了！</p>
+</li>
+<li><p>真想要修改大脑核心功能的话，请自行修改「源代码」去。</p>
+</li>
+</ul>
+<p><code>Emacs</code>：</p>
+<ul>
+<li>犹如一个不定形的阿米巴变形虫，时刻不停在蠕动、变形……</li>
+<li>想要切换到特定功能？好啊好啊，请自行在「配置文件」里指定吧……</li>
+<li>没有想要的功能？那请自行在「配置文件」里实现具体功能吧……等我重载之后就能看到新功能了……</li>
+<li>想干预一个核心功能？随便……</li>
+</ul>
+<p>所以对于 <code>Emacs</code> 来说，它不像其他软件的 <code>.ini</code>  <code> .env</code> 一样，只能附加几个参数或者在 <code>A</code> 和 <code>B</code> 已有的功能切换，在 <code> Emacs</code> 里，没有 <code>C</code> 功能，你可以自行在「配置文件」里实现，因为「配置文件」即是「源代码」，因为 <code>Emacs</code> 是在那旧时代下诞生的软件，它完全信任用户。</p>
+<h2 id="混乱"><a href="#混乱" class="headerlink" title="混乱"></a>混乱</h2><p>当然自由的代价就是导致了其黑魔法满天飞，大魔法师用着呼风唤雨，而学徒却看着一大堆选择摸不着头脑。</p>
+<p>不过随着社区的聚集，现在也出现了 <a target="_blank" rel="noopener" href="https://www.spacemacs.org/">Spacemacs</a> 和 <a target="_blank" rel="noopener" href="https://github.com/doomemacs/doomemacs">Doom emacs</a> 这样的整合网上优秀第三方包和配置的配置集，新手直接使用的话可以在一开始时就能体验到 <code>Emacs</code> 生态里的大部分优秀功能。</p>
+<h2 id="低效"><a href="#低效" class="headerlink" title="低效"></a>低效</h2><p>建立在 <code>Emacs Lisp</code> 上的 <code>Emacs</code> 其一大特征就是……慢……当然大多数场景不会感受到，但是出现了这个情况就真的有点锻炼耐心了。而且 <code>Emacs</code> 说好听点是历史悠久，难听点就是历史包袱过重了，一些上古代码散落在各处，非常高效地拖慢了 <code>Emacs</code> 在一些场景的性能让其低效（感谢 <code>Emacs</code> 让我在 2022 年体会到了多图杀猫的效果）。</p>
+<h2 id="甜美错觉"><a href="#甜美错觉" class="headerlink" title="甜美错觉"></a>甜美错觉</h2><p>如果在多了解一点的话，可能就会发现很多人都在吐槽 <code>Emacs</code> 用着像是一款操作系统一样，收发电子邮件、记录笔记、安排待办、写代码、甚至进行聊天。因为 <code>Emacs</code> 其「万物皆文本」的哲学，代码是文本，笔记和待办也是，甚至文件列表或是菜单栏也是（文本定义九宫格.jpg），也借助于 <code>Emacs Lisp</code> 的灵活性，只要你能想到有关于文字的编辑功能，你就能够去实现。</p>
+<p>而且这些功能都做为一个包被 <code>Emacs</code> 载入，所以这些功能还能进行联动，比如将待办里的任务作为电子邮件发送，将文件夹内的全文搜索结果裁剪为笔记，在笔记中嵌入可以执行的代码……因为这就是 <code>Emacs</code> ，虽然实现的过程中可能像是在布满乐高的地板上赤脚行走，让人痛苦不堪感到沮丧，或许在 <code>Emacs</code> 里实现还不如直接用专用软件效果来得好，但是 <code>Emacs</code> 它就是让人产生了这样的错觉：</p>
+<blockquote>
+<p>我们必须实现，我们必将实现。</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://nyk.ma/posts/emacs-intro/">Emacs 自力求生指南 ── 前言</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org">一年成为Emacs高手 (像神一样使用编辑器)</a></p>
+<p><a target="_blank" rel="noopener" href="https://manateelazycat.github.io/emacs/2018/12/11/study-emacs.html">怎么学习 Emacs ? 达到真正融汇贯通的境界? </a></p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="../../.././2022/12/Arch系统随便用暨Emacs使用再记（2）/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2022/08/如何改变自己/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+    <script src="https://giscus.app/client.js"
+            data-repo="SouthFox-D/SouthFox-D.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+            data-category="博客评论"
+            data-category-id="DIC_kwDODaJZAM4CA7bf"
+            data-mapping="og:title"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2022-08-16 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>19</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Emacs/">Emacs<span>7</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">目录</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Emacs-%E4%B9%8B%E4%B8%96%E7%95%8C%E8%A7%82"><span class="toc-article-text">Emacs 之世界观</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E8%87%AA%E7%94%B1"><span class="toc-article-text">自由</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E6%B7%B7%E4%B9%B1"><span class="toc-article-text">混乱</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E4%BD%8E%E6%95%88"><span class="toc-article-text">低效</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E7%94%9C%E7%BE%8E%E9%94%99%E8%A7%89"><span class="toc-article-text">甜美错觉</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%8F%82%E8%80%83"><span class="toc-article-text">参考</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+
+
+
+
+</body>
+   </html>

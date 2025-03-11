@@ -1,0 +1,326 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>中文网页字体动态裁剪 | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="首先，我先在放个【矣】在这里。">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2021/03/中文网页字体动态裁剪/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  <meta name=fediverse:creator content="SouthFox@foxsay.southfox.me">
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> 中文网页字体动态裁剪</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>首先，我先在放个【矣】在这里。</p>
+<span id="more"></span>
+
+<p>比起字母系统语言，汉语在计算机世界上有着天然的弱势，<strong>锟斤拷</strong>和<strong>锘锘锘</strong>这些编码问题本身就令人头大了，尤其对于互联网这个寸土寸金之地，想要在网页内展现自定义字体，首先就要先加载个几兆大小的字体文件，要这么做那就是极度的浪费和折磨了。</p>
+<p>所以字体裁剪是必要的，有两种方向：</p>
+<ul>
+<li><p>提前准备常用字集进行裁剪</p>
+</li>
+<li><p>提前计算出需要展示的字集再进行裁剪</p>
+</li>
+</ul>
+<p>第一种方式就是突出一个极致的懒，只需要做一次，就能不用再管了。缺点就是总会有不在常用字体里的“常用字”，这样网页加载出来的效果就会形成“犬牙交错”之感，看起来非常辣眼（要是选用的字体和默认字体差别非常大的话）。而且常用字内其实也不是每个字都用上了，所以还是会有浪费。</p>
+<p>第二种方式就更优雅一点了，能保证字体里的每个字都是用上的。缺点就是麻烦了点儿，不过只要写个自动化脚本，这点麻烦也不算麻烦了。</p>
+<h2 id="压缩方案"><a href="#压缩方案" class="headerlink" title="压缩方案"></a>压缩方案</h2><p>当选 <a target="_blank" rel="noopener" href="https://github.com/fonttools/fonttools">fonttools</a> ，至少这项目现在还活跃着，其他类似的字体项目都停滞了蛮久时间的了……好像。</p>
+<p>要使用直接通过 <code>pip install</code> 安装 <code>fonttools</code>就行了，要是还想压成 <code>woff2</code> 这种压缩率更高的格式还得再安装个 <code>brotli</code> 。</p>
+<p>使用命令：</p>
+<p><code>pyftsubset &lt;字体&gt;.ttf --text-file=&lt;字符集文件&gt;</code></p>
+<p>当然，也可用 <code>--text=</code> 的选项来直接后面跟所需字符。</p>
+<p>要压成 <code>woff2</code> 格式可以用 <code>fonttools ttLib.woff2 compress &lt;压缩后字体&gt;.woff2 &lt;被压字体&gt;.ttf</code> 的方式。</p>
+<h3 id="脚本代码"><a href="#脚本代码" class="headerlink" title="脚本代码"></a>脚本代码</h3><p>反正一个简单粗暴的循环怼上去就得了，去重可以用集合来去。</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> os
+
+path <span class="token operator">=</span> os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+filelist <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> root<span class="token punctuation">,</span> dirs<span class="token punctuation">,</span> files <span class="token keyword">in</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span>path <span class="token operator">+</span> <span class="token string">'/source'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">for</span> name <span class="token keyword">in</span> files <span class="token punctuation">:</span>
+        filelist<span class="token punctuation">.</span>append<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>root<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+strset <span class="token operator">=</span> <span class="token builtin">set</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> filename <span class="token keyword">in</span>  filelist<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> <span class="token string">'.md'</span> <span class="token keyword">not</span> <span class="token keyword">in</span> filename<span class="token punctuation">:</span>
+        <span class="token keyword">continue</span>
+
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span>encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        <span class="token keyword">for</span> subset <span class="token keyword">in</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            strset<span class="token punctuation">.</span>add<span class="token punctuation">(</span>subset<span class="token punctuation">)</span>
+
+str_ <span class="token operator">=</span> <span class="token string">''</span>
+a <span class="token operator">=</span> <span class="token number">0</span>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'strdb.txt'</span><span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">list</span><span class="token punctuation">(</span>strset<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        str_ <span class="token operator">+=</span> i
+        a <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'%d Characters in all files.'</span><span class="token operator">%</span>a<span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>str_<span class="token punctuation">)</span>
+    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span>str_<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>将 <code>source</code> 下的 <code>md</code> 文件的字符提出来，再写入到 <code>strdb.txt</code> 以带后续使用。当然直接用 <code>--text=</code> 选项直接塞进命令里也可以，反正我是喜欢先写进文件的。</p>
+<p>最后生成的字体文件在 80kb 左右，对于网页来说，已经是可以接受的程度了，当然这跟我选择的字体有关，是一款像素字体，不怎么占空间，如果是常规字体的话，大概会在上两三百左右吧。</p>
+<h2 id="坑"><a href="#坑" class="headerlink" title="坑"></a>坑</h2><ol>
+<li>首先是 <code>Travis</code> 部署上得用 <code>python3</code> 环境，要特别声明一下，二环境下会输出个零蛋，应该是版本之间语法的锅？</li>
+<li>代码里没有解析配置文件里的中文语句，所以标语口号这种，可能就会没被解析到，不过我懒地再一个一个引入配置文件，所以还不如……<del>我先在放个【矣】在这里。</del></li>
+<li>确保文本在网页字体加载期间保持可见状态，即设置 <code>font-display: swap</code>  选项 在<code>@font-face</code> 内，要不然的话字体没加载出来文本会消失掉。</li>
+</ol>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://github.com/fonttools/fonttools">Fonttools</a></li>
+<li><a target="_blank" rel="noopener" href="https://hsingko.github.io/post/compress_webfont/">中文字体压缩的那些事——涂雨期的博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://web.dev/font-display/">Font display</a></li>
+</ol>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="../../.././2021/03/出发，海底世界/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2021/02/wrong/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+    <script src="https://giscus.app/client.js"
+            data-repo="SouthFox-D/SouthFox-D.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+            data-category="博客评论"
+            data-category-id="DIC_kwDODaJZAM4CA7bf"
+            data-mapping="og:title"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2021-03-12 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>19</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/技术/">技术<span>12</span></a></li> <li><a href="/tags/字体/">字体<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">目录</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%8E%8B%E7%BC%A9%E6%96%B9%E6%A1%88"><span class="toc-article-text">压缩方案</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E8%84%9A%E6%9C%AC%E4%BB%A3%E7%A0%81"><span class="toc-article-text">脚本代码</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%9D%91"><span class="toc-article-text">坑</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%8F%82%E8%80%83"><span class="toc-article-text">参考</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+
+
+
+
+</body>
+   </html>

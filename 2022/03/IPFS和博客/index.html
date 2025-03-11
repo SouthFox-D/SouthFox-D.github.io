@@ -1,0 +1,432 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>IPFS和博客 | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="似乎这是两码事？">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2022/03/IPFS和博客/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  <meta name=fediverse:creator content="SouthFox@foxsay.southfox.me">
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> IPFS和博客</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>似乎这是两码事？</p>
+<span id="more"></span>
+
+<h2 id="IPFS"><a href="#IPFS" class="headerlink" title="IPFS"></a>IPFS</h2><p><code>IPFS</code> 全称 （<code>InterPlanetary File System</code>），中文名可叫<strong>星际文件系统</strong>。</p>
+<p>这略带一丝中二的名字确实透露了这项目的愿景，设想一下，要是人类真的在太阳系殖民成功了，各个殖民地要如何通信？就算是火星和地球光也要走三分钟，最低<strong>六分钟</strong>的延迟，谁受得了啊？</p>
+<p>但观测一下就可以发现，网络中的很多数据是可以复用的。比如，火星上的 <code>A</code> 访问了地球的今日新闻，火星上的 <code>B</code> 想访问地球的今日新闻网站，还要去跟地球通信吗？他只要跟 <code>A</code> 获取数据就可以了。</p>
+<p>这就是 <code>IPFS</code> 的基本思想了，一个点对点的分布式文件系统。</p>
+<h3 id="能做啥"><a href="#能做啥" class="headerlink" title="能做啥"></a>能做啥</h3><p>作为一个点对点的分布式文件系统，基本功能就是存储文件了，图片、视频、静态网页、<strong>文件夹</strong>皆可。</p>
+<p>文件上传后，再经过算（mo）法后，文件会被标上一个类似于 <code>Qmd3oSMoEb3npqXdjwek7RPfvteMckrBFBRHU1ECZDtAEC</code> 这种形式的 <code>CID</code> ，这个 <code>CID</code> 可以唯一标识一个文件，其他人将这个 <code>CID</code> 告诉 <code>IPFS</code> 网络，就可以在全世界的 <code>IPFS</code> 网络中进行获取了。</p>
+<h3 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h3><p>但遗憾的是 <code>IPFS</code> 不能兼容现在主流的 <code>HTTP</code> 网络，如果没有专门的客户端又想要使用 <code>IPFS</code> 网络，要借助一个网关才可以。</p>
+<p>好比如世界上有一群人发明了一种新语言，这种语言甚至需要借助一个新器官才能沟通，很明显其他人是完全无法同使用新语言的人交流的。新语言使用者为了增大影响力，决定派出几名翻译，让双方能够沟通。</p>
+<blockquote>
+<p> 可通过<a target="_blank" rel="noopener" href="https://ipfs.github.io/public-gateway-checker/">公共网关检查站</a>获知常见公共网关。</p>
+<p>国内访问优秀的网关为：</p>
+<p>w3s.link cloudflare-ipfs.com (Cloudflare 我的超人！)</p>
+<p>ipfs.fleek.co</p>
+</blockquote>
+<p>在网关后面加上 <code>/ipfs/[cid]</code> 即可通过 <code>http</code> 的形式获取文件了。</p>
+<p>试试看↓：</p>
+<p><code>/ipfs/Qmd3oSMoEb3npqXdjwek7RPfvteMckrBFBRHU1ECZDtAEC </code></p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://media.southfox.me/ipfs/Qmd3oSMoEb3npqXdjwek7RPfvteMckrBFBRHU1ECZDtAEC">w3s.link</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://ipfs.fleek.co/ipfs/Qmd3oSMoEb3npqXdjwek7RPfvteMckrBFBRHU1ECZDtAEC">ipfs.fleek.co</a></p>
+</li>
+</ul>
+<h3 id="IPNS"><a href="#IPNS" class="headerlink" title="IPNS"></a>IPNS</h3><p><code>cid</code> 形式有个问题就是他是根据文件内容进行计算的，文件内容哪怕改动一个字，生成的 <code>cid</code> 也会完全不同……如果要在 <code>IPFS</code> 网络部署一个网站的话，管理员每次更新网站，就得把新 <code>cid</code> 重新告知出去吗？</p>
+<p>显然太折腾了……但可以利用现有的 <code>DNS</code> ，将 <code>cid</code> 绑定到 <code>DNS</code>  上，这样管理方仅需更新 <code>DNS</code> 即可。这种方式被成为 <code>IPNS</code> ( InterPlanetary Name System) 。</p>
+<p>通过这种方式，可以将一个静态网站托管到 <code>IPFS</code> 网络上面，生命力大大增强。</p>
+<p>一般网关也支持 <code>IPNS</code> 形式访问，在网关后面加上 <code>/ipns/[域名]</code> 即可。</p>
+<p>试试看↓：</p>
+<p><code>/ipns/zh.wikipedia-on-ipfs.org</code> (一个静态的维基百科存档)</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://w3s.link/ipns/zh.wikipedia-on-ipfs.org">w3s.link</a></li>
+<li><a target="_blank" rel="noopener" href="https://ipfs.fleek.co/ipns/zh.wikipedia-on-ipfs.org">ipfs.fleek.co</a></li>
+</ul>
+<p><code>/ipns/blog.southfox.me</code> (当然！)</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://w3s.link/ipns/blog.southfox.me">w3s.link</a></li>
+<li><a target="_blank" rel="noopener" href="https://ipfs.fleek.co/ipns/blog.southfox.me">ipfs.fleek.co</a></li>
+</ul>
+<h2 id="IPFS-图床"><a href="#IPFS-图床" class="headerlink" title="IPFS 图床"></a>IPFS 图床</h2><p>那么托管文件，最容易想到的就是图片了，本博客的图片也在几个月前迁移到了 <code>IPFS</code> 网络上。</p>
+<p>如果真想将图片放到 <code>IPFS</code> 上，那么该考虑以下事情：</p>
+<p><strong>优点：</strong></p>
+<ul>
+<li><p>抗☐☐，即使一个网关炸掉了，也可以切换另一个网关。</p>
+</li>
+<li><p>轻松切换， 文件 <code>cid</code> 是不变的，<code>VS Code</code> 全文替换就可以很轻松切到另一个网关，不像一般图床，其连接是随机的，其迁移成本会变得非常大。</p>
+</li>
+</ul>
+<p><strong>缺点：</strong></p>
+<ul>
+<li>慢……速度一般来说只能说凑合，除非将设置一个靠近用户的位置放置网关，同时文件刚好就在这网关上……</li>
+</ul>
+<h3 id="web3-storage"><a href="#web3-storage" class="headerlink" title="web3.storage"></a>web3.storage</h3><p><a target="_blank" rel="noopener" href="https://web3.storage/">地址</a></p>
+<p>可使用 <code>GitHub</code> 注册，这网站提供  <code>1T</code> 的存储空间。</p>
+<h3 id="fleek-co"><a href="#fleek-co" class="headerlink" title="fleek.co"></a>fleek.co</h3><p><a target="_blank" rel="noopener" href="https://fleek.co/">地址</a></p>
+<p>同样可使用 <code>GitHub</code> 注册，可提供存储空间不明。</p>
+<p>但是重点是！他提供<strong>网站托管</strong>！</p>
+<h3 id="Pinata"><a href="#Pinata" class="headerlink" title="Pinata"></a>Pinata</h3><p><a href="pinata.cloud">地址</a></p>
+<p><code>1G</code> 免费空间……但似乎是 <code>IPFS</code> 客户端能直接连接过去进行备份？总之不推荐（因为空间太小了）。</p>
+<h3 id="公共网关"><a href="#公共网关" class="headerlink" title="公共网关"></a>公共网关</h3><p>以上的网站是要自己手动上传至他们的网页，并没有很好的支持 <code>HTTP API</code> ，所以喜欢用 <code>PicGo</code> 传图并直接获取 <code>MarkDown</code> 连接的懒人可能要寻找能够直接传图的公共网关了。</p>
+<h4 id="PicGo"><a href="#PicGo" class="headerlink" title="PicGo"></a>PicGo</h4><p>在插件市场搜索 <code>web-uploader-custom-url-prefix</code> 并进行安装，配置成如下:</p>
+<p><img src="https://media.southfox.me/ipfs/Qma7FSQ3tzoT8LqLxMRKVVJ5cNSEu3HgKL1aXPzAYTzXmV"></p>
+<p>其中 <code>infura-ipfs.io</code> 可以是任意支持 <code>HTTP API </code> 形式上传的网关。</p>
+<p>自定义图片前缀可以是任意访问速度快的网关。</p>
+<h4 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h4><p>想用 <code>Python</code> 折腾？好主意，所以快去折腾吧！</p>
+<h4 id="快捷命令"><a href="#快捷命令" class="headerlink" title="快捷命令"></a>快捷命令</h4><p>没用过苹果设备，不清楚。</p>
+<p>不过一般参照之前经验改改应该不难……？</p>
+<h2 id="Pin-与失效"><a href="#Pin-与失效" class="headerlink" title="Pin 与失效"></a>Pin 与失效</h2><p>前面的 <code>PicGo</code> 上传图片时带有个 <code>pin=true</code> 参数，这个参数就是告诉网关，这个文件很重要，请不要当成缓存清除。</p>
+<p>因为 <code>IPFS</code> 的设置是，其他节点获取了一个文件后，会放在缓存里，如果服务器的缓存超过了阈值（默认 <code>10G</code>），就会清理掉……</p>
+<p>如果上传文件的服务器下线了，那么还是有可能从缓存了这文件的服务器获取文件的。但万一时间太过久远，久到主服务器不存在，其他服务器缓存早已清理，那么这个文件就如同 <code>BiTorrent</code> 下载中的<strong>死种</strong>一样，再也不能获取了……</p>
+<p>而另一面讲，如果文件很热门，比如明星艳照，那么这个文件将会持久存在，删除不能……所以，<strong>不要向 <code>IPFS</code> 上传个人隐私相关文件！</strong>一旦传播开来，那就没有后悔药了……</p>
+<h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><p>所以为了数据安全考虑，放置在 <code>IPFS</code> 上的图片也要做好备份……</p>
+<p>似乎可以写个脚本，自动分析文件下的 <code>cid</code> ，然后自动爬取备份到本地。</p>
+<p><del>以后再摸吧。</del></p>
+<p><strong>3-13 更新：</strong></p>
+<p>其实当天就摸了……只是我憋着不放呢。（</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> sys
+<span class="token keyword">import</span> os
+<span class="token keyword">import</span> requests
+<span class="token keyword">import</span> json
+<span class="token keyword">import</span> re
+<span class="token keyword">import</span> random
+
+
+
+<span class="token keyword">def</span> <span class="token function">backupImg</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    path <span class="token operator">=</span> os<span class="token punctuation">.</span>getcwd<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> root<span class="token punctuation">,</span> dirs<span class="token punctuation">,</span> files <span class="token keyword">in</span> os<span class="token punctuation">.</span>walk<span class="token punctuation">(</span>path <span class="token operator">+</span> <span class="token string">'/source'</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment">#根据实际情况定</span>
+        <span class="token keyword">for</span> name <span class="token keyword">in</span> files <span class="token punctuation">:</span>
+            filelist<span class="token punctuation">.</span>append<span class="token punctuation">(</span>os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>root<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    nowImgList <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    <span class="token keyword">for</span> filename <span class="token keyword">in</span>  filelist<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> filename<span class="token punctuation">.</span>endswith<span class="token punctuation">(</span><span class="token string">'.md'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">if</span> <span class="token string">"_posts/"</span> <span class="token keyword">in</span> filename<span class="token punctuation">:</span>
+                post <span class="token operator">=</span> filename<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">"_posts/"</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+                <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>filename<span class="token punctuation">,</span> <span class="token string">"r"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+                    mdText <span class="token operator">=</span> f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    result <span class="token operator">=</span> re<span class="token punctuation">.</span>findall<span class="token punctuation">(</span><span class="token string">'!\[(.*?)\]\((.*?)\)'</span><span class="token punctuation">,</span> mdText<span class="token punctuation">)</span>
+
+                    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                        img_quote <span class="token operator">=</span> result<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+                        img_url <span class="token operator">=</span> result<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+                        nowImgList<span class="token punctuation">.</span>append<span class="token punctuation">(</span>img_url<span class="token punctuation">)</span>
+
+    downLoadList <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token builtin">set</span><span class="token punctuation">(</span>nowImgList<span class="token punctuation">)</span><span class="token punctuation">.</span>difference<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token builtin">set</span><span class="token punctuation">(</span>imgJson<span class="token punctuation">[</span><span class="token string">"img"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> downLoadList <span class="token operator">!=</span> <span class="token string">''</span><span class="token punctuation">:</span>
+        nowImgJson <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        nowImgJson<span class="token punctuation">[</span><span class="token string">"img"</span><span class="token punctuation">]</span> <span class="token operator">=</span> nowImgList
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'./imgList.json'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>nowImgJson<span class="token punctuation">,</span> f<span class="token punctuation">)</span>
+
+        downloadImg<span class="token punctuation">(</span>downLoadList<span class="token punctuation">)</span>
+
+<span class="token keyword">def</span> <span class="token function">downloadImg</span><span class="token punctuation">(</span>imgList<span class="token punctuation">)</span><span class="token punctuation">:</span>    
+    <span class="token keyword">for</span> img_url <span class="token keyword">in</span> imgList<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> img_url <span class="token operator">==</span> <span class="token string">''</span><span class="token punctuation">:</span> <span class="token comment">#判空</span>
+            <span class="token keyword">continue</span>
+        <span class="token comment"># img name spell</span>
+        urlname <span class="token operator">=</span> img_url<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">u"/"</span><span class="token punctuation">)</span>
+        img_name <span class="token operator">=</span> <span class="token builtin">str</span><span class="token punctuation">(</span>urlname<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token comment"># download img</span>
+        ipfs_gateWay <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'https://media.southfox.me/ipfs/'</span><span class="token punctuation">,</span> <span class="token string">'https://ipfs.io/ipfs/'</span><span class="token punctuation">,</span> <span class="token string">'https://ipfs.fleek.co/ipfs/'</span><span class="token punctuation">]</span>
+        <span class="token keyword">if</span> <span class="token string">'ipfs'</span> <span class="token keyword">in</span> img_url<span class="token punctuation">:</span>
+            img_url <span class="token operator">=</span> random<span class="token punctuation">.</span>choice<span class="token punctuation">(</span>ipfs_gateWay<span class="token punctuation">)</span> <span class="token operator">+</span> img_name
+
+        response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>img_url<span class="token punctuation">)</span> <span class="token comment">#根据自己图床链接进行选择</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Download '</span> <span class="token operator">+</span> img_url <span class="token operator">+</span> <span class="token string">'✔️'</span><span class="token punctuation">)</span>
+        <span class="token comment"># write to file</span>
+        f_img <span class="token operator">=</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'./'</span> <span class="token operator">+</span> img_name<span class="token punctuation">,</span> <span class="token string">'wb'</span><span class="token punctuation">)</span>
+        f_img<span class="token punctuation">.</span>write<span class="token punctuation">(</span>response<span class="token punctuation">.</span>content<span class="token punctuation">)</span>
+        f_img<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    filelist <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token keyword">if</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>exists<span class="token punctuation">(</span><span class="token string">'./imgList.json'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        imgJson <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'./imgList.json'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+            imgJson <span class="token operator">=</span> json<span class="token punctuation">.</span>load<span class="token punctuation">(</span>f<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        imgJson <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        imgJson<span class="token punctuation">[</span><span class="token string">"img"</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    backupImg<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>简单来说，就是用扫描 <code>source</code> 目录下的的 <code>.md</code> 文件，并用正则扫描 <code>![]()</code> 这种形式的图片语法并存起来。</p>
+<p>然后进行图片抓取，其中 <code>if &#39;ipfs&#39; in img_url:</code> 这里是判断链接是否是 <code>ipfs</code> 的图床链接，要是你的图片链接只来源一个图床（例如 <code>sm.ms</code> 可以写 <code>if &#39;loli.net&#39; in img_url:</code>），请自行替换，要是图床来源杂乱就……不进行判断抓取下来自己手动选择吧。</p>
+<p>然后结束后会生成一个 <code>imgList.json</code> 文件，里面是已经抓取的图片，以后要是再进行抓取的话就通过这文件和新扫描的文件列表做集合的求差处理（<code>downLoadList = list(set(nowImgList).difference((set(imgJson[&quot;img&quot;]))))</code>），以来判断要新抓取那些文件……</p>
+<p><del>总之写的非常初学者……应该都是比较好理解的吧（</del></p>
+<p>很多都是为了 <code>GitHub Actions</code> 准备的，不知道是什么的话可以看<a href="../Github-Actions-%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2">这</a>。</p>
+<h2 id="IPFS-博客"><a href="#IPFS-博客" class="headerlink" title="IPFS 博客"></a>IPFS 博客</h2><p>如果你有一个静态博客，为何不考虑放置在 <code>IPFS</code> 网络上呢？</p>
+<p>首先要更改的就是博客的连接……要前往博客模板把其里面的所有连接都改成<strong>相对连接</strong>的形式，否则托管时会根本加载不了 <code>css</code> 或者 <code>js</code> 文件。</p>
+<p>接着前往 <a target="_blank" rel="noopener" href="https://fleek.co/">fleek</a> 并注册，然后在托管一栏中选择你放置静态网页的仓库（或分支），就能简单的部署到 <code>IPFS</code> 网络上了，要是想启用 <code>IPNS</code> ，也可以在 <code>SETTINGS -&gt; Domain Management -&gt; Add Custom Domain</code> 增加一个博客域名，然后在新增域名的更多选项里选择 <code>Dns Link</code> ，会自动弹出个窗口绑定域名。把这个 <code>CNAME</code> 选项绑定到你的域名管理商即可。（<code>Cloudflare</code> 我默认关了代理，要是绑定迟迟不能生效的话可以试着关掉 <code>Cloudflare</code> 代理试试）</p>
+<h2 id="实际使用"><a href="#实际使用" class="headerlink" title="实际使用"></a>实际使用</h2><h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><p><a target="_blank" rel="noopener" href="https://github.com/ipfs/ipfs-desktop">客户端下载地址</a></p>
+<p>不一定需要个网关，实际自己直接用用也是不错的，就是使用时会不停的交换数据，对电量和流量的消耗也很大……如果所在网络对 <code>P2P</code> 协议限制比较严格那可就要小心了……</p>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p><a target="_blank" rel="noopener" href="https://github.com/ipfs/go-ipfs">服务端下载地址</a></p>
+<p>如果你手头上有闲置的服务器，为什么不尝试部署一个 <code>IPFS</code> 服务呢？</p>
+<p>将文件放一份备份在自己的服务器上，或是搭建一个自用网关，也能有效提升使用体验（当然要服务器性能足够）。</p>
+<h2 id="文件币"><a href="#文件币" class="headerlink" title="文件币"></a>文件币</h2><p>哦……所以还是谈论到这个话题了……</p>
+<p><code>filecoin</code> ，是一个建立在 <code>IPFS</code> 上的加密货币项目（大概）？</p>
+<p>只要你抵押出相当容量的硬盘，就能进行挖矿了……这似乎也是去年硬盘涨价风潮原因之一？<del>（那更该用了，这是拿大众的钱买硬盘啊）</del></p>
+<p>但现在这币似乎状态不好的样子，价格跌倒了顶值的十分之一。虽然我对加密货币不感冒，但我还是想 <code>fil</code> 涨起来的，毕竟币涨了也是能吸引更多人提供存储空间的，经营托管服务的服务商也能通过 <code>fil</code> 进行回本。</p>
+<p>但是不考虑加密货币也罢， <code>IPFS</code> 做为一个开源项目，如果其足够好，也能自己证明自己，<code>IPFS</code> 能取代 <code>HTTP</code> 成为下一代网络标准吗？天知道。</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="../../.././2022/03/Github-Actions-浅尝辄止/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2022/02/22年2月梦记/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+    <script src="https://giscus.app/client.js"
+            data-repo="SouthFox-D/SouthFox-D.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+            data-category="博客评论"
+            data-category-id="DIC_kwDODaJZAM4CA7bf"
+            data-mapping="og:title"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2022-03-06 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>19</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/技术/">技术<span>12</span></a></li> <li><a href="/tags/IPFS/">IPFS<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">目录</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#IPFS"><span class="toc-article-text">IPFS</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E8%83%BD%E5%81%9A%E5%95%A5"><span class="toc-article-text">能做啥</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E7%BD%91%E5%85%B3"><span class="toc-article-text">网关</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#IPNS"><span class="toc-article-text">IPNS</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#IPFS-%E5%9B%BE%E5%BA%8A"><span class="toc-article-text">IPFS 图床</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#web3-storage"><span class="toc-article-text">web3.storage</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#fleek-co"><span class="toc-article-text">fleek.co</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Pinata"><span class="toc-article-text">Pinata</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%85%AC%E5%85%B1%E7%BD%91%E5%85%B3"><span class="toc-article-text">公共网关</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#PicGo"><span class="toc-article-text">PicGo</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#Python"><span class="toc-article-text">Python</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%BF%AB%E6%8D%B7%E5%91%BD%E4%BB%A4"><span class="toc-article-text">快捷命令</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Pin-%E4%B8%8E%E5%A4%B1%E6%95%88"><span class="toc-article-text">Pin 与失效</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%A4%87%E4%BB%BD"><span class="toc-article-text">备份</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#IPFS-%E5%8D%9A%E5%AE%A2"><span class="toc-article-text">IPFS 博客</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8"><span class="toc-article-text">实际使用</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-article-text">客户端</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="toc-article-text">服务端</span></a></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E6%96%87%E4%BB%B6%E5%B8%81"><span class="toc-article-text">文件币</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+
+
+
+
+</body>
+   </html>

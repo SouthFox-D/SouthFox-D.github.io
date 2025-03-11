@@ -1,0 +1,336 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Emacs随记（1） | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="小心，传教士来了.jpg">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2022/04/Emacs随记（1）/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  <meta name=fediverse:creator content="SouthFox@foxsay.southfox.me">
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Emacs随记（1）</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>小心，传教士来了.jpg</p>
+<span id="more"></span>
+
+<p><code>Emacs</code>，一款诞生于 <code>1975</code> 年的开源软件，时间并没有葬送这款软件，直至现在也依然也有不少“奇怪”的人在日常使用它。</p>
+<h2 id="Why"><a href="#Why" class="headerlink" title="Why?"></a>Why?</h2><p>讲为什么要使用 <code>Emacs</code> 不如先讲讲为什么不用 <code>Emacs</code>。</p>
+<ul>
+<li>它对 <code>Win</code> 系统支持不是很友好</li>
+<li>全按键操作很劝退从微机课学起电脑的“现代”信息原住民</li>
+<li>如果说 <code>Vim</code> 是小众编辑器，那么 <code>Emacs</code> 更是小众中的小众，导致很多东西都要自己去翻找</li>
+<li>经常出现一些让人恼火的小问题，结合上点更让人吐血</li>
+</ul>
+<p>还不够劝退吗？那为什么我还要用 <code>Emacs</code> 呢？</p>
+<ul>
+<li>它的内存占用，4G 的电脑也带的动，我是受够了套壳框架带来的吃内存大户了……浏览器 + <code>VS Code</code> 已经挤得我电脑动弹不得了。</li>
+<li>它的哲学，如果说 <code>Linux</code> 的哲学是一切皆文件，那么 <code>Emacs</code> 的哲学就是对于文本的操控了，将电子邮件导入到待办事项，把即时通讯里的通天记录裁剪到收藏里，就连近些火热的双链也有人去实现……因为这些都是“文本”，所以他们就可以被 <code>Emacs</code> 各个包处理。这些功能要让其他软件去实现，非得用上不同软件拼凑不可，同时他们之间的联系也很脆弱，全看软件开发者是否开放……</li>
+<li>它的智慧，虽然我现在也是摸索着用了一段时间，到现在也才是打开次数跟 <code>VS Code</code> 持平的状态，不过我也足以感受到其中的“智慧”了，它确实很适合培养所谓的“计算机素养”，哪怕用它的人中很多并不是程序员。</li>
+</ul>
+<h2 id="Why-Doom-Emacs？"><a href="#Why-Doom-Emacs？" class="headerlink" title="Why Doom Emacs？"></a>Why Doom Emacs？</h2><p>现在我在用的是 <a target="_blank" rel="noopener" href="https://github.com/hlissner/doom-emacs">Doom Emacs</a> ，他们之间的关系有点像是 <code>Minecraft</code> 和 <code>整合包</code> 之间的关系，原版生存固然足够好玩且富有深度了，但还是太朴素了，想弄点更大的乐子那自然是往里灌上一众 <code>MOD</code> 了。而配好一整套相关 <code>MOD</code> 的即是整合包了，<code>Doom Emacs</code> 在各种配置整合包里算得上是高效和……轻量？（毕竟我也没用过其他的配置）</p>
+<p>同时其中还附带了 <code>evil</code> 这个包，可以让 <code>Emacs</code> 用上 <code>Vim</code> 的操作，想想这确实挺“邪恶”，<code>Emacs</code> 和 <code>Vim</code> 之间的“圣战”一直打得昏天暗地，谁知其中竟然分裂出一个教派结合了两方？也确实不愧于 <code>Doom</code> 之名啊……</p>
+<p>能蹭上 <code>Vim</code> 的操作也是好事，因为 <code>Vim</code> 的相关资料比 <code>Emacs</code> 多上许多，比较好找到相关资料，也避免了 <a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/Emacs#Emacs%E5%B0%8F%E6%8B%87%E6%8C%87">Emacs 小拇指</a>症状。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>Emacs</code> 在各种 <code>Linux</code> 发行版自带的包管理应该能轻松找到（<code>Mac OS</code> 应该也能简单安装到），安装后运行一次就会生成 <code>~/.emacs.d</code> 路径下的文件夹。</p>
+<p>确认文件夹存在后运行：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone <span class="token parameter variable">--depth</span> <span class="token number">1</span> https://github.com/hlissner/doom-emacs ~/.emacs.d
+
+~/.emacs.d/bin/doom <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>其中安装会到 <code>GitHub</code> 下载一两百个包，所以提前配置好一个科学网络环境是必须的……</p>
+<p>安装结束后，运行后并且……！</p>
+<h3 id="存活下来"><a href="#存活下来" class="headerlink" title="存活下来"></a>存活下来</h3><h4 id="按键缩写"><a href="#按键缩写" class="headerlink" title="按键缩写"></a>按键缩写</h4><p>大部分资料都遵循以下缩写——</p>
+<table>
+<thead>
+<tr>
+<th>Emacs 功能键</th>
+<th>缩写</th>
+<th>对应键盘按键(PC&#x2F;Mac)</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Space</td>
+<td>Spc</td>
+<td>Space(空格)</td>
+</tr>
+<tr>
+<td>Control</td>
+<td>C</td>
+<td>Ctrl &#x2F; Control</td>
+</tr>
+<tr>
+<td>Meta</td>
+<td>M</td>
+<td>Alt &#x2F; Option</td>
+</tr>
+<tr>
+<td>Shift</td>
+<td>S</td>
+<td>Shift &#x2F; Shift</td>
+</tr>
+</tbody></table>
+<p>例如：</p>
+<p> <code>Spc .</code> 是先按下 <code>空格</code> 键<strong>再</strong>按下 <code>.</code> 键。</p>
+<p><code>M-x</code> 是按下 <code>Alt</code> 键<strong>同时</strong>按下 <code>x</code> 键。</p>
+<h4 id="实际操作"><a href="#实际操作" class="headerlink" title="实际操作"></a>实际操作</h4><p>对于入门而言，使用 <code>S .</code> 即可打开文件管理，之后就可以选择一个文件进行打开了。</p>
+<p><code>Vim</code> 编辑模式可能对于入门来说也是有点痛苦，不过初始时掌握 <code>i</code> 和 <code>:w</code> 也够用了。</p>
+<p>不用特地去记快捷键，使用 <code>M-x</code> 搜索相应的命令大部分足够了，当知道自己在高频使用某个命令，那么这时候才稍微用一下快捷键并记忆就足够了。</p>
+<p>找到自己想要的功能用兴趣做导向是最优的，<code>org-mode</code> 就是个不错的选择。</p>
+<h4 id="参考教程"><a href="#参考教程" class="headerlink" title="参考教程"></a>参考教程</h4><p><a target="_blank" rel="noopener" href="https://github.com/overmind1980/oeasyvim">Vim 教程 - Oeasy</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/playlist?list=PLhXZp00uXBk4np17N39WvB80zgxlZfVwj">Doom Emacs 视频教程 - Zaiste Programming</a> <a target="_blank" rel="noopener" href="https://space.bilibili.com/432142040/channel/seriesdetail?sid=432482">B 站搬运</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/redguardtoo/mastering-emacs-in-one-year-guide/blob/master/guide-zh.org">一年成为Emacs高手 (像神一样使用编辑器)</a></p>
+<p><a target="_blank" rel="noopener" href="https://manateelazycat.github.io/emacs/2018/12/11/study-emacs.html">怎么学习 Emacs ? 达到真正融汇贯通的境界? </a></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>先写成这样吧，下篇大概会写点 <code>org-roam</code> 和 <code>org-mode</code> 相关配置……不过也得等我自己先折腾了，有东西能写了才能写……</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a href="../../.././2022/05/我拿Emacs做什么暨Emacs随记（2）/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2022/04/搭建Matrix即时通信服务/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+    <script src="https://giscus.app/client.js"
+            data-repo="SouthFox-D/SouthFox-D.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+            data-category="博客评论"
+            data-category-id="DIC_kwDODaJZAM4CA7bf"
+            data-mapping="og:title"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2022-04-19 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>19</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/Emacs/">Emacs<span>7</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">目录</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Why"><span class="toc-article-text">Why?</span></a></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#Why-Doom-Emacs%EF%BC%9F"><span class="toc-article-text">Why Doom Emacs？</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-article-text">安装</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%AD%98%E6%B4%BB%E4%B8%8B%E6%9D%A5"><span class="toc-article-text">存活下来</span></a><ol class="toc-article-child"><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E6%8C%89%E9%94%AE%E7%BC%A9%E5%86%99"><span class="toc-article-text">按键缩写</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%AE%9E%E9%99%85%E6%93%8D%E4%BD%9C"><span class="toc-article-text">实际操作</span></a></li><li class="toc-article-item toc-article-level-4"><a class="toc-article-link" href="#%E5%8F%82%E8%80%83%E6%95%99%E7%A8%8B"><span class="toc-article-text">参考教程</span></a></li></ol></li></ol></li><li class="toc-article-item toc-article-level-2"><a class="toc-article-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-article-text">总结</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+
+
+
+
+</body>
+   </html>
