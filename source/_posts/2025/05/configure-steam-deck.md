@@ -18,7 +18,7 @@ category: 技术
 
 ### 折腾，开始！
 
-Steam Deck 默认搭载了基于 Arch 的系统（BTW...） SteamOS ，除了一些刚出的热门「大作」和不愿兼容反作弊的游戏， Steam Deck 的运行效果已经很难让人相信时一台 Linux 游戏机了。
+Steam Deck 默认搭载了基于 Arch 的系统（BTW...） SteamOS ，除了一些刚出的热门「大作」和不愿兼容反作弊的游戏， Steam Deck 的运行效果已经很难让人相信是一台 Linux 游戏机了。
 
 不过既然基于 Arch 那么就该让我鼓捣下了吧，没成想这成为了我这半年最大折腾的开始……
 
