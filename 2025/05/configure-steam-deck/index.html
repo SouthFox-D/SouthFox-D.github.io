@@ -1,0 +1,416 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="pragma" content="no-cache">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta http-equiv="expires" content="0">
+  
+  <title>Steam Deck 可劲折腾 | Foxhole</title>
+  <meta name="author" content="SouthFox">
+  
+  <meta name="description" content="多年以后，面对着 steam deck，我都将想起起一七一八年在 linux 为了打游戏的折腾的那个下午，什么 prime-run 啊什么调 winecfg 啊……
+
+谁能想象 Steam Deck 就这么成为了 echo &amp;quot;$(( $(date +%Y) + 1 )) is the year for Linux gaming\!&amp;quot; 最有力的推手呢？">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+    <meta property="og:title" content="2025/05/configure-steam-deck/">
+    <meta property="og:site_name" content="Foxhole">
+  
+  <meta name=fediverse:creator content="SouthFox@foxsay.southfox.me">
+  
+    <meta property="og:image" content="https://blog.southfox.me/favicon.png">
+  
+  
+
+  
+  
+    <link href="../../.././favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="../../.././css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="../../.././css/font-awesome.css" media="screen" type="text/css">
+  <script src="../../.././js/jquery-2.0.3.min.js"> async</script>
+<meta name="generator" content="Hexo 7.3.0"><link rel="alternate" href="rss2.xml" title="Foxhole" type="application/rss+xml">
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="../../.././">Foxhole</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="../../.././archives" title="All the articles.">
+			  <i class=""></i>归档
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././categories" title="All the categories.">
+			  <i class=""></i>分类
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././tags" title="All the tags.">
+			  <i class=""></i>标签
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././rss2.xml" title="Subscribe me.">
+			  <i class=""></i>RSS
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././friends" title="朋友们">
+			  <i class=""></i>友链
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././foxsay" title="狐狸怎么叫？">
+			  <i class=""></i>狐说
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././travellings" title="一群狼走得更远">
+			  <i class="fas fa-subway"></i>开往
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="../../.././go" title="十年之约">
+			  <i class="fas fa-bahai"></i>虫洞
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">
+			<h1> Steam Deck 可劲折腾</h1>
+		</div>
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <blockquote>
+<p>多年以后，面对着 steam deck，我都将想起起一七一八年在 linux 为了打游戏的折腾的那个下午，什么 prime-run 啊什么调 winecfg 啊……</p>
+</blockquote>
+<p>谁能想象 Steam Deck 就这么成为了 <code>echo &quot;$(( $(date +%Y) + 1 )) is the year for Linux gaming\!&quot;</code> 最有力的推手呢？</p>
+<span id="more"></span>
+
+<h3 id="折腾，开始！"><a href="#折腾，开始！" class="headerlink" title="折腾，开始！"></a>折腾，开始！</h3><p>Steam Deck 默认搭载了基于 Arch 的系统（BTW…） SteamOS ，除了一些刚出的热门「大作」和不愿兼容反作弊的游戏， Steam Deck 的运行效果已经很难让人相信是一台 Linux 游戏机了。</p>
+<p>不过既然基于 Arch 那么就该让我鼓捣下了吧，没成想这成为了我这半年最大折腾的开始……</p>
+<h3 id="打折教父的魔法"><a href="#打折教父的魔法" class="headerlink" title="打折教父的魔法"></a>打折教父的魔法</h3><p>一开始我还时把 Steam Deck 当成一个普通的 Linux 设备把玩的，首先按下 Steam 键到电源设置进入桌面环境，熟悉的 KDE 桌面铺面而来，然后就是打开里面的终端然后开始安装 Emacs （不然呢？），<br>然后发现 Steam Deck 首先需要设置一个密码然后关闭只读模式（那时我对不可变系统没什么概念）执行一些换源操作 balabala ，大概差不多是这个样子：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">passwd</span>
+<span class="token function">sudo</span> steamos-readonly disable
+<span class="token function">sudo</span> pacman-key <span class="token parameter variable">--init</span>
+<span class="token function">sudo</span> pacman-key <span class="token parameter variable">--populate</span> archlinux
+<span class="token function">sudo</span> pacman-key <span class="token parameter variable">--populate</span> holo
+<span class="token function">sudo</span> pacman <span class="token parameter variable">-S</span> emacs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>执行完后就装上了熟悉的紫薯布丁，然后顺便想着配配代理吧然后装上 yay 开始鼓捣，最后发现菜单里更新通道可以选择稳定还是预览，作为一个滚动更新享受者我就换成了预览通道，安装更新，重启之后继续用着几天我就发现不对劲了：</p>
+<blockquote class="mastodon-embed" data-embed-url="https://foxsay.southfox.me/@SouthFox/112997597522720272/embed" style="background: #FCF8FF; border-radius: 8px; border: 1px solid #C9C4DA; margin: 0; max-width: 540px; min-width: 270px; overflow: hidden; padding: 0;"> <a href="https://foxsay.southfox.me/@SouthFox/112997597522720272" target="_blank" style="align-items: center; color: #1C1A25; display: flex; flex-direction: column; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Roboto, sans-serif; font-size: 14px; justify-content: center; letter-spacing: 0.25px; line-height: 20px; padding: 24px; text-decoration: none;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 79 75"><path d="M63 45.3v-20c0-4.1-1-7.3-3.2-9.7-2.1-2.4-5-3.7-8.5-3.7-4.1 0-7.2 1.6-9.3 4.7l-2 3.3-2-3.3c-2-3.1-5.1-4.7-9.2-4.7-3.5 0-6.4 1.3-8.6 3.7-2.1 2.4-3.1 5.6-3.1 9.7v20h8V25.9c0-4.1 1.7-6.2 5.2-6.2 3.8 0 5.8 2.5 5.8 7.4V37.7H44V27.1c0-4.9 1.9-7.4 5.8-7.4 3.5 0 5.2 2.1 5.2 6.2V45.3h8ZM74.7 16.6c.6 6 .1 15.7.1 17.3 0 .5-.1 4.8-.1 5.3-.7 11.5-8 16-15.6 17.5-.1 0-.2 0-.3 0-4.9 1-10 1.2-14.9 1.4-1.2 0-2.4 0-3.6 0-4.8 0-9.7-.6-14.4-1.7-.1 0-.1 0-.1 0s-.1 0-.1 0 0 .1 0 .1 0 0 0 0c.1 1.6.4 3.1 1 4.5.6 1.7 2.9 5.7 11.4 5.7 5 0 9.9-.6 14.8-1.7 0 0 0 0 0 0 .1 0 .1 0 .1 0 0 .1 0 .1 0 .1.1 0 .1 0 .1.1v5.6s0 .1-.1.1c0 0 0 0 0 .1-1.6 1.1-3.7 1.7-5.6 2.3-.8.3-1.6.5-2.4.7-7.5 1.7-15.4 1.3-22.7-1.2-6.8-2.4-13.8-8.2-15.5-15.2-.9-3.8-1.6-7.6-1.9-11.5-.6-5.8-.6-11.7-.8-17.5C3.9 24.5 4 20 4.9 16 6.7 7.9 14.1 2.2 22.3 1c1.4-.2 4.1-1 16.5-1h.1C51.4 0 56.7.8 58.1 1c8.4 1.2 15.5 7.5 16.6 15.6Z" fill="currentColor"/></svg> <div style="color: #787588; margin-top: 16px;">Post by @SouthFox@foxsay.southfox.me</div> <div style="font-weight: 500;">View on Mastodon</div> </a> </blockquote> <script data-allowed-prefixes="https://foxsay.southfox.me/" async src="https://foxsay.southfox.me/embed.js"></script>
+
+<p>没成想重启之后发现所有的东西都消失了，我的紫薯布丁还有 yay 的一众配置，最后东翻翻西翻翻才发现 Steam Deck 的升级策略类似现在某些安卓手机厂商的 AB 升级策略，系统分区会制作 AB 两份，升级时处在 A 状态时只升 B 完成升级后切换成 B ，好处就是可以优雅回滚，坏处就是占用双份空间还有……配置会被刷掉。感觉就像是灰姑娘里仙女教母施展的魔法，过了零点，所有东西都将回归原样。</p>
+<h3 id="感觉不太能开箱的箱子"><a href="#感觉不太能开箱的箱子" class="headerlink" title="感觉不太能开箱的箱子"></a>感觉不太能开箱的箱子</h3><p>这可就傻眼了，没办法只好去找找替代方案了：</p>
+<blockquote class="mastodon-embed" data-embed-url="https://foxsay.southfox.me/@SouthFox/113061467070774840/embed" style="background: #FCF8FF; border-radius: 8px; border: 1px solid #C9C4DA; margin: 0; max-width: 540px; min-width: 270px; overflow: hidden; padding: 0;"> <a href="https://foxsay.southfox.me/@SouthFox/113061467070774840" target="_blank" style="align-items: center; color: #1C1A25; display: flex; flex-direction: column; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Roboto, sans-serif; font-size: 14px; justify-content: center; letter-spacing: 0.25px; line-height: 20px; padding: 24px; text-decoration: none;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 79 75"><path d="M63 45.3v-20c0-4.1-1-7.3-3.2-9.7-2.1-2.4-5-3.7-8.5-3.7-4.1 0-7.2 1.6-9.3 4.7l-2 3.3-2-3.3c-2-3.1-5.1-4.7-9.2-4.7-3.5 0-6.4 1.3-8.6 3.7-2.1 2.4-3.1 5.6-3.1 9.7v20h8V25.9c0-4.1 1.7-6.2 5.2-6.2 3.8 0 5.8 2.5 5.8 7.4V37.7H44V27.1c0-4.9 1.9-7.4 5.8-7.4 3.5 0 5.2 2.1 5.2 6.2V45.3h8ZM74.7 16.6c.6 6 .1 15.7.1 17.3 0 .5-.1 4.8-.1 5.3-.7 11.5-8 16-15.6 17.5-.1 0-.2 0-.3 0-4.9 1-10 1.2-14.9 1.4-1.2 0-2.4 0-3.6 0-4.8 0-9.7-.6-14.4-1.7-.1 0-.1 0-.1 0s-.1 0-.1 0 0 .1 0 .1 0 0 0 0c.1 1.6.4 3.1 1 4.5.6 1.7 2.9 5.7 11.4 5.7 5 0 9.9-.6 14.8-1.7 0 0 0 0 0 0 .1 0 .1 0 .1 0 0 .1 0 .1 0 .1.1 0 .1 0 .1.1v5.6s0 .1-.1.1c0 0 0 0 0 .1-1.6 1.1-3.7 1.7-5.6 2.3-.8.3-1.6.5-2.4.7-7.5 1.7-15.4 1.3-22.7-1.2-6.8-2.4-13.8-8.2-15.5-15.2-.9-3.8-1.6-7.6-1.9-11.5-.6-5.8-.6-11.7-.8-17.5C3.9 24.5 4 20 4.9 16 6.7 7.9 14.1 2.2 22.3 1c1.4-.2 4.1-1 16.5-1h.1C51.4 0 56.7.8 58.1 1c8.4 1.2 15.5 7.5 16.6 15.6Z" fill="currentColor"/></svg> <div style="color: #787588; margin-top: 16px;">Post by @SouthFox@foxsay.southfox.me</div> <div style="font-weight: 500;">View on Mastodon</div> </a> </blockquote> <script data-allowed-prefixes="https://foxsay.southfox.me/" async src="https://foxsay.southfox.me/embed.js"></script>
+
+<p>然后发现新版本的 SteamOS 内置了 distrobox 这个程序可以用容器建立一个系统在里面执行一个程序，折腾来折腾去发现 distrobox 里带 systemd 的系统总有些问题，最后发现既然 distrobox 依托于 podman 为什么不直接在外面操作 podman 呢？</p>
+<blockquote class="mastodon-embed" data-embed-url="https://foxsay.southfox.me/@SouthFox/113091661012546611/embed" style="background: #FCF8FF; border-radius: 8px; border: 1px solid #C9C4DA; margin: 0; max-width: 540px; min-width: 270px; overflow: hidden; padding: 0;"> <a href="https://foxsay.southfox.me/@SouthFox/113091661012546611" target="_blank" style="align-items: center; color: #1C1A25; display: flex; flex-direction: column; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Roboto, sans-serif; font-size: 14px; justify-content: center; letter-spacing: 0.25px; line-height: 20px; padding: 24px; text-decoration: none;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 79 75"><path d="M63 45.3v-20c0-4.1-1-7.3-3.2-9.7-2.1-2.4-5-3.7-8.5-3.7-4.1 0-7.2 1.6-9.3 4.7l-2 3.3-2-3.3c-2-3.1-5.1-4.7-9.2-4.7-3.5 0-6.4 1.3-8.6 3.7-2.1 2.4-3.1 5.6-3.1 9.7v20h8V25.9c0-4.1 1.7-6.2 5.2-6.2 3.8 0 5.8 2.5 5.8 7.4V37.7H44V27.1c0-4.9 1.9-7.4 5.8-7.4 3.5 0 5.2 2.1 5.2 6.2V45.3h8ZM74.7 16.6c.6 6 .1 15.7.1 17.3 0 .5-.1 4.8-.1 5.3-.7 11.5-8 16-15.6 17.5-.1 0-.2 0-.3 0-4.9 1-10 1.2-14.9 1.4-1.2 0-2.4 0-3.6 0-4.8 0-9.7-.6-14.4-1.7-.1 0-.1 0-.1 0s-.1 0-.1 0 0 .1 0 .1 0 0 0 0c.1 1.6.4 3.1 1 4.5.6 1.7 2.9 5.7 11.4 5.7 5 0 9.9-.6 14.8-1.7 0 0 0 0 0 0 .1 0 .1 0 .1 0 0 .1 0 .1 0 .1.1 0 .1 0 .1.1v5.6s0 .1-.1.1c0 0 0 0 0 .1-1.6 1.1-3.7 1.7-5.6 2.3-.8.3-1.6.5-2.4.7-7.5 1.7-15.4 1.3-22.7-1.2-6.8-2.4-13.8-8.2-15.5-15.2-.9-3.8-1.6-7.6-1.9-11.5-.6-5.8-.6-11.7-.8-17.5C3.9 24.5 4 20 4.9 16 6.7 7.9 14.1 2.2 22.3 1c1.4-.2 4.1-1 16.5-1h.1C51.4 0 56.7.8 58.1 1c8.4 1.2 15.5 7.5 16.6 15.6Z" fill="currentColor"/></svg> <div style="color: #787588; margin-top: 16px;">Post by @SouthFox@foxsay.southfox.me</div> <div style="font-weight: 500;">View on Mastodon</div> </a> </blockquote> <script data-allowed-prefixes="https://foxsay.southfox.me/" async src="https://foxsay.southfox.me/embed.js"></script>
+
+<p>但最后发现 podman 也有些问题，首先就是 podman 即使设置为 <code>restart-policy=always</code> 的 pod 在开机时也不会拉起，因为这是由一个 systemd service 执行的，而这个 service 也是 steamOS 的一部分，即使 enable 后在系统更新后也会回归原样（那个时候还不晓得 <code>/etc/systemd/system</code> 的目录是不受升级策略影响的）……</p>
+<p>折腾到最后发现其实也不需要 root 权限执行代理程序，因为 Steam Deck 在配置菜单里可以指定代理至少让 Steam 的流量全走指定的代理，同时还发现 <code>/home</code> 目录不受更新影响，然后发现 podman 也带了一个快要被废弃的导出 systemd 配置生成功能，那就放到用户级别的 systemd service 文件到 <code>~/.config/systemd/user</code> 里设成 enable 就能开机自动运行了，大概像这样：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">podman</span> create <span class="token parameter variable">--name</span> proxy xxx:latest
+<span class="token function">podman</span> generate systemd --restart-policy<span class="token operator">=</span>always <span class="token parameter variable">-t</span> <span class="token number">1</span> proxy <span class="token operator">></span> ~/.config/systemd/proxy.service
+systemctl <span class="token parameter variable">--uesr</span> daemon-reload
+systemctl <span class="token parameter variable">--user</span> <span class="token builtin class-name">enable</span> proxy.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>就这样，一切都很美好。</p>
+<h3 id="地下室光头你害人不浅"><a href="#地下室光头你害人不浅" class="headerlink" title="地下室光头你害人不浅"></a>地下室光头你害人不浅</h3><p>但美好总不能长久，因为那段时间以撒的结合推出了联机更新，了解里面联机用的是 P2P 模式所以就动了用 Zerotier 组 VPN 来方便联机的念头，联机效果很不错但发现一个严重问题就是 Zerotier 需要 Root 权限……</p>
+<p>虽然求快直接使用 pacman 安装的方式，但这总会消失（<code>/usr/bin</code> 目录难逃更新毒手），所以一边玩着以撒一边寻找方案，最后在互联网搜索到一篇文章 <a target="_blank" rel="noopener" href="https://wimpysworld.com/posts/install-zerotier-on-steamdeck/">Installing ZeroTier on Steam Deck</a> 里面提到了 <a target="_blank" rel="noopener" href="https://github.com/ValShaped/rwfus">rwfus</a> 项目。里面有一些脚本可以保持一些应用逃出更新策略，但这个项目基本就是很多 bash 黑魔法同时项目主页提到了不能执行 <code>sudo pcaman -Syu</code> 否则系统绝对会出问题，在 issues 里也看到了相应的案例，所以对直接用这个项目还是有点发怵。</p>
+<p>但这些项目也同时推荐的 nix 这个选择，也看到了一些消息高版本 SteamOS 放行了 &#x2F;nix 目录方便用 nix 安装，所以……</p>
+<blockquote class="mastodon-embed" data-embed-url="https://foxsay.southfox.me/@SouthFox/113311627550276261/embed" style="background: #FCF8FF; border-radius: 8px; border: 1px solid #C9C4DA; margin: 0; max-width: 540px; min-width: 270px; overflow: hidden; padding: 0;"> <a href="https://foxsay.southfox.me/@SouthFox/113311627550276261" target="_blank" style="align-items: center; color: #1C1A25; display: flex; flex-direction: column; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Roboto, sans-serif; font-size: 14px; justify-content: center; letter-spacing: 0.25px; line-height: 20px; padding: 24px; text-decoration: none;"> <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32" height="32" viewBox="0 0 79 75"><path d="M63 45.3v-20c0-4.1-1-7.3-3.2-9.7-2.1-2.4-5-3.7-8.5-3.7-4.1 0-7.2 1.6-9.3 4.7l-2 3.3-2-3.3c-2-3.1-5.1-4.7-9.2-4.7-3.5 0-6.4 1.3-8.6 3.7-2.1 2.4-3.1 5.6-3.1 9.7v20h8V25.9c0-4.1 1.7-6.2 5.2-6.2 3.8 0 5.8 2.5 5.8 7.4V37.7H44V27.1c0-4.9 1.9-7.4 5.8-7.4 3.5 0 5.2 2.1 5.2 6.2V45.3h8ZM74.7 16.6c.6 6 .1 15.7.1 17.3 0 .5-.1 4.8-.1 5.3-.7 11.5-8 16-15.6 17.5-.1 0-.2 0-.3 0-4.9 1-10 1.2-14.9 1.4-1.2 0-2.4 0-3.6 0-4.8 0-9.7-.6-14.4-1.7-.1 0-.1 0-.1 0s-.1 0-.1 0 0 .1 0 .1 0 0 0 0c.1 1.6.4 3.1 1 4.5.6 1.7 2.9 5.7 11.4 5.7 5 0 9.9-.6 14.8-1.7 0 0 0 0 0 0 .1 0 .1 0 .1 0 0 .1 0 .1 0 .1.1 0 .1 0 .1.1v5.6s0 .1-.1.1c0 0 0 0 0 .1-1.6 1.1-3.7 1.7-5.6 2.3-.8.3-1.6.5-2.4.7-7.5 1.7-15.4 1.3-22.7-1.2-6.8-2.4-13.8-8.2-15.5-15.2-.9-3.8-1.6-7.6-1.9-11.5-.6-5.8-.6-11.7-.8-17.5C3.9 24.5 4 20 4.9 16 6.7 7.9 14.1 2.2 22.3 1c1.4-.2 4.1-1 16.5-1h.1C51.4 0 56.7.8 58.1 1c8.4 1.2 15.5 7.5 16.6 15.6Z" fill="currentColor"/></svg> <div style="color: #787588; margin-top: 16px;">Post by @SouthFox@foxsay.southfox.me</div> <div style="font-weight: 500;">View on Mastodon</div> </a> </blockquote> <script data-allowed-prefixes="https://foxsay.southfox.me/" async src="https://foxsay.southfox.me/embed.js"></script>
+
+<h3 id="Nix-，你是？不能忘记的人……"><a href="#Nix-，你是？不能忘记的人……" class="headerlink" title="Nix ，你是？不能忘记的人……"></a>Nix ，你是？不能忘记的人……</h3><p>所以最后就是鼓捣上了 Nix ，对 Nix 的印象还是来源查 Guix 资料顺带了解的，那时因为要用到 Guix 里的一些软件装上了 Guix 但只是浅尝辄止只当作简单包管理器来用。只晓得跟 Arch 一样教徒众多然后用一种「奇奇怪怪」语法写配置文件。</p>
+<p>在安装 Nix 时就遇到了很多问题，不停通过官方脚本直接安装不停调参数安装最后发现直接用相应项目 <a target="_blank" rel="noopener" href="https://github.com/DeterminateSystems/nix-installer">DeterminateSystems | nix-installer </a> 来是最合适 Steam Deck，同时很多问题都是网络问题，在前面弄个代理就少了很多问题。</p>
+<p>之后用 Nix home manager 加上当祈求者「求」着用 Nix 的好友帮忙下攒起了一份配置，但是 Nix home manager 只是针对用户级的配置，对于要用到 Root 权限的程序还是很困难，不过在 <a target="_blank" rel="noopener" href="https://github.com/numtide/system-manager">system manager</a> 这个项目的帮助下生成一些 service 文件到 <code>/etc/systemd/system</code> 目录并调用 <code>/nix/store</code> 下可执行文件的方式迂回实现了想要的功能。<a target="_blank" rel="noopener" href="https://git.southfox.me/southfox/.deck">配置仓库地址</a></p>
+<p>就这么用了几个月虽然甜蜜但还是有点摩擦：</p>
+<ul>
+<li><p>nix 对于[纯洁」的坚持像是到了洁癖的地步，因为换成了使用配置文件 cli 系的程序，不想用 sops 程序将加密后的配置放在仓库里。 nix 的配置是从 git 的 worktree 检出来的，没有 staged 的文件在后续是不能读到的。最后一种曲折的方式实现：在开始通过有值的配置文件替换准备好文件的模板，插值进去准备好后再 switch flake ，最后 git restore 恢复配置模板文件。</p>
+</li>
+<li><p>system manager 的逻辑是在生成 <code>/etc/.system-manager-static</code> 文件夹然后再链接到 <code>/etc/systemd/system</code> 等目录，而从两三个月前 <code>/etc/.system-manager-static</code> 好像也被升级策略制裁了导致撑不过系统升级，最近这些个月我还要在系统升级后进入桌面环境调用终端在 system manager 手动部署一次，感觉还是用着 nix 跟没用一样。</p>
+</li>
+</ul>
+<h3 id="Guix-，这会是最终的道路吗？"><a href="#Guix-，这会是最终的道路吗？" class="headerlink" title="Guix ，这会是最终的道路吗？"></a>Guix ，这会是最终的道路吗？</h3><p>在折腾 Nix 的同时 Guix 也没有放下，在慢慢用 Guix home 攒配置还有开发一些功能后，好感度慢慢加到终于触发了剧情，在这几天终于决定踢在 Steam Deck 踢掉 Nix 换成 Guix 。因为 Nix 设计上并不是一个完备的语言，连 system manager 这种扩展功能还要使用 Rust 来写，还有 Nix 对于纯洁的坚持对我也太难容忍了。</p>
+<p>所以在参考了一篇讲述如何安装 Nix 的博文 <a target="_blank" rel="noopener" href="https://determinate.systems/posts/nix-on-the-steam-deck">Nix on the Steam Deck</a> 照虎画猫的形式弄了下，遵循相同的逻辑在 &#x2F;home 目录建立目录存放文件然后在 guix-daemon 通过依赖关系 mount 到真实目录，脚本大致这样：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /home/gnu/store <span class="token parameter variable">-p</span>
+<span class="token function">mkdir</span> /home/var-guix
+
+<span class="token function">cat</span> <span class="token operator">></span> /etc/systemd/system/guix-directory.service <span class="token operator">&lt;&lt;</span><span class="token string">EOF
+[Unit]
+Description=Create a <span class="token variable"><span class="token variable">`</span>/gnu<span class="token variable">`</span></span> directory to be used for bind mounting
+PropagatesStopTo=guix-daemon.service
+PropagatesStopTo=gnu-store.mount
+PropagatesStopTo=var-guix.mount
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+ExecStart=steamos-readonly disable
+ExecStart=mkdir -vp /gnu
+ExecStart=chmod -v 0755 /gnu
+ExecStart=chown -v root /gnu
+ExecStart=chgrp -v root /gnu
+ExecStart=mkdir -vp /var/guix
+ExecStart=chmod -v 0755 /var/guix
+ExecStart=chown -v root /var/guix
+ExecStart=chgrp -v root /var/guix
+ExecStart=steamos-readonly enable
+RemainAfterExit=true
+EOF</span>
+
+<span class="token function">cat</span> <span class="token operator">></span> /etc/systemd/system/gnu.mount <span class="token operator">&lt;&lt;</span><span class="token string">EOF
+[Unit]
+Description=Mount <span class="token variable"><span class="token variable">`</span>/home/gnu<span class="token variable">`</span></span> on <span class="token variable"><span class="token variable">`</span>/gnu<span class="token variable">`</span></span>
+PropagatesStopTo=guix-daemon.service
+PropagatesStopTo=guix-directory.service
+After=guix-directory.service
+Requires=guix-directory.service
+ConditionPathIsDirectory=/gnu
+DefaultDependencies=no
+RequiredBy=guix-daemon.service
+
+[Mount]
+What=/home/gnu
+Where=/gnu
+Type=none
+DirectoryMode=0755
+Options=bind
+EOF</span>
+
+<span class="token function">cat</span> <span class="token operator">></span> /etc/systemd/system/var-guix.mount <span class="token operator">&lt;&lt;</span><span class="token string">EOF
+[Unit]
+Description=Mount <span class="token variable"><span class="token variable">`</span>/home/var-guix<span class="token variable">`</span></span> on <span class="token variable"><span class="token variable">`</span>/var/guix<span class="token variable">`</span></span>
+PropagatesStopTo=guix-daemon.service
+PropagatesStopTo=guix-directory.service
+After=guix-directory.service
+Requires=guix-directory.service
+ConditionPathIsDirectory=/var/guix
+DefaultDependencies=no
+RequiredBy=guix-daemon.service
+
+[Mount]
+What=/home/var-guix
+Where=/var/guix
+Type=none
+DirectoryMode=0755
+Options=bind
+EOF</span>
+
+<span class="token function">cat</span> <span class="token operator">></span> /etc/systemd/system/ensure-guix-symlinked.service <span class="token operator">&lt;&lt;</span><span class="token string">EOF
+[Unit]
+Description=Ensure Guix related units which are symlinked resolve
+After=gnu-store.mount
+After=var-guix.mount
+Requires=guix-directory.service
+Requires=gnu-store.mount
+Requires=var-guix.mount
+DefaultDependencies=no
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/systemctl daemon-reload
+
+[Install]
+WantedBy=sysinit.target
+EOF</span>
+
+systemctl daemon-reload
+systemctl <span class="token builtin class-name">enable</span> <span class="token parameter variable">--now</span> ensure-guix-symlinked.service.service
+
+<span class="token function">wget</span> <span class="token string">'https://git.savannah.gnu.org/gitweb/?p=guix.git;a=blob_plain;f=etc/guix-install.sh;hb=HEAD'</span> <span class="token parameter variable">-O</span> guix-install.sh
+<span class="token comment"># guix 安装时会在 /usr/local/bin/guix 创建 guix 软链接，虽然系统更新后</span>
+<span class="token comment"># /usr/local 下的目录会被重置掉，但现在暂时 disable readonly 来「欺骗」安装脚本</span>
+steamos-readonly disable
+<span class="token comment"># 使用 GUIX_ALLOW_OVERWRITE 环境变量来强制向已存在的 /gnu 目录安装</span>
+<span class="token assign-left variable">GUIX_ALLOW_OVERWRITE</span><span class="token operator">=</span>t <span class="token function">bash</span> guix-install.sh
+steamos-readonly <span class="token builtin class-name">enable</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>安期间因为不明原因导致安装脚本报错，这个时候重新安装得先 <code>systemctl stop gnu-store.mount</code> 关掉 <code>/gnu/store</code> 的只读挂载然后重新试一次。装完成后可以通过 <code>ls /gnu/store | wc -l</code> 和 <code>ls /home/gnu/store | wc -l</code> 对比两边的数据是同步且挂载是有效的。安装后最好通过 reboot 命令手动重启而不要通过 Steam Deck 的更新重启，因为通过 Steam Deck 的更新重启后我发现之前的对 <code>/etc/systemd/system</code> 的修改全都消失了（这就是为什么会有上面这个脚本），看起来 Steam Deck 的更新流程有点奇怪的魔法，之后通过再试一次然后通过 reboot 的方式才看到修改的内容留着。</p>
+<p>最后的问题就是在 <code>/usr/local/bin</code> 路径会被清掉所以之后要用到 guix 程序时替换成绝对路径 <code>/var/guix/profiles/per-user/root/current-guix/bin/guix</code> 或使用别名，另外在执行 <code>guix pull</code> 完成后还发现了 <code>/var/guix/profiles/per-user/root/current-guix</code> 并没有指向最新 profile 的问题（问题，问题还是问题！），出现这种情况得自己手动改动下。</p>
+<h3 id="最终话！（希望如此）"><a href="#最终话！（希望如此）" class="headerlink" title="最终话！（希望如此）"></a>最终话！（希望如此）</h3><p>在安装完 guix 后在通过 scheme 和一些 gexp 「术法」就能生成一个…… systemd service 文件（没办法， systemd 的淫威实在太大了）来调用 <code>/gnu/store</code> 下的二进制文件就能做到跨更新保持一下自定义配置了，不过还是感叹 Steam Deck 以一种诡异的方式推了我一把来去学习相应知识，同时在半年前对「在 Steam Deck 使用 Guix 作为包管理器」搜遍互联网毫无头绪到现在暴力硬怼实现也是感概自己的进步。</p>
+<p>在可劲折腾的最后却发现自己没什么动力打开游戏了，估计是这几天一直在玩「折腾 Steam Deck 配置」这么款游戏有点过载了吧。;-)</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+
+    
+    
+    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>上一页</a>
+    
+
+    <a href="../../.././" type="button" class="btn btn-default"><i class="fa fa-home"></i>主页</a>
+    
+    <a href="../../.././2025/04/emacs-lisp-elements/" type="button" class="btn btn-default ">下一页<i
+                class="fa fa-arrow-circle-o-right"></i></a>
+    
+
+    
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+  
+    <blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote>
+    <script src="https://giscus.app/client.js"
+            data-repo="SouthFox-D/SouthFox-D.github.io"
+            data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
+            data-category="博客评论"
+            data-category-id="DIC_kwDODaJZAM4CA7bf"
+            data-mapping="og:title"
+            data-reactions-enabled="0"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="dark_dimmed"
+            data-lang="zh-CN"
+            crossorigin="anonymous"
+            async>
+    </script>
+  
+
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2025-05-26 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/技术/">技术<span>21</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/游戏/">游戏<span>3</span></a></li> <li><a href="/tags/Steam-Deck/">Steam Deck<span>1</span></a></li> <li><a href="/tags/Guix/">Guix<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	   <a data-toggle="collapse" data-target="#toc"><i class="fa fa-bars"></i></a>
+	   <div id="toc" class="toc collapse in">
+		   <span class="toc-title">目录</span>
+			<ol class="toc-article"><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E6%8A%98%E8%85%BE%EF%BC%8C%E5%BC%80%E5%A7%8B%EF%BC%81"><span class="toc-article-text">折腾，开始！</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E6%89%93%E6%8A%98%E6%95%99%E7%88%B6%E7%9A%84%E9%AD%94%E6%B3%95"><span class="toc-article-text">打折教父的魔法</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E6%84%9F%E8%A7%89%E4%B8%8D%E5%A4%AA%E8%83%BD%E5%BC%80%E7%AE%B1%E7%9A%84%E7%AE%B1%E5%AD%90"><span class="toc-article-text">感觉不太能开箱的箱子</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E5%9C%B0%E4%B8%8B%E5%AE%A4%E5%85%89%E5%A4%B4%E4%BD%A0%E5%AE%B3%E4%BA%BA%E4%B8%8D%E6%B5%85"><span class="toc-article-text">地下室光头你害人不浅</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Nix-%EF%BC%8C%E4%BD%A0%E6%98%AF%EF%BC%9F%E4%B8%8D%E8%83%BD%E5%BF%98%E8%AE%B0%E7%9A%84%E4%BA%BA%E2%80%A6%E2%80%A6"><span class="toc-article-text">Nix ，你是？不能忘记的人……</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#Guix-%EF%BC%8C%E8%BF%99%E4%BC%9A%E6%98%AF%E6%9C%80%E7%BB%88%E7%9A%84%E9%81%93%E8%B7%AF%E5%90%97%EF%BC%9F"><span class="toc-article-text">Guix ，这会是最终的道路吗？</span></a></li><li class="toc-article-item toc-article-level-3"><a class="toc-article-link" href="#%E6%9C%80%E7%BB%88%E8%AF%9D%EF%BC%81%EF%BC%88%E5%B8%8C%E6%9C%9B%E5%A6%82%E6%AD%A4%EF%BC%89"><span class="toc-article-text">最终话！（希望如此）</span></a></li></ol>
+		</div>
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2025 SouthFox
+  
+      Font by <a href="https://github.com/SolidZORO/zpix-pixel-font" target="_blank">Zpix</a>,
+     Theme by <a href="https://github.com/blackshow/hexo-theme-freemind.386" target="_blank">Freemind.386</a>.  <br> <a href="../../.././Privacy-Policy" target="_blank">隐私政策</a>
+</p>
+ </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>⬆︎TOP</span>
+</a>
+
+<script src="../../.././js/jquery.imagesloaded.min.js"></script>
+<!-- <script src="../../.././js/gallery.js"></script> -->
+<script src="../../.././js/bootstrap.min.js"></script>
+<script src="../../.././js/main.js"></script>
+<script src="../../.././js/search.js"></script>
+
+
+
+
+</body>
+   </html>
