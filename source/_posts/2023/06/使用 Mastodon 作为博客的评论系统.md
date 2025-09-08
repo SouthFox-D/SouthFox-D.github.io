@@ -1,11 +1,7 @@
----
 author: SouthFox
 title: 使用 Mastodon 作为博客的评论系统
 date: 2023-06-16 11:20:30
-tags:
-- Mastodon
-- 联邦宇宙
-- 技术
+tags: Mastodon, 联邦宇宙, 技术
 category: 技术
 fedi_url: https://foxsay.southfox.me/@SouthFox/110552875318585284 
 ---

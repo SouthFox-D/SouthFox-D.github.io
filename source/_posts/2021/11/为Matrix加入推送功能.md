@@ -1,10 +1,7 @@
----
 author: SouthFox
 title: 为 Matrix 加入自定义推送功能
 date: 2021-11-22 15:53:18
-tags: 
-- 技术
-- Matrix
+tags: 技术, Matrix
 category: 技术
 toc: true
 ---

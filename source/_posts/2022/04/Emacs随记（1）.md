@@ -1,9 +1,7 @@
----
 author: SouthFox
 title: Emacs随记（1）
 date: 2022-04-19 13:09:05
-tags:
-- Emacs
+tags: Emacs
 category: 技术
 toc: true
 ---

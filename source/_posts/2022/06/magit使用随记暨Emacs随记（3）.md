@@ -1,10 +1,7 @@
----
 author: SouthFox
 title: Magit使用随记暨Emacs随记（3）
 date: 2022-06-08 14:38:26
-tags:
-- Emacs
-- Git
+tags: Emacs, Git
 category: 技术
 ---
 

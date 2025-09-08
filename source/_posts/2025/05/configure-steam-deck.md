@@ -1,12 +1,8 @@
----
 author: SouthFox
 title: Steam Deck 可劲折腾
 date: 2025-05-26 11:40:11
 toc: true
-tags:
-- 游戏
-- Steam Deck
-- Guix
+tags: 游戏, Steam Deck, Guix
 category: 技术
 ---
 

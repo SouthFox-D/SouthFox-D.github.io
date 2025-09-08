@@ -1,11 +1,7 @@
----
 author: SouthFox
 title: Emacs 使用再记（3）
 date: 2023-01-15 15:22:05
-tags:
-- Mastodon
-- Matrix
-- Emacs
+tags: Mastodon, Matrix, Emacs
 category: 技术
 toc: true
 ---

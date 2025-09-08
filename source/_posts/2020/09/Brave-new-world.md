@@ -1,11 +1,7 @@
----
 author: SouthFox
 title: 美丽新世界!
 date: 2020-09-05 17:16:09
-tags:
-- 随笔
-- 科技
-- 读后感
+tags: 随笔, 科技, 读后感
 category: 随笔
 ---
 

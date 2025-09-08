@@ -1,10 +1,7 @@
----
 author: SouthFox
 title: 我拿Emacs做什么暨Emacs随记（2）
 date: 2022-05-14 17:34:55
-tags: 
-- Emacs
-- 随记
+tags: Emacs, 随记
 category: 技术
 toc: true
 ---

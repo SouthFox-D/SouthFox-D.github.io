@@ -1,10 +1,7 @@
----
 author: SouthFox
 title: Marzipan Solitude
 date: 2020-01-30 23:56:35
-tags: 
-- 动画
-- 随笔
+tags: 动画, 随笔
 category: 随笔
 ---
 

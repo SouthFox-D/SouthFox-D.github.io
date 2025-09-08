@@ -1,9 +1,7 @@
----
 author: SouthFox
 title: Emacs再记（1）：传教二度
 date: 2022-08-16 14:17:20
-tags:
-- Emacs
+tags: Emacs
 category: 技术
 toc: true
 ---

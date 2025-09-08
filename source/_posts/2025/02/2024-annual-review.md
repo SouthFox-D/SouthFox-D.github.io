@@ -1,10 +1,7 @@
----
 author: SouthFox
 title: 2024 年终总结
 date: 2025-02-16 22:03:38
-tags:
-- 年终总结
-- 随笔
+tags: 年终总结, 随笔
 category: 随笔
 toc: true
 ---

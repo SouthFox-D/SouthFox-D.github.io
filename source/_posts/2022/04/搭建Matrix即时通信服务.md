@@ -1,9 +1,7 @@
----
 author: SouthFox
 title: 搭建Matrix即时通信服务
 date: 2022-04-15 20:54:19
-tags:
-- 技术
+tags: 技术
 category: 技术
 ---
 

@@ -1,10 +1,7 @@
----
 author: SouthFox
 title: GPG 浅尝辄止
 date: 2023-06-23 22:27:06
-tags: 
-- GPG
-- 自托管
+tags: GPG, 自托管
 category: 技术
 fedi_url: https://foxsay.southfox.me/@SouthFox/110595035535673468
 ---

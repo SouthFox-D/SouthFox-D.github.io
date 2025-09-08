@@ -1,4 +1,3 @@
----
 title: go
 date: 2021-12-31 22:00:00
 no_comment: true

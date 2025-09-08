@@ -1,10 +1,7 @@
----
 author: SouthFox
 title: Gitea:一款自托管的 Git 服务
 date: 2022-07-17 19:02:07
-tags:
-- 技术
-- 建站
+tags: 技术, 建站
 category: 技术
 toc: true
 ---

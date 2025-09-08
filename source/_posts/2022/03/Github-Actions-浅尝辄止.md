@@ -1,9 +1,7 @@
----
 author: SouthFox
 title: Github Actions 浅尝辄止
 date: 2022-03-07 16:32:14
-tags:
-- 技术
+tags: 技术
 category: 技术
 toc: true
 ---

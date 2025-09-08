@@ -1,10 +1,7 @@
----
 author: SouthFox
 title: Emacs 使用再记（4）- EMACS EVERYWHERE!
 date: 2024-12-31 14:30:03
-tags:
-- Emacs
-- 技术
+tags: Emacs, 技术
 category: 技术
 ---
 

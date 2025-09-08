@@ -1,12 +1,8 @@
----
-author:
-- Protesilaos Stavrou
-- SouthFox
+author: Protesilaos Stavrou, SouthFox
 title: Emacs lisp 原本
 toc: true
 date: 2025-04-15 23:55:58
-tags:
-- Emacs
+tags: Emacs
 category: 技术
 ---
 

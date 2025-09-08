@@ -1,9 +1,7 @@
----
 author: SouthFox
 title: 'EFK:日志 All in one……？'
 date: 2022-04-04 17:04:30
-tags:
-- 技术
+tags: 技术
 category: 技术
 toc: true
 ---
