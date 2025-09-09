@@ -6,3 +6,5 @@ strdb.txt
 node_modules/
 public/
 .deploy*/
+site/*
+__pycache__/*
