@@ -4,7 +4,8 @@
              (haunt builder atom)
              (haunt builder assets)
              (haunt reader commonmark)
-             (haunt site))
+             (haunt site)
+             (hole theme))
 
 (site #:title "狐狸反走矣"
       #:domain "blog.southfox.me"
@@ -13,8 +14,11 @@
         (email  . "master@southfox.me"))
       #:readers (list commonmark-reader)
       #:posts-directory "source/_posts"
-      #:builders (list (blog)
+      #:builders (list (blog
+                        #:theme fox-theme
+                        #:collections `(("Fox" "index.html" ,posts/reverse-chronological))
+                        )
                        (atom-feed)
                        (atom-feeds-by-tag)
-                       ;; (static-directory "images")
+                       (static-directory "assets")
                        ))
