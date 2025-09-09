@@ -42,4 +42,5 @@ jobs:
         git init
         git add --all .
         git commit -m "GitHub action Auto Builder"
+        git branch -M haunt-master
         git push --quiet --force https://$DEPLOY_KEY@github.com/SouthFox-D/SouthFox-D.github.io.git haunt-master
