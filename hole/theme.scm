@@ -6,7 +6,7 @@
   #:use-module (srfi srfi-19)
   #:export (fox-theme))
 
-(define (ugly-default-layout site title body)
+(define (fox-default-layout site title body)
   `((doctype "html")
     (html
      (head
@@ -15,7 +15,7 @@
       (link (@ (rel "stylesheet")
                (href "/assets/css/main.css"))))
      (body
-      (h1 ,(site-title site))
+      (h1 (@ (class "title")) ,(site-title site))
       ,body))))
 
 (define (fox-default-post-template post)
@@ -29,15 +29,16 @@
   (define (post-uri post)
     (string-append (or prefix "") "/"
                    (site-post-slug site post) ".html"))
-  `((h3 ,title)
-    (ul
-     ,@(map (lambda (post)
-              `(li
-                (a (@ (href ,(post-uri post)))
-                   ,(post-ref post 'title)
-                   " — "
-                   ,(date->string* (post-date post)))))
-            posts))))
+  `((div (@ (class "container"))
+     (h3 ,title)
+     (ul
+      ,@(map (lambda (post)
+               `(li
+                 (a (@ (href ,(post-uri post)))
+                    ,(post-ref post 'title)
+                    " — "
+                    ,(date->string (post-date post) "~Y-~m-~d"))))
+             posts)))))
 
 (define (fox-default-pagination-template site body previous-page next-page)
   `(,@body
@@ -52,7 +53,7 @@
 
 (define fox-theme
   (theme #:name "Fox"
-         #:layout ugly-default-layout
+         #:layout fox-default-layout
          #:post-template fox-default-post-template
          #:collection-template fox-default-collection-template
          #:pagination-template fox-default-pagination-template))

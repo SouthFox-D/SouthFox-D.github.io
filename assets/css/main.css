@@ -541,6 +541,11 @@ div.notice p:last-of-type {
 
 /* Hole Theme */
 .container {
-    width: 50%;
-    margin: 40px auto;
+  width: 50%;
+  margin: 40px auto;
+}
+
+.title {
+  width: 50%;
+  margin: 40px auto;
 }
