@@ -19,6 +19,5 @@
                         #:collections `(("Fox" "index.html" ,posts/reverse-chronological))
                         )
                        (atom-feed)
-                       (atom-feeds-by-tag)
                        (static-directory "assets")
                        ))
