@@ -30,7 +30,7 @@ jobs:
         DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY }}
         DISCUSSIONS_TOKEN: ${{ secrets.DISCUSSIONS_TOKEN }}
       run: |
-        docker run -v ${{ github.workspace }}:/app southfox09/haunt-agent:latest sh -c "cd /app && haunt build"
+        docker run -v ${{ github.workspace }}:/app southfox09/haunt-agent:latest sh -c "cd /app && GUIX_LOCPATH=/profile/lib/locale LANG=en_US.UTF-8 haunt build"
         hy utils.hy -d
         pyftsubset Zpix.ttf --text-file=strdb.txt
         fonttools ttLib.woff2 compress -o Zpix.woff2 Zpix.subset.ttf
