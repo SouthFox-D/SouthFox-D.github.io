@@ -33,8 +33,7 @@
       #:posts-directory "source/_posts"
       #:builders (list (blog
                         #:theme fox-theme
-                        #:collections `(("Fox" "index.html" ,posts/reverse-chronological))
-                        )
+                        #:collections `(("最近文章" "index.html" ,posts/reverse-chronological)))
                        (atom-feed)
                        (static-directory "assets")
                        )
