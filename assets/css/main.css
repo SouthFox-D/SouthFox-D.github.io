@@ -261,46 +261,6 @@ section {
   margin: 3rem 0;
 }
 
-/* Don't double separators when chaining sections */
-section + section,
-section:first-child {
-  border-top: 0;
-  padding-top: 0;
-}
-
-section + section {
-  margin-top: 0;
-}
-
-section:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
-}
-
-details {
-  padding: 0.7rem 1rem;
-}
-
-summary {
-  cursor: pointer;
-  font-weight: bold;
-  padding: 0.7rem 1rem;
-  margin: -0.7rem -1rem;
-  word-break: break-all;
-}
-
-details[open] > summary + * {
-  margin-top: 0;
-}
-
-details[open] > summary {
-  margin-bottom: 0.5rem;
-}
-
-details[open] > :last-child {
-  margin-bottom: 0;
-}
-
 /* Format tables */
 table {
   border-collapse: collapse;
@@ -332,48 +292,6 @@ tr:nth-child(even) {
 table caption {
   font-weight: bold;
   margin-bottom: 0.5rem;
-}
-
-/* Format forms */
-textarea,
-select,
-input,
-button,
-.button {
-  font-size: inherit;
-  font-family: inherit;
-  padding: 0.5em;
-  margin-bottom: 0.5rem;
-  border-radius: var(--standard-border-radius);
-  box-shadow: none;
-  max-width: 100%;
-  display: inline-block;
-}
-textarea,
-select,
-input {
-  color: var(--text);
-  background-color: var(--bg);
-  border: var(--border-width) solid var(--border);
-}
-label {
-  display: block;
-}
-textarea:not([cols]) {
-  width: 100%;
-}
-
-/* Add arrow to drop-down */
-select:not([multiple]) {
-  background-image: linear-gradient(45deg, transparent 49%, var(--text) 51%),
-    linear-gradient(135deg, var(--text) 51%, transparent 49%);
-  background-position: calc(100% - 15px), calc(100% - 10px);
-  background-size: 5px 5px, 5px 5px;
-  background-repeat: no-repeat;
-  padding-inline-end: 25px;
-}
-*[dir="rtl"] select:not([multiple]) {
-  background-position: 10px, 15px;
 }
 
 /* Misc body elements */
@@ -474,69 +392,6 @@ pre code {
   background: none;
   margin: 0;
   padding: 0;
-}
-
-/* Classes for notices */
-.notice {
-  background: var(--accent-bg);
-  border: var(--border-width) solid var(--border);
-  border-radius: var(--standard-border-radius);
-  padding: 1.5rem;
-  margin: 2rem 0;
-}
-
-div.notice p:first-of-type {
-  margin-top: 0;
-}
-
-div.notice p:last-of-type {
-  margin-bottom: 0;
-}
-
-/* Print */
-@media print {
-  @page {
-    margin: 1cm;
-  }
-  body {
-    display: block;
-  }
-  body > header {
-    background-color: unset;
-  }
-  body > header nav,
-  body > footer {
-    display: none;
-  }
-  article {
-    border: none;
-    padding: 0;
-  }
-  a[href^="http"]::after {
-    content: " <" attr(href) ">";
-  }
-  abbr[title]:after {
-    content: " (" attr(title) ")";
-  }
-  a {
-    text-decoration: none;
-  }
-  p {
-    widows: 3;
-    orphans: 3;
-  }
-  hr {
-    border-top: var(--border-width) solid var(--border);
-  }
-  mark {
-    border: var(--border-width) solid var(--border);
-  }
-  pre, table, figure, img, svg {
-    break-inside: avoid;
-  }
-  pre code {
-    white-space: pre-wrap;
-  }
 }
 
 /* Hole Theme */
