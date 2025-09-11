@@ -39,8 +39,8 @@ jobs:
         hy utils.hy -d
         pyftsubset Zpix.ttf --text-file=strdb.txt
         fonttools ttLib.woff2 compress -o Zpix.woff2 Zpix.subset.ttf
-        mv Zpix.woff2 ./site/assets/
-        mv Zpix.subset.ttf ./site/assets/Zpix.ttf
+        mv Zpix.woff2 ./site/assets/fonts/Zpix.woff2
+        mv Zpix.subset.ttf ./site/assets/fonts/Zpix.ttf
         mv _headers ./site
         cd ./site
         echo "blog.southfox.me" > CNAME

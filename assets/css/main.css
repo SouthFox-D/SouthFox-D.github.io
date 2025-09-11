@@ -422,3 +422,72 @@ pre code {
         width: 90%;
     }
 }
+
+/* 386 Style */
+body {
+    color: #bbb;
+    background-color: #000084;
+}
+
+@font-face {
+    font-family: "Zpix";
+    -webkit-font-smoothing: none;
+    src:
+        url("/assets/fonts/Zpix.woff2") format("woff2"),
+        url("/assets/fonts/Zpix.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.container,
+.title code,
+pre code {
+    text-rendering: optimizelegibility;
+    font-family: Zpix, var(--sans-font);
+    color: #bbb;
+}
+
+code,
+pre,
+pre span,
+kbd,
+samp {
+    font-family: Zpix, var(--sans-font);
+    color: var(--code);
+}
+
+.title,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    color: #fff;
+}
+
+blockquote {
+    border-left: 5px solid #ccc;
+    font-size: 0.9em;
+    background-color: #008000;
+    color: #bbb;
+}
+
+pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+}
+
+pre {
+    background: #000;
+    margin: 1em 0;
+    padding: 1em 2%;
+    overflow: auto;
+    color: #ccc;
+    border: none;
+}
