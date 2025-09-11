@@ -30,17 +30,17 @@ jobs:
         DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY }}
         DISCUSSIONS_TOKEN: ${{ secrets.DISCUSSIONS_TOKEN }}
       run: |
+        hy utils.hy -d
+        pyftsubset Zpix.ttf --text-file=strdb.txt
+        fonttools ttLib.woff2 compress -o Zpix.woff2 Zpix.subset.ttf
+        mv Zpix.woff2 ./assets/fonts/Zpix.woff2
+        mv Zpix.subset.ttf ./assets/fonts/Zpix.ttf
         docker run \
           --rm -u $(id -u) \
           -v ${{ github.workspace }}:/app southfox09/haunt-agent:latest \
           sh -c \
           "cd /app && \
           GUIX_LOCPATH=/profile/lib/locale LANG=en_US.UTF-8 haunt build"
-        hy utils.hy -d
-        pyftsubset Zpix.ttf --text-file=strdb.txt
-        fonttools ttLib.woff2 compress -o Zpix.woff2 Zpix.subset.ttf
-        mv Zpix.woff2 ./site/assets/fonts/Zpix.woff2
-        mv Zpix.subset.ttf ./site/assets/fonts/Zpix.ttf
         mv _headers ./site
         cd ./site
         echo "blog.southfox.me" > CNAME
