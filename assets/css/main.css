@@ -395,12 +395,15 @@ pre code {
 }
 
 /* Hole Theme */
-.container {
+.container,
+.title {
   width: 50%;
   margin: 40px auto;
 }
 
-.title {
-  width: 50%;
-  margin: 40px auto;
+@media only screen and (max-width: 720px) {
+  .container,
+  .title {
+    width: 90%;
+  }
 }
