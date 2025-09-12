@@ -33,7 +33,8 @@
       #:posts-directory "source/_posts"
       #:builders (list (blog
                         #:theme fox-theme
-                        #:collections `(("最近文章" "index.html" ,posts/reverse-chronological)))
+                        #:collections `(("最近文章" "index.html" ,posts/reverse-chronological))
+                        #:posts-per-page 10)
                        (atom-feed)
                        (static-directory "assets"))
       #:make-slug hexo-post-slug)
