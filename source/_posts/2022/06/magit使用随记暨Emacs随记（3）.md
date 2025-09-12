@@ -7,7 +7,7 @@ category: 技术
 
 `magit` 是个好东西。
 
-<!--more-->
+,(read-more)
 
 `Magit` 是一个 `Emacs` 的包，将一大堆长又长的 `Git` 指令封装成了按键操作，对于受够了了在终端下按够了 `TAB` 键的人来说，是一种解放，无怪 `Magit` 的评价在整个 `Emacs` 生态里评价那么好了。
 

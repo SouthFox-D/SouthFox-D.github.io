@@ -7,7 +7,7 @@ category: 技术
 
 总之稍微记录一下。
 
-<!-- more -->
+,(read-more)
 
 - 事先约定 `matrix.org` 是前端地址 `synapse.matrix.org` 是后端地址，实际请改成自己的……具体为啥这么做可以看[官方文档](https://matrix-org.github.io/synapse/latest/delegate.html)，如果嫌麻烦也可以不启用这功能……
 

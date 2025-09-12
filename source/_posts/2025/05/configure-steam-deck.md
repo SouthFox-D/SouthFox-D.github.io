@@ -10,7 +10,7 @@ category: 技术
 
 谁能想象 Steam Deck 就这么成为了 `echo "$(( $(date +%Y) + 1 )) is the year for Linux gaming\!"` 最有力的推手呢？
 
-<!-- more -->
+,(read-more)
 
 ### 折腾，开始！
 

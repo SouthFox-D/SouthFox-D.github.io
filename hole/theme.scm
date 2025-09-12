@@ -4,6 +4,7 @@
   #:use-module (haunt utils)
   #:use-module (haunt builder blog)
   #:use-module (srfi srfi-19)
+  #:use-module (ice-9 match)
   #:export (fox-theme))
 
 (define (fox-default-layout site title body)
@@ -27,20 +28,31 @@
          " — " ,(date->string (post-date post) "~Y-~m-~d"))
      (div ,(post-sxml post)))))
 
+(define (parse-read-more post)
+  (let loop ((sxml (post-sxml post))
+             (result '()))
+    (match sxml
+      (() (car (post-sxml post)))
+      (('(span (@ (id "more"))) _ ...)
+       (reverse result))
+      ((head . tail)
+       (loop tail (cons head result))))))
+
 (define (fox-default-collection-template site title posts prefix)
   (define (post-uri post)
     (string-append (or prefix "") "/"
                    (site-post-slug site post) ".html"))
   `((div (@ (class "container"))
-     (h3 ,title)
-     (ul
-      ,@(map (lambda (post)
-               `(li
+     (h2 ,title)
+     ,@(map (lambda (post)
+              `((h3
                  (a (@ (href ,(post-uri post)))
                     ,(post-ref post 'title)
                     " — "
-                    ,(date->string (post-date post) "~Y-~m-~d"))))
-             posts)))))
+                    ,(date->string (post-date post) "~Y-~m-~d")))
+                (div (@ (class "post"))
+                     ,(parse-read-more post))))
+            posts))))
 
 (define (fox-default-pagination-template site body previous-page next-page)
   `(,@body

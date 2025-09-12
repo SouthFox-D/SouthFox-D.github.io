@@ -8,7 +8,7 @@ toc: true
 
 Peertube 是一个自由、去中心化、邦联制运作的视频平台。
 
-<!--more-->
+,(read-more)
 
 具体的介绍可以看视频：
 

@@ -6,7 +6,8 @@
              (haunt reader commonmark)
              (haunt site)
              (ice-9 string-fun)
-             (hole theme))
+             (hole theme)
+             (hole reader))
 
 
 (define (hexo-post-slug post)
@@ -20,8 +21,7 @@
                              (list (string-replace-substring
                                     (list-ref post-list (- list-length 1))
                                     ".md"
-                                    "/index"
-                                    )))
+                                    "/index")))
                      "/"))))
 
 (site #:title "狐狸反走矣"
@@ -29,12 +29,11 @@
       #:default-metadata
       '((author . "SouthFox")
         (email  . "master@southfox.me"))
-      #:readers (list commonmark-reader)
+      #:readers (list fox-commonmark-reader)
       #:posts-directory "source/_posts"
       #:builders (list (blog
                         #:theme fox-theme
                         #:collections `(("最近文章" "index.html" ,posts/reverse-chronological)))
                        (atom-feed)
-                       (static-directory "assets")
-                       )
+                       (static-directory "assets"))
       #:make-slug hexo-post-slug)

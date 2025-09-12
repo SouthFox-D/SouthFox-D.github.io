@@ -13,7 +13,7 @@ category: 技术
 - 官方网站: <https://protesilaos.com/emacs/emacs-lisp-elements>
 - Git 仓库: <https://github.com/protesilaos/emacs-lisp-elements>
 
-<!-- more -->
+,(read-more)
 
 ## 开始学习 Emacs Lisp
 
