@@ -56,13 +56,13 @@
 
 (define (fox-default-pagination-template site body previous-page next-page)
   `(,@body
-    (div
+    (div (@ (class "pagination"))
      ,(if previous-page
-          `(a (@ (href ,previous-page)) "← Previous")
+          `(a (@ (href ,previous-page)) "← 上一页")
           '())
-     " — "
+     (a (@ (href "/")) " 主页 ")
      ,(if next-page
-          `(a (@ (href ,next-page)) "Next →")
+          `(a (@ (href ,next-page)) "下一页 →")
           '()))))
 
 (define fox-theme

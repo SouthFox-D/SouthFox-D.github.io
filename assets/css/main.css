@@ -491,3 +491,12 @@ pre {
     color: #ccc;
     border: none;
 }
+
+.pagination {
+    text-align: center;
+}
+
+.pagination a {
+    margin-left: 3ch;
+    margin-right: 3ch;
+}
