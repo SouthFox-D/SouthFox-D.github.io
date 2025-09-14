@@ -2,18 +2,26 @@
   #:use-module (haunt site)
   #:use-module (haunt post)
   #:use-module (haunt utils)
-  #:use-module (haunt builder blog)
   #:use-module (srfi srfi-19)
   #:use-module (ice-9 match)
+  #:use-module (ice-9 string-fun)
+  #:use-module (hole blog)
   #:export (fox-theme))
 
-(define (fox-default-layout site title body)
+(define* (fox-default-layout site title body #:key post)
   `((doctype "html")
     (html
      (head
       (meta (@ (charset "utf-8")))
       (meta (@ (name "viewport")
                (content "width=device-width, initial-scale=1")))
+      ,(if post
+           `(meta (@ (property "og:title")
+                     (content
+                      ,(string-replace-substring
+                        (site-post-slug site post) "/index" "/"))))
+           `(meta (@ (property "og:site_name")
+                     (content ,(site-title site)))))
       (title ,(string-append title " — " (site-title site)))
       (link (@ (rel "stylesheet")
                (href "/assets/css/main.css"))))
@@ -22,11 +30,32 @@
       ,body))))
 
 (define (fox-default-post-template post)
-  `((div (@ (class "container") )
+  `((div
+     (@ (class "container"))
      (h2 ,(post-ref post 'title))
      (h3 "by " ,(post-ref post 'author)
          " — " ,(date->string (post-date post) "~Y-~m-~d"))
-     (div ,(post-sxml post)))))
+     (div ,(post-sxml post)))
+    (div
+     (@ (class "comment"))
+     (blockquote
+      "如不想授权 Giscus 应用，也可以点击下方"
+      (strong "左上角数字")
+      "直接跳转到 Github Discussions 进行评论。")
+     (script
+      (@ (src "https://giscus.app/client.js")
+         (data-repo "SouthFox-D/SouthFox-D.github.io")
+         (data-repo-id "MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ=")
+         (data-category "博客评论")
+         (data-category-id "DIC_kwDODaJZAM4CA7bf")
+         (data-mapping "og:title")
+         (data-reactions-enabled "0")
+         (data-emit-metadata "0")
+         (data-input-position "top")
+         (data-theme "dark_dimmed")
+         (data-lang "zh-CN")
+         (crossorigin "anonymous")
+         (async "true"))))))
 
 (define (parse-read-more post)
   (let loop ((sxml (post-sxml post))

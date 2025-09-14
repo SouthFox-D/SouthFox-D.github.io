@@ -1,11 +1,11 @@
 (use-modules (haunt asset)
              (haunt post)
-             (haunt builder blog)
              (haunt builder atom)
              (haunt builder assets)
              (haunt reader commonmark)
              (haunt site)
              (ice-9 string-fun)
+             (hole blog)
              (hole theme)
              (hole reader))
 
@@ -31,7 +31,7 @@
         (email  . "master@southfox.me"))
       #:readers (list fox-commonmark-reader)
       #:posts-directory "source/_posts"
-      #:builders (list (blog
+      #:builders (list (hole/blog
                         #:theme fox-theme
                         #:collections `(("最近文章" "index.html" ,posts/reverse-chronological))
                         #:posts-per-page 10)
