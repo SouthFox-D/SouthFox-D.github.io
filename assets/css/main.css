@@ -485,8 +485,10 @@ pre code {
     border-bottom: 1px solid #e0e0e0;
 }
 
-a {
+a,
+a:visited {
     color: #fefe54;
+    text-decoration: none;
 }
 
 a:focus,
@@ -513,6 +515,14 @@ h5,
 h6 {
     font-weight: bold;
     color: #fff;
+}
+
+h3:before {
+    content: "[";
+}
+
+h3:after {
+    content: "]";
 }
 
 blockquote {
