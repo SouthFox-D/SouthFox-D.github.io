@@ -9,7 +9,7 @@
   #:export (fox-theme))
 
 (define footer
-  `(footer (@ (class "container footer"))
+  `(footer (@ (class "footer"))
     (div (@ (class "copyright"))
          (div (p "© SouthFox "
                  ,(number->string (date-year (current-date)))
@@ -22,6 +22,19 @@
                  " ,source can be found "
                  (a (@ (href "https://git.southfox.me/southfox/blog"))
                     "here"))))))
+
+(define sidebar
+  `(div (@ (class "sidebar"))
+    (div (@ (class "widget"))
+         (h4 "公告")
+         (p "装修中……"))
+    (div (@ (class "widget"))
+         (h4 "链接")
+         (ul
+          (li (a (@ (href "https://www.travellings.cn/train.html"))
+                 "开往"))
+          (li (a (@ (href "https://foreverblog.cn/go.html"))
+                 "虫洞"))))))
 
 (define* (fox-default-layout site title body #:key post)
   `((doctype "html")
@@ -42,12 +55,14 @@
                (href "/assets/css/main.css"))))
      (body
       (h1 (@ (class "title")) ,(site-title site))
-      ,body
+      (div (@ (class "container flex"))
+           ,body
+           ,sidebar)
       ,footer))))
 
 (define (fox-default-post-template post)
   `((div
-     (@ (class "container"))
+     (@ (class "content"))
      (h2 ,(post-ref post 'title))
      (h3 "by " ,(post-ref post 'author)
          " — " ,(date->string (post-date post) "~Y-~m-~d"))
@@ -87,7 +102,7 @@
   (define (post-uri post)
     (string-append (or prefix "") "/"
                    (site-post-slug site post) ".html"))
-  `((div (@ (class "container"))
+  `(div (@ (class "content"))
      (h2 ,title)
      ,@(map (lambda (post)
               `((h3
@@ -97,18 +112,18 @@
                     ,(date->string (post-date post) "~Y-~m-~d")))
                 (div (@ (class "post"))
                      ,(parse-read-more post))))
-            posts))))
+            posts)))
 
 (define (fox-default-pagination-template site body previous-page next-page)
-  `(,@body
-    (div (@ (class "pagination"))
-     ,(if previous-page
-          `(a (@ (href ,previous-page)) "← 上一页")
-          '())
-     (a (@ (href "/")) " 主页 ")
-     ,(if next-page
-          `(a (@ (href ,next-page)) "下一页 →")
-          '()))))
+  `((,@body
+     (div (@ (class "pagination"))
+          ,(if previous-page
+               `(a (@ (href ,previous-page)) "← 上一页")
+               '())
+          (a (@ (href "/")) " 主页 ")
+          ,(if next-page
+               `(a (@ (href ,next-page)) "下一页 →")
+               '())))))
 
 (define fox-theme
   (theme #:name "Fox"

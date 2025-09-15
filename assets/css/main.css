@@ -413,8 +413,21 @@ pre code {
 .container,
 .title,
 .comment {
-    width: 50%;
+    width: 60%;
     margin: 40px auto;
+}
+
+.flex {
+    display: flex;
+}
+
+.content {
+    width: 75%;
+}
+
+.sidebar {
+    width: 25%;
+    padding-left: 10px;
 }
 
 @media only screen and (max-width: 720px) {
@@ -422,6 +435,17 @@ pre code {
     .title,
     .comment {
         width: 90%;
+    }
+
+    .container.flex {
+        display: unset;
+    }
+
+    .container.flex .content,
+    .container.flex .sidebar {
+        width: unset;
+        padding: unset;
+        margin: 10px;
     }
 }
 
@@ -443,11 +467,24 @@ body {
 }
 
 .container,
+.footer,
 .title code,
 pre code {
     text-rendering: optimizelegibility;
     font-family: Zpix, var(--sans-font);
     color: #bbb;
+}
+
+.footer {
+    margin: unset;
+    border: unset;
+    padding: unset;
+}
+
+.widget {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
 }
 
 code,
