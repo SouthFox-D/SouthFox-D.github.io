@@ -7,7 +7,8 @@
              (ice-9 string-fun)
              (hole blog)
              (hole theme)
-             (hole reader))
+             (hole reader)
+             (hole rss))
 
 
 (define (hexo-post-slug post)
@@ -36,5 +37,6 @@
                         #:collections `(("最近文章" "index.html" ,posts/reverse-chronological))
                         #:posts-per-page 10)
                        (atom-feed)
+                       (hole/rss-feed)
                        (static-directory "assets"))
       #:make-slug hexo-post-slug)

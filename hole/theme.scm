@@ -6,7 +6,8 @@
   #:use-module (ice-9 match)
   #:use-module (ice-9 string-fun)
   #:use-module (hole blog)
-  #:export (fox-theme))
+  #:export (parse-read-more
+            fox-theme))
 
 (define footer
   `(footer (@ (class "footer"))
@@ -34,7 +35,9 @@
           (li (a (@ (href "https://www.travellings.cn/train.html"))
                  "开往"))
           (li (a (@ (href "https://foreverblog.cn/go.html"))
-                 "虫洞"))))))
+                 "虫洞"))
+          (li (a (@ (href "/rss2.xml"))
+                 "Rss"))))))
 
 (define* (fox-default-layout site title body #:key post)
   `((doctype "html")
