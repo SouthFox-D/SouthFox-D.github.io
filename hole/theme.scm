@@ -8,6 +8,21 @@
   #:use-module (hole blog)
   #:export (fox-theme))
 
+(define footer
+  `(footer (@ (class "container footer"))
+    (div (@ (class "copyright"))
+         (div (p "© SouthFox "
+                 ,(number->string (date-year (current-date)))
+                 " ,Font by "
+                 (a (@ (href "https://github.com/SolidZORO/zpix-pixel-font"))
+                    "Zpix")))
+         (div (p "Power by "
+                 (a (@ (href "https://dthompson.us/projects/haunt.html"))
+                    "haunt")
+                 " ,source can be found "
+                 (a (@ (href "https://git.southfox.me/southfox/blog"))
+                    "here"))))))
+
 (define* (fox-default-layout site title body #:key post)
   `((doctype "html")
     (html
@@ -27,7 +42,8 @@
                (href "/assets/css/main.css"))))
      (body
       (h1 (@ (class "title")) ,(site-title site))
-      ,body))))
+      ,body
+      ,footer))))
 
 (define (fox-default-post-template post)
   `((div
