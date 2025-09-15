@@ -411,8 +411,7 @@ pre code {
 
 /* Hole Theme */
 .container,
-.title,
-.comment {
+.title {
     width: 60%;
     margin: 40px auto;
 }
@@ -432,8 +431,7 @@ pre code {
 
 @media only screen and (max-width: 720px) {
     .container,
-    .title,
-    .comment {
+    .title {
         width: 90%;
     }
 

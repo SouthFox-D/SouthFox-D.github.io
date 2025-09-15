@@ -61,8 +61,8 @@
       ,footer))))
 
 (define (fox-default-post-template post)
-  `((div
-     (@ (class "content"))
+  `(div (@ (class "content"))
+    (div
      (h2 ,(post-ref post 'title))
      (h3 "by " ,(post-ref post 'author)
          " — " ,(date->string (post-date post) "~Y-~m-~d"))
@@ -103,16 +103,16 @@
     (string-append (or prefix "") "/"
                    (site-post-slug site post) ".html"))
   `(div (@ (class "content"))
-     (h2 ,title)
-     ,@(map (lambda (post)
-              `((h3
-                 (a (@ (href ,(post-uri post)))
-                    ,(post-ref post 'title)
-                    " — "
-                    ,(date->string (post-date post) "~Y-~m-~d")))
-                (div (@ (class "post"))
-                     ,(parse-read-more post))))
-            posts)))
+    (h2 ,title)
+    ,@(map (lambda (post)
+             `((h3
+                (a (@ (href ,(post-uri post)))
+                   ,(post-ref post 'title)
+                   " — "
+                   ,(date->string (post-date post) "~Y-~m-~d")))
+               (div (@ (class "post"))
+                    ,(parse-read-more post))))
+           posts)))
 
 (define (fox-default-pagination-template site body previous-page next-page)
   `((,@body
