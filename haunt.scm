@@ -19,10 +19,9 @@
              (list-length (length post-list)))
         (string-join (append (list-head post-list (- list-length 1))
                              (list (string-replace-substring
-                                    (string-replace-substring
-                                     (list-ref post-list (- list-length 1))
-                                     ".md" "/index")
-                                    " " "%20")))
+                                    (list-ref post-list (- list-length 1))
+                                    ".md"
+                                    "/index")))
                      "/"))))
 
 (site #:title "狐狸反走矣"
