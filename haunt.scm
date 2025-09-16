@@ -39,6 +39,7 @@
                         #:collections `(("最近文章" "index.html" ,posts/reverse-chronological))
                         #:posts-per-page 10)
                        (about-page)
+                       (friends-page)
                        (atom-feed)
                        (hole/rss-feed)
                        (static-directory "assets"))

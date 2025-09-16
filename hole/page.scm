@@ -6,7 +6,8 @@
   #:use-module (hole blog)
   #:use-module (hole theme)
   #:export (static-page
-            about-page))
+            about-page
+            friends-page))
 
 (define (static-page title file-name body)
   (lambda (site posts)
@@ -52,3 +53,37 @@
      (p "不过大多数时候我还是希望有人来的，愿能在更加开放的互联网上相遇吧。")
      (br)
      ,(comment-place "about/index.html"))))
+
+(define* (make-friend name link #:optional (description ""))
+  `(li (a (@ (href ,link)) ,(string-append name " | " description))))
+
+(define (friends-page)
+  (static-page
+   "Friends"
+   "friends/index.html"
+   `((h2 "Friends")
+     (ul
+      ,(make-friend "suica 的博客" "https://suicablog.cobaltkiss.blue")
+      ,(make-friend "小球飞鱼" "https://mantyke.icu" "我们会遇见鲸鱼吗？")
+      ,(make-friend "此方方有限公司" "https://blog.konata.vip" "Everything is interesting if you go into it deeply enough.")
+      ,(make-friend "Yoozy" "http://woods.sharktale.xyz" "一花一世界，一叶一菩提")
+      ,(make-friend "瓠樽" "https://blog.dylanwu.space" "以瓠為樽而浮乎江湖")
+      ,(make-friend "王小嗨" "https://sogola.com" "A Marxist inside.")
+      ,(make-friend "浮云翩迁之间" "https://blognas.hwb0307.com" "百代繁华一朝都，谁非过客；千秋明月吹角寒，花是主人。")
+      ,(make-friend "迷失的小K" "https://blog.kclub.tech" "Just for fun")
+      ,(make-friend "L3ON" "https://l3on.site" "不可勝在己，可勝在敵")
+      ,(make-friend "江尚寒" "https://jiangshanghan.art.blog" "一潭星动")
+      ,(make-friend "s0urce's Lab" "https://blog.src.moe" "No black and white in the blue.")
+      ,(make-friend "JIPA233の小窝" "https://imjipa.top/" "Deed divides beings into lower and higher ones.")
+      ,(make-friend "无叶之境" "https://lonleaf.com" "这是一个非常正常的网站，像教科书一样正常(๑•̀ω•́๑)")
+      ,(make-friend "滑翔闪" "https://blog.huaxiangshan.com/zh-cn/" "正在学习经济学的二次元|")
+      ,(make-friend "水气掠过" "https://dilutepillow.github.io/" "晚饭后，一起散步吧。")
+      ,(make-friend "Pinpe 的云端" "https://pinpe.top" "一个属于自己的云朵")
+      ,(make-friend "关门说话" "https://shutgnblink.blog/" "一只生活在海底的哺乳动物")
+      ,(make-friend "酥米的小站" "https://www.sumi233.top/" "终有一日，寻梦中人"))
+     (p "以下是失联的星球")
+     (ul
+      ,(make-friend "Albert's Blog" "https://blog.lingyf.com" "逆水行舟 不进则退")
+      ,(make-friend "歪皮" "http://www.gene-yp.com/" "Just love, understanding and positivity"))
+     (br)
+     ,(comment-place "friends/index.html"))))
