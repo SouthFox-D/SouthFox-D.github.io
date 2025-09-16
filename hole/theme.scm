@@ -32,6 +32,8 @@
     (div (@ (class "widget"))
          (h4 "链接")
          (ul
+          (li (a (@ (href "/about/"))
+                 "关于"))
           (li (a (@ (href "https://www.travellings.cn/train.html"))
                  "开往"))
           (li (a (@ (href "https://foreverblog.cn/go.html"))

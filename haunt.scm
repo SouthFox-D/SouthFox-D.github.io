@@ -8,7 +8,9 @@
              (hole blog)
              (hole theme)
              (hole reader)
-             (hole rss))
+             (hole rss)
+             (hole page)
+             )
 
 
 (define (hexo-post-slug post)
@@ -36,6 +38,7 @@
                         #:theme fox-theme
                         #:collections `(("最近文章" "index.html" ,posts/reverse-chronological))
                         #:posts-per-page 10)
+                       (about-page)
                        (atom-feed)
                        (hole/rss-feed)
                        (static-directory "assets"))
