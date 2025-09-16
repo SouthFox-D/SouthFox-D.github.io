@@ -24,7 +24,7 @@
                  (a (@ (href "https://git.southfox.me/southfox/blog"))
                     "here"))))))
 
-(define sidebar
+(define* (sidebar #:key post)
   `(div (@ (class "sidebar"))
     (div (@ (class "widget"))
          (h4 "公告")
@@ -37,7 +37,15 @@
           (li (a (@ (href "https://foreverblog.cn/go.html"))
                  "虫洞"))
           (li (a (@ (href "/rss2.xml"))
-                 "Rss"))))))
+                 "Rss"))))
+    ,(if post
+         `(div (@ (class "widget"))
+           (h4 "标签")
+           (ul
+            ,@(map (lambda (tag)
+                     `(li ,tag))
+                   (post-tags post))))
+         '())))
 
 (define* (fox-default-layout site title body #:key post)
   `((doctype "html")
@@ -60,7 +68,7 @@
       (h1 (@ (class "title")) ,(site-title site))
       (div (@ (class "container flex"))
            ,body
-           ,sidebar)
+           ,(sidebar #:post post))
       ,footer))))
 
 (define (fox-default-post-template post)
