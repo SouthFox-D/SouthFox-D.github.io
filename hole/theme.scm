@@ -107,6 +107,7 @@
         (data-input-position "top")
         (data-theme "dark_dimmed")
         (data-lang "zh-CN")
+        (data-loading "lazy")
         (crossorigin "anonymous")
         (async "true")))))
 
