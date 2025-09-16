@@ -6,7 +6,8 @@
   #:use-module (ice-9 match)
   #:use-module (ice-9 string-fun)
   #:use-module (hole blog)
-  #:export (parse-read-more
+  #:export (comment-place
+            parse-read-more
             fox-theme))
 
 (define footer
@@ -73,6 +74,42 @@
            ,(sidebar #:post post))
       ,footer))))
 
+(define (get-comment-term post)
+  (let* ((%post-list (cdr (string-split (post-file-name post) #\/)))
+          (post-list (if (equal? "_posts" (car %post-list))
+                         (cdr %post-list)
+                         %post-list))
+          (list-length (length post-list)))
+     (string-join (append (list-head post-list (- list-length 1))
+                          (list (string-replace-substring
+                                 (list-ref post-list (- list-length 1))
+                                 ".md"
+                                 "/")))
+                  "/")))
+
+(define (comment-place comment-term)
+  `(div
+    (@ (class "comment"))
+    (blockquote
+     "如不想授权 Giscus 应用，也可以点击下方"
+     (strong "左上角数字")
+     "直接跳转到 Github Discussions 进行评论。")
+    (script
+     (@ (src "https://giscus.app/client.js")
+        (data-repo "SouthFox-D/SouthFox-D.github.io")
+        (data-repo-id "MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ=")
+        (data-category "博客评论")
+        (data-category-id "DIC_kwDODaJZAM4CA7bf")
+        (data-mapping "specific")
+        (data-term ,comment-term)
+        (data-reactions-enabled "0")
+        (data-emit-metadata "0")
+        (data-input-position "top")
+        (data-theme "dark_dimmed")
+        (data-lang "zh-CN")
+        (crossorigin "anonymous")
+        (async "true")))))
+
 (define (fox-default-post-template post)
   `(div (@ (class "content"))
     (div
@@ -80,26 +117,7 @@
      (h3 "by " ,(post-ref post 'author)
          " — " ,(date->string (post-date post) "~Y-~m-~d"))
      (div ,(post-sxml post)))
-    (div
-     (@ (class "comment"))
-     (blockquote
-      "如不想授权 Giscus 应用，也可以点击下方"
-      (strong "左上角数字")
-      "直接跳转到 Github Discussions 进行评论。")
-     (script
-      (@ (src "https://giscus.app/client.js")
-         (data-repo "SouthFox-D/SouthFox-D.github.io")
-         (data-repo-id "MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ=")
-         (data-category "博客评论")
-         (data-category-id "DIC_kwDODaJZAM4CA7bf")
-         (data-mapping "og:title")
-         (data-reactions-enabled "0")
-         (data-emit-metadata "0")
-         (data-input-position "top")
-         (data-theme "dark_dimmed")
-         (data-lang "zh-CN")
-         (crossorigin "anonymous")
-         (async "true"))))))
+    ,(comment-place (get-comment-term post))))
 
 (define (parse-read-more post)
   (let loop ((sxml (post-sxml post))
