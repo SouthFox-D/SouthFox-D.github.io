@@ -1,13 +1,15 @@
 (define-module (hole page)
   #:use-module (haunt site)
   #:use-module (haunt page)
+  #:use-module (haunt post)
   #:use-module (haunt utils)
   #:use-module (haunt html)
   #:use-module (hole blog)
   #:use-module (hole theme)
   #:export (static-page
             about-page
-            friends-page))
+            friends-page
+            archives-page))
 
 (define (static-page title file-name body)
   (lambda (site posts)
@@ -87,3 +89,20 @@
       ,(make-friend "歪皮" "http://www.gene-yp.com/" "Just love, understanding and positivity"))
      (br)
      ,(comment-place "friends/index.html"))))
+
+(define (archives-page)
+  (lambda (site posts)
+    (make-page "archives/index.html"
+               (with-layout
+                fox-theme
+                site
+                "Archives"
+                `(div (@ (class "content"))
+                  (ul
+                   ,(map (lambda (post)
+                           `(li (a (@ (href ,(string-append
+                                              "/"
+                                              (site-post-slug site post) ".html")))
+                                   ,(post-ref post 'title))))
+                         (posts/reverse-chronological posts)))))
+               sxml->html)))

@@ -40,6 +40,7 @@
                         #:posts-per-page 10)
                        (about-page)
                        (friends-page)
+                       (archives-page)
                        (atom-feed)
                        (hole/rss-feed)
                        (static-directory "assets"))
