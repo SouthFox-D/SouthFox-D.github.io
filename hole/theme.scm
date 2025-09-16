@@ -60,10 +60,12 @@
       ,(if post
            `(meta (@ (property "og:title")
                      (content
-                      ,(string-replace-substring
-                        (site-post-slug site post) "/index" "/"))))
-           `(meta (@ (property "og:site_name")
-                     (content ,(site-title site)))))
+                      ,(string-append (post-ref post 'title)
+                                      " — "
+                                      (site-title site)))))
+           '())
+      (meta (@ (property "og:site_name")
+               (content ,(site-title site))))
       (title ,(string-append title " — " (site-title site)))
       (link (@ (rel "stylesheet")
                (href "/assets/css/main.css"))))
