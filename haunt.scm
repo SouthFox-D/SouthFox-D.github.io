@@ -46,5 +46,6 @@
                        (tags->page)
                        (atom-feed)
                        (hole/rss-feed)
-                       (static-directory "assets"))
+                       (static-directory "assets")
+                       (static-directory "_size" "/"))
       #:make-slug hexo-post-slug)
