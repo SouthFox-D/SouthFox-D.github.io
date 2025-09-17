@@ -101,6 +101,7 @@
                 site
                 "Archives"
                 `(div (@ (class "content"))
+                  (h2 "归档")
                   (ul
                    ,(map (lambda (post)
                            `(li (a (@ (href ,(string-append
