@@ -23,6 +23,7 @@
            ☰)
     (div (@ (class "menu"))
          (a (@ (href "/archives/")) "归档")
+         (a (@ (href "/tags/")) "标签")
          (a (@ (href "/about/")) "关于")
          )))
 
@@ -48,7 +49,7 @@
          (p "博客开发中……")
          (ul
           (li "导航栏 DONE")
-          (li "标签云 TODO")
+          (li "标签 DONE")
           (li "代码高亮 TODO")
           (li "按钮样式 TODO")
           (li "文章内上一篇下一篇导航 TODO")))
@@ -70,7 +71,8 @@
            (h4 "标签")
            (ul
             ,@(map (lambda (tag)
-                     `(li ,tag))
+                     `(li (a (@ (href ,(string-append "/tags/" tag)))
+                             ,tag)))
                    (post-tags post))))
          '())))
 

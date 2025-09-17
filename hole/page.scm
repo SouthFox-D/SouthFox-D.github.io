@@ -6,10 +6,13 @@
   #:use-module (haunt html)
   #:use-module (hole blog)
   #:use-module (hole theme)
+  #:use-module (hole tags)
+  #:use-module (ice-9 match)
   #:export (static-page
             about-page
             friends-page
-            archives-page))
+            archives-page
+            tags-page))
 
 (define (static-page title file-name body)
   (lambda (site posts)
@@ -105,4 +108,22 @@
                                               (site-post-slug site post) ".html")))
                                    ,(post-ref post 'title))))
                          (posts/reverse-chronological posts)))))
+               sxml->html)))
+
+(define (tags-page)
+  (lambda (site posts)
+    (make-page "tags/index.html"
+               (with-layout
+                fox-theme
+                site
+                "Tags"
+                `(div (@ (class "content"))
+                  (h2 "标签")
+                  (ul
+                   ,(map (match-lambda
+                           ((tag count)
+                            `(li (a (@ (class "tag")
+                                       (href ,(tag-uri tag)))
+                                    ,tag ": " ,count))))
+                         (count-tags posts)))))
                sxml->html)))

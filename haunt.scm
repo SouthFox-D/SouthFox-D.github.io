@@ -10,6 +10,7 @@
              (hole reader)
              (hole rss)
              (hole page)
+             (hole tags)
              )
 
 
@@ -41,6 +42,8 @@
                        (about-page)
                        (friends-page)
                        (archives-page)
+                       (tags-page)
+                       (tags->page)
                        (atom-feed)
                        (hole/rss-feed)
                        (static-directory "assets"))
