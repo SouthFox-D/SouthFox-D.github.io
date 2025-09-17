@@ -10,6 +10,22 @@
             parse-read-more
             fox-theme))
 
+(define navbar
+  '(nav (@ (class "nav"))
+    (a (@ (href "/")
+          (class "brand"))
+       (span "狐狸反走矣"))
+    (input (@ (id "bmenub")
+              (type "checkbox")
+              (class "show")))
+    (label (@ (for "bmenub")
+              (class "burger pseudo button"))
+           ☰)
+    (div (@ (class "menu"))
+         (a (@ (href "/archives/")) "归档")
+         (a (@ (href "/about/")) "关于")
+         )))
+
 (define footer
   `(footer (@ (class "footer"))
     (div (@ (class "copyright"))
@@ -33,10 +49,6 @@
     (div (@ (class "widget"))
          (h4 "链接")
          (ul
-          (li (a (@ (href "/archives/"))
-                 "归档"))
-          (li (a (@ (href "/about/"))
-                 "关于"))
           (li (a (@ (href "https://www.travellings.cn/train.html"))
                  "开往"))
           (li (a (@ (href "https://foreverblog.cn/go.html"))
@@ -72,7 +84,7 @@
       (link (@ (rel "stylesheet")
                (href "/assets/css/main.css"))))
      (body
-      (h1 (@ (class "title")) ,(site-title site))
+      ,navbar
       (div (@ (class "container flex"))
            ,body
            ,(sidebar #:post post))

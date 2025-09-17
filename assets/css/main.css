@@ -410,6 +410,119 @@ pre code {
 }
 
 /* Hole Theme */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: fit-content;
+    padding: 0 0.6em;
+    background: #000;
+    line-height: normal;
+    z-index: 10000;
+}
+
+nav .brand,
+nav .menu,
+nav .burger {
+    float: right;
+    position: revert;
+}
+
+nav .brand {
+    font-size: x-large;
+    font-weight: 700;
+    float: left;
+    padding: 0 0.6em;
+    max-width: 50%;
+    white-space: nowrap;
+    color: inherit;
+}
+
+nav .menu > * {
+    margin-right: 1.2em;
+}
+
+nav .burger {
+    display: none;
+}
+
+@media all and (max-width: 60em) {
+    nav .burger {
+        display: inline-block;
+        cursor: pointer;
+        bottom: -1000em;
+        margin-top: 0.25em;
+    }
+    nav .burger ~ .menu,
+    nav .show:checked ~ .burger {
+        position: fixed;
+        min-height: 100%;
+        top: 0;
+        right: 0;
+        bottom: -1000em;
+        margin: 0;
+        background: #000;
+        transition: all 0.5s ease;
+        transform: none;
+    }
+    nav .burger ~ .menu {
+        z-index: 11;
+    }
+    nav .show:checked ~ .burger {
+        color: transparent;
+        width: 100%;
+        border-radius: 0;
+        background: rgba(17, 17, 17, 0.2);
+        transition: all 0s ease;
+    }
+    nav .show ~ .menu {
+        width: 70%;
+        max-width: 300px;
+        transform-origin: center right;
+        transition: all 0.25s ease;
+        transform: scaleX(0);
+    }
+    nav .show ~ .menu > * {
+        transform: translateX(100%);
+        transition: all 0s ease 0.5s;
+    }
+    nav .show:checked ~ .menu > *:nth-child(1) {
+        transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    }
+    nav .show:checked ~ .menu > *:nth-child(2) {
+        transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    }
+    nav .show:checked ~ .menu > *:nth-child(3) {
+        transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    }
+    nav .show:checked ~ .menu > *:nth-child(4) {
+        transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    }
+    nav .show:checked ~ .menu > *:nth-child(5) {
+        transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    }
+    nav .show:checked ~ .menu > *:nth-child(6) {
+        transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1) 0s;
+    }
+    nav .show:checked ~ .menu {
+        transform: scaleX(1);
+    }
+    nav .show:checked ~ .menu > * {
+        transform: translateX(0);
+        transition: all 0.5s ease-in-out 0.6s;
+    }
+    nav .burger ~ .menu > * {
+        display: block;
+        margin: 0.3em;
+        text-align: left;
+        max-width: calc(100% - 0.6em);
+    }
+    nav .burger ~ .menu > a {
+        padding: 0.3em 0.9em;
+    }
+}
+
 .container,
 .title {
     width: 60%;
@@ -464,6 +577,7 @@ body {
     font-display: swap;
 }
 
+.nav,
 .container,
 .footer,
 .title code,
