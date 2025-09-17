@@ -71,8 +71,7 @@ with that TAG."
      (h1 "#" ,title)
      (ul
       ,(map (lambda (post)
-              `(li (a (@ (href ,(string-append "/"
-                                               (site-post-slug site post) ".html")))
+              `(li (a (@ (href ,(string-append "/" (site-post-slug site post))))
                       ,(post-ref post 'title)
                       " — "
                       ,(date->string (post-date post) "~Y-~m-~d"))))

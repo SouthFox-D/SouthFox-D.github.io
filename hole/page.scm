@@ -105,7 +105,7 @@
                    ,(map (lambda (post)
                            `(li (a (@ (href ,(string-append
                                               "/"
-                                              (site-post-slug site post) ".html")))
+                                              (site-post-slug site post))))
                                    ,(post-ref post 'title))))
                          (posts/reverse-chronological posts)))))
                sxml->html)))

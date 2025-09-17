@@ -25,7 +25,7 @@
                              (list (string-replace-substring
                                     (list-ref post-list (- list-length 1))
                                     ".md"
-                                    "/index")))
+                                    "/")))
                      "/"))))
 
 (site #:title "狐狸反走矣"

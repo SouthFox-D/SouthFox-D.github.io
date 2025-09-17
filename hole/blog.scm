@@ -75,7 +75,7 @@
 (define (ugly-default-collection-template site title posts prefix)
   (define (post-uri post)
     (string-append (or prefix "") "/"
-                   (site-post-slug site post) ".html"))
+                   (site-post-slug site post) "index.html"))
 
   `((h3 ,title)
     (ul
@@ -143,7 +143,7 @@ several pages with up to POSTS-PER-PAGE posts on each page."
                                           (string-append post-prefix "/")
                                           "")
                                       (site-post-slug site post)
-                                      ".html"))
+                                      "index.html"))
             (title (post-ref post 'title))
             (body ((theme-post-template theme) post)))
         (serialized-artifact (make-file-name base-name)

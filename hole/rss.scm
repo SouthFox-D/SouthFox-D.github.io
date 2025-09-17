@@ -137,7 +137,7 @@
                          #:host (site-domain site)
                          #:path (string-append blog-prefix "/"
                                                (site-post-slug site post)
-                                               ".html")))))
+                                               "index.html")))))
     `(item
       (title ,(post-ref post 'title))
       (guid ,uri)
