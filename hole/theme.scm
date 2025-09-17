@@ -62,7 +62,9 @@
           (li (a (@ (href "https://foreverblog.cn/go.html"))
                  "虫洞"))
           (li (a (@ (href "/rss2.xml"))
-                 "Rss"))))
+                 "Rss"))
+          (li (a (@ (href "https://www.fsf.org/appeal"))
+                 (img (@ (src "/assets/img/6838639.png")))))))
     ,(if post
          `(div (@ (class "widget"))
            (h4 "标签")
