@@ -16,7 +16,7 @@
 (define (hexo-post-slug post)
   (or (post-ref post 'slug)
       (let* ((%post-list (cdr (string-split (post-file-name post) #\/)))
-             (post-list (if (equal? "_posts" (car %post-list))
+             (post-list (if (equal? "posts" (car %post-list))
                             (cdr %post-list)
                             %post-list))
              (list-length (length post-list)))
@@ -33,7 +33,7 @@
       '((author . "SouthFox")
         (email  . "master@southfox.me"))
       #:readers (list fox-commonmark-reader)
-      #:posts-directory "source/_posts"
+      #:posts-directory "posts"
       #:builders (list (hole/blog
                         #:theme fox-theme
                         #:collections `(("最近文章" "index.html" ,posts/reverse-chronological))
