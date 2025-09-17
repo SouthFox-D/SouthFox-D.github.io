@@ -45,7 +45,13 @@
   `(div (@ (class "sidebar"))
     (div (@ (class "widget"))
          (h4 "公告")
-         (p "装修中……"))
+         (p "博客开发中……")
+         (ul
+          (li "导航栏 DONE")
+          (li "标签云 TODO")
+          (li "代码高亮 TODO")
+          (li "按钮样式 TODO")
+          (li "文章内上一篇下一篇导航 TODO")))
     (div (@ (class "widget"))
          (h4 "链接")
          (ul
