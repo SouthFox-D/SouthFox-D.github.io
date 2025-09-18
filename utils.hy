@@ -27,10 +27,10 @@
 (defn get-post-files []
   (setv markdown-files [])
 
-  (for [[root dirs files] (os.walk "source")
+  (for [[root dirs files] (os.walk "posts")
         -file files]
     (let [file (os.path.join root -file)]
-      (when (and (in "posts" file) (file.endswith ".md"))
+      (when (file.endswith ".md")
         (markdown-files.append file))))
   (return markdown-files))
 
