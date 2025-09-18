@@ -51,7 +51,7 @@
           (li "导航栏 DONE")
           (li "标签 DONE")
           (li "代码高亮 TODO")
-          (li "按钮样式 TODO")
+          (li "按钮样式 DONE")
           (li "文章内上一篇下一篇导航 TODO")))
     (div (@ (class "widget"))
          (h4 "链接")
@@ -178,12 +178,18 @@
   `((,@body
      (div (@ (class "pagination"))
           ,(if previous-page
-               `(a (@ (href ,previous-page)) "← 上一页")
-               '())
-          (a (@ (href "/")) " 主页 ")
+               `(a (@ (class "btn")
+                      (href ,previous-page))
+                 "← 上一页")
+               `(a (@ (class "btn disabled"))
+                 "← 上一页"))
+          (a (@ (class "btn") (href "/")) " 主页 ")
           ,(if next-page
-               `(a (@ (href ,next-page)) "下一页 →")
-               '())))))
+               `(a (@ (class "btn")
+                      (href ,next-page))
+                 "下一页 →")
+               `(a (@ (class "btn disabled"))
+                 "下一页 →"))))))
 
 (define fox-theme
   (theme #:name "Fox"
