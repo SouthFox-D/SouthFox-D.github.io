@@ -43,6 +43,20 @@
                  (a (@ (href "https://git.southfox.me/southfox/blog"))
                     "here"))))))
 
+(define (parse-post-toc post)
+  (let loop ((sxml (post-sxml post))
+             (result '()))
+    (match sxml
+      (() (reverse result) )
+      ((`(,hl (@ (id ,hid)) ,headline)  tail ...)
+       (if (char=? #\h (string-ref (symbol->string hl) 0))
+           (loop tail (cons `(li (a (@ (href ,(string-append "#" hid)))
+                                    ,headline))
+                            result))
+           (loop tail result)))
+      ((head . tail)
+       (loop tail result)))))
+
 (define* (sidebar #:key post)
   `(div (@ (class "sidebar"))
     (div (@ (class "widget"))
@@ -54,7 +68,7 @@
           (li "代码高亮 DONE")
           (li "按钮样式 DONE")
           (li "文章内上一篇下一篇导航 DONE")
-          (li "文章目录 TODO")))
+          (li "文章目录 DONE")))
     (div (@ (class "widget"))
          (h4 "链接")
          (ul
@@ -68,6 +82,12 @@
                  "Rss"))
           (li (a (@ (href "https://www.fsf.org/appeal"))
                  (img (@ (src "/assets/img/6838639.png")))))))
+    ,(if post
+         `(div (@ (class "widget"))
+           (h4 "目录")
+           (ul
+            ,(parse-post-toc post)))
+         '())
     ,(if post
          `(div (@ (class "widget"))
            (h4 "标签")
