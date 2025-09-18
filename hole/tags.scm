@@ -39,9 +39,6 @@ posts associated with it."
     (hash-set! table "untagged" '())
     (for-each (lambda (post)
                 (let ((tags (post-ref post 'tags)))
-                  (display (post-ref post 'title))
-                  (display tags)
-                  (newline)
                   (if tags
                       (for-each (lambda (tag)
                                   (let ((current (hash-ref table tag)))
