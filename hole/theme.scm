@@ -53,7 +53,8 @@
           (li "标签 DONE")
           (li "代码高亮 DONE")
           (li "按钮样式 DONE")
-          (li "文章内上一篇下一篇导航 DONE")))
+          (li "文章内上一篇下一篇导航 DONE")
+          (li "文章目录 TODO")))
     (div (@ (class "widget"))
          (h4 "链接")
          (ul
