@@ -6,6 +6,7 @@
   #:use-module (ice-9 match)
   #:use-module (ice-9 string-fun)
   #:use-module (hole blog)
+  #:use-module (hole reader)
   #:export (comment-place
             parse-read-more
             fox-theme))
@@ -98,7 +99,7 @@
      (body
       ,navbar
       (div (@ (class "container flex"))
-           ,body
+           ,(post-process-commonmark body)
            ,(sidebar #:post post))
       ,footer))))
 

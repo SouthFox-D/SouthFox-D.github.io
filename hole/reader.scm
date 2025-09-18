@@ -8,16 +8,36 @@
   #:use-module (sxml transform)
   #:use-module (hole sxml)
   #:use-module (hole blocks)
-  #:export (fox-commonmark-reader))
+  #:use-module (syntax-highlight)
+  #:use-module (syntax-highlight scheme)
+  #:use-module (syntax-highlight lisp)
+  #:use-module (hole syntax-highlight-python)
+  #:export (fox-commonmark-reader
+            post-process-commonmark))
 
-(define (text-hackery . tree)
+(define (maybe-highlight-code lang source)
+  (let ((lexer (match lang
+                 ('scheme lex-scheme)
+                 ('lisp lex-lisp)
+                 ('elisp lex-lisp)
+                 ('emacs-lisp lex-lisp)
+                 ('python lex-python)
+                 (_ #f))))
+    (if lexer
+        (highlights->sxml (highlight lexer source))
+        source)))
+
+(define (highlight-code . tree)
   (sxml-match tree
-              ((p ",(read more)")
-               tree)
-              (,other (begin other))))
+    ((code (@ (class ,class) . ,attrs) ,source)
+     (let ((lang (string->symbol
+                  (string-drop class (string-length "language-")))))
+       `(code (@ ,@attrs)
+             ,(maybe-highlight-code lang source))))
+    (,other other)))
 
 (define %commonmark-rules
-  `((p . ,text-hackery)
+  `((code . ,highlight-code)
     (*text* . ,(lambda (tag str) str))
     (*default* . ,(lambda (. arg) arg))))
 

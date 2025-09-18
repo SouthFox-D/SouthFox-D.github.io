@@ -580,11 +580,15 @@ body {
 .nav,
 .container,
 .footer,
-.title code,
-pre code {
+.title code {
     text-rendering: optimizelegibility;
     font-family: Zpix, var(--sans-font);
     color: #bbb;
+}
+
+pre code,
+pre code span {
+    color: #ccc;
 }
 
 .footer {
@@ -689,4 +693,23 @@ pre {
 .btn.disabled {
     box-shadow: none;
     pointer-events: none;
+}
+
+.syntax-special,
+.syntax-element {
+    color: #8ac6f2;
+    font-weight: bold;
+}
+
+.syntax-string {
+    color: #9c9;
+}
+
+.syntax-keyword,
+.syntax-attribute {
+    color: #f2777a;
+}
+
+.syntax-comment {
+    color: #999;
 }
