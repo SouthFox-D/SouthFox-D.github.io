@@ -3,6 +3,8 @@
              (guix profiles)
              (guix licenses)
              (gnu packages base)
+             (gnu packages bash)
+             (gnu packages guile)
              (gnu packages guile-xyz))
 
 (define %minimal-glibc-locales
@@ -37,6 +39,8 @@
    (license expat)))
 
 (packages->manifest
- (list minimal-glibc-locales
+ (list bash
+       minimal-glibc-locales
+       guile-3.0
        guile-syntax-highlight
        haunt))

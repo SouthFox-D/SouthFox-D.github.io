@@ -40,7 +40,7 @@ jobs:
           -v ${{ github.workspace }}:/app southfox09/haunt-agent:latest \
           sh -c \
           "cd /app && \
-          GUIX_LOCPATH=/profile/lib/locale LANG=en_US.UTF-8 haunt build"
+          GUIX_PROFILE=/profile GUIX_LOCPATH=/profile/lib/locale LANG=en_US.UTF-8 haunt build"
         mv _headers ./site
         cd ./site
         echo "blog.southfox.me" > CNAME
