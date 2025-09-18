@@ -53,7 +53,7 @@
           (li "标签 DONE")
           (li "代码高亮 DONE")
           (li "按钮样式 DONE")
-          (li "文章内上一篇下一篇导航 TODO")))
+          (li "文章内上一篇下一篇导航 DONE")))
     (div (@ (class "widget"))
          (h4 "链接")
          (ul
@@ -140,13 +140,27 @@
         (crossorigin "anonymous")
         (async "true")))))
 
-(define (fox-default-post-template post)
+(define* (fox-default-post-template post #:key previous-post next-post)
   `(div (@ (class "content"))
     (div
      (h2 ,(post-ref post 'title))
      (h3 "by " ,(post-ref post 'author)
          " — " ,(date->string (post-date post) "~Y-~m-~d"))
      (div ,(post-sxml post)))
+    (div (@ (class "pagination"))
+         ,(if previous-post
+              `(a (@ (class "btn")
+                     (href ,previous-post))
+                "← 上一页")
+              `(a (@ (class "btn disabled"))
+                "← 上一页"))
+         (a (@ (class "btn") (href "/")) " 主页 ")
+         ,(if next-post
+              `(a (@ (class "btn")
+                     (href ,next-post))
+                "下一页 →")
+              `(a (@ (class "btn disabled"))
+                "下一页 →")))
     ,(comment-place (get-comment-term post))))
 
 (define (parse-read-more post)

@@ -124,9 +124,9 @@
   (date->string date "~a ~d ~B ~Y"))
 
 (define* (hole/blog #:key theme prefix post-prefix
-               (collections
-                `(("Recent Posts" "index.html" ,posts/reverse-chronological)))
-               posts-per-page)
+                    (collections
+                     `(("Recent Posts" "index.html" ,posts/reverse-chronological)))
+                    posts-per-page)
   "Return a procedure that transforms a list of posts into pages
 decorated by THEME, whose URLs start with PREFIX.  Post pages may be
 nested deeper in the file hierarchy than collection pages by
@@ -138,14 +138,14 @@ several pages with up to POSTS-PER-PAGE posts on each page."
     (string-append (or prefix "") (if prefix "/" "") base-name))
 
   (lambda (site posts)
-    (define (post->page post)
+    (define* (post->page post #:key previous-post next-post)
       (let ((base-name (string-append (if post-prefix
                                           (string-append post-prefix "/")
                                           "")
                                       (site-post-slug site post)
                                       "index.html"))
             (title (post-ref post 'title))
-            (body ((theme-post-template theme) post)))
+            (body ((theme-post-template theme) post #:previous-post previous-post #:next-post next-post)))
         (serialized-artifact (make-file-name base-name)
                              (with-layout theme site title body
                                           #:post post)
@@ -242,5 +242,29 @@ several pages with up to POSTS-PER-PAGE posts on each page."
       (delete-duplicates
        (append-map (match-lambda ((_ _ posts) posts)) collections*)))
 
-    (append (map post->page posts*)
+    (define (build-post posts*)
+      (define (post-uri post)
+        (if post
+            (string-append "/" (site-post-slug site post))
+            #f))
+      (let loop ((pages posts*)
+                 (prev-post #f))
+        (match pages
+          (()
+           '())
+          ((last-page)
+           (list (post->page
+                  last-page
+                  #:previous-post
+                  (post-uri prev-post))))
+          ((and (page . rest) (_ next-post . _))
+           (cons (post->page
+                  page
+                  #:previous-post
+                  (post-uri prev-post)
+                  #:next-post
+                  (post-uri next-post))
+                 (loop rest page))))))
+
+    (append (build-post posts*)
             (append-map collection->page collections*))))
