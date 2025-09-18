@@ -51,7 +51,7 @@
          (ul
           (li "导航栏 DONE")
           (li "标签 DONE")
-          (li "代码高亮 TODO")
+          (li "代码高亮 DONE")
           (li "按钮样式 DONE")
           (li "文章内上一篇下一篇导航 TODO")))
     (div (@ (class "widget"))
