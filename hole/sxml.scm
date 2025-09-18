@@ -19,6 +19,7 @@
   #:use-module (srfi srfi-1)
   #:use-module (sxml simple)
   #:use-module (commonmark node)
+  #:use-module (ice-9 string-fun)
   #:export (hole/document->sxml
             shortcode-node?))
 
@@ -111,7 +112,12 @@
           (else (error "unknown shortcode")))))
 
 (define (heading-node->sxml n)
-  `(,(level n) ,@(fold-nodes node->sxml (node-children n))))
+  `(,(level n)
+    (@ (id ,(string-join (map (lambda (text)
+                                (string-replace-substring text " " ""))
+                              (map car (fold-nodes node-children (node-children n))))
+                         "")))
+      ,@(fold-nodes node->sxml (node-children n))))
 
 (define (list-type n)
   (case (assq-ref (node-data n) 'type)
