@@ -58,7 +58,7 @@
           discussion-post (-> (query-response.json) :data :repository :discussions :nodes)
           discussion-post-titles (lfor x discussion-post (:title x))
           local-post-titles (lfor-> it post-files
-                             (. (it.split "_posts/") [-1])
+                             (. (it.split "posts/") [-1])
                              (it.strip ".md")
                              (+ it "/"))]
       (for [post-title local-post-titles]
