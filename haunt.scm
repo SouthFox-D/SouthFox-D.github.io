@@ -23,9 +23,10 @@
              (list-length (length post-list)))
         (string-join (append (list-head post-list (- list-length 1))
                              (list (string-replace-substring
-                                    (list-ref post-list (- list-length 1))
-                                    ".md"
-                                    "/")))
+                                    (string-replace-substring
+                                     (list-ref post-list (- list-length 1))
+                                     ".md" "/")
+                                    ".org" "/")))
                      "/"))))
 
 (site #:title "狐狸反走矣"
@@ -33,7 +34,7 @@
       #:default-metadata
       '((author . "SouthFox")
         (email  . "master@southfox.me"))
-      #:readers (list fox-commonmark-reader)
+      #:readers (list fox-commonmark-reader fox-org-reader)
       #:posts-directory "posts"
       #:builders (list (hole/blog
                         #:theme fox-theme
