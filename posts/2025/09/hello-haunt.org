@@ -1,0 +1,351 @@
+#+title: Hello Haunt, 又一次换了博客框架
+#+author: SouthFox
+#+date: 2025-09-22 16:53:22
+#+tags: 博客:Lisp:技术
+
+鼓捣了大半个月，终于将本博客切换到新的框架上了。看到上一次为 [[/2019/12/hello-world/][Hexo]]
+写的博文，发现已经快六年过去了，徒留一阵感慨啊……
+
+,(read-more)
+
+** Hexo
+六年下来我对于对于之前搭建在 Hexo 上的博客还是小有微辞的：
+
+- Hexo 是 npm 生态下的应用，所以安装就会引入 node_modules 这个重力黑洞。
+- node_modules 里面的依赖经常触发漏洞扫描告警，我只是用来本地生成点 HTML 页面结果为什么要这么「轰炸」我啊……
+- 我一直想用 org-mode 来写博文的但是 hexo 不原生支持所以……额，npm install something ？
+
+然后是对于 [[https://github.com/blackshow/hexo-theme-freemind.386][Freemide.386]] 这个主题，这个主题很好，也很有风格。可能这个博客 80% 的惊奇都来源于这个主题，但它也有
+一些不足：
+
+- 它还在用着 15 年时的技术栈，为了实现响应式布局不惜引入几百 K 的 js 和 css 文件
+  （bootstrap 3.1.1 版本，2014-02-13 发行）。
+  但现在已经可以用现代 css 标准写很少的样式来实现响应式布局了。
+- 「年少轻狂」的我在上面折腾了很多东西，例如直接硬写 min.css 样式文件啥的。
+  经过这么多年的硬整，已经变成了用来藏污纳垢的地毯，我已经没有勇气掀开它了。
+
+不过说了这些，其实最主要还是我没有对着某个不知名教程鼓捣一通然后用了六年的 hexo 产生什么「感情」（什么虐恋 BE 文学），
+最近甚至还出现了在 ci 中连 npm install 都报错的情况（好像是镜像源的问题），索性就打算换个新框架了。
+
+** Haunt
+所以换啥呢，这世面上的静态博客生成框架已经差不多五百个了（参见： [[https://staticsitegenerators.bevry.me/][Static Site Generators]] ），我其实有点想
+多加上一个，不过一想到要折腾的量导致也只是想了想。
+
+那么用 Hugo 吗？但是感觉体验跟 Hexo 有点大差不差，尤其对于我这种古旧设计来说，无非就是将从 EJS 模板语法换
+成 Go 模板语法。
+
+在不断翻列表和按星星数、按语言排序后，最后看上了 Haunt ，一个用 Guile Scheme 写的静态网站生成器。在体验了几下后我决定，
+就选它了（很难说当时是不是「鬼迷心窍」了），原因为：
+
+- 简单；对于我这个没什么需求的设计，只需要一些简单的能直接在心智上记住的流程就够了，而 Haunt 的设计根本上也只是一些简单函数拼接而已。
+- 直接；其实静态网站生成只是解析一下文本文件然后根据节点类型往内容「粘」上对应的 HTML 标签而已，而对于 Haunt ，依托于 Scheme
+  后面的 SXML （下文会介绍到）让这个过程更直接了。
+- 灵活；Haunt 本身只是一些函数的拼接，所以我也可以往里拼自己的内容，在复杂度还没失控之前这个流程还是很让人心情愉快的。
+
+** Lisp 速成课
+上文列出的原因其实还有一个根本原因 —— Scheme ，一种 Lisp 方言 ，简单、直接、灵活。但可能很多人都会畏惧这个有着古怪圆括号语法的语言被
+劝退，为了本就稀少来阅读本文的读者，所以我打算花亿点时间来介绍 Lisp ：
+
+*** 语法
+- Python, Java, C, 里的运行一个函数 (或者叫方法，过程等等)： =print("Hello World!")=
+- Lisp 里运行一个函数(在 Scheme 里一般叫过程)： =(print "Hello World!")=
+- 好了，你已经掌握了 Lisp 百分之九十的语法了，结课！
+
+好吧，其实这样子说有点像是在说：围棋的规则是一方的棋子围住另一方的棋子就能吃掉然后谁占地盘多谁就赢好了现在你去跟阿尔法狗对弈一样。
+不过其实 Lisp 家族语言的语法就是这么简单，第一项是函数（或者叫……你知道的，就是那种「东西」），剩下的为函数的参数。如：
+
+#+begin_src scheme
+(+ 1 1) ;; => 2
+;; PS: Lisp 系列语言通常拿 ; 作为注释
+(* 2 (+ 1 1)) ;; => 4
+;; PPS: 一个函数调用的参数可以是另一个函数调用
+#+end_src
+
+*** 数据即代码
+如果知道 Lisp 其实可以视作「列表处理」（list processing）的缩写，
+你可能会更加注意到 Lisp 里代码就是放在 Lisp 列表中：
+
+#+begin_src scheme
+;; 生成一个有着 1, 2 两个元素的列表
+(list 1 (+ 1 1)) ;; => (1 2)
+;; 生成一个有着 +, 1, 1 三个元素的列表，结果看起来和 (+ 1 1) 函数调用一模一样？！
+(list + 1 1) ;; => (+ 1 1)
+#+end_src
+
+好吧，这有什么用呢？通常来说要有用一般会跟另一个设定结合在一起，就是引用。
+
+引用的非常贴合现实的例子就是双引号“”，例如：
+
+- 说出你的名字
+- 说出“你的名字”
+
+那么两者的意义是不同的，说出你的名字背后指代的名字和“你的名字”这个符号本身。
+而在 Lisp 中一般用 =quote= 来实现“引用”的效果。
+
+#+begin_src scheme
+;; 定义一个符号叫你的名字指代 SouthFox
+(define 你的名字 "SouthFox")
+你的名字 ;; => "SouthFox"
+;; 注意是 你的名字 符号本身而不是 "你的名字" 字符串
+(quote 你的名字) ;; => 你的名字
+(quote (1 2 3)) ;; => (1 2 3)
+(quote (list 1 2 3)) ;; => (list 1 2 3)
+#+end_src
+
+**** 实践，以 Python 为例
+好吧好吧，现在有了构建在列表上的语言还有“引用”，那么这又有什么用呢？
+现在就有用了：可以将代码和数据「混为一谈」。
+
+为了降低点圆括号恐惧和尽量贴合「现代」开发者，
+接下来以 Python 结合 Lisp 语法类比一个叫 Lithon 的语言（如有雷同纯属巧合），那么看起来像是这样的：
+
+#+begin_src python
+[+, 1, 1] # => 2
+[list, 1, [+, 1, 1]] # => [1, 2]
+[list, +, 1, 1] # => [+, 1, 1]
+[=, 你的名字, "SouthFox"] # 你的名字 = "SouthFox"
+你的名字 # => "SouthFox"
+[quote, 你的名字] # => 你的名字
+#+end_src
+
+然后想一下，在 Python 中有多少次写下 =if not ...:= 了呢？看到相应的代码总会卡顿一下来想一下对应逻辑，如果想要更贴近自然语言
+声明一个叫做 unless（除非） 的语法,当后面的判断不为真时才运行后面代码。在 Python 中，可能只能提个 PEP 祈祷委员会能够通过吧，
+不过应该也不太可能了……
+
+但在 Lithon 中，通过数据即代码和引用机制再配上一个叫做宏的机制，可以轻松定义属于自己的语法。宏的定义很简单，可以粗略理解成特化的
+函数，不过将传进来的参数当作 **数据** 而不是当成 **代码** ，如：
+
+#+begin_src python
+# 定义一个叫 unless 的宏，接收两个列表参数，判断体 test 、逻辑体 body
+[def-macro, unless, [test, body]
+    [return,
+     [list,
+      # if 和 not 需要被当成数据而不是一个调用，所以需要被 quote
+      [[quote, if], [[quote, not], test],
+       body]]]
+]
+
+# 如果 1 + 1 不等于 2 ，那么……
+[unless, [==, [+, 1, 1], 2],
+    [print, "数学不存在了！"]
+]
+
+# 背后会被宏操作成
+[if, [not, [==, [+, 1, 1], 2]],
+    [print, "数学不存在了！"]
+]
+#+end_src
+
+这就是 Lisp 的将代码当成数据的好处，如果有什么地方感到不便那就让它方便，不需要求助于什么语言委员会的讨论、协商、发布。
+
+***** 一个更复杂的例子
+考虑 Lisp 是一个可以像俄罗斯套娃的叠叠乐的语言，所以可能一不小心写出让人眼晕的代码，例如以我现在的博客一个真实例子，
+将 =posts/2025/09/hello-haunt.org= 这样的文件路径处理成 =2025/09/hello-haunt/= 的形式来作为博客文章的 uri，
+用 Lithon 来写可能会出这样的代码：
+
+#+begin_src python
+# 规定用 [.bar, foo] 来表示调用 foo 实例下的 bar ，如 foo.bar -> [.bar foo]
+# 规定取一个数组的元素有 get 函数，如 foo[1] -> [get, foo, 1]
+[+,
+ [.strip,
+  [get,
+   [.split "posts/2025/09/hello-haunt.org" "posts/"], -1]
+  ".org"]
+ "/"]
+#+end_src
+
+可以看到因为 Lisp 的表示法形成了一个由内到外的执行顺序,但盯着这串括括又号号可以注意到实际上里层的调用都会处在外层
+调用的第一个参数上，那么有这样规律就可以请出宏了。
+
+#+begin_src python
+# 还记得 python 的函数声明的不定长参数吗，* 在函数参数声明上表示将元素收集进一个元组里
+# 同时也可以用 * 在列表旁来表示对一个列表将其「展平」
+# def test_args(first, *rest):
+#     print("first is:", first)
+#     print("rest is:", rest)
+#
+# test_args(1, 2, 3)
+# => "first is: 1"
+# => "rest is: (2, 3)"
+#
+# test_args(1)
+# => "first is: 1"
+# => "rest is: ()"
+#
+# test_args(*[1, 2, 3]) 等价于 test_args(1, 2, 3)
+# => "first is: 1"
+# => "rest is: (2, 3)"
+
+[def-macro, ->, [first, *body]
+ [if, [==, 0, [type, body]],
+      [return, [list, first]]
+  else,
+      # 递归处理剩下的元素
+      [return,
+       [list,
+        [quote, ->],
+        [list
+         # 将第一个元素的第一项作为一个调用的函数部分
+         [get, [get, body, 0], 0],
+         # 将 -> 宏的第一个参数作为调用的第一个参数
+         first,
+          # 将第一个元素的剩余元素作为调用的剩余参数「粘」到后面
+         *[get, [get, body, 0], 1:]]
+        # 剩余元素作为下一个 -> 调用的不定长参数
+        *[get, body, 1:]
+       ],
+ ]
+]
+#+end_src
+
+看起来有点绕，但其实思想很简单。将传进来的列表进行判断，如果只传进来一个参数则返回本身，如果不为一个就处理一下
+将第一个参数作为后续的第一个调用的参数，然后相同逻辑处理剩下的部分。接下来用这个定义的 =->= 宏来重写那个处理
+文章路径的例子：
+
+#+begin_src python
+[->, [.split, "posts/2025/09/hello-haunt.org", "posts/"],
+     [get, -1],
+     [.strip, ".org"],
+     [+, "/"],
+ ]
+
+# 一步步展开，实际上等于以下过程……
+[->, [get, [.split, "posts/2025/09/hello-haunt.org" "posts/"] -1],
+     [.strip ".org"],
+     [+, "/"],
+]
+
+[->, [.strip, [get, [.split, "posts/2025/09/hello-haunt.org", "posts/"], -1], ".org"],
+     [+, "/"],
+]
+
+[->, [+, [.strip, [get, [.split, "posts/2025/09/hello-haunt.org", "posts/"], -1], ".org"] "/"]
+]
+
+[+, [.strip, [get, [.split, "posts/2025/09/hello-haunt.org", "posts/"], -1], ".org"], "/"]
+#+end_src
+
+通过 =->= 宏，可以将嵌套的表示调整为并排的表示，能做到这样也是因为可以将代码和数据混在一起。
+如果更有想象力一点，捣鼓出类似 Shell 管道 =|= 的表示形式也是可以的，我就不把这个作为课后作业了（
+
+** SXML
+当然数据即代码首先也得有数据才行， Haunt 实际上对博文所用的文本格式并没有什么限制，只要提供一个分析器将文本解析成 SXML 形式的数
+据就可以了。
+SXML 实际就是在用 Scheme 的形式来描述 XML （HTML 也是一种 XML）。最后通过 sxml->html 的函数将 SXML 形式的数据
+转换成 HTML 文档：
+
+#+begin_src scheme
+;; 因为 quote 很常用所以很多 Lisp 语言都提供便捷形式 ' 来方便操作
+;; 如 '(+ 1 1) 等价于 (quote (+ 1 1))
+
+(define doc
+  '(html
+    (body
+     (h1 "Hello World!")
+     (p
+      ;; sxml 用 @ 来表示标签内的属性
+      (a (@ (href "https://blog.southfox.me"))
+           "My Blog.")))))
+
+(sxml->html doc)
+;; => <html><body><h1>Hello World!</h1><p><a href="https://blog.southfox.me">My Blog.</a></p></body></html>
+#+end_src
+
+=doc= 数据里面的 =h1= 、 =p= 等并不是函数，而只是用来表述 HTML 标签，数据和代码的分界线就此模糊了……
+
+*** 模板
+当然一个合格的静态博客生成器还需要一个模板系统来管理复杂度并进行复用，但 Scheme 作为一个 Lisp 模板已
+经天然支持了，这就是 =准引用= （quasiquote）系统。行为其实跟 ='= 类似，但会在遇到 =,= 逗号的时候对
+后面的部分进行调用，例如：
+
+#+begin_src scheme
+`(1 2 3) ; => (1 2 3)
+`(1 2 ,(+ 1 2)) ; => (1 2 3)
+#+end_src
+
+通过这种语法，就不需要什么 EJS 或者 GO 模板文件还有什么 =${...}= 了，模板和代码可以轻松交织在一起：
+
+#+begin_src scheme
+(define (page-template content)
+  `(div (@ (class "page"))
+    (div (@ (class "content"))
+         ,content)))
+
+(sxml->html (page-template '(p "Hello world!")))
+;; => <div class="page"><div class="content"><p>Hello world!</p></div></div>
+#+end_src
+
+通过这种不知天地为何物的序列反序列法，在心智上还是挺让人愉悦的，因为可以使用一种一致的方式来统合整个站点。
+不过还是让我赶快谈谈自己鼓捣的玩意吧。
+
+** 博客之折腾
+*** shortcode
+Haunt 默认用的解析器只支持基本的语法在功能上非常欠缺，例如一直用到现在的摘要功能，Haunt 是没有原生支持的。
+不过还好里面的组件是可以替换的，所以我往文本解析器的加了 =shortcode= （叫法来源 Hugo) 的规则，匹配类似
+=,(...)= 这样的形式。在匹配到的后根据里面的内容，例如： =,(read-more)= 就会生成转化成 id 为 more 的
+span 数据 =`(span (@ (id "more")))= 来方便后续生成主页的时候进行根据文章的 sxml 进行判断。
+
+当然除了阅读更多我还额外鼓捣了个嵌入长毛象帖文的 =shortcode= ，调用类似于 =,(mastodon-embed ...)=
+其实底层只是把 mastodon embed 的 HTML 转成 sxml 而已……
+
+#+begin_src scheme
+(define (mastodon-embed url)
+  `(div
+    (blockquote
+     (@ (style "background: #FCF8FF; border-radius: 8px; border: 1px solid #C9C4DA; margin: 0; max-width: 540px; min-width: 270px; overflow: hidden; padding: 0;")
+        (data-embed-url ,url)
+        (class "mastodon-embed")) " "
+     (a (@ (target "_blank")
+           (style "align-items: center; color: #1C1A25; display: flex; flex-direction: column; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Roboto, sans-serif; font-size: 14px; justify-content: center; letter-spacing: 0.25px; line-height: 20px; padding: 24px; text-decoration: none;")
+           (href "https://foxsay.southfox.me/@SouthFox/113091661012546611")) " "
+           (svg
+            (@ (xmlns "http://www.w3.org/2000/svg:svg" )
+               (xmlns:xlink "http://www.w3.org/1999/xlink")
+               (width "32")
+               (viewBox "0 0 79 75")
+               (height "32"))
+            (path
+             (@ (fill "currentColor")
+                (d "M63 45.3v-20c0-4.1-1-7.3-3.2-9.7-2.1-2.4-5-3.7-8.5-3.7-4.1 0-7.2 1.6-9.3 4.7l-2 3.3-2-3.3c-2-3.1-5.1-4.7-9.2-4.7-3.5 0-6.4 1.3-8.6 3.7-2.1 2.4-3.1 5.6-3.1 9.7v20h8V25.9c0-4.1 1.7-6.2 5.2-6.2 3.8 0 5.8 2.5 5.8 7.4V37.7H44V27.1c0-4.9 1.9-7.4 5.8-7.4 3.5 0 5.2 2.1 5.2 6.2V45.3h8ZM74.7 16.6c.6 6 .1 15.7.1 17.3 0 .5-.1 4.8-.1 5.3-.7 11.5-8 16-15.6 17.5-.1 0-.2 0-.3 0-4.9 1-10 1.2-14.9 1.4-1.2 0-2.4 0-3.6 0-4.8 0-9.7-.6-14.4-1.7-.1 0-.1 0-.1 0s-.1 0-.1 0 0 .1 0 .1 0 0 0 0c.1 1.6.4 3.1 1 4.5.6 1.7 2.9 5.7 11.4 5.7 5 0 9.9-.6 14.8-1.7 0 0 0 0 0 0 .1 0 .1 0 .1 0 0 .1 0 .1 0 .1.1 0 .1 0 .1.1v5.6s0 .1-.1.1c0 0 0 0 0 .1-1.6 1.1-3.7 1.7-5.6 2.3-.8.3-1.6.5-2.4.7-7.5 1.7-15.4 1.3-22.7-1.2-6.8-2.4-13.8-8.2-15.5-15.2-.9-3.8-1.6-7.6-1.9-11.5-.6-5.8-.6-11.7-.8-17.5C3.9 24.5 4 20 4.9 16 6.7 7.9 14.1 2.2 22.3 1c1.4-.2 4.1-1 16.5-1h.1C51.4 0 56.7.8 58.1 1c8.4 1.2 15.5 7.5 16.6 15.6Z"))))
+           " "
+           (div (@ (style "color: #787588; margin-top: 16px;")) "Post by SouthFox") " "
+           (div (@ (style "font-weight: 500;")) "View on Mastodon") " ") " ")
+    (script (@ (data-allowed-prefixes "https://foxsay.southfox.me/")
+               (async "true")
+               (src "https://foxsay.southfox.me/embed.js")))))
+#+end_src
+
+这样我在文章里写出 =,(mastodon-embed https://foxsay.southfox.me/@SouthFox/115167732215186876/embed)=
+时就会产生类似下面的效果。
+
+,(mastodon-embed https://foxsay.southfox.me/@SouthFox/115167732215186876/embed)
+
+*** 外观
+在外观上我还是继续沿用了 [[https://github.com/blackshow/hexo-theme-freemind.386][Freemide.386]] 这个主题，不过因为从零开始写样式可以直接使用 css 里的 =media query= 来
+进行相应式布局而不必引用 bootstrap 的一大坨 css 和 js 了。
+
+导航栏上我参考了另一个同样使用 Haunt 框架的博客 [[https://bendersteed.gr/][bendersteed.gr]] 来配置，这还真是令我吃惊没想到现在 css 已经可以
+做到这种程度了吗？不过转念一想出现过的 [[https://benjaminaster.com/css-minecraft/][CSS Minecraft]] 这种项目就有点释然了，迟早有一天 css 能带上着色器或者光线追
+踪啥的。
+
+*** 侧边栏
+对于侧边栏我我现在没有想好要做什么，只是出于之前的主题有所以得做上去。可能真正有用的是标签和目录功能，
+目录功能实现很简单：直接一个循环然后判断文章的 sxml 有没有带 =id= 属性同时以 =h= 开头的符号，是的
+话就收集到一个列表里然后转换成 HTML的 =ul= 列表放到侧边栏。
+
+*** 评论区
+对于评论区现在只适配了之前提到的 [[/2022/01/为博客支持评论系统/][为博客支持评论系统]] =Giscus= 的评论系统，而基于 [[/2023/06/使用 Mastodon 作为博客的评论系统/][使用 Mastodon 作为博客的评论系统]] 我还在犹豫
+要不要集成，因为：
+
+- 基于 js ，我还在考虑要不要引入 js ，可能引入也得以一个更 lisp 的手段例如 [[https://lips.js.org/][LIPS]] 或者 [[https://spritely.institute/hoot/][Hoot]] ？
+- 麻烦，流程上还是得先去自己实例获取帖文的 url 才行，振扬就需要额外编辑一次，在没想到更好的自动化方案之前还是有点不想集成了。
+
+*** org-mode
+其实只是把别人搞的用于解析 commonmark 的解析器 [[https://github.com/OrangeShark/guile-commonmark][GitHub - OrangeShark/guile-commonmark]] 给复制了一份然后
+改了一下相应规则，感想是我确实对编译器相关不太感冒，看着相关代码然后不停尝试加点 org-mode 语法有点让脑子爆炸
+了。不过就算是这样也只适配了 org-mode 的基本语法，标题、代码块、引用块啥的。支持 org-mode 全部语法可不敢想，
+这可是让人堕入地狱的想法啊……
+
+** 参考
+- [[https://awesome.haunt.page/][Awesome Haunt]] 同样使用 Haunt 框架的站点索引页
+- [[/2025/04/emacs-lisp-elements/][Emacs lisp 原本]] Emacs lisp 教程
