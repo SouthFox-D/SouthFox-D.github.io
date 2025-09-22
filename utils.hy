@@ -30,7 +30,8 @@
   (for [[root dirs files] (os.walk "posts")
         -file files]
     (let [file (os.path.join root -file)]
-      (when (file.endswith ".md")
+      (when (or (file.endswith ".md")
+                (file.endswith ".org"))
         (markdown-files.append file))))
   (return markdown-files))
 
@@ -60,6 +61,7 @@
           local-post-titles (lfor-> it post-files
                              (. (it.split "posts/") [-1])
                              (it.strip ".md")
+                             (it.strip ".org")
                              (+ it "/"))]
       (for [post-title local-post-titles]
         (when (not-in current-year post-title)
