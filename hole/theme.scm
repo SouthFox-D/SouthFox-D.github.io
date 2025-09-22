@@ -7,6 +7,7 @@
   #:use-module (ice-9 string-fun)
   #:use-module (hole blog)
   #:use-module (hole reader)
+  #:use-module (hole site)
   #:export (comment-place
             parse-read-more
             fox-theme))
@@ -124,19 +125,6 @@
            ,(sidebar #:post post))
       ,footer))))
 
-(define (get-comment-term post)
-  (let* ((%post-list (cdr (string-split (post-file-name post) #\/)))
-          (post-list (if (equal? "_posts" (car %post-list))
-                         (cdr %post-list)
-                         %post-list))
-          (list-length (length post-list)))
-     (string-join (append (list-head post-list (- list-length 1))
-                          (list (string-replace-substring
-                                 (list-ref post-list (- list-length 1))
-                                 ".md"
-                                 "/")))
-                  "/")))
-
 (define (comment-place comment-term)
   `(div
     (@ (class "comment"))
@@ -182,7 +170,7 @@
                 "下一页 →")
               `(a (@ (class "btn disabled"))
                 "下一页 →")))
-    ,(comment-place (get-comment-term post))))
+    ,(comment-place (hexo-post-slug post))))
 
 (define (parse-read-more post)
   (let loop ((sxml (post-sxml post))
