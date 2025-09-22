@@ -351,8 +351,8 @@
                      (if link-match
                          (values (match:end end-ticks 0)
                                  (make-link-node
-                                  (list (make-text-node (match:substring link-match 1)))
-                                  (match:substring link-match 2) #f))
+                                  (list (make-text-node (match:substring link-match 2)))
+                                  (match:substring link-match 1) #f))
                          (values (match:end end-ticks 0)
                                  (make-link-node
                                   (list (make-text-node link-content))
