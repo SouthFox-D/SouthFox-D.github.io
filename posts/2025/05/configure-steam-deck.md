@@ -34,7 +34,7 @@ sudo pacman -S emacs
 
 执行完后就装上了熟悉的紫薯布丁，然后顺便想着配配代理吧然后装上 yay 开始鼓捣，最后发现菜单里更新通道可以选择稳定还是预览，作为一个滚动更新享受者我就换成了预览通道，安装更新，重启之后继续用着几天我就发现不对劲了：
 
-,(mastodon-embed https://foxsay.southfox.me/@SouthFox/112997597522720272/embed)
+,(mastodon-embed https://foxsay.southfox.me/@SouthFox/112997597522720272)
 
 没成想重启之后发现所有的东西都消失了，我的紫薯布丁还有 yay 的一众配置，最后东翻翻西翻翻才发现 Steam Deck 的升级策略类似现在某些安卓手机厂商的 AB 升级策略，系统分区会制作 AB 两份，升级时处在 A 状态时只升 B 完成升级后切换成 B ，好处就是可以优雅回滚，坏处就是占用双份空间还有……配置会被刷掉。感觉就像是灰姑娘里仙女教母施展的魔法，过了零点，所有东西都将回归原样。
 
@@ -42,11 +42,11 @@ sudo pacman -S emacs
 
 这可就傻眼了，没办法只好去找找替代方案了：
 
-,(mastodon-embed https://foxsay.southfox.me/@southfox/113061467070774840/embed)
+,(mastodon-embed https://foxsay.southfox.me/@southfox/113061467070774840)
 
 然后发现新版本的 SteamOS 内置了 distrobox 这个程序可以用容器建立一个系统在里面执行一个程序，折腾来折腾去发现 distrobox 里带 systemd 的系统总有些问题，最后发现既然 distrobox 依托于 podman 为什么不直接在外面操作 podman 呢？
 
-,(mastodon-embed https://foxsay.southfox.me/@SouthFox/113091661012546611/embed)
+,(mastodon-embed https://foxsay.southfox.me/@SouthFox/113091661012546611)
 
 但最后发现 podman 也有些问题，首先就是 podman 即使设置为 `restart-policy=always` 的 pod 在开机时也不会拉起，因为这是由一个 systemd service 执行的，而这个 service 也是 steamOS 的一部分，即使 enable 后在系统更新后也会回归原样（那个时候还不晓得 `/etc/systemd/system` 的目录是不受升级策略影响的）……
 

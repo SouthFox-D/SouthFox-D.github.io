@@ -81,11 +81,11 @@
   `(div
     (blockquote
      (@ (style "background: #FCF8FF; border-radius: 8px; border: 1px solid #C9C4DA; margin: 0; max-width: 540px; min-width: 270px; overflow: hidden; padding: 0;")
-        (data-embed-url ,url)
+        (data-embed-url ,(string-append url "/embed"))
         (class "mastodon-embed")) " "
      (a (@ (target "_blank")
            (style "align-items: center; color: #1C1A25; display: flex; flex-direction: column; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', Roboto, sans-serif; font-size: 14px; justify-content: center; letter-spacing: 0.25px; line-height: 20px; padding: 24px; text-decoration: none;")
-           (href "https://foxsay.southfox.me/@SouthFox/113091661012546611")) " "
+           (href ,url)) " "
            (svg
             (@ (xmlns "http://www.w3.org/2000/svg:svg" )
                (xmlns:xlink "http://www.w3.org/1999/xlink")
