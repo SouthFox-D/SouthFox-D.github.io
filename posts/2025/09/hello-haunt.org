@@ -34,7 +34,7 @@
 那么用 Hugo 吗？但是感觉体验跟 Hexo 有点大差不差，尤其对于我这种古旧设计来说，无非就是将从 EJS 模板语法换
 成 Go 模板语法。
 
-在不断翻列表和按星星数、按语言排序后，最后看上了 Haunt ，一个用 Guile Scheme 写的静态网站生成器。在体验了几下后我决定，
+在不断翻列表和按星星数、按语言排序后，最后看上了 [[https://dthompson.us/projects/haunt.html][Haunt]] ，一个用 Guile Scheme 写的静态网站生成器。在体验了几下后我决定，
 就选它了（很难说当时是不是「鬼迷心窍」了），原因为：
 
 - 简单；对于我这个没什么需求的设计，只需要一些简单的能直接在心智上记住的流程就够了，而 Haunt 的设计根本上也只是一些简单函数拼接而已。
@@ -263,7 +263,7 @@ SXML 实际就是在用 Scheme 的形式来描述 XML （HTML 也是一种 XML�
 `(1 2 ,(+ 1 2)) ; => (1 2 3)
 #+end_src
 
-通过这种语法，就不需要什么 EJS 或者 GO 模板文件还有什么 =${...}= 了，模板和代码可以轻松交织在一起：
+有这种语法，就不需要什么 EJS 或者 GO 模板文件还有什么 =${...}= 了，模板和代码可以轻松交织在一起：
 
 #+begin_src scheme
 (define (page-template content)
@@ -281,7 +281,7 @@ SXML 实际就是在用 Scheme 的形式来描述 XML （HTML 也是一种 XML�
 ** 博客之折腾
 *** shortcode
 Haunt 默认用的解析器只支持基本的语法在功能上非常欠缺，例如一直用到现在的摘要功能，Haunt 是没有原生支持的。
-不过还好里面的组件是可以替换的，所以我往文本解析器的加了 =shortcode= （叫法来源 Hugo) 的规则，匹配类似
+不过还好里面的流程是可以替换的，所以我往文本解析器的加了 =shortcode= （叫法来源 Hugo) 的规则，匹配类似
 =,(...)= 这样的形式。在匹配到的后根据里面的内容，例如： =,(read-more)= 就会生成转化成 id 为 more 的
 span 数据 =`(span (@ (id "more")))= 来方便后续生成主页的时候进行根据文章的 sxml 进行判断。
 
@@ -322,7 +322,7 @@ span 数据 =`(span (@ (id "more")))= 来方便后续生成主页的时候进行
 
 *** 外观
 在外观上我还是继续沿用了 [[https://github.com/blackshow/hexo-theme-freemind.386][Freemide.386]] 这个主题，不过因为从零开始写样式可以直接使用 css 里的 =media query= 来
-进行相应式布局而不必引用 bootstrap 的一大坨 css 和 js 了。
+进行响应式布局而不必引用 bootstrap 的一大坨 css 和 js 了。
 
 导航栏上我参考了另一个同样使用 Haunt 框架的博客 [[https://bendersteed.gr/][bendersteed.gr]] 来配置，这还真是令我吃惊没想到现在 css 已经可以
 做到这种程度了吗？不过转念一想出现过的 [[https://benjaminaster.com/css-minecraft/][CSS Minecraft]] 这种项目就有点释然了，迟早有一天 css 能带上着色器或者光线追
@@ -338,7 +338,7 @@ span 数据 =`(span (@ (id "more")))= 来方便后续生成主页的时候进行
 要不要集成，因为：
 
 - 基于 js ，我还在考虑要不要引入 js ，可能引入也得以一个更 lisp 的手段例如 [[https://lips.js.org/][LIPS]] 或者 [[https://spritely.institute/hoot/][Hoot]] ？
-- 麻烦，流程上还是得先去自己实例获取帖文的 url 才行，振扬就需要额外编辑一次，在没想到更好的自动化方案之前还是有点不想集成了。
+- 麻烦，流程上还是得先去自己实例获取帖文的 url 才行，这样就需要额外编辑一次，在没想到更好的自动化方案之前还是有点不想集成了。
 
 *** org-mode
 其实只是把别人搞的用于解析 commonmark 的解析器 [[https://github.com/OrangeShark/guile-commonmark][GitHub - OrangeShark/guile-commonmark]] 给复制了一份然后
