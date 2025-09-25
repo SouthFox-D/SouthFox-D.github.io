@@ -121,7 +121,11 @@
                (content "SouthFox@foxsay.southfox.me")))
       (title ,(string-append title " — " (site-title site)))
       (link (@ (rel "stylesheet")
-               (href "/assets/css/main.css"))))
+               (href "/assets/css/main.css")))
+      (link (@ (rel "alternative")
+               (href "/rss2.xml")
+               (title ,(site-title site))
+               (type "application/atom+xml"))))
      (body
       ,navbar
       (div (@ (class "container flex"))
