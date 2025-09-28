@@ -1,4 +1,5 @@
 (use-modules (guix packages)
+             (guix download)
              (guix build-system copy)
              (guix profiles)
              (guix licenses)
@@ -38,9 +39,39 @@
    (home-page "x")
    (license expat)))
 
+(define-public pagefind-bin
+  (package
+   (name "pagefind-bin")
+   (version "1.4.0")
+   (source (origin
+            (method url-fetch)
+            (uri (string-append
+                  "https://github.com/Pagefind/pagefind" "/releases/download/v"
+                  version "/pagefind_extended-v" version "-x86_64-unknown-linux-musl.tar.gz"))
+            (sha256
+             (base32
+              "0bqbrxzngz51cdryz7i5fhpkg697pba85i9vmwanr2q2yy11zbik"))))
+   (build-system copy-build-system)
+   (arguments
+    (list #:install-plan #~'(("pagefind_extended" "bin/"))
+          #:phases
+          #~(modify-phases %standard-phases
+                           (delete 'strip)
+                           )))
+   (supported-systems '("x86_64-linux"))
+   (home-page "https://pagefind.app/")
+   (synopsis "Static low-bandwidth search at scale ")
+   (description
+    "Pagefind is a fully static search library that aims to perform well on large
+sites, while using as little of your users’ bandwidth as possible, and without
+hosting any infrastructure.")
+   (license expat)
+   (properties '((upstream-name . "pagefind")))))
+
 (packages->manifest
  (list bash
        minimal-glibc-locales
        guile-3.0
        guile-syntax-highlight
-       haunt))
+       haunt
+       pagefind-bin))
