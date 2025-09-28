@@ -95,7 +95,8 @@
          ("滑翔闪" "https://blog.huaxiangshan.com/zh-cn/" "正在学习经济学的二次元|")
          ("水气掠过" "https://dilutepillow.github.io/" "晚饭后，一起散步吧。")
          ("Pinpe 的云端" "https://pinpe.top" "一个属于自己的云朵")
-         ("酥米的小站" "https://www.sumi233.top/" "终有一日，寻梦中人")))
+         ("酥米的小站" "https://www.sumi233.top/" "终有一日，寻梦中人")
+         ("躬行笔记" "https://www.fuzhoupyy.work" "古人学问无遗力，少壮工夫老始成。 纸上得来终觉浅，绝知此事要躬行。")))
      ,(make-friend-group
        "失联之地"
        '(("Albert's Blog" "https://blog.lingyf.com" "逆水行舟 不进则退")
