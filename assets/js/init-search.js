@@ -3,5 +3,6 @@ window.addEventListener("DOMContentLoaded", (event) => {
         element: "#search",
         showSubResults: true,
         showImages: false,
+        sort: { date: "desc" },
     });
 });

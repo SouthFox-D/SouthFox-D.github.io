@@ -163,8 +163,9 @@
     (main (@ (data-pagefind-body "true"))
           (div
            (h2 ,(post-ref post 'title))
-           (h3 "by " ,(post-ref post 'author)
-               " — " ,(date->string (post-date post) "~Y-~m-~d"))
+           (h3 "by " ,(post-ref post 'author))
+           (h3 (@ (data-pagefind-sort "date"))
+               ,(date->string (post-date post) "~Y-~m-~d"))
            (div ,(post-sxml post))))
     (div (@ (class "pagination"))
          ,(if previous-post
