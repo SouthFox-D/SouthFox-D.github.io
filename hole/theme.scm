@@ -102,7 +102,7 @@
 
 (define* (fox-default-layout site title body #:key post)
   `((doctype "html")
-    (html
+    (html (@ (lang "zh-CN"))
      (head
       (meta (@ (charset "utf-8")))
       (meta (@ (name "viewport")
