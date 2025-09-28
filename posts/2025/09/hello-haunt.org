@@ -177,7 +177,7 @@
 # => "rest is: (2, 3)"
 
 [def-macro, ->, [first, *body],
- [if, [==, 0, [type, body]],
+ [if, [==, 0, [len, body]],
       [return, [list, first]],
   else,
       # 递归处理剩下的元素
