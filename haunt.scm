@@ -29,6 +29,7 @@
                        (archives-page)
                        (tags-page)
                        (tags->page)
+                       (search-page)
                        (atom-feed)
                        (hole/rss-feed)
                        (static-directory "assets")

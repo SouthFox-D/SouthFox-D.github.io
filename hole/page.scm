@@ -12,7 +12,8 @@
             about-page
             friends-page
             archives-page
-            tags-page))
+            tags-page
+            search-page))
 
 (define (static-page title file-name body)
   (lambda (site posts)
@@ -137,4 +138,20 @@
                                        (href ,(tag-uri tag)))
                                     ,tag ": " ,count))))
                          (count-tags posts)))))
+               sxml->html)))
+
+(define (search-page)
+  (lambda (site posts)
+    (make-page "search/index.html"
+               (with-layout
+                fox-theme
+                site
+                "Search"
+                `((link (@ (href "/pagefind/pagefind-ui.css")
+                           (rel "stylesheet")))
+                  (script (@ (src "/pagefind/pagefind-ui.js")))
+                  (div (@ (class "content"))
+                       (h2 "Search")
+                       (div (@ (id "search")))
+                       (script (@ (src "/assets/js/init-search.js"))))))
                sxml->html)))

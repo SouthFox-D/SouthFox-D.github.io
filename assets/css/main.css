@@ -586,6 +586,12 @@ body {
     color: #bbb;
 }
 
+#search {
+    text-rendering: optimizelegibility;
+    --pagefind-ui-text: #ccc;
+    --pagefind-ui-font: Zpix, var(--sans-font);
+}
+
 pre code,
 pre code span {
     color: #ccc;

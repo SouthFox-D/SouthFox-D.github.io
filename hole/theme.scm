@@ -26,6 +26,7 @@
     (div (@ (class "menu"))
          (a (@ (href "/archives/")) "归档")
          (a (@ (href "/tags/")) "标签")
+         (a (@ (href "/search/")) "搜索")
          (a (@ (href "/about/")) "关于")
          )))
 
@@ -159,11 +160,12 @@
 
 (define* (fox-default-post-template post #:key previous-post next-post)
   `(div (@ (class "content"))
-    (div
-     (h2 ,(post-ref post 'title))
-     (h3 "by " ,(post-ref post 'author)
-         " — " ,(date->string (post-date post) "~Y-~m-~d"))
-     (div ,(post-sxml post)))
+    (main (@ (data-pagefind-body "true"))
+          (div
+           (h2 ,(post-ref post 'title))
+           (h3 "by " ,(post-ref post 'author)
+               " — " ,(date->string (post-date post) "~Y-~m-~d"))
+           (div ,(post-sxml post))))
     (div (@ (class "pagination"))
          ,(if previous-post
               `(a (@ (class "btn")
