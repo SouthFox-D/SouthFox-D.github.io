@@ -117,7 +117,7 @@
 
 #+begin_src python
 # 定义一个叫 unless 的宏，接收两个列表参数，判断体 test 、逻辑体 body
-[def-macro, unless, [test, body]
+[def-macro, unless, [test, body],
     [return,
      [list,
       # if 和 not 需要被当成数据而不是一个调用，所以需要被 quote
@@ -127,12 +127,12 @@
 
 # 如果 1 + 1 不等于 2 ，那么……
 [unless, [==, [+, 1, 1], 2],
-    [print, "数学不存在了！"]
+    [print, "数学不存在了！"],
 ]
 
 # 背后会被宏操作成
 [if, [not, [==, [+, 1, 1], 2]],
-    [print, "数学不存在了！"]
+    [print, "数学不存在了！"],
 ]
 #+end_src
 
@@ -149,9 +149,9 @@
 [+,
  [.strip,
   [get,
-   [.split "posts/2025/09/hello-haunt.org" "posts/"], -1]
-  ".org"]
- "/"]
+   [.split "posts/2025/09/hello-haunt.org" "posts/"], -1],
+  ".org"],
+ "/",]
 #+end_src
 
 可以看到因为 Lisp 的表示法形成了一个由内到外的执行顺序,但盯着这串括括又号号可以注意到实际上里层的调用都会处在外层
@@ -176,25 +176,25 @@
 # => "first is: 1"
 # => "rest is: (2, 3)"
 
-[def-macro, ->, [first, *body]
+[def-macro, ->, [first, *body],
  [if, [==, 0, [type, body]],
-      [return, [list, first]]
+      [return, [list, first]],
   else,
       # 递归处理剩下的元素
       [return,
        [list,
         [quote, ->],
-        [list
+        [list,
          # 将第一个元素的第一项作为一个调用的函数部分
          [get, [get, body, 0], 0],
          # 将 -> 宏的第一个参数作为调用的第一个参数
          first,
           # 将第一个元素的剩余元素作为调用的剩余参数「粘」到后面
-         *[get, [get, body, 0], 1:]]
+         *[get, [get, body, 0], 1:]],
         # 剩余元素作为下一个 -> 调用的不定长参数
-        *[get, body, 1:]
+        *[get, body, 1:],
        ],
- ]
+ ],
 ]
 #+end_src
 
@@ -210,8 +210,8 @@
  ]
 
 # 一步步展开，实际上等于以下过程……
-[->, [get, [.split, "posts/2025/09/hello-haunt.org" "posts/"] -1],
-     [.strip ".org"],
+[->, [get, [.split, "posts/2025/09/hello-haunt.org" "posts/"], -1],
+     [.strip, ".org"],
      [+, "/"],
 ]
 
@@ -219,7 +219,7 @@
      [+, "/"],
 ]
 
-[->, [+, [.strip, [get, [.split, "posts/2025/09/hello-haunt.org", "posts/"], -1], ".org"] "/"]
+[->, [+, [.strip, [get, [.split, "posts/2025/09/hello-haunt.org", "posts/"], -1], ".org"], "/"]
 ]
 
 [+, [.strip, [get, [.split, "posts/2025/09/hello-haunt.org", "posts/"], -1], ".org"], "/"]
