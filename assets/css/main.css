@@ -612,6 +612,7 @@ pre code span {
 a,
 a:visited {
     color: #ffff99;
+    text-underline-offset: 5px;
 }
 
 a:focus,
