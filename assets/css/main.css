@@ -611,8 +611,7 @@ pre code span {
 
 a,
 a:visited {
-    color: #fefe54;
-    text-decoration: none;
+    color: #ffff99;
 }
 
 a:focus,
