@@ -621,6 +621,10 @@ a:active {
     background: #a50;
 }
 
+a.external_link::after {
+    content: "\2197";
+}
+
 code,
 pre,
 pre span,

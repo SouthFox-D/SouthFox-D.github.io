@@ -44,8 +44,17 @@
              ,(maybe-highlight-code lang source))))
     (,other other)))
 
+(define (link-hackery . tree)
+  (sxml-match tree
+              ((a (@ (href ,src) . ,attrs) . ,body)
+               (if (string-prefix? "http" src)
+                   `(a (@ (href ,src) (class "external_link") ,@attrs) ,@body)
+                   tree))
+              (,other other)))
+
 (define %commonmark-rules
   `((code . ,highlight-code)
+    (a . ,link-hackery)
     (*text* . ,(lambda (tag str) str))
     (*default* . ,(lambda (. arg) arg))))
 
