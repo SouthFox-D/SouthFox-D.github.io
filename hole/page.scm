@@ -61,7 +61,11 @@
      ,(comment-place "about/index.html"))))
 
 (define* (make-friend name link #:optional (description ""))
-  `(li (a (@ (href ,link)) ,(string-append name " | " description))))
+  `(li (a (@ (href ,link)) ,(string-append name
+                                           (if (string= description "")
+                                               ""
+                                               " | ")
+                                           description))))
 
 (define (make-friend-group title link-group)
   `((h2 ,title)
