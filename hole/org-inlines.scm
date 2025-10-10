@@ -23,7 +23,7 @@
   #:use-module (srfi srfi-9)
   #:use-module (srfi srfi-11)
   #:use-module (srfi srfi-26)
-  #:use-module (commonmark node)
+  #:use-module (hole org-node)
   #:use-module (commonmark common)
   #:export (org/parse-inlines))
 
@@ -32,6 +32,9 @@
 (define re-start-org-link (make-regexp "^\\[\\[+"))
 (define re-org-link (make-regexp "\\]\\]+"))
 (define re-org-link-split (make-regexp "(.*)\\]\\[(.*)"))
+
+(define re-start-org-footnotes-link (make-regexp "^\\[fn\\:+"))
+(define re-end-org-footnotes-link (make-regexp "\\]+"))
 
 (define re-main (make-regexp "^[^=*_\\\n[!<&]+"))
 (define re-autolink (make-regexp (string-append "^<([a-zA-Z][a-zA-Z0-9+.-]{1,31}:[^ \t\n<>"
@@ -53,6 +56,12 @@
 
 (define (end-org-link? text)
   (regexp-exec re-org-link (text-value text) (text-position text)))
+
+(define (start-org-footnodes-link? text)
+  (regexp-exec re-start-org-footnotes-link (text-value text) (text-position text)))
+
+(define (end-org-footnodes-link? text)
+  (regexp-exec re-end-org-footnotes-link (text-value text) (text-position text)))
 
 (define (normal-text? text)
   (regexp-exec re-main (text-value text) (text-position text)))
@@ -338,7 +347,32 @@
 (define (build-org-link text)
   (let ((start-ticks (start-org-link? text)))
     (if (not start-ticks)
-        (values (+ 1 (text-position text)) (make-text-node "["))
+        (let ((start-footnotes-ticks (start-org-footnodes-link? text)))
+          (if (not start-footnotes-ticks)
+              (values (+ 1 (text-position text)) (make-text-node "["))
+              (begin
+                (let loop ((end-footnotes-ticks (end-org-footnodes-link? (text-move text (match:end start-footnotes-ticks 0)))))
+                  (display "xxx: ")
+                  (display (text-position text))
+                  (newline)
+                  (cond ((not end-footnotes-ticks)
+                         (values (match:end start-footnotes-ticks 0)
+                                 (make-text-node (match:substring start-footnotes-ticks 0))))
+                        (else
+                         (let* ((link-content (text-substring
+                                               text
+                                               (match:end start-footnotes-ticks 0)
+                                               (match:start end-footnotes-ticks 0))))
+                           (values (match:end end-footnotes-ticks 0)
+                                   (make-link-node
+                                    (list (make-text-node link-content))
+                                    (if (= 0 (text-position text))
+                                        (string-append "#" link-content "r")
+                                        (string-append "#" link-content))
+                                    #f
+                                    #:id (if (= 0 (text-position text))
+                                             link-content
+                                             (string-append link-content "r")))))))))))
         (begin
           (let loop ((end-ticks (end-org-link? (text-move text (match:end start-ticks 0)))))
             (cond ((not end-ticks)

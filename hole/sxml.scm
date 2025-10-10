@@ -162,8 +162,11 @@
 
 (define (link-node->sxml node)
   (let ((dest (destination node))
-        (title (title node)))
-    `(a (@ (href ,dest) ,@(if title (list (list 'title title)) '()))
+        (title (title node))
+        (id (assq-ref (node-data node) 'id)))
+    `(a (@ (href ,dest)
+           ,@(if title (list (list 'title title)) '())
+           ,@(if id (list (list 'id id)) '()))
       ,@(fold-nodes node->sxml (node-children node)))))
 
 (define (fold-text node)
