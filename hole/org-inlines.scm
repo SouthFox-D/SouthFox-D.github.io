@@ -352,9 +352,6 @@
               (values (+ 1 (text-position text)) (make-text-node "["))
               (begin
                 (let loop ((end-footnotes-ticks (end-org-footnodes-link? (text-move text (match:end start-footnotes-ticks 0)))))
-                  (display "xxx: ")
-                  (display (text-position text))
-                  (newline)
                   (cond ((not end-footnotes-ticks)
                          (values (match:end start-footnotes-ticks 0)
                                  (make-text-node (match:substring start-footnotes-ticks 0))))
