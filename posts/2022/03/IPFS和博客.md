@@ -54,7 +54,7 @@ toc: true
 
 `/ipfs/Qmd3oSMoEb3npqXdjwek7RPfvteMckrBFBRHU1ECZDtAEC `
 
-- [w3s.link](https://media.southfox.me/ipfs/Qmd3oSMoEb3npqXdjwek7RPfvteMckrBFBRHU1ECZDtAEC)
+- [w3s.link](https://media.southfox.me/attachment/Qmd3oSMoEb3npqXdjwek7RPfvteMckrBFBRHU1ECZDtAEC)
 
 -  [ipfs.fleek.co](https://ipfs.fleek.co/ipfs/Qmd3oSMoEb3npqXdjwek7RPfvteMckrBFBRHU1ECZDtAEC)
 
@@ -133,7 +133,7 @@ toc: true
 
 在插件市场搜索 `web-uploader-custom-url-prefix` 并进行安装，配置成如下:
 
-![](https://media.southfox.me/ipfs/Qma7FSQ3tzoT8LqLxMRKVVJ5cNSEu3HgKL1aXPzAYTzXmV)
+![](https://media.southfox.me/attachment/Qma7FSQ3tzoT8LqLxMRKVVJ5cNSEu3HgKL1aXPzAYTzXmV)
 
 其中 `infura-ipfs.io` 可以是任意支持 `HTTP API ` 形式上传的网关。
 
@@ -223,7 +223,7 @@ def downloadImg(imgList):
         urlname = img_url.split(u"/")
         img_name = str(urlname[-1])
         # download img
-        ipfs_gateWay = ['https://media.southfox.me/ipfs/', 'https://ipfs.io/ipfs/', 'https://ipfs.fleek.co/ipfs/']
+        ipfs_gateWay = ['https://ipfs.io/ipfs/', 'https://ipfs.fleek.co/ipfs/']
         if 'ipfs' in img_url:
             img_url = random.choice(ipfs_gateWay) + img_name
 

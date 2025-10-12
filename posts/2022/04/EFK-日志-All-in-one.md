@@ -293,4 +293,4 @@ usermod -aG adm td-agent
 
 最后附张图，用面板五分钟就搭出来的看板,感觉还能再挖掘点东西呢。
 
-![看板](https://media.southfox.me/ipfs/bafkreicf4fknbhjyqw5dgh5vgg5pfl6fx2bwiiw745pun7ap7zf3tzdqdy)
+![看板](https://media.southfox.me/attachment/bafkreicf4fknbhjyqw5dgh5vgg5pfl6fx2bwiiw745pun7ap7zf3tzdqdy)
