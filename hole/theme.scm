@@ -64,14 +64,7 @@
   `(div (@ (class "sidebar"))
     (div (@ (class "widget"))
          (h4 "公告")
-         (p "博客开发中……")
-         (ul
-          (li "导航栏 DONE")
-          (li "标签 DONE")
-          (li "代码高亮 DONE")
-          (li "按钮样式 DONE")
-          (li "文章内上一篇下一篇导航 DONE")
-          (li "文章目录 DONE")))
+         (p "周刊计划试运行中……"))
     (div (@ (class "widget"))
          (h4 "链接")
          (ul
