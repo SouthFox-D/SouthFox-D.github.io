@@ -369,7 +369,8 @@
                                     #f
                                     #:id (if (= 0 (text-position text))
                                              link-content
-                                             (string-append link-content "r")))))))))))
+                                             (string-append link-content "r"))
+                                    #:is-sup? #t)))))))))
         (begin
           (let loop ((end-ticks (end-org-link? (text-move text (match:end start-ticks 0)))))
             (cond ((not end-ticks)

@@ -292,10 +292,11 @@
   (node-type? node 'emphasis))
 
 ;; Link node
-(define* (make-link-node nodes destination title #:key id)
+(define* (make-link-node nodes destination title #:key id is-sup?)
   (make-node 'link `((destination . ,destination)
                      (title . ,title)
-                     (id . ,id))
+                     (id . ,id)
+                     (is-sup? . ,is-sup?))
              nodes))
 
 (define (link-node? node)
