@@ -683,6 +683,10 @@ pre {
     border: none;
 }
 
+figcaption {
+    color: unset;
+}
+
 .pagination {
     text-align: center;
     margin-bottom: 30px;
