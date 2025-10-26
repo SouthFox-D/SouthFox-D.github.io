@@ -1,0 +1,54 @@
+#+title: FoxThinking #2: 震惊！你的脑袋正在控制你？！
+#+author: SouthFox
+#+date: 2025-10-26 23:08:20
+#+tags: FoxThinking:游戏
+
+这是个值得思考的主题，但只能偷偷想，如果被脑袋知道了那可就麻烦了。
+
+,(read-more)
+
+** 内心乘客
+那个在大脑里用着「我」的声音、「我」的语言的内心（或者说，内脑）声音到底是不是「我」？
+
+最近看到的一篇科普文章——近期研究证实了关于精神分裂症 “声音” 的 50 年理论 [fn:1]
+
+> “当我们说话——就算在脑海中——负责处理外界声音大脑区域一般会降低活动，因为大脑已经预判自己声音的到来。但在那些“听到声音”的人身上，这种机制失效了，他们的大脑反而像在接收别人声音一样做出强烈反应。”
+
+看着各种大脑皮层一些区域损坏产生的「神奇」病症：盲视、流利性失语、失认症等等，就该意识到大脑毕竟是肉做的，
+仍会出现各种问题，那么自己脑海中的声音何尝不去审视呢？或许是因为这个声音太过私人太过紧密了吧。
+
+> 想法会给人的错觉。你不是你的想法，那些想法的存在是为了服务于你。 [fn:2]
+
+所以「我」到底该算什么呢，身为「我」却一直生活在大脑编制的幻影下 [fn:3] ，「我」只是对「我」的存在的反射，
+是大脑的余光？或许更应该把「我」看成一个乘客而大脑是一个司机，甚至理想的话是一个网约车司机，只需向司机支付
+两千大卡的能量然后将「我」带目的地。「我」也有可能昏昏欲睡上车一眼不发就上了车或者根本没有「乘客」那么这
+辆「车」依然会存在司机也可以开着车，就是不知道会开往何方了……
+
+** 阅读
+- [[https://world-playground-deceit.net/blog/2025/03/a-common-lisp-jq-replacement.html][A Common Lisp jq replacement]]
+  一个用 lisp 造的 jq 代替品，果然只要踏入了 lisp 生态就会觉得其它要额外学习的 DSL 用法不爽，因为可以轻松用
+  lisp 实现节省一点心智……
+
+- [[https://ironicsans.ghost.io/doomscrolling-the-game/][Doomscrolling: The Game]]
+  这周我疯狂清理我 RSS 阅读器的八千条唯独条目感觉也有点 Doomscrolling 了，或许也可以做一些类似的形式让滚屏有
+  趣味一点？
+
+- [[https://www.infoq.cn/article/8PRjp5ZUYFq7Q34Jo0fp][24个月，从写第一行代码到破产：一位架构师在47个“死亡”项目里，看到的共同陷阱_业务架构_Tina_InfoQ精选文章]]
+  仍然——很多项目的决定不是想做质量的人说得算的，但确实观察一些这些事件也能反思用在个人上有哪些能改进吧。
+
+- [[https://deadmoney.gg/news/articles/migrating-away-from-rust][Migrating away from Rust]]
+  讲了为何要从用 Bevy 和相关 Rust 体系逃离，让我考虑用 lisp 做游戏会不会落入同样的境地……不过其实我还没做过
+  原型之外的游戏所以感觉还是有点太优先考虑了。
+
+** Present day, Present time
+虽然依然死线战士但还能继续维持一点结构性，也该是时候将「学会」把任务量拆分到每日然后每天做一点了。另外今年的秋季
+lisp game jam 要开始了，这次也是打算用 Godot 引擎好好鼓捣一次了。但问题是 lisp game jam 要用 lisp 编写
+的游戏提交，而我翻遍互联网都没看到能用的 lisp 实现，所以好像又只能自己上了，希望最后能多少实现点效果。这次打算
+将相关的过程写个开发日志发到博客否则这个博客全是周刊感觉就有点不博客了（
+
+** 脚注
+[fn:1] [[https://www.sciencealert.com/50-year-old-theory-on-schizophrenias-voices-confirmed-by-recent-study][50-Year-Old Theory on Schizophrenia's 'Voices' Confirmed by Recent Study : Sc...]]
+
+[fn:2] 莫·乔达特. 快乐算法. 中信出版社, 2018.
+
+[fn:3] [[https://www.youtube.com/watch?v=wo_e0EvEZn8][Why Your Brain Blinds You For 2 Hours Every Day - Kurzgesagt]]
