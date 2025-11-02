@@ -1,0 +1,116 @@
+#+title: FoxThinking #3: 这是括号的世界，我很幸运活在其中
+#+author: SouthFox
+#+date: 2025-11-02 22:12:34
+#+tags: FoxThinking:Lisp:游戏
+
+想不什么主题之后的 =fallback= 主题就是 =Lisp= 或者 =Emacs= （
+
+,(read-more)
+
+** Lisp 转换器
+今年除了工作上的代码已经差不多八百个了，其中百分之八十都是 =lisp= 代码，现在因为 [[https://itch.io/jam/autumn-lisp-game-jam-2025][2025 秋季场 lisp game jam]] [fn:1]
+的原因，我可能会写更多的 =lisp= 代码。
+
+所以，为什么是 =lisp= ？主要的原因当然是 =lisp= 主题的 game jam 要用 =lisp= 语言提交，但这次参加 [fn:2]
+我打算用 =Godot= 引擎参加。在为这个调研时我就发现好像踩了个坑中，因为 =Godot= 生态没有什么用 =lisp= 的项目，仅有成体
+系的项目也停滞在了 =Godot= 3 的老版本中。所以无奈我只能找其它项目，之后我发现了 [[https://github.com/kalai-transpiler/kalai][GitHub - kalai-transpiler/kalai]]
+这个项目——将 =Clojure= 的代码转换成其它语言。
+
+在翻看了一下实现和相关测试后我逐渐动了为这个项目接入转换成 =Godot= 所用的 =gdscript= 语言的念头，因为我发现其实 =lisp= 的
+一些构造其实用来做转换器真挺合适的 [fn:3] ：
+
+例如又这样的一段 =clojure= 代码：
+
+#+begin_src clojure
+(ns test-package.test-class)
+  (def x "Hello")
+  (defn f [y]
+    {x "World"})
+#+end_src
+
+经过一些「简单处理」后可以变成这样：
+
+#+begin_src lisp
+(namespace test-package.test-class
+                (init x "Hello")
+                (function f [y]
+                          (return
+                            {x "hahaha"})))
+#+end_src
+
+然后通过不断匹配里面列表形式为不同语言写出对应的策略字符串化属性类型等元素就做成了一个 =Clojure= 语言转换成到不同语言的转换器，例如对于 =init= 初始化赋值操作， =Python= 可以变成 x = hello , =Java= 可以变成 static final String x = Hello; ，函数生命 =function= 对于 =Python= 可以成为 def f():... ， =Java= 可以成为 public static final HashMap<String,String> f(final String y)... 。
+
+*** 「简单处理」
+但其实最令我着迷的是在里面「简单处理」发现了 [[https://github.com/noprompt/meander][GitHub - noprompt/meander: Tools for transparent data transformation]]
+这个库，里面对于数据的操做确实令人叹为观止，例如里面的 =rewrite= 策略的例子，可以轻松写出乘法交换律的操控形式：
+
+#+begin_src clojure
+(def comm
+  (rewrite
+   ;; Left side
+   (* ?a (+ ?b ?c))
+   ;; => Right side
+   (+ (* ?a ?b)
+      (* ?a ?c))))
+
+(comm '(* (+ w x) (+ y z)))
+;; =>
+(+ (* (+ w x) y)
+   (* (+ w x) z))
+#+end_src
+
+也是庆幸找到了着个项目能让我「照虎化猫」还能以一种心智负担较小的方式作出转换器，否则我可能就要将我大
+半个甚至一月的时间砸到编译领域可能还只会空磨耐心出不了什么成果了。
+
+** 阅读
+- [[https://danieldelaney.net/normal/][Free software scares normal people—Daniel De Laney]] 为什么普通人不用自由软件，因为被复杂性「劝退」了，就像
+  是电视遥控器一样，除了开关机、静音、调整音量频道外其它的键基本都没有用，做简单的设计有时候也是很难设计。这也有点让我
+  想到一些视频平台说明键盘功能区和 F1~F12 的视频将其称为「金刚键」。我基本用着很多 HOME END 翻页键一开始没反应过
+  来为什么评论区说「原来如此但我不用」的论调，但转念一想我之前用不着些键的时候也不懂这些按下去屏幕上不现实键盘对应字符
+  键存在的必要。可能这就是设计的难处吧，一些高级设置是又需求的，但是在不提供一个直观的探索学习石油八九会被「冷落」。
+
+- [[https://www.afterbabel.com/p/on-the-death-of-daydreaming][On The Death of Daydreaming - by Christine Rosen]] 屏幕夺走了人们的「空闲时间」，在路上、在电梯里人们不知道干
+  什么的时候就会按下唤醒键然后扫几眼屏幕，甚至这种事都已经成为下意识的事了，问着一个打开智能手机的人打开手机是为什么打开
+  可能会收获一个「我不知道」的回答。所以为了不无聊而拿智能手机消磨「空闲时间」是值得的吗？「空闲时间」是有用的吗？我对这
+  个话题颇有兴趣，感觉可以在接下来的时间止住拿起智能手机的念头在「空闲时间」发呆和走神，看看是否比起刷智能手机更「好」一
+  点。
+
+  - [[https://news.ycombinator.com/item?id=43896780][Last year I took a smartphone holiday for 4 months (switched to a dumbphone)....]] HN 上的一个评论说，
+    当强迫「空闲时间」的出现就会强迫为一些感到焦虑的事作出抉择，这对一个有焦虑倾向的人来说或许是个好处。
+
+  - 是的，这是一个半年前的文章，因为我面对七八千未读我采用了乱序的方式进行浏览，不断调整 =offset= 参数不断阅读不同时间点
+    的阅读否则感觉顺序一直刷下去有点像在推石头一样。
+
+- [[https://blog.jim-nielsen.com/2025/dont-forget-these-html-tags/][Don’t Forget These Tags to Make HTML Work Like You Expect - Jim Nielsen’s Blog]] 现在作出 =HTML= 网页在
+  最前面总要加上一点「额外」的标签使其「正常」。说它「额外」是因为很多（或者说我之前看的）教程都没提及这些额外标签，但是没
+  了这些标签在「现代」的网页上不符合移动设备的「正常」显示了。我之前也是踩了一些坑对照这其它网页的「正常」网页才发现这些标
+  签的。
+
+- [[https://maurycyz.com/misc/the_cost_of_trash/][You should feed the bots: (Maurycy's blog)]] 应对 AI 爬虫狂潮，文章作者试了很多方法最后觉得将问诊材料提前读入内存
+  然后在页面请求时快速生成一些文本是最快捷最省资源的做法，反正大模型的输出最后已经「反哺」劣化了互联网，对小小加快这个进程的
+  做法也不用感到太压力吧？我现在已经接入了这个做法，看看之后又多少爬虫会在这些快速生成的「水货」文本中乱转吧。
+
+- [[https://maurycyz.com/misc/easy_git/][You already have a git server: (Maurycy's blog)]] 其实 Git 协议通过 ssh 协议放在一个远程服务器上也是可以用的，然
+  后通过一些 Git Hook 设置也能做到自动构建的效果（甚至直接用 Shell 脚本写不用掌握什么容器、job 、YAML 之类的玩意）。确实
+  如果只是个人简单用的话甚至连 =Gitea= 、 =Forgejo= 这种轻量化的 Git 服务都不需要，直接在 SSH 服务器上一把梭就好了，不过
+  鉴于我用 =Forgejo= 还有同步一些远程镜像和 CICD 需求（虽然也能用 Git hook 实现不过，诶，沉没成本！）就暂时不这么做了。
+
+- [[https://emily.space/posts/251023-uv][uv is the best thing to happen to the Python ecosystem in a decade - Blog - D...]] 这个文章最令我吃惊的是在 HN 上
+  竟然已经又两千多点数了，看起来天下苦 =Python= 项目管理久欸啊。
+
+** Present day, Present time
+如主题所说这周主要还是投入在 game jam 上，因为想跟前几次换个形式同时想在效果上努力而不是一些底层的东西上
+耗费时间所以选择了 =Godot= ，希望到了下个周末能大体出个效果吧。虽然大概率是死线战士甚至我现在写这段话的时
+候已经实在死线战士了（星期天二十三点四十五分）但还是希望能在周一至周五多弄点好让死线冲刺时没那么多负重。或
+许也该考虑写点开发日志让这个博客不要被周刊塞满了（好像上周说了一样的话……）。
+
+这周同时还调整了下安卓 Emacs 的上的配置，实现了个在特定时间段打开 Emacs 就自动浸入 org-mode 捕获缓冲的
+设定，实现了这个确实写勤了一点，看起来有时候一些事不想做确实是因为启动不了啊，可以多像现在的游戏或者社交应用
+学习学习看看怎样玩弄自己的心理。
+
+** 脚注
+[fn:1] game jam 活动就是在限定时间内开发一个符合主题的游戏，感觉有点像写命题作文。 [[https://zh.wikipedia.org/zh-cn/Game_Jam][Game Jam - 维基百科，自由的百科全书]] 
+
+[fn:2] 从 24 年春季场第一次参加到现在都已经是第四次参加了！
+
+[fn:3] 有趣事实： =lisp= 的括括又号号表达形式看起来似乎和抽象语法树差不多 [[https://zh.wikipedia.org/zh-cn/%E6%8A%BD%E8%B1%A1%E8%AA%9E%E6%B3%95%E6%A8%B9][抽象语法树 - 维基百科，自由的百科全书]]
