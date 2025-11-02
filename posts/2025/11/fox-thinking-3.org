@@ -8,18 +8,18 @@
 ,(read-more)
 
 ** Lisp 转换器
-今年除了工作上的代码已经差不多八百个了，其中百分之八十都是 =lisp= 代码，现在因为 [[https://itch.io/jam/autumn-lisp-game-jam-2025][2025 秋季场 lisp game jam]] [fn:1]
+今年除了工作上的代码已经差不多八百个提交了，其中百分之八十都是 =lisp= 代码，现在因为 [[https://itch.io/jam/autumn-lisp-game-jam-2025][2025 秋季场 lisp game jam]] [fn:1]
 的原因，我可能会写更多的 =lisp= 代码。
 
 所以，为什么是 =lisp= ？主要的原因当然是 =lisp= 主题的 game jam 要用 =lisp= 语言提交，但这次参加 [fn:2]
-我打算用 =Godot= 引擎参加。在为这个调研时我就发现好像踩了个坑中，因为 =Godot= 生态没有什么用 =lisp= 的项目，仅有成体
+我打算用 =Godot= 引擎编写。在为这个调研时我就发现好像踩了个坑，因为 =Godot= 生态没有什么用 =lisp= 的项目，仅有成体
 系的项目也停滞在了 =Godot= 3 的老版本中。所以无奈我只能找其它项目，之后我发现了 [[https://github.com/kalai-transpiler/kalai][GitHub - kalai-transpiler/kalai]]
 这个项目——将 =Clojure= 的代码转换成其它语言。
 
 在翻看了一下实现和相关测试后我逐渐动了为这个项目接入转换成 =Godot= 所用的 =gdscript= 语言的念头，因为我发现其实 =lisp= 的
 一些构造其实用来做转换器真挺合适的 [fn:3] ：
 
-例如又这样的一段 =clojure= 代码：
+例如有这样的一段 =clojure= 代码：
 
 #+begin_src clojure
 (ns test-package.test-class)
@@ -35,10 +35,11 @@
                 (init x "Hello")
                 (function f [y]
                           (return
-                            {x "hahaha"})))
+                            {x "World"})))
 #+end_src
 
-然后通过不断匹配里面列表形式为不同语言写出对应的策略字符串化属性类型等元素就做成了一个 =Clojure= 语言转换成到不同语言的转换器，例如对于 =init= 初始化赋值操作， =Python= 可以变成 x = hello , =Java= 可以变成 static final String x = Hello; ，函数生命 =function= 对于 =Python= 可以成为 def f():... ， =Java= 可以成为 public static final HashMap<String,String> f(final String y)... 。
+然后通过不断匹配里面列表形式为不同语言写出对应的策略字符串化属性类型等元素就做成了一个 =Clojure= 语言转换成到不同语言的转换器，例如对于 =init= 初始化赋值操作， Python 可以变成 x = hello ； Java 可以变成 static final String x = Hello;
+函数声明 =function= 对于 Python 可以成为 def f():... ； Java 可以成为 public static final HashMap<String,String> f(final String y)... 。
 
 *** 「简单处理」
 但其实最令我着迷的是在里面「简单处理」发现了 [[https://github.com/noprompt/meander][GitHub - noprompt/meander: Tools for transparent data transformation]]
@@ -64,10 +65,10 @@
 
 ** 阅读
 - [[https://danieldelaney.net/normal/][Free software scares normal people—Daniel De Laney]] 为什么普通人不用自由软件，因为被复杂性「劝退」了，就像
-  是电视遥控器一样，除了开关机、静音、调整音量频道外其它的键基本都没有用，做简单的设计有时候也是很难设计。这也有点让我
-  想到一些视频平台说明键盘功能区和 F1~F12 的视频将其称为「金刚键」。我基本用着很多 HOME END 翻页键一开始没反应过
-  来为什么评论区说「原来如此但我不用」的论调，但转念一想我之前用不着些键的时候也不懂这些按下去屏幕上不现实键盘对应字符
-  键存在的必要。可能这就是设计的难处吧，一些高级设置是又需求的，但是在不提供一个直观的探索学习石油八九会被「冷落」。
+  是电视遥控器一样，除了开关机、静音、调整音量频道外其它的键基本都没有用，做简单的设计有时候也是很难的设计。这也有点让我
+  想到一些说明键盘功能区和 F1~F12 的视频将其称为「金刚键」。我基本用着很多 HOME END 翻页键一开始没反应过
+  来为什么评论区说「原来如此但我不用」的论调，但转念一想我之前用不着这些键的时候也不懂这些按下去屏幕上不显示键盘对应字符
+  键存在的必要。可能这就是设计的难处吧，一些高级设置是有需求的，但是在不提供一个直观的探索学习石油八九会被「冷落」。
 
 - [[https://www.afterbabel.com/p/on-the-death-of-daydreaming][On The Death of Daydreaming - by Christine Rosen]] 屏幕夺走了人们的「空闲时间」，在路上、在电梯里人们不知道干
   什么的时候就会按下唤醒键然后扫几眼屏幕，甚至这种事都已经成为下意识的事了，问着一个打开智能手机的人打开手机是为什么打开
@@ -96,16 +97,16 @@
   鉴于我用 =Forgejo= 还有同步一些远程镜像和 CICD 需求（虽然也能用 Git hook 实现不过，诶，沉没成本！）就暂时不这么做了。
 
 - [[https://emily.space/posts/251023-uv][uv is the best thing to happen to the Python ecosystem in a decade - Blog - D...]] 这个文章最令我吃惊的是在 HN 上
-  竟然已经又两千多点数了，看起来天下苦 =Python= 项目管理久欸啊。
+  竟然已经有两千多点数了，看起来天下苦 =Python= 项目管理久欸啊。
 
 ** Present day, Present time
 如主题所说这周主要还是投入在 game jam 上，因为想跟前几次换个形式同时想在效果上努力而不是一些底层的东西上
 耗费时间所以选择了 =Godot= ，希望到了下个周末能大体出个效果吧。虽然大概率是死线战士甚至我现在写这段话的时
-候已经实在死线战士了（星期天二十三点四十五分）但还是希望能在周一至周五多弄点好让死线冲刺时没那么多负重。或
+候已经是在死线战士了（星期天二十三点四十五分）但还是希望能在周一至周五多弄多点让死线冲刺时没那么多负重。或
 许也该考虑写点开发日志让这个博客不要被周刊塞满了（好像上周说了一样的话……）。
 
-这周同时还调整了下安卓 Emacs 的上的配置，实现了个在特定时间段打开 Emacs 就自动浸入 org-mode 捕获缓冲的
-设定，实现了这个确实写勤了一点，看起来有时候一些事不想做确实是因为启动不了啊，可以多像现在的游戏或者社交应用
+这周同时还调整了下安卓 Emacs 的上的配置，实现了个在特定时间段打开 Emacs 就自动进入 org-mode 捕获缓冲的
+功能。实现了这个功能后确实写勤了一点，看起来有时候一些事不想做确实是因为启动不了啊，可以多向现在的游戏或者社交应用
 学习学习看看怎样玩弄自己的心理。
 
 ** 脚注
