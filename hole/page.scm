@@ -51,7 +51,7 @@
 的村落可能也会很热闹。那么我自己维护的实例就是一个偏僻角落的小屋，到了晚上周围将会是一点光亮都没有，不过我依然感到自在。")
      (h4 "Matrix")
      (p "并不是那个有着草莓味和蓝莓味胶囊的 " (code "Matrix") " ，是聊天协议"
-        (code Matrix) "，不选 " (code Matrix)
+        (code Matrix) "，不选 " (code XMPP)
         " 主要还是因为……像是抓阄一样选择的就选到了 " (code "Matrix") " 就这么待着了，仅此而已。")
      (p "我的 " (code Matrix) " 帐号是：" )
      (code "[at]southfox:southfox.me")
