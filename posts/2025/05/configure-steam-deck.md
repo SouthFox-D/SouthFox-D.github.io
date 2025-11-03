@@ -69,7 +69,7 @@ systemctl --user enable proxy.service
 
 但这些项目也同时推荐的 nix 这个选择，也看到了一些消息高版本 SteamOS 放行了 /nix 目录方便用 nix 安装，所以……
 
-,(mastodon-embed https://foxsay.southfox.me/@SouthFox/113311627550276261/embed)
+,(mastodon-embed https://foxsay.southfox.me/@SouthFox/113311627550276261)
 
 ### Nix ，你是？不能忘记的人……
 
