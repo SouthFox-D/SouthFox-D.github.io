@@ -3,7 +3,7 @@
 #+date: 2025-11-02 22:12:34
 #+tags: FoxThinking:Lisp:游戏
 
-想不什么主题之后的 =fallback= 主题就是 =Lisp= 或者 =Emacs= （
+想不出什么主题之后的 =fallback= 主题就是 =Lisp= 或者 =Emacs= （
 
 ,(read-more)
 
