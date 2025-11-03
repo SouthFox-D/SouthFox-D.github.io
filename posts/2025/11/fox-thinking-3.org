@@ -17,7 +17,7 @@
 这个项目——将 =Clojure= 的代码转换成其它语言。
 
 在翻看了一下实现和相关测试后我逐渐动了为这个项目接入转换成 =Godot= 所用的 =gdscript= 语言的念头，因为我发现其实 =lisp= 的
-一些构造其实用来做转换器真挺合适的 [fn:3] ：
+一些构造用来做转换器挺合适的 [fn:3] ：
 
 例如有这样的一段 =clojure= 代码：
 
@@ -38,12 +38,13 @@
                             {x "World"})))
 #+end_src
 
-然后通过不断匹配里面列表形式为不同语言写出对应的策略字符串化属性类型等元素就做成了一个 =Clojure= 语言转换成到不同语言的转换器，例如对于 =init= 初始化赋值操作， Python 可以变成 x = hello ； Java 可以变成 static final String x = Hello;
+然后通过不断匹配里面列表形式为不同语言写出对应的策略字符串化属性类型等元素就做成了一个 =Clojure= 语言转换成到不同语言的转换器，例如对于 =init= 初始化赋值操作， Python 可以变成
+x \= hello ; Java 可以变成 static final String x \= Hello ;
 函数声明 =function= 对于 Python 可以成为 def f():... ； Java 可以成为 public static final HashMap<String,String> f(final String y)... 。
 
 *** 「简单处理」
 但其实最令我着迷的是在里面「简单处理」发现了 [[https://github.com/noprompt/meander][GitHub - noprompt/meander: Tools for transparent data transformation]]
-这个库，里面对于数据的操做确实令人叹为观止，例如里面的 =rewrite= 策略的例子，可以轻松写出乘法交换律的操控形式：
+这个库，里面对于数据地「摆弄」确实令人叹为观止，例如里面的 =rewrite= 策略例子，可以轻松写出乘法交换律操控形式：
 
 #+begin_src clojure
 (def comm
@@ -60,8 +61,8 @@
    (* (+ w x) z))
 #+end_src
 
-也是庆幸找到了着个项目能让我「照虎化猫」还能以一种心智负担较小的方式作出转换器，否则我可能就要将我大
-半个甚至一月的时间砸到编译领域可能还只会空磨耐心出不了什么成果了。
+也是庆幸找到了着个项目能让我「照虎化猫」以一种心智负担较小的方式作出转换器，否则我可能就要将我大半个
+甚至一月的时间砸到编译领域可能还只会空磨耐心出不了什么成果了。
 
 ** 阅读
 - [[https://danieldelaney.net/normal/][Free software scares normal people—Daniel De Laney]] 为什么普通人不用自由软件，因为被复杂性「劝退」了，就像
