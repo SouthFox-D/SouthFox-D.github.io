@@ -69,10 +69,10 @@ x \= hello ; Java 可以变成 static final String x \= Hello ;
   是电视遥控器一样，除了开关机、静音、调整音量频道外其它的键基本都没有用，做简单的设计有时候也是很难的设计。这也有点让我
   想到一些说明键盘功能区和 F1~F12 的视频将其称为「金刚键」。我基本用着很多 HOME END 翻页键一开始没反应过
   来为什么评论区说「原来如此但我不用」的论调，但转念一想我之前用不着这些键的时候也不懂这些按下去屏幕上不显示键盘对应字符
-  键存在的必要。可能这就是设计的难处吧，一些高级设置是有需求的，但是在不提供一个直观的探索学习石油八九会被「冷落」。
+  键存在的必要。可能这就是设计的难处吧，一些高级设置是有需求的，但是在不提供一个直观的探索学习十有八九会被「冷落」。
 
 - [[https://www.afterbabel.com/p/on-the-death-of-daydreaming][On The Death of Daydreaming - by Christine Rosen]] 屏幕夺走了人们的「空闲时间」，在路上、在电梯里人们不知道干
-  什么的时候就会按下唤醒键然后扫几眼屏幕，甚至这种事都已经成为下意识的事了，问着一个打开智能手机的人打开手机是为什么打开
+  什么的时候就会按下唤醒键然后扫几眼屏幕，甚至这种事都已经成为下意识的事了，问着一个打开智能手机的人打开手机是为了什么
   可能会收获一个「我不知道」的回答。所以为了不无聊而拿智能手机消磨「空闲时间」是值得的吗？「空闲时间」是有用的吗？我对这
   个话题颇有兴趣，感觉可以在接下来的时间止住拿起智能手机的念头在「空闲时间」发呆和走神，看看是否比起刷智能手机更「好」一
   点。
@@ -88,14 +88,14 @@ x \= hello ; Java 可以变成 static final String x \= Hello ;
   了这些标签在「现代」的网页上不符合移动设备的「正常」显示了。我之前也是踩了一些坑对照这其它网页的「正常」网页才发现这些标
   签的。
 
-- [[https://maurycyz.com/misc/the_cost_of_trash/][You should feed the bots: (Maurycy's blog)]] 应对 AI 爬虫狂潮，文章作者试了很多方法最后觉得将问诊材料提前读入内存
+- [[https://maurycyz.com/misc/the_cost_of_trash/][You should feed the bots: (Maurycy's blog)]] 应对 AI 爬虫狂潮，文章作者试了很多方法最后觉得将文本材料提前读入内存
   然后在页面请求时快速生成一些文本是最快捷最省资源的做法，反正大模型的输出最后已经「反哺」劣化了互联网，对小小加快这个进程的
   做法也不用感到太压力吧？我现在已经接入了这个做法，看看之后又多少爬虫会在这些快速生成的「水货」文本中乱转吧。
 
 - [[https://maurycyz.com/misc/easy_git/][You already have a git server: (Maurycy's blog)]] 其实 Git 协议通过 ssh 协议放在一个远程服务器上也是可以用的，然
   后通过一些 Git Hook 设置也能做到自动构建的效果（甚至直接用 Shell 脚本写不用掌握什么容器、job 、YAML 之类的玩意）。确实
   如果只是个人简单用的话甚至连 =Gitea= 、 =Forgejo= 这种轻量化的 Git 服务都不需要，直接在 SSH 服务器上一把梭就好了，不过
-  鉴于我用 =Forgejo= 还有同步一些远程镜像和 CICD 需求（虽然也能用 Git hook 实现不过，诶，沉没成本！）就暂时不这么做了。
+  鉴于我用 =Forgejo= 有同步一些远程镜像和 CICD 需求（虽然也能用 Git hook 实现不过，诶，沉没成本！）就暂时不这么做了。
 
 - [[https://emily.space/posts/251023-uv][uv is the best thing to happen to the Python ecosystem in a decade - Blog - D...]] 这个文章最令我吃惊的是在 HN 上
   竟然已经有两千多点数了，看起来天下苦 =Python= 项目管理久欸啊。
