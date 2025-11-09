@@ -1,0 +1,45 @@
+#+title: FoxThinking #4: 未读未读未读已读
+#+author: SouthFox
+#+date: 2025-11-09 21:57:30
+#+tags: FoxThinking:Emacs
+
+好的接下来就是 =Emacs= 了。
+
+,(read-more)
+
+** 赛博书桌
+现在我使用的是 [[https://github.com/miniflux/v2][GitHub - miniflux/v2: Minimalist and opinionated feed reader]] 这个阅读器，因为它提供了
+全文抓取和图片代理的功能，基于 Go 语言编写性能和部署容易度都有保障。不过在阅读方式上还是有点麻烦因为是基于
+模板语法直接渲染成 HTML 返回的，而没有做单页应用。所以在阅读条目和返回未读都是一个新的页面，在网络环境不佳
+的时候还是比较折磨的。之前有试过一些通过 API 渲染的前段项目例如 [[https://github.com/electh/ReactFlux][GitHub - electh/ReactFlux: A Simple but Powerful RSS Reader for Miniflux]] ，不过在现在更加阅读未读条目后也开始越来越不想在一个前段应用去看了。
+
+所以还有什么方式呢？最后果然还是向 =Emacs= 去寻找了，去网上找了有没有相关实现发现确实有人做了不过不怎么完善，
+[[https://sr.ht/~rprospero/miniflux.el/][miniflux.el: Read RSS feeds from your Miniflux server in Emacs]] ，在这周也是花了时间去完善最后感慨早
+该这样了。因为只要将文字接入 =Emacs= 就能自动接入其它为文字处理流程所做的成果，例如翻译、代办、搜索什么的。这就有点
+像是「书桌」，为其不知了很多东西，阅读灯、香薰、置物架等等等等，为其花那么多努力这样之后做出一点阅读写作的事也更希望在
+这个「书桌」上做了。
+
+甚至在越看挺多 Hacker News 源之后我发现看一篇文章还是挺想看一下这篇文章的在 HN 热度的。在浏览器我还得自己
+新建标签页打开 HN ，但在 =Emacs= 里糊点代码就实现自动抓取热度数据了。
+
+[[https://media.southfox.me/media_attachments/files/115/501/672/327/144/798/original/4ad44e03fc92ccc7.png][在 Emacs 里阅读 Miniflux 未读的截图]]
+
+** 阅读
+- [[https://www.sciencealert.com/humans-used-to-sleep-twice-every-night-heres-why-it-vanished][Humans Used to Sleep Twice Every Night. Here's Why It Vanished. : ScienceAlert]]
+  在之前的时代人们都是多阶段睡眠的，虽然听起来很惊讶不过仔细想想如果人们普遍都在天黑时七八点就睡觉那么肯定不会直接就睡到天亮
+  在中间的阶段会醒觉，旧时的人们还会那这段时间来社交。
+
+- [[https://alfy.blog/2025/10/31/your-url-is-your-state.html][Your URL Is Your State]]
+  URL 是一个可以存储东西的容器，或许可以考虑让 URL 来表明一种「状态」，一些查询和资源可以通过分享 URL 来达到同样的状态
+  而不用什么 cookies 或者 localStorage 。
+
+- [[https://www.solidot.org/story?sid=82752][奇客Solidot | Meta 靠诈骗广告收入去资助 AI]]
+  已经见怪不怪了，但这才是最奇怪的啊。
+
+- [[https://theconversation.com/what-is-dns-a-computer-engineer-explains-this-foundational-piece-of-the-web-and-why-its-the-internets-achilles-heel-268336][What is DNS? A computer engineer explains this foundational piece of the web ...]]
+  面向大众的科普网站上解释 DNS 的文章，突然我因为节省成本弦乐一个小型的服务商反而避开了 AWS 服务下线的波及，不
+  知道互联网从最初的分散到现在集中在少数几家大型服务商之后又会不会因为太过集中而有开始分散开来，希望吧。
+
+** Present day, Present time
+这周感觉有种说不明的困顿，虽说是要去参加 game jam 但这周都没做什么所以有点打算放弃了。之后还是希望能够
+在没有时间压力的情况下去完善吧。感觉对于困顿也是时候去「对付」一下了……
