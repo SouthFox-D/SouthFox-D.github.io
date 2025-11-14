@@ -101,7 +101,9 @@
          ("水气掠过" "https://dilutepillow.github.io/" "晚饭后，一起散步吧。")
          ("Pinpe 的云端" "https://pinpe.top" "一个属于自己的云朵")
          ("酥米的小站" "https://www.sumi233.top/" "终有一日，寻梦中人")
-         ("躬行笔记" "https://www.fuzhoupyy.work" "古人学问无遗力，少壮工夫老始成。 纸上得来终觉浅，绝知此事要躬行。")))
+         ("躬行笔记" "https://www.fuzhoupyy.work" "古人学问无遗力，少壮工夫老始成。 纸上得来终觉浅，绝知此事要躬行。")
+         ("Rebel Zhang 的个人网站" "https://rebel1725.codeberg.page/" "Rebel Zhang 的个人网站")
+         ))
      ,(make-friend-group
        "失联之地"
        '(("Albert's Blog" "https://blog.lingyf.com" "逆水行舟 不进则退")
