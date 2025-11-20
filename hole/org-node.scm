@@ -41,6 +41,8 @@
             code-block-node?
             make-fenced-code-node
             fenced-code-node?
+            make-attr-node
+            attr-node?
             make-list-node
             list-node?
             make-item-node
@@ -84,6 +86,7 @@
 ;; - 'block-quote
 ;; - 'code-block
 ;; - 'fenced-code
+;; - 'attr-keyword
 ;; - 'list
 ;; - 'item
 ;; - 'heading
@@ -197,6 +200,12 @@
 ;; Node -> Boolean
 (define (fenced-code-node? n)
   (node-type? n 'fenced-code))
+
+(define (make-attr-node data)
+  (make-node 'attr data '()))
+
+(define (attr-node? n)
+  (node-type? n 'attr))
 
 ;; List node
 ;; represents a list which only contains item nodes

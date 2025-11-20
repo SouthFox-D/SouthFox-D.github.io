@@ -16,10 +16,10 @@
 ;; along with guile-commonmark.  If not, see <http://www.gnu.org/licenses/>.
 
 (define-module (hole org-blocks)
+  #:use-module (hole org-node)
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-26)
   #:use-module (ice-9 regex)
-  #:use-module (commonmark node)
   #:use-module (commonmark utils)
   #:use-module (commonmark common)
   #:use-module (hole sxml)
@@ -44,6 +44,7 @@
                                                        "( +| *\n? *)"
                                                        link-title
                                                        "? *(\n|$)")))
+(define re-attr-keyword (make-regexp "^ {0,3}(#\\+ATTR_HTML:) ([^`]*)$"))
 
 
 (define (block-quote? l)
@@ -88,6 +89,8 @@
 (define (link-definition? text)
   (regexp-exec re-link-definition text))
 
+(define (attr-keyword? line)
+  (regexp-exec re-attr-keyword line))
 
 ;; Port -> Document
 ;; parses commonmark by blocks and creates a document containing blocks
@@ -110,6 +113,7 @@
         ((block-quote-node? n) (parse-block-quote n l))
         ((code-block-node? n) (parse-code-block n l))
         ((fenced-code-node? n) (parse-fenced-code n l))
+        ((attr-node? n) (parse-attr n l))
         ((list-node? n) (parse-list n l))
         ((paragraph-node? n) (parse-paragraph n l))))
 
@@ -160,6 +164,14 @@
                                   (string-append (last-child n)
                                                  "\n"
                                                  (remove-min-spaces l (fence-start n)))))))
+
+(define (parse-attr n l)
+  (cond ((empty-line? l)
+         (close-node n))
+        (else (make-node 'attr
+                         (node-data n)
+                         (list
+                          (make-text-node (string-trim l)))))))
 
 (define (list-type n)
   (node-get-data n 'type))
@@ -272,6 +284,7 @@
         ((atx-heading? l)         => make-atx-heading)
         ((code-block? l)          => make-code-block)
         ((fenced-code? l)         => make-fenced-code)
+        ((attr-keyword? l)        => make-attr)
         ((shortcode? l)           => make-shortcode)
         ((bullet-list-marker? l)  => make-bullet-list-marker)
         ((ordered-list-marker? l) => make-ordered-list-marker)
@@ -305,6 +318,22 @@
    `((fence . ,(match:substring match 1))
      (fence-start . ,(match:start match 1))
      (info-string . ,(unescape-string (string-trim-both (match:substring match 2)))))))
+
+(define (make-attr match)
+  (define (parse-attrs attr)
+    (let ((regexp (make-regexp ":([a-zA-Z0-9_-]+)\\s+(\\S+)")))
+      (let loop ((rest-str attr)
+                 (result '()))
+        (let ((match (regexp-exec regexp rest-str)))
+          (if match
+              (let* ((key-str (match:substring match 1))
+                     (val-str (match:substring match 2))
+                     (new-rest-str (substring rest-str (match:end match 0) (string-length rest-str))))
+                (loop new-rest-str (cons (list (string->symbol key-str) val-str) result)))
+              result)))))
+  (make-attr-node
+   `((attrs . ,(parse-attrs
+                (unescape-string (string-trim-both (match:substring match 2))))))))
 
 (define (make-shortcode match)
   (make-node 'shortcode '((closed . #t)) (list (match:substring match 0))))

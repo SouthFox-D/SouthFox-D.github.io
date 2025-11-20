@@ -223,6 +223,11 @@
     (define (parse-inner node)
       (cond ((not (node? node)) node)
             ((or (paragraph-node? node) (heading-node? node)) (parse-inline node ref-proc))
+            ((attr-node? node)
+             (let ((attr-node (parse-inline node (make-reference-lookup node))))
+               (make-node (node-type (last-child attr-node))
+                          (append (node-data (last-child attr-node)) (node-data attr-node))
+                          (list (last-child (last-child attr-node))))))
             (else (make-node (node-type node) (node-data node) (map parse-inner (node-children node))))))
     (parse-inner node)))
 

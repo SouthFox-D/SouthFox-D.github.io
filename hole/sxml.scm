@@ -165,9 +165,11 @@
          (title (title node))
          (id (assq-ref (node-data node) 'id))
          (is-sup? (assq-ref (node-data node) 'is-sup?))
+         (link-attrs (assq-ref (node-data node) 'attrs))
          (attrs `((href ,dest)
                   ,@(if title (list (list 'title title)) '())
-                  ,@(if id (list (list 'id id)) '())))
+                  ,@(if id (list (list 'id id)) '())
+                  ,@(if link-attrs link-attrs '())))
          (children (fold-nodes node->sxml (node-children node))))
     (if is-sup?
         `(sup (a (@ ,@attrs) ,@children))
