@@ -389,7 +389,7 @@
                          (values (match:end end-ticks 0)
                                  (make-link-node
                                   (list (make-text-node (match:substring link-match 2)))
-                                  (match:substring link-match 1) #f))
+                                  (match:substring link-match 1) #t))
                          (values (match:end end-ticks 0)
                                  (make-link-node
                                   (list (make-text-node link-content))

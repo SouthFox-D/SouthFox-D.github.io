@@ -60,7 +60,10 @@
   '(hr))
 
 (define (paragraph-node->sxml n)
-  `(p ,@(fold-nodes node->sxml (node-children n))))
+  (if (assq-ref (node-data (last-child n)) 'descirpt)
+      ;; figure workaround
+      `(,@(fold-nodes node->sxml (node-children n)))
+      `(p ,@(fold-nodes node->sxml (node-children n)))))
 
 (define (text-node->sxml n)
   (last-child n))
