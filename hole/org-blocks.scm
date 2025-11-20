@@ -321,13 +321,14 @@
 
 (define (make-attr match)
   (define (parse-attrs attr)
-    (let ((regexp (make-regexp ":([a-zA-Z0-9_-]+)\\s+(\\S+)")))
+    (let ((regexp (make-regexp ":([a-zA-Z0-9_-]+)\\s+(\"([^\"]*)\"|(\\S+))")))
       (let loop ((rest-str attr)
                  (result '()))
         (let ((match (regexp-exec regexp rest-str)))
           (if match
               (let* ((key-str (match:substring match 1))
-                     (val-str (match:substring match 2))
+                     (val-str (or (match:substring match 3)
+                                  (match:substring match 4)))
                      (new-rest-str (substring rest-str (match:end match 0) (string-length rest-str))))
                 (loop new-rest-str (cons (list (string->symbol key-str) val-str) result)))
               result)))))
