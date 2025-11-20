@@ -44,24 +44,8 @@
              ,(maybe-highlight-code lang source))))
     (,other other)))
 
-(define image-suffixes
-  '("png" "jpeg" "jpg" "gif" "svg" "webp"))
-
-(define (link-hackery . tree)
-  (sxml-match tree
-              ((a (@ (href ,src) . ,attrs) . ,body)
-               (if (string-prefix? "http" src)
-                   (if (any (lambda (suffix) (string-suffix? suffix src))
-                            image-suffixes)
-                       `(figure (img (@ (src ,src) (alt ,@body) ,@attrs))
-                         (figcaption (span ,@body)))
-                       `(a (@ (href ,src) (class "external_link") ,@attrs) ,@body))
-                   tree))
-              (,other other)))
-
 (define %commonmark-rules
   `((code . ,highlight-code)
-    (a . ,link-hackery)
     (*text* . ,(lambda (tag str) str))
     (*default* . ,(lambda (. arg) arg))))
 

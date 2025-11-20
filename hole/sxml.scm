@@ -163,20 +163,30 @@
 (define (title node)
   (assq-ref (node-data node) 'title))
 
+(define image-suffixes
+  '("png" "jpeg" "jpg" "gif" "svg" "webp"))
+
 (define (link-node->sxml node)
   (let* ((dest (destination node))
-         (title (title node))
+         (descirpt (assq-ref (node-data node) 'descirpt))
          (id (assq-ref (node-data node) 'id))
          (is-sup? (assq-ref (node-data node) 'is-sup?))
          (link-attrs (assq-ref (node-data node) 'attrs))
          (attrs `((href ,dest)
-                  ,@(if title (list (list 'title title)) '())
                   ,@(if id (list (list 'id id)) '())
-                  ,@(if link-attrs link-attrs '())))
+                  ,@(if link-attrs link-attrs '())
+                  ,@(if (string-prefix? "http" dest)
+                        (list (list 'class "external_link")) '())))
          (children (fold-nodes node->sxml (node-children node))))
     (if is-sup?
         `(sup (a (@ ,@attrs) ,@children))
-        `(a (@ ,@attrs) ,@children))))
+        (if (any (lambda (suffix) (string-suffix? suffix dest))
+                 image-suffixes)
+            (if descirpt
+                `(figure (img (@ (src ,dest) (alt ,@children) ,@attrs))
+                  (figcaption (span ,@children)))
+                `(img (@ (src ,dest) ,@attrs)))
+            `(a (@ ,@attrs) ,@children)))))
 
 (define (fold-text node)
   (fold (lambda (elem prev)
