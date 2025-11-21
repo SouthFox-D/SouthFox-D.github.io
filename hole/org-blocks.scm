@@ -321,17 +321,22 @@
 
 (define (make-attr match)
   (define (parse-attrs attr)
-    (let ((regexp (make-regexp ":([a-zA-Z0-9_-]+)\\s+(\"([^\"]*)\"|(\\S+))")))
-      (let loop ((rest-str attr)
-                 (result '()))
-        (let ((match (regexp-exec regexp rest-str)))
-          (if match
-              (let* ((key-str (match:substring match 1))
-                     (val-str (or (match:substring match 3)
-                                  (match:substring match 4)))
-                     (new-rest-str (substring rest-str (match:end match 0) (string-length rest-str))))
-                (loop new-rest-str (cons (list (string->symbol key-str) val-str) result)))
-              result)))))
+    (let loop ((rest-str attr)
+               (result '()))
+      (let ((matchs (list-matches ":([a-zA-Z0-9_-]+)" rest-str)))
+        (if (= (length matchs) 1)
+            (let ((key-str (match:substring (list-ref matchs 0) 1))
+                  (val-str (string-trim-both
+                            (substring rest-str (match:end (list-ref matchs 0))))))
+              (cons (list (string->symbol key-str) val-str) result))
+            (let ((key-str (match:substring (list-ref matchs 0) 1))
+                  (val-str (string-trim-both
+                            (substring rest-str
+                                       (match:end (list-ref matchs 0))
+                                       (match:start (list-ref matchs 1)))))
+                  (new-rest-str (substring rest-str (match:start (list-ref matchs 1)))))
+              (loop new-rest-str
+                    (cons (list (string->symbol key-str) val-str) result)))))))
   (make-attr-node
    `((attrs . ,(parse-attrs
                 (unescape-string (string-trim-both (match:substring match 2))))))))
