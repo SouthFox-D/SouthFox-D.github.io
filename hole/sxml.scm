@@ -102,7 +102,7 @@
            (div (@ (style "color: #787588; margin-top: 16px;")) "Post by SouthFox") " "
            (div (@ (style "font-weight: 500;")) "View on Mastodon") " ") " ")
     (script (@ (data-allowed-prefixes "https://foxsay.southfox.me/")
-               (async "true")
+               (async "")
                (src "https://foxsay.southfox.me/embed.js")))))
 
 (define (shortcode-node->sxml n)

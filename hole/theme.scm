@@ -151,7 +151,7 @@
         (data-lang "zh-CN")
         (data-loading "lazy")
         (crossorigin "anonymous")
-        (async "true")))))
+        (async "")))))
 
 (define* (fox-default-post-template post #:key previous-post next-post)
   `(div (@ (class "content"))
