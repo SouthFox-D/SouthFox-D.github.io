@@ -3,6 +3,7 @@
              (guix build-system copy)
              (guix profiles)
              (guix licenses)
+             (guix utils)
              (gnu packages base)
              (gnu packages bash)
              (gnu packages guile)
@@ -49,10 +50,10 @@
                   "https://github.com/Pagefind/pagefind/releases/download/v"
                   version "/pagefind_extended-v" version "-"
                   (cond ((target-aarch64?)
-                           "aarch64")
-                          ((target-x86-64?)
-                           "x86_64")
-                          (else ""))
+                         "aarch64")
+                        ((target-x86-64?)
+                         "x86_64")
+                        (else ""))
                   "-unknown-linux-musl.tar.gz"))
             (sha256
              (base32
@@ -68,7 +69,7 @@
           #~(modify-phases %standard-phases
                            (delete 'strip)
                            )))
-   (supported-systems '("x86_64-linux"))
+   (supported-systems (list "aarch64-linux" "x86_64-linux"))
    (home-page "https://pagefind.app/")
    (synopsis "Static low-bandwidth search at scale ")
    (description
