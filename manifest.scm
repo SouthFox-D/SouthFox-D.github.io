@@ -46,11 +46,21 @@
    (source (origin
             (method url-fetch)
             (uri (string-append
-                  "https://github.com/Pagefind/pagefind" "/releases/download/v"
-                  version "/pagefind_extended-v" version "-x86_64-unknown-linux-musl.tar.gz"))
+                  "https://github.com/Pagefind/pagefind/releases/download/v"
+                  version "/pagefind_extended-v" version "-"
+                  (cond ((target-aarch64?)
+                           "aarch64")
+                          ((target-x86-64?)
+                           "x86_64")
+                          (else ""))
+                  "-unknown-linux-musl.tar.gz"))
             (sha256
              (base32
-              "0bqbrxzngz51cdryz7i5fhpkg697pba85i9vmwanr2q2yy11zbik"))))
+              (cond ((target-aarch64?)
+                     "09bi6y9vxl73mg66bi950aa5wf3p70jfyplrsy5ncfimsyck4clj")
+                    ((target-x86-64?)
+                     "0bqbrxzngz51cdryz7i5fhpkg697pba85i9vmwanr2q2yy11zbik")
+                    (else ""))))))
    (build-system copy-build-system)
    (arguments
     (list #:install-plan #~'(("pagefind_extended" "bin/"))
