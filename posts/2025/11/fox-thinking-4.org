@@ -11,7 +11,7 @@
 现在我使用的是 [[https://github.com/miniflux/v2][GitHub - miniflux/v2: Minimalist and opinionated feed reader]] 这个阅读器，因为它提供了
 全文抓取和图片代理的功能，基于 Go 语言编写性能和部署容易度都有保障。不过在阅读方式上还是有点麻烦因为是基于
 模板语法直接渲染成 HTML 返回的，而没有做单页应用。所以在阅读条目和返回未读都是一个新的页面，在网络环境不佳
-的时候还是比较折磨的。之前有试过一些通过 API 渲染的前段项目例如 [[https://github.com/electh/ReactFlux][GitHub - electh/ReactFlux: A Simple but Powerful RSS Reader for Miniflux]] ，
+的时候还是比较折磨的。之前有试过一些通过 API 渲染的前端项目例如 [[https://github.com/electh/ReactFlux][GitHub - electh/ReactFlux: A Simple but Powerful RSS Reader for Miniflux]] ，
 意外之喜是 Miniflux 的 API 会返回 HTML 内容，所以一次请求可以批量拉取条目而不必再分成多个 HTML 页面，但是由他人做的前端应用设计总有这里或者那里的小「毛刺」，在更多地阅读未读条目后也开始越来越不想在一个前端应用去看了。
 
 所以还有什么方式呢？最后果然还是向 =Emacs= 去寻找了，去网上找了有没有相关实现发现确实有人做了不过不怎么完善，
