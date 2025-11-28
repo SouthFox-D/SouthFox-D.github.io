@@ -7,7 +7,11 @@
              (gnu packages base)
              (gnu packages bash)
              (gnu packages guile)
-             (gnu packages guile-xyz))
+             (gnu packages guile-xyz)
+             (gnu packages python)
+             (gnu packages python-compression)
+             (gnu packages python-web)
+             (gnu packages python-xyz))
 
 (define %minimal-glibc-locales
   (make-glibc-utf8-locales
@@ -85,4 +89,9 @@ hosting any infrastructure.")
        guile-3.0
        guile-syntax-highlight
        haunt
-       pagefind-bin))
+       pagefind-bin
+       python
+       python-hy
+       python-requests
+       python-brotli
+       python-fonttools))
