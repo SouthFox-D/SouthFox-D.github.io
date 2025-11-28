@@ -8,3 +8,5 @@ public/
 .deploy*/
 site/*
 __pycache__/*
+
+assets/fonts/*
