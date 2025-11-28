@@ -124,7 +124,8 @@
     (run-cmd ["mv" "Zpix.subset.ttf" "assets/fonts/Zpix.ttf"])
     (run-cmd ["haunt" "build"])
     (run-cmd ["pagefind_extended" "--site" "site"])
-    (run-cmd ["mv" "site/" "/var/www/blog"]))
+    (run-cmd ["rm" "-rf" "/var/www/blog/"])
+    (run-cmd ["mv" "site/" "/var/www/blog/"]))
   (when args.deploy
     (subset-font-file post-files)
     (add-github-discussion post-files))
