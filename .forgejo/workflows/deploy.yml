@@ -3,6 +3,7 @@ name: Blog Deploy
 on:
   push:
     branches: [ haunt ]
+  workflow_dispatch:
 
 jobs:
   build:
