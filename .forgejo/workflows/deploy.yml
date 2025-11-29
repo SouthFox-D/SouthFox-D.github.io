@@ -22,6 +22,6 @@ jobs:
     - name: Deploy
       run: |
         export GUIX_DAEMON_SOCKET="guix://172.17.0.1"
-        /var/guix/profiles/per-user/root/current-guix/bin/guix shell -m manifest
+        /var/guix/profiles/per-user/root/current-guix/bin/guix shell -m manifest.scm
 
         hy utils.hy -p
