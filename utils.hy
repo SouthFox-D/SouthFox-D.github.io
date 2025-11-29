@@ -107,12 +107,14 @@
 
 (setv parser (argparse.ArgumentParser))
 (parser.add_argument "-p" :dest "pi" :action "store_true")
-(parser.add_argument "-d" :dest "deploy" :action "store_true")
+(parser.add-argument "-d" :dest "deploy_type"
+                     :choices ["ci" "pi"]
+                     :help "Deployment type: ci or pi")
 (parser.add_argument "-b" :dest "backup" :action "store_true")
 (setv args (parser.parse_args))
 
-(defn run-cmd [cmd [check True]]
-  (print "Run cmd: " cmd)
+(defn run-cmd [cmd [check True] [print? True]]
+  (when print? (print "Run cmd: " cmd))
   (subprocess.run cmd :check check))
 
 (let [post-files (get-post-files)]
@@ -126,9 +128,32 @@
     (run-cmd ["pagefind_extended" "--site" "site"])
     (run-cmd ["rm" "-rf" "/var/www/blog/"])
     (run-cmd ["mv" "site/" "/var/www/blog/"]))
-  (when args.deploy
+  (when args.deploy_type
     (subset-font-file post-files)
-    (add-github-discussion post-files))
+    (run-cmd ["pyftsubset" "Zpix.ttf" "--text-file=strdb.txt"])
+    (run-cmd ["fonttools" "ttLib.woff2" "compress" "-o" "Zpix.woff2" "Zpix.subset.ttf"])
+    (run-cmd ["mv" "Zpix.woff2" "assets/fonts/Zpix.woff2"])
+    (run-cmd ["mv" "Zpix.subset.ttf" "assets/fonts/Zpix.ttf"])
+    (run-cmd ["haunt" "build"])
+    (run-cmd ["pagefind_extended" "--site" "site"])
+    (cond (= args.deploy_type "pi")
+          (do
+            (run-cmd ["rm" "-rf" "/var/www/blog/"])
+            (run-cmd ["mv" "site/" "/var/www/blog/"]))
+          (= args.deploy_type "ci")
+          (do
+            (os.chdir "site")
+            (let [BLOG_DEPLOY_TOKEN (get os.environ "BLOG_DEPLOY_TOKEN")]
+              (run-cmd ["git" "init"])
+              (run-cmd ["git" "config" "--global" "user.name" "SouthFox"])
+              (run-cmd ["git" "config" "--global" "user.email" "master@southfox.me"])
+              (run-cmd ["git" "add" "--all" "."])
+              (run-cmd ["git" "commit" "-m" "Fox CI deploy"])
+              (run-cmd ["git" "branch" "-M" "master"])
+              (run-cmd ["git" "push" "--quiet" "--force"
+                        f"https://{BLOG_DEPLOY_TOKEN}@github.com/SouthFox-D/SouthFox-D.github.io.git"
+                        "master"]
+                       :print? False)))))
   (when args.backup
     (os.makedirs "newimg" :exist_ok True)
     (backup-ipfs-img post-files)))

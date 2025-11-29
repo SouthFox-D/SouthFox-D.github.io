@@ -20,8 +20,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Deploy
+      env:
+        BLOG_DEPLOY_TOKEN: ${{ secrets.BLOG_DEPLOY_TOKEN }}
+        GUIX_DAEMON_SOCKET: "guix://172.17.0.1"
       run: |
-        export GUIX_DAEMON_SOCKET="guix://172.17.0.1"
-        /var/guix/profiles/per-user/root/current-guix/bin/guix shell -m manifest.scm
-
-        hy utils.hy -p
+        /var/guix/profiles/per-user/root/current-guix/bin/guix shell -m manifest.scm -- \
+        hy utils.hy -d ci
