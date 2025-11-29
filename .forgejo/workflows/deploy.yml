@@ -1,0 +1,26 @@
+name: Blog Deploy
+
+on:
+  push:
+    branches: [ haunt ]
+
+jobs:
+  build:
+
+    runs-on: docker
+    strategy:
+      fail-fast: false
+    container:
+      image: node:24-trixie
+      volumes:
+        - /gnu:/gnu
+        - /var/guix:/var/guix
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Deploy
+      run: |
+        export GUIX_DAEMON_SOCKET="guix://172.17.0.1"
+        /var/guix/profiles/per-user/root/current-guix/bin/guix shell -m manifest
+
+        hy utils.hy -p
