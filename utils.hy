@@ -52,7 +52,7 @@
   (let [repo-id "MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
         category-id "DIC_kwDODaJZAM4CA7bf"
         url "https://api.github.com/graphql"
-        header {"Authorization" f"Bearer {(os.environ.get "DISCUSSIONS_TOKEN")}"}
+        header {"Authorization" f"Bearer {(os.environ.get "BLOG_DEPLOY_TOKEN")}"}
         query-data {"query" "query{repository(owner: \"southfox-d\", name: \"southfox-d.github.io\"){id discussions(first:100, categoryId: \"DIC_kwDODaJZAM4CA7bf\"){nodes{title}}}}"}
         query-response (requests.post url :headers header :json query-data)]
     (query-response.raise_for_status)
@@ -142,6 +142,7 @@
             (run-cmd ["mv" "site/" "/var/www/blog/"]))
           (= args.deploy_type "ci")
           (do
+            (add-github-discussion post-files)
             (os.chdir "site")
             (let [BLOG_DEPLOY_TOKEN (get os.environ "BLOG_DEPLOY_TOKEN")]
               (run-cmd ["git" "init"])
