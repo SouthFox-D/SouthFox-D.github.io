@@ -1,7 +1,7 @@
 author:  SouthFox
 title: 在自己电脑上搭建 Peertube
 date: 2021-06-17 20:48:43
-tags: 技术, 建站 
+tags: 技术, 自托管
 category: 技术
 toc: true
 ---

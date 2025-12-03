@@ -1,7 +1,7 @@
 author: SouthFox
 title: 搭建无污染的DNS服务
 date: 2021-07-06 17:29:50
-tags: 技术, DNS
+tags: 技术, DNS, 自托管
 category: 技术
 toc: true
 ---

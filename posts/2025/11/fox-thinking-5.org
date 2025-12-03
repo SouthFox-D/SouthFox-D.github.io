@@ -1,7 +1,7 @@
 #+title: FoxThinking #5: 何以为电子游戏
 #+author: SouthFox
 #+date: 2025-11-16 22:15:12
-#+tags: FoxThinking:游戏
+#+tags: FoxThinking:游戏:游戏开发
 
 游戏这门「艺术」和其它的艺术区别在哪里呢？
 

@@ -1,7 +1,7 @@
 author: SouthFox
 title: Arch 系统随便用暨 Emacs 使用再记（2）
 date: 2022-12-3 20:00:00
-tags: 系统, Arch, Emacs
+tags: Linux, Arch, Emacs
 category: 技术
 toc: true
 ---
