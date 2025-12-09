@@ -128,9 +128,13 @@
                     (map string-trim-both (string-split (post-ref post 'lips) #\:))))
            '())
       (link (@ (rel "alternative")
+               (href "/feed.xml")
+               (title ,(site-title site))
+               (type "application/atom+xml")))
+      (link (@ (rel "alternative")
                (href "/rss2.xml")
                (title ,(site-title site))
-               (type "application/atom+xml"))))
+               (type "application/rss+xml"))))
      (body
       ,navbar
       (div (@ (class "container flex"))
