@@ -127,8 +127,8 @@
   (sxml->xml sxml port))
 
 (define (date->string* date)
-  "Convert date to RFC-3339 formatted string."
-  (date->string date "~Y-~m-~dT~H:~M:~SZ"))
+  "Convert date to RFC-822 formatted string."
+  (date->string date "~a, ~d ~b ~Y ~H:~M:~S ~z"))
 
 (define* (post->item-entry site post #:key (blog-prefix ""))
   "Convert POST into an Atom <entry> XML node."
