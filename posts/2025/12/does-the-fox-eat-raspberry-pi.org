@@ -1,0 +1,197 @@
+#+title: 狐狸会喜欢树莓做的派吗？树莓派鼓捣记
+#+author: SouthFox
+#+date: 2025-12-12 14:18:20
+#+tags: 自托管:树莓派:Guix:博客
+
+今年双十一的时候出于好像得买点什么非常「消费主义」念头购入了一块 8G 版的树莓派 5 和一块 2T 的七彩虹 ME700 固态硬盘。
+现在一个月过去了，在不断折腾下也算是有点能写的东西了，所以在这里写成一篇文章。
+
+在硬件上折腾并不多，除了开头买的固态硬盘转接板小了点一开始很灵车的拿了板子暂时压住（见 [[/2025/11/fox-thinking-6/][FoxThinking #6]] ），之后再加购了个合适
+长度的转接板接上最后没什么问题了。用 fio 测速了一下，读写标称 7000MB/s 和 5500MB/s 的硬盘通过转接板后只能跑出读写均只有
+ 420MB/s 的「好成绩」，真算得上是吕布骑狗了。
+
+,(read-more)
+
+不过想开点上固态硬盘不用听「炒豆声」也是件好事，而且找补一下在双十一购入的时机也正是时候，在现在 DRAM 芯片价格飙升的时候买也是赶
+上末班车了 [fn:1] [fn:2] 。在考虑买树莓派之前我也考虑过其它的「国产派」，纸面参数更好而且更便宜，似乎是更好的选择？但我在实际逛
+了相关的店铺后发现有点不对劲，可选的东西很少而且并没有参与什么活动。网上搜了下发现一些吐槽，包括找不到什么工程师啦、快速发板的策略
+导致旧产品很快就没维护啦等等。为了减少折腾我还是直接买树莓派吧，而且也有一些店铺参与了双十一活动，最后就购入了最基本入门套餐（那些
+嵌入式的传感器马达之类的我不怎么感兴趣就觉得没必要买了）。
+
+然后来说说在系统上面的折腾吧，首先就是刷入系统，查找了下相关资料发现 Arch linux 对于 ARM 的支持比较堪忧，社区似乎没什么活跃度，看起来没多少
+人用 Arch 系统来折腾树莓派这种边缘设备啊。之后不折腾选择官方系统，这方面我直接用官方的镜像刷入应用将桌面版系统刷入到店铺附赠的 SD 卡然后通过 VNC
+打开远程桌面里面打开镜像刷入应用然后往固态硬盘刷入无桌面的 lite 版。这个看起来很古怪的流程是因为我没有其它能够刷入固态硬盘的手段，然后试了下
+将 lite 系统刷入到 SD 然后在系统中将数据拷贝到固态硬盘的方式失败了，索性就直接通过官方的镜像刷入应用操作不操其它心了。刚好将这个 SD 卡内的系统
+作为一个救援系统。刷好系统后通过官方 raspi-config 将从固态硬盘调整到第一启动项就可以了，用官方系统的这些设置上就不用怎么操心也是挺好的。
+
+* 想当然的鼓捣
+软件上的折腾倒是没有什么稀奇的，跟其它在 VPS 等 linux 机器上折腾的差不多，不过就是因为太差不多了所以有点倦了：弄点 docker-compose.yml 或者
+在包管理器装点应用；编辑配置文件；调一下 nginx 文件……这些事因为做过太多次了所以就没有热情了。诶，如果有一个方式只需要填点参数就能配好服务就好了
+啊，最好不要是什么类似 ansible 的基于 yaml 的方式而是更直接的方式例如用 python 写点代码：
+
+#+begin_src python
+setup_service(application="tailscale", systemd_enable="tailscaled")
+setup_service(host="blog.example.com", nginx_root="/var/host/blog")
+setup_service(host="pihole.internal", application="pi-hole", via="docker", systemd_enable="docker", config_path="...")
+#+end_src
+
+运行后通过一些「神奇」的一通操作就能配好服务和相关的配置文件，
+这好像有点想当然了（wishful thinking），在顶层这么只是想想那底层该怎么考虑呢？可以考虑到可以将 service 抽象成一个
+规范，然后来规定 **如何拓展其它服务** 和 **如何拓展自己的服务** 。例如针对一个使用 nginx 配置博客的例子：需要用包管理器
+安装 nginx 然后在 systemd 启用服务之后往 nginx 配置文件夹路径放入一个简单 server 配置文件。
+
+使用 python 来举例的伪代码可以考虑成这样：
+
+#+begin_src python
+class NginxServerConfig(...):
+    self.hosts = ...
+    self.port = ...
+    ...
+
+nginx_service = service_def(name="nginx", default_value=[])
+nginx_service.append_extension(application_service, "nginx")
+nginx_service.append_extension(systemd_service, "enable", "nginx")
+nginx_service.extend = append # lambda x: self.value.append(x)
+#+end_src
+
+其中 append_extension 是如何拓展其它服务，这里可以指定成 application 和 systemd 服务然后参数是 nginx ,然后拓展自己服务是 append ，即简单得将接收到的参数
+append 到自己内部的数据中。再往下一层可以将最后都「收束」到一个简单的 bash 脚本，例如：
+
+#+begin_src python
+script_service = service_def(
+    name="script",
+    extend = append,
+)
+script_service.append_extension(file_service, "execute_config.sh", lambda x: "\n".join(x.value))
+
+applicate_service = service_def(
+    application="application",
+    extend = append
+)
+applicate_service = append_extension(script_service, lambda x: f"pacman -S {\" \".join(x.value)}")
+
+systemd_service = service_def(
+    application="systemd",
+    extend = append
+)
+systemd_service = append_extension(script_service, lambda x: ";".join([f"systemctl enable --now {i}" for i in x.value]))
+#+end_src
+
+这样所有服务配置好后就会形成一个 execute_config.sh ，在最后执行就能做到简单的安装软件和配置了。这套方案好的一点在
+于 extend 不止是 append 这样简单的函数，
+也可以是自己编写的复杂的例如生成一大坨 docker-compose.yml 文件的函数。而且通过 python 作为一个变成语言的优势将这些 service 组合成一个顶层的函数以声明式配置方式然后在最后执行，
+并且还能通过一些获取例如主机名的形式进行分支控制达到一套代码库在在不同机器部署不同环境的结果，例如：
+
+#+begin_src python
+def setup_service(...)
+    ...
+    applicattion_service(application)
+    nginx_service(NginxServerConfig(hosts=..., root=nginx_root))
+    docker_service(...)
+
+
+if hostname == "homelab":
+    setup_service(application="zerotier", systemd_enable="zerotier-one")
+    setup_service(host="blog.example.com", nginx_root="/var/host/blog")
+    setup_service(host="pihole.internal", application="pi-hole", via="docker", systemd_enable="docker", config_path="...")
+    ...
+if hostname == "vps1":
+    setup_service(application="tailscale", systemd_enable="tailscaled")
+    setup_service(host="git.example.com", application="forgejo", port="8081", via="docker")
+    ...
+
+calculate_services()
+execute_script("files/execute_config.sh")
+#+end_src
+
+* 凑合就好
+虽然上面的方案简单并且可能鼓捣一下也确实能用，不过我这种懒狐还是很「拿来主义」的，上面所说的基本就是用 python 化的
+Guix [[https://guix.gnu.org/manual/en/html_node/Service-Types-and-Services.html][Service Types and Services]] 的解释。这种方式在理解后确实还是很直接的，只用记住如何 **如何拓展其它服务** 和 **如何拓展自己的服务** 就
+能掌握个大概。用这种方式我也是成功的把相关的配置塞进了少数几个文件里，虽然离完全抽象顶层的简单定义还有段距离，不过还是，也不是不能用吧。
+
+* 鼓捣的服务
+** Podman
+首先在树莓派上我是用了 Podman 作为容器的方案，不选 docker 是因为看重了注重 rootless 的方式，而且不需要一个在后台常驻的守护进程。
+Podman 在 Guix 里就可以直接安装了，不过好像基本都要自己源码编译安装官方的缓存服务器经常命中不了二进制产物，看来不管是 Arch ，在 Guix 里
+也很少用 ARM 平台的啊。
+
+因为 podman 不是 docker ，所以默认并不会觉得镜像是在 =docker.io= 上的，所以相关的镜像名称要写全，例如 nginx 在 docker 里
+只用写 =nginx:latest= 但在 podman 里要写成 =docker.io/library/nginx:latest= 。同时还需要往 =~/.config/containers/policy.json= 声明能向什么服务商拉取镜像，不安全的写法可以写接受全部：
+
+#+begin_src conf
+{ "default": [ { "type": "insecureAcceptAnything" } ]
+#+end_src
+
+** calibre-web
+通过 podman-compose 拉起的程序，因为在 [[https://www.humblebundle.com/][Humble Bundle]] 买了几个书籍捆绑包也是堆了百来个电子书了（详情见 [[/2025/11/fox-thinking-6/][FoxThinking #6]] ），
+所以需要一个管理的程序，最后也是选择了 [[https://github.com/janeczku/calibre-web][calibre-web]] 。官方不推荐将数据库文件放到网络存储上所以我先在就简单通过 rsync 来同步状态，
+现在需要我自己维护状态手动选择哪边的状态进行同步，可能在之后可以写点脚本封装成同步然后比对树莓派上的服务哪边新就更新到哪边吧，感觉
+有点类似 git 了……
+
+** aria2
+通过 guix 安装，是一个简单的下载程序，从网上拷贝了一份配置文件就这么直接用了，虽然用的不多但是胜在多线程下载一些东西和 bt 下载的能用上。
+
+*** ariang
+一个静态的前端，通过 json-rpc 和后面的 aria2 交互，在网页上展示点下载速度曲线和新增下载任务，比敲命令行好点（主要不会将又长又杂的下载地址放到
+历史记录干扰到 fzf )。
+
+** webhook
+通过 guix 安装，是一个用 go 写的程序 [fn:3] 提供 webhook 服务，webhook 简单说就是提供一个 uri 当又 GET 或者 POST 的 HTTP 请求时执行一些动作，
+我用来触发下我的博客构建流程。
+
+** syncthing
+通过 guix 安装，一个 P2P 式的文件同步软件，我通过它来同步我的笔记。因为我的树莓派现在没有作任何的备份措施所以我就在我的设备
+上（包括手机）用 syncthing 来进行备份（感觉……有点类似 git 了）。
+
+** rslsync
+虽然是直接从官网下载的二进制文件但通过 guix 定义的安装过程也算是通过 guix 安装，我用来同步[[https://www.shuge.org/foryou/resilio_sync/][书格]]的一些古籍资料，对比起
+syncthing ，rslsync 是面向公网有点类似 bt 而 syncthing 是面向个人比较私域。
+
+** cloudflared
+通过 guix 定义的编译流程所以也能算是通过 guix 安装，用 cloudflare 的网络进行内网穿透，我现在用来提供博客（树莓派不得不尝的用途）
+和 webhook 服务的访问。
+虽然 cloudflare 免费且功能丰富，不过为了更有独立性我看看之后能不能找到一个可自托管选项，简单点 frp 也可以不过感觉面对大墙可能
+会有点不稳定。
+
+** nginx
+通过 guix 安装，不过因为上游的定义里没有带上 =realip module= 所以我简单继承了上游的定义加上了 =--with-http_realip_module= 的参数。
+对这个程序再无话说，只是速速用起来。
+
+** pihole
+使用 podman 安装，一个自建的 dns 服务，对比起四年前的博文 [[/2021/07/搭建无污染的DNS服务/][搭建无污染的DNS服务]] 不同是 pihole 里终于有 pi 了，而且在可触及范围内也搭建比较方便该路由器设置
+ DNS 让局域网内的设备网络请求都经过 pihole 。
+
+另外就是 podman 里的服务似乎会占用 53 端口和 pihole 冲突，得需要在 =~/.config/containers/containers.conf= 里配置成另外的端口规避：
+
+#+begin_src conf
+[network]
+dns_bind_port=5000
+#+end_src
+
+*** smartdns
+一个功能丰富的 dns 应用，在最近支持网页控制台后其实完全就可以替换 pihole 了，不过既然都用树莓派了我还是
+继续用着 pihole 吧，现在用着 smartdns 主要是作为 pihole 的上游然后搭配 [[https://github.com/felixonmars/dnsmasq-china-list][dnsmasq-china-list]] 项目作为国内服务
+的加速和国外的 DOH 分流。
+
+** zerotier
+通过 guix 定义的编译流程所以也能算是通过 guix 安装，用来组建方便在公网环境的访问的虚拟局域网。不得不说在 guix 上的投入还是值得
+的，之前为 steam deck 写的 [fn:4] zerotier 定义在 debian 系统也能轻松跑起来，这种编写一次导出运行的滋味还是挺美妙的。
+
+* 总结
+这篇博文到最后快要变成 guix 的安利文了？
+
+不过我现在用着 GNU/Linux 然后用着 Emacs 写着东西然后用点 Lisp 折腾树莓派，感觉快要成为那种典型的那种自由极客了。一路过来感想是
+虽然有点痛苦但好像也没那么痛苦，在现在互联网发展快三十年的时代哪怕不融入社区不和人交流只凭一些网上「捕风捉影」的消息也能在小众领域行走。
+说到这发现我确实不怎么依赖社区和求助于他人，遇到难题只会死磕实在磕不过就会放弃睡大觉，虽然这也没什么 [fn:5] ，不过想想有时候求助他人
+可能是一个「省力」的选择呢？或许这点可以作为下一年的课题……
+
+* 脚注
+[fn:1] [[https://www.solidot.org/story?sid=82733][奇客Solidot | DRAM 芯片价格涨幅超过黄金]]
+
+[fn:2] [[https://www.solidot.org/story?sid=82935][奇客Solidot | 树莓派因为内存价格飙升而涨价]] 
+
+[fn:3] [[https://github.com/adnanh/webhook][Webhook GitHub 地址]]
+
+[fn:4] [[/2025/05/configure-steam-deck/][Steam Deck 可劲折腾]]
+
+[fn:5] [[https://www.solidot.org/story?sid=82831][奇客Solidot | 很多时候放弃是最明智的选择]]
