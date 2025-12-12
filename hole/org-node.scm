@@ -301,11 +301,12 @@
   (node-type? node 'emphasis))
 
 ;; Link node
-(define* (make-link-node nodes destination descirpt #:key id is-sup?)
+(define* (make-link-node nodes destination descirpt #:key id is-sup? is-image?)
   (make-node 'link `((destination . ,destination)
                      (descirpt . ,descirpt)
                      (id . ,id)
-                     (is-sup? . ,is-sup?))
+                     (is-sup? . ,is-sup?)
+                     (is-image? . ,is-image?))
              nodes))
 
 (define (link-node? node)

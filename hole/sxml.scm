@@ -60,7 +60,7 @@
   '(hr))
 
 (define (paragraph-node->sxml n)
-  (if (assq-ref (node-data (last-child n)) 'descirpt)
+  (if (assq-ref (node-data (last-child n)) 'is-image?)
       ;; figure workaround
       `(,@(fold-nodes node->sxml (node-children n)))
       `(p ,@(fold-nodes node->sxml (node-children n)))))
@@ -163,14 +163,12 @@
 (define (title node)
   (assq-ref (node-data node) 'title))
 
-(define image-suffixes
-  '("png" "jpeg" "jpg" "gif" "svg" "webp"))
-
 (define (link-node->sxml node)
   (let* ((dest (destination node))
          (descirpt (assq-ref (node-data node) 'descirpt))
          (id (assq-ref (node-data node) 'id))
          (is-sup? (assq-ref (node-data node) 'is-sup?))
+         (is-image? (assq-ref (node-data node) 'is-image?))
          (link-attrs (assq-ref (node-data node) 'attrs))
          (attrs `((href ,dest)
                   ,@(if id (list (list 'id id)) '())
@@ -180,8 +178,7 @@
          (children (fold-nodes node->sxml (node-children node))))
     (if is-sup?
         `(sup (a (@ ,@attrs) ,@children))
-        (if (any (lambda (suffix) (string-suffix? suffix dest))
-                 image-suffixes)
+        (if is-image?
             (if descirpt
                 `(figure (img (@ (src ,dest) (alt ,@children) ,@attrs))
                   (figcaption (span ,@children)))

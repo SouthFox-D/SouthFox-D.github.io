@@ -350,6 +350,8 @@
                 delim-stack ref-proc)))
 
 (define (build-org-link text)
+  (define image-suffixes
+    '("png" "jpeg" "jpg" "gif" "svg" "webp"))
   (let ((start-ticks (start-org-link? text)))
     (if (not start-ticks)
         (let ((start-footnotes-ticks (start-org-footnodes-link? text)))
@@ -389,7 +391,10 @@
                          (values (match:end end-ticks 0)
                                  (make-link-node
                                   (list (make-text-node (match:substring link-match 2)))
-                                  (match:substring link-match 1) #t))
+                                  (match:substring link-match 1) #t
+                                  #:is-image? (any (lambda (suffix)
+                                                     (string-suffix? suffix (match:substring link-match 1)))
+                                                      image-suffixes)))
                          (values (match:end end-ticks 0)
                                  (make-link-node
                                   (list (make-text-node link-content))
