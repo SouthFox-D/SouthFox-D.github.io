@@ -153,6 +153,10 @@ syncthing ，rslsync 是面向公网有点类似 bt 而 syncthing 是面向个�
 虽然 cloudflare 免费且功能丰富，不过为了更有独立性我看看之后能不能找到一个可自托管选项，简单点 frp 也可以不过感觉面对大墙可能
 会有点不稳定。
 
+** anki
+通过 podman 安装 [fn:4] 然后开启的 sync 服务，用来在各种设备之间的同步统计资料和牌组文件，通过 cloudflared 提供公
+网访问，资料在所有设备上都会存一份树莓派提供一个同步渠道（感觉……还是有点类似 git ）。
+
 ** nginx
 通过 guix 安装，不过因为上游的定义里没有带上 =realip module= 所以我简单继承了上游的定义加上了 =--with-http_realip_module= 的参数。
 对这个程序再无话说，只是速速用起来。
@@ -175,14 +179,14 @@ dns_bind_port=5000
 
 ** zerotier
 通过 guix 定义的编译流程所以也能算是通过 guix 安装，用来组建方便在公网环境的访问的虚拟局域网。不得不说在 guix 上的投入还是值得
-的，之前为 steam deck 写的 [fn:4] zerotier 定义在 debian 系统也能轻松跑起来，这种编写一次导出运行的滋味还是挺美妙的。
+的，之前为 steam deck 写的 [fn:5] zerotier 定义在 debian 系统也能轻松跑起来，这种编写一次导出运行的滋味还是挺美妙的。
 
 * 总结
 这篇博文到最后快要变成 guix 的安利文了？
 
 不过我现在用着 GNU/Linux 然后用着 Emacs 写着东西然后用点 Lisp 折腾树莓派，感觉快要成为那种典型的那种自由极客了。一路过来感想是
 虽然有点痛苦但好像也没那么痛苦，在现在互联网发展快三十年的时代哪怕不融入社区不和人交流只凭一些网上「捕风捉影」的消息也能在小众领域行走。
-说到这发现我确实不怎么依赖社区和求助于他人，遇到难题只会死磕实在磕不过就会放弃睡大觉，虽然这也没什么 [fn:5] ，不过想想有时候求助他人
+说到这发现我确实不怎么依赖社区和求助于他人，遇到难题只会死磕实在磕不过就会放弃睡大觉，虽然这也没什么 [fn:6] ，不过想想有时候求助他人
 可能是一个「省力」的选择呢？或许这点可以作为下一年的课题……
 
 * 脚注
@@ -192,6 +196,8 @@ dns_bind_port=5000
 
 [fn:3] [[https://github.com/adnanh/webhook][Webhook GitHub 地址]]
 
-[fn:4] [[/2025/05/configure-steam-deck/][Steam Deck 可劲折腾]]
+[fn:4] [[https://github.com/LuckyTurtleDev/docker-images][GitHub - LuckyTurtleDev/docker-images]]
 
-[fn:5] [[https://www.solidot.org/story?sid=82831][奇客Solidot | 很多时候放弃是最明智的选择]]
+[fn:5] [[/2025/05/configure-steam-deck/][Steam Deck 可劲折腾]]
+
+[fn:6] [[https://www.solidot.org/story?sid=82831][奇客Solidot | 很多时候放弃是最明智的选择]]
