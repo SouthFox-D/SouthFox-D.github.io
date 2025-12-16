@@ -179,7 +179,7 @@ dns_bind_port=5000
 
 ** zerotier
 通过 guix 定义的编译流程所以也能算是通过 guix 安装，用来组建方便在公网环境的访问的虚拟局域网。不得不说在 guix 上的投入还是值得
-的，之前为 steam deck 写的 [fn:5] zerotier 定义在 debian 系统也能轻松跑起来，这种编写一次导出运行的滋味还是挺美妙的。
+的，之前为 steam deck 写的 [fn:5] zerotier 定义在 debian 系统也能轻松跑起来，这种编写一次到处运行的滋味还是挺美妙的。
 
 * 总结
 这篇博文到最后快要变成 guix 的安利文了？
