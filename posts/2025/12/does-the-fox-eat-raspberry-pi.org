@@ -79,8 +79,8 @@ systemd_service = append_extension(script_service, lambda x: ";".join([f"systemc
 
 这样所有服务配置好后就会形成一个 execute_config.sh ，在最后执行就能做到简单的安装软件和配置了。这套方案好的一点在
 于 extend 不止是 append 这样简单的函数，
-也可以是自己编写的复杂的例如生成一大坨 docker-compose.yml 文件的函数。而且通过 python 作为一个变成语言的优势将这些 service 组合成一个顶层的函数以声明式配置方式然后在最后执行，
-并且还能通过一些获取例如主机名的形式进行分支控制达到一套代码库在在不同机器部署不同环境的结果，例如：
+也可以是自己编写的复杂的例如生成一大坨 docker-compose.yml 文件的函数。而且通过 python 作为通用编程语言的优势很容易将这些 service 组合成
+一个顶层的函数以声明式配置方式在最后区执行，并且还能通过一些获取例如主机名进行分支控制达到一套代码库在在不同机器部署不同环境的结果，例如：
 
 #+begin_src python
 def setup_service(...)
@@ -100,6 +100,7 @@ if hostname == "vps1":
     setup_service(host="git.example.com", application="forgejo", port="8081", via="docker")
     ...
 
+
 calculate_services()
 execute_script("files/execute_config.sh")
 #+end_src
@@ -110,13 +111,14 @@ Guix [[https://guix.gnu.org/manual/en/html_node/Service-Types-and-Services.html]
 能掌握个大概。用这种方式我也是成功的把相关的配置塞进了少数几个文件里，虽然离完全抽象顶层的简单定义还有段距离，不过还是，也不是不能用吧。
 
 * 鼓捣的服务
-** Podman
-首先在树莓派上我是用了 Podman 作为容器的方案，不选 docker 是因为看重了注重 rootless 的方式，而且不需要一个在后台常驻的守护进程。
-Podman 在 Guix 里就可以直接安装了，不过好像基本都要自己源码编译安装官方的缓存服务器经常命中不了二进制产物，看来不管是 Arch ，在 Guix 里
+** podman
+首先在树莓派上我是用了 Podman 作为容器的方案，不选 docker 是因为看重了 podman 注重 rootless 还不需要一个在后台常驻的守护进程。
+Podman 在 Guix 里就可以直接安装，不过好像基本都要自己源码编译安装，官方的缓存服务器经常命中不了二进制产物，看来不管是 Arch ，在 Guix 里
 也很少用 ARM 平台的啊。
 
-因为 podman 不是 docker ，所以默认并不会觉得镜像是在 =docker.io= 上的，所以相关的镜像名称要写全，例如 nginx 在 docker 里
-只用写 =nginx:latest= 但在 podman 里要写成 =docker.io/library/nginx:latest= 。同时还需要往 =~/.config/containers/policy.json= 声明能向什么服务商拉取镜像，不安全的写法可以写接受全部：
+因为 podman 不是 docker ，所以默认并不会觉得镜像是在 =docker.io= 上，所以相关的镜像名称要写全，例如 nginx 在 docker 里
+只用写 =nginx:latest= 但在 podman 里要写成 =docker.io/library/nginx:latest= 。同时还需要往 =~/.config/containers/policy.json= 声明
+能向什么服务商拉取镜像，不安全的写法可以写接受全部：
 
 #+begin_src conf
 { "default": [ { "type": "insecureAcceptAnything" } ]
@@ -124,20 +126,21 @@ Podman 在 Guix 里就可以直接安装了，不过好像基本都要自己源�
 
 ** calibre-web
 通过 podman-compose 拉起的程序，因为在 [[https://www.humblebundle.com/][Humble Bundle]] 买了几个书籍捆绑包也是堆了百来个电子书了（详情见 [[/2025/11/fox-thinking-6/][FoxThinking #6]] ），
-所以需要一个管理的程序，最后也是选择了 [[https://github.com/janeczku/calibre-web][calibre-web]] 。官方不推荐将数据库文件放到网络存储上所以我先在就简单通过 rsync 来同步状态，
-现在需要我自己维护状态手动选择哪边的状态进行同步，可能在之后可以写点脚本封装成同步然后比对树莓派上的服务哪边新就更新到哪边吧，感觉
+所以需要一个管理的程序，最后也是选择了 [[https://github.com/janeczku/calibre-web][calibre-web]] 。官方不推荐将数据库文件放到网络存储上所以我现在就简单通过 rsync 来同步状态，
+不过这需要我自己维护状态手动选择哪边的状态进行同步，可能之后可以写点脚本自动比对树莓派上和本地的状态哪边新就更新到哪边吧，感觉
 有点类似 git 了……
 
 ** aria2
-通过 guix 安装，是一个简单的下载程序，从网上拷贝了一份配置文件就这么直接用了，虽然用的不多但是胜在多线程下载一些东西和 bt 下载的能用上。
+通过 guix 安装，是一个简单的下载程序，从网上拷贝了一份配置文件就这么直接用了，虽然用的不多但是胜在多线程和 bt 下载的能用上。
 
 *** ariang
 一个静态的前端，通过 json-rpc 和后面的 aria2 交互，在网页上展示点下载速度曲线和新增下载任务，比敲命令行好点（主要不会将又长又杂的下载地址放到
 历史记录干扰到 fzf )。
 
 ** webhook
-通过 guix 安装，是一个用 go 写的程序 [fn:3] 提供 webhook 服务，webhook 简单说就是提供一个 uri 当又 GET 或者 POST 的 HTTP 请求时执行一些动作，
-我用来触发下我的博客构建流程。
+通过 guix 安装，是一个用 go 写的程序 [fn:3] 提供 webhook 服务，webhook 简单说就是提供一个 uri 当有 GET 或者 POST 的 HTTP 请求时执行一些动作
+(例如执行脚本)，
+我现在用来触发下我的博客构建流程。
 
 ** syncthing
 通过 guix 安装，一个 P2P 式的文件同步软件，我通过它来同步我的笔记。因为我的树莓派现在没有作任何的备份措施所以我就在我的设备
@@ -145,25 +148,25 @@ Podman 在 Guix 里就可以直接安装了，不过好像基本都要自己源�
 
 ** rslsync
 虽然是直接从官网下载的二进制文件但通过 guix 定义的安装过程也算是通过 guix 安装，我用来同步[[https://www.shuge.org/foryou/resilio_sync/][书格]]的一些古籍资料，对比起
-syncthing ，rslsync 是面向公网有点类似 bt 而 syncthing 是面向个人比较私域。
+syncthing ，rslsync 是面向公网有点类似种子下载而 syncthing 是面向个人的比较私域（类似 git )。
 
 ** cloudflared
-通过 guix 定义的编译流程所以也能算是通过 guix 安装，用 cloudflare 的网络进行内网穿透，我现在用来提供博客（树莓派不得不尝的用途）
+通过 guix 定义的编译流程所以也能算是通过 guix 安装。用 cloudflare 的网络进行内网穿透，我现在用来提供博客（树莓派不得不尝的用途）
 和 webhook 服务的访问。
 虽然 cloudflare 免费且功能丰富，不过为了更有独立性我看看之后能不能找到一个可自托管选项，简单点 frp 也可以不过感觉面对大墙可能
 会有点不稳定。
 
 ** anki
-通过 podman 安装 [fn:4] 然后开启的 sync 服务，用来在各种设备之间的同步统计资料和牌组文件，通过 cloudflared 提供公
-网访问，资料在所有设备上都会存一份树莓派提供一个同步渠道（感觉……还是有点类似 git ）。
+通过 podman 安装 [fn:4] 然后开启的代替 anki-web 的 sync 服务，用来在各种设备之间的同步统计资料和牌组文件，通过 cloudflared 提供公
+网访问，资料在所有设备上都会存一份只不过用树莓派提供一个同步渠道（感觉……还是有点类似 git ）。
 
 ** nginx
 通过 guix 安装，不过因为上游的定义里没有带上 =realip module= 所以我简单继承了上游的定义加上了 =--with-http_realip_module= 的参数。
 对这个程序再无话说，只是速速用起来。
 
 ** pihole
-使用 podman 安装，一个自建的 dns 服务，对比起四年前的博文 [[/2021/07/搭建无污染的DNS服务/][搭建无污染的DNS服务]] 不同是 pihole 里终于有 pi 了，而且在可触及范围内也搭建比较方便该路由器设置
- DNS 让局域网内的设备网络请求都经过 pihole 。
+使用 podman-compose 安装，一个自建的 dns 服务，对比起四年前的博文 [[/2021/07/搭建无污染的DNS服务/][搭建无污染的DNS服务]] 不同是 pihole 里终于在 pi 上运行了，而且在可触及范围内搭建
+比较方便该路由器设置 DNS 让局域网内的设备网络请求都经过 pihole 。
 
 另外就是 podman 里的服务似乎会占用 53 端口和 pihole 冲突，得需要在 =~/.config/containers/containers.conf= 里配置成另外的端口规避：
 
@@ -184,7 +187,7 @@ dns_bind_port=5000
 * 总结
 这篇博文到最后快要变成 guix 的安利文了？
 
-不过我现在用着 GNU/Linux 然后用着 Emacs 写着东西然后用点 Lisp 折腾树莓派，感觉快要成为那种典型的那种自由极客了。一路过来感想是
+不过我现在用着 GNU/Linux 然后用着 Emacs 写着东西然后用点 Lisp 折腾树莓派，感觉快要成为那种典型的自由极客了。一路过来感想是
 虽然有点痛苦但好像也没那么痛苦，在现在互联网发展快三十年的时代哪怕不融入社区不和人交流只凭一些网上「捕风捉影」的消息也能在小众领域行走。
 说到这发现我确实不怎么依赖社区和求助于他人，遇到难题只会死磕实在磕不过就会放弃睡大觉，虽然这也没什么 [fn:6] ，不过想想有时候求助他人
 可能是一个「省力」的选择呢？或许这点可以作为下一年的课题……
