@@ -151,7 +151,11 @@ several pages with up to POSTS-PER-PAGE posts on each page."
                                           #:post post)
                              sxml->html)))
 
-    (define (paginate base-name items)
+    (define (paginate base-name items titles)
+      (define (make-page-title i)
+        (if (>= i (length titles))
+            (list-ref titles (- (length titles) 1))
+            (list-ref titles i)))
       (define (make-page-file-name i)
         (make-file-name
          ;; First page does not get a page number added to the file
@@ -162,7 +166,7 @@ several pages with up to POSTS-PER-PAGE posts on each page."
                             (number->string i)
                             ".html"))))
       (define (make-page i items)
-        (list (make-page-file-name i) (reverse items)))
+        (list (make-page-title i) (make-page-file-name i) (reverse items)))
       (let loop ((items items)
                  (n 0)
                  (i 0)
@@ -192,10 +196,13 @@ several pages with up to POSTS-PER-PAGE posts on each page."
          (let ((base-name (if (string-suffix? ".html" file-name)
                               (string-take file-name
                                            (- (string-length file-name) 5))
-                              file-name)))
+                              file-name))
+               (title* (if (list? title)
+                           title
+                           (list title))))
            (define (make-collection-page current-page prev-page next-page)
              (match current-page
-               ((file-name posts)
+               ((title file-name posts)
                 (let* ((coll-sxml (render-collection theme site title
                                                      posts collection-post-prefix))
                        (page-sxml (with-layout theme site title
@@ -204,13 +211,13 @@ several pages with up to POSTS-PER-PAGE posts on each page."
                                                                   coll-sxml
                                                                   (match prev-page
                                                                     (#f #f)
-                                                                    ((file-name _) file-name))
+                                                                    ((_ file-name _) file-name))
                                                                   (match next-page
                                                                     (#f #f)
-                                                                    ((file-name _) file-name))))))
+                                                                    ((_ file-name _) file-name))))))
                   (serialized-artifact file-name page-sxml sxml->html)))))
            (if posts-per-page
-               (let loop ((pages (paginate base-name filtered-posts))
+               (let loop ((pages (paginate base-name filtered-posts title*))
                           (prev-page #f))
                  (match pages
                    (()
@@ -223,7 +230,7 @@ several pages with up to POSTS-PER-PAGE posts on each page."
                (list
                 (serialized-artifact (string-append base-name ".html")
                                      (with-layout theme site title
-                                                  (render-collection theme site title
+                                                  (render-collection theme site (car title*)
                                                                      filtered-posts
                                                                      collection-post-prefix))
                                      sxml->html)))))))

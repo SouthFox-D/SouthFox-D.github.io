@@ -22,7 +22,8 @@
       #:posts-directory "posts"
       #:builders (list (hole/blog
                         #:theme fox-theme
-                        #:collections `(("最近文章" "index.html" ,posts/reverse-chronological))
+                        #:collections `((("最近文章" "没那么近文章" "有点老文章" "尘封文章" "古旧文章" "可以说是黑历史的文章")
+                                         "index.html" ,posts/reverse-chronological))
                         #:posts-per-page 10)
                        (about-page)
                        (friends-page)
