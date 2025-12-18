@@ -36,7 +36,7 @@
 (define re-start-org-footnotes-link (make-regexp "^\\[fn\\:+"))
 (define re-end-org-footnotes-link (make-regexp "\\]+"))
 
-(define re-main (make-regexp "^[^=*_\\\n[!<&]+"))
+(define re-main (make-regexp "^[^=*_\\\n[<&]+"))
 (define re-autolink (make-regexp (string-append "^<([a-zA-Z][a-zA-Z0-9+.-]{1,31}:[^ \t\n<>"
                                                 control-characters "]*)>")))
 (define re-email-autolink (make-regexp
