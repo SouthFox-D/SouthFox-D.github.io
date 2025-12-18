@@ -24,6 +24,7 @@
 ;;; Code:
 
 (define-module (hole rss)
+  #:use-module (hole site)
   #:use-module (srfi srfi-9)
   #:use-module (srfi srfi-19)
   #:use-module (srfi srfi-26)
@@ -135,9 +136,10 @@
   (let ((uri (uri->string
               (build-uri (site-scheme site)
                          #:host (site-domain site)
-                         #:path (string-append blog-prefix "/"
-                                               (site-post-slug site post)
-                                               "index.html")))))
+                         #:path (hole/uri-encode
+                                 (string-append blog-prefix "/"
+                                                (site-post-slug site post)
+                                                "index.html"))))))
     `(item
       (title ,(post-ref post 'title))
       (guid ,uri)

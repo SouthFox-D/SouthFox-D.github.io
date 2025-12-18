@@ -19,6 +19,7 @@
 (define-module (hole tags)
   #:use-module (hole blog)
   #:use-module (hole theme)
+  #:use-module (hole site)
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-19)
   #:use-module (ice-9 match)
@@ -68,7 +69,7 @@ with that TAG."
      (h1 "#" ,title)
      (ul
       ,(map (lambda (post)
-              `(li (a (@ (href ,(string-append "/" (site-post-slug site post))))
+              `(li (a (@ (href ,(hole/uri-encode (string-append "/" (site-post-slug site post)))))
                       ,(post-ref post 'title)
                       " — "
                       ,(date->string (post-date post) "~Y-~m-~d"))))

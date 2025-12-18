@@ -7,6 +7,7 @@
   #:use-module (hole blog)
   #:use-module (hole theme)
   #:use-module (hole tags)
+  #:use-module (hole site)
   #:use-module (ice-9 match)
   #:export (static-page
             about-page
@@ -123,7 +124,7 @@
                    ,(map (lambda (post)
                            `(li (a (@ (href ,(string-append
                                               "/"
-                                              (site-post-slug site post))))
+                                              (hole/uri-encode (site-post-slug site post)))))
                                    ,(post-ref post 'title))))
                          (posts/reverse-chronological posts)))))
                sxml->html)))
@@ -141,7 +142,7 @@
                    ,(map (match-lambda
                            ((tag count)
                             `(li (a (@ (class "tag")
-                                       (href ,(tag-uri tag)))
+                                       (href ,(hole/uri-encode (tag-uri tag))))
                                     ,tag ": " ,count))))
                          (count-tags posts)))))
                sxml->html)))

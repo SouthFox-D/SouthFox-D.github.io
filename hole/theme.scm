@@ -205,8 +205,9 @@
 
 (define (fox-default-collection-template site title posts prefix)
   (define (post-uri post)
-    (string-append (or prefix "") "/"
-                   (site-post-slug site post)))
+    (hole/uri-encode (string-append
+                      (or prefix "") "/"
+                      (site-post-slug site post))))
   `(div (@ (class "content"))
     (h2 ,title)
     ,@(map (lambda (post)
