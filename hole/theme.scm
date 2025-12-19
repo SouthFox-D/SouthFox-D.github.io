@@ -118,6 +118,10 @@
       (meta (@ (name "fediverse:creator")
                (content "SouthFox@foxsay.southfox.me")))
       (title ,(string-append title " — " (site-title site)))
+      (link (@ (rel "me")
+               (href "https://foxsay.southfox.me/@SouthFox")))
+      (link (@ (rel "me")
+               (href "https://codeberg.org/southfox")))
       (link (@ (rel "stylesheet")
                (href "/assets/css/main.css")))
       ,(if (and post
