@@ -639,6 +639,10 @@ samp {
     color: var(--code);
 }
 
+p {
+    font-size: 1.3rem;
+}
+
 .title,
 h1,
 h2,
