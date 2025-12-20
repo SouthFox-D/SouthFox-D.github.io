@@ -19,6 +19,7 @@
   #:use-module (syntax-highlight scheme)
   #:use-module (syntax-highlight lisp)
   #:use-module (hole syntax-highlight-python)
+  #:use-module (hole syntax-highlight-javascript)
   #:export (fox-commonmark-reader
             fox-org-reader
             post-process-commonmark))
@@ -30,6 +31,7 @@
                  ('elisp lex-lisp)
                  ('emacs-lisp lex-lisp)
                  ('python lex-python)
+                 ('javascript lex-javascript)
                  (_ #f))))
     (if lexer
         (highlights->sxml (highlight lexer source))
