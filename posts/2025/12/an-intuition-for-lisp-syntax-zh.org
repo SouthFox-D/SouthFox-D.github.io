@@ -4,7 +4,7 @@
 #+tags: Lisp:翻译
 
 #+begin_quote
-这篇文章是一个翻译！原文为： [[https://stopa.io/post/265][An Intuition for Lisp Syntax]]
+这是一篇翻译文章！原文为： [[https://stopa.io/post/265][An Intuition for Lisp Syntax]]
 #+end_quote
 
 每个我遇到的 lisp 黑客（包括我），都觉得 lisp 里那些括号让人反感又奇怪，当然，只在一开始。很快我们就顿悟
