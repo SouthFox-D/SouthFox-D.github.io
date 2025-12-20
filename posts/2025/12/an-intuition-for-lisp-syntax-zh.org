@@ -90,7 +90,7 @@ webSocket.onMessage(instruction => {
 看起来至少能用！
 
 ** 初步简化
-让我们看看能不能更简洁一点，现在的 JOSN ：
+让我们看看能不能更简洁一点，现在的 JSON ：
 
 #+begin_src javascript
 {
