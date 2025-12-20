@@ -38,8 +38,8 @@
   已经见怪不怪了，但这才是最奇怪的啊。
 
 - [[https://theconversation.com/what-is-dns-a-computer-engineer-explains-this-foundational-piece-of-the-web-and-why-its-the-internets-achilles-heel-268336][What is DNS? A computer engineer explains this foundational piece of the web ...]]
-  面向大众的科普网站上解释 DNS 的文章，突然我因为节省成本弦乐一个小型的服务商反而避开了 AWS 服务下线的波及，不
-  知道互联网从最初的分散到现在集中在少数几家大型服务商之后又会不会因为太过集中而有开始分散开来，希望吧。
+  面向大众的科普网站上解释 DNS 的文章，突然想到我因为节省成本选择了一个小型的服务商反而避开了 AWS 服务
+  下线的波及，不知道互联网从最初的分散到现在集中在少数几家大型服务商之后又会不会因为太过集中而有开始分散开来，希望吧。
 
 ** Present day, Present time
 这周感觉有种说不明的困顿，虽说是要去参加 game jam 但这周都没做什么所以有点打算放弃了。之后还是希望能够
