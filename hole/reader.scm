@@ -32,6 +32,8 @@
                  ('emacs-lisp lex-lisp)
                  ('python lex-python)
                  ('javascript lex-javascript)
+                 ;; TODO
+                 ('clojure lex-lisp)
                  (_ #f))))
     (if lexer
         (highlights->sxml (highlight lexer source))
