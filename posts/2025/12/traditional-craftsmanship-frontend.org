@@ -196,7 +196,7 @@ element.appendChild(
 ;; => (+ 1 2 3)
 
 (define *click* 2)
-(sxml->dom `(p (@ (id "click")) ,(number->string *click*)))
+`(p (@ (id "click")) ,(number->string *click*))
 ;; => (p (@ (id "click")) 2))
 #+end_src
 
