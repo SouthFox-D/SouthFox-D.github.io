@@ -1,0 +1,54 @@
+#+title: FoxThinking #10: 限制会带来……
+#+author: SouthFox
+#+date: 2025-12-21 22:49:35
+#+tags: FoxThinking:Lisp
+
+有时候就是要带着镣铐跳舞。
+
+,(read-more)
+
+** 我们不能做什么
+- 结构化编程对程序控制权的直接转移进行了限制和规范。
+- 面向对象编程对程序控制权的间接转移进行了限制和规范。
+- 函数式编程对程序中的赋值进行了限制和规范。
+
+这些范式主要是为了告诉我们不能做什么，而不是可以做什么。 [fn:1]
+
+也不难理解 TypeScript 和 Python 上 type hint 出现，因为大家都想要「限制」，
+有时候没有规范只会带来一团糟。
+
+文学上关于限制的例子就是格律诗了，在固定的字数中不断考虑对仗和平仄的限制反而对词语产生了凝练
+感还带来了律动感。
+
+** 阅读
+- [[https://pomb.us/build-your-own-react/][Build your own React]]: 最近通过这种文章才意识到 Javascript 生态的疯狂。转译器满天了，
+  写出来的代码和实际运行的代码已经有非常大的不同了。
+
+- [[https://www.oaktreecapital.com/insights/memo/is-it-a-bubble][Is It a Bubble?]]: 我很难想象一个人工智能能与当今所有在职人员并肩工作的世界，就业怎么可能不减少？
+  这些消失的岗位改怎么办呢？
+
+- [[https://jandan.net/p/121689][越早找到人生方向的孩子，越不容易抑郁 - 煎蛋]]：人生如果真是赛跑，那么跑道也是「比谁更能先认识自己」。
+
+- [[https://www.dbpro.app/blog/sqlite-json-virtual-columns-indexing][SQLite JSON Superpower: Virtual Columns + Indexing - DB Pro Blog]]: sqlite 里可以用
+  json_extract 并添加虚拟列来处理 JSON 数据，这样就算用 sqlite 存储 JSON 这种文档数据也能够实现用 SQL 语句
+  进行查询。
+
+- [[https://woodrush.github.io/blog/posts/2022-01-12-lisp-in-life.html][A Lisp Interpreter Implemented in Conway’s Game of Life | Woodrush’s Blog]]: 其实并没有看完，还是挺
+  深奥的。我确实感觉康威生命游戏和 lisp 之间有种说不清道不明的「暧昧联系」，可能是什么可判定问题还是什么计算理论？总之
+  现在先放到一边等以后将技能点交到这个领域再过来看看。
+
+- [[https://www.cnbc.com/2025/12/13/youtubes-ceo-is-latest-tech-boss-limiting-his-kids-social-media-use.html][YouTube’s CEO is latest tech boss limiting his kids’ social media use]]
+  - [[https://www.solidot.org/story?sid=83045][奇客Solidot | Reddit 指控澳大利亚禁止儿童使用社媒法侵犯自由]]：社交媒体带来了满城风雨，所幸现在有一些「小众」选择，
+    例如联邦宇宙。马上就要到年末了，运营自己的实例也快四年了，想想在联邦宇宙的日子确实还是比较舒心的。除了主页轴没有
+    推荐算法纯按照时间排序、能关掉新关注提醒、设置过滤器外，就是自己也能够修改一点点源代码，例如隐藏粉丝数这种尝试让社交媒
+    体没那么过激的修改，现在看来效果还是挺好的。
+
+- [[https://cdegroot.com/programming/commonlisp/2025/11/26/cl-ql-asdf.html][Common Lisp, ASDF, and Quicklisp: packaging explained]]: 嘿，这就是我想要找的关于 common lisp 相关的一些工程
+  配置教程，之前倒是有配置过一点 cl 工程但是感觉迷迷糊糊，有这样的说明文章还是挺有帮助的。
+
+** Present day, Present time
+燃尽了，在周末翻译了一篇文章又写了一篇文章后感觉对于周刊已经没有什么好写的了，现在只是用着 RSS 阅读器里的收藏文章胡乱填点东西。
+看来之后还是要在每周一开始就确定好主题部分尽量早得把它放到后台处理让大脑慢慢处理啊……
+
+** 脚注
+[fn:1] 罗伯特 C.马丁. 整洁架构之道. 机械工业出版社, 2024.
