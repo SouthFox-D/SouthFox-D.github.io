@@ -23,7 +23,7 @@
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-19)
   #:use-module (ice-9 match)
-  #:use-module (haunt html)
+  #:use-module (hole html)
   #:use-module (haunt post)
   #:use-module (haunt page)
   #:use-module (haunt site)

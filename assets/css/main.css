@@ -8,6 +8,8 @@
         "Helvetica Neue", sans-serif;
     --mono-font:
         Consolas, Menlo, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    --main-font: var(--sans-font);
+    --code-font: var(--mono-font);
     --standard-border-radius: 5px;
     --border-width: 1px;
 
@@ -67,7 +69,7 @@ progress {
 
 html {
     /* Set the font globally */
-    font-family: var(--sans-font);
+    font-family: var(--main-font);
     scroll-behavior: smooth;
 }
 
@@ -382,7 +384,7 @@ pre,
 pre span,
 kbd,
 samp {
-    font-family: var(--mono-font);
+    font-family: var(--code-font);
     color: var(--code);
 }
 
@@ -417,7 +419,8 @@ nav {
     right: 0;
     height: fit-content;
     padding: 0 0.6em;
-    background: #000;
+    background: #fff;
+    box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
     line-height: normal;
     z-index: 10000;
 }
@@ -559,136 +562,8 @@ nav .burger {
         margin: 10px;
     }
 }
-
-/* 386 Style */
-:root {
-    scroll-padding-top: 25px;
-}
-
-body {
-    color: #bbb;
-    background-color: #000084;
-}
-
-@font-face {
-    font-family: "Zpix";
-    -webkit-font-smoothing: none;
-    src:
-        url("/assets/fonts/Zpix.woff2") format("woff2"),
-        url("/assets/fonts/Zpix.ttf") format("truetype");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-}
-
-.nav,
-.container,
-.footer,
-.title code {
-    text-rendering: optimizelegibility;
-    font-family: Zpix, var(--sans-font);
-    color: #bbb;
-}
-
-#search {
-    text-rendering: optimizelegibility;
-    --pagefind-ui-text: #ccc;
-    --pagefind-ui-font: Zpix, var(--sans-font);
-}
-
-pre code,
-pre code span {
-    color: #ccc;
-}
-
-.footer {
-    margin: unset;
-    border: unset;
-    padding: unset;
-}
-
-.widget {
-    padding-top: 15px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-a,
-a:visited {
-    color: #ffff99;
-    text-underline-offset: 5px;
-}
-
-a:focus,
-a:hover,
-a:active {
-    background: #a50;
-}
-
-a.external_link::after {
-    content: "\2197";
-    font-size: 0.8em;
-}
-
-code,
-pre,
-pre span,
-kbd,
-samp {
-    font-family: Zpix, var(--sans-font);
-    color: var(--code);
-}
-
-p {
-    font-size: 1.3rem;
-}
-
-.title,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-weight: bold;
-    color: #fff;
-}
-
-h3:before {
-    content: "[";
-}
-
-h3:after {
-    content: "]";
-}
-
-blockquote {
-    margin: unset;
-    border-left: 5px solid #ccc;
-    font-size: 0.9em;
-    background-color: #008000;
-    color: #bbb;
-}
-
-pre code {
-    padding: 0;
-    font-size: inherit;
-    color: inherit;
-    white-space: pre-wrap;
-    background-color: transparent;
-}
-
-pre {
-    background: #000;
-    margin: 1em 0;
-    padding: 1em 2%;
-    overflow: auto;
-    color: #ccc;
-    border: none;
-}
-
-figcaption {
-    color: unset;
+.widget select {
+    appearance: menulist;
 }
 
 .pagination {
@@ -697,20 +572,16 @@ figcaption {
 }
 
 .pagination a {
-    color: #555;
     margin-left: 10px;
     margin-right: 10px;
 }
 
 .btn {
     display: inline-block;
-    background-color: #bbb;
     text-align: center;
     vertical-align: middle;
     touch-action: manipulation;
     background-image: none;
-    padding: 0 10px;
-    box-shadow: 10px 10px 0 #000;
     border: 0;
 }
 
@@ -718,6 +589,7 @@ figcaption {
     box-shadow: none;
     pointer-events: none;
 }
+
 
 .syntax-special,
 .syntax-element {
@@ -736,4 +608,176 @@ figcaption {
 
 .syntax-comment {
     color: #999;
+}
+
+/* 386 Style */
+@font-face {
+    font-family: "Zpix";
+    -webkit-font-smoothing: none;
+    src:
+        url("/assets/fonts/Zpix.woff2") format("woff2"),
+        url("/assets/fonts/Zpix.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+[data-font='plain'] {
+    --main-font: var(--sans-font);
+    --code-font: var(--mono-font);,
+}
+
+[data-font='zpix'] {
+    --main-font: Zpix, var(--sans-font);
+    --code-font: Zpix, var(--mono-font);,
+}
+
+[data-theme='386'] {
+    & :root {
+        scroll-padding-top: 25px;
+    }
+
+    & body {
+        color: #bbb;
+        background-color: #000084;
+    }
+
+    & .nav {
+        background: #000;
+    }
+
+    & .nav,
+    & .container,
+    & .footer,
+    & .title code {
+        text-rendering: optimizelegibility;
+        color: #bbb;
+    }
+
+    & #search {
+        text-rendering: optimizelegibility;
+        --pagefind-ui-text: #ccc;
+        --pagefind-ui-font: var(--main-font);
+    }
+
+    & pre code,
+    & pre code span {
+        color: #ccc;
+    }
+
+    & .footer {
+        margin: unset;
+        border: unset;
+        padding: unset;
+    }
+
+    & .widget {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    & a,
+    & a:visited {
+        color: #ffff99;
+        text-underline-offset: 5px;
+    }
+
+    & a:focus,
+    & a:hover,
+    & a:active {
+        background: #a50;
+    }
+
+    & a.external_link::after {
+        content: "\2197";
+        font-size: 0.8em;
+    }
+
+    & code,
+    & pre,
+    & pre span,
+    & kbd,
+    & samp {
+        /* font-family: Zpix, var(--main-font); */
+        color: var(--code);
+    }
+
+    & .title,
+    & h1,
+    & h2,
+    & h3,
+    & h4,
+    & h5,
+    & h6 {
+        font-weight: bold;
+        color: #fff;
+    }
+
+    & h3:before {
+        content: "[";
+    }
+
+    & h3:after {
+        content: "]";
+    }
+
+    & blockquote {
+        margin: unset;
+        border-left: 5px solid #ccc;
+        font-size: 0.9em;
+        background-color: #008000;
+        color: #bbb;
+    }
+
+    & pre code {
+        padding: 0;
+        font-size: inherit;
+        color: inherit;
+        white-space: pre-wrap;
+        background-color: transparent;
+    }
+
+    & pre {
+        background: #000;
+        margin: 1em 0;
+        padding: 1em 2%;
+        overflow: auto;
+        color: #ccc;
+        border: none;
+    }
+
+    & figcaption {
+        color: unset;
+    }
+
+    & .pagination a {
+        color: #555;
+    }
+
+    & .btn {
+        background-color: #bbb;
+        padding: 0 10px;
+        box-shadow: 10px 10px 0 #000;
+        border: 0;
+    }
+
+    & .syntax-special,
+    & .syntax-element {
+        color: #8ac6f2;
+        font-weight: bold;
+    }
+
+    & .syntax-string {
+        color: #9c9;
+    }
+
+    & .syntax-keyword,
+    & .syntax-attribute {
+        color: #f2777a;
+    }
+
+    & .syntax-comment {
+        color: #999;
+    }
 }

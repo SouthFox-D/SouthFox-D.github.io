@@ -3,7 +3,7 @@
   #:use-module (haunt page)
   #:use-module (haunt post)
   #:use-module (haunt utils)
-  #:use-module (haunt html)
+  #:use-module (hole html)
   #:use-module (hole blog)
   #:use-module (hole theme)
   #:use-module (hole tags)

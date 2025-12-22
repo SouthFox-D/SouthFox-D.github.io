@@ -32,7 +32,7 @@
   #:use-module (haunt site)
   #:use-module (haunt post)
   #:use-module (haunt utils)
-  #:use-module (haunt html)
+  #:use-module (hole html)
   #:export (theme
             theme?
             theme-name
