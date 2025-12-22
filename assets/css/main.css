@@ -610,7 +610,6 @@ nav .burger {
     color: #999;
 }
 
-/* 386 Style */
 @font-face {
     font-family: "Zpix";
     -webkit-font-smoothing: none;
@@ -632,152 +631,151 @@ nav .burger {
     --code-font: Zpix, var(--mono-font);,
 }
 
-[data-theme='386'] {
-    & :root {
-        scroll-padding-top: 25px;
-    }
+/* 386 Style */
+:root {
+    scroll-padding-top: 25px;
+}
 
-    & body {
-        color: #bbb;
-        background-color: #000084;
-    }
+body {
+    color: #bbb;
+    background-color: #000084;
+}
 
-    & .nav {
-        background: #000;
-    }
+.nav {
+    background: #000;
+}
 
-    & .nav,
-    & .container,
-    & .footer,
-    & .title code {
-        text-rendering: optimizelegibility;
-        color: #bbb;
-    }
+.nav,
+.container,
+.footer,
+.title code {
+    text-rendering: optimizelegibility;
+    color: #bbb;
+}
 
-    & #search {
-        text-rendering: optimizelegibility;
-        --pagefind-ui-text: #ccc;
-        --pagefind-ui-font: var(--main-font);
-    }
+#search {
+    text-rendering: optimizelegibility;
+    --pagefind-ui-text: #ccc;
+    --pagefind-ui-font: var(--main-font);
+}
 
-    & pre code,
-    & pre code span {
-        color: #ccc;
-    }
+pre code,
+pre code span {
+    color: #ccc;
+}
 
-    & .footer {
-        margin: unset;
-        border: unset;
-        padding: unset;
-    }
+.footer {
+    margin: unset;
+    border: unset;
+    padding: unset;
+}
 
-    & .widget {
-        padding-top: 15px;
-        padding-bottom: 15px;
-        border-bottom: 1px solid #e0e0e0;
-    }
+.widget {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
 
-    & a,
-    & a:visited {
-        color: #ffff99;
-        text-underline-offset: 5px;
-    }
+a,
+a:visited {
+    color: #ffff99;
+    text-underline-offset: 5px;
+}
 
-    & a:focus,
-    & a:hover,
-    & a:active {
-        background: #a50;
-    }
+a:focus,
+a:hover,
+a:active {
+    background: #a50;
+}
 
-    & a.external_link::after {
-        content: "\2197";
-        font-size: 0.8em;
-    }
+a.external_link::after {
+    content: "\2197";
+    font-size: 0.8em;
+}
 
-    & code,
-    & pre,
-    & pre span,
-    & kbd,
-    & samp {
-        /* font-family: Zpix, var(--main-font); */
-        color: var(--code);
-    }
+code,
+pre,
+pre span,
+kbd,
+samp {
+    /* font-family: Zpix, var(--main-font); */
+    color: var(--code);
+}
 
-    & .title,
-    & h1,
-    & h2,
-    & h3,
-    & h4,
-    & h5,
-    & h6 {
-        font-weight: bold;
-        color: #fff;
-    }
+.title,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
+    color: #fff;
+}
 
-    & h3:before {
-        content: "[";
-    }
+h3:before {
+    content: "[";
+}
 
-    & h3:after {
-        content: "]";
-    }
+h3:after {
+    content: "]";
+}
 
-    & blockquote {
-        margin: unset;
-        border-left: 5px solid #ccc;
-        font-size: 0.9em;
-        background-color: #008000;
-        color: #bbb;
-    }
+blockquote {
+    margin: unset;
+    border-left: 5px solid #ccc;
+    font-size: 0.9em;
+    background-color: #008000;
+    color: #bbb;
+}
 
-    & pre code {
-        padding: 0;
-        font-size: inherit;
-        color: inherit;
-        white-space: pre-wrap;
-        background-color: transparent;
-    }
+pre code {
+    padding: 0;
+    font-size: inherit;
+    color: inherit;
+    white-space: pre-wrap;
+    background-color: transparent;
+}
 
-    & pre {
-        background: #000;
-        margin: 1em 0;
-        padding: 1em 2%;
-        overflow: auto;
-        color: #ccc;
-        border: none;
-    }
+pre {
+    background: #000;
+    margin: 1em 0;
+    padding: 1em 2%;
+    overflow: auto;
+    color: #ccc;
+    border: none;
+}
 
-    & figcaption {
-        color: unset;
-    }
+figcaption {
+    color: unset;
+}
 
-    & .pagination a {
-        color: #555;
-    }
+.pagination a {
+    color: #555;
+}
 
-    & .btn {
-        background-color: #bbb;
-        padding: 0 10px;
-        box-shadow: 10px 10px 0 #000;
-        border: 0;
-    }
+.btn {
+    background-color: #bbb;
+    padding: 0 10px;
+    box-shadow: 10px 10px 0 #000;
+    border: 0;
+}
 
-    & .syntax-special,
-    & .syntax-element {
-        color: #8ac6f2;
-        font-weight: bold;
-    }
+.syntax-special,
+.syntax-element {
+    color: #8ac6f2;
+    font-weight: bold;
+}
 
-    & .syntax-string {
-        color: #9c9;
-    }
+.syntax-string {
+    color: #9c9;
+}
 
-    & .syntax-keyword,
-    & .syntax-attribute {
-        color: #f2777a;
-    }
+.syntax-keyword,
+.syntax-attribute {
+    color: #f2777a;
+}
 
-    & .syntax-comment {
-        color: #999;
-    }
+.syntax-comment {
+    color: #999;
 }

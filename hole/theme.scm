@@ -84,11 +84,6 @@
     (div (@ (class "widget"))
          (h4 "设置")
          (div
-          (label (@ (for theme-select)) "主题设置：")
-          (select (@ (id "theme-select"))
-                  (option (@ (value "plain")) "普通")
-                  (option (@ (value "386")) "386")))
-         (div
           (label (@ (for font-select)) "字体设置：")
           (select (@ (id "font-select"))
                   (option (@ (value "plain")) "普通")
@@ -135,39 +130,30 @@
       (link (@ (rel "me")
                (href "https://codeberg.org/southfox")))
       (script (@ (src "/assets/js/lips.min.js")))
+      (link (@ (rel "stylesheet")
+               (href "/assets/css/main.css")))
       (script (@ (type "text/x-scheme"))
-              (lips (let ((theme (or (localStorage.getItem "theme") "386"))
-                          (font (or (localStorage.getItem "font") "zpix"))
-                          (theme-select (document.getElementById "theme-select"))
+              (lips (let ((font (or (localStorage.getItem "font") "zpix"))
                           (font-select (document.getElementById "font-select")))
+                      (define (string=? a b)
+                        (== (a.cmp b) 0))
                       (define (loop-set options value)
                         (let loop ((i 0))
                           (if (> i (- (length options) 1))
                               i
                               (let ((option (get options i)))
-                                (if (== (option.value.localeCompare value) 0)
+                                (if (string=? option.value value)
                                     (option.setAttribute "selected" #t)
                                     (loop (+ 1 i)))))))
-                      (define (set-theme theme-name)
-                        (localStorage.setItem "theme" theme-name)
-                        (document.documentElement.setAttribute "data-theme" theme-name)
-                        (if theme-select
-                            (loop-set theme-select.options theme-name)))
                       (define (set-font font-name)
-                        (console.log font-select.options)
                         (localStorage.setItem "font" font-name)
                         (document.documentElement.setAttribute "data-font" font-name)
                         (if font-select
                             (loop-set font-select.options font-name)))
-                      (theme-select.addEventListener
-                       "change"
-                       (lambda (event)
-                         (set-theme event.target.value)))
                       (font-select.addEventListener
                        "change"
                        (lambda (event)
                          (set-font event.target.value)))
-                      (set-theme theme)
                       (set-font font))))
       ,(if (and post (post-ref post 'lips))
            (map (lambda (script)
@@ -176,8 +162,7 @@
                               (bootstrap ""))))
                 (map string-trim-both (string-split (post-ref post 'lips) #\:)))
            '())
-      (link (@ (rel "stylesheet")
-               (href "/assets/css/main.css")))
+      
       (link (@ (rel "alternative")
                (href "/feed.xml")
                (title ,(site-title site))
