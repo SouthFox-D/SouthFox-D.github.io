@@ -70,7 +70,7 @@ localStorage.setItem("token", ...);
 在 lips 里就成为了：
 
 #+begin_src scheme
-(localStorage.setItem "token" ...);
+(localStorage.setItem "token" ...)
 #+end_src
 
 要用这种形式表达的理由在这篇文章也是讲得很清楚： [[/2025/12/an-intuition-for-lisp-syntax-zh/][直观理解 Lisp 语法]]
