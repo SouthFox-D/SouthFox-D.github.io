@@ -39,8 +39,9 @@
 程开始看起，走马观花的的浏览了下，有点像是什么在洗手间忘带手机开始百无聊赖读起沐浴露配料表
 一样，读了几章后觉得还是直接上手吧。
 
-当然就算看起 Javascript 语法教程我也没打算用 Javscript 写，因为半年前知道了一个在 Javascript 上构建 Scheme 语言的库，
-[[https://lips.js.org/][LIPS]] ，所以这次想着写前端也是有点为了醋而去包饺子。
+当然就算看起 Javascript 语法教程我也没打算完全用 Javscript 写，因为半年前知道了一个
+在 Javascript 上构建 Scheme 语言的库 [[https://lips.js.org/][LIPS]] ，所以这次想着写前端也是有点为了
+醋而去包饺子。
 
 古法手做前端但古得是 Lisp 之法 [fn:2] 。
 
@@ -70,7 +71,7 @@ localStorage.setItem("token", ...);
 在 lips 里就成为了：
 
 #+begin_src scheme
-(localStorage.setItem "token" ...);
+(localStorage.setItem "token" ...)
 #+end_src
 
 要用这种形式表达的理由在这篇文章也是讲得很清楚： [[/2025/12/an-intuition-for-lisp-syntax-zh/][直观理解 Lisp 语法]]
