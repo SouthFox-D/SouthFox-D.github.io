@@ -63,9 +63,6 @@
 (define* (sidebar #:key post)
   `(div (@ (class "sidebar"))
     (div (@ (class "widget"))
-         (h4 "公告")
-         (p "周刊计划试运行中……"))
-    (div (@ (class "widget"))
          (h4 "链接")
          (ul
           (li (a (@ (href "/friends/"))
