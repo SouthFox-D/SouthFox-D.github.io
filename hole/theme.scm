@@ -80,7 +80,14 @@
                  "订阅（Rss)"))
           (li (a (@ (href "https://www.fsf.org/appeal"))
                  (img (@ (src "/assets/img/6838639.png")
-                         (alt "FSF appeal")))))))
+                         (alt "FSF appeal"))))))
+         (div
+          (a (@ (href "https://xn--sr8hvo.ws/previous"))
+             "←")
+          (a (@ (href "https://xn--sr8hvo.ws"))
+             "IndieWeb Webring 💍")
+          (a (@ (href "https://xn--sr8hvo.ws/next"))
+             "→")))
     (div (@ (class "widget"))
          (h4 "设置")
          (div
