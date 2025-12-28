@@ -89,7 +89,7 @@
   "Write the HTML TAG to PORT, where TAG has the attributes in the
 list ATTRS and the child nodes in BODY."
   (if (equal? 'lips tag)
-      (display (pk (object->string (car body))) port)
+      (display (object->string (car body)) port)
       (begin
         (format port "<~a" tag)
         (for-each (match-lambda
