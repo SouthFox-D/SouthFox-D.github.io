@@ -84,6 +84,13 @@
           (a (@ (href "https://xn--sr8hvo.ws"))
              "IndieWeb Webring 💍")
           (a (@ (href "https://xn--sr8hvo.ws/next"))
+             "→"))
+         (div
+          (a (@ (href "https://fediring.net/previous?host=blog.southfox.me"))
+             "←")
+          (a (@ (href "https://fediring.net"))
+             "Fediring 💍")
+          (a (@ (href "https://fediring.net/next?host=blog.southfox.me"))
              "→")))
     (div (@ (class "widget"))
          (h4 "设置")
