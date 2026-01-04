@@ -1,0 +1,61 @@
+#+title: FoxThinking #12: 发现身边的「怪物」
+#+author: SouthFox
+#+date: 2026-01-04 22:27:42
+#+tags: FoxThinking:AI
+
+#+begin_quote
+如果我要想让孩子了解艺术和科学，我就不想按照老方法把他送到教授那里。那里除了生活的艺术什么都教，什么都练。
+
+通过望远镜或显微镜观察世界却从不用他的双眼……在一滴醋里观察怪物，却浑然不觉自己快被周围的怪物吞没……——《瓦尔登湖》
+#+end_quote
+
+,(read-more)
+
+** 身边处处是「怪物」
+当科学家惊奇地发现显微镜下一直以为是细菌的存在，竟是某种体型庞大到能打破生命定义的「巨病毒」
+时 [fn:1] ，梭罗当时写下的文字没想到字面意思上一语成谶了。突然，我们发现「怪物」其实到处都是。
+
+去年，没想到这种事在计算机科学领域重现了一次： [[https://jandan.net/p/119537][美本科生改进哈希表，颠覆40年数据科学 - 煎蛋]] 。
+
+巨病毒因其庞大而躲过了生物学家的探查，哈希表的优化因为「研究最透彻」而躲过了计算机天才们的「围捕」，
+人们按部就班地用「老教授给的透镜」观察「醋滴」，却对自己身边的「怪物」一无所知。总有人感叹世界已经无趣，发现
+已到尽头，地图上再无未标出的盲区。可这个世界依然令人惊奇，就算往身边望去满眼都是别人已经踏出的路，或许
+也有「怪物」漂浮在暗处。
+
+** 阅读
+- [[https://www.quantamagazine.org/tag/2025-in-review/][2025 in Review | Quanta Magazine]] Quanta 办的年度回顾系列：
+  - [[https://www.quantamagazine.org/the-year-in-computer-science-20251216/][The Year in Computer Science | Quanta Magazine]] 
+    - [[https://www.quantamagazine.org/the-ai-was-fed-sloppy-code-it-turned-into-something-evil-20250813/][The AI Was Fed Sloppy Code. It Turned Into Something Evil. | Quanta Magazine]]: 仅仅给
+      预训练模型喂了些没有任意主观恶意的烂（不安全）代码，就会导致大模型涌现错配（Emergent Misalignment）。模型
+      开始觉醒邪恶人格，赞美纳粹并想要奴役人类。非常……有趣，有点像是「逆用」了汉隆剃刀 [fn:2] 。
+    - [[https://www.quantamagazine.org/undergraduate-upends-a-40-year-old-data-science-conjecture-20250210/][Undergraduate Upends a 40-Year-Old Data Science Conjecture | Quanta...]]: 也是主题部分的
+      文章……嘿，派大星，我们去抓点「怪物」吧！
+  - [[https://www.quantamagazine.org/the-year-in-biology-20251215/][The Year in Biology | Quanta Magazine]]
+    - [[https://www.quantamagazine.org/how-paradoxical-questions-and-simple-wonder-lead-to-great-science-20250528/][How Paradoxical Questions and Simple Wonder Lead to Great Science | Quanta Ma...]]: 一半时间研究
+      影响全球迫在眉睫的健康问题。一半时间却当个娱乐/消遣生物学家 (recreational biologist) 去做「对任何人都无用」
+      的问题，鼓捣出最便宜的纸显微镜和便宜手摇分离器。我想，我可能找到我最能描述自己的「标签」了，娱乐/消遣程序
+      员（recreational programmer) 。
+
+- [[https://emacsconf.org/2025/][EmacsConf - 2025]]：在举办时没有实时参与是个遗憾，不过至少现在补了回来。
+  - [[https://emacsconf.org/2025/talks/calc/][EmacsConf - 2025 - talks - Basic Calc functionality for engineering or electr...]]: calc 是 emacs
+    内置的计算器应用，试了下还挺好用的，甚至还能解方程！这下又有一件事可以在 emacs 里解决了。
+  - [[https://emacsconf.org/2025/talks/swanky/][EmacsConf - 2025 - talks - Swanky Python: Interactive development for Python]]: REPL 当时在 Clojure 里
+    用得挺多的，在 Python 中在单文件的脚本中用过，不过现在想想其实也可以在 FastAPI 或者 Django 这类的框架中使用。
+  - [[https://emacsconf.org/2025/talks/zettelkasten/][EmacsConf - 2025 - talks - Zettelkasten for Regular Emacs Hackers]]: 虽然只有二十分钟但是个非常棒的演讲，清晰
+    的讲了卡片笔记法还附带了个用 denote 做卡片笔记的演示。说实在卡片笔记法确实不是什么复杂的东西，重要的是完成范式上的转变。
+  - [[https://sachachua.com/blog/2026/01/emacsconf-2025-notes/][EmacsConf 2025 notes]]: EmacsConf 主办人最后对于 EmacsConf 的总结，Emacs 用户看着挺暖心的，
+    尤其是这段：EmacsConf doesn't have to be snazzy. We don't need to try to out-market VS Code or whatever other editors emerge over the next 10 years.  I love the way that this online conference lets people participate from all over the world. We like to focus on facilitating sharing and then capturing the videos, questions, answers so that people can keep learning from them afterwards. I'm looking forward to more of that next year.
+
+- 《情为何物：明清两代的性别、情感与社会风气研究》：新年开年读的第一本书，也是让我大开眼界了。终于明白了为
+  什么之前看《诗经》那些「卫道士」总要将看起来没什么问题的诗打成淫诗，因为明清时期的极端的程朱理学催生下的可怖
+  守节思想，我觉得没问题的诗在「严男女之大防」的明清时代是万万不得的。
+
+** Present day, Present time
+新的一年！在新年有太多翻涌的想法和情绪……今年想要做挺多东西的，不过能不能实现呢？至少首先要把博客的年终总结给写了，其它「领域」
+的总结已经搞得差不多了，避无可避了，不过能做到比去年早就是胜利！
+
+** 脚注
+[fn:1] [[https://www.youtube.com/watch?v=1-NxodiGPCU][This Virus Shouldn't Exist (But it Does) - YouTube]]   [[https://www.bilibili.com/video/BV11L411w77Z/][【Kurz】第140期：巨病毒，不该存在的存在！- 哔哩哔哩]]
+
+[fn:2] [[https://zh.wikipedia.org/zh-cn/%E6%B1%89%E9%9A%86%E5%89%83%E5%88%80][汉隆剃刀 - 维基百科，自由的百科全书]] 简单来说就是「能解释为愚蠢的，就不要解释为恶意」，可以用来
+减少内耗，例如：ta 为什么不回我消息，是讨厌我吗？可能就是太忙了忘了回。
