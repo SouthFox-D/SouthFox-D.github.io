@@ -34,6 +34,7 @@
                  ('javascript lex-javascript)
                  ;; TODO
                  ('clojure lex-lisp)
+                 ('hy lex-lisp)
                  (_ #f))))
     (if lexer
         (highlights->sxml (highlight lexer source))
