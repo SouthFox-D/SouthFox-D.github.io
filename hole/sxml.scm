@@ -54,6 +54,7 @@
         ((emphasis-node? n) (emphasis-node->sxml n))
         ((link-node? n) (link-node->sxml n))
         ((image-node? n) (image-node->sxml n))
+        ((inline-html-node? n) (last-child n))
         (else (error "unknown node"))))
 
 (define (thematic-break-node->sxml n)
