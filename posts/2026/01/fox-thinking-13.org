@@ -1,0 +1,119 @@
+#+title: FoxThinking #13: 节气差异
+#+author: SouthFox
+#+date: 2026-01-11 23:37:30
+#+tags: FoxThinking
+
+我一直有一本小台历，每天出门都会把当天的那一页扯下来放到包里，所以对于节气这事我还是一直有留意到的。
+最近在想起源于黄河流域的二十四节气是不是一个带有定域性质（或者说中心主义）的发明呢？所以这周点了一
+点点数据科学的技能点用以分析其他区域和黄河流域节气的相关性。
+
+,(read-more)
+
+** 节气 diff
+首先是要获取到数据，找寻了一番发现这家 [[https://open-meteo.com/][Free Open-Source Weather API | Open-Meteo.com]] 服务挺不
+错的不需要 apikey 就能直接使用。没看到捐款通道，似乎是通过商业使用收费来维持运营。
+
+使用时感叹这真是羡煞古人了，这种天文数据以前可是被精英权贵老登死守的，但在现在，一般路过爱好
+者就能得到。
+
+得到数据后就要开始数据分析了，网上搜了搜看看两组数据的相关性怎么计算，看着蹦出来的皮尔逊相关系数、斯皮尔曼
+相关系数、切比雪夫距离相关概念让脑子都有点懵了。之后还是贯彻一下惰性求值学习法，先直接用上，背后的相关概念
+等之后有时间在琢磨吧。
+
+实际执行上就直接选择用 python 这边的生态了，就算我这个数据科学门外汉也听说过 =pandas= 和 =scipy= 这两个
+包。不过对于语言我就选择使用 =hylang= 了，因为我已经离不开 =->= 了，现在分析功能代码是这样子 [fn:1] 。
+
+#+begin_src hy
+(defn analyze [df-a df-b lag]
+  (let [combined (pd.concat [(.rename df-a :columns {"temperature_2m_mean" "dengfeng"})
+                             (.rename df-b :columns {"temperature_2m_mean" "local"})]
+                            :axis 1)]
+    (for [day (range (- lag) (+ lag 1))]
+      (let [shifted (.shift (get combined "dengfeng") day)
+            correlation (.corr shifted (get combined "local") :method "spearman")]
+        (print f"登封 {day} 天对比 local: {(.round correlation 6)}")))))
+#+end_src
+
+节气的基准位置根据周礼选择了登封观星台（经纬度 113.15 34.41），其它地方的经纬度可以通过 [[https://lbs.baidu.com/maptool/getpoint][百度地图-坐标拾取器]] 网页
+应用选择。
+
+然后是小小地分析一下数据：
+
+#+begin_src shell
+# 呼和浩特
+└> hy main.hy 111.76 40.85
+登封 -5 天对比 local: 0.91145
+登封 -4 天对比 local: 0.916761
+登封 -3 天对比 local: 0.925061
+登封 -2 天对比 local: 0.938778
+登封 -1 天对比 local: 0.953031
+登封 0 天对比 local: 0.953127
+登封 1 天对比 local: 0.942574
+登封 2 天对比 local: 0.932105
+登封 3 天对比 local: 0.922881
+登封 4 天对比 local: 0.916365
+登封 5 天对比 local: 0.912312
+# 广州
+└> hy main.hy 113.27 23.14
+登封 -5 天对比 local: 0.811673
+登封 -4 天对比 local: 0.813528
+登封 -3 天对比 local: 0.81591
+登封 -2 天对比 local: 0.821631
+登封 -1 天对比 local: 0.834465
+登封 0 天对比 local: 0.854958
+登封 1 天对比 local: 0.87554
+登封 2 天对比 local: 0.885265
+登封 3 天对比 local: 0.884418
+登封 4 天对比 local: 0.878219
+登封 5 天对比 local: 0.870845
+# 墨尔本
+└> hy main.hy 144.96 -37.81
+登封 -5 天对比 local: -0.766436
+登封 -4 天对比 local: -0.769177
+登封 -3 天对比 local: -0.773481
+登封 -2 天对比 local: -0.776808
+登封 -1 天对比 local: -0.776486
+登封 0 天对比 local: -0.77903
+登封 1 天对比 local: -0.782412
+登封 2 天对比 local: -0.782192
+登封 3 天对比 local: -0.778759
+登封 4 天对比 local: -0.77587
+登封 5 天对比 local: -0.775106
+#+end_src
+
+可以看到虽然只是用了简单的 =corr= 函数粗暴分析两组数据，但也是说得通的。呼和浩特在 -1 天的时候和登封气温相关度
+最高；广州在 +2 天的时候和登封的气温相关度最高；墨尔本总体和登封呈现负相关。这意味着冷空气确实是以呼和浩特（-1）->登
+封->广州（+2）的顺序推行的，墨尔本因为处在南半球确实体现出了夏冬季节翻转的状况。
+
+这个分析虽然较小又简单，不过确实揭露出了一些东西，之后能完善的话或许我可以加上光照降雨的数据或者加上一个指定节气天数附近
+更精确的对比，不过这个就要求我砸更多技能点到数据科学上了……
+
+** 阅读
+- [[https://www.shipmap.org/][Shipmap.org | Visualisation of Global Cargo Ships | By Kiln and UCL]]
+- [[https://openinframap.org][Open Infrastructure Map]]
+
+看 Hacker News 发现的两个地图应用，一个是轮船货运地图和基础设施地图，感觉数据科学技能点后对这些就更感兴趣了，这里面肯定有什么
+东西藏着，只待我日后发现……
+
+- [[https://www.infoq.cn/article/RTBuRxfOS4iP6NQCwF8k][离职工程师举报Uber Eats算法系统剥削外卖员，一天后竟被爆出帖子是AI编的？ - InfoQ]]: 写得慢的好处就是可以等反转。鉴于
+  不公开的系统就是一个黑盒，对黑盒猜忌也是不可避免的。我们需要一个对算法有（哪怕只是有限度的）披露的世界。
+- [[https://realfood.gov/][Eat Real Food]]
+  - [[https://news.ycombinator.com/item?id=46529237][Eat Real Food | Hacker News]]: 前面三四个讨论串均有两百多个帖子，这就是血流成河吗，真是太有聊了。
+- [[https://www.webdesignmuseum.org/exhibitions/video-game-websites-in-the-early-00s][Video Game Websites in the early 00s - Web Design Museum]]: 千禧年的网站设计和现在比确实大不同，不知道
+  现在「圆角简洁现代风」久了后网站设计会不会又往这种繁杂元素堆砌的风格靠近。
+- [[https://www.cs.cmu.edu/~pavlo/blog/2026/01/2025-databases-retrospective.html][Databases in 2025: A Year in Review // Blog // Andy Pavlo]]: 数据库领域的二五年的年度
+  回顾，=\o/= PostgreSQL =\o/= ！ =\o/= PostgreSQL =\o/= ！
+- [[https://addyosmani.com/blog/21-lessons/][AddyOsmani.com - 21 Lessons From 14 Years at Google]]: Focus on what you can control. Ignore what
+  you can’t ，这条准则咋感觉和斯多葛哲学那么像呢。
+- [[https://tonsky.me/blog/tahoe-icons/][It’s hard to justify Tahoe icons @ tonsky.me]]: 我看着 macOS Tahoe 这设计感想是：幸好我不用，否则便样
+  衰了。虽然我现在大部分操作都通过模糊搜索一个命令来完成操作但我也不否认 GUI 的重要性，不过这 macOS Tahoe 的 UI 设计
+  确实很难评啊。
+  - [[https://nptr.cc/posts/2026-01/tonsky-tahoe/][Tahoe 的图标令人难评 - Cyberia]]: 中文翻译
+
+** Present day, Present time
+这周做的都是一些修修补补的工作，将去年写得一些项目翻出来更下依赖或者修几个 BUG 。周二突发奇想买了台磁带播放机（型号：
+索尼 walkman GX677），周末到手后也是「美美把玩」了下，应该可以为折腾磁带的事写篇博文，写完博文我就去写年终总结
+了，真的！
+
+** 脚注
+[fn:1] 完整代码：[[https://git.southfox.me/southfox/solar-term-diff][southfox/solar-term-diff - Gitea: Git with a cup of tea]]
