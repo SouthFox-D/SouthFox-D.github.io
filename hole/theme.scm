@@ -101,18 +101,18 @@
                   (option (@ (value "zpix")) "像素"))))
     ,(if post
          `(div (@ (class "widget"))
-           (h4 "目录")
-           (ul
-            ,(parse-post-toc post)))
-         '())
-    ,(if post
-         `(div (@ (class "widget"))
            (h4 "标签")
            (ul
             ,@(map (lambda (tag)
                      `(li (a (@ (href ,(string-append "/tags/" tag)))
                              ,tag)))
                    (post-tags post))))
+         '())
+    ,(if post
+         `(div (@ (class "widget"))
+           (h4 "目录")
+           (ul
+            ,(parse-post-toc post)))
          '())))
 
 (define* (fox-default-layout site title body #:key post)
