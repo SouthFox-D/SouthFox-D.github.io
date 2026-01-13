@@ -88,13 +88,14 @@
          ("Yoozy" "http://woods.sharktale.xyz" "一花一世界，一叶一菩提")
          ("瓠樽" "https://blog.dylanwu.space" "以瓠為樽而浮乎江湖")
          ("江尚寒" "https://jiangshanghan.art.blog" "一潭星动")
-         ("关门说话" "https://shutgnblink.blog/" "一只生活在海底的哺乳动物")))
+         ("关门说话" "https://shutgnblink.blog/" "一只生活在海底的哺乳动物")
+         ("LOK" "https://lok.computer/" "Live to the point of tears.")
+         ))
      ,(make-friend-group
        "万维世界"
        '(("王小嗨" "https://sogola.com" "A Marxist inside.")
          ("浮云翩迁之间" "https://blognas.hwb0307.com" "百代繁华一朝都，谁非过客；千秋明月吹角寒，花是主人。")
          ("迷失的小K" "https://blog.kclub.tech" "Just for fun")
-         ("L3ON" "https://l3on.site" "不可勝在己，可勝在敵")
          ("s0urce's Lab" "https://blog.src.moe" "No black and white in the blue.")
          ("JIPA233の小窝" "https://imjipa.top/" "Deed divides beings into lower and higher ones.")
          ("无叶之境" "https://lonleaf.com" "这是一个非常正常的网站，像教科书一样正常(๑•̀ω•́๑)")
