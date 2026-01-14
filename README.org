@@ -1,0 +1,5 @@
+#+title: Readme
+
+某个一般路过的狐狸的博客，博客技术栈可见这篇博文：
+
+[[https://blog.southfox.me/2025/09/hello-haunt/][Hello Haunt, 又一次换了博客框架 — 狐狸反走矣]]
