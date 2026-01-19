@@ -1,0 +1,68 @@
+#+title: FoxThinking #14: 我好像没那么在乎「最佳实践」了
+#+author: SouthFox
+#+date: 2026-01-19 17:03:22
+#+tags: FoxThinking
+
+翻看着二五年的项目，发现我好像确实走上了一条没什么人走的道路。
+
+,(read-more)
+
+二五年鼓捣的项目都非常的偏，没有所谓的「最佳实践」可以践行，一些项目甚至连像样的文档
+都没有。在经历了数不胜数的遇到困难睡大觉起来后觉得还是有点不甘然后继续折腾时刻后，发现自己开始
+慢慢适应了。如果没有「最佳实践」可以参照那就自己慢慢走吧，就算路上荒无人烟，就算走到荒山野岭，不过不要犯蠢，
+知道自己的极限在哪，好的建议还是要听听的。
+
+接下来我想着能不能将这份感悟推广到 life art 上，生活有时候就是不能被一个「工程模板」和热门「框架」描述，
+这种没有「最佳实践」执行要自己慢慢实验的生活，我准备好了吗？
+
+** 阅读
+新年了，恭喜下列软件迎来了新周年庆或是新版本：
+
+- [[https://wikimediafoundation.org/wikipedia25/][Celebrate Wikipedia’s 25th Birthday – Wikimedia Foundation]]: 维基百科 25 周年，也是 mediawiki 这
+  自由软件的胜利。
+- [[https://forgejo.org/2026-01-release-v14-0/][Forgejo v14.0 is available — Forgejo]]: forgejo v14 ，虽然感觉联邦实作还有好长一段距离，不过至少看到有在推动
+  也是令人鼓舞了，光是想想跨实例提 PR 的功能会是以怎么样的方式运作就令人雀跃了。
+- [[https://blog.jquery.com/2026/01/17/jquery-4-0-0/][jQuery 4.0.0]]: 你是……？虽然我从来没用过，但快二十年了还在发大版本也是一种胜利。
+
+欧灭跌多，啪啪啪啪啪……
+
+- [[https://drajmarsh.bitbucket.io/earthsun.html][Sun Position Calculator]]: 一个太阳位置计算网页应用，加入到我的工具箱中（想加点天文学技能点了说是）。
+- [[https://news.ycombinator.com/item?id=46635345][Ask HN: How can we solve the loneliness epidemic? | Hacker News]]: 后疫情时代感觉整个社会都经历了关系断裂和
+  席卷的孤独，连 HN 这种刻板印象中的「书呆子」社区也在热烈讨论了如何应对孤独。翻着讨论我意识到确实我从来没有深刻参与到某种活动
+  中去，所以从小到大都没什么联系感。讨论中说到最好的方式是自己主办一个聚会，但是今年开始锻炼「主持人插件」并装备上是不是有点太
+  托大了？或许可以到处看看有没有活动可以参加，今年我想多多出来逛逛发展一些关系（有点像狐狸出洞）。
+- [[https://letsencrypt.org/2026/01/15/6day-and-ip-general-availability][6-day and IP Address Certificates are Generally Available - Let's Encrypt]]: Let's Encrypt 组织支持现
+  为期六天的 IP 证书，目前我想到的用途是给不想备案的国内服务器上的类似网盘、同步应用这种需要优秀延迟和响应速度的服
+  务套 HTTPS ？ 
+- [[https://xlii.space/eng/i-hate-github-actions-with-passion/][I Hate Github Actions with Passion]]: 对 Github Action 的吐槽，这种点击重试坐在屏幕苦等后弹出一个红叉的场景然后砸桌
+  是每个调试 Github Action 的人都遇到过的。看着 HN 里的建议有用 Nix 来锁定环境的，在想或许我可以试试将 Guix 引入
+  到 Github Action 环境中？
+- [[https://blog.emojipedia.org/emoji-design-convergence-review-2018-2026/][Emoji Design Convergence Review: 2018 - 2026]]: 也是解答了我一直有的疑问，为什么 mastodon 这种应用要额外引入一个库替换
+  掉原生 emoji ？因为原生 emoji 确实有设计上的分歧，笑脸可能会变白眼，所以只得用三方库将这种分歧给消灭掉。
+- [[https://yogthos.net/posts/2026-01-16-lattice-mcp.html][(iterate think thoughts): Stop Round-Tripping Your Codebase: How to Cut LLM Token Usage by 80% Using Recursive Document Analysis]]: 出现了，我一直觉得 S 表达式这种对于机器理解友好的语法在之后的 LLM 环境中会更受青睐，现在就看到了个例子，
+  将代码仓库当成一个环境然后用一些定义好的过程给 LLM 使用就能用更少的 token 消耗做同样的事。
+- [[https://lalitm.com/post/why-senior-engineers-let-bad-projects-fail/][Why Senior Engineers Let Bad Projects Fail - Lalit Maganti]]: 严肃学习中。
+
+之后是讲 org-mode 和 markdown 的文章：
+
+- [[https://karl-voit.at/2025/08/17/Markdown-disaster/][Markdown Is a Disaster: Why and What to Do Instead]]
+- [[https://karl-voit.at/2017/09/23/orgmode-as-markup-only/][Org Mode Syntax Is One of the Most Reasonable Markup Languages to Use for Text]]
+
+Markdown 确实有些地方我是没弄懂，例如像 lisp 一样超级分裂的方言状况，根本不知道到底能用什么语法，还有就是链接语法方括号和圆
+括号到底谁在前谁在后我到现在也没记住。不过虽然 org-mode 有规范，一些语法设计好点但是也有很多怪地方，例如粗体斜线这种标记语法
+强制要求前后必须是空格及根本考虑过网络图片（在 Emacs 显示 HTTP 图片要自己做一大堆 hack ）。不过 org-mode 不仅仅是简单
+的标记语法，它是 Emacs 文本环境的体现，只凭这一点我就继续选择用 org-mode 了。
+
+然后是一些关于个人站点主题的文章：
+- [[https://henry.codes/writing/a-website-to-destroy-all-websites/][A Website To End All Websites | Henry From Online]]: 原来因为汽车发展导致城市规划围着大家默认有汽车而规划导致没车寸步难行
+  的场景（例子：美国）叫极端垄断（Radical Monopoly）。现代互联网或者说社交媒体已经是这种情况了，怎么反抗呢？用个人网站及
+  其 [[https://indieweb.org/POSSE][POSSE]] 或者是[[https://jointhefediverse.net][联邦宇宙]]这种邦联制的社交平台。所以是时候建立属于自己的个人网站了，用免费的二级域名也没关系、不懂
+  编程没关系。只要有新的个人网站建立，互联网就会更健康一分……
+- [[https://susam.net/writing-first-tooling-second.html][Writing First, Tooling Second - Susam Pal]]: 在自己的个人网站哪怕直接写 HTML 页面也没关系，毕竟重要的是内容和想法，然后
+  才是工具或者框架上的事……或者，也不尽然？例如我这就是因为自己折腾了框架然后大力推动了写作的欲望。
+- [[https://maurycyz.com/misc/new_ssg/][Writing my own static site generator: (Maurycy's blog)]]: 用 700 行 c 代码实现的简单静态网站生成器，简单是好的，不过
+  可惜我就是要一些复杂「花哨」的功能，嗯……之后得把这个框架下的代码好好整理下了。
+
+** Present day, Present time
+诶呀，看着又大又空的主题部分就知道我又是死线战士临近到头才来想的，希望能慢慢减少这种情况发生。这周将精力花在了鼓捣磁带播放器
+上，现在写完这篇周刊明天要趁着大寒这最后一个节气时间点写年终总结了，怎么我突然就成了高产博主了呢？
