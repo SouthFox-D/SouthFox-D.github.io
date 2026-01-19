@@ -90,6 +90,7 @@
          ("江尚寒" "https://jiangshanghan.art.blog" "一潭星动")
          ("关门说话" "https://shutgnblink.blog/" "一只生活在海底的哺乳动物")
          ("LOK" "https://lok.computer/" "Live to the point of tears.")
+         ("極客死亡計劃" "https://www.geedea.pro/")
          ))
      ,(make-friend-group
        "万维世界"
