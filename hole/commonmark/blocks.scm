@@ -15,7 +15,7 @@
 ;; You should have received a copy of the GNU Lesser General Public License
 ;; along with guile-commonmark.  If not, see <http://www.gnu.org/licenses/>.
 
-(define-module (hole blocks)
+(define-module (hole commonmark blocks)
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-26)
   #:use-module (ice-9 regex)
@@ -23,7 +23,7 @@
   #:use-module (commonmark utils)
   #:use-module (commonmark common)
   #:use-module (hole sxml)
-  #:export (hole-parse-blocks))
+  #:export (commonmark/parse-blocks))
 
 
 (define re-thematic-break (make-regexp "^ {0,3}((\\* *){3,}|(_ *){3,}|(- *){3,}) *$"))
@@ -89,7 +89,7 @@
 ;; Port -> Document
 ;; parses commonmark by blocks and creates a document containing blocks
 ;; !!!
-(define (hole-parse-blocks port)
+(define (commonmark/parse-blocks port)
   "Parses CommonMark blocks from PORT returning a CommonMark Document tree"
   (let loop ((root (make-document-node))
              (line (read-line-without-nul port)))

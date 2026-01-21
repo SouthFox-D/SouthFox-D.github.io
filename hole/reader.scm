@@ -1,6 +1,8 @@
 (define-module (hole reader)
   #:use-module (commonmark)
+  #:use-module (hole commonmark blocks)
   #:use-module (commonmark inlines)
+  #:use-module (hole org-blocks)
   #:use-module (hole org-inlines)
   #:use-module (haunt reader)
   #:use-module (haunt post)
@@ -11,8 +13,6 @@
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-13)
   #:use-module (hole sxml)
-  #:use-module (hole blocks)
-  #:use-module (hole org-blocks)
   #:export (fox-commonmark-reader
             fox-org-reader))
 
@@ -20,7 +20,7 @@
   (let ((port (if (string? string-or-port)
                   (open-input-string string-or-port)
                   string-or-port)))
-    (hole/document->sxml (parse-inlines (hole-parse-blocks port)))))
+    (hole/document->sxml (parse-inlines (commonmark/parse-blocks port)))))
 
 (define fox-commonmark-reader
   (make-reader (make-file-extension-matcher "md")
