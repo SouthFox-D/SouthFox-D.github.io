@@ -15,7 +15,7 @@
 ;; You should have received a copy of the GNU Lesser General Public License
 ;; along with guile-commonmark.  If not, see <http://www.gnu.org/licenses/>.
 
-(define-module (hole org-inlines)
+(define-module (hole org-mode inlines)
   #:use-module (ice-9 match)
   #:use-module (ice-9 regex)
   #:use-module (srfi srfi-1)
@@ -23,9 +23,9 @@
   #:use-module (srfi srfi-9)
   #:use-module (srfi srfi-11)
   #:use-module (srfi srfi-26)
-  #:use-module (hole org-node)
   #:use-module (commonmark common)
-  #:export (org/parse-inlines))
+  #:use-module (hole org-mode node)
+  #:export (org-mode/parse-inlines))
 
 (define re-start-ticks (make-regexp "^=+"))
 (define re-ticks (make-regexp "=+"))
@@ -218,7 +218,7 @@
 
 ;; Node -> Node
 ;; parses the inline text of paragraphs and heading nodes
-(define (org/parse-inlines node)
+(define (org-mode/parse-inlines node)
   (let ((ref-proc (make-reference-lookup node)))
     (define (parse-inner node)
       (cond ((not (node? node)) node)

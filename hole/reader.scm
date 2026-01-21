@@ -2,8 +2,8 @@
   #:use-module (commonmark)
   #:use-module (hole commonmark blocks)
   #:use-module (commonmark inlines)
-  #:use-module (hole org-blocks)
-  #:use-module (hole org-inlines)
+  #:use-module (hole org-mode blocks)
+  #:use-module (hole org-mode inlines)
   #:use-module (haunt reader)
   #:use-module (haunt post)
   #:use-module (haunt utils)
@@ -14,7 +14,7 @@
   #:use-module (srfi srfi-13)
   #:use-module (hole sxml)
   #:export (fox-commonmark-reader
-            fox-org-reader))
+            fox-org-mode-reader))
 
 (define* (hole/commonmark->sxml #:optional (string-or-port (current-input-port)))
   (let ((port (if (string? string-or-port)
@@ -34,7 +34,7 @@
   (let ((port (if (string? string-or-port)
                   (open-input-string string-or-port)
                   string-or-port)))
-    (hole/document->sxml (org/parse-inlines (org/hole-parse-blocks port)))))
+    (hole/document->sxml (org-mode/parse-inlines (org-mode/parse-blocks port)))))
 
 (define %org-metadata-parsers
   (make-hash-table))
@@ -79,7 +79,7 @@
                  #t))
           (_ (error "something wrong"))))))))
 
-(define fox-org-reader
+(define fox-org-mode-reader
   (make-reader (make-file-extension-matcher "org")
                (lambda (file)
                  (call-with-input-file file
