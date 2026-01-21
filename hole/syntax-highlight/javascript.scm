@@ -1,4 +1,4 @@
-(define-module (hole syntax-highlight-javascript)
+(define-module (hole syntax-highlight javascript)
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-26)
   #:use-module (syntax-highlight lexers)

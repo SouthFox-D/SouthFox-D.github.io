@@ -21,7 +21,7 @@
 ;;
 ;;; Code:
 
-(define-module (hole syntax-highlight-python)
+(define-module (hole syntax-highlight python)
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-26)
   #:use-module (syntax-highlight lexers)

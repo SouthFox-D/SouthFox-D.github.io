@@ -12,8 +12,8 @@
   #:use-module (syntax-highlight)
   #:use-module (syntax-highlight scheme)
   #:use-module (syntax-highlight lisp)
-  #:use-module (hole syntax-highlight-python)
-  #:use-module (hole syntax-highlight-javascript)
+  #:use-module (hole syntax-highlight python)
+  #:use-module (hole syntax-highlight javascript)
   #:export (comment-place
             parse-read-more
             fox-theme))
