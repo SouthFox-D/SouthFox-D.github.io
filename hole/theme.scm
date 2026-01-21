@@ -6,11 +6,50 @@
   #:use-module (ice-9 match)
   #:use-module (ice-9 string-fun)
   #:use-module (hole blog)
-  #:use-module (hole reader)
   #:use-module (hole site)
+  #:use-module (sxml match)
+  #:use-module (sxml transform)
+  #:use-module (syntax-highlight)
+  #:use-module (syntax-highlight scheme)
+  #:use-module (syntax-highlight lisp)
+  #:use-module (hole syntax-highlight-python)
+  #:use-module (hole syntax-highlight-javascript)
   #:export (comment-place
             parse-read-more
             fox-theme))
+
+(define (maybe-highlight-code lang source)
+  (let ((lexer (match lang
+                 ('scheme lex-scheme)
+                 ('lisp lex-lisp)
+                 ('elisp lex-lisp)
+                 ('emacs-lisp lex-lisp)
+                 ('python lex-python)
+                 ('javascript lex-javascript)
+                 ;; TODO
+                 ('clojure lex-lisp)
+                 ('hy lex-lisp)
+                 (_ #f))))
+    (if lexer
+        (highlights->sxml (highlight lexer source))
+        source)))
+
+(define (highlight-code . tree)
+  (sxml-match tree
+    ((code (@ (class ,class) . ,attrs) ,source)
+     (let ((lang (string->symbol
+                  (string-drop class (string-length "language-")))))
+       `(code (@ ,@attrs)
+             ,(maybe-highlight-code lang source))))
+    (,other other)))
+
+(define %sxml-rules
+  `((code . ,highlight-code)
+    (*text* . ,(lambda (tag str) str))
+    (*default* . ,(lambda (. arg) arg))))
+
+(define (post-process-sxml sxml)
+  (pre-post-order sxml %sxml-rules))
 
 (define navbar
   '(nav (@ (class "nav"))
@@ -188,7 +227,7 @@
      (body
       ,navbar
       (div (@ (class "container flex"))
-           ,(post-process-commonmark body)
+           ,(post-process-sxml body)
            ,(sidebar #:post post))
       ,footer))))
 
