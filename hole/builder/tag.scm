@@ -16,8 +16,8 @@
 ;;; along with this program. If not, see
 ;;; <http://www.gnu.org/licenses/>.
 
-(define-module (hole tags)
-  #:use-module (hole blog)
+(define-module (hole builder tag)
+  #:use-module (hole builder blog)
   #:use-module (hole theme)
   #:use-module (hole site)
   #:use-module (srfi srfi-1)
@@ -28,10 +28,7 @@
   #:use-module (haunt page)
   #:use-module (haunt site)
   #:use-module (haunt utils)
-  #:export (group-by-tag
-            count-tags
-            tag-uri
-            tags->page))
+  #:export (tags->page tag-page))
 
 (define (group-by-tag posts)
   "Given a lisp of haunt posts generate a list grouping tags with the
@@ -83,3 +80,21 @@ with that TAG."
                             (with-layout fox-theme site "Tags" (tags-template site posts #:title tag))
                             sxml->html)))
               (group-by-tag posts))))
+
+(define (tag-page)
+  (lambda (site posts)
+    (make-page "tags/index.html"
+               (with-layout
+                fox-theme
+                site
+                "Tags"
+                `(div (@ (class "content"))
+                  (h2 "标签")
+                  (ul
+                   ,(map (match-lambda
+                           ((tag count)
+                            `(li (a (@ (class "tag")
+                                       (href ,(hole/uri-encode (tag-uri tag))))
+                                    ,tag ": " ,count))))
+                         (count-tags posts)))))
+               sxml->html)))

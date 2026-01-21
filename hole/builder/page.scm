@@ -1,19 +1,17 @@
-(define-module (hole page)
+(define-module (hole builder page)
   #:use-module (haunt site)
   #:use-module (haunt page)
   #:use-module (haunt post)
   #:use-module (haunt utils)
   #:use-module (hole html)
-  #:use-module (hole blog)
   #:use-module (hole theme)
-  #:use-module (hole tags)
+  #:use-module (hole builder blog)
   #:use-module (hole site)
   #:use-module (ice-9 match)
   #:export (static-page
             about-page
             friends-page
             archives-page
-            tags-page
             search-page))
 
 (define (static-page title file-name body)

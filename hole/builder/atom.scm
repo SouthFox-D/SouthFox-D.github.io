@@ -23,7 +23,7 @@
 ;;
 ;;; Code:
 
-(define-module (hole atom)
+(define-module (hole builder atom)
   #:use-module (hole site)
   #:use-module (srfi srfi-9)
   #:use-module (srfi srfi-19)

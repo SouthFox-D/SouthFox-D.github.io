@@ -23,7 +23,7 @@
 ;;
 ;;; Code:
 
-(define-module (hole rss)
+(define-module (hole builder rss)
   #:use-module (hole site)
   #:use-module (srfi srfi-9)
   #:use-module (srfi srfi-19)

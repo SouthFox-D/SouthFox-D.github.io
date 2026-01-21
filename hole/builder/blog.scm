@@ -23,7 +23,7 @@
 ;;
 ;;; Code:
 
-(define-module (hole blog)
+(define-module (hole builder blog)
   #:use-module (ice-9 match)
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-9)
