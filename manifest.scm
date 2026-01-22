@@ -47,7 +47,7 @@
 (define-public pagefind-bin
   (package
    (name "pagefind-bin")
-   (version "1.4.0")
+   (version "1.5.0-beta.1")
    (source (origin
             (method url-fetch)
             (uri (string-append
@@ -62,17 +62,16 @@
             (sha256
              (base32
               (cond ((target-aarch64?)
-                     "09bi6y9vxl73mg66bi950aa5wf3p70jfyplrsy5ncfimsyck4clj")
+                     "1y22cx9cxkg231g7m99kjkxpi1fcc4zh2hdk0hsr4601qfifcg1j")
                     ((target-x86-64?)
-                     "0bqbrxzngz51cdryz7i5fhpkg697pba85i9vmwanr2q2yy11zbik")
+                     "094m8vrbzskc223jbhj2n2bzacavbhcpsgjqdlz5bycrvibycl7c")
                     (else ""))))))
    (build-system copy-build-system)
    (arguments
     (list #:install-plan #~'(("pagefind_extended" "bin/"))
           #:phases
           #~(modify-phases %standard-phases
-                           (delete 'strip)
-                           )))
+                           (delete 'strip))))
    (supported-systems (list "aarch64-linux" "x86_64-linux"))
    (home-page "https://pagefind.app/")
    (synopsis "Static low-bandwidth search at scale ")
