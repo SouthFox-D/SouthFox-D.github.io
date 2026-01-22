@@ -130,24 +130,6 @@
                          (posts/reverse-chronological posts)))))
                sxml->html)))
 
-(define (tags-page)
-  (lambda (site posts)
-    (make-page "tags/index.html"
-               (with-layout
-                fox-theme
-                site
-                "Tags"
-                `(div (@ (class "content"))
-                  (h2 "标签")
-                  (ul
-                   ,(map (match-lambda
-                           ((tag count)
-                            `(li (a (@ (class "tag")
-                                       (href ,(hole/uri-encode (tag-uri tag))))
-                                    ,tag ": " ,count))))
-                         (count-tags posts)))))
-               sxml->html)))
-
 (define (search-page)
   (lambda (site posts)
     (make-page "search/index.html"
