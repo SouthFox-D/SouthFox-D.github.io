@@ -12,6 +12,7 @@
   #:use-module (syntax-highlight)
   #:use-module (syntax-highlight scheme)
   #:use-module (syntax-highlight lisp)
+  #:use-module (hole syntax-highlight clojure)
   #:use-module (hole syntax-highlight python)
   #:use-module (hole syntax-highlight javascript)
   #:export (comment-place
@@ -20,6 +21,7 @@
 
 (define (maybe-highlight-code lang source)
   (let ((lexer (match lang
+                 ('clojure lex-clojure)
                  ('scheme lex-scheme)
                  ('lisp lex-lisp)
                  ('elisp lex-lisp)
@@ -27,7 +29,6 @@
                  ('python lex-python)
                  ('javascript lex-javascript)
                  ;; TODO
-                 ('clojure lex-lisp)
                  ('hy lex-lisp)
                  (_ #f))))
     (if lexer
