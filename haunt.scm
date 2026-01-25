@@ -31,6 +31,7 @@
                        (tag-page)
                        (tags->page)
                        (search-page)
+                       (guestbook-page)
                        (hole/atom-feed)
                        (hole/rss-feed)
                        (static-directory "assets")

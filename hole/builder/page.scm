@@ -12,7 +12,8 @@
             about-page
             friends-page
             archives-page
-            search-page))
+            search-page
+            guestbook-page))
 
 (define (static-page title file-name body)
   (lambda (site posts)
@@ -144,4 +145,20 @@
                        (h2 "Search")
                        (div (@ (id "search")))
                        (script (@ (src "/assets/js/init-search.js"))))))
+               sxml->html)))
+
+(define (guestbook-page)
+  (lambda (site posts)
+    (make-page "guestbook/index.html"
+               (with-layout
+                fox-theme
+                site
+                "Guestbook"
+                `((script (@ (type "text/x-scheme")
+                             (src "/assets/lips/guestbook.lips")))
+                  (div (@ (class "content"))
+                       (p "测试中的评论系统原型，非常早期。数据肯定会清理，请不要提交耗费精力的内容……")
+                       (a (@ (href "https://git.southfox.me/southfox/fairy-ring"))
+                          "仓库地址：southfox/fairy-ring")
+                       (div (@ (id "comment-app"))))))
                sxml->html)))

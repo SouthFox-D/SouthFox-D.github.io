@@ -1,0 +1,157 @@
+(define procedure? function?)
+(define list->vector list->array)
+(define vector->list array->list)
+(define string-append concat)
+
+(define (string=? a b)
+  (== (a.cmp b) 0))
+
+(define (symbol->string s)
+  (let ((name s.__name__))
+    (let ((str (if (string? name)
+                   name
+                   (name.toString))))
+      (str.freeze)
+      str)))
+
+(define (make-element elem)
+  (document.createElement elem))
+
+(define (make-text-node text)
+  (document.createTextNode text))
+
+(define (element-reset! elem)
+  (if elem (set! elem.innerHTML "")))
+
+(define (element-value elem)
+  elem.value)
+
+(define (element-replace-with! elem new-elem)
+  (elem.replaceWith new-elem))
+
+(define (get-element-by-id id)
+  (document.getElementById id))
+
+(define (add-event-listener! elem type proc)
+  (elem.addEventListener type proc))
+
+(define (append-child! elem child)
+  (elem.appendChild child))
+
+(define (set-attribute! elem attr val)
+  (elem.setAttribute (symbol->string attr) val))
+
+(define (sxml->dom expr)
+  (let* ((have-attrs (and (not (null? (cdr expr)))
+                          (pair? (cadr expr))
+                          (eq? (caadr expr) '@)))
+         (attrs (if have-attrs
+                    (cdadr expr)
+                    '()))
+         (rest (if have-attrs
+                   (cddr expr)
+                   (cdr expr)))
+         (symbol (car expr))
+         (name (symbol->string symbol))
+         (elem (make-element name)))
+    (for-each (lambda (attr val)
+                (if (procedure? val)
+                    (add-event-listener! elem attr val)
+                    (set-attribute! elem attr val)))
+      (map car attrs)
+      (map cadr attrs))
+    (if (null? rest)
+        '()
+        (let ((first (car rest)))
+          (if (pair? first)
+              (map (lambda (expr)
+                     (append-child! elem (sxml->dom expr)))
+                   rest)
+              (append-child! elem (make-text-node first)))))
+    elem))
+
+(define-macro (define-syntax name expr . rest)
+  "(define-syntax name expression [__doc__])
+
+   Defines a new hygienic macro using syntax-rules with optional documentation."
+  (let ((expr-name (gensym "expr-name")))
+    `(define ,name
+       (let ((,expr-name ,expr))
+         ,expr-name)
+       ,@rest)))
+
+(define-syntax ->
+  (syntax-rules (@)
+    ((_ x) x)
+    ((_ x (form @ more ...)) (apply form x more ...))
+    ((_ x (form more ...)) (form x more ...))
+    ((_ x form) (form x))
+    ((_ x form more ...) (-> (-> x form) more ...))))
+
+(define *backend-url* "https://woods.southfox.me")
+
+(define (comment-api-request endpoint options)
+  (let* ((full-url (string-append *backend-url* endpoint))
+         (headers (Object))
+         (final-options (Object.assign (Object) options)))
+
+    (set! headers.content-type "application/json")
+    (set! final-options.headers headers)
+
+    (try
+     (-> (fetch full-url final-options)
+         (. 'json)
+         (apply '()))
+     (catch (e)
+       (console.error "API Error:" e.message)
+       #f))))
+
+(define (fetch-comments slug)
+  (let ((get-options (Object)))
+    (set! get-options.method "GET")
+    (let ((response (comment-api-request (format "/get?slug=~a" slug) get-options)))
+      (if (null? (get response "data"))
+          '()
+          (vector->list (get response "data"))))))
+
+(define (post-comment slug content)
+  (let ((post-options (Object))
+        (payload (Object)))
+    (set! payload.slug slug)
+    (set! payload.content content)
+    (set! post-options.method "POST")
+    (set! post-options.body (JSON.stringify payload))
+    (comment-api-request "/set" post-options)))
+
+(define (build-comment-app initial-slug)
+  (let* ((slug initial-slug)
+         (handle-submit (lambda ()
+                          (let* ((input (get-element-by-id "comment-input"))
+                                 (content (element-value input)))
+                            (if (or (null? content) (string=? "" content))
+                                (alert "请输入内容")
+                                (begin
+                                  (set! input.disabled #t)
+                                  (post-comment slug content)
+                                  (set! input.value "")
+                                  (element-replace-with!
+                                   (get-element-by-id "comment-app")
+                                   (build-comment-app initial-slug)))))))
+         (app-dom (sxml->dom
+                   `(div (@ (id "comment-app"))
+                     (h2 "Guestbook")
+                     (div (textarea (@ (id "comment-input")
+                                       (placeholder "输入评论...")))
+                          (button (@ (id "submit-btn")
+                                     (click ,(lambda (e) (handle-submit))))
+                                  "发送评论"))
+                     (ul (@ (id "comment-list"))
+                         ,@(let ((comments (fetch-comments slug)))
+                            (if (null? comments)
+                                '((li "暂无评论"))
+                                (map (lambda (text)
+                                       `(li ,text))
+                                     comments))))))))
+    app-dom))
+
+(append-child! (get-element-by-id "comment-app") (build-comment-app "guestbook"))
