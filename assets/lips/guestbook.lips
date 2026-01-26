@@ -14,6 +14,13 @@
       (str.freeze)
       str)))
 
+
+(define (interaction-environment)
+  **interaction-environment**)
+
+(define (open-input-string string)
+  (new lips.InputStringPort string (interaction-environment)))
+
 (define (make-element elem)
   (document.createElement elem))
 
@@ -144,17 +151,17 @@
                           (button (@ (id "submit-btn")
                                      (click ,(lambda (e) (handle-submit))))
                                   "发送评论"))
-                     (ul (@ (id "comment-list")))))))
+                     (div (@ (id "comment-list")))))))
     (element-replace-with! (get-element-by-id "comment-app") app-dom)
     (element-replace-with!
      (get-element-by-id "comment-list")
      (sxml->dom
-      `(ul (@ (id "comment-list"))
+      `(div (@ (id "comment-list"))
         ,@(let ((comments (fetch-comments slug)))
             (if (null? comments)
-                '((li "暂无评论"))
-                (map (lambda (text)
-                       `(li ,text))
+                '((p "暂无评论"))
+                (map (lambda (sxml)
+                       (append '(div (@ (class "comment-item"))) (read (open-input-string sxml))))
                      comments))))))))
 
 (build-comment-app "guestbook")
