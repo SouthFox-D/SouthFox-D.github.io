@@ -96,6 +96,7 @@
          (final-options (Object.assign (Object) options)))
 
     (set! headers.content-type "application/json")
+    (set! headers.accept "application/json")
     (set! final-options.headers headers)
 
     (try
