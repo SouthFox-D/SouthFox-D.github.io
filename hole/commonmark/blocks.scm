@@ -319,7 +319,10 @@
                            (+ offset 1)))
           ((< padding 1)
            (make-item-node #f (+ offset 1)))
-          (else (make-item-node (parse-line line) (+ offset padding))))))
+          (else (let* ((p-line (parse-line line)))
+                  (if (blank-node? p-line)
+                      (make-item-node (make-text-node " ") (+ offset padding))
+                      (make-item-node p-line (+ offset padding))))))))
 
 (define (make-paragraph line)
   (make-paragraph-node line))
