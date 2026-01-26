@@ -1,0 +1,57 @@
+#+title: FoxThinking #15: I build this city
+#+author: SouthFox
+#+date: 2026-01-26 21:25:10
+#+tags: FoxThinking
+
+I build the city on car and cons ~♫
+
+,(read-more)
+
+这周在做一件老早就想做的事，自己搓一个评论系统。是的，很多人都做过我相信也有很多很好的评论系统存在。
+
+但它们都不会做 org-mode 支持，那么也只能自己上了吧。自从我这几年写得越来越多 org-mode 而 markdown 写
+得越来越少后，我已经越来越搞不清 markdown 链接语法是 ()[] 还是 []() 还有到底是链接在前还是描述在前了。
+
+在今年一月早些时候 spritely 组织发布了新的
+文章：[[https://spritely.institute/news/mandy-activitypub-on-goblins.html][Mandy: ActivityPub on Goblins — Spritely Institute]] 这下可不是瞌睡时递上了枕头吗，我一直
+对 Goblins 这个「誓要夺回网络」的下一代（非炒币）分布式网络框架感兴趣。一两年前简单试了下却摸索不出头绪，但经过二
+五年一整年的折腾我对自己投入在上面的「技能点」有了些信心想着正好来试下了。这周一开始的摸索也是没有头绪，
+却在慢慢实验后慢慢开始「悟」了，现在陷入折腾有效果越有折腾劲的阶段。
+
+仓库是： [[https://git.southfox.me/southfox/fairy-ring][southfox/fairy-ring - Gitea: Git with a cup of tea]]
+
+取 fairy-ring 作为名字主要是因为框架叫 Goblins 所以想取一个西幻点名字，然后想到蘑菇环也叫做 fairy-ring ，同时蘑菇
+对应的真菌也有 Wood wide web [fn:1] 联系森林里树木的能力。最后就以这种诡异的命名角度蹭到了评论应用。
+
+从去年九月开始从博客框架、 org-mode 解析器、代码高亮……到现在的评论应用，自己慢慢建造自己的「城市」还是
+挺有满足感的。
+
+Someone always playing Corporation games, Who cares
+they're always changing Corporation names. We just want to dance here ~♫ [fn:2]
+
+** 阅读
+- [[https://guix.gnu.org/en/blog/2026/gnu-guix-1.5.0-released/][GNU Guix 1.5.0 released]]: Guix 1.5.0 版本发布了！同时现在 Guix 有了明确的一年两次大版本发布
+  的规划，意味着后续二进制安装后不用忍受漫长的 pull 更新环节了，对容器部署或其它系统的包管理器也是利好。
+  看着更新的文章发现我漏掉了一些有趣的亮点，例如不在需求 root 权限的守护进程、 shell 容器命令
+  里 --emulate-fhs 选项……或许是时候找个时间好好翻读下 guix 文档了？
+
+- [[https://www.sqlite.org/lang_altertable.html#why_alter_table_is_such_a_problem_for_sqlite][Why ALTER TABLE is such a problem for SQLite]]
+- [[https://hakibenita.com/postgresql-unconventional-optimizations][Unconventional PostgreSQL Optimizations | Haki Benita]]
+- [[https://atlas9.dev/blog/soft-delete.html][The challenges of soft delete | atlas9]]
+
+有关数据库的三篇文章。发现自己确实没好好看过数据库相关的，第一范式第二范式笛卡尔积什么的概念已经模糊不清了。另外在
+工作的项目被迫听老调——不要做外键约束、用 mysql 就行了、要在代码中维护数据逻辑……既然在工作上「坐立难安」后那就得在
+自己项目上好好「玩玩」了，希望之后能好好掌握「全天下最强数据库」之 PostgreSQL 和琢磨一下触发器之类的数据库组件。
+
+-[[https://www.sciencealert.com/cold-weather-doesnt-make-you-sick-heres-whats-really-to-blame][Cold Weather Doesn't Make You Sick. Here's What's Really to Blame. : ScienceAlert]]: 受寒是感冒的主因
+吗？其实病毒才是感冒的主因，寒冷主要还是起到推波助澜的作用：冷空气会降低温度让喉腔血管收缩削弱免疫反应。加上寒冷室内人们
+扎堆病毒更容易存活传播……不过我估计我的鼻病毒一直都在我的喉管里，除了受寒还有每次吃得太甜太咸让浓度失衡也会让病
+毒重新占领高地，给我来个半周一周的难受时光让我怀念无痛无病的健康时光。这样说的话鼻病毒也是另一种健康生活提醒小帮手呢（
+
+** Present day, Present time
+连续三天更新三篇博文的高产节奏果然还是不太适合我，所以这周就摸了……！
+
+** 脚注
+[fn:1] [[https://en.wikipedia.org/wiki/Mycorrhizal_network][Mycorrhizal network - Wikipedia]] 
+
+[fn:2] [[https://www.youtube.com/watch?v=K1b8AhIsSYQ][Starship - We Built This City (Official Music Video) {HD} - YouTube]] 
