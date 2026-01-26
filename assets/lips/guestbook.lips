@@ -135,9 +135,7 @@
                                   (set! input.disabled #t)
                                   (post-comment slug content)
                                   (set! input.value "")
-                                  (element-replace-with!
-                                   (get-element-by-id "comment-app")
-                                   (build-comment-app initial-slug)))))))
+                                  (build-comment-app initial-slug))))))
          (app-dom (sxml->dom
                    `(div (@ (id "comment-app"))
                      (h2 "Guestbook")
@@ -146,13 +144,17 @@
                           (button (@ (id "submit-btn")
                                      (click ,(lambda (e) (handle-submit))))
                                   "发送评论"))
-                     (ul (@ (id "comment-list"))
-                         ,@(let ((comments (fetch-comments slug)))
-                            (if (null? comments)
-                                '((li "暂无评论"))
-                                (map (lambda (text)
-                                       `(li ,text))
-                                     comments))))))))
-    app-dom))
+                     (ul (@ (id "comment-list")))))))
+    (element-replace-with! (get-element-by-id "comment-app") app-dom)
+    (element-replace-with!
+     (get-element-by-id "comment-list")
+     (sxml->dom
+      `(ul (@ (id "comment-list"))
+        ,@(let ((comments (fetch-comments slug)))
+            (if (null? comments)
+                '((li "暂无评论"))
+                (map (lambda (text)
+                       `(li ,text))
+                     comments))))))))
 
-(append-child! (get-element-by-id "comment-app") (build-comment-app "guestbook"))
+(build-comment-app "guestbook")
