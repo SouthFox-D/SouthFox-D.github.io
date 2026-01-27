@@ -152,8 +152,12 @@
 
 (define (emphasis-type n)
   (case (assq-ref (node-data n) 'type)
+    ((code) 'code)
     ((em) 'em)
-    (else 'strong)))
+    ((strong) 'strong)
+    ((delete) 'del)
+    ((underline) 'u)
+    (else 'text)))
 
 (define (emphasis-node->sxml n)
   `(,(emphasis-type n) ,@(fold-nodes node->sxml (node-children n))))

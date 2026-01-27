@@ -36,14 +36,7 @@
 (define re-start-org-footnotes-link (make-regexp "^\\[fn\\:+"))
 (define re-end-org-footnotes-link (make-regexp "\\]+"))
 
-(define re-main (make-regexp "^[^=*_\\\n[<&]+"))
-(define re-autolink (make-regexp (string-append "^<([a-zA-Z][a-zA-Z0-9+.-]{1,31}:[^ \t\n<>"
-                                                control-characters "]*)>")))
-(define re-email-autolink (make-regexp
-                           (string-append "^<([a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@"
-                                          "[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?"
-                                          "(\\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*)>")))
-
+(define re-main (make-regexp "^[^=*_\\\n[&/+]+"))
 
 (define (start-ticks? text)
   (regexp-exec re-start-ticks (text-value text) (text-position text)))
@@ -65,12 +58,6 @@
 
 (define (normal-text? text)
   (regexp-exec re-main (text-value text) (text-position text)))
-
-(define (autolink? text)
-  (regexp-exec re-autolink (text-value text) (text-position text)))
-
-(define (email-autolink? text)
-  (regexp-exec re-email-autolink (text-value text) (text-position text)))
 
 (define (entity-or-numeric? text)
   (regexp-exec re-entity-or-numeric (text-value text) (text-position text)))
@@ -166,26 +153,6 @@
   (and (not whitespace-before)
        (or (not punctuation-before) whitespace-after punctuation-after)))
 
-(define (scan-delim text)
-  (define (count-delim delim-end position)
-    (- (or delim-end (text-length text)) position))
-  (let* ((ch (text-char text))
-         (position (text-position text))
-         (text (text-value text))
-         (delim-end (string-skip text ch position))
-         (delim-start (string-skip-right text ch 0 position))
-         (whitespace-before (whitespace? text delim-start))
-         (whitespace-after (whitespace? text delim-end))
-         (punctuation-before (punctuation? text delim-start))
-         (punctuation-after (punctuation? text delim-end))
-         (left (left-flanking? whitespace-after punctuation-after whitespace-before punctuation-before))
-         (right (right-flanking? whitespace-after punctuation-after whitespace-before punctuation-before)))
-    (case ch
-      ((#\*) (make-delimiter ch (count-delim delim-end position) left right))
-      ((#\_) (make-delimiter ch (count-delim delim-end position)
-                             (and left (or (not right) punctuation-before))
-                             (and right (or (not left) punctuation-after)))))))
-
 (define (match? open-delim close-delim)
   (eq? (delimiter-ch open-delim) (delimiter-ch close-delim)))
 
@@ -194,21 +161,6 @@
 
 (define (remake-delimiter count delim)
   (make-delimiter (delimiter-ch delim) count (delimiter-open? delim) (delimiter-close? delim)))
-
-(define (match-delim opening-delim closing-delim)
-  (let ((open-count (delimiter-count opening-delim))
-        (close-count (delimiter-count closing-delim)))
-    (cond ((or (= open-count close-count 1) (= open-count close-count 2))
-           (list #f #f))
-          ((>= open-count 2 close-count)
-           (list (remake-delimiter (- open-count close-count) opening-delim) #f))
-          ((<= open-count 2 close-count)
-           (list #f (remake-delimiter (- close-count open-count) closing-delim)))
-          ((odd? close-count)
-           (list (remake-delimiter (- open-count 1) opening-delim)
-                 (remake-delimiter (- close-count 1) closing-delim)))
-          (else (list (remake-delimiter (- open-count 2) opening-delim)
-                      (remake-delimiter (- close-count 2) closing-delim))))))
 
 (define (make-reference-lookup document)
   (let ((references (node-get-data document 'link-references)))
@@ -231,61 +183,8 @@
             (else (make-node (node-type node) (node-data node) (map parse-inner (node-children node))))))
     (parse-inner node)))
 
-(define (emphasis-type delim)
-  (case (delimiter-count delim)
-    ((1) 'em)
-    (else 'strong)))
-
 (define (delim->text delim)
   (make-text-node (make-string (delimiter-count delim) (delimiter-ch delim))))
-
-(define (parse-emphasis text nodes delim-stack ref-proc)
-  (define (parse-matching-delim delim matching-delim)
-    (let loop ((ds delim-stack)
-               (ns nodes))
-      (let-values (((d n) (delim-stack-peek ds)))
-        (if (eq? d matching-delim)
-            (match (match-delim matching-delim delim)
-              ((#f #f)
-               (parse-char (text-advance text (delimiter-count delim))
-                           (cons (make-emphasis-node ns (emphasis-type delim)) n)
-                           (delim-stack-pop ds) ref-proc))
-              ((od #f)
-               (parse-char (text-advance text (delimiter-count delim))
-                           (list (make-emphasis-node ns (emphasis-type delim)))
-                           (delim-stack-replace-delim ds od) ref-proc))
-              ((#f cd)
-               (parse-char (text-advance text (delimiter-count matching-delim))
-                           (cons (make-emphasis-node ns (emphasis-type matching-delim)) n)
-                           (delim-stack-pop ds) ref-proc))
-              ((od cd)
-               (let ((difference (- (delimiter-count delim) (delimiter-count cd))))
-                 (parse-char (text-advance text difference)
-                             (list (make-emphasis-node ns (if (= 1 difference) 'em 'strong)))
-                             (delim-stack-replace-delim ds od) ref-proc))))
-            (loop (delim-stack-pop ds) (append ns (cons (delim->text d) n)))))))
-  (let ((delim (scan-delim text)))
-    (cond ((and (delimiter-close? delim) (delimiter-open? delim))
-           (let ((matching-delim (matching-opening? delim-stack delim)))
-             (if matching-delim
-                 (parse-matching-delim delim matching-delim)
-                 (parse-char (text-advance text (delimiter-count delim))
-                             '()
-                             (delim-stack-push delim-stack delim nodes) ref-proc))))
-          ((delimiter-close? delim)
-           (let ((matching-delim (matching-opening? delim-stack delim)))
-             (if matching-delim
-                 (parse-matching-delim delim matching-delim)
-                 (parse-char (text-advance text (delimiter-count delim))
-                             (cons (delim->text delim) nodes)
-                             delim-stack ref-proc))))
-          ((delimiter-open? delim)
-           (parse-char (text-advance text (delimiter-count delim))
-                       '()
-                       (delim-stack-push delim-stack delim nodes) ref-proc))
-          (else (parse-char (text-advance text (delimiter-count delim))
-                            (cons (delim->text delim) nodes)
-                            delim-stack ref-proc)))))
 
 (define (ascii-punctuation-characters? ch)
   (define ascii-punc-set (string->char-set ascii-punctuation-characters))
@@ -331,23 +230,6 @@
                        delim-stack ref-proc))
           (else (parse-char next-ch-text (cons (make-text-node "\\") nodes)
                             delim-stack ref-proc)))))
-
-(define (parse-ticks text)
-  (let ((start-ticks (start-ticks? text)))
-    (let loop ((end-ticks (end-ticks? (text-move text (match:end start-ticks 0)))))
-      (cond ((not end-ticks)
-             (values (match:end start-ticks 0)
-                     (make-text-node (match:substring start-ticks 0))))
-            ((= (match-length start-ticks) (match-length end-ticks))
-             (values (match:end end-ticks 0)
-                     (make-code-span-node (text-substring text (match:end start-ticks 0)
-                                                          (match:start end-ticks 0)))))
-            (else (loop (end-ticks? (text-move text (match:end end-ticks 0)))))))))
-
-(define (parse-code-span text nodes delim-stack ref-proc)
-  (let-values (((pos node) (parse-ticks text)))
-    (parse-char (text-move text pos) (cons node nodes)
-                delim-stack ref-proc)))
 
 (define (build-org-link text)
   (define image-suffixes
@@ -406,26 +288,6 @@
     (parse-char (text-move text pos) (cons node nodes)
                 delim-stack ref-proc)))
 
-(define (parse-autolink text)
-  (let ((autolink-match (autolink? text)))
-    (if autolink-match
-        (values (make-link-node (list (make-text-node (match:substring autolink-match 1)))
-                                (match:substring autolink-match 1) #f)
-                (text-move text (match:end autolink-match 0)))
-        (let ((email-match (email-autolink? text)))
-          (if email-match
-              (values (make-link-node (list (make-text-node (match:substring email-match 1)))
-                                      (string-append "mailto:" (match:substring email-match 1)) #f)
-                      (text-move text (match:end email-match 0)))
-              (values #f text))))))
-
-(define (parse-autolink-or-html text nodes delim-stack ref-proc)
-  (let-values (((autolink text) (parse-autolink text)))
-    (if autolink
-        (parse-char text (cons autolink nodes) delim-stack ref-proc)
-        (parse-char (text-advance text 1) (cons (make-text-node "<") nodes) delim-stack ref-proc))))
-
-
 (define (parse-entity-numeric text nodes delim-stack ref-proc)
   (let ((entity-match (entity-or-numeric? text)))
     (if entity-match
@@ -445,12 +307,6 @@
                 (cons (make-text-node (match:substring normal-text 0)) nodes)
                 delim-stack ref-proc)))
 
-(define (parse-normal-text text nodes delim-stack ref-proc)
-  (let ((normal-text (normal-text? text)))
-    (parse-char (text-move text (match:end normal-text 0))
-                (cons (make-text-node (match:substring normal-text 0)) nodes)
-                delim-stack ref-proc)))
-
 (define (pop-remaining-delim nodes delim-stack)
   (if (delim-stack-empty? delim-stack)
       (if (and (not (null? nodes)) (text-node? (car nodes))) (remove-trailing-space nodes) nodes)
@@ -458,18 +314,81 @@
         (pop-remaining-delim (append nodes (cons (delim->text d) n))
                              (delim-stack-pop delim-stack)))))
 
+(define (org-emphasis-pre-char? ch)
+  (or (char-whitespace? ch)
+      (string-index "-( {'\"" ch)))
+
+(define (org-emphasis-post-char? ch)
+  (or (char-whitespace? ch)
+      (string-index "-),:;'\"? " ch)))
+
+(define (at-line-start? text)
+  (= (text-position text) 0))
+
+(define (at-line-end? text pos)
+  (>= pos (string-length (text-value text))))
+
+(define (marker->node-type ch)
+  (case ch
+    ((#\*) 'strong)
+    ((#\/) 'em)
+    ((#\=) 'code)
+    ((#\~) 'code)
+    ((#\_) 'underline)
+    ((#\+) 'delete)
+    (else 'text)))
+
+(define (parse-symmetric-span text)
+  (let* ((val (text-value text))
+         (pos (text-position text))
+         (ch (text-char text))
+         (pre-pos (- pos 1)))
+    (if (and (not (at-line-start? text))
+             (not (org-emphasis-pre-char? (string-ref val pre-pos))))
+        (values #f #f)
+        (let* ((span-end (string-skip val ch pos))
+               (count (- (or span-end (string-length val)) pos))
+               (content-start (or span-end (string-length val))))
+          (if (and (< content-start (string-length val))
+                   (char-whitespace? (string-ref val content-start)))
+              (values #f #f)
+              (let loop ((search-pos content-start))
+                (let ((end-match (string-index val ch search-pos)))
+                  (cond
+                   ((not end-match) (values #f #f))
+                   (else
+                    (let* ((this-end (string-skip val ch end-match))
+                           (this-count (- (or this-end (string-length val)) end-match))
+                           (post-char-pos (or this-end (string-length val))))
+                      (if (= count this-count)
+                          (let ((char-before-end (string-ref val (- end-match 1))))
+                            (if (and (not (char-whitespace? char-before-end))
+                                     (or (at-line-end? text post-char-pos)
+                                         (org-emphasis-post-char? (string-ref val post-char-pos))))
+                                (values post-char-pos
+                                        (make-emphasis-node
+                                         (list (make-text-node (substring val content-start end-match)))
+                                         (marker->node-type ch) ))
+                                (loop post-char-pos)))
+                          (loop (or this-end (string-length val))))))))))))))
+
 (define (parse-char text nodes delim-stack ref-proc)
   (if (text-end? text)
       (pop-remaining-delim nodes delim-stack)
-      (case (text-char text)
-        ((#\newline) (parse-newline text nodes delim-stack ref-proc))
-        ((#\\) (parse-backslash text nodes delim-stack ref-proc))
-        ((#\=) (parse-code-span text nodes delim-stack ref-proc))
-        ((#\* #\_) (parse-emphasis text nodes delim-stack ref-proc))
-        ((#\[) (parse-org-link text nodes delim-stack ref-proc))
-        ((#\&) (parse-entity-numeric text nodes delim-stack ref-proc))
-        ((#\<) (parse-autolink-or-html text nodes delim-stack ref-proc))
-        (else (parse-normal-text text nodes delim-stack ref-proc)))))
+      (let ((current-ch (text-char text)))
+        (case current-ch
+          ((#\newline) (parse-newline text nodes delim-stack ref-proc))
+          ((#\\) (parse-backslash text nodes delim-stack ref-proc))
+          ((#\= #\* #\~ #\_ #\+ #\/)
+           (let-values (((pos node) (parse-symmetric-span text)))
+             (if pos
+                 (parse-char (text-move text pos) (cons node nodes)
+                             delim-stack ref-proc)
+                 (parse-char (text-advance text 1) (cons (make-text-node (string current-ch)) nodes)
+                             delim-stack ref-proc))))
+          ((#\[) (parse-org-link text nodes delim-stack ref-proc))
+          ((#\&) (parse-entity-numeric text nodes delim-stack ref-proc))
+          (else (parse-normal-text text nodes delim-stack ref-proc))))))
 
 (define (parse-inline node ref-proc)
   (let ((text (last-child (last-child node))))
