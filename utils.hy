@@ -118,16 +118,6 @@
   (subprocess.run cmd :check check))
 
 (let [post-files (get-post-files)]
-  (when args.pi
-    (subset-font-file post-files)
-    (run-cmd ["pyftsubset" "Zpix.ttf" "--text-file=strdb.txt"])
-    (run-cmd ["fonttools" "ttLib.woff2" "compress" "-o" "Zpix.woff2" "Zpix.subset.ttf"])
-    (run-cmd ["mv" "Zpix.woff2" "assets/fonts/Zpix.woff2"])
-    (run-cmd ["mv" "Zpix.subset.ttf" "assets/fonts/Zpix.ttf"])
-    (run-cmd ["haunt" "build"])
-    (run-cmd ["pagefind_extended" "--site" "site"])
-    (run-cmd ["rm" "-rf" "/var/www/blog/"])
-    (run-cmd ["mv" "site/" "/var/www/blog/"]))
   (when args.deploy_type
     (subset-font-file post-files)
     (run-cmd ["pyftsubset" "Zpix.ttf" "--text-file=strdb.txt"])
