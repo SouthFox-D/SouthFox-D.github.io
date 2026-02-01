@@ -18,11 +18,12 @@ jobs:
         - /var/guix:/var/guix
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: https://git.southfox.me/actions/checkout@v2
     - name: Deploy
       env:
         BLOG_DEPLOY_TOKEN: ${{ secrets.BLOG_DEPLOY_TOKEN }}
-        GUIX_DAEMON_SOCKET: "guix://172.17.0.1"
+        GUIX_DAEMON_SOCKET: "unix:///var/guix/daemon-socket/socket"
+        GUIX_STATE_DIRECTORY: "/tmp/guix-profile"
       run: |
         /var/guix/profiles/per-user/root/current-guix/bin/guix shell -m manifest.scm -- \
         hy utils.hy -d ci
