@@ -1,0 +1,44 @@
+#+title: FoxThinking #16: 信息毒害胆怯
+#+author: SouthFox
+#+date: 2026-02-02 23:55:10
+#+tags: FoxThinking
+
+应当坚信，信息就像食物，来路不明的信息就像来路不明的食物，随意摄入会导致出现在某位视频主
+的「这是 ta 几天内身体发生的变化」系列视频上。
+
+,(read-more)
+
+老鼠应该尽量不生病，因为它们吃不了老鼠药。不过确实老鼠在人们心中一直有着生命力顽强的印象，似乎老鼠药
+也不能完全扑杀老鼠。这是因为老鼠有一种叫做「毒害胆怯」 [fn:1] 的现象，碰上未知的食物并不会马上
+就吃而是会犹豫一阵子，如果看到其它品尝者生病或者死亡，那么老鼠们就会避开这种食物。
+
+现在的信息场上充斥着各种标题党（Clickbait)、鼓噪情绪党（Ragebait)，在摄入这些信息时还是要像老鼠
+一样「犹豫」那么几下的，最好还可以观测一下摄入过这些信息之后的症状。从这方面来说，最佳方式就是等一会，
+等这些信息「放凉」。这里我觉得较好的方式就是 RSS 了，可以自主搜集一些质量较高的订阅源，也可以等待那么
+几天集中「清理」信息，如果间隔几天有时候确实能看到后续情况。
+
+** 阅读
+- [[https://protesilaos.com/commentary/2026-01-28-touching-grass/][Touching grass - Protesilaos Stavrou: Master feed with all updates]]: 不要和现实脱节，
+  迫在眉睫触手可达的世界是一种幻觉。
+- [[https://www.solidot.org/story?sid=83408][Windows 11 集成 Copilot 之后状况越来越糟 - 奇客Solidot–传递最新科技情报]]：我已经看到个人电脑
+  上 Linux 的世界到来，反正微软已经靠做云服务商吃饱饱了，操作系统这种事还是给「专业」的人和社区
+  来做吧。而且没人想要一个不能「离线」的操作系统。
+- [[https://github.com/tmythicator/lichess.el][lichess.el]]: 在 Emacs 里玩国际象棋或者看赛局，我真觉得挺有用……好吧，因为我就是 Emacs 拥趸！
+- [[https://www.psychologytoday.com/us/blog/read-like-a-psychologist/202601/is-it-adhd-maybe-maybe-not][Is it ADHD? Maybe. Maybe Not. - Psychology Today: The Latest]]: 可能我的注意力不集中症状
+  表现就是睡太少了，还是得多睡睡。
+- [[https://www.marginalia.nu/log/a_129_finding_audience/][Why you should probably tell your audience what your blog posts are about as early as possible]]:
+  作为博文最好马上就抛出主题，防止在慢慢切题中消磨读者耐心，这种方式在新闻界称之为「倒金字塔」。我感觉我的博客的
+  摘要部分似有似无的就用到了这种方式，不过感觉用力过猛就会变成标题党。
+
+** 观影
+- [[https://fosdem.org/2026/schedule/events/][FOSDEM 2026 - Events]]: 周末一直在赛博逛展，这里瞧瞧这个讲座然后不一会又看跳另一个讲座。很多讲座受限于演讲
+  时间都不能讲太深入的话题，但有这么一个大的盛事能将自由软件社区聚集起来也是让人兴奋啊。
+
+** Present day, Present time
+一月三十号的时候我用的便宜服务提供商 Cloudcone 其中一个线路遭到骇客入侵：[[https://status.cloudcone.com/incidents/346624][Major incident: Hypervisor Outage | Status Page]] 
+
+很不幸我其中一台机器就放在 Cloudcone 上面，虽然有些损失但幸好还能部分重建，刚好也趁着这一波相当于重置一下
+服务了。没备份的反正都是不重要的，但是还是很麻烦，这几天一直在忙着将服务用 Guix 整理和建立中，希望这周能搞定吧。
+
+** 脚注
+[fn:1] [[https://en.wikipedia.org/wiki/Poison_shyness][Poison shyness - Wikipedia]] 
