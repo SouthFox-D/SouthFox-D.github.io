@@ -173,3 +173,6 @@ dns_bind_port=5000
 [fn:5] [[/2025/05/configure-steam-deck/][Steam Deck 可劲折腾]]
 
 [fn:6] [[https://www.solidot.org/story?sid=82831][奇客Solidot | 很多时候放弃是最明智的选择]]
+
+* 修改历史
+<2026-02-06 Fri 00:22> 将用 python 伪代码的例子更改为用做菜煮饭的例子。
