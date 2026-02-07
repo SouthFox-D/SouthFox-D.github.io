@@ -114,7 +114,7 @@ redis:
 
 ```nginx
     location /.well-known/matrix/client {
-        return 200 '{"m.homeserver": {"base_url": "synapse.matrix.org"}}';
+        return 200 '{"m.homeserver": {"base_url": "https://synapse.matrix.org"}}';
         default_type application/json;
         add_header Access-Control-Allow-Origin *;
     }
