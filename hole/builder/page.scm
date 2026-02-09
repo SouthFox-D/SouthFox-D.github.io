@@ -54,7 +54,7 @@
         (code Matrix) "，不选 " (code XMPP)
         " 主要还是因为……像是抓阄一样选择的就选到了 " (code "Matrix") " 就这么待着了，仅此而已。")
      (p "我的 " (code Matrix) " 帐号是：" )
-     (code "[at]southfox:southfox.me")
+     (code "[at]southfox:uwu.southfox.me")
      (p "欢迎啊，欢迎啊！在黄昏时我通常都会站在我的站点「门口」，用上可以给五头奶牛挤奶的时间等待客人的到来，可惜通常没有人联系我。")
      (p "不过大多数时候我还是希望有人来的，愿能在更加开放的互联网上相遇吧。")
      (br)
