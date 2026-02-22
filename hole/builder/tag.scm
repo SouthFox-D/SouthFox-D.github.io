@@ -56,11 +56,6 @@ order."
              (group-by-tag posts))
         (lambda (a b) (> (cadr a) (cadr b)))))
 
-(define (tag-uri tag)
-  "Given a TAG return the page that contains only posts associated
-with that TAG."
-  (string-append "/tags/" tag "/index.html"))
-
 (define* (tags-template site posts #:key title)
   `((div (@ (class "content"))
      (h1 "#" ,title)
@@ -71,6 +66,11 @@ with that TAG."
                       " — "
                       ,(date->string (post-date post) "~Y-~m-~d"))))
             (posts/reverse-chronological posts))))))
+
+(define (tag-uri tag)
+  "Given a TAG return the page that contains only posts associated
+with that TAG."
+  (string-append "/tag/" tag "/index.html"))
 
 (define (tags->page)
   (lambda (site posts)
