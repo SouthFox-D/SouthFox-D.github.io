@@ -94,7 +94,9 @@
       ((`(,hl (@ (id ,hid)) ,headline)  tail ...)
        (if (char=? #\h (string-ref (symbol->string hl) 0))
            (loop tail (cons `(li (a (@ (href ,(string-append "#" hid)))
-                                    ,headline))
+                                    ,(if (string? headline)
+                                         headline
+                                         (car (last-pair headline)))))
                             result))
            (loop tail result)))
       ((head . tail)
