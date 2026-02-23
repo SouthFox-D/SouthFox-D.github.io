@@ -57,6 +57,21 @@
         ((inline-html-node? n) (last-child n))
         (else (error "unknown node"))))
 
+(define (node->text node)
+  (cond
+   ((string? node) (list node))
+   ((text-node? node) (node-children node))
+   (else (fold-text node))))
+
+(define (fold-text node)
+  (fold (lambda (elem prev)
+          (append (node->text elem) prev))
+        '()
+        (node-children node)))
+
+(define (alt-text node)
+  (string-concatenate (fold-text node)))
+
 (define (thematic-break-node->sxml n)
   '(hr))
 
@@ -119,7 +134,7 @@
   `(,(level n)
     (@ (id ,(string-join (map (lambda (text)
                                 (string-replace-substring text " " ""))
-                              (map car (fold-nodes node-children (node-children n))))
+                              (fold-text n))
                          "")))
       ,@(fold-nodes node->sxml (node-children n))))
 
@@ -189,20 +204,6 @@
                   (figcaption (span ,@children)))
                 `(img (@ (src ,dest) ,@attrs)))
             `(a (@ ,@attrs) ,@children)))))
-
-(define (fold-text node)
-  (fold (lambda (elem prev)
-          (append (node->text elem) prev))
-        '()
-        (node-children node)))
-
-(define (node->text node)
-  (if (text-node? node)
-      (node-children node)
-      (fold-text node)))
-
-(define (alt-text node)
-  (string-concatenate (fold-text node)))
 
 (define (image-node->sxml node)
   (let ((dest (destination node))
