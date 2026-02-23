@@ -149,7 +149,7 @@
            (h4 "标签")
            (ul
             ,@(map (lambda (tag)
-                     `(li (a (@ (href ,(string-append "/tags/" tag)))
+                     `(li (a (@ (href ,(string-append "/tag/" tag)))
                              ,tag)))
                    (post-tags post))))
          '())
