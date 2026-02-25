@@ -19,6 +19,11 @@ jobs:
     steps:
     - uses: https://git.southfox.me/actions/checkout@v2
     - uses: https://git.southfox.me/actions/guix-shell@master
+
+    - name: Test
+      run: |
+        GUILE_LOAD_PATH="$GUILE_LOAD_PATH:$PWD" guile tests/all.scm
+
     - name: Deploy
       env:
         BLOG_DEPLOY_TOKEN: ${{ secrets.BLOG_DEPLOY_TOKEN }}

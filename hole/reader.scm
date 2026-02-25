@@ -13,7 +13,8 @@
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-13)
   #:use-module (hole sxml)
-  #:export (fox-commonmark-reader
+  #:export (hole/org->sxml
+            fox-commonmark-reader
             fox-org-mode-reader))
 
 (define* (hole/commonmark->sxml #:optional (string-or-port (current-input-port)))
