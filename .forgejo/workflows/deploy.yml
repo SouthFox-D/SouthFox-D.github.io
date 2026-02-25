@@ -22,7 +22,7 @@ jobs:
 
     - name: Test
       run: |
-        GUILE_LOAD_PATH="$GUILE_LOAD_PATH:$PWD" guile tests/all.scm
+        guile test.scm
 
     - name: Deploy
       env:
