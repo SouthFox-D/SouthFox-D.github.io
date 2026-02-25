@@ -1,0 +1,104 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta property="og:title" content="'EFK:日志 All in one……？' — 狐狸反走矣" /><meta property="og:site_name" content="狐狸反走矣" /><meta property="og:image" content="https://blog.southfox.me/favicon.png" /><meta name="fediverse:creator" content="SouthFox@foxsay.southfox.me" /><title>'EFK:日志 All in one……？' — 狐狸反走矣</title><link rel="me" href="https://foxsay.southfox.me/@SouthFox" /><link rel="me" href="https://codeberg.org/southfox" /><script src="/assets/js/lips.min.js"></script><link rel="stylesheet" href="/assets/css/main.css" /><script type="text/x-scheme">(let ((font (or (localStorage.getItem "font") "zpix")) (font-select (document.getElementById "font-select"))) (define (string=? a b) (== (a.cmp b) 0)) (define (loop-set options value) (let loop ((i 0)) (if (> i (- (length options) 1)) i (let ((option (get options i))) (if (string=? option.value value) (option.setAttribute "selected" #t) (loop (+ 1 i))))))) (define (set-font font-name) (localStorage.setItem "font" font-name) (document.documentElement.setAttribute "data-font" font-name) (if font-select (loop-set font-select.options font-name))) (font-select.addEventListener "change" (lambda (event) (set-font event.target.value))) (set-font font))</script><link rel="alternative" href="/feed.xml" title="狐狸反走矣" type="application/atom+xml" /><link rel="alternative" href="/rss2.xml" title="狐狸反走矣" type="application/rss+xml" /></head><body><nav class="nav"><a href="/" class="brand"><span>狐狸反走矣</span></a><input id="bmenub" type="checkbox" class="show" aria-label="open menu" /><label for="bmenub" class="burger pseudo button">☰</label><div class="menu"><a href="/archives/">归档</a><a href="/tags/">标签</a><a href="/search/">搜索</a><a href="/about/">关于</a></div></nav><div class="container flex"><div class="content"><main data-pagefind-body="true"><div><h2>'EFK:日志 All in one……？'</h2><h3>by SouthFox</h3><h3 data-pagefind-sort="date">2022-04-04</h3><div><p>突然发现自己搭的应用似乎上了两位数了。</p><span id="more"></span><p>其中也不乏一些日志大户，每次排错时都要自己进去用日志命令脑死 <code>PgUp, PgDn</code> 一页一页翻找吗？</p><p>刚好最近看的书里提出了一种日志管理实现：<code>ELK</code>，即 <code>Elasticsearch, Logstash, Kibana</code> 三种开源应用的简称，其中:</p><p><code>Elasticsearch</code>：负责给日志数据产生索引，方便检索。</p><p><code>Logstash</code>：接收并处理日志，方便其他应用使用。</p><p><code>Kibana</code>：一个展示前端，有酷炫的一众图表模板用来可视化数据。</p><p>似乎名头一直都在很多年了，使用起来似乎比较重量级，不知道有没有其他更轻量的实现……不过我也找不到其他实现就先这么用吧……</p><h2 id="安装">安装</h2><p>因为搭建的应用以 <code>Docker</code> 居多，其中默认支持的日志方式有 <code>Fluentd</code>，所以就用这个代替 <code>Logstash</code> 了，所以是 <code>EFK</code> 方案。</p><p><code>Fluentd</code> 采用包安装的方式安装，毕竟要用它处理宿主机上的一些日志，就不考虑塞到 <code>Docker</code> 里折腾自己了。</p><h3 id="前期准备">前期准备</h3><p>参见<a href="https://docs.fluentd.org/installation/before-install" class="external_link">官网文档</a>：</p><h4 id="安装chrony">安装 chrony</h4><pre><code>apt-get install chrony</code></pre><p>此步骤是为了日志消息能有更准确的时间戳的样子？</p><h4 id="调高文件描述符">调高文件描述符</h4><p>执行</p><pre><code>ulimit -n</code></pre><p>命令，要是显示 <code>1024</code> 的话，那么就得调高一点，防止文件描述符用完报错，</p><p>编辑 <code>/etc/security/limits.conf</code> 文件，在最后面加上：</p><pre><code>root soft nofile 65536
+root hard nofile 65536
+* soft nofile 65536
+* hard nofile 65536</code></pre><p>之后重启，再次执行</p><pre><code>ulimit -n</code></pre><p>命令，显示 <code>65536</code> 即可成功。</p><h4 id="其他">其他</h4><p>其他的网络调优懒得搞了……问就是摸了！</p><h3 id="安装Fluentd">安装 Fluentd</h3><p>用的是 <code>Ububtu 20.04</code> ，参照<a href="https://docs.fluentd.org/installation/install-by-deb" class="external_link">官方文档</a>，执行</p><pre><code>curl -fsSL https://toolbelt.treasuredata.com/sh/install-ubuntu-focal-td-agent4.sh | sh</code></pre><p>而且里面的版本描述是用大版本号的英文描述的，还得我翻<a href="https://zh.wikipedia.org/zh/Ubuntu" class="external_link">维基</a>查，好好用阿拉伯数字不好嘛……</p><h3 id="安装EK">安装 EK</h3><p>这里就用 <code>Docker</code> 省点力了……</p><pre><code>version: '3'
+services:
+  elasticsearch:
+    image: elasticsearch:tag
+    restart: always
+    ports:
+      - &quot;127.0.0.1:9200:9200&quot;
+    environment:
+      ES_JAVA_OPTS: &quot;-Xmx256m -Xms256m&quot;
+      ELASTIC_PASSWORD: &quot;you_password&quot;
+      http.cors.enabled: &quot;true&quot;
+      http.cors.allow-origin: &quot;*&quot;
+      xpack.security.enabled: &quot;true&quot;
+      discovery.type: &quot;single-node&quot;
+      xpack.security.authc.api_key.enabled: &quot;true&quot;
+
+  kibana:
+    image: kibana:tag
+    restart: always
+    links:
+      - &quot;elasticsearch&quot;
+    ports:
+      - &quot;127.0.0.1:5601:5601&quot;
+    environment:
+      - ELASTICSEARCH_USERNAME=elastic
+      - ELASTICSEARCH_PASSWORD=&quot;you_password&quot;</code></pre><p>其中 <code>tag</code> 应该去 <a href="https://hub.docker.com/_/elasticsearch" class="external_link"><code>Docker Hub</code> 页面</a>寻找，因为没有默认标签的样子只能手动指定版本了……而且注意要选择修了高危漏洞的版本。</p><p>之后 <code>up</code> 起来待用。</p><p>（<strong>注意</strong>这里没做数据持久化处理，有兴趣的可以自行找找要挂载哪些路径……）</p><h2 id="配置">配置</h2><h3 id="Fluentd">Fluentd</h3><p>配置文件路径是 <code>/etc/td-agent/td-agent.conf</code> ，</p><p>其中分为 <code>Input</code> 端，用 <code>&lt;sourec&gt;</code> 表示，<code>Output</code> 端，用 <code>&lt;match&gt;</code> 处理。</p><p>首先增加以下：</p><pre><code>&lt;source&gt;
+  @type forward
+  port 24224
+  bind 127.0.0.1
+&lt;/source&gt;
+
+&lt;match *.**&gt;
+  @type copy
+
+  &lt;store&gt;
+    @type elasticsearch
+    host 127.0.0.1
+    port 9200
+    user elastic
+    password you_password
+    logstash_format true
+    logstash_prefix fluentd
+    logstash_dateformat %Y%m%d
+    include_tag_key true
+    type_name access_log
+    tag_key @log_name
+    flush_interval 1s
+  &lt;/store&gt;
+
+  &lt;store&gt;
+    @type stdout
+  &lt;/store&gt;
+&lt;/match&gt;</code></pre><p>并且 <code>systemctl restart td-agent</code> 重启应用，开放<code>24224</code> 端口让 <code>Docker</code>  能够进行联协，并将相应数据通过 <code>9200</code> 端口汇入到 <code>Elasticsearch</code> 进行处理。</p><h3 id="Docker">Docker</h3><p>管理每个 <code>docker-compose.yml</code> 文件，在每个服务后面加上相应的 <code>logging</code> 块：</p><pre><code>services:
+  xxx:
+  ......
+  ......
+  logging:
+    driver: fluentd
+  
+  yyy:
+  ......
+  ......
+  logging:
+    driver: fluentd</code></pre><p>(是的，感觉这样确实有点蠢，不过没找到其他更好实现而且只要做一次就先忍了……)</p><p>之后 <code>down</code> 再 <code>up</code> 重建容器即可。</p><h3 id="Kibana">Kibana</h3><p>没出错的话现在日志应该源源不断汇入到 <code>Elasticsearch</code> 并在处理了，现在该浏览成果了。</p><p>老调重弹之申请域名、指向域名、申请证书、反代 <code>5601</code> 端口，完成后访问对应域名应该就能进到管理面板了。</p><p>展开左边的菜单栏 <code>Management~Stack Management -&gt; Kibana~Index patterns -&gt; Create index patterns</code> 应该能看到有类似 <code>fluentd-YYMMDD</code> 形式的数据了，新建一个名叫 <code>fluentd-*</code> 的索引将数据囊括进来，就搞定了，之后可以去 <code>Analytics~Discover</code> 查看数据了……</p><p>到此，管理 <code>Docker</code> 产生的日志就这样搞定了……</p><h2 id="额外">额外</h2><p>当然还没结束，毕竟还要更多！</p><h3 id="Nginx">Nginx</h3><p><code>Fluentd</code> 直接安装就是为了更方便处理相应日志的，但是针对 <code>nginx</code> 来说，因为 <code>Fluentd</code> 使用的用户 <code>td-agent</code> 没有相应访问 <code>nginx</code> 日志的权限，那么首先要用</p><pre><code>usermod -aG adm td-agent</code></pre><p>命令放行对应目录，<a href="https://docs.fluentd.org/parser#how-to-use" class="external_link">参见</a>。</p><p>之后在 <code>/etc/td-agent/td-agent.conf</code> 配置文件中新增以下配置：</p><pre><code>&lt;source&gt;
+  @type tail
+  path /var/log/nginx/*access.log,/var/log/nginx/*access.log.1
+  pos_file /var/log/td-agent/httpd-access.log.pos
+  tag nginx.access
+  &lt;parse&gt;
+    @type nginx
+  &lt;/parse&gt;
+&lt;/source&gt;
+
+&lt;source&gt;
+  @type tail
+  path /var/log/nginx/*error.log,/var/log/nginx/*erroe.log.1
+  pos_file /var/log/td-agent/httpd-error.log.pos
+  tag nginx.error
+  &lt;parse&gt;
+    @type nginx
+  &lt;/parse&gt;
+&lt;/source&gt;</code></pre><p>然后 <code>systemctl restart td-agent</code> 重启应用。</p><p>其中一个小问题就是 <code>error</code> 日志会因为不能格式化而导致不能正确处理，当然只限 <code>error</code> 日志，所以就……眼不见为净了……反正这也算单独一个分类了……吧。</p><h3 id="网络传输">网络传输</h3><p>既然 <code>All in one</code>，自然要处理好其他主机的服务了， <code>Fluentd</code> 也自带一个 <code>http</code> 方式进行传输。</p><h4 id="主机">主机</h4><p>在 <code>/etc/td-agent/td-agent.conf</code> 配置文件中新增以下配置：</p><pre><code>&lt;source&gt;
+  @type http
+  port 9880
+  bind 127.0.0.1
+  body_size_limit 32m
+  keepalive_timeout 10s
+&lt;/source&gt;</code></pre><p>然后 <code>systemctl restart td-agent</code> 重启应用，再老调重弹之申请域名、指向域名、申请证书、反代 <code>9800</code> 端口。</p><h4 id="客机">客机</h4><p>在 <code>/etc/td-agent/td-agent.conf</code> 配置文件中新增以下配置：</p><pre><code>&lt;match **&gt;
+  @type http
+
+    endpoint https://申请的域名:443/api
+    open_timeout 3
+
+    &lt;format&gt;
+      @type json
+    &lt;/format&gt;
+    json_array true
+    &lt;buffer&gt;
+      flush_interval 10s
+    &lt;/buffer&gt;
+&lt;/match&gt;</code></pre><p>然后 <code>systemctl restart td-agent</code> 重启应用，</p><p>之后观察 <code>Kibana</code> 面板，发现有 <code>@logname</code> 为 <code>api</code> 的数据就算成功……这个 <code>logname</code> 发现不知道怎么改……算了，就当作区分不同机子了吧……</p><h2 id="总结">总结</h2><p>这么处理下来，就应该能愉快的探索自己产生的日志了，能够直接指定时间段和按属性过滤条目已经暴杀直接翻找日志文件的方式了……</p><p>感觉能摸索的地方还有挺多的呢，不用各种追踪脚本仅凭日志文件也能发现很多东西呢……</p><p>不过难受的点就是，<code>EFK</code> 名头那么大，但是相关文档真的很少（就算用英文搜索）……感觉自己在用一个过气项目的样子，不知道是不是我不得要领……</p><p>最后附张图，用面板五分钟就搭出来的看板,感觉还能再挖掘点东西呢。</p><p><img src="https://media.southfox.me/attachment/bafkreicf4fknbhjyqw5dgh5vgg5pfl6fx2bwiiw745pun7ap7zf3tzdqdy" alt="看板" /></p></div></div></main><div class="pagination"><a class="btn" href="/2022/04/搭建Matrix即时通信服务/">← 上一页</a><a class="btn" href="/"> 主页 </a><a class="btn" href="/2022/03/二二年三月梦记/">下一页 →</a></div><div class="comment"><blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote><script src="https://giscus.app/client.js" data-repo="SouthFox-D/SouthFox-D.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ=" data-category="博客评论" data-category-id="DIC_kwDODaJZAM4CA7bf" data-mapping="specific" data-term="2022/04/EFK-日志-All-in-one/" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async=""></script></div></div><div class="sidebar"><div class="widget"><h4>链接</h4><ul><li><a href="/friends/">友链</a></li><li><a href="https://www.travellings.cn/train.html">开往</a></li><li><a href="https://foreverblog.cn/go.html">虫洞</a></li><li><a href="/feed.xml">订阅（Atom)</a></li><li><a href="/rss2.xml">订阅（Rss)</a></li><li><a href="https://www.lisperati.com/logo.html"><img src="/assets/img/lisplogo_warning2_128.png" alt="Lisp logo warning" /></a></li><li><a href="https://www.fsf.org/appeal"><img src="/assets/img/6838639.png" alt="FSF appeal" /></a></li></ul><div><a href="https://xn--sr8hvo.ws/previous">←</a><a href="https://xn--sr8hvo.ws">IndieWeb Webring 💍</a><a href="https://xn--sr8hvo.ws/next">→</a></div><div><a href="https://fediring.net/previous?host=blog.southfox.me">←</a><a href="https://fediring.net">Fediring 💍</a><a href="https://fediring.net/next?host=blog.southfox.me">→</a></div></div><div class="widget"><h4>设置</h4><div><label for="font-select">字体设置：</label><select id="font-select"><option value="plain">普通</option><option value="zpix">像素</option></select></div></div><div class="widget"><h4>标签</h4><ul><li><a href="/tag/技术">技术</a></li></ul></div><div class="widget"><h4>目录</h4><ul><li><a href="#安装">安装</a></li><li><a href="#前期准备">前期准备</a></li><li><a href="#安装chrony">安装 chrony</a></li><li><a href="#调高文件描述符">调高文件描述符</a></li><li><a href="#其他">其他</a></li><li><a href="#安装Fluentd">安装 Fluentd</a></li><li><a href="#安装EK">安装 EK</a></li><li><a href="#配置">配置</a></li><li><a href="#Fluentd">Fluentd</a></li><li><a href="#Docker">Docker</a></li><li><a href="#Kibana">Kibana</a></li><li><a href="#额外">额外</a></li><li><a href="#Nginx">Nginx</a></li><li><a href="#网络传输">网络传输</a></li><li><a href="#主机">主机</a></li><li><a href="#客机">客机</a></li><li><a href="#总结">总结</a></li></ul></div></div></div><footer class="footer"><div class="copyright"><div><p>© SouthFox 2026 ,Font by <a href="https://github.com/SolidZORO/zpix-pixel-font">Zpix</a></p></div><div><p>Power by <a href="https://dthompson.us/projects/haunt.html">haunt</a> ,source can be found <a href="https://git.southfox.me/southfox/blog">here</a></p></div></div></footer></body></html>

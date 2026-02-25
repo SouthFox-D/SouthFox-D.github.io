@@ -1,0 +1,66 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta property="og:title" content="FoxThinking #13: 节气差异 — 狐狸反走矣" /><meta property="og:site_name" content="狐狸反走矣" /><meta property="og:image" content="https://blog.southfox.me/favicon.png" /><meta name="fediverse:creator" content="SouthFox@foxsay.southfox.me" /><title>FoxThinking #13: 节气差异 — 狐狸反走矣</title><link rel="me" href="https://foxsay.southfox.me/@SouthFox" /><link rel="me" href="https://codeberg.org/southfox" /><script src="/assets/js/lips.min.js"></script><link rel="stylesheet" href="/assets/css/main.css" /><script type="text/x-scheme">(let ((font (or (localStorage.getItem "font") "zpix")) (font-select (document.getElementById "font-select"))) (define (string=? a b) (== (a.cmp b) 0)) (define (loop-set options value) (let loop ((i 0)) (if (> i (- (length options) 1)) i (let ((option (get options i))) (if (string=? option.value value) (option.setAttribute "selected" #t) (loop (+ 1 i))))))) (define (set-font font-name) (localStorage.setItem "font" font-name) (document.documentElement.setAttribute "data-font" font-name) (if font-select (loop-set font-select.options font-name))) (font-select.addEventListener "change" (lambda (event) (set-font event.target.value))) (set-font font))</script><link rel="alternative" href="/feed.xml" title="狐狸反走矣" type="application/atom+xml" /><link rel="alternative" href="/rss2.xml" title="狐狸反走矣" type="application/rss+xml" /></head><body><nav class="nav"><a href="/" class="brand"><span>狐狸反走矣</span></a><input id="bmenub" type="checkbox" class="show" aria-label="open menu" /><label for="bmenub" class="burger pseudo button">☰</label><div class="menu"><a href="/archives/">归档</a><a href="/tags/">标签</a><a href="/search/">搜索</a><a href="/about/">关于</a></div></nav><div class="container flex"><div class="content"><main data-pagefind-body="true"><div><h2>FoxThinking #13: 节气差异</h2><h3>by SouthFox</h3><h3 data-pagefind-sort="date">2026-01-11</h3><div><p>我一直有一本小台历，每天出门都会把当天的那一页扯下来放到包里，所以对于节气这事我还是一直有留意到的。
+最近在想起源于黄河流域的二十四节气是不是一个带有定域性质（或者说中心主义）的发明呢？所以这周点了一
+点点数据科学的技能点用以分析其他区域和黄河流域节气的相关性。</p><span id="more"></span><h2 id="节气diff">节气 diff</h2><p>首先是要获取到数据，找寻了一番发现这家 <a href="https://open-meteo.com/" class="external_link">Free Open-Source Weather API | Open-Meteo.com</a> 服务挺不
+错的不需要 apikey 就能直接使用。没看到捐款通道，似乎是通过商业使用收费来维持运营。</p><p>使用时感叹这真是羡煞古人了，这种天文数据以前可是被精英权贵老登死守的，但在现在，一般路过爱好
+者就能得到。</p><p>得到数据后就要开始数据分析了，网上搜了搜看看两组数据的相关性怎么计算，看着蹦出来的皮尔逊相关系数、斯皮尔曼
+相关系数、切比雪夫距离相关概念让脑子都有点懵了。之后还是贯彻一下惰性求值学习法，先直接用上，背后的相关概念
+等之后有时间在琢磨吧。</p><p>实际执行上就直接选择用 python 这边的生态了，就算我这个数据科学门外汉也听说过 <code>pandas</code> 和 <code>scipy</code> 这两个
+包。不过对于语言我就选择使用 <code>hylang</code> 了，因为我已经离不开 <code>-&gt;</code> 了，现在分析功能代码是这样子 <sup><a href="#1" id="1r">1</a></sup> 。</p><pre><code><span class="syntax-open">(</span><span class="syntax-special">defn</span> <span class="syntax-symbol">analyze</span> <span class="syntax-open">[</span><span class="syntax-symbol">df-a</span> <span class="syntax-symbol">df-b</span> <span class="syntax-symbol">lag</span><span class="syntax-close">]</span>
+  <span class="syntax-open">(</span><span class="syntax-special">let</span> <span class="syntax-open">[</span><span class="syntax-symbol">combined</span> <span class="syntax-open">(</span><span class="syntax-symbol">pd.concat</span> <span class="syntax-open">[</span><span class="syntax-open">(</span><span class="syntax-symbol">.rename</span> <span class="syntax-symbol">df-a</span> <span class="syntax-keyword">:columns</span> <span class="syntax-open">{</span><span class="syntax-string">&quot;temperature_2m_mean&quot;</span> <span class="syntax-string">&quot;dengfeng&quot;</span><span class="syntax-close">}</span><span class="syntax-close">)</span>
+                             <span class="syntax-open">(</span><span class="syntax-symbol">.rename</span> <span class="syntax-symbol">df-b</span> <span class="syntax-keyword">:columns</span> <span class="syntax-open">{</span><span class="syntax-string">&quot;temperature_2m_mean&quot;</span> <span class="syntax-string">&quot;local&quot;</span><span class="syntax-close">}</span><span class="syntax-close">)</span><span class="syntax-close">]</span>
+                            <span class="syntax-keyword">:axis</span> <span class="syntax-symbol">1</span><span class="syntax-close">)</span><span class="syntax-close">]</span>
+    <span class="syntax-open">(</span><span class="syntax-symbol">for</span> <span class="syntax-open">[</span><span class="syntax-symbol">day</span> <span class="syntax-open">(</span><span class="syntax-symbol">range</span> <span class="syntax-open">(</span><span class="syntax-symbol">-</span> <span class="syntax-symbol">lag</span><span class="syntax-close">)</span> <span class="syntax-open">(</span><span class="syntax-symbol">+</span> <span class="syntax-symbol">lag</span> <span class="syntax-symbol">1</span><span class="syntax-close">)</span><span class="syntax-close">)</span><span class="syntax-close">]</span>
+      <span class="syntax-open">(</span><span class="syntax-special">let</span> <span class="syntax-open">[</span><span class="syntax-symbol">shifted</span> <span class="syntax-open">(</span><span class="syntax-symbol">.shift</span> <span class="syntax-open">(</span><span class="syntax-symbol">get</span> <span class="syntax-symbol">combined</span> <span class="syntax-string">&quot;dengfeng&quot;</span><span class="syntax-close">)</span> <span class="syntax-symbol">day</span><span class="syntax-close">)</span>
+            <span class="syntax-symbol">correlation</span> <span class="syntax-open">(</span><span class="syntax-symbol">.corr</span> <span class="syntax-symbol">shifted</span> <span class="syntax-open">(</span><span class="syntax-symbol">get</span> <span class="syntax-symbol">combined</span> <span class="syntax-string">&quot;local&quot;</span><span class="syntax-close">)</span> <span class="syntax-keyword">:method</span> <span class="syntax-string">&quot;spearman&quot;</span><span class="syntax-close">)</span><span class="syntax-close">]</span>
+        <span class="syntax-open">(</span><span class="syntax-symbol">print</span> <span class="syntax-symbol">f&quot;登封</span> <span class="syntax-open">{</span><span class="syntax-symbol">day</span><span class="syntax-close">}</span> <span class="syntax-symbol">天对比</span> <span class="syntax-symbol">local:</span> <span class="syntax-open">{</span><span class="syntax-open">(</span><span class="syntax-symbol">.round</span> <span class="syntax-symbol">correlation</span> <span class="syntax-symbol">6</span><span class="syntax-close">)</span><span class="syntax-close">}</span><span class="syntax-string">&quot;)))))</span></code></pre><p>节气的基准位置根据周礼选择了登封观星台（经纬度 113.15 34.41），其它地方的经纬度可以通过 <a href="https://lbs.baidu.com/maptool/getpoint" class="external_link">百度地图-坐标拾取器</a> 网页
+应用选择。</p><p>然后是小小地分析一下数据：</p><pre><code># 呼和浩特
+└&gt; hy main.hy 111.76 40.85
+登封 -5 天对比 local: 0.91145
+登封 -4 天对比 local: 0.916761
+登封 -3 天对比 local: 0.925061
+登封 -2 天对比 local: 0.938778
+登封 -1 天对比 local: 0.953031
+登封 0 天对比 local: 0.953127
+登封 1 天对比 local: 0.942574
+登封 2 天对比 local: 0.932105
+登封 3 天对比 local: 0.922881
+登封 4 天对比 local: 0.916365
+登封 5 天对比 local: 0.912312
+# 广州
+└&gt; hy main.hy 113.27 23.14
+登封 -5 天对比 local: 0.811673
+登封 -4 天对比 local: 0.813528
+登封 -3 天对比 local: 0.81591
+登封 -2 天对比 local: 0.821631
+登封 -1 天对比 local: 0.834465
+登封 0 天对比 local: 0.854958
+登封 1 天对比 local: 0.87554
+登封 2 天对比 local: 0.885265
+登封 3 天对比 local: 0.884418
+登封 4 天对比 local: 0.878219
+登封 5 天对比 local: 0.870845
+# 墨尔本
+└&gt; hy main.hy 144.96 -37.81
+登封 -5 天对比 local: -0.766436
+登封 -4 天对比 local: -0.769177
+登封 -3 天对比 local: -0.773481
+登封 -2 天对比 local: -0.776808
+登封 -1 天对比 local: -0.776486
+登封 0 天对比 local: -0.77903
+登封 1 天对比 local: -0.782412
+登封 2 天对比 local: -0.782192
+登封 3 天对比 local: -0.778759
+登封 4 天对比 local: -0.77587
+登封 5 天对比 local: -0.775106</code></pre><p>可以看到虽然只是用了简单的 <code>corr</code> 函数粗暴分析两组数据，但也是说得通的。呼和浩特在 -1 天的时候和登封气温相关度
+最高；广州在 +2 天的时候和登封的气温相关度最高；墨尔本总体和登封呈现负相关。这意味着冷空气确实是以呼和浩特（-1）-&gt;登
+封-&gt;广州（+2）的顺序推行的，墨尔本因为处在南半球确实体现出了夏冬季节翻转的状况。</p><p>这个分析虽然较小又简单，不过确实揭露出了一些东西，之后能完善的话或许我可以加上光照降雨的数据或者加上一个指定节气天数附近
+更精确的对比，不过这个就要求我砸更多技能点到数据科学上了……</p><h2 id="阅读">阅读</h2><ul><li><a href="https://www.shipmap.org/" class="external_link">Shipmap.org | Visualisation of Global Cargo Ships | By Kiln and UCL</a></li><li><a href="https://openinframap.org" class="external_link">Open Infrastructure Map</a></li></ul><p>看 Hacker News 发现的两个地图应用，一个是轮船货运地图和基础设施地图，感觉数据科学技能点后对这些就更感兴趣了，这里面肯定有什么
+东西藏着，只待我日后发现……</p><ul><li><a href="https://www.infoq.cn/article/RTBuRxfOS4iP6NQCwF8k" class="external_link">离职工程师举报Uber Eats算法系统剥削外卖员，一天后竟被爆出帖子是AI编的？ - InfoQ</a>: 写得慢的好处就是可以等反转。鉴于
+不公开的系统就是一个黑盒，对黑盒猜忌也是不可避免的。我们需要一个对算法有（哪怕只是有限度的）披露的世界。</li><li><p><a href="https://realfood.gov/" class="external_link">Eat Real Food</a></p><ul><li><a href="https://news.ycombinator.com/item?id=46529237" class="external_link">Eat Real Food | Hacker News</a>: 前面三四个讨论串均有两百多个帖子，这就是血流成河吗，真是太有聊了。</li></ul></li><li><a href="https://www.webdesignmuseum.org/exhibitions/video-game-websites-in-the-early-00s" class="external_link">Video Game Websites in the early 00s - Web Design Museum</a>: 千禧年的网站设计和现在比确实大不同，不知道
+现在「圆角简洁现代风」久了后网站设计会不会又往这种繁杂元素堆砌的风格靠近。</li><li><a href="https://www.cs.cmu.edu/~pavlo/blog/2026/01/2025-databases-retrospective.html" class="external_link">Databases in 2025: A Year in Review // Blog // Andy Pavlo</a>: 数据库领域的二五年的年度
+回顾，=\o/= PostgreSQL <code>\o/</code> ！ <code>\o/</code> PostgreSQL <code>\o/</code> ！</li><li><a href="https://addyosmani.com/blog/21-lessons/" class="external_link">AddyOsmani.com - 21 Lessons From 14 Years at Google</a>: Focus on what you can control. Ignore what
+you can’t ，这条准则咋感觉和斯多葛哲学那么像呢。</li><li><p><a href="https://tonsky.me/blog/tahoe-icons/" class="external_link">It’s hard to justify Tahoe icons @ tonsky.me</a>: 我看着 macOS Tahoe 这设计感想是：幸好我不用，否则便样
+衰了。虽然我现在大部分操作都通过模糊搜索一个命令来完成操作但我也不否认 GUI 的重要性，不过这 macOS Tahoe 的 UI 设计
+确实很难评啊。</p><ul><li><p><a href="https://nptr.cc/posts/2026-01/tonsky-tahoe/" class="external_link">Tahoe 的图标令人难评 - Cyberia</a>: 中文翻译</p></li></ul></li></ul><h2 id="Presentday,Presenttime">Present day, Present time</h2><p>这周做的都是一些修修补补的工作，将去年写得一些项目翻出来更下依赖或者修几个 BUG 。周二突发奇想买了台磁带播放机（型号：
+索尼 walkman GX677），周末到手后也是「美美把玩」了下，应该可以为折腾磁带的事写篇博文，写完博文我就去写年终总结
+了，真的！</p><h2 id="脚注">脚注</h2><p><sup><a href="#1r" id="1">1</a></sup> 完整代码：<a href="https://git.southfox.me/southfox/solar-term-diff" class="external_link">southfox/solar-term-diff - Gitea: Git with a cup of tea</a></p></div></div></main><div class="pagination"><a class="btn" href="/2026/01/cassette-player-in-2026/">← 上一页</a><a class="btn" href="/"> 主页 </a><a class="btn" href="/2026/01/fox-thinking-12/">下一页 →</a></div><div class="comment"><blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote><script src="https://giscus.app/client.js" data-repo="SouthFox-D/SouthFox-D.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ=" data-category="博客评论" data-category-id="DIC_kwDODaJZAM4CA7bf" data-mapping="specific" data-term="2026/01/fox-thinking-13/" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async=""></script></div></div><div class="sidebar"><div class="widget"><h4>链接</h4><ul><li><a href="/friends/">友链</a></li><li><a href="https://www.travellings.cn/train.html">开往</a></li><li><a href="https://foreverblog.cn/go.html">虫洞</a></li><li><a href="/feed.xml">订阅（Atom)</a></li><li><a href="/rss2.xml">订阅（Rss)</a></li><li><a href="https://www.lisperati.com/logo.html"><img src="/assets/img/lisplogo_warning2_128.png" alt="Lisp logo warning" /></a></li><li><a href="https://www.fsf.org/appeal"><img src="/assets/img/6838639.png" alt="FSF appeal" /></a></li></ul><div><a href="https://xn--sr8hvo.ws/previous">←</a><a href="https://xn--sr8hvo.ws">IndieWeb Webring 💍</a><a href="https://xn--sr8hvo.ws/next">→</a></div><div><a href="https://fediring.net/previous?host=blog.southfox.me">←</a><a href="https://fediring.net">Fediring 💍</a><a href="https://fediring.net/next?host=blog.southfox.me">→</a></div></div><div class="widget"><h4>设置</h4><div><label for="font-select">字体设置：</label><select id="font-select"><option value="plain">普通</option><option value="zpix">像素</option></select></div></div><div class="widget"><h4>标签</h4><ul><li><a href="/tag/FoxThinking">FoxThinking</a></li></ul></div><div class="widget"><h4>目录</h4><ul><li><a href="#节气diff">节气 diff</a></li><li><a href="#阅读">阅读</a></li><li><a href="#Presentday,Presenttime">Present day, Present time</a></li><li><a href="#脚注">脚注</a></li></ul></div></div></div><footer class="footer"><div class="copyright"><div><p>© SouthFox 2026 ,Font by <a href="https://github.com/SolidZORO/zpix-pixel-font">Zpix</a></p></div><div><p>Power by <a href="https://dthompson.us/projects/haunt.html">haunt</a> ,source can be found <a href="https://git.southfox.me/southfox/blog">here</a></p></div></div></footer></body></html>

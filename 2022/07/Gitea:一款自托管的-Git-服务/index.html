@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta property="og:title" content="Gitea:一款自托管的 Git 服务 — 狐狸反走矣" /><meta property="og:site_name" content="狐狸反走矣" /><meta property="og:image" content="https://blog.southfox.me/favicon.png" /><meta name="fediverse:creator" content="SouthFox@foxsay.southfox.me" /><title>Gitea:一款自托管的 Git 服务 — 狐狸反走矣</title><link rel="me" href="https://foxsay.southfox.me/@SouthFox" /><link rel="me" href="https://codeberg.org/southfox" /><script src="/assets/js/lips.min.js"></script><link rel="stylesheet" href="/assets/css/main.css" /><script type="text/x-scheme">(let ((font (or (localStorage.getItem "font") "zpix")) (font-select (document.getElementById "font-select"))) (define (string=? a b) (== (a.cmp b) 0)) (define (loop-set options value) (let loop ((i 0)) (if (> i (- (length options) 1)) i (let ((option (get options i))) (if (string=? option.value value) (option.setAttribute "selected" #t) (loop (+ 1 i))))))) (define (set-font font-name) (localStorage.setItem "font" font-name) (document.documentElement.setAttribute "data-font" font-name) (if font-select (loop-set font-select.options font-name))) (font-select.addEventListener "change" (lambda (event) (set-font event.target.value))) (set-font font))</script><link rel="alternative" href="/feed.xml" title="狐狸反走矣" type="application/atom+xml" /><link rel="alternative" href="/rss2.xml" title="狐狸反走矣" type="application/rss+xml" /></head><body><nav class="nav"><a href="/" class="brand"><span>狐狸反走矣</span></a><input id="bmenub" type="checkbox" class="show" aria-label="open menu" /><label for="bmenub" class="burger pseudo button">☰</label><div class="menu"><a href="/archives/">归档</a><a href="/tags/">标签</a><a href="/search/">搜索</a><a href="/about/">关于</a></div></nav><div class="container flex"><div class="content"><main data-pagefind-body="true"><div><h2>Gitea:一款自托管的 Git 服务</h2><h3>by SouthFox</h3><h3 data-pagefind-sort="date">2022-07-17</h3><div><p>别忘了泡上一杯茶！</p><span id="more"></span><h2 id="绕不开的存在">绕不开的存在</h2><p>当然，谈到 <code>Git</code> 服务时，肯定绕不过 <code>GitHub</code> 。为什么要大费周章自建呢？<code>GitHub</code> 不好吗？</p><p>是很好，但是也没那么好，因为：</p><ul><li><code>GitHub</code> 是一家商业公司，那么首先盈利肯定是首要目的，为了不倒闭，指不准未来哪天就变质了。</li><li>同上，如果还是个自由软件爱好者的话，想必 <code>GitHub</code> 最近一些事件带来的臭味也不必我再提了……</li><li><code>Git</code> 是分布式的，那么选择同样也是……不知道现在还有多少人还傻傻认为 <code>Git</code> 和 <code>GitHub</code> 是一体的呢？</li></ul><p>也可参见 <a href="https://sfconservancy.org/GiveUpGitHub/" class="external_link">GiveUpGitHub</a> 一文章。</p><h2 id="Gitea">Gitea</h2><p><code>Gitea</code> 是一个用 <code>Go</code> 编写、面向自建的、轻量级的 <code>Git</code> 服务。其安装十分便捷，直接下载个可执行文件也可快速搭建起来，当然为了后续跟其它服务联动，还是用 <code>docker-compose</code> 方便点。</p><p>话不多说，新建一个文件夹然后往里建 <code>docker-compose.yml</code> 文件并写入以下配置：</p><pre><code>version: &quot;3.7&quot;
+
+services:
+  gitea:
+    image: gitea/gitea:latest
+    container_name: gitea
+    restart: unless-stopped
+    environment:
+      - USER_UID=1000
+      - USER_GID=1000
+    volumes:
+      - ./data/gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - &quot;127.0.0.1:3000:3000&quot;
+      - &quot;2222:22&quot;
+    networks:
+      - cicd_net
+
+  drone:
+    container_name: drone
+    image: drone/drone:latest
+    restart: unless-stopped
+    depends_on:
+      - gitea
+    environment:
+      # https://docs.drone.io/server/provider/gitea/
+      - DRONE_DATABASE_DRIVER=sqlite3
+      - DRONE_DATABASE_DATASOURCE=/data/database.sqlite
+      - DRONE_GITEA_SERVER=https://my.git.server/
+      - DRONE_GIT_ALWAYS_AUTH=false
+      - DRONE_RPC_SECRET=changeme...
+      - DRONE_SERVER_PROTO=https
+      - DRONE_SERVER_HOST=https://cicd.git.server
+      - DRONE_GITEA_CLIENT_ID=changeme...
+      - DRONE_GITEA_CLIENT_SECRET=changeme...
+    ports:
+      - &quot;127.0.0.1:3001:80&quot;
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data/drone:/data
+    networks:
+      - cicd_net
+
+  drone-runner:
+    container_name: drone-runner
+    image: drone/drone-runner-docker:latest
+    restart: unless-stopped
+    depends_on:
+      - drone
+    environment:
+      # https://docs.drone.io/runner/docker/installation/linux/
+      # https://docs.drone.io/server/metrics/
+      - DRONE_RPC_PROTO=http
+      - DRONE_RPC_HOST=drone
+      - DRONE_RPC_SECRET=changeme...
+      - DRONE_RUNNER_NAME=&quot;action-runner&quot;
+      - DRONE_RUNNER_CAPACITY=2
+      - DRONE_RUNNER_NETWORKS=cicd_net
+      - DRONE_DEBUG=false
+      - DRONE_TRACE=false
+    networks:
+      - cicd_net
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  cicd_net:
+    name: cicd_net</code></pre><p>因为预想场景是私人自用，所以选择了 <code>SQlite3</code> 数据库，觉得别扭可以自己改掉……</p><p>然后准备两个域名，这里用 <code>my.git.server</code> 域名指定用来运行 <code>Gitea</code> 服务的域名，一个 <code>cicd.git.server</code> 域名用来指定运行后续的自动构建服务的域名（可选）。</p><p>首先为 <code>my.git.server</code> 域名设定<code>DNS</code> 后申请证书，<code>certbot certonly --nginx -d my.git.server</code></p><p>，申请后写入 <code>nginx</code> 配置：</p><pre><code>#不要忘了替换成自己的域名
+server {
+    listen 80;
+    listen [::]:80;
+    server_name my.git.server;
+
+    location /.well-known/acme-challenge {}
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+    server_name my.git.server;
+
+    access_log  /var/log/nginx/access.log;
+    #root /home/plume/Plume/ ;
+
+    ssl_certificate /etc/letsencrypt/live/my.git.server/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/my.git.server/privkey.pem;
+
+    # for ssl conf: https://cipherli.st/
+    ssl_protocols TLSv1.2 TLSv1.3;# Requires nginx &gt;= 1.13.0 else use TLSv1.2
+    ssl_prefer_server_ciphers on;
+    ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;# openssl dhparam -out /etc/letsencrypt/ssl-dhparam.pem 4096
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
+    ssl_ecdh_curve secp384r1; # Requires nginx &gt;= 1.1.0
+    ssl_session_timeout  10m;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets off; # Requires nginx &gt;= 1.5.9
+    ssl_stapling on; # Requires nginx &gt;= 1.3.7
+    ssl_stapling_verify on; # Requires nginx =&gt; 1.3.7
+    resolver 9.9.9.9 80.67.169.12 valid=300s;
+    resolver_timeout 5s;
+    add_header Strict-Transport-Security &quot;max-age=63072000; includeSubDomains; preload&quot;;
+    add_header X-Frame-Options DENY;
+    add_header X-Content-Type-Options nosniff;
+    add_header X-XSS-Protection &quot;1; mode=block&quot;;
+    #如果不想显示外链图片可把 img-src 一栏改掉
+    add_header Content-Security-Policy &quot;default-src 'self'; img-src *; frame-ancestors 'self'; frame-src https:&quot;;
+
+    location / {
+        proxy_pass http://localhost:3000/;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        client_max_body_size 50m;
+    }
+}</code></pre><p>之后 <code>nginx -s reload</code> 重载配置，然后 <code>docker-compose up -d gitea</code> 把 <code>Gitea</code> 服务启动，之后前往 <code>my.git.server</code> 地址进行配置并新建一个管理员账户。</p><h3 id="Drone">Drone</h3><p>到此服务就基本可用了，但是我相信很多人割舍不下 <code>GitHub</code> 的一个原因就是因为它的 <code>Actions</code> 很香。不过可以选择 <code>Drone</code> ，一个同样用 <code>GO</code> 编写的、轻量级的自动构建服务，也可以让体验往 <code>GitHub Actions</code> 靠拢。</p><p>首先为 <code>cicd.git.server</code> 域名申请证书并写入 <code>nginx</code> 配置文件，配置文件可复用上面的，只需要更改相关域名和 <code>nginx</code> 配置文件里的 <code>location /</code> 里的 <code>proxy_pass</code> 端口号就行（本例子是 <code>3001</code>）。</p><p>之后为 <code>Drone</code> 和 <code>Gitea</code> 联动做准备，登陆自己 <code>Gitea</code> 实例的帐号→设置→应用→创建新的 OAuth2 应用程序，应用名称随意填（本例子填 drone），重定向 URI 填入 <code>https://cicd.git.server/login</code> （替换成自己的域名）。</p><p>点击创建应用→会生成一个客户端 ID 和一个客户端密钥→替换到上述 <code>docker-compose.yml</code> 里 <code>drone</code> 一栏的 <code>DRONE_GITEA_CLIENT_ID</code> 和 <code>DRONE_GITEA_CLIENT_SECRET</code> 。</p><p>之后再使用 <code>openssl rand -hex 16</code> 命令生成一串随机字符串给 <code>DRONE_RPC_SECRET</code> 使用（有两个地方需要替换）。</p><p>确认无误后使用 <code>docker-compose up -d</code> 启动全部服务，之后前往 <code>https://cicd.git.server</code> 地址查看是否正常运行，是的话点击登陆，看是否能够和 <code>Gitea</code> 进行联动，如果显示错误请检查是否与上述配置一致（例如我之前就遇到了无法验证的错误，排查后发现是某个路径多带了一个 <code>/</code> 导致之后生成的验证路径出错，去掉 <code>/</code> 之后就正常了）。</p><h3 id="仓库操作">仓库操作</h3><p>因为宿主机的 <code>22</code> 端口已被占用，所以克隆或者 <code>PUSH</code> 仓库使用的端口应该为 <code>2222</code>，觉得别扭也有其他教程教如何与宿主机共用端口，我就不折腾了（反正 <code>Just work!</code> ）。</p><p>还有如果为网站使用了 <code>Cloudflare</code> 之类的 <code>CDN</code> 服务的话，那么 <code>SSH</code> 协议也是不能用的，得用网站域名下的真实 <code>IP</code> 地址克隆或 <code>PUSH</code> 仓库。</p><p>如果像我什么都没改的话，想要克隆仓库就会得到这么一个奇怪的地址：</p><p><code>git clone ssh://git@机子真实IP:2222/用户名/仓库名.git</code></p><p>反正 <code>Just work</code>  ！</p><h3 id="一个案例">一个案例</h3><p>那么接下来就讲讲我用这套服务的案例吧，自动生成文件并推送一个 <code>HUGO</code> 博客。</p><p>首先为仓库根目录写下 <code>.drone.yml</code> 文件：</p><pre><code>kind: pipeline
+name: build
+
+steps:
+- name: build
+  image: klakegg/hugo:alpine
+  commands:
+  - hugo
+
+- name: deploy
+  image: node
+  environment:
+    CLOUDFLARE_API_TOKEN:
+      from_secret: api_token
+    CLOUDFLARE_ACCOUNT_ID:
+      from_secret: account_id
+  commands:
+  - npm install -g wrangler
+  - npx wrangler pages publish public --project-name 项目名 --commit-dirty=true</code></pre><p>可以见到和 <code>GitHub Actions</code> 的配置还是挺像的，琢磨琢磨还是挺快上手的。</p><p>其中 <code>steps</code> 指定了所需步骤，<code>image</code> 指定了需要什么样的 <code>docker</code> 镜像，第一栏拉取了 <code>klakegg/hugo</code> 镜像并使用 <code>hugo</code> 命令生成静态文件。</p><p>之后是 <code>deploy</code> 一栏里的 <code>environment</code> ，像 <code>GitHub</code> 一样，密钥相关可以使用 <code>secret</code> 功能导入到环境变量中，可在自己的 <code>cicd.git.server</code> →相关仓库→ <code>Settings</code> → <code>Secrets</code> 里进行导入。</p><p>接下来使用 <code>node</code> 镜像安装了个 <code>wrangler</code> 包，这是 <code>Cloudflare Pages</code> 部署要用的，如果也用 <code>Cloudflare Pages</code> 部署的话可以参考:</p><p><a href="https://developers.cloudflare.com/workers/wrangler/commands/#pages" class="external_link">Wrangler pages commands</a></p><p><a href="https://developers.cloudflare.com/workers/wrangler/ci-cd/" class="external_link">Running Wrangler in CI/CD</a></p><p>PS：不得不吐槽相关操作首先必须要用 <code>project create</code> 命令里的 <code>--production-branch</code> 显式指定部署分支否则接下来的部署都会被识别为预览而不会真正部署到……被这个坑卡了好一会……</p><p>之后再进行相关操作后应该能看见自己 <code>Gitea</code> 实例也有小绿勾了（小红叉也行，至少证实自动部署服务有在用了）！</p><h3 id="加主题">加主题</h3><p>默认主题还挺程序员风格的，既然都自建了，肯定要加点主题快乐一下了。</p><p>以<a href="https://codeberg.org/Freeplay/Gitea-Modern/" class="external_link">现代主题</a>为例。</p><p>如果是以上面的配置文件搭建起来的话要在自己文件夹下找到 <code>./data/gitea/gitea</code> 路径，并在里头新建 <code>public/css</code> 下 <code>wget https://codeberg.org/Freeplay/Gitea-Modern/raw/branch/main/Gitea/theme-gitea-modern.css</code>  获取主题文件。</p><p>之后再编辑 <code>./data/gitea/gitea/conf/app.ini</code> 文件，在最后面加上：</p><pre><code>请自己想象下……
+因为现在我服务器炸了……</code></pre><p>之后再用 <code>docker-compose down</code>  和 <code>docker-compose up -d</code> 重启服务。</p><h3 id="安全">安全</h3><p>如果没有相关要求，请务必关闭实例的注册功能。</p><p>参见，<a href="https://imlonghao.com/59.html" class="external_link">记一次自建 Gitea + Drone 实例被挖矿的经历</a></p><p>也是修改 <code>./data/gitea/gitea/conf/app.ini</code> 里的：</p><pre><code>请自己查阅……
+因为我现在服务器炸了</code></pre><p>之后再用 <code>docker-compose down</code>  和 <code>docker-compose up -d</code> 重启服务，然后再检查站点是否关闭了注册入口。</p><h3 id="参考">参考</h3><p><a href="https://blog.ruanbekker.com/blog/2021/03/09/cicd-with-droneci-and-gitea-using-docker-compose/" class="external_link">CICD With DroneCI and Gitea Using Docker Compose</a></p><p><a href="https://docs.gitea.io/en-us/" class="external_link">Gitea Docs</a></p><p><a href="https://docs.drone.io/" class="external_link">Drone Docs</a></p><p><a href="https://tech.ray247k.com/blog/202106-drone-cicd-3-advanced-cron-job/" class="external_link">透過 Drone 建立自動部署流程，部署排程設定與權限管理 - 薛丁格的工程師</a></p></div></div></main><div class="pagination"><a class="btn" href="/2022/08/如何改变自己/">← 上一页</a><a class="btn" href="/"> 主页 </a><a class="btn" href="/2022/06/二二年六月梦记/">下一页 →</a></div><div class="comment"><blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote><script src="https://giscus.app/client.js" data-repo="SouthFox-D/SouthFox-D.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ=" data-category="博客评论" data-category-id="DIC_kwDODaJZAM4CA7bf" data-mapping="specific" data-term="2022/07/Gitea:一款自托管的-Git-服务/" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async=""></script></div></div><div class="sidebar"><div class="widget"><h4>链接</h4><ul><li><a href="/friends/">友链</a></li><li><a href="https://www.travellings.cn/train.html">开往</a></li><li><a href="https://foreverblog.cn/go.html">虫洞</a></li><li><a href="/feed.xml">订阅（Atom)</a></li><li><a href="/rss2.xml">订阅（Rss)</a></li><li><a href="https://www.lisperati.com/logo.html"><img src="/assets/img/lisplogo_warning2_128.png" alt="Lisp logo warning" /></a></li><li><a href="https://www.fsf.org/appeal"><img src="/assets/img/6838639.png" alt="FSF appeal" /></a></li></ul><div><a href="https://xn--sr8hvo.ws/previous">←</a><a href="https://xn--sr8hvo.ws">IndieWeb Webring 💍</a><a href="https://xn--sr8hvo.ws/next">→</a></div><div><a href="https://fediring.net/previous?host=blog.southfox.me">←</a><a href="https://fediring.net">Fediring 💍</a><a href="https://fediring.net/next?host=blog.southfox.me">→</a></div></div><div class="widget"><h4>设置</h4><div><label for="font-select">字体设置：</label><select id="font-select"><option value="plain">普通</option><option value="zpix">像素</option></select></div></div><div class="widget"><h4>标签</h4><ul><li><a href="/tag/技术">技术</a></li><li><a href="/tag/自托管">自托管</a></li></ul></div><div class="widget"><h4>目录</h4><ul><li><a href="#绕不开的存在">绕不开的存在</a></li><li><a href="#Gitea">Gitea</a></li><li><a href="#Drone">Drone</a></li><li><a href="#仓库操作">仓库操作</a></li><li><a href="#一个案例">一个案例</a></li><li><a href="#加主题">加主题</a></li><li><a href="#安全">安全</a></li><li><a href="#参考">参考</a></li></ul></div></div></div><footer class="footer"><div class="copyright"><div><p>© SouthFox 2026 ,Font by <a href="https://github.com/SolidZORO/zpix-pixel-font">Zpix</a></p></div><div><p>Power by <a href="https://dthompson.us/projects/haunt.html">haunt</a> ,source can be found <a href="https://git.southfox.me/southfox/blog">here</a></p></div></div></footer></body></html>

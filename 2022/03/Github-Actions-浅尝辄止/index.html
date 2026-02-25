@@ -1,0 +1,85 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta property="og:title" content="Github Actions 浅尝辄止 — 狐狸反走矣" /><meta property="og:site_name" content="狐狸反走矣" /><meta property="og:image" content="https://blog.southfox.me/favicon.png" /><meta name="fediverse:creator" content="SouthFox@foxsay.southfox.me" /><title>Github Actions 浅尝辄止 — 狐狸反走矣</title><link rel="me" href="https://foxsay.southfox.me/@SouthFox" /><link rel="me" href="https://codeberg.org/southfox" /><script src="/assets/js/lips.min.js"></script><link rel="stylesheet" href="/assets/css/main.css" /><script type="text/x-scheme">(let ((font (or (localStorage.getItem "font") "zpix")) (font-select (document.getElementById "font-select"))) (define (string=? a b) (== (a.cmp b) 0)) (define (loop-set options value) (let loop ((i 0)) (if (> i (- (length options) 1)) i (let ((option (get options i))) (if (string=? option.value value) (option.setAttribute "selected" #t) (loop (+ 1 i))))))) (define (set-font font-name) (localStorage.setItem "font" font-name) (document.documentElement.setAttribute "data-font" font-name) (if font-select (loop-set font-select.options font-name))) (font-select.addEventListener "change" (lambda (event) (set-font event.target.value))) (set-font font))</script><link rel="alternative" href="/feed.xml" title="狐狸反走矣" type="application/atom+xml" /><link rel="alternative" href="/rss2.xml" title="狐狸反走矣" type="application/rss+xml" /></head><body><nav class="nav"><a href="/" class="brand"><span>狐狸反走矣</span></a><input id="bmenub" type="checkbox" class="show" aria-label="open menu" /><label for="bmenub" class="burger pseudo button">☰</label><div class="menu"><a href="/archives/">归档</a><a href="/tags/">标签</a><a href="/search/">搜索</a><a href="/about/">关于</a></div></nav><div class="container flex"><div class="content"><main data-pagefind-body="true"><div><h2>Github Actions 浅尝辄止</h2><h3>by SouthFox</h3><h3 data-pagefind-sort="date">2022-03-07</h3><div><p>免费送！免费送！微软电脑免费送啦！</p><span id="more"></span><p>自从 <code>GitHub</code> 被微软收购以后确实是有钱了啊，<code>GitHub Actions</code> 公开仓库竟然可以免费用（私有仓库也有三千分钟时间）。</p><p>什么？不知道 <code>GitHub Actions</code> 是什么？</p><p>简单来说就是提前写好对应的配置文件，那么 <code>GitHub</code> 就会在满足条件时分配电脑执行对应的配置文件，配置文件可以包含命令或者引用其他人写好的配置文件……所以这如同有一台真实的服务器一般强大。</p><p>本来呢，这种服务是为了方便一众开源应用测试和编译的，但是被一众羊毛党薅出花来了……什么自动签到啦、生成订阅源啦、推送消息啦等等等等，这些「奇技淫巧」可以在各家推荐专栏找到，有兴趣可以自己去找一下。</p><p>还是说说我拿 <code>GitHub Actions</code> 来干什么吧。</p><h2 id="Hexo自动部署">Hexo 自动部署</h2><p>如果经管着一个静态博客那么这功能是刚需了吧，毕竟如果想在移动设备或者不方便安装环境的公用电脑上写作的话，那么让 <code>Actions</code> 进行生成静态页面和部署是一个优秀的选择。</p><h3 id="生成Personalaccesstokens">生成 Personal access tokens</h3><p>因为分配的机器是一个干净的环境，并没有操作对应 <code>GitHub</code> 仓库的能力，为了做到登陆，首先需要生成一个 <code>access tokens</code> 。（当然也可以用私钥认证，但是感觉麻烦就没用这方式……）</p><p>首先到 <a href="https://github.com/settings/tokens" class="external_link">GitHub 配置页</a> 点击 <code>Generate new token</code> 按钮，输入密码认证后跳转到对应页面。</p><p><code>Note</code> 填写一个便于理解的名称，我这边是用来自动部署 <code>Hexo</code> 博客就写 <code>HEXO_DEPLOY</code> 。</p><p>然后选择过期日期（<code>Expiration</code>），如果不嫌麻烦并确信自己不会忘记更换，那么可以设置一年两年的过期时限，否则懒人就选永不过期吧（ <code>No expiration</code>）吧……</p><p>然后在权限范围（<code>Select scopes</code>）栏里勾选 <code>repo</code> 框（如果能明确对应权限是干嘛的也可以只勾选需要的权限）。</p><p>然后点击生成按钮(<code>Generate token</code>)生成一个新的 <code>access tokens</code> ，这个页面只显示一次，所以不要关闭窗口！</p><h3 id="设置Actionssecrets">设置 Actions secrets</h3><p>除非你是私有仓库，那么运行 <code>actions</code> 的配置文件和所有输出对所有人都是可见的，为了安全，要自己设定一个<code>Actions secrets</code> 隐藏相关的 <code>token</code> 。</p><p>新开一个页面，到存储 <code>Hexo</code> 博客文件的仓库， <code>Settins -&gt; Secrets -&gt; Actions -&gt; 点击 New repository secret 按钮</code> ，然后新页面 <code>Name</code> 填写便于理解的名称 ，我这边是用来自动部署 <code>Hexo</code> 博客就写 <code>HEXO_DEPLOY</code> 。值（<code>Value</code>）里填写上一步 <code>Generate token</code> 生成的 <code>token</code> ，然后点击 <code>Add secret</code> 保存 <code>secrets</code> 。</p><h3 id="编写配置文件">编写配置文件</h3><p>做好前期工作后就到激动人心的写配置时间喽。</p><p>首先在 <code>Git</code> 仓库根目录下新建一个 <code>.github</code> 文件夹，然后再在里面新建一个 <code>workflows</code> 文件夹，再在里面新建一个 <code>xxx.yml</code> 文件，我的形式是 <code>仓库/.github/workflows/deploy.yml</code> 。</p><p>之后就该往 <code>.yml</code> 文件写配置了，<code>yml</code> 格式是一个严格缩进格式，所以对自己好点，用 <code>VS Code</code> 之类的编辑器来写……</p><pre><code>name: Hexo Deploy
+
+on:
+  push:
+    branches: [ hexo ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      </code></pre><p><code>name</code> 那一栏填便于理解的名字。</p><p><code>on</code> 选项是为监听哪个分支发生变动就执行动作，我这边设置为 <code>push</code> 的 <code>hexo</code> 分支，意为当 <code>hexo</code> 分支下发生了 <code>push</code> 动作后就执行此 <code>action</code> ，分支名请填自己仓库实际的，是 <code>main</code>还是 <code>hexo</code> 请根据实际选择。</p><p><code>jobs</code> 下的名称大概是实际执行 <code>action</code> 时的名字，可写个便于理解的名字。</p><p><code>runs-on</code> 是声明需要什么类型的机器， <code>ubuntu-latest</code> 就是申请最新的 <code>ubuntu</code> 系统的机子。</p><p><code>fail-fast</code> 的实际用途我也不懂，反正他就在那儿了.jpg 。</p><pre><code>
+  steps: 
+  - uses: actions/checkout@v2 #拉取仓库文件
+  
+  - name: Set up Node.js
+    uses: actions/setup-node@v1
+    with:
+      node-version: 17
+      
+  - name: Install dependencies
+    run: |
+      npm install -g hexo-cli
+      npm install
+      git config --global user.name &quot;wherever&quot;
+      git config --global user.email &quot;wherever@xxx.xx&quot;
+  - name: Deploy
+    env:
+      DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY }}
+    run: |
+      hexo clean
+      hexo generate
+      cd ./public
+      git init
+      git add --all .
+      git commit -m &quot;GitHub action Auto Builder&quot;
+      git push --quiet --force https://$DEPLOY_KEY@github.com/name/name.github.io.git master
+</code></pre><p>之后就是 <code>steps</code> 栏目了，<code>name</code> 写个便于理解的名字。</p><p><code>GitHub actions</code> 最为被称道的一点就是能用其他人预先写好的脚本，所以在 <code>Set up Node.js</code> 栏里的 <code>actions/setup-node@v1</code> 这里就是引用了安装 <code>nodejs</code>  环境的脚本，<code>with</code> 后面填入脚本里预先定义好的变量（填 17 意为安装版本号为 17 的  <code>node</code> ），不用自己考虑如何实现。</p><p><code>Install dependencies</code> 这栏就是安装依赖了，<code>npm</code> 安装 <code>Hexo</code> 的包，然后 <code>git config</code> 是设置自己的名称和电子邮箱。</p><p><code>Deploy</code> 的 <code>env</code> 一栏就是上面设置 <code>Actions secrets</code> 操作起到用处的地方了，</p><p><code>DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY }}</code></p><p>的意思就是把 <code>Actions secrets</code> 里的叫 <code>HEXO_DEPLOY</code> 的值声明成叫 <code>DEPLOY_KEY</code> 的环境变量，按自己实际情况写……</p><p>下面的命令就是重复流水帐了…… <code>git push --quiet --force https://$DEPLOY_KEY@github.com/name/name.github.io.git master</code> 这里就根据实际情况写了，我是博客源文件和生成的静态文件都放一个仓库里就将生成好的静态文件用 <code>--force</code> 参数强制部署到 <code>master</code> 分支，<strong>要提前切换好分支！<strong>在自己仓库的 <code>Settings -&gt; Branches</code> 的 <code>Default branch</code> 里将自己放置博客源代码的分支改名并设为默认（我是将放博客源代码的命名为 <code>hexo</code>），请提前确认好，要不然 <code>--force</code> 参数将会连同历史记录</strong>覆盖</strong>掉 <code>master</code> 分支的内容！</p><p>如果是分出一个仓库放置生成后的静态页面就根据自己实际情况写。</p><h3 id="测试">测试</h3><p>之后就是进行 <code>push</code> 操作看看 <code>action</code> 有没有正常工作了，要是失败就会出现红色的叉叉，这时请根据提示检查哪里出了问题（文件缩进、名称没写对等……）。</p><p>成功了的话，就去检查对应分支有没有出现对应的静态文件了。</p><h2 id="部署自定义字体">部署自定义字体</h2><p>当然……因为是一台对应的机器，所以可以装点 <code>Python</code> 环境运行一点脚本啊……我之前<a href="../../../2021/03/中文网页字体动态裁剪/">中文字体动态剪裁</a>就是用 <code>GitHub actions</code> 执行的。</p><h3 id="具体而言……">具体而言……</h3><pre><code>    steps: #安装 Python 环境
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+        
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install fonttools brotli requests
+
+    - name: Deploy
+      run: |
+        python3 utils.py -d #运行提前写好的脚本生成字符集
+        pyftsubset Zpix.ttf --text-file=strdb.txt #裁剪
+        fonttools ttLib.woff2 compress -o Zpix.woff2 Zpix.subset.ttf
+        mv Zpix.woff2 ./public/css/fonts
+        mv Zpix.subset.ttf ./public/css/fonts/Zpix.ttf #将裁剪好的文件放到生成文件夹内</code></pre><h2 id="初始化Giscus对应评论">初始化 Giscus 对应评论</h2><h3 id="脚本文件">脚本文件</h3><p><a href="../../01/为博客支持评论系统/">参考这</a>。</p><h3 id="配置文件">配置文件</h3><p><a href="https://github.com/SouthFox-D/SouthFox-D.github.io/blob/hexo/.github/workflows/deploy.yml" class="external_link">参考这</a>……</p><h2 id="图片备份">图片备份</h2><p>虽然博客用了 <a href="/2022/03/IPFS和博客/"><code>IPFS</code></a> 来当博客图床，但是也有失效的风险，所以做好备份是肯定的啦~</p><h3 id="脚本文件">脚本文件</h3><p>跟<a href="../IPFS和博客/">本地版</a>的区别不大，就是将图片放到一个文件夹方便后续操作……</p><p><a href="https://github.com/SouthFox-D/SouthFox-D.github.io/blob/hexo/utils.py" class="external_link">如果真想看……</a></p><h3 id="配置文件">配置文件</h3><pre><code>    steps:
+    - uses: actions/checkout@v2  # 安装 Python 环境
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+        
+    - name: Install dependencies
+      run: |
+        sudo apt-get install wget
+        python -m pip install --upgrade pip
+        python -m pip install fonttools brotli requests
+        git config --global user.name &quot;SouthFox-D&quot; #自己的……
+        git config --global user.email &quot;southfoxdreamer@gmail.com&quot;
+    - name: Check Img
+      run: |
+        wget https://raw.githubusercontent.com/SouthFox-D/blog_img/main/imgList.json #改成自己的仓库并已存在此文件
+        python3 utils.py -b
+    - name: Backup
+      env:
+        DEPLOY_KEY: ${{ secrets.HEXO_DEPLOY }} #自己的……
+      run: |
+        rm -rf .git #删除 Hexo 的 .git 文件夹防止后续冲突
+        git clone https://github.com/SouthFox-D/blog_img.git blog_img #备份仓库
+        cp -f newimg/* blog_img/ #合并文件夹
+        cd blog_img
+        git add .
+        git commit -am &quot;Auto backup&quot; || echo &quot;Nothing to push&quot; #防止报错
+        git push --force https://$DEPLOY_KEY@github.com/SouthFox-D/blog_img.git #根据实际情况而定</code></pre><p>具体可<a href="https://github.com/SouthFox-D/SouthFox-D.github.io/blob/hexo/.github/workflows/backup-img.yml" class="external_link">参考这</a>……</p><h2 id="总之">总之</h2><p>一次编写后，后续就不用怎么管了，自动化的好处体现出来了……</p><p>我在一台没有安装 <code>Hexo</code> 环境下的机器上写作，到时只要直接 <code>push</code> 就让 <code>GitHub</code> 来完成对应的部署操作了，不必自己安装环境又 <code>clear</code> 啊 <code>g</code> 啊 <code>d</code> 啊的……在移动设备写作可以写好直接复制到 <code>GitHub</code> 网页版里，同时图片也不必当心失效。</p><p>反正……微软！有钱的！嫖起来没负罪感。</p></div></div></main><div class="pagination"><a class="btn" href="/2022/03/二二年三月梦记/">← 上一页</a><a class="btn" href="/"> 主页 </a><a class="btn" href="/2022/03/IPFS和博客/">下一页 →</a></div><div class="comment"><blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote><script src="https://giscus.app/client.js" data-repo="SouthFox-D/SouthFox-D.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ=" data-category="博客评论" data-category-id="DIC_kwDODaJZAM4CA7bf" data-mapping="specific" data-term="2022/03/Github-Actions-浅尝辄止/" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async=""></script></div></div><div class="sidebar"><div class="widget"><h4>链接</h4><ul><li><a href="/friends/">友链</a></li><li><a href="https://www.travellings.cn/train.html">开往</a></li><li><a href="https://foreverblog.cn/go.html">虫洞</a></li><li><a href="/feed.xml">订阅（Atom)</a></li><li><a href="/rss2.xml">订阅（Rss)</a></li><li><a href="https://www.lisperati.com/logo.html"><img src="/assets/img/lisplogo_warning2_128.png" alt="Lisp logo warning" /></a></li><li><a href="https://www.fsf.org/appeal"><img src="/assets/img/6838639.png" alt="FSF appeal" /></a></li></ul><div><a href="https://xn--sr8hvo.ws/previous">←</a><a href="https://xn--sr8hvo.ws">IndieWeb Webring 💍</a><a href="https://xn--sr8hvo.ws/next">→</a></div><div><a href="https://fediring.net/previous?host=blog.southfox.me">←</a><a href="https://fediring.net">Fediring 💍</a><a href="https://fediring.net/next?host=blog.southfox.me">→</a></div></div><div class="widget"><h4>设置</h4><div><label for="font-select">字体设置：</label><select id="font-select"><option value="plain">普通</option><option value="zpix">像素</option></select></div></div><div class="widget"><h4>标签</h4><ul><li><a href="/tag/技术">技术</a></li></ul></div><div class="widget"><h4>目录</h4><ul><li><a href="#Hexo自动部署">Hexo 自动部署</a></li><li><a href="#生成Personalaccesstokens">生成 Personal access tokens</a></li><li><a href="#设置Actionssecrets">设置 Actions secrets</a></li><li><a href="#编写配置文件">编写配置文件</a></li><li><a href="#测试">测试</a></li><li><a href="#部署自定义字体">部署自定义字体</a></li><li><a href="#具体而言……">具体而言……</a></li><li><a href="#初始化Giscus对应评论">初始化 Giscus 对应评论</a></li><li><a href="#脚本文件">脚本文件</a></li><li><a href="#配置文件">配置文件</a></li><li><a href="#图片备份">图片备份</a></li><li><a href="#脚本文件">脚本文件</a></li><li><a href="#配置文件">配置文件</a></li><li><a href="#总之">总之</a></li></ul></div></div></div><footer class="footer"><div class="copyright"><div><p>© SouthFox 2026 ,Font by <a href="https://github.com/SolidZORO/zpix-pixel-font">Zpix</a></p></div><div><p>Power by <a href="https://dthompson.us/projects/haunt.html">haunt</a> ,source can be found <a href="https://git.southfox.me/southfox/blog">here</a></p></div></div></footer></body></html>
