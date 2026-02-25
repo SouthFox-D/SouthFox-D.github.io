@@ -13,6 +13,8 @@
              (hole builder tag)
              )
 
+(setenv "LANG" "C.UTF-8")
+
 (site #:title "狐狸反走矣"
       #:domain "blog.southfox.me"
       #:default-metadata
