@@ -1,5 +1,6 @@
 (define-module (tests base)
   #:use-module (hole reader)
+  #:use-module (hole sxml)
   #:use-module (srfi srfi-64))
 
 
@@ -30,5 +31,8 @@
     (hole/org->sxml "1. 1\n2. 2\n3.3")
   '((ol (li "1") (li "2" "\n" "3.3"))))
 
+(test-equal
+    (sxml-attribute-ref 'id '(h1 (@ (id "H1")) "H1"))
+  "H1")
 
 (test-end "sxml-test")

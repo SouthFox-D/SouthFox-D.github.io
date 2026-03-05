@@ -21,7 +21,8 @@
   #:use-module (commonmark node)
   #:use-module (ice-9 string-fun)
   #:export (hole/document->sxml
-            shortcode-node?))
+            shortcode-node?
+            sxml-attribute-ref))
 
 ;; Document -> xml
 ;; converts the document into HTML
@@ -227,3 +228,11 @@
 
 (define (fold-nodes f ns)
   (fold (lambda (elem prev) (cons (f elem) prev)) '() ns))
+
+(define (sxml-attribute-ref key node)
+  (let ((attrs (cadr node)))
+    (if (eq? '@ (car attrs))
+        (let* ((attr-list (assoc key (cdr attrs)))
+               (attr-value  (if attr-list (cadr attr-list) #f)))
+          (if attr-value attr-value #f))
+        #f)))
