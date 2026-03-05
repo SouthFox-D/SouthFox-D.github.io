@@ -146,8 +146,7 @@
       (pubDate ,(date->string* (post-date post)))
       (link ,uri)
       (description ,(sxml->html-string (parse-read-more post)))
-      (content:encoded (@ (type "html"))
-                       ,(sxml->html-string (post-sxml post)))
+      (content:encoded ,(sxml->html-string (post-sxml post)))
       ,@(map (lambda (enclosure)
                `(link (@ (rel "enclosure")
                          (title ,(enclosure-title enclosure))
@@ -191,6 +190,7 @@ the blog's prefix and post prefix."
                                     (xmlns:content "http://purl.org/rss/1.0/modules/content/"))
                              (channel
                               (title ,(site-title site))
+                              (description "一只普通狐狸的博客")
                               (pubDate ,(date->string* last-updated))
                               (atom:link (@ (href ,uri) (rel "self") (type "application/rss+xml")))
                               (link ,(uri->string
