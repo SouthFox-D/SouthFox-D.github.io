@@ -154,6 +154,17 @@
                    (post-tags post))))
          '())
     ,(if post
+         (let ((post-backlinks (reverse (post-ref post 'backlinks))))
+           (if (not (nil? post-backlinks))
+               `(div (@ (class "widget"))
+                 (h4 "反向链接")
+                 (ul
+                  ,@(map (lambda (link)
+                           `(li ,link))
+                         (post-ref post 'backlinks))))
+               '()))
+         '())
+    ,(if post
          `(div (@ (class "widget"))
            (h4 "目录")
            (ul
