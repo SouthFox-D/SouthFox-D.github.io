@@ -676,10 +676,13 @@ pre code span {
     border-bottom: 1px solid #e0e0e0;
 }
 
-a,
-a:visited {
+a {
     color: #ffff99;
     text-underline-offset: 5px;
+}
+
+a:visited {
+    color: #a8a860;
 }
 
 a:focus,
