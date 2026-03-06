@@ -24,8 +24,8 @@
   #:use-module (srfi srfi-19)
   #:use-module (ice-9 match)
   #:use-module (hole html)
+  #:use-module (haunt artifact)
   #:use-module (haunt post)
-  #:use-module (haunt page)
   #:use-module (haunt site)
   #:use-module (haunt utils)
   #:export (tags->page tag-page))
@@ -76,25 +76,27 @@ with that TAG."
   (lambda (site posts)
     (flat-map (match-lambda
                 ((tag . posts)
-                 (make-page (tag-uri tag)
-                            (with-layout fox-theme site "Tags" (tags-template site posts #:title tag))
-                            sxml->html)))
+                 (serialized-artifact
+                  (tag-uri tag)
+                  (with-layout fox-theme site "Tags" (tags-template site posts #:title tag))
+                  sxml->html)))
               (group-by-tag posts))))
 
 (define (tag-page)
   (lambda (site posts)
-    (make-page "tags/index.html"
-               (with-layout
-                fox-theme
-                site
-                "Tags"
-                `(div (@ (class "content"))
-                  (h2 "标签")
-                  (ul
-                   ,(map (match-lambda
-                           ((tag count)
-                            `(li (a (@ (class "tag")
-                                       (href ,(hole/uri-encode (tag-uri tag))))
-                                    ,tag ": " ,count))))
-                         (count-tags posts)))))
-               sxml->html)))
+    (serialized-artifact
+     "tags/index.html"
+     (with-layout
+      fox-theme
+      site
+      "Tags"
+      `(div (@ (class "content"))
+        (h2 "标签")
+        (ul
+         ,(map (match-lambda
+                 ((tag count)
+                  `(li (a (@ (class "tag")
+                             (href ,(hole/uri-encode (tag-uri tag))))
+                          ,tag ": " ,count))))
+               (count-tags posts)))))
+     sxml->html)))

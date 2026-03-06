@@ -1,6 +1,6 @@
 (define-module (hole builder page)
+  #:use-module (haunt artifact)
   #:use-module (haunt site)
-  #:use-module (haunt page)
   #:use-module (haunt post)
   #:use-module (haunt utils)
   #:use-module (hole html)
@@ -17,9 +17,10 @@
 
 (define (static-page title file-name body)
   (lambda (site posts)
-    (make-page file-name
-               (with-layout fox-theme site title `(div (@ (class "content")) ,body))
-               sxml->html)))
+    (serialized-artifact
+     file-name
+     (with-layout fox-theme site title `(div (@ (class "content")) ,body))
+     sxml->html)))
 
 (define* (about-page)
   (static-page
@@ -118,48 +119,41 @@
 
 (define (archives-page)
   (lambda (site posts)
-    (make-page "archives/index.html"
-               (with-layout
-                fox-theme
-                site
-                "Archives"
-                `(div (@ (class "content"))
-                  (h2 "归档")
-                  (ul
-                   ,(map (lambda (post)
-                           `(li (a (@ (href ,(hole/uri-encode (site-post-slug site post))))
-                                   ,(post-ref post 'title))))
-                         (posts/reverse-chronological posts)))))
-               sxml->html)))
+    (serialized-artifact
+     "archives/index.html"
+     (with-layout
+      fox-theme
+      site
+      "Archives"
+      `(div (@ (class "content"))
+        (h2 "归档")
+        (ul
+         ,(map (lambda (post)
+                 `(li (a (@ (href ,(hole/uri-encode (site-post-slug site post))))
+                         ,(post-ref post 'title))))
+               (posts/reverse-chronological posts)))))
+     sxml->html)))
 
 (define (search-page)
-  (lambda (site posts)
-    (make-page "search/index.html"
-               (with-layout
-                fox-theme
-                site
-                "Search"
-                `((link (@ (href "/pagefind/pagefind-ui.css")
-                           (rel "stylesheet")))
-                  (script (@ (src "/pagefind/pagefind-ui.js")))
-                  (div (@ (class "content"))
-                       (h2 "Search")
-                       (div (@ (id "search")))
-                       (script (@ (src "/assets/js/init-search.js"))))))
-               sxml->html)))
+  (static-page
+   "Search"
+   "search/index.html"
+    `((link (@ (href "/pagefind/pagefind-ui.css")
+               (rel "stylesheet")))
+      (script (@ (src "/pagefind/pagefind-ui.js")))
+      (div (@ (class "content"))
+           (h2 "Search")
+           (div (@ (id "search")))
+           (script (@ (src "/assets/js/init-search.js")))))))
 
 (define (guestbook-page)
-  (lambda (site posts)
-    (make-page "guestbook/index.html"
-               (with-layout
-                fox-theme
-                site
-                "Guestbook"
-                `((script (@ (type "text/x-scheme")
-                             (src "/assets/lips/guestbook.lips")))
-                  (div (@ (class "content"))
-                       (p "测试中的评论系统原型，非常早期。数据肯定会清理，请不要提交耗费精力的内容……")
-                       (a (@ (href "https://git.southfox.me/southfox/fairy-ring"))
-                          "仓库地址：southfox/fairy-ring")
-                       (div (@ (id "comment-app"))))))
-               sxml->html)))
+  (static-page
+   "guestbook/index.html"
+   "Guestbook"
+   `((script (@ (type "text/x-scheme")
+                (src "/assets/lips/guestbook.lips")))
+     (div (@ (class "content"))
+          (p "测试中的评论系统原型，非常早期。数据肯定会清理，请不要提交耗费精力的内容……")
+          (a (@ (href "https://git.southfox.me/southfox/fairy-ring"))
+             "仓库地址：southfox/fairy-ring")
+          (div (@ (id "comment-app")))))))
