@@ -127,9 +127,7 @@
                   (h2 "归档")
                   (ul
                    ,(map (lambda (post)
-                           `(li (a (@ (href ,(string-append
-                                              "/"
-                                              (hole/uri-encode (site-post-slug site post)))))
+                           `(li (a (@ (href ,(hole/uri-encode (site-post-slug site post))))
                                    ,(post-ref post 'title))))
                          (posts/reverse-chronological posts)))))
                sxml->html)))

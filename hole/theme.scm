@@ -332,7 +332,7 @@
 (define (fox-default-collection-template site title posts prefix)
   (define (post-uri post)
     (hole/uri-encode (string-append
-                      (or prefix "") "/"
+                      (or prefix "")
                       (site-post-slug site post))))
   `(div (@ (class "content"))
     (h2 ,title)

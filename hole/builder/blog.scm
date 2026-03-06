@@ -76,7 +76,7 @@
 
 (define (ugly-default-collection-template site title posts prefix)
   (define (post-uri post)
-    (string-append (or prefix "") "/"
+    (string-append (or prefix "")
                    (site-post-slug site post) "index.html"))
 
   `((h3 ,title)
@@ -155,9 +155,7 @@ several pages with up to POSTS-PER-PAGE posts on each page."
 
   (lambda (site posts)
     (define* (post->page post #:key previous-post next-post)
-      (let ((base-name (string-append (if post-prefix
-                                          (string-append post-prefix "/")
-                                          "")
+      (let ((base-name (string-append (or post-prefix "")
                                       (site-post-slug site post)
                                       "index.html"))
             (title (post-ref post 'title))
@@ -269,7 +267,7 @@ several pages with up to POSTS-PER-PAGE posts on each page."
     (for-each
      (lambda (source-post)
        (let* ((links (extract-links (post-sxml source-post)))
-              (source-target (string-append "/" (site-post-slug site source-post))))
+              (source-target (site-post-slug site source-post)))
          (for-each
           (lambda (link-node)
             (let* ((target-slug (sxml-attribute-ref 'href link-node)))
@@ -283,7 +281,7 @@ several pages with up to POSTS-PER-PAGE posts on each page."
 
     (define posts*
       (map (lambda (post)
-             (let* ((slug (string-append "/" (site-post-slug site post)))
+             (let* ((slug (site-post-slug site post))
                     (bls (hash-ref backlink-map slug '())))
                (post-set
                 post

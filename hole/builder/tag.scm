@@ -61,7 +61,7 @@ order."
      (h1 "#" ,title)
      (ul
       ,(map (lambda (post)
-              `(li (a (@ (href ,(hole/uri-encode (string-append "/" (site-post-slug site post)))))
+              `(li (a (@ (href ,(hole/uri-encode (site-post-slug site post))))
                       ,(post-ref post 'title)
                       " — "
                       ,(date->string (post-date post) "~Y-~m-~d"))))

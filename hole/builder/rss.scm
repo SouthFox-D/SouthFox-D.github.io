@@ -137,7 +137,7 @@
               (build-uri (site-scheme site)
                          #:host (site-domain site)
                          #:path (hole/uri-encode
-                                 (string-append blog-prefix "/"
+                                 (string-append blog-prefix
                                                 (site-post-slug site post)
                                                 "index.html"))))))
     `(item

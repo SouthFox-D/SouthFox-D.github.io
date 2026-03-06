@@ -24,10 +24,12 @@
                             (cdr %post-list)
                             %post-list))
              (list-length (length post-list)))
-        (string-join (append (list-head post-list (- list-length 1))
-                             (list (string-replace-substring
-                                    (string-replace-substring
-                                     (list-ref post-list (- list-length 1))
-                                     ".md" "/")
-                                    ".org" "/")))
-                     "/"))))
+        (string-append
+         "/"
+         (string-join (append (list-head post-list (- list-length 1))
+                              (list (string-replace-substring
+                                     (string-replace-substring
+                                      (list-ref post-list (- list-length 1))
+                                      ".md" "/")
+                                     ".org" "/")))
+                      "/")))))
