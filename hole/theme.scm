@@ -2,11 +2,12 @@
   #:use-module (haunt site)
   #:use-module (haunt post)
   #:use-module (haunt utils)
-  #:use-module (srfi srfi-19)
-  #:use-module (ice-9 match)
-  #:use-module (ice-9 string-fun)
   #:use-module (hole site)
   #:use-module (hole builder blog)
+  #:use-module (ice-9 format)
+  #:use-module (ice-9 match)
+  #:use-module (ice-9 string-fun)
+  #:use-module (srfi srfi-19)
   #:use-module (sxml match)
   #:use-module (sxml transform)
   #:use-module (syntax-highlight)
@@ -18,6 +19,8 @@
   #:export (comment-place
             parse-read-more
             fox-theme))
+
+(define build-date (current-date))
 
 (define (maybe-highlight-code lang source)
   (let ((lexer (match lang
@@ -37,20 +40,43 @@
 
 (define (highlight-code . tree)
   (sxml-match tree
-    ((code (@ (class ,class) . ,attrs) ,source)
-     (let ((lang (string->symbol
-                  (string-drop class (string-length "language-")))))
-       `(code (@ ,@attrs)
-             ,(maybe-highlight-code lang source))))
-    (,other other)))
+              ((code (@ (class ,class) . ,attrs) ,source)
+               (let ((lang (string->symbol
+                            (string-drop class (string-length "language-")))))
+                 `(code (@ ,@attrs)
+                   ,(maybe-highlight-code lang source))))
+              (,other other)))
 
-(define %sxml-rules
+(define (%hole-sxml-rules post)
   `((code . ,highlight-code)
+    (h2 . ,(lambda (tag . args)
+             (define expire-days 720)
+             (define (add-warning tag args lisp?)
+               (let* ((attrs (car args))
+                      (base-warning (format #f "此篇是技术文章并距离当前构建时间超过 ~s 天，内容可能已经过时。" expire-days))
+                      (lisp-note "（不过，鉴于这是 Lisp 相关内容，可能也没那么容易过时。）")
+                      (full-warning (if lisp? (string-append base-warning lisp-note) base-warning)))
+                 `(div (h2 ,@args)
+                   (blockquote ,full-warning))))
+             (if post
+                 (let* ((tags (or (post-ref post 'tags) '()))
+                        (tech-post? (member "技术" tags))
+                        (lisp-post? (member "Lisp" tags))
+                        (diff-seconds (time-second (time-difference
+                                                    (date->time-utc build-date)
+                                                    (date->time-utc (post-date post)))))
+                        (should-show-warning? (and post tech-post?
+                                                   (> diff-seconds (* 60 60 24 expire-days)))))
+                   (if (and should-show-warning? (equal? (car args)
+                                                         '(@ (id "post-title"))))
+                       (add-warning tag args lisp-post?)
+                       `(h2 ,@args)))
+                 `(h2 ,@args))))
     (*text* . ,(lambda (tag str) str))
     (*default* . ,(lambda (. arg) arg))))
 
-(define (post-process-sxml sxml)
-  (pre-post-order sxml %sxml-rules))
+(define* (post-process-sxml sxml #:key post)
+  (pre-post-order sxml (%hole-sxml-rules post)))
 
 (define navbar
   '(nav (@ (class "nav"))
@@ -75,7 +101,7 @@
   `(footer (@ (class "footer"))
     (div (@ (class "copyright"))
          (div (p "© SouthFox "
-                 ,(number->string (date-year (current-date)))
+                 ,(number->string (date-year build-date))
                  " ,Font by "
                  (a (@ (href "https://github.com/SolidZORO/zpix-pixel-font"))
                     "Zpix")))
@@ -229,7 +255,6 @@
                               (bootstrap ""))))
                 (map string-trim-both (string-split (post-ref post 'lips) #\:)))
            '())
-      
       (link (@ (rel "alternate")
                (href "/feed.xml")
                (title ,(site-title site))
@@ -241,7 +266,7 @@
      (body
       ,navbar
       (div (@ (class "container flex"))
-           ,(post-process-sxml body)
+           ,(post-process-sxml body #:post post)
            ,(sidebar #:post post))
       ,footer))))
 
@@ -273,7 +298,7 @@
   `(div (@ (class "content"))
     (main (@ (data-pagefind-body "true"))
           (div
-           (h2 ,(post-ref post 'title))
+           (h2 (@ (id "post-title")) ,(post-ref post 'title))
            (h3 "by " ,(post-ref post 'author))
            (h3 (@ (data-pagefind-sort "date"))
                ,(date->string (post-date post) "~Y-~m-~d"))
