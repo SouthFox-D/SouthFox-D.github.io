@@ -34,7 +34,7 @@
   #:use-module (haunt utils)
   #:use-module (hole html)
   #:use-module (hole sxml)
-  #:use-module (sxml xpath)
+  #:use-module ((sxml xpath) #:select (sxpath))
   #:export (theme
             theme?
             theme-name
