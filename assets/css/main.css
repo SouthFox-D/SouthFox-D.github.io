@@ -528,7 +528,7 @@ nav .burger {
 
 .container,
 .title {
-    width: 60%;
+    width: min(1300px, 80%);
     margin: 40px auto;
 }
 
@@ -541,8 +541,8 @@ nav .burger {
 }
 
 .sidebar {
-    width: 25%;
-    padding-left: 10px;
+    width: 20%;
+    padding-left: 20px;
 }
 
 @media only screen and (max-width: 720px) {
