@@ -148,8 +148,8 @@
 
 (define (guestbook-page)
   (static-page
-   "guestbook/index.html"
    "Guestbook"
+   "guestbook/index.html"
    `((script (@ (type "text/x-scheme")
                 (src "/assets/lips/guestbook.lips")))
      (div (@ (class "content"))
