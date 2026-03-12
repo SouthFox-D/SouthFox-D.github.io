@@ -33,8 +33,6 @@
   #:use-module (haunt post)
   #:use-module (haunt utils)
   #:use-module (hole html)
-  #:use-module (hole sxml)
-  #:use-module ((sxml xpath) #:select (sxpath))
   #:export (theme
             theme?
             theme-name
@@ -124,20 +122,6 @@
 (define (date->string* date)
   "Convert DATE to human readable string."
   (date->string date "~a ~d ~B ~Y"))
-
-(define (post-set post metadata)
-  (make-post (post-file-name post)
-             (append metadata (post-metadata post))
-             (post-sxml post)))
-
-(define (extract-links sxml)
-  (let ((query (sxpath
-                `(// a ,(lambda (node)
-                          (if (and
-                               (not (equal? (sxml-attribute-ref 'class node ) "external_link"))
-                               (string-prefix? "/20" (or (sxml-attribute-ref 'href node) "")))
-                              node '()))))))
-    (query sxml)))
 
 (define* (hole/blog #:key theme prefix post-prefix
                     (collections
@@ -259,35 +243,9 @@ several pages with up to POSTS-PER-PAGE posts on each page."
 
     ;; Collect the subset of posts that belong to this blog.  Those
     ;; are the only posts that will have dedicated pages rendered.
-    (define %posts
+    (define posts*
       (delete-duplicates
        (append-map (match-lambda ((_ _ posts) posts)) collections*)))
-
-    (define backlink-map (make-hash-table))
-    (for-each
-     (lambda (source-post)
-       (let* ((links (extract-links (post-sxml source-post)))
-              (source-target (site-post-slug site source-post)))
-         (for-each
-          (lambda (link-node)
-            (let* ((target-slug (sxml-attribute-ref 'href link-node)))
-              (hash-set!
-               backlink-map
-               target-slug
-               (cons `(a (@ (href ,source-target)) ,(post-ref source-post 'title))
-                     (hash-ref backlink-map target-slug '())))))
-          links)))
-     %posts)
-
-    (define posts*
-      (map (lambda (post)
-             (let* ((slug (site-post-slug site post))
-                    (bls (hash-ref backlink-map slug '())))
-               (post-set
-                post
-                `((slug . ,slug)
-                  (backlinks . ,(delete-duplicates bls))))))
-           %posts))
 
     (define (build-post posts*)
       (define (post-uri post)
