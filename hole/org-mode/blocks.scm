@@ -124,9 +124,12 @@
 (define (parse-block-quote n l)
   (cond ((block-quote-end? l)
          (close-node n))
-        (else (add-child-node n
-                              (make-node 'paragraph #f (list
-                                                        (make-text-node (string-trim (remove-min-spaces l (quote-start n))))))))))
+        ((no-children? n)
+         (add-child-node n (make-paragraph l)) )
+        ((and (empty-line? l))
+         (add-child-node n (make-paragraph l)))
+        (else
+         (replace-last-child n (parse-paragraph (last-child n) l)))))
 
 (define (parse-code-block n l)
   (cond ((code-block? l) => (lambda (rest-line)
