@@ -46,7 +46,9 @@
 
             date->string*
 
-            hole/blog))
+            blog/post->page
+            blog/collection->page
+            ))
 
 (define-record-type <theme>
   (make-theme name layout post-template collection-template pagination-template)
@@ -123,17 +125,9 @@
   "Convert DATE to human readable string."
   (date->string date "~a ~d ~B ~Y"))
 
-(define* (hole/blog #:key theme prefix post-prefix
-                    (collections
-                     `(("Recent Posts" "index.html" ,posts/reverse-chronological)))
-                    posts-per-page)
+(define* (blog/post->page #:key theme prefix post-prefix)
   "Return a procedure that transforms a list of posts into pages
-decorated by THEME, whose URLs start with PREFIX.  Post pages may be
-nested deeper in the file hierarchy than collection pages by
-specifying the POST-PREFIX argument.
-
-If POSTS-PER-PAGE is specified, collections will be broken up into
-several pages with up to POSTS-PER-PAGE posts on each page."
+decorated by THEME, whose URLs start with PREFIX."
   (define (make-file-name base-name)
     (string-append (or prefix "") (if prefix "/" "") base-name))
 
@@ -149,6 +143,45 @@ several pages with up to POSTS-PER-PAGE posts on each page."
                                           #:post post)
                              sxml->html)))
 
+    (define (build-post posts*)
+      (define (post-uri post)
+        (if post
+            (post-ref post 'slug)
+            #f))
+      (let loop ((pages posts*)
+                 (prev-post #f))
+        (match pages
+          (()
+           '())
+          ((last-page)
+           (list (post->page
+                  last-page
+                  #:previous-post
+                  (post-uri prev-post))))
+          ((and (page . rest) (_ next-post . _))
+           (cons (post->page
+                  page
+                  #:previous-post
+                  (post-uri prev-post)
+                  #:next-post
+                  (post-uri next-post))
+                 (loop rest page))))))
+
+    (append (build-post posts))))
+
+(define* (blog/collection->page #:key theme prefix post-prefix
+                                (collections
+                                 `(("Recent Posts" "index.html" ,posts/reverse-chronological)))
+                                posts-per-page)
+  "Return a procedure that transforms a list of collections into pages
+decorated by THEME, whose URLs start with PREFIX.
+
+If POSTS-PER-PAGE is specified, collections will be broken up into
+several pages with up to POSTS-PER-PAGE posts on each page."
+  (define (make-file-name base-name)
+    (string-append (or prefix "") (if prefix "/" "") base-name))
+
+  (lambda (site posts)
     (define (paginate base-name items titles)
       (define (make-page-title i)
         (if (>= i (length titles))
@@ -241,35 +274,4 @@ several pages with up to POSTS-PER-PAGE posts on each page."
               (list title file-name (filter posts))))
            collections))
 
-    ;; Collect the subset of posts that belong to this blog.  Those
-    ;; are the only posts that will have dedicated pages rendered.
-    (define posts*
-      (delete-duplicates
-       (append-map (match-lambda ((_ _ posts) posts)) collections*)))
-
-    (define (build-post posts*)
-      (define (post-uri post)
-        (if post
-            (post-ref post 'slug)
-            #f))
-      (let loop ((pages posts*)
-                 (prev-post #f))
-        (match pages
-          (()
-           '())
-          ((last-page)
-           (list (post->page
-                  last-page
-                  #:previous-post
-                  (post-uri prev-post))))
-          ((and (page . rest) (_ next-post . _))
-           (cons (post->page
-                  page
-                  #:previous-post
-                  (post-uri prev-post)
-                  #:next-post
-                  (post-uri next-post))
-                 (loop rest page))))))
-
-    (append (build-post posts*)
-            (append-map collection->page collections*))))
+    (append-map collection->page collections*)))

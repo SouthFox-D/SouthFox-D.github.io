@@ -296,7 +296,9 @@
 
 (define* (fox-default-post-template post #:key previous-post next-post)
   `(div (@ (class "content"))
-    (main (@ (data-pagefind-body "true"))
+    (main (@ ,(if (equal? (post-ref post 'feed-only) "t")
+                  '(data-pagefind-ignore "true")
+                  '(data-pagefind-body "true")))
           (div
            (h2 (@ (id "post-title")) ,(post-ref post 'title))
            (h3 "by " ,(post-ref post 'author))
