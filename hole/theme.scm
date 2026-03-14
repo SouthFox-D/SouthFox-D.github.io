@@ -319,7 +319,9 @@
                 "下一页 →")
               `(a (@ (class "btn disabled"))
                 "下一页 →")))
-    ,(comment-place (hexo-post-slug post))))
+    ,(if (equal? (post-ref post 'feed-only) "t")
+         '()
+         (comment-place (hexo-post-slug post)))))
 
 (define (parse-read-more post)
   (let loop ((sxml (post-sxml post))
