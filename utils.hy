@@ -9,6 +9,7 @@
 (import re)
 (import random)
 (import subprocess)
+(import itertools)
 (import datetime [datetime])
 
 (defmacro -> [head #* args]
@@ -48,6 +49,11 @@
     (with [f (open "strdb.txt" "w")]
       (f.write (.join "" str-set)))))
 
+(defn should-skip? [file-path]
+  (with [f (open file-path "r")]
+    (let [lines (.join "" (itertools.islice f 20))]
+      (in "feed-only: t" lines))))
+
 (defn add-github-discussion [post-files]
   (let [repo-id "MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ="
         category-id "DIC_kwDODaJZAM4CA7bf"
@@ -60,14 +66,17 @@
           discussion-post (-> (query-response.json) :data :repository :discussions :nodes)
           discussion-post-titles (lfor x discussion-post (:title x))
           local-post-titles (lfor-> it post-files
-                             (. (it.split "posts/") [-1])
-                             (it.strip ".md")
-                             (it.strip ".org")
-                             (+ it "/"))]
-      (for [post-title local-post-titles]
+                                    (. (it.split "posts/") [-1])
+                                    (it.strip ".md")
+                                    (it.strip ".org")
+                                    (+ it "/"))
+          local-posts (zip local-post-titles post-files)]
+      (for [[post-title post-path] local-posts]
         (when (not-in current-year post-title)
           (continue))
         (when (not-in post-title discussion-post-titles)
+          (when (should-skip? post-path)
+            (continue))
           (let [create-data {"query" f"mutation{{createDiscussion(input: {{repositoryId: \"{repo-id}\", categoryId: \"{category-id}\", body: \"{(+ "https://blog.southfox.me/" post-title)}\", title: \"{post-title}\" }}) {{discussion {{id}}}}}}"}
                 create-response (requests.post url :headers header :json create-data)]
             (create-response.raise_for_status)
