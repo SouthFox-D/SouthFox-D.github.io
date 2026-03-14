@@ -27,6 +27,7 @@
   #:use-module (ice-9 match)
   #:use-module (srfi srfi-1)
   #:use-module (srfi srfi-9)
+  #:use-module (srfi srfi-11)
   #:use-module (srfi srfi-19)
   #:use-module (haunt artifact)
   #:use-module (haunt site)
@@ -148,24 +149,34 @@ decorated by THEME, whose URLs start with PREFIX."
         (if post
             (post-ref post 'slug)
             #f))
-      (let loop ((pages posts*)
-                 (prev-post #f))
+      (define (feed-only? post)
+        (equal? (post-ref post 'feed-only) "t"))
+
+      (define all-posts (posts/reverse-chronological posts*))
+      (define public-posts (filter (lambda (p) (not (feed-only? p))) all-posts))
+
+      (define (get-neighbors page pages)
+        (let loop ((rest pages)
+                   (prev #f))
+          (match rest
+            (() (values #f #f))
+            ((p . next-list)
+             (if (equal? p page)
+                 (values prev (and (not (null? next-list)) (car next-list)))
+                 (loop next-list p))))))
+
+      (let loop ((pages all-posts))
         (match pages
-          (()
-           '())
-          ((last-page)
-           (list (post->page
-                  last-page
-                  #:previous-post
-                  (post-uri prev-post))))
-          ((and (page . rest) (_ next-post . _))
-           (cons (post->page
-                  page
-                  #:previous-post
-                  (post-uri prev-post)
-                  #:next-post
-                  (post-uri next-post))
-                 (loop rest page))))))
+          (() '())
+          ((page . rest)
+           (let-values (((prev next)
+                         (if (feed-only? page)
+                             (get-neighbors page all-posts)
+                             (get-neighbors page public-posts))))
+             (cons (post->page page
+                               #:previous-post (post-uri prev)
+                               #:next-post (post-uri next))
+                   (loop rest)))))))
 
     (append (build-post posts))))
 
