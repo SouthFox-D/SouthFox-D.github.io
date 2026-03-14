@@ -114,12 +114,37 @@
     (json.dump {"img" (sorted now-img-list)} f))
   (download-ipfs-img download-need-img))
 
+(defn create-new-post [file-id]
+  (let [now (datetime.now)
+        year-dir (str now.year)
+        month-dir (.format "{:02d}" now.month)
+        target-dir (os.path.join "posts" year-dir month-dir)
+        file-path (os.path.join target-dir (+ file-id ".org"))
+        meta-data {"title" file-id
+                   "author" "SouthFox"
+                   "date" (now.strftime "%Y-%m-%d %H:%M:%S")
+                   "tags" ""}
+        lines (lfor [k v] (.items meta-data) f"#+{k}: {v}")]
+    (os.makedirs target-dir :exist_ok True)
+    (if (os.path.exists file-path)
+      (print f"{file-path} already exists!")
+      (do
+        (with [f (open file-path "w")]
+          (f.write (.join "\n" lines))
+          (f.write "\n"))
+        (print f"Created new post at: {file-path}")))))
+
 (setv parser (argparse.ArgumentParser))
+(setv subparsers (parser.add_subparsers :dest "command"))
 (parser.add_argument "-p" :dest "pi" :action "store_true")
 (parser.add-argument "-d" :dest "deploy_type"
                      :choices ["ci" "pi"]
                      :help "Deployment type: ci or pi")
 (parser.add_argument "-b" :dest "backup" :action "store_true")
+
+(setv new-parser (subparsers.add_parser "new"))
+(new-parser.add_argument "file_id" :help "The ID (filename) of the new post")
+
 (setv args (parser.parse_args))
 
 (defn run-cmd [cmd [check True] [print? True]]
@@ -156,4 +181,6 @@
                        :print? False)))))
   (when args.backup
     (os.makedirs "newimg" :exist_ok True)
-    (backup-ipfs-img post-files)))
+    (backup-ipfs-img post-files))
+  (when (= args.command "new")
+    (create-new-post args.file_id)))
