@@ -41,11 +41,9 @@
          inject-backlinks
          inject-feed-only-section
          inject-expire-warning-section)
-   (blog/post->page #:theme fox-theme)))
-
-(define feed-builders
-  (list (hole/atom-feed)
-        (hole/rss-feed)))
+   (blog/post->page #:theme fox-theme)
+   (hole/atom-feed)
+   (hole/rss-feed)))
 
 (site #:title "狐狸反走矣"
       #:domain "blog.southfox.me"
@@ -54,5 +52,5 @@
         (email  . "master@southfox.me"))
       #:posts-directory "posts"
       #:readers (list fox-commonmark-reader fox-org-mode-reader)
-      #:builders (cons* site-builders post-builders feed-builders)
+      #:builders (list site-builders post-builders)
       #:make-slug hexo-post-slug)
