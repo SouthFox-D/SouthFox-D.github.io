@@ -49,29 +49,6 @@
 
 (define (%hole-sxml-rules post)
   `((code . ,highlight-code)
-    (h2 . ,(lambda (tag . args)
-             (define expire-days 720)
-             (define (add-warning tag args lisp?)
-               (let* ((attrs (car args))
-                      (base-warning (format #f "此篇是技术文章并距离当前构建时间超过 ~s 天，内容可能已经过时。" expire-days))
-                      (lisp-note "（不过，鉴于这是 Lisp 相关内容，可能也没那么容易过时。）")
-                      (full-warning (if lisp? (string-append base-warning lisp-note) base-warning)))
-                 `(div (h2 ,@args)
-                   (blockquote ,full-warning))))
-             (if post
-                 (let* ((tags (or (post-ref post 'tags) '()))
-                        (tech-post? (member "技术" tags))
-                        (lisp-post? (member "Lisp" tags))
-                        (diff-seconds (time-second (time-difference
-                                                    (date->time-utc build-date)
-                                                    (date->time-utc (post-date post)))))
-                        (should-show-warning? (and post tech-post?
-                                                   (> diff-seconds (* 60 60 24 expire-days)))))
-                   (if (and should-show-warning? (equal? (car args)
-                                                         '(@ (id "post-title"))))
-                       (add-warning tag args lisp-post?)
-                       `(h2 ,@args)))
-                 `(h2 ,@args))))
     (*text* . ,(lambda (tag str) str))
     (*default* . ,(lambda (. arg) arg))))
 

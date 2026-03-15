@@ -37,7 +37,7 @@
 
 (define post-builders
   (wrap-builders
-   (list inject-backlinks inject-feed-only-section)
+   (list inject-backlinks inject-feed-only-section inject-expire-warning-section)
    (blog/post->page #:theme fox-theme)))
 
 (define feed-builders

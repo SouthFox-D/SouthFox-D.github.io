@@ -4,6 +4,7 @@
   #:use-module (haunt site)
   #:use-module (haunt utils)
   #:use-module (srfi srfi-1)
+  #:use-module (srfi srfi-19)
   #:use-module ((sxml xpath) #:select (sxpath))
   #:use-module (ice-9 string-fun)
   #:use-module (web uri)
@@ -13,6 +14,7 @@
             inject-backlinks
             inject-feed-only-section
             filter-feed-only
+            inject-expire-warning-section
             ))
 
 (define ascii-alnum-chars
@@ -98,6 +100,35 @@
                             (not (equal? (post-ref p 'feed-only) "t")))
                           posts)))
     (cons site filtered)))
+
+(define build-date (current-date))
+(define expire-days 720)
+(define (post-expire-warning lisp?)
+  (let* ((base-warning (format #f "此篇是技术文章并距离当前构建时间超过 ~s 天，内容可能已经过时。" expire-days))
+           (lisp-note "（不过，鉴于这是 Lisp 相关内容，可能也没那么容易过时。）")
+           (full-warning (if lisp? (string-append base-warning lisp-note) base-warning)))
+    `(section ,full-warning)))
+
+(define (inject-expire-warning-section site posts)
+  (cons site
+        (map (lambda (post)
+               (let* ((tags (or (post-ref post 'tags) '()))
+                      (tech-post? (member "技术" tags))
+                      (lisp-post? (member "Lisp" tags))
+                      (diff-seconds (time-second (time-difference
+                                                  (date->time-utc build-date)
+                                                  (date->time-utc (post-date post)))))
+                      (should-show-warning? (and tech-post?
+                                                 (> diff-seconds (* 60 60 24 expire-days))))
+                      (p-sxml (if should-show-warning?
+                                  (cons (post-expire-warning lisp-post?) (post-sxml post))
+                                  (post-sxml post))))
+                 (if should-show-warning?
+                     (post-set post '()
+                               (cons (post-expire-warning lisp-post?)
+                                     (post-sxml post)))
+                     post)))
+             posts)))
 
 (define (wrap-builders transformers . builders)
   (lambda (site posts)
