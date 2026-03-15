@@ -37,7 +37,7 @@
 
 (define post-builders
   (wrap-builders
-   (list inject-backlinks)
+   (list inject-backlinks inject-feed-only-section)
    (blog/post->page #:theme fox-theme)))
 
 (define feed-builders

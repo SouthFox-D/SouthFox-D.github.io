@@ -11,6 +11,7 @@
             hole/uri-encode
             wrap-builders
             inject-backlinks
+            inject-feed-only-section
             filter-feed-only
             ))
 
@@ -43,10 +44,10 @@
                                      ".org" "/")))
                       "/")))))
 
-(define (post-set post metadata)
+(define (post-set post metadata p-sxml)
   (make-post (post-file-name post)
              (append metadata (post-metadata post))
-             (post-sxml post)))
+             p-sxml))
 
 (define (extract-links sxml)
   (let ((query (sxpath
@@ -74,9 +75,23 @@
                                 (let* ((slug (site-post-slug site post))
                                        (bls (hash-ref backlink-map slug '())))
                                   (post-set post `((slug . ,slug)
-                                                   (backlinks . ,(delete-duplicates bls))))))
+                                                   (backlinks . ,(delete-duplicates bls)))
+                                            (post-sxml post))))
                               posts)))
       (cons site enriched-posts)))
+
+(define (feed-only? post)
+  (equal? (post-ref post 'feed-only) "t"))
+
+(define (inject-feed-only-section site posts)
+  (cons site
+        (map (lambda (p)
+               (if (feed-only? p)
+                   (post-set p '()
+                             (cons '(section "这是一篇在公开页面找不到的 Feed 专享文章，就让这篇文章成为公开的秘密吧……")
+                                   (post-sxml p)))
+                   p))
+             posts)))
 
 (define (filter-feed-only site posts)
   (let ((filtered (filter (lambda (p)
