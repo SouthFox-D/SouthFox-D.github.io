@@ -152,8 +152,7 @@ decorated by THEME, whose URLs start with PREFIX."
       (define (feed-only? post)
         (equal? (post-ref post 'feed-only) "t"))
 
-      (define all-posts (posts/reverse-chronological posts*))
-      (define public-posts (filter (lambda (p) (not (feed-only? p))) all-posts))
+      (define public-posts (filter (lambda (p) (not (feed-only? p))) posts*))
 
       (define (get-neighbors page pages)
         (let loop ((rest pages)
@@ -165,13 +164,13 @@ decorated by THEME, whose URLs start with PREFIX."
                  (values prev (and (not (null? next-list)) (car next-list)))
                  (loop next-list p))))))
 
-      (let loop ((pages all-posts))
+      (let loop ((pages posts*))
         (match pages
           (() '())
           ((page . rest)
            (let-values (((prev next)
                          (if (feed-only? page)
-                             (get-neighbors page all-posts)
+                             (get-neighbors page posts*)
                              (get-neighbors page public-posts))))
              (cons (post->page page
                                #:previous-post (post-uri prev)

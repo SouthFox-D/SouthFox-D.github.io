@@ -15,6 +15,7 @@
             inject-feed-only-section
             filter-feed-only
             inject-expire-warning-section
+            reverse-chronological-posts
             ))
 
 (define ascii-alnum-chars
@@ -129,6 +130,10 @@
                                      (post-sxml post)))
                      post)))
              posts)))
+
+(define (reverse-chronological-posts site posts)
+  (cons site
+        (posts/reverse-chronological posts)))
 
 (define (wrap-builders transformers . builders)
   (lambda (site posts)
