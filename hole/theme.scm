@@ -277,10 +277,11 @@
                   '(data-pagefind-ignore "true")
                   '(data-pagefind-body "true")))
           (div
-           (h2 (@ (id "post-title")) ,(post-ref post 'title))
-           (h3 "by " ,(post-ref post 'author))
-           (h3 (@ (data-pagefind-sort "date"))
-               ,(date->string (post-date post) "~Y-~m-~d"))
+           (h1 (@ (id "post-title")) ,(post-ref post 'title))
+           (p (@ (class "post-meta"))
+              (span "by " ,(post-ref post 'author))
+              (time (@ (data-pagefind-sort "date"))
+                    ,(date->string (post-date post) "~Y-~m-~d")))
            (div ,(post-sxml post))))
     (div (@ (class "pagination"))
          ,(if previous-post

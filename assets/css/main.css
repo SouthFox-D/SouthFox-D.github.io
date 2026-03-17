@@ -540,6 +540,14 @@ nav .burger {
     width: 75%;
 }
 
+.post-meta {
+    display: flex;
+    gap: 16px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+    font-size: 1.3rem;
+}
+
 .sidebar {
     width: 20%;
     padding-left: 20px;
