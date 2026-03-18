@@ -27,14 +27,14 @@
 
 
 (define re-thematic-break (make-regexp "^ {0,3}((\\* *){3,}|(_ *){3,}|(- *){3,}) *$"))
-(define re-block-quote (make-regexp "^ {0,3}(#\\+begin_quote)$"))
+(define re-block-quote (make-regexp "^ {0,3}(#\\+begin_quote)$" regexp/icase))
 (define re-atx-heading (make-regexp "^ {0,3}(\\*{1,6})( .*)?$"))
 (define re-atx-heading-end (make-regexp "^(.* )?\\*+ *$"))
 (define re-indented-code-block (make-regexp "^    "))
 (define re-setext-heading (make-regexp "^ {0,3}(=+|-+) *$"))
 (define re-empty-line (make-regexp "^ *$"))
-(define re-fenced-code (make-regexp "^ {0,3}(#\\+begin_src)([^`]*)$"))
-(define re-example-structure (make-regexp "^ {0,3}(#\\+begin_example)$"))
+(define re-fenced-code (make-regexp "^ {0,3}(#\\+begin_src)([^`]*)$" regexp/icase))
+(define re-example-structure (make-regexp "^ {0,3}(#\\+begin_example)$" regexp/icase))
 (define re-shortcode (make-regexp "^,\\(.*\\)$"))
 (define re-bullet-list-marker (make-regexp "^ {0,3}([-+*])( +|$)"))
 (define re-ordered-list-marker (make-regexp "^ {0,3}([0-9]{1,9})([.)])( +|$)"))
@@ -45,14 +45,14 @@
                                                        "( +| *\n? *)"
                                                        link-title
                                                        "? *(\n|$)")))
-(define re-attr-keyword (make-regexp "^ {0,3}(#\\+ATTR_HTML:) ([^`]*)$"))
+(define re-attr-keyword (make-regexp "^ {0,3}(#\\+ATTR_HTML:) ([^`]*)$" regexp/icase))
 
 
 (define (block-quote? l)
   (regexp-exec re-block-quote l))
 
-(define (block-quote-end? line)
-  (string-match (string-append "^ {0,3}" "#\\+end_quote" "$") line))
+(define (block-quote-end? l)
+  (regexp-exec (make-regexp "^ {0,3}(#\\+end_quote)$" regexp/icase) l))
 
 (define (atx-heading? l)
   (regexp-exec re-atx-heading l))
@@ -76,13 +76,13 @@
   (regexp-exec re-fenced-code line))
 
 (define (fenced-code-end? line)
-  (string-match (string-append "^ {0,3}" "#\\+end_src" "$") line))
+  (regexp-exec (make-regexp "^ {0,3}(#\\+end_src)$" regexp/icase) line))
 
 (define (example-structure? line)
   (regexp-exec re-example-structure line))
 
 (define (example-structure-end? line)
-  (string-match (string-append "^ {0,3}" "#\\+end_example" "$") line))
+  (regexp-exec (make-regexp "^ {0,3}(#\\+end_example)$" regexp/icase) line))
 
 (define (shortcode? line)
   (regexp-exec re-shortcode line))

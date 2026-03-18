@@ -39,4 +39,8 @@
     (hole/org->sxml "#+begin_example\nhello\n#+end_example")
   '((pre "hello")))
 
+(test-equal
+    (hole/org->sxml "#+bEgiN_examPle\nhello\n#+enD_exaMple")
+  '((pre "hello")))
+
 (test-end "sxml-test")
