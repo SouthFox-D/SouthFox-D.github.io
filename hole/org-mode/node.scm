@@ -41,6 +41,8 @@
             code-block-node?
             make-fenced-code-node
             fenced-code-node?
+            make-pre-node
+            pre-node?
             make-attr-node
             attr-node?
             make-list-node
@@ -200,6 +202,13 @@
 ;; Node -> Boolean
 (define (fenced-code-node? n)
   (node-type? n 'fenced-code))
+
+(define (make-pre-node data)
+  (make-node 'pre data '()))
+
+;; Node -> Boolean
+(define (pre-node? n)
+  (node-type? n 'pre))
 
 (define (make-attr-node data)
   (make-node 'attr data '()))

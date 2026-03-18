@@ -35,4 +35,8 @@
     (sxml-attribute-ref 'id '(h1 (@ (id "H1")) "H1"))
   "H1")
 
+(test-equal
+    (hole/org->sxml "#+begin_example\nhello\n#+end_example")
+  '((pre "hello")))
+
 (test-end "sxml-test")

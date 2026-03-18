@@ -18,7 +18,8 @@
 (define-module (hole sxml)
   #:use-module (srfi srfi-1)
   #:use-module (sxml simple)
-  #:use-module (commonmark node)
+  #:use-module (hole org-mode node)
+  #:use-module ((commonmark node) #:select (inline-html-node?))
   #:use-module (ice-9 string-fun)
   #:export (hole/document->sxml
             shortcode-node?
@@ -45,6 +46,7 @@
         ((block-quote-node? n) (block-quote-node->sxml n))
         ((code-block-node? n) (code-block-node->sxml n))
         ((fenced-code-node? n) (fenced-code-node->sxml n))
+        ((pre-node? n) (pre-node->sxml n))
         ((shortcode-node? n) (shortcode-node->sxml n))
         ((heading-node? n) (heading-node->sxml n))
         ((list-node? n) (list-node->sxml n))
@@ -96,6 +98,9 @@
 
 (define (fenced-code-node->sxml n)
   `(pre (code ,(infostring (assq-ref (node-data n) 'info-string)),@(node-children n))))
+
+(define (pre-node->sxml n)
+  `(pre ,@(node-children n)))
 
 (define (mastodon-embed url)
   `(div
