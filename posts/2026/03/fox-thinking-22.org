@@ -1,0 +1,87 @@
+#+title: FoxThinking #22: 逆炼摩尔定律
+#+author: SouthFox
+#+date: 2026-03-22 19:53:25
+#+tags: FoxThinking
+
+摩尔定律指出：芯片性能大概每隔十八个月会翻一番。
+
+,(read-more)
+
+当然这更像是经验推测而不是「定律」，而且随着芯片制程越来越逼近物理极限，这条定律已经开始
+摇摇欲坠了。然后想想将这条定律往前推呢？现在电子产品比起 NASA 登月时只有 2~4KB 内存，72KB 的
+设备已有亿倍的差距了 [fn:1] ，与千禧年的设备也有 16 万倍的差距。
+
+我没经历过千禧年时的开发环境，但肯定不会比现在更简单，现在使
+用 Python 对着不知名教程帖（或者在二六年：LLM 给出）的例子导个库写写改改
+几十行代码，再去云服务厂商买台 VPS 将代码推送到上面建立环境（甚至现在有 docker 了！）运行，就
+能提供互联网服务了。这里产生的改变是惊人的，让我意识到那些互联网创业「神话」不是什么触不可及的事了。
+
+就在今天，我向自己部署在树莓派（[[/2025/12/does-the-fox-eat-raspberry-pi/][狐狸会喜欢树莓做的派吗？树莓派鼓捣记]]）上 [[https://github.com/searxng/searxng][SearXNG]] 这个（将用户的搜索请求
+发送到各大搜索引擎然后聚合搜索结果返回展示给用户的）元搜索引擎服务请求时碰上了拒绝访问的服务拦截情况，之后又是更
+新版本又是调参的还是绕不过这个限制，一怒之下想着我能自己建立自己的搜索引擎就好了。这个念头还不是今天才产生的，
+两三年前我就鼓捣过 [[https://yacy.net/][YaCy]] 一阵子，只是感觉效果没达到预期就放下了。
+
+现在再次考虑时我惊恐发现我开始认真考虑这个念头了，现在维护个有自己索引的搜索引
+擎（例如 [[https://wiby.me/][Wiby]] 或 [[https://searchmysite.net/][Search My Site]] ）比谷歌创立时 [fn:2] 已经简单了不少（让我先导个 [[https://www.scrapy.org/][Scrapy]] 包然后这样……那样……）。
+不必实现什么 [[https://en.wikipedia.org/wiki/PageRank][PageRank]] 算法（现在也不是指望做个搜索引擎创业的时代了），我可以随心所欲做出
+什么 [[https://indieweb.org/][IndieWeb]], [[https://ar.al/2020/08/07/what-is-the-small-web/][SmallWeb]] 权重提升「算法」；二三年前文章（避开 AI 烂泥)权重提升「算法」；可能不嫌麻烦的话
+自己亲自下场提升或降低某个站点的权重。搜索引擎对于我这种一般路过的程序狐不是什么高不可攀的东西了，是谁给了我这等膨胀
+的「胆量」？我想可能是这几年的 userops [fn:3] 经验吧。不过鉴于我的兴趣项目清单已经堆了太多这种想法
+了（我是不是该写个 /projects 页面了？），可能要等好久才能让大脑里的调度器分个时间片给到这个任务上。
+
+** 阅读
+*** [[https://www.sciencealert.com/st-patricks-day-textbooks-might-be-wrong-about-why-plants-are-green][Textbooks Might Be Wrong About Why Plants Are Green]]
+绿叶看起来是绿色的不是因为叶绿素像镜子一样将绿光反射出去，而是因为叶绿素更强力吸收了蓝光和红光散射了更多的绿光
+让绿叶看起来是绿色的。
+
+甚至黄色和白色叶片反射的绿光实际上比绿色叶片更多，大约是绿叶的两倍。
+
+*** [[https://www.421.news/en/interviews-underground-computer-santiago-roland-en/][Interviews with the Computer Underground - Episode I]]
+不可否认现在成熟的物流运输已经深入了生活，超市餐馆都背靠这个物流链存活，但这也是其脆弱的地方。就像互联网一样。这些
+年 cloudflare, aws 的宕机事件就是最好的例子。自托管服务就像是自己维护的花园或者什么小小农场，肯定不能和成熟的国
+际物流链「对抗」，只不过是让这个互联网能够更加健康的一种选择。毕竟随着摩尔定律发展和更加面向个人的服务兴起的现在，自己
+维护个小小农场也不必「汗流满面才能糊口」 [fn:4] 。
+
+*** [[https://aeon.co/essays/she-freed-physics-but-emmy-noether-couldnt-escape-herself][Unbounded - Aeon]]
+为什么能量会守恒，解释这个的是诺特定理 [fn:5] ，这是思想的胜利，从一串串方程窥见这个宇宙最基本的法则。更何况想到
+在二十世纪初作为女性数学家的诺特遭受的困难和曲折……就在这里，就让我行个注目礼吧。
+
+*** [[https://blog.mozilla.org/en/firefox/meet-kit/][Meet Kit, your companion for a new internet era]]
+我知道 Firefox 最近挺糟糕的，但是如果我不用 Firefox ，那我还叫什么 Southfox ~现在 Firefox 新的吉祥
+物 Kit 出来我就更割舍不下了。
+
+(PS: 让我想到最近福克斯菲尔德铁路推出的吉祥物 [[https://www.youtube.com/watch?v=p_0ox4BDDGk][Reg]] 。都是吉祥物，都是狐狸，都是福……)
+
+*** [[https://www.zhihu.com/question/20313934/answer/2012311960952272569][为什么我国的概率与统计学教科书里不怎么讲幂律分布？ - 知乎]]
+我知道引入知乎这种信息源有点背离这个博客 Indie 的「博设」，但如果不多弄点中文信息源就感觉对于我这个中文的站点来说
+有点……奇怪？所以我最近往我的 RSS 阅读器增加了知乎相关的 RSS 源（通过 [[https://docs.rsshub.app/][RSSHub]] 抓取），
+不过还是有点遗憾我没找到更多更 Indie 的中文站点。
+
+总之，是幂律分布啊，之前我也讲过这个 [[/2025/12/fox-thinking-8/][FoxThinking #8: 守住八分地]] 。
+
+*** [[https://www.theguardian.com/lifeandstyle/2026/mar/16/i-couldnt-stop-worrying-until-i-learned-about-the-630pm-rule][I couldn’t stop worrying – until I learned about the 6.30pm rule]]
+将焦虑暂时搁置这种做法……和我有时遵守「不要为 8 小时后和 8 公里外的事情忧虑」的信念异曲同工啊。
+
+*突然间我脑子里的对立面「北狐」出现了*
+
+「北狐」：可是，「人无远虑，必有近忧」啊！
+
+「南狐」（翻个白眼说到）：摆出俗话俗语也太偷懒了，尤其对这里盛产俗语的「国区」来说。「狭路相逢勇者胜」和「退一步海阔天空」你要
+信哪个？总之想信奉哪个，只要能坚守下去然后自己信得过就行，还有最好不要轻易将对立面的俗语简单抛给他人。
+
+** Present day, Present time
+没有暴饮暴食，没有缺乏睡眠但这个周末还是犯了咽炎难受躺在床上。哈哈，这就是不得不要借助拥挤公共交通和闭塞电梯的打工人宿命
+吧。想开点，在春分这个时间点把感冒名额用了那么就能在之后尽情享受春天了吧（希望如此！）。
+
+** 脚注
+[fn:1] [[https://www.zhihu.com/question/30655116/answer/926213716][NASA登月时全部计算机的计算能力加起来真的还不如现在一部手机吗？- 知乎]]
+
+[fn:2] 顺带一说，如果有什么出于促进互联网开放的让谷歌这类搜索引擎强制公开抓取的索引提案，我举双手赞成。
+
+[fn:3] 我觉得对于自托管爱好者来说， UserOps 是一个比较符合的词吧，更多参见：[[https://mediagoblin.org/news/userops.html][Userops: Deployment for the People | MediaGoblin]]
+
+[fn:4] 《创世纪》3章19节
+
+[fn:5] 不过其实能量并不守恒，因为这个宇宙中时间平移对称性不成立。真理元素的一期视频讲过这个：
+- [[https://www.bilibili.com/video/BV1cqGSzsEcv/][物理学中最大的误解 - 哔哩哔哩]]
+- [[https://www.youtube.com/watch?v=lcjdwSY2AzM][The Biggest Misconception in Physics - YouTube]]
