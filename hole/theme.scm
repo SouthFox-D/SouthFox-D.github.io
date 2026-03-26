@@ -143,6 +143,11 @@
     (div (@ (class "widget"))
          (h4 "设置")
          (div
+          (label (@ (for theme-select)) "主题设置：")
+          (select (@ (id "theme-select"))
+                  (option (@ (value "plain")) "普通")
+                  (option (@ (value "386")) "386")))
+         (div
           (label (@ (for font-select)) "字体设置：")
           (select (@ (id "font-select"))
                   (option (@ (value "plain")) "普通")
@@ -199,32 +204,44 @@
                (href "https://foxsay.southfox.me/@SouthFox")))
       (link (@ (rel "me")
                (href "https://codeberg.org/southfox")))
-      (script (@ (src "/assets/js/lips.min.js")))
+      (script
+       (raw "document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || '386');
+      document.documentElement.setAttribute('data-font', localStorage.getItem('font') || 'zpix');"))
       (link (@ (rel "stylesheet")
                (href "/assets/css/main.css")))
-      (script (@ (type "text/x-scheme"))
-              (lips (let ((font (or (localStorage.getItem "font") "zpix"))
-                          (font-select (document.getElementById "font-select")))
-                      (define (string=? a b)
-                        (== (a.cmp b) 0))
-                      (define (loop-set options value)
-                        (let loop ((i 0))
-                          (if (> i (- (length options) 1))
-                              i
-                              (let ((option (get options i)))
-                                (if (string=? option.value value)
-                                    (option.setAttribute "selected" #t)
-                                    (loop (+ 1 i)))))))
-                      (define (set-font font-name)
-                        (localStorage.setItem "font" font-name)
-                        (document.documentElement.setAttribute "data-font" font-name)
-                        (if font-select
-                            (loop-set font-select.options font-name)))
-                      (font-select.addEventListener
-                       "change"
-                       (lambda (event)
-                         (set-font event.target.value)))
-                      (set-font font))))
+      (script (@ (src "/assets/js/lips.min.js") (defer "defer")))
+      (script (@ (type "text/x-scheme") (defer "defer"))
+              (lips (let ((theme (or (localStorage.getItem "theme") "386"))
+                          (font (or (localStorage.getItem "font") "zpix")))
+                      (let ((theme-select (document.getElementById "theme-select"))
+                            (font-select (document.getElementById "font-select")))
+                        (define (string=? a b)
+                          (== (a.cmp b) 0))
+                        (define (loop-set options value)
+                          (let loop ((i 0))
+                            (if (> i (- (length options) 1))
+                                i
+                                (let ((option (get options i)))
+                                  (if (string=? option.value value)
+                                      (option.setAttribute "selected" #t)
+                                      (loop (+ 1 i)))))))
+                        (loop-set theme-select.options theme)
+                        (loop-set font-select.options font)
+                        (define (set-theme theme-name)
+                          (localStorage.setItem "theme" theme-name)
+                          (document.documentElement.setAttribute "data-theme" theme-name))
+                        (define (set-font font-name)
+                          (localStorage.setItem "font" font-name)
+                          (document.documentElement.setAttribute "data-font" font-name))
+                        (console.log theme-select)
+                        (theme-select.addEventListener
+                         "change"
+                         (lambda (event)
+                           (set-theme event.target.value)))
+                        (font-select.addEventListener
+                         "change"
+                         (lambda (event)
+                           (set-font event.target.value)))))))
       ,(if (and post (post-ref post 'lips))
            (map (lambda (script)
                   `(script (@ (src ,(string-append "/assets/lips/" script))
@@ -232,6 +249,7 @@
                               (bootstrap ""))))
                 (map string-trim-both (string-split (post-ref post 'lips) #\:)))
            '())
+
       (link (@ (rel "alternate")
                (href "/feed.xml")
                (title ,(site-title site))

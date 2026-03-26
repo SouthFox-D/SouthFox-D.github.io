@@ -90,19 +90,21 @@
 list ATTRS and the child nodes in BODY."
   (if (equal? 'lips tag)
       (display (object->string (car body)) port)
-      (begin
-        (format port "<~a" tag)
-        (for-each (match-lambda
-                    ((attr value)
-                     (display #\space port)
-                     (attribute->html attr value port)))
-                  attrs)
-        (if (and (null? body) (void-element? tag))
-            (display " />" port)
-            (begin
-              (display #\> port)
-              (for-each (cut sxml->html <> port) body)
-              (format port "</~a>" tag))))))
+      (if (equal? 'raw tag)
+          (display (car body) port)
+          (begin
+            (format port "<~a" tag)
+            (for-each (match-lambda
+                        ((attr value)
+                         (display #\space port)
+                         (attribute->html attr value port)))
+                      attrs)
+            (if (and (null? body) (void-element? tag))
+                (display " />" port)
+                (begin
+                  (display #\> port)
+                  (for-each (cut sxml->html <> port) body)
+                  (format port "</~a>" tag)))))))
 
 (define (doctype->html doctype port)
   (format port "<!DOCTYPE ~a>" doctype))
