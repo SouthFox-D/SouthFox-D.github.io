@@ -787,7 +787,13 @@ nav .burger {
     --text-light: #585858;
 
     & body {
-        background: url("/assets/img/asadal_stock_214.webp");
+        background: url("/assets/img/asadal_stock_214.webp"),
+                    linear-gradient(
+                        to bottom,
+                        #82caff 0%,
+                        #f0f0f2 50%,
+                        #7ec850 100%
+                    );
         background-attachment: fixed;
         background-size: cover;
         background-position: center bottom;
