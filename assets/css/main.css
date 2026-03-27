@@ -419,7 +419,7 @@ nav {
     right: 0;
     height: fit-content;
     padding: 0 0.6em;
-    background: #fff;
+    background: var(--bg);
     box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.1);
     line-height: normal;
     z-index: 10000;
@@ -465,7 +465,7 @@ nav .burger {
         right: 0;
         bottom: -1000em;
         margin: 0;
-        background: #000;
+        background: var(--bg);
         transition: all 0.5s ease;
         transform: none;
     }
@@ -640,13 +640,14 @@ nav .burger {
 
 /* 386 Style */
 [data-theme='386'] {
+    --bg: #000084;
+
     & :root {
         scroll-padding-top: 25px;
     }
 
     & body {
         color: #bbb;
-        background-color: #000084;
     }
 
     & .nav {
@@ -799,6 +800,9 @@ nav .burger {
 }
 
 [data-theme='frutiger-aero'] {
+    --text: #212121;
+    --text-light: #585858;
+
     & body {
         background: url("/assets/img/asadal_stock_214.webp");
         background-attachment: fixed;
