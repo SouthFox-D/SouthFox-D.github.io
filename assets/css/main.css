@@ -556,11 +556,11 @@ nav .burger {
 @media only screen and (max-width: 720px) {
     .container,
     .title {
-        width: 90%;
+        width: 100%;
     }
 
     .container.flex {
-        display: unset;
+        display: block;
     }
 
     .container.flex .content,
@@ -597,7 +597,6 @@ nav .burger {
     box-shadow: none;
     pointer-events: none;
 }
-
 
 .syntax-special,
 .syntax-element {
@@ -797,4 +796,61 @@ nav .burger {
         padding: 10px;
         margin-bottom: 1.5rem;
     }
+}
+
+[data-theme='frutiger-aero'] {
+    & body {
+        background: url("/assets/img/asadal_stock_214.webp");
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center bottom;
+        min-height: 100vh;
+    }
+
+    & .container {
+        border-radius: 10px;
+        utline: solid 1px #000000;
+        box-shadow: 0px 3px 10px #000000, inset 0px 0px 0px 1px #fcfcfc;
+        background: rgba(240, 239, 242, 70%);
+        padding: 5px;
+    }
+
+    & .btn {
+        border: none;
+        outline: solid 1px #757575;
+        box-shadow:inset 0px 0px 0px 1px #fcfcfc;
+        color: black;
+        padding: 3px;
+        background: rgb(207,207,207);
+        background: linear-gradient(0deg, rgba(207,207,207,1) 0%, rgba(219,219,219,1) 49%, rgba(235,235,235,1) 49%, rgba(252,252,252,1) 100%);
+        border-radius: 3px;
+        padding: 3px 12px;
+        text-align: center;
+        min-height: 25px;
+        min-width: 75px;
+        user-select: none;
+    }
+
+    & .btn:hover {
+        outline: solid 1px #3c7fb1;
+        background: rgb(167,217,245);
+        background: linear-gradient(0deg, rgba(167,217,245,1) 0%, rgba(188,229,252,1) 49%, rgba(217,240,252,1) 49%, rgba(234,246,253,1) 100%);
+    }
+
+    & .btn.disabled {
+        cursor: not-allowed;
+        outline: solid 1px #999;
+        background: #e0e0e0;
+        background: linear-gradient(0deg, #d0d0d0 0%, #e0e0e0 49%, #e8e8e8 49%, #f0f0f0 100%);
+        box-shadow: inset 0 0 0 1px #f5f5f5;
+        color: #888;
+    }
+
+    & .nav {
+        background-color: #00000016;
+        backdrop-filter: blur(5px) saturate(1.5);
+        -webkit-backdrop-filter: blur(5px) saturate(1.5);
+        box-shadow: 0 0 0 1px #ffffff50, 0 0 0 2px #00000050;
+    }
+
 }

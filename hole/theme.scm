@@ -146,7 +146,9 @@
           (label (@ (for theme-select)) "主题设置：")
           (select (@ (id "theme-select"))
                   (option (@ (value "plain")) "普通")
-                  (option (@ (value "386")) "386")))
+                  (option (@ (value "386")) "386")
+                  (option (@ (value "frutiger-aero")) "Frutiger Aero")
+                  ))
          (div
           (label (@ (for font-select)) "字体设置：")
           (select (@ (id "font-select"))
