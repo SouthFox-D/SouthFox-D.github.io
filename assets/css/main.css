@@ -404,9 +404,9 @@ pre {
 }
 
 /* Fix embedded code within pre */
-pre code {
-    color: var(--preformatted);
-    background: none;
+pre code,
+pre code span {
+    color: var(--text);
     margin: 0;
     padding: 0;
 }
@@ -641,13 +641,10 @@ nav .burger {
 /* 386 Style */
 [data-theme='386'] {
     --bg: #000084;
+    --text: #bbb;
 
     & :root {
         scroll-padding-top: 25px;
-    }
-
-    & body {
-        color: #bbb;
     }
 
     & .nav {
@@ -666,11 +663,6 @@ nav .burger {
         text-rendering: optimizelegibility;
         --pagefind-ui-text: #ccc;
         --pagefind-ui-font: var(--main-font);
-    }
-
-    & pre code,
-    & pre code span {
-        color: #ccc;
     }
 
     & .footer {
@@ -703,15 +695,6 @@ nav .burger {
     & a.external_link::after {
         content: "\2197";
         font-size: 0.8em;
-    }
-
-    & code,
-    & pre,
-    & pre span,
-    & kbd,
-    & samp {
-        /* font-family: Zpix, var(--main-font); */
-        color: var(--code);
     }
 
     & .title,
