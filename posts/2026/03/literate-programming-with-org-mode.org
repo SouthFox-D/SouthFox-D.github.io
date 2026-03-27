@@ -1,0 +1,297 @@
+#+title: Emacs 使用再记（5）- 用 org-mode 进行文学编程
+#+author: SouthFox
+#+date: 2026-03-26 19:00:00
+#+tags: Lisp:Org mode:Emacs
+
+在代码里写注释，还是……在注释里写代码？
+
+,(read-more)
+
+在配置了安卓 Emacs（[[/2024/12/emacs-everywhere/][Emacs 使用再记（4）- EMACS EVERYWHERE!]]）一年后，我已经有好些笔记和日志通过手机来编写了，毕竟
+有时候懒得打开电脑就想躺在床上。一切都挺好，只要快快把内容输入到 [[https://www.orgroam.com/][org-roam]] 里并对在安卓机上用 Emacs 小问题
+视而不见，收紧折腾的心即可。不过最近我的手机厂商推送安卓 16 更新成功搞坏了 Termux ，打开后直接闪退根本无法正常使用。
+这个 Termux 是专门为安卓 Emacs 编译的，背后使用了相同的 ID 签名还是什么的，总之能让 Emacs 使用 Termux 安装
+如 git, rg, curl 之类的终端工具。这一年使用下来发现我不怎么依赖这些，最多也就用用 git 克隆仓库拉下配置而已，这样的话想着
+能不能只用 Emacs 来完成拉取配置呢？是可以的，因为 Emacs 内置了 =url-copy-file= 函数用 http(s) 协议下载文件。之前还有点
+不解 Emacs 为什么要内置网络操作而不直接依赖 curl ，现在实际用上了就感叹：真好啊，能在编辑器里原生做一些网络操作。
+
+用 =url-copy-file= 就能解决大部分问题了，不过想着来都来了，就把之前看着不爽的问题给统统解决了吧，然后开始整起配置来。鼓捣着
+发现需要再弄多个文件也很简单，仓库推个文件然后再用 =url-copy-file= 就好了……吗？感觉这样太累了，要不停维护相关的配置
+和 URL 的映射，那么又没有什么办法将相关的代码当成 *产物* 然后通过什么步骤生成出来呢？没错，就是 org mode ！
+
+** org mode power
+org mode 是 emacs 上的主模式，作为标记语法和 markdown 差不多，标题、强调样式（加粗、斜体、行内代码）、列表、链接
+等，但这只是 org mode 的一部分，org mode 代码块是和标记语法同级的另一部分，简单代码块示例如下：
+
+#+begin_example
+#+begin_src python
+return "Hello World!"
+#+end_src
+#+end_example
+
+表面上看用 =#+begin_src= 和 =#+end_src= 这种有点字多的方式标识代码块外，更重要的是可以在 emacs 里执行它，将光标
+放在这个代码块上按下 C-c C-c 后，就能执行了 [fn:1] ，没有意外的话就会在下面出现 =#+RESULTS:= 的文本显示
+执行结果：
+
+#+begin_example
+#+begin_src python
+return "Hello World!"
+#+end_src
+
+#+RESULTS:
+: Hello World!
+#+end_example
+
+嗯，简单有效，但就只有这样吗？
+
+*** 织起文档
+执行也只是 org mode 代码块的一部分，如果往代码块上设置了 =:tangle <文件名>= 属性的情况下，例如：
+
+#+begin_example
+#+begin_src python :tangle foo.py
+return "Hello World!"
+#+end_src
+#+end_example
+
+在这种情况代码块还是可以执行，但如果调用 =C-c C-v t= （对应 =org-babel-tangle= 命令）则会将这个代码块的内容原样写入到对应的文件名
+下。这样，就可以在写文档的同时并且将代码块编织出代码文件，例如：
+
+#+begin_example
+启用 =visual-line-mode= 自动折行模式让小屏幕下阅读文档舒服点……还有
+是 =org-ellipsis= 这个配置是指定收起的标题有更多内容的符号……
+
+#+begin_src emacs-lisp :tangle org.el
+(use-package org
+  :ensure t
+  :init
+  (setq org-src-fontify-natively t)
+  :config
+  (setq word-wrap-by-category t)
+  (add-hook 'org-mode-hook 'visual-line-mode)
+  (setq org-ellipsis " [...] "))
+#+end_src
+
+注意这里得给 emacs 授予全部存储权限才能访问到 =/storage/emulated/0/= 路径：
+
+#+begin_src emacs-lisp :tangle org.el
+(use-package org-roam
+  :ensure t
+  :custom
+  (org-roam-directory (file-truename "/storage/emulated/0/Sync/org/Note/org-roam")))
+#+end_src
+
+这里是主题配置巴拉巴拉……另外一说 ef-themes 这个主题包确实挺好看的。
+
+#+begin_src emacs-lisp :tangle theme.el
+(use-package ef-themes
+  :ensure t)
+(load-theme 'ef-cyprus)
+#+end_src
+#+end_example
+
+这样在这个文档使用 =org-babel-tangle= 命令后，就会自动生成 =org.el= 和 =theme.el= 这两个文件了，里头的内容为文档按顺序
+的代码块内容，其它的文档内容是忽略掉的，这算不算是在注释里写代码？
+
+*** 文本环境
+当我这种懒狐太懒了，我就只想大部分情况下生成到一个文件（例如 =:tangle init.el= ）然后只有少数情况下生成到其它文件，能不能设置默认值
+呢？是可以的，因为 org mode 不是简单的文本，它是携带了环境的文本，为代码块设置默认值的一种方式为在文档顶端写下文档级别变量文本：
+
+#+begin_example
+#+PROPERTY: header-args:emacs-lisp :tangle init.el
+#+end_example
+
+这样 org mode 会自动为这个文档下所有语言为 =emacs-lisp= 的代码块附加 =:tangle init.el= 默认参数，如果代码块中指定了其他值的话那么以这
+个指定值为准。除了文档级别的作为大纲模式的 org mode 也有标题级别的属性配置，例如：
+
+#+begin_example
+  * 快捷键
+  :PROPERTIES:
+  :header-args:emacs-lisp: :tangle key.el
+  :END:
+
+  将安卓上的返回键映射成 C-g 按键组合方便退出，音量键映射成上下方向键用来选择条目也很好用。
+
+  #+begin_src emacs-lisp
+  (define-key key-translation-map (kbd "<XF86Back>") (kbd "C-g"))
+  (define-key key-translation-map (kbd "<volume-up>") (kbd "<up>"))
+  (define-key key-translation-map (kbd "<volume-down>") (kbd "<down>"))
+  #+end_src
+
+  ** evil 快捷键
+  将空格作为 leader 键然后绑定些常见命令（好像被 Doom emacs 腌入味了）。
+
+  #+begin_src emacs-lisp
+  (evil-global-set-key 'normal (kbd "SPC") 'my-leader-map)
+  (evil-global-set-key 'visual (kbd "SPC") 'my-leader-map)
+
+  (define-key my-leader-map (kbd "f f") 'find-file)
+  (define-key my-leader-map (kbd "f s") 'save-buffer)
+  (define-key my-leader-map (kbd "b b") 'switch-to-buffer)
+  (define-key my-leader-map (kbd "b k") 'kill-current-buffer)
+  #+end_src
+
+  * 杂项
+  在确认的时候输入 y 或者 n 而不是 yes 和 no ，惊讶在现在这怎么不是默认开启的？
+
+  #+begin_src emacs-lisp
+  (setq use-short-answers t)
+  #+end_src
+#+end_example
+
+这里，标题「快捷键」和后续子标题会默认将代码编织到 =key.el= 文件，相关变量不会影响到其它平级（例如「杂项」）的标题。
+org mode 的有趣之处就在这里了，作为文本格式却可以携带「环境」，配上 org mode 的相关配套命令和函数，能方便给文本加上自定义数据
+并加以利用，例如[[https://gitlab.com/phillord/org-drill/][抽认卡]]、[[https://www.orgroam.com/][双链笔记]]等。
+
+*** 没网文学
+继续深入这种构建方式还有文学编程里的 [[https://www.cs.tufts.edu/~nr/noweb/][noweb]] 方式，在 org mode 里实践很简单，指定代码
+块的 =:noweb= 为 =yes= 就可以了。具体的例子：
+
+#+begin_example
+#+begin_src emacs-lisp :tangle evil.el :noweb yes
+(use-package evil
+  :ensure t
+  :init
+  (evil-mode 1)
+  :config
+  <<evil-fd>>)
+#+end_src
+#+end_example
+
+这里的 =<<evil-fd>>= 代码并不是 emacs lisp 的语法，而是指示 org mode 寻找名叫 =evil-fd= 的代码块然后将其内容替换到
+此处，例如：
+
+#+begin_example
+...安卓虚拟键盘上没有 Esc 这种键还用 vim 按键模式挺难受，参考 evil-escape 这个包，在零点二秒内
+快速敲击 =fd= 进入正常模式。
+
+#+name: evil-fd
+#+begin_src emacs-lisp
+(define-key
+ evil-insert-state-map "f"
+ (lambda ()
+   (interactive)
+   (insert "f")
+   (let ((next-char (read-event nil nil 0.2)))
+     (if (and next-char (char-equal next-char ?d))
+         (progn
+           (delete-char -1)
+           (evil-normal-state))
+       (when next-char
+         (setq unread-command-events (list next-char)))))))
+#+end_src
+#+end_example
+
+那么这样执行 =org-babel-tangle= 命令后生成的 =evil.el= 文件如下：
+
+#+begin_src emacs-lisp
+(use-package evil
+  :ensure t
+  :init
+  (evil-mode 1)
+  :config
+  (define-key
+   evil-insert-state-map "f"
+   (lambda ()
+     (interactive)
+     (insert "f")
+     (let ((next-char (read-event nil nil 0.2)))
+       (if (and next-char (char-equal next-char ?d))
+           (progn
+             (delete-char -1)
+             (evil-normal-state))
+         (when next-char
+           (setq unread-command-events (list next-char))))))))
+#+end_src
+
+这里重点是名叫 =evil-fd= 的代码块可以放在文档的任意地方，不论是在最前面还是最后面。哈，这意味着这里突破了代码的「局限」，让文档作者可以首先定义大体框架
+然后才来完善细节，做到了「先使用，后声明」，如果在常见的编程语言这么做大概率只会得到无情的报错。我猜是因为 org mode 是在评估完整个文档后构建起整个环境进行产物的
+输出所以才给了使用者随心所欲构建代码的能力吧。就算是源代码也得受限于解释（编译）器而不得不做出妥协，那计算机科学中遇事不决加个中间层定律开始发力了。因为
+有了 org mode 这个中间层，将源代码文件看成最终产物，所以可以抛开代码的限制将逻辑上有关联的代码聚合到一处，然后利用 noweb 的方式将代码分出去插入指定
+位置；或是将实际逻辑和代码逻辑倒转做到先举例然后在编写实现的逻辑流。
+
+** 配置启动
+经过这样的配置，那么还差最后一步，拷贝[[git.southfox.me/southfox/pawmacs][仓库]]里的文档然后调用 =org-babel-tangle= 将文档编
+织出 =init.el= 和 =early-init.el= 这种对应的配置代码。
+
+#+begin_src emacs-lisp
+(defun paw/refresh-configuration ()
+  (interactive)
+  (url-copy-file
+   "https://git.southfox.me..."
+   (expand-file-name "config.org" user-emacs-directory)
+   t)
+  (with-current-buffer (find-file-noselect (expand-file-name "config.org" user-emacs-directory))
+    (org-babel-tangle)))
+#+end_src
+
+当然，这个函数也是包含在对应的 org mode 里的，果然宇宙的万法根源就是自我指涉啊。
+
+** 总结
+org mode 现在已经是我首选的文本格式了，想来是「我在这里写，以后想利用起来也方便」的这种想法迁移默化的影响吧，不过对其没原生支持
+预览 http(s) 远程图片和对 CJK 文本支持不友善小毛刺我心里还是颇有微词，不过还能怎么办呢，只能就这么用下去了。
+
+** Bonus
+#+begin_example
+=vertico= + =orderless= ，永远不分离！
+
+#+begin_src emacs-lisp
+(use-package vertico
+  :ensure t
+  :config
+  (vertico-mode))
+
+(use-package orderless
+  :ensure t
+  :init
+  (setq completion-styles '(orderless basic)
+        completion-category-defaults nil
+        completion-category-overrides '((file (styles partial-completion)))))
+#+end_src
+
+=consult= ：我是来加入这个家的。
+
+#+begin_src emacs-lisp
+(use-package consult
+  :init
+  (advice-add #'register-preview :override #'consult-register-window)
+  (setq register-preview-delay 0.5)
+  :config
+  (consult-customize
+   consult-theme :preview-key '(:debounce 0.2 any)
+   consult-ripgrep consult-git-grep consult-grep consult-man
+   consult-bookmark consult-recent-file consult-xref
+   consult-source-bookmark consult-source-file-register
+   consult-source-recent-file consult-source-project-recent-file
+   :preview-key '(:debounce 0.4 any))
+  (setq consult-narrow-key "<")
+  <<consult-keys>>)
+
+在 emacs 里启用拼音首字母搜索
+
+(use-package evil-pinyin
+  :after (evil orderless)
+  :autoload evil-pinyin--build-regexp-string
+  :init
+  (setq-default evil-pinyin-scheme 'simplified-ziranma-all)
+  (defun completion--regex-pinyin (str)
+    (orderless-regexp (evil-pinyin--build-regexp-string str)))
+  (add-to-list 'orderless-matching-styles 'completion--regex-pinyin)
+  :config
+  (global-evil-pinyin-mode))
+#+end_src
+#+end_example
+
+这样，依托于 =consult= 的 =consult-org-heading= 命令快速提取 org mode 文档标题然后用拼音首字母定位哪怕在移动设备
+的小屏幕中用虚拟键盘也能方便定位配置，这也是 emacs 处理文本能力结合 org mode 的魅力吧。
+
+#+ATTR_HTML: :width 600
+[[https://media.southfox.me/attachment/QmTLrnqW2NDFcoEwMP9rkcttPM3XMP4XEjNioEWHs3BhUi?filename=image.webp][在安卓 emacs 里检索我的 org mode 配置文档大纲标题截图]]
+
+** 参考
+- [[https://www.howardism.org/Technical/Emacs/literate-programming-tutorial.html][Introduction to Literate Programming]]
+- [[https://chamook.lol/literate-programming-with-org/][Literate Programming with Org Mode 🦄]]
+- [[https://orgmode.org/manual/Environment-of-a-Code-Block.html][Environment of a Code Block (The Org Manual)]]
+- [[https://orgmode.org/manual/Evaluating-Code-Blocks.html][Evaluating Code Blocks (The Org Manual)]]
+
+** 脚注
+[fn:1] 在配好 org babel 相关配置的情况下……
