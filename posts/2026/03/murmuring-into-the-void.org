@@ -15,7 +15,7 @@
 
 说到日记，我现在的日记也只是处于每天打开 [[https://www.orgroam.com/][Org-roam]] 的今日节点然后随手
 写一点的程度，没什么不好，但或许我应该更能撬动一点这里的力量？首先想到的就是应该有个限制而不随心所欲的想到什么
-就写什么 [fn:1] ，首先想到或许我可以参照 [[https://mindthenerd.com/the-socratic-journal-method-a-simple-journaling-method-that-actually-works/][The Socratic Journal Method]] 的办法来做，看了一下似乎并不是很
+就写什么 [fn:1] ，然后想到或许我可以参照 [[https://mindthenerd.com/the-socratic-journal-method-a-simple-journaling-method-that-actually-works/][The Socratic Journal Method]] 的办法来做，看了一下似乎并不是很
 难（突然想到这是否就是生活意义上的导入库来用），而且也很方便跟感恩日记 [fn:2] 联动，有结构性的框架对
 于有 ADHD 特质的我应该有所帮助（而且也不是很难办，在我的 emacs 里配置加点参数就……）。希望能够凭借这个流程
 理清我内心真正的忧虑与关切。
