@@ -235,7 +235,6 @@
                         (define (set-font font-name)
                           (localStorage.setItem "font" font-name)
                           (document.documentElement.setAttribute "data-font" font-name))
-                        (console.log theme-select)
                         (theme-select.addEventListener
                          "change"
                          (lambda (event)
