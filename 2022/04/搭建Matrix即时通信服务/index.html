@@ -1,0 +1,138 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta property="og:title" content="搭建Matrix即时通信服务 — 狐狸反走矣" /><meta property="og:site_name" content="狐狸反走矣" /><meta property="og:image" content="https://blog.southfox.me/favicon.png" /><meta name="fediverse:creator" content="SouthFox@foxsay.southfox.me" /><title>搭建Matrix即时通信服务 — 狐狸反走矣</title><link rel="me" href="https://foxsay.southfox.me/@SouthFox" /><link rel="me" href="https://codeberg.org/southfox" /><script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || '386');
+      document.documentElement.setAttribute('data-font', localStorage.getItem('font') || 'zpix');</script><link rel="stylesheet" href="/assets/css/main.css" /><script src="/assets/js/lips.min.js" defer="defer"></script><script type="text/x-scheme" defer="defer">(let ((theme (or (localStorage.getItem "theme") "386")) (font (or (localStorage.getItem "font") "zpix"))) (let ((theme-select (document.getElementById "theme-select")) (font-select (document.getElementById "font-select"))) (define (string=? a b) (== (a.cmp b) 0)) (define (loop-set options value) (let loop ((i 0)) (if (> i (- (length options) 1)) i (let ((option (get options i))) (if (string=? option.value value) (option.setAttribute "selected" #t) (loop (+ 1 i))))))) (loop-set theme-select.options theme) (loop-set font-select.options font) (define (set-theme theme-name) (localStorage.setItem "theme" theme-name) (document.documentElement.setAttribute "data-theme" theme-name)) (define (set-font font-name) (localStorage.setItem "font" font-name) (document.documentElement.setAttribute "data-font" font-name)) (theme-select.addEventListener "change" (lambda (event) (set-theme event.target.value))) (font-select.addEventListener "change" (lambda (event) (set-font event.target.value)))))</script><link rel="alternate" href="/feed.xml" title="狐狸反走矣" type="application/atom+xml" /><link rel="alternate" href="/rss2.xml" title="狐狸反走矣" type="application/rss+xml" /></head><body><nav class="nav"><a href="/" class="brand"><span>狐狸反走矣</span></a><input id="bmenub" type="checkbox" class="show" aria-label="open menu" /><label for="bmenub" class="burger pseudo button">☰</label><div class="menu"><a href="/archives/">归档</a><a href="/tags/">标签</a><a href="/search/">搜索</a><a href="/about/">关于</a></div></nav><div class="container flex"><div class="content"><main data-pagefind-body="true"><div><h1 id="post-title">搭建Matrix即时通信服务</h1><p class="post-meta"><span>by SouthFox</span><time data-pagefind-sort="date">2022-04-15</time></p><div><section>此篇是技术文章并距离当前构建时间超过 720 天，内容可能已经过时。</section><p>总之稍微记录一下。</p><span id="more"></span><ul><li><p>事先约定 <code>matrix.org</code> 是前端地址 <code>synapse.matrix.org</code> 是后端地址，实际请改成自己的……具体为啥这么做可以看<a href="https://matrix-org.github.io/synapse/latest/delegate.html" class="external_link">官方文档</a>，如果嫌麻烦也可以不启用这功能……</p></li><li><p>新建文件夹，在里面新建一个 <code>docker-compose.yml</code> 文件，往里写入</p></li></ul><pre><code>#也感谢糖喵提供的配置文件~
+version: &quot;3.4&quot;
+
+services:
+  synapse:
+    hostname: matrix
+    image: matrixdotorg/synapse:latest
+    restart: always
+    container_name: matrix_server   
+    depends_on:
+      - db
+      - redis
+    ports:
+      - &quot;127.0.0.1:8001:8008&quot;
+    volumes:
+      - ./synapse/data:/data
+    networks:
+      - synapse_network
+      - external_network
+    healthcheck:
+      test: [&quot;CMD-SHELL&quot;, &quot;curl -s localhost:8008/health || exit 1&quot;]
+
+  db:
+    image: postgres
+    restart: always
+    container_name: matrix_db
+    volumes:
+      - ./synapse/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: synapse
+      POSTGRES_PASSWORD: 随便什么密码
+      POSTGRES_DB: synapse
+      POSTGRES_INITDB_ARGS: &quot;--encoding='UTF8' --lc-collate='C' --lc-ctype='C'&quot;
+    networks:
+      - synapse_network
+    healthcheck:
+      test: [&quot;CMD&quot;, &quot;pg_isready&quot;, &quot;-U&quot;, &quot;synapse&quot;]
+
+  redis:
+    image: redis:6.0-alpine
+    restart: always
+    container_name: matrix_redis  
+    volumes:
+      - ./synapse/redis:/data
+    networks:
+      - synapse_network
+    healthcheck:
+      test: [&quot;CMD&quot;, &quot;redis-cli&quot;, &quot;ping&quot;]
+
+networks:
+  synapse_network:
+    internal: true
+  external_network:</code></pre><ul><li>之后运行 <code>docker-compose run --rm -e SYNAPSE_SERVER_NAME=前端地址 synapse generate</code> 命令生成配置文件，之后检查在 <code>./synapse/data</code> 路径下是否有叫 <code>homeserver.yaml</code> 的配置文件，编辑配置文件 <code>nano ./synapse/data/homeserver.yaml</code></li></ul><pre><code># 重点改以下配置
+server_name: &quot;matrix.org&quot;
+
+public_baseurl: https://synapse.matrix.org/
+
+serve_server_wellknown: true
+
+database:
+  name: psycopg2
+  txn_limit: 10000
+  args:
+    user: synapse
+    password: docker 配置写的随便什么密码
+    database: synapse
+    host: db
+    port: 5432
+    cp_min: 5
+    cp_max: 10
+
+#database:
+#  name: sqlite3
+#  args:
+#    database: /data/homeserver.db
+#↑注释掉使用 sqlite3 的配置
+
+redis:
+  # Uncomment the below to enable Redis support.
+  #
+  enabled: true
+
+  # Optional host and port to use to connect to redis. Defaults to
+  # localhost and 6379
+  #
+  host: redis
+  port: 6379</code></pre><ul><li>之后再启动服务，<code>docker-compose start</code></li><li>编辑 <code>matrix.org</code> 的 <code>nginx</code> 配置文件加入以下配置</li></ul><pre><code>    location /.well-known/matrix/client {
+        return 200 '{&quot;m.homeserver&quot;: {&quot;base_url&quot;: &quot;https://synapse.matrix.org&quot;}}';
+        default_type application/json;
+        add_header Access-Control-Allow-Origin *;
+    }
+
+    location /.well-known/matrix/server {
+        return 200 '{&quot;m.server&quot;: &quot;synapse.matrix.org:443&quot;}';
+        default_type application/json;
+        add_header Access-Control-Allow-Origin *;
+    }
+#注意替换自己的前端后端地址</code></pre><ul><li>新建 <code>synapse.matrix.org</code> 的 <code>dns</code> ，指向服务器地址，再 <code>certbot certonly --nginx -d synapse.matrix.org</code> 申请证书</li><li>新建一个 <code>synapse.matrix.org</code> 的配置文件</li></ul><pre><code>server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    server_name synapse.matrix.org;
+
+    ssl_certificate /etc/letsencrypt/live/synapse.matrix.org/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/synapse.matrix.org/privkey.pem;
+
+    # Various TLS hardening settings
+    # https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_ciphers ECDHE-RSA-AES256-GCM-SHA512:DHE-RSA-AES256-GCM-SHA512:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-SHA384;
+    ssl_session_timeout  10m;
+    ssl_session_cache shared:SSL:10m;
+    ssl_session_tickets on;
+    ssl_stapling on;
+    ssl_stapling_verify on;
+
+
+    location ~ ^(/_matrix|/_synapse/client) {
+        # note: do not add a path (even a single /) after the port in `proxy_pass`,
+        # otherwise nginx will canonicalise the URI and cause signature verification
+        # errors.
+        proxy_pass http://127.0.0.1:8001;
+        proxy_set_header X-Forwarded-For $remote_addr;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header Host $host;
+
+        # Nginx by default only allows file uploads up to 1M in size
+        # Increase client_max_body_size to match max_upload_size defined in homeserver.yaml
+        client_max_body_size 500M;
+    }
+
+}</code></pre><ul><li>重载 <code>nginx</code> 配置文件，<code>nginx -s reload</code></li><li>之后去<a href="https://federationtester.matrix.org/" class="external_link">检查服务</a>（需科学）输入自己的前端地址 <code>matrix.org</code> 检查是否正常</li><li>用 <code>docker-compose exec synapse /bin/bash</code> 进入 <code>synapse</code> 容器</li></ul><pre><code>cd data
+#注册新用户
+register_new_matrix_user -c homeserver.yaml http://localhost:8008 
+#注册完后用 exit 退出容器
+exit</code></pre><ul><li>完成后用任意一个客户端登陆即可使用，注意登陆用的地址是后端地址 <code>synapse.matrix.org</code></li></ul></div></div></main><div class="pagination"><a class="btn" href="/2022/04/Emacs随记（1）/">← 上一页</a><a class="btn" href="/"> 主页 </a><a class="btn" href="/2022/04/EFK-日志-All-in-one/">下一页 →</a></div><div class="comment"><blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote><script src="https://giscus.app/client.js" data-repo="SouthFox-D/SouthFox-D.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ=" data-category="博客评论" data-category-id="DIC_kwDODaJZAM4CA7bf" data-mapping="specific" data-term="/2022/04/搭建Matrix即时通信服务/" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async=""></script></div></div><div class="sidebar"><div class="widget"><h4>链接</h4><ul><li><a href="/friends/">友链</a></li><li><a href="https://www.travellings.cn/train.html">开往</a></li><li><a href="https://foreverblog.cn/go.html">虫洞</a></li><li><a href="/feed.xml">订阅（Atom)</a></li><li><a href="/rss2.xml">订阅（Rss)</a></li><li><a href="https://www.lisperati.com/logo.html"><img src="/assets/img/lisplogo_warning2_128.png" alt="Lisp logo warning" /></a></li><li><a href="https://www.fsf.org/appeal"><img src="/assets/img/6838639.png" alt="FSF appeal" /></a></li></ul><div><a href="https://xn--sr8hvo.ws/previous">←</a><a href="https://xn--sr8hvo.ws">IndieWeb Webring 💍</a><a href="https://xn--sr8hvo.ws/next">→</a></div><div><a href="https://fediring.net/previous?host=blog.southfox.me">←</a><a href="https://fediring.net">Fediring 💍</a><a href="https://fediring.net/next?host=blog.southfox.me">→</a></div></div><div class="widget"><h4>设置</h4><div><label for="theme-select">主题设置：</label><select id="theme-select"><option value="plain">普通</option><option value="386">386</option><option value="frutiger-aero">Frutiger Aero</option></select></div><div><label for="font-select">字体设置：</label><select id="font-select"><option value="plain">普通</option><option value="zpix">像素</option></select></div></div><div class="widget"><h4>标签</h4><ul><li><a href="/tag/技术">技术</a></li></ul></div><div class="widget"><h4>目录</h4><ul></ul></div></div></div><footer class="footer"><div class="copyright"><div><p>© SouthFox 2026 ,Font by <a href="https://github.com/SolidZORO/zpix-pixel-font">Zpix</a></p></div><div><p>Power by <a href="https://dthompson.us/projects/haunt.html">haunt</a> ,source can be found <a href="https://git.southfox.me/southfox/blog">here</a></p></div></div></footer></body></html>
