@@ -196,6 +196,11 @@ a:hover {
     text-decoration: none;
 }
 
+a.external_link::after {
+    content: "\2197";
+    font-size: 0.8em;
+}
+
 /* Set the cursor to '?' on an abbreviation and style the abbreviation to show that there is more information underneath */
 abbr[title] {
     cursor: help;
@@ -690,11 +695,6 @@ nav .burger {
     & a:hover,
     & a:active {
         background: #a50;
-    }
-
-    & a.external_link::after {
-        content: "\2197";
-        font-size: 0.8em;
     }
 
     & .title,
