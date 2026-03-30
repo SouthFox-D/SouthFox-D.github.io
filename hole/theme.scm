@@ -344,9 +344,9 @@
                       (site-post-slug site post))))
   `(div (@ (class "content"))
     (main (@ (id "main-content") (tabindex "-1"))
-          (h2 ,title)
+          (h1 ,title)
           ,@(map (lambda (post)
-                   `((h3
+                   `((h2
                       (a (@ (href ,(post-uri post)))
                          ,(post-ref post 'title)
                          " — "

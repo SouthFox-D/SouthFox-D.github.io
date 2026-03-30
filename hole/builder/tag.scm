@@ -93,7 +93,7 @@ with that TAG."
       "Tags"
       `(div (@ (class "content"))
         (main (@ (id "main-content") (tabindex "-1"))
-              (h2 "标签")
+              (h1 "标签")
               (ul
                ,(map (match-lambda
                        ((tag count)
