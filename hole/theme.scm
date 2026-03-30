@@ -313,16 +313,16 @@
          ,(if previous-post
               `(a (@ (class "btn")
                      (href ,previous-post))
-                "← 上一页")
+                "上一页")
               `(button (@ (class "btn disabled") (disabled "true"))
-                "← 上一页"))
+                "上一页"))
          (a (@ (class "btn") (href "/")) " 主页 ")
          ,(if next-post
               `(a (@ (class "btn")
                      (href ,next-post))
-                "下一页 →")
+                "下一页")
               `(button (@ (class "btn disabled") (disabled "true"))
-                "下一页 →")))
+                "下一页")))
     ,(if (equal? (post-ref post 'feed-only) "t")
          '()
          (comment-place (hexo-post-slug post)))))
@@ -361,16 +361,16 @@
           ,(if previous-page
                `(a (@ (class "btn")
                       (href ,previous-page))
-                 "← 上一页")
+                 "上一页")
                `(button (@ (class "btn disabled") (disabled "true"))
-                 "← 上一页"))
+                 "上一页"))
           (a (@ (class "btn") (href "/")) " 主页 ")
           ,(if next-page
                `(a (@ (class "btn")
                       (href ,next-page))
-                 "下一页 →")
+                 "下一页")
                `(button (@ (class "btn disabled") (disabled "true"))
-                 "下一页 →"))))))
+                 "下一页"))))))
 
 (define fox-theme
   (theme #:name "Fox"
