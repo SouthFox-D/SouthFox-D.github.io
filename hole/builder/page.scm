@@ -19,7 +19,9 @@
   (lambda (site posts)
     (serialized-artifact
      file-name
-     (with-layout fox-theme site title `(div (@ (class "content")) ,body))
+     (with-layout fox-theme site title `(div (@ (class "content"))
+                                         (main (@ (id "main-content") (tabindex "-1"))
+                                               ,body)))
      sxml->html)))
 
 (define* (about-page)
@@ -126,12 +128,13 @@
       site
       "Archives"
       `(div (@ (class "content"))
-        (h2 "归档")
-        (ul
-         ,(map (lambda (post)
-                 `(li (a (@ (href ,(hole/uri-encode (site-post-slug site post))))
-                         ,(post-ref post 'title))))
-               (posts/reverse-chronological posts)))))
+        (main (@ (id "main-content") (tabindex "-1"))
+              (h2 "归档")
+              (ul
+               ,(map (lambda (post)
+                       `(li (a (@ (href ,(hole/uri-encode (site-post-slug site post))))
+                               ,(post-ref post 'title))))
+                     (posts/reverse-chronological posts))))))
      sxml->html)))
 
 (define (search-page)

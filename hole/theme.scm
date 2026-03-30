@@ -57,6 +57,7 @@
 
 (define navbar
   '(nav (@ (class "nav"))
+    (a (@ (class "skip-link") (href "#main-content")) "跳到主要内容")
     (a (@ (href "/")
           (class "brand"))
        (span "狐狸反走矣"))
@@ -294,7 +295,8 @@
   `(div (@ (class "content"))
     (main (@ ,(if (equal? (post-ref post 'feed-only) "t")
                   '(data-pagefind-ignore "true")
-                  '(data-pagefind-body "true")))
+                  '(data-pagefind-body "true"))
+             (id "main-content") (tabindex "-1"))
           (div
            (h1 (@ (id "post-title")) ,(post-ref post 'title))
            (p (@ (class "post-meta"))
@@ -336,16 +338,17 @@
                       (or prefix "")
                       (site-post-slug site post))))
   `(div (@ (class "content"))
-    (h2 ,title)
-    ,@(map (lambda (post)
-             `((h3
-                (a (@ (href ,(post-uri post)))
-                   ,(post-ref post 'title)
-                   " — "
-                   ,(date->string (post-date post) "~Y-~m-~d")))
-               (div (@ (class "post"))
-                    ,(parse-read-more post))))
-           posts)))
+    (main (@ (id "main-content") (tabindex "-1"))
+          (h2 ,title)
+          ,@(map (lambda (post)
+                   `((h3
+                      (a (@ (href ,(post-uri post)))
+                         ,(post-ref post 'title)
+                         " — "
+                         ,(date->string (post-date post) "~Y-~m-~d")))
+                     (div (@ (class "post"))
+                          ,(parse-read-more post))))
+                 posts))))
 
 (define (fox-default-pagination-template site body previous-page next-page)
   `((,@body

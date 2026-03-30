@@ -417,6 +417,20 @@ pre code span {
 }
 
 /* Hole Theme */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: #000;
+    color: #fff;
+    padding: 10px 20px;
+    z-index: 10001;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
 nav {
     position: fixed;
     top: 0;

@@ -91,12 +91,13 @@ with that TAG."
       site
       "Tags"
       `(div (@ (class "content"))
-        (h2 "标签")
-        (ul
-         ,(map (match-lambda
-                 ((tag count)
-                  `(li (a (@ (class "tag")
-                             (href ,(hole/uri-encode (tag-uri tag))))
-                          ,tag ": " ,count))))
-               (count-tags posts)))))
+        (main (@ (id "main-content") (tabindex "-1"))
+              (h2 "标签")
+              (ul
+               ,(map (match-lambda
+                       ((tag count)
+                        `(li (a (@ (class "tag")
+                                   (href ,(hole/uri-encode (tag-uri tag))))
+                                ,tag ": " ,count))))
+                     (count-tags posts))))))
      sxml->html)))
