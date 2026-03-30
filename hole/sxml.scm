@@ -206,7 +206,7 @@
         `(sup (a (@ ,@attrs) ,@children))
         (if is-image?
             (if descirpt
-                `(figure (img (@ (src ,dest) (alt ,@children) ,@attrs))
+                `(figure (img (@ (src ,dest) (alt "") ,@attrs))
                   (figcaption (span ,@children)))
                 `(img (@ (src ,dest) ,@attrs)))
             `(a (@ ,@attrs) ,@children)))))
