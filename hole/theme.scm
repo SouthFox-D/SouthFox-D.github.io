@@ -68,7 +68,7 @@
               (aria-label "打开菜单")))
     (label (@ (for "bmenub")
               (class "burger pseudo button")
-              (aria-label "菜单符号"))
+              (aria-hidden "true"))
            ☰)
     (div (@ (class "menu"))
          (a (@ (href "/archives/")) "归档")
