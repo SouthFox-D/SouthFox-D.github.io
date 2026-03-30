@@ -203,7 +203,7 @@
                         (list (list 'class "external_link")) '())))
          (children (fold-nodes node->sxml (node-children node))))
     (if is-sup?
-        `(sup (a (@ ,@attrs) ,@children))
+        `(sup (a (@ ,@attrs (aria-label ,(string-append "脚注" id))) ,@children))
         (if is-image?
             (if descirpt
                 `(figure (img (@ (src ,dest) (alt "") ,@attrs))
