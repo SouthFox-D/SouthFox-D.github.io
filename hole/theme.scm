@@ -314,14 +314,14 @@
               `(a (@ (class "btn")
                      (href ,previous-post))
                 "← 上一页")
-              `(a (@ (class "btn disabled"))
+              `(button (@ (class "btn disabled") (disabled "true"))
                 "← 上一页"))
          (a (@ (class "btn") (href "/")) " 主页 ")
          ,(if next-post
               `(a (@ (class "btn")
                      (href ,next-post))
                 "下一页 →")
-              `(a (@ (class "btn disabled"))
+              `(button (@ (class "btn disabled") (disabled "true"))
                 "下一页 →")))
     ,(if (equal? (post-ref post 'feed-only) "t")
          '()
@@ -362,14 +362,14 @@
                `(a (@ (class "btn")
                       (href ,previous-page))
                  "← 上一页")
-               `(a (@ (class "btn disabled"))
+               `(button (@ (class "btn disabled") (disabled "true"))
                  "← 上一页"))
           (a (@ (class "btn") (href "/")) " 主页 ")
           ,(if next-page
                `(a (@ (class "btn")
                       (href ,next-page))
                  "下一页 →")
-               `(a (@ (class "btn disabled"))
+               `(button (@ (class "btn disabled") (disabled "true"))
                  "下一页 →"))))))
 
 (define fox-theme

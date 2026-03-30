@@ -605,16 +605,11 @@ nav .burger {
 
 .btn {
     display: inline-block;
-    text-align: center;
-    vertical-align: middle;
-    touch-action: manipulation;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: 1;
     background-image: none;
     border: 0;
-}
-
-.btn.disabled {
-    box-shadow: none;
-    pointer-events: none;
 }
 
 .syntax-special,
@@ -770,6 +765,11 @@ nav .burger {
         border: 0;
     }
 
+    .btn.disabled {
+        box-shadow: none;
+        pointer-events: none;
+    }
+
     & .syntax-special,
     & .syntax-element {
         color: #8ac6f2;
@@ -833,8 +833,6 @@ nav .burger {
         border-radius: 3px;
         padding: 3px 12px;
         text-align: center;
-        min-height: 25px;
-        min-width: 75px;
         user-select: none;
     }
 
