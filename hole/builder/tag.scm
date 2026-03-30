@@ -58,14 +58,15 @@ order."
 
 (define* (tags-template site posts #:key title)
   `((div (@ (class "content"))
-     (h1 "#" ,title)
-     (ul
-      ,(map (lambda (post)
-              `(li (a (@ (href ,(hole/uri-encode (site-post-slug site post))))
-                      ,(post-ref post 'title)
-                      " — "
-                      ,(date->string (post-date post) "~Y-~m-~d"))))
-            (posts/reverse-chronological posts))))))
+     (main (@ (id "main-content") (tabindex "-1"))
+           (h1 "#" ,title)
+           (ul
+            ,(map (lambda (post)
+                    `(li (a (@ (href ,(hole/uri-encode (site-post-slug site post))))
+                            ,(post-ref post 'title)
+                            " — "
+                            ,(date->string (post-date post) "~Y-~m-~d"))))
+                  (posts/reverse-chronological posts)))))))
 
 (define (tag-uri tag)
   "Given a TAG return the page that contains only posts associated
