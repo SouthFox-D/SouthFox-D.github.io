@@ -197,7 +197,7 @@ a:hover {
 }
 
 a.external_link::after {
-    content: "\2197";
+    content: "\2197" / "";
     font-size: 0.8em;
 }
 
