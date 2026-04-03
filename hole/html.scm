@@ -125,3 +125,9 @@ list ATTRS and the child nodes in BODY."
      (string->escaped-html text port))
     ;; Render arbitrary Scheme objects, too.
     (obj (object->escaped-html obj port))))
+
+(define (sxml->html-string sxml)
+  "Render SXML as an HTML string."
+  (call-with-output-string
+   (lambda (port)
+     (sxml->html sxml port))))
