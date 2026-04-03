@@ -206,6 +206,9 @@
                                       " — "
                                       (site-title site)))))
            '())
+      ,(if (and post (equal? (post-ref post 'feed-only) "t"))
+           `(meta (@ (name "robots") (content "noindex")))
+           '())
       (meta (@ (property "og:site_name")
                (content ,(site-title site))))
       (meta (@ (property "og:image")
