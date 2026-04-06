@@ -22,7 +22,7 @@ H. L. Mencken
 
 更复杂的还有生命，高中生物学习的中心法则说 [fn:3] ：DNA 转录成 RNA ，RNA 翻译成蛋白质，蛋白质是生命实际执行结构。这
 里带来了长久以来的迷思是认为 DNA 是生命的「代码」，只要能对 DNA 完全测序就相当于理解了生命的奥妙。在完成了人类基因
-组计划 [fn:4] 后，大家发现携带蛋白质指令的只有 2 万多条基因仅占人类 DNA 2% 不到 ，这些基因长久以来就被当成了「垃
+组计划 [fn:4] 后，大家发现携带蛋白质指令的只有 2 万多条基因，仅占人类 DNA 2% 不到。这些基因长久以来就被当成了「垃
 圾」、「屎山代码」。但根据最近这篇文章（ [[https://knowablemagazine.org/content/article/living-world/2026/noncoding-rna-molecules-in-cells][The silent majority: RNAs that don’t make proteins - Knowable Magazine]]）来
 看，这些「屎山代码」就像是「暗物质」一样，以一种我们还尚未查明的方式影响生命。
 
@@ -70,6 +70,7 @@ Noble offers various lines of evidence that the “blueprint” of life cannot b
 #+begin_quote
 Everybody, everybody wants to love
 人们都想去爱
+
 Everybody, everybody wants to be loved
 人们都盼望爱
 #+end_quote
@@ -102,7 +103,7 @@ And it's not just current infections that can influence our health. Sometimes ol
 
 *** [[https://lindseyhallwrites.substack.com/p/i-read-my-boyfriends-chatgpt-and][I Stumbled Across My Boyfriend's ChatGPT and It Ended Our Relationship]]
 这种事就很难评价啊……一方面不该看他人私密的对话记录，但另一方面看到亲密关系里出
-现 "I’m just not proud of her" 这种话有怎能不令人「死心」呢？
+现 "I’m just not proud of her" 这种话怎能不令人「死心」呢？
 
 *** [[https://www.theverge.com/tech/905946/windows-11-forced-obsolescence-linux-thinkpad][I saved a doomed Windows laptop by embracing Linux | The Verge]]
 Core i7-7600U 的 CPU 加上 16G 内存的 ThinkPad 我感想是这仗打得太富裕了吧~
@@ -121,11 +122,11 @@ AO3 结束了长达 17 年的 Beta 版，好耶。
 不要带走 WordPress ，呜呜呜……毕竟那些个 AI 优先的框架或 CMS 并不会在意 RSS/Atom 这种订阅源……
 
 *** [[https://lobste.rs/s/jr4acs/nvim_treesitter_repository_was_archived][The nvim-treesitter repository was archived | Lobsters]]
-关于 nvim-treesitter 最近 archived 相关讨论。感想是如果有人也对相关项目说：
+关于 nvim-treesitter 最近 archived 相关讨论。感想是如果有人对我维护的项目说：
 
 So please, do go switch to something that doesn't require interacting with people.
 
-那我是真的失去所有力气和手段，连 Block 他的力气也没有，直接就 Archived 了事了。
+那我是真的失去所有力气和手段，连 Block 的力气也没有，直接 Archived 就了事了。
 
 *** [[https://www.421.news/en/enshittification-reverse-engineering-guide/][The Enshittification of the Internet: A Reverse-Engineering Guide | 421.news]]
 屎化（Enshittification）也是最近在讨论场一直被拿来讨论的词，对于这种前期将用户先「骗」进来然后在慢慢
@@ -146,10 +147,10 @@ Is this, at its essence, the pain of being any kind of woman? To be, even today,
 今年 4 月 16 号，一部关于 Clojure 的纪录片就会发布了，期待。
 
 ** Present day, Present time
-这周的空余时间都在……玩《魔兽世界》！体验新资料片大力优化的单人玩法就感觉全世界的社会都在快速原子化啊，连《魔
+这周的空余时间都在……玩《魔兽世界》！体验新资料片大力优化的单人玩法后就感觉全世界的社会都在快速原子化啊，连《魔
 兽世界》这种几十号人集体在一起打副本的 MMORPG 也开始照顾单人玩家了。
-总之，现在我也满级了，地图上的 ? 马桶也通完了，装等也刷到了凑合能用的地步。那么是时候……该刷钓鱼
-了，新的哈赖恩达尔地区的 BGM [fn:9] 确实能让我待上好一会。
+总之，现在我也满级了，地图上的 ? 马桶也通完了，装等也刷到了凑合能用的地步。那么是时候……去刷钓鱼
+技能了，新的哈赖恩达尔地区的 BGM [fn:9] 确实能让我待上好一会。
 
 ** 脚注
 [fn:1] [[https://zh.wikipedia.org/wiki/%E5%A5%A5%E5%8D%A1%E5%A7%86%E5%89%83%E5%88%80][奥卡姆剃刀 - 维基百科，自由的百科全书]]
