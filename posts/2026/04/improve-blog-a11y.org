@@ -50,7 +50,7 @@
 
 注意 main 标签默认是不可聚焦的，所以要附上 tabindex="-1" 属性强制将焦点聚焦上去，否
 则会出现聚焦到 main 然后失焦又返回到网页开头产生「如跳」的现象。如果要将这个链接做只对焦点模式下才
-显示（对正常浏览用户隐藏）的话可以加上这样的 css ：
+显示（对一般明眼用户隐藏）的话可以加上这样的 css ：
 
 #+begin_src css
 .skip-link {
@@ -142,7 +142,7 @@ HTML5 发展到现在已经有专门语义标签例如 main, nav, header, footer
 况，发现在 TalkBack 这边划一个倒 L 打开菜单选择「从当前焦点朗读」直接一口气读完文章才是解脱……
 
 ** 最后
-因为好奇去翻看 [[https://github.com/tvraman/emacspeak/tree/master/lisp][tvraman/emacspeak]] [fn:2] 代码感到有点
+因为好奇去翻看 [[https://github.com/tvraman/emacspeak/tree/master/lisp][tvraman/emacspeak]] [fn:2] 代码最后感到有点
 肃然了，里面一个一个 emacspeak-magit.el, emacspeak-bookmark.el, emacspeak-calc.el,
 emacspeak-dbug.el, emacspeak-dired.el, emacspeak-ediff.el, emacspeak-evil.el, emacspeak-google.el, emacspeak-vterm.el 等
 百来个文件，明眼人的习以为常对于视障人士来说是要尽力「争取」的事啊。有点后悔没在一开始就考虑无障碍，不过栽树最好的时间是三十年前
