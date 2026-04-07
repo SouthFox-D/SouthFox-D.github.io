@@ -141,13 +141,14 @@
   (static-page
    "Search"
    "search/index.html"
-    `((link (@ (href "/pagefind/pagefind-ui.css")
+    `((link (@ (href "/pagefind/pagefind-component-ui.css")
                (rel "stylesheet")))
-      (script (@ (src "/pagefind/pagefind-ui.js")))
+      (script (@ (src "/pagefind/pagefind-component-ui.js")))
       (div (@ (class "content"))
            (h1 "Search")
-           (div (@ (id "search")))
-           (script (@ (src "/assets/js/init-search.js")))))))
+           (pagefind-input)
+           (pagefind-summary)
+           (pagefind-results)))))
 
 (define (guestbook-page)
   (static-page
