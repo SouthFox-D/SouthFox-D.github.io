@@ -16,7 +16,7 @@
 (define-public pagefind-bin
   (package
    (name "pagefind-bin")
-   (version "1.5.0-beta.1")
+   (version "1.5.0")
    (source (origin
             (method url-fetch)
             (uri (string-append
@@ -31,9 +31,9 @@
             (sha256
              (base32
               (cond ((target-aarch64?)
-                     "1y22cx9cxkg231g7m99kjkxpi1fcc4zh2hdk0hsr4601qfifcg1j")
+                     "0mxj11lvw5srxndp1kkk1vm4hxf6ppj3brzz2g4vwz4wx17s38nj")
                     ((target-x86-64?)
-                     "094m8vrbzskc223jbhj2n2bzacavbhcpsgjqdlz5bycrvibycl7c")
+                     "1wljsl2r7prx4i8vwml92s4x3zjj9wk4akv5j28a1ygxbkb38csk")
                     (else ""))))))
    (build-system copy-build-system)
    (arguments
