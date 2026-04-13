@@ -1,0 +1,79 @@
+#+title: fox-thinking-25
+#+author: SouthFox
+#+date: 2026-04-13 10:55:49
+#+draft: t
+#+tags: FoxThinking
+
+Foo
+
+,(read-more)
+
+
+** 阅读
+*** [[https://www.eff.org/deeplinks/2026/04/eff-leaving-x][EFF is Leaving X | Electronic Frontier Foundation]]
+EFF 在最近宣布离开推特（后面叫 X）平台，理由是：
+
+- 推特不再是「战斗」的地方
+- 曝光度下降
+
+建议不要去看社交媒体贴文下的评论，否则将看到最典型派系斗争场面。
+对于另一个观点：推特曝光度确实下降了吗？根据之前看到的几篇文章，应该是的，EFF 这种发点内容简洁并且发个
+链接的模式账号来说，曝光度下降明显。加上推特收紧 API 让自动发贴变成猫鼠游戏后，那确实还不如直接退出呢。
+
+**** [[https://buffer.com/resources/links-on-x/][Do Posts with Links Affect Content Performance on X?]] 
+有链接的贴文确实降低了曝光度，还非常显著。
+
+**** [[https://www.niemanlab.org/2026/04/do-links-hurt-news-publishers-on-twitter-our-analysis-suggests-yes/][Do links hurt news publishers on Twitter? Our analysis suggests yes]]
+#+begin_quote
+Ten years later, the site formerly known as Twitter still drives very little traffic to news sites.
+But it’s also bad for conversational and breaking news.
+
+十年后，这个曾叫推特的网站仍然很少为新闻网站带来流量。现如今对于讨论和突发新闻来说也变得糟糕。
+#+end_quote
+
+**** [[https://www.natesilver.net/p/social-media-has-become-a-freak-show][Social media is turning into a freak show - by Nate Silver]]
+#+begin_quote
+Twitter feels like a ghost town. It’s still useful for some
+topics: the AI discourse on the platform is often relatively robust, for instance.
+But for something like the war in Iran, it’s next to useless.
+
+推特正在慢慢变成孤岛，对于类似人工智能的话题还有丰富讨论，但对某些话题例如伊朗战争就变得毫无用处。
+#+end_quote
+
+*** [[https://phys.org/news/2026-04-tech-enable-species.html][Tech can enable cross-species experiences, new research suggests]]
+这也是我在思考的：共感是同理心的一个大前提。
+
+甚至幻想下如果日后安装些感官拓展方面的义体。四色视觉是什么样子的？有个灵敏一万倍
+鼻子？体验不同尺度下感官例如成为一颗树？甚至直接解码[[https://zh.wikipedia.org/wiki/%E8%9C%9C%E8%9C%82%E8%88%9E%E8%B9%88][蜜蜂舞]]？
+*** [[https://blog.sciencenet.cn/blog-437607-1528690.html][科学网—马缨丹：最美入侵者，生态毒杀手 - 郑永军的博文]]
+马樱丹是我很喜欢的一种植物，因为它「有趣」，一朵花球上有不同颜色。在后面依稀知道它是入侵物种并且有毒后
+也还是喜欢，毕竟确实……「有趣」。在见到绿化里用马樱丹后我挺惊讶，这能当绿化植物吗？现在看到这文章：
+
+#+begin_quote
+同学们，你们可能会问：“路边的花坛里不也种着马缨丹吗？为什么还要继续种？”
+其实，现在城市绿化中使用的马缨丹大多是经过人工培育的杂交品种，繁殖能力相对较弱。
+但即便如此，它们仍有可能逃逸到野外。所以，很多地方已经开始用本土植物来替代马缨丹。
+#+end_quote
+
+也是解决了我许久疑惑。
+
+*** [[https://blog.sciencenet.cn/blog-52727-1525747.html][科学网—寻觅大树杜鹃王（下）——我的寻觅之旅 - 周浙昆的博文]]
+我好像还挺喜欢看游记的……？
+
+*** [[https://matduggan.com/you-can-absolutely-have-an-rss-dependent-website-in-2026/][You can absolutely have an RSS dependent website in 2026]]
+就算在 2026 年，依然有稳定使用 RSS/ATOM 进行订阅的群体，收获这些群体的支持并不难，只要
+为网站添加个订阅源就可以了。
+
+*** 测试三则
+
+**** [[https://german.millermanschool.com/][Am I German or Autistic? | Millerman School]]
++简单来说：纠结意义的是德国人，没理解意思的是孤独症+
+
+咳咳，很刻板印象啊。
+
+**** [[https://amiatechbro.com/][Am I a Tech Bro?]]
+TechBro 这个概念的例子是：「别用传统搜索引擎了，以后有问题直接问 ChatGPT。」、「《埃隆·马斯
+克传》阅读进度：第 5 页」、「我说 GenAI 出来后一切不平等都能得到解决」、「贫穷是一种心态，是懒惰和僵硬思维
+的惩罚」……（捂鼻、摆手试图驱散 TechBro 味）
+
+
