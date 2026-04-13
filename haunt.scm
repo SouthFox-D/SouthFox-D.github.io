@@ -15,9 +15,19 @@
 
 (setenv "LANG" "C.UTF-8")
 
+(define %base-transformers
+  (append
+   (if (equal? (getenv "BUILD_DRAFTS") "t")
+       '()
+       (list filter-draft))))
+
+(define (with-transformers specific-transformers . builders)
+  (apply wrap-builders
+         (append %base-transformers specific-transformers)
+         builders))
+
 (define site-builders
-  (wrap-builders
-   (list filter-feed-only)
+  (with-transformers (list filter-feed-only)
    (blog/collection->page
     #:theme fox-theme
     #:collections `((("最近文章" "没那么近文章" "有点老文章" "尘封文章" "古旧文章" "可以说是黑历史的文章")
@@ -34,11 +44,10 @@
    (static-directory "_site" "/")))
 
 (define post-builders
-  (wrap-builders
-   (list reverse-chronological-posts
-         inject-backlinks
-         inject-feed-only-section
-         inject-expire-warning-section)
+  (with-transformers (list reverse-chronological-posts
+                           inject-backlinks
+                           inject-feed-only-section
+                           inject-expire-warning-section)
    (blog/post->page #:theme fox-theme)
    (hole/atom-feed)
    (hole/rss-feed)))

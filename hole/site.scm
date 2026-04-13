@@ -14,6 +14,7 @@
             inject-backlinks
             inject-feed-only-section
             filter-feed-only
+            filter-draft
             inject-expire-warning-section
             reverse-chronological-posts
             ))
@@ -99,6 +100,12 @@
 (define (filter-feed-only site posts)
   (let ((filtered (filter (lambda (p)
                             (not (equal? (post-ref p 'feed-only) "t")))
+                          posts)))
+    (cons site filtered)))
+
+(define (filter-draft site posts)
+  (let ((filtered (filter (lambda (p)
+                            (not (equal? (post-ref p 'draft) "t")))
                           posts)))
     (cons site filtered)))
 
