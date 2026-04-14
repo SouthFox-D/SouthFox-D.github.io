@@ -8,7 +8,6 @@ Foo
 
 ,(read-more)
 
-
 ** 阅读
 *** [[https://www.eff.org/deeplinks/2026/04/eff-leaving-x][EFF is Leaving X | Electronic Frontier Foundation]]
 EFF 在最近宣布离开推特（后面叫 X）平台，理由是：
@@ -17,11 +16,11 @@ EFF 在最近宣布离开推特（后面叫 X）平台，理由是：
 - 曝光度下降
 
 建议不要去看社交媒体贴文下的评论，否则将看到最典型派系斗争场面。
-对于另一个观点：推特曝光度确实下降了吗？根据之前看到的几篇文章，应该是的，EFF 这种发点内容简洁并且发个
-链接的模式账号来说，曝光度下降明显。加上推特收紧 API 让自动发贴变成猫鼠游戏后，那确实还不如直接退出呢。
+对于另一个观点：推特曝光度确实下降了吗？根据之前看到的几篇文章，应该是的，EFF 这种发点内容简介然后发个原文
+链接的模式账号来说，曝光度下降很明显。加上推特收紧 API 让自动发贴变成猫鼠游戏后，那确实还不如直接退出呢。
 
-**** [[https://buffer.com/resources/links-on-x/][Do Posts with Links Affect Content Performance on X?]] 
-有链接的贴文确实降低了曝光度，还非常显著。
+**** [[https://buffer.com/resources/links-on-x/][Do Posts with Links Affect Content Performance on X?]]
+有链接的贴文确实显著降低了曝光度。
 
 **** [[https://www.niemanlab.org/2026/04/do-links-hurt-news-publishers-on-twitter-our-analysis-suggests-yes/][Do links hurt news publishers on Twitter? Our analysis suggests yes]]
 #+begin_quote
@@ -37,14 +36,9 @@ Twitter feels like a ghost town. It’s still useful for some
 topics: the AI discourse on the platform is often relatively robust, for instance.
 But for something like the war in Iran, it’s next to useless.
 
-推特正在慢慢变成孤岛，对于类似人工智能的话题还有丰富讨论，但对某些话题例如伊朗战争就变得毫无用处。
+推特正在慢慢变成孤岛，对于类似人工智能的话题还有丰富讨论，但对某些话题如伊朗战争就变得毫无用处。
 #+end_quote
 
-*** [[https://phys.org/news/2026-04-tech-enable-species.html][Tech can enable cross-species experiences, new research suggests]]
-这也是我在思考的：共感是同理心的一个大前提。
-
-甚至幻想下如果日后安装些感官拓展方面的义体。四色视觉是什么样子的？有个灵敏一万倍
-鼻子？体验不同尺度下感官例如成为一颗树？甚至直接解码[[https://zh.wikipedia.org/wiki/%E8%9C%9C%E8%9C%82%E8%88%9E%E8%B9%88][蜜蜂舞]]？
 *** [[https://blog.sciencenet.cn/blog-437607-1528690.html][科学网—马缨丹：最美入侵者，生态毒杀手 - 郑永军的博文]]
 马樱丹是我很喜欢的一种植物，因为它「有趣」，一朵花球上有不同颜色。在后面依稀知道它是入侵物种并且有毒后
 也还是喜欢，毕竟确实……「有趣」。在见到绿化里用马樱丹后我挺惊讶，这能当绿化植物吗？现在看到这文章：
@@ -60,12 +54,19 @@ But for something like the war in Iran, it’s next to useless.
 *** [[https://blog.sciencenet.cn/blog-52727-1525747.html][科学网—寻觅大树杜鹃王（下）——我的寻觅之旅 - 周浙昆的博文]]
 我好像还挺喜欢看游记的……？
 
+*** [[https://blog.sciencenet.cn/home.php?mod=space&uid=863936&do=blog&id=1529895][科学网—窃无涯者 - 左芬的博文]]
+#+begin_quote
+在 1874 年的一篇论文中，乔治康托尔证明存在不同大小的无穷大，从而颠覆了数学。
+新近问世的一批信件藏品表明这同时也是一次剽窃行为。
+#+end_quote
+
+哇哦，没想到「孤僻天才康托尔挑战数学界」的故事背后藏着这样的事，不免让我感叹人性复杂？幽暗？
+
 *** [[https://matduggan.com/you-can-absolutely-have-an-rss-dependent-website-in-2026/][You can absolutely have an RSS dependent website in 2026]]
 就算在 2026 年，依然有稳定使用 RSS/ATOM 进行订阅的群体，收获这些群体的支持并不难，只要
 为网站添加个订阅源就可以了。
 
 *** 测试三则
-
 **** [[https://german.millermanschool.com/][Am I German or Autistic? | Millerman School]]
 +简单来说：纠结意义的是德国人，没理解意思的是孤独症+
 
@@ -76,4 +77,129 @@ TechBro 这个概念的例子是：「别用传统搜索引擎了，以后有问
 克传》阅读进度：第 5 页」、「我说 GenAI 出来后一切不平等都能得到解决」、「贫穷是一种心态，是懒惰和僵硬思维
 的惩罚」……（捂鼻、摆手试图驱散 TechBro 味）
 
+**** [[https://thanaverage.xyz/][Than Average]]
+站队模拟器，如果不是问题是自我认知方面的话，估计会有人提交经典的那个自指式问题吧——「真理掌握在少数人手中吗」？
+*** [[https://knowablemagazine.org/content/article/mind/2026/what-is-wisdom-can-it-be-taught][What is wisdom, and can it be taught?]]
+wisdom 这个词在词典一般翻译成「智慧」，不过感觉是不是我看了太多「智慧xx」、「xx智慧」这种什么科技语料，我现在
+感觉「智慧」在中文里更靠向 Smart/Intelligent 这种意思了，而 wisdom 更强调自我认知和人生角度的，如：有幽默感、接受
+万物发展、从多角度看待问题等。鉴于此，我更倾向用「睿知」来指代 wisdom 这个词。感觉不论是斯多葛、道家还是正念，都
+在「推崇」睿知的一些特质，这里肯定有些东西待我发现，先加入到我（永不清空）的待办研究清单吧。
 
+另外我最近想着关于睿知方面能调用的想法：没有读心术。人类通过「心智模型」推进了想象/代入他人的能力，这是生存上的巨大优势，但这不意
+味着能真正知道面对的人在想什么，因为这甚至是大脑上物理层面的不同，ADHD 走神时在想什么，为什么他就是无法正常待着？孤独症呢？为什么有些人就
+是不撞南墙不回头（[[/2026/02/fox-thinking-19/#Exploringwhysomechildrenstruggletolearnmath][FoxThinking #19: Exploring why some children struggle to learn math]]）？
+
+想到这我就会丢弃「默契考验」这个奇怪的想法了，我（尽量）不会去弄：你跟我那么熟了一定知道我想要/拿/吃什么，你
+做不到那就说明我们没那么默契然后在旁边生闷气。为什么？因为我知道没有读心术！
+
+*** [[https://phys.org/news/2026-04-tech-enable-species.html][Tech can enable cross-species experiences, new research suggests]]
+这也是我在思考的：共感是同理心的一个大前提。
+
+甚至幻想下如果日后安装些感官拓展方面的义体。四色视觉是什么样子的？有个灵敏一万倍
+鼻子？体验不同尺度下感官例如成为一颗树？甚至直接解码[[https://zh.wikipedia.org/wiki/%E8%9C%9C%E8%9C%82%E8%88%9E%E8%B9%88][蜜蜂舞]]？
+
+*** [[https://phys.org/news/2026-03-oldest-dog-dna-years-human.html][Oldest dog DNA suggests 16,000 years of human companionship]]
+上次看到的说法是最早陪伴人类的狗能追溯到一万两千年前，该更新这个数字到一万六千年前了。
+*** [[https://theconversation.com/fake-qr-codes-make-for-easy-scams-be-careful-what-you-scan-out-there-279333][Fake QR codes make for easy scams – be careful what you scan out there]]
+这倒提醒我了，要是骗子啪唧一声将自己假二维码往停车场什么服务二维码盖住，那是真能钓到
+不少人……看来之后扫二维码得在思想中加载「防钓警惕」插件了，欸，现代生活真难啊。
+*** [[https://marginalrevolution.com/marginalrevolution/2026/04/south-african-profundities.html][South African discussions - Marginal Revolution]]
+南非是个「观察」有趣讨论的地方，而且（出于不幸的历史原因但确实方便）还能用英语看相
+关的资料。
+
+#+begin_quote
+Most of all, South Africans have a finely-tuned sense of contingency.
+Things for them could go pretty well, or they could go pretty badly.
+Most people know that, and perhaps that is the greatest wisdom yet?
+Many of the rest of us try to deny that.
+
+最重要的是南非人有对突发事件的敏锐预警意识。
+对他们来说，事情可能进展得很顺利，也可能非常糟糕。多数人都知道这一点，也许这是迄今为止最好的
+睿知（诶呀，看来其它条目的讨论逃逸到了这里）？
+我们许多人试图否认这一点。
+#+end_quote
+
+该开始看看有没有南非相关的网站能订阅了~
+*** 《挽救计划》
+看了电影后回过头来小说，我真的喜欢这种泛种论 [fn:z] 当宇宙背景设定小说啊。
+
+** 观影
+*** 《超级马力欧银河大电影》
+任天堂发发力做几个初代马力欧画面粉丝就尖叫了，诶，我可不……不好！竟然还有《星际火狐》登场，这不是明示要有新作发布了
+吗？开始严肃考虑要不要购买 Switch 2 ……
+
+*** 《挽救计划》
+比起小说我确实更喜欢电影编排更人文向的改造？
+
+感叹买全景声巨暮 IMAX 场真的是买对了。
+
+** 巴别塔遗迹观光团
+不想单开篇博文但一直往「阅读」里放感觉又不合适，那就把一些带有主题鼓捣的东西放在周刊里
+吧单开个部分吧，可能会「连载」可能也不会……
+
+终于，在我任务队列待了大半年的「外语学习」现在总算轮到了执行时间，不过我也不想再用「课堂式」学习的方式
+学外语了。现在想法是先从语言学里先收集一些概念（导包）然后自己搓一些工具理念来「对付」后续的语言学习。
+
+*** 发音
+首先是「元音」这个概念，所以到底有哪个老师教过？到现在自己凭兴趣学习才了解，元音就是不受阻碍能长久
+维持的音，辅音是靠摩擦、爆破、口型变化产生的音，通常不能长久维持（想象弹舌音该怎么一直弹）。就是这
+样，看来我也是挺懒的，拖了几十年才查明白。
+
+然后学习外语音标部分也懒得专门去学了（国内的英语音标甚至是 KK 音标和 DJ 音标混在一起的 [fn:x]），
+直接捡个国际的 IPA 学吧学吧就用吧。
+
+- [[https://www.ipachart.com/][IPA Chart]] 带元音图、所有音标点击就放音的简洁优雅好网站。
+- [[https://open-dict-data.github.io/ipa-lookup/][IPA Lookup - Search for Pronuncations in Different Languages]] 对支持语言的输词查找 IPA 的工具……好网站。
+
+*** 分类
+[[https://zh.wikipedia.org/wiki/%E8%AF%AD%E8%A8%80%E7%B1%BB%E5%9E%8B%E5%AD%A6][语言类型学 - 维基百科，自由的百科全书]]
+
+语言按形态大致能分为孤立语（代表为汉语）、屈折语（代表为拉丁语）、黏着语（代表为日语）。可能之后的
+目标就是从屈折语和黏着语中挑个语言学学……
+
+还有就是残留的不知道什么时候看得视频说语言形态会随时间发展形成一个循环，例如英语在近代就越来越不曲折而有点向孤立发
+展了，慢慢退去格位、时态等概念像汉语一样多凭词序和助词确定语法。继续发展就类似汉语现在喜欢慢慢加后缀等修饰然后越加越
+多导致有点像变成黏着语，然后黏着语慢慢形成屈折语。不过从搜索引擎检索发现结果发现没有什么论文和相关读物，那只能判断这个
+说法是不准确的了。
+
+参考：
+- [[https://www.reddit.com/r/asklinguistics/comments/1gf8nt0/comment/lukxr1v/][Why do Agglutinative languages evolve into being Fusional ones? - reddit]]
+- [[https://www.reddit.com/r/linguistics/comments/ijxvd2/what_is_the_current_linguistic_consensus_on/][What is the current linguistic consensus on cyclic evolution? - reddit]]
+*** 最小学习力「原则」
+[[https://zh.wikipedia.org/zh-cn/%E9%BD%8A%E5%A4%AB%E5%AE%9A%E5%BE%8B][齐夫定律 - 维基百科，自由的百科全书]]
+
+语言学里的「二八定律」[fn:y] 就是齐夫定律了，所以也是经典的百分之二十的词占了百分之八十的
+体量。[[https://en.wiktionary.org/wiki/Wiktionary:Frequency_lists][Wiktionary:Frequency lists - Wiktionary, the free dictionary]] 这列出了各语言
+的高频词汇表。
+*** X-bar
+[[https://en.wikipedia.org/wiki/X-bar_theory][X-bar theory - Wikipedia]]
+
+将句子解析成语法树，感觉我的 Lisp 之魂在躁动。或许这也是 [[https://www.grammarly.com/][Grammarly]] 用到 Common Lisp 开发的一
+个原因？
+**** 分支
+[[https://en.wikipedia.org/wiki/Branching_(linguistics)][Branching (linguistics) - Wikipedia]]
+
+了解语法树后，就能发现某些语言会一开始就给出来（代表为英语），而某些语言会在「铺垫」后才给出中心词（代表可能是汉语）。简单
+例子：
+
+- The *book* that I bought yesterday.
+- 我昨天买的 *书* 。
+
+这会导致之后的语法树的不同（中心词放句首会导致语法树往右偏，反之亦然）。这是一种社会环境影响吗？是什么「啊，东亚人太含蓄喜欢铺垫完
+再给出结果」、「啊，西方人喜欢单刀直入先给结果然后才怎么怎么」的……迷思吗？感觉还是挺有趣的，加入到我（永不清空）的待办研究清单吧。
+
+** 脚注
+[fn:x] 小说里翻译成「有生源说」，也叫 [[https://zh.wikipedia.org/zh-cn/%E8%83%9A%E7%A8%AE%E8%AB%96][胚种论 - 维基百科，自由的百科全书]]。我尤其喜欢的假说是这样的：如果宇宙是从极热膨胀到现在冰冷的温度，那么
+其中就存在一段时间几十摄氏度适合生命发展的温度，可能就在这时，全宇宙都是宜居带（或者该叫宜居宙？）最基本的生命分子（或者智慧生命？）出现
+了。然后这些生命分子就随着宇宙膨胀在全宇宙中，待到降落在适宜的星球就演化成复杂生命，如果是这样的话，宇宙生命
+的 LUCA （[[https://zh.wikipedia.org/zh-cn/%E6%9C%80%E5%BE%8C%E5%85%B1%E5%90%8C%E7%A5%96%E5%85%88][最后共同祖先 - 维基百科，自由的百科全书]]）要往前推得多得多，真是个令人遐想的假说啊……
+
+Kurzgesagt 也做过一期关于泛种论的视频：
+- [[https://www.bilibili.com/video/BV16w411A7JJ/][【Kurzgesagt】生命或许和宇宙一样古老！ - Bilibili]]
+- [[https://www.youtube.com/watch?v=JOiGEI9pQBs][Ancient Life as Old as the Universe - Youtube]]
+
+[fn:x]
+- [[https://zh.wikipedia.org/zh-cn/KK%E9%9F%B3%E6%A8%99][KK音标 - 维基百科，自由的百科全书]]
+- [[https://zh.wikipedia.org/zh-cn/DJ%E9%9F%B3%E6%A8%99][DJ音标 - 维基百科，自由的百科全书]]
+
+[fn:y] 也叫幂律定律
