@@ -69,7 +69,9 @@
                           (let ((links (extract-links (post-sxml source-post)))
                                 (source-target (site-post-slug site source-post)))
                             (for-each (lambda (link-node)
-                                        (let ((target-slug (sxml-attribute-ref 'href link-node)))
+                                        (let ((target-slug (uri-path
+                                                            (string->relative-ref
+                                                             (sxml-attribute-ref 'href link-node)))))
                                           (hash-set! backlink-map target-slug
                                                      (cons `(a (@ (href ,source-target)) ,(post-ref source-post 'title))
                                                            (hash-ref backlink-map target-slug '())))))
