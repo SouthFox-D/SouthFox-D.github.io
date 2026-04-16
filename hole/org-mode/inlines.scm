@@ -176,10 +176,22 @@
       (cond ((not (node? node)) node)
             ((or (paragraph-node? node) (heading-node? node)) (parse-inline node ref-proc))
             ((attr-node? node)
-             (let ((attr-node (parse-inline node (make-reference-lookup node))))
-               (make-node (node-type (last-child attr-node))
-                          (append (node-data (last-child attr-node)) (node-data attr-node))
-                          (list (last-child (last-child attr-node))))))
+             (let* ((attr-node (parse-inline node (make-reference-lookup node)))
+                    (caption-attr (assoc-ref (node-data attr-node) 'caption-text)))
+               (if caption-attr
+                   (make-node (node-type (last-child attr-node))
+                              (append (node-data (last-child attr-node))
+                                      (assoc-set!
+                                       (node-data attr-node)
+                                       'caption-text
+                                       (parse-inline
+                                        (make-paragraph-node caption-attr)
+                                        (make-reference-lookup (make-paragraph-node caption-attr)))))
+                              (list (last-child (last-child attr-node))))
+                   (make-node (node-type (last-child attr-node))
+                              (append (node-data (last-child attr-node))
+                                      (node-data attr-node))
+                              (list (last-child (last-child attr-node)))))))
             (else (make-node (node-type node) (node-data node) (map parse-inner (node-children node))))))
     (parse-inner node)))
 
@@ -280,7 +292,10 @@
                          (values (match:end end-ticks 0)
                                  (make-link-node
                                   (list (make-text-node link-content))
-                                  link-content #f)))))
+                                  link-content #f
+                                  #:is-image? (any (lambda (suffix)
+                                                     (string-suffix? suffix link-content))
+                                                   image-suffixes))))))
                   (else (loop (end-ticks? (text-move text (match:end end-ticks 0)))))))))))
 
 (define (parse-org-link text nodes delim-stack ref-proc)

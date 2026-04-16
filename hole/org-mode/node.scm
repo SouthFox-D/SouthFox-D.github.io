@@ -45,6 +45,8 @@
             pre-node?
             make-attr-node
             attr-node?
+            make-caption-node
+            caption-node?
             make-list-node
             list-node?
             make-item-node
@@ -215,6 +217,12 @@
 
 (define (attr-node? n)
   (node-type? n 'attr))
+
+(define (make-caption-node data)
+  (make-node 'caption data '()))
+
+(define (caption-node? n)
+  (node-type? n 'caption))
 
 ;; List node
 ;; represents a list which only contains item nodes

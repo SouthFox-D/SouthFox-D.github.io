@@ -201,13 +201,16 @@
                   ,@(if link-attrs link-attrs '())
                   ,@(if (string-prefix? "http" dest)
                         (list (list 'class "external_link")) '())))
+         (caption-text (assq-ref (node-data node) 'caption-text))
          (children (fold-nodes node->sxml (node-children node))))
     (if is-sup?
         `(sup (a (@ ,@attrs (aria-label ,(string-append "脚注" id))) ,@children))
         (if is-image?
-            (if descirpt
+            (if (or descirpt caption-text)
                 `(figure (img (@ (src ,dest) (alt "") ,@attrs))
-                  (figcaption (span ,@children)))
+                  (figcaption (span ,@(if caption-text
+                                          (fold-nodes node->sxml (node-children caption-text))
+                                          children))))
                 `(img (@ (src ,dest) ,@attrs)))
             `(a (@ ,@attrs) ,@children)))))
 

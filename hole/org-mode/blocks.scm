@@ -46,6 +46,7 @@
                                                        link-title
                                                        "? *(\n|$)")))
 (define re-attr-keyword (make-regexp "^ {0,3}(#\\+ATTR_HTML:) ([^`]*)$" regexp/icase))
+(define re-caption-keyword (make-regexp "^ {0,3}(#\\+CAPTION:) ([^`]*)$" regexp/icase))
 
 
 (define (block-quote? l)
@@ -99,6 +100,9 @@
 (define (attr-keyword? line)
   (regexp-exec re-attr-keyword line))
 
+(define (caption-keyword? line)
+  (regexp-exec re-caption-keyword line))
+
 ;; Port -> Document
 ;; parses commonmark by blocks and creates a document containing blocks
 ;; !!!
@@ -121,10 +125,22 @@
         ((block-quote-node? n) (parse-block-quote n l))
         ((code-block-node? n) (parse-code-block n l))
         ((fenced-code-node? n) (parse-fenced-code n l))
-        ((attr-node? n) (parse-attr n l))
+        ((attr-node? n) (parse-metadata-stack n l))
+        ((caption-node? n) (parse-metadata-stack n l))
         ((pre-node? n) (parse-example-structure n l))
         ((list-node? n) (parse-list n l))
         ((paragraph-node? n) (parse-paragraph n l))))
+
+(define (parse-metadata-stack n l)
+  (cond ((empty-line? l) (close-node n))
+        ((or (attr-keyword? l) (caption-keyword? l))
+         (make-attr-node
+          `(,(car (node-data n))
+            ,(car (node-data (parse-line l))))))
+        (else (make-node 'attr
+                         (node-data n)
+                         (list
+                          (make-text-node (string-trim l)))))))
 
 (define (quote-start n)
   (node-get-data n 'quote-start))
@@ -191,14 +207,6 @@
                                    (last-child n)
                                    "\n"
                                    (remove-min-spaces l (pre-start n)))))))
-
-(define (parse-attr n l)
-  (cond ((empty-line? l)
-         (close-node n))
-        (else (make-node 'attr
-                         (node-data n)
-                         (list
-                          (make-text-node (string-trim l)))))))
 
 (define (list-type n)
   (node-get-data n 'type))
@@ -314,6 +322,7 @@
         ((fenced-code? l)         => make-fenced-code)
         ((example-structure? l)   => make-pre)
         ((attr-keyword? l)        => make-attr)
+        ((caption-keyword? l)     => make-caption)
         ((shortcode? l)           => make-shortcode)
         ((bullet-list-marker? l)  => make-bullet-list-marker)
         ((ordered-list-marker? l) => make-ordered-list-marker)
@@ -374,6 +383,10 @@
   (make-attr-node
    `((attrs . ,(parse-attrs
                 (unescape-string (string-trim-both (match:substring match 2))))))))
+
+(define (make-caption match)
+  (make-attr-node
+   `((caption-text . ,(string-trim-both (match:substring match 2))))))
 
 (define (make-shortcode match)
   (make-node 'shortcode '((closed . #t)) (list (match:substring match 0))))

@@ -43,4 +43,39 @@
     (hole/org->sxml "#+bEgiN_examPle\nhello\n#+enD_exaMple")
   '((pre "hello")))
 
+
+(test-equal
+    (hole/org->sxml "[[https://foo/bar.jpg][foo]]")
+  '(((figure (img (@ (src "https://foo/bar.jpg")
+                     (alt "")
+                     (href "https://foo/bar.jpg")
+                     (class "external_link")))
+      (figcaption (span "foo"))))))
+
+(test-equal
+    (hole/org->sxml "#+ATTR_HTML: :width 300\n[[https://foo/bar.jpg][foo]]")
+  '((figure (img (@ (src "https://foo/bar.jpg")
+                    (alt "")
+                    (href "https://foo/bar.jpg")
+                    (width "300")
+                    (class "external_link")))
+     (figcaption (span "foo")))))
+
+(test-equal
+    (hole/org->sxml "#+CAPTION: caption\n[[https://foo/bar.jpg]]")
+  '((figure (img (@ (src "https://foo/bar.jpg")
+                    (alt "")
+                    (href "https://foo/bar.jpg")
+                    (class "external_link")))
+     (figcaption (span "caption")))))
+
+(test-equal
+    (hole/org->sxml "#+CAPTION: caption\n[[https://foo/bar.jpg][foo]]")
+  '((figure (img (@ (src "https://foo/bar.jpg")
+                    (alt "")
+                    (href "https://foo/bar.jpg")
+                    (class "external_link")))
+     (figcaption (span "caption")))))
+
+
 (test-end "sxml-test")
