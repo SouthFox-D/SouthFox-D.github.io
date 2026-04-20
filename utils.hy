@@ -123,6 +123,7 @@
         meta-data {"title" file-id
                    "author" "SouthFox"
                    "date" (now.strftime "%Y-%m-%d %H:%M:%S")
+                   "draft" "t"
                    "tags" ""}
         lines (lfor [k v] (.items meta-data) f"#+{k}: {v}")]
     (os.makedirs target-dir :exist_ok True)
