@@ -8,6 +8,7 @@
   #:use-module (hole builder blog)
   #:use-module (hole site)
   #:use-module (ice-9 match)
+  #:use-module (srfi srfi-19)
   #:export (static-page
             about-page
             friends-page
@@ -133,7 +134,9 @@
               (ul
                ,(map (lambda (post)
                        `(li (a (@ (href ,(hole/uri-encode (site-post-slug site post))))
-                               ,(post-ref post 'title))))
+                               ,(post-ref post 'title)
+                               " — "
+                               ,(date->string (post-date post) "~Y-~m-~d"))))
                      (posts/reverse-chronological posts))))))
      sxml->html)))
 
