@@ -1,0 +1,59 @@
+#+title: FoxThinking #26: 幸福不是什么
+#+author: SouthFox
+#+date: 2026-04-23 14:22:39
+#+draft: t
+#+tags: FoxThinking
+
+Foo
+
+,(read-more)
+
+
+xxx
+
+** 阅读
+*** [[https://knowablemagazine.org/content/article/food-environment/2026/tea-compounds-flavors-affected-by-processing-growing][What’s the secret to a great cup of tea? - Knowable Magazine]]
+对茶的研究竟然没有那么深入吗？我还以为已经研究的很深入了呢。不过不管深不深入，总之先喝上一杯。
+
+*** [[https://spectrum.ieee.org/eniac-80th-anniversary-weaving][Why ENIAC Was a Loom, Not Just a Calculator - IEEE Spectrum]]
+ENIAC ，（大部分人认为的）第一台通用计算机背后的故事。
+
+#+begin_quote
+The engineers designed the loom. Weavers discovered its true capabilities.
+
+工程师设计出织机，却由织工发掘出来其真正潜力。
+#+end_quote
+
+*** [[https://phys.org/news/2026-04-autonomy-key-happiness.html][Autonomy key to happiness, study finds - phys.org]]
+幸福不仅仅是「我开心吗？」，更是「我自由吗？」
+
+#+begin_quote
+"Even after accounting for how good or bad people felt, those who felt more autonomous were more satisfied
+ with their lives," says Payne. "Autonomy was the only psychological need that seemed to contribute something
+ that feelings alone did not explain."
+
+佩恩表示：「即便考虑情绪好坏的影响，那些拥有更多自主感的人，对生活也更为满意。」
+自主似乎是唯一能够解释感受本身无法解释的心理需求。
+#+end_quote
+
+*** [[https://sleepingrobots.com/dreams/stop-using-ollama/][Friends Don't Let Friends Use Ollama | Sleeping Robots]]
+原来 ollama 背后有这么多「瓜」，而且「故意」劣化体验做法也让人会将问题都推到模型
+头上，实际情况可能不是这样的。
+
+不过 llama.cpp 这个名字产生影响也是真的，现在它有 CLI 还有 WEB UI 支持，但这名
+字让很多人认为它只是个 C++ 库……
+
+*** [[https://asteriskmag.com/issues/14/risk-adjusted-return][Risk-Adjusted Return — Asterisk]]
+《星号》杂志新一期已经出来了，这一期的主题是风险。
+
+**** [[https://asteriskmag.com/issues/14/the-mystery-in-the-medicine-cabinet][The Mystery in the Medicine Cabinet — Asterisk]]
+对乙酰氨基酚和布洛芬有什么不同？想到我身边就有不停吃止痛散的人，吃着吃着看得我挺担心的……
+
+这个话题在 Hacker News 也引发了广泛的讨论（ [[https://news.ycombinator.com/item?id=47835635][Acetaminophen vs. ibuprofen | Hacker News]] ），里
+面的一个观点 [fn:1]我也很赞同：医学不是计算机科学，病理学/药代动力学很多东西都没有研究明白（这就是生命的
+厚度啊），和计算机清晰的能被还原成零一零一的情况是完全不同的。遇到病痛上的事，那么求助专家是最明智的选
+择。
+
+* Footnotes
+
+[fn:1] [[https://news.ycombinator.com/item?id=47859916]] 
