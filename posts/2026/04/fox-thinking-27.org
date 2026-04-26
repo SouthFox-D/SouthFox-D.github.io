@@ -1,0 +1,13 @@
+#+title: fox-thinking-27
+#+author: SouthFox
+#+date: 2026-04-27 00:57:09
+#+draft: t
+#+tags: FoxThinking
+
+Foo
+
+,(read-more)
+
+** 阅读
+***  [[https://theonion.com/at-long-last-infowars-is-ours/][At Long Last, InfoWars Is Ours - The Onion]]
+****  [[https://store.theonion.com/products/demon-guard][Demon Guard – The Onion Store]]
