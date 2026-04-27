@@ -3,6 +3,7 @@
   #:use-module (haunt post)
   #:use-module (haunt utils)
   #:use-module (hole site)
+  #:use-module (hole i18n)
   #:use-module (hole builder blog)
   #:use-module (ice-9 format)
   #:use-module (ice-9 match)
@@ -55,8 +56,8 @@
 (define* (post-process-sxml sxml #:key post)
   (pre-post-order sxml (%hole-sxml-rules post)))
 
-(define navbar
-  '(nav (@ (class "nav") (aria-label "站点导航"))
+(define (navbar)
+  `(nav (@ (class "nav") (aria-label "站点导航"))
     (a (@ (class "skip-link") (href "#main-content")) "跳到主要内容")
     (a (@ (href "/")
           (class "brand")
@@ -71,11 +72,10 @@
               (aria-hidden "true"))
            ☰)
     (div (@ (class "menu"))
-         (a (@ (href "/archives/")) "归档")
-         (a (@ (href "/tags/")) "标签")
-         (a (@ (href "/search/")) "搜索")
-         (a (@ (href "/about/")) "关于")
-         )))
+         (a (@ (href "/archives/")) ,(t_ 'archives))
+         (a (@ (href "/tags/")) ,(t_ 'tags))
+         (a (@ (href "/search/")) ,(t_ 'search))
+         (a (@ (href "/about/")) ,(t_ 'about)))))
 
 (define footer
   `(footer (@ (class "footer"))
@@ -194,7 +194,7 @@
 
 (define* (fox-default-layout site title body #:key post)
   `((doctype "html")
-    (html (@ (lang "zh-CN"))
+    (html (@ (lang (blog-language)))
      (head
       (meta (@ (charset "utf-8")))
       (meta (@ (name "viewport")
@@ -277,7 +277,7 @@
                (title ,(site-title site))
                (type "application/rss+xml"))))
      (body
-      (header (@ (role "none")) ,navbar)
+      (header (@ (role "none")) ,(navbar))
       (div (@ (class "container flex"))
            ,(post-process-sxml body #:post post)
            ,(sidebar #:post post))
@@ -383,7 +383,7 @@
                `(button (@ (class "btn disabled") (disabled "true"))
                  "下一页"))))))
 
-(define fox-theme
+(define (fox-theme)
   (theme #:name "Fox"
          #:layout fox-default-layout
          #:post-template fox-default-post-template

@@ -6,6 +6,7 @@
              (hole theme)
              (hole reader)
              (hole site)
+             (hole i18n)
              (hole builder atom)
              (hole builder blog)
              (hole builder rss)
@@ -15,7 +16,7 @@
 
 (setenv "LANG" "C.UTF-8")
 
-(define %base-transformers
+(define (%base-transformers)
   (append
    (if (equal? (getenv "BUILD_DRAFTS") "t")
        '()
@@ -23,15 +24,15 @@
 
 (define (with-transformers specific-transformers . builders)
   (apply wrap-builders
-         (append %base-transformers specific-transformers)
+         (append (%base-transformers) specific-transformers)
          builders))
 
-(define site-builders
-  (with-transformers (list filter-feed-only)
+(define (site-builders)
+  (with-transformers
+   (list filter-feed-only)
    (blog/collection->page
-    #:theme fox-theme
-    #:collections `((("最近文章" "没那么近文章" "有点老文章" "尘封文章" "古旧文章" "可以说是黑历史的文章")
-                     "index.html" ,posts/reverse-chronological))
+    #:theme (fox-theme)
+    #:collections `((,(t_ 'collections-titles) "index.html" ,posts/reverse-chronological))
     #:posts-per-page 10)
    (about-page)
    (friends-page)
@@ -43,12 +44,13 @@
    (static-directory "assets")
    (static-directory "_site" "/")))
 
-(define post-builders
-  (with-transformers (list reverse-chronological-posts
-                           inject-backlinks
-                           inject-feed-only-section
-                           inject-expire-warning-section)
-   (blog/post->page #:theme fox-theme)
+(define (post-builders)
+  (with-transformers
+   (list reverse-chronological-posts
+         inject-backlinks
+         inject-feed-only-section
+         inject-expire-warning-section)
+   (blog/post->page #:theme (fox-theme))
    (hole/atom-feed)
    (hole/rss-feed)))
 
@@ -56,8 +58,11 @@
       #:domain "blog.southfox.me"
       #:default-metadata
       '((author . "SouthFox")
-        (email  . "master@southfox.me"))
+        (email  . "master@southfox.me")
+        (lang   . "zh-CN"))
       #:posts-directory "posts"
       #:readers (list fox-commonmark-reader fox-org-mode-reader)
-      #:builders (list site-builders post-builders)
+      #:builders (parameterize ((blog-language "zh-CN"))
+                   (list (site-builders) (post-builders)))
       #:make-slug hexo-post-slug)
+

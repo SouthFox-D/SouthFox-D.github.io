@@ -79,7 +79,7 @@ with that TAG."
                 ((tag . posts)
                  (serialized-artifact
                   (tag-uri tag)
-                  (with-layout fox-theme site "Tags" (tags-template site posts #:title tag))
+                  (with-layout (fox-theme) site "Tags" (tags-template site posts #:title tag))
                   sxml->html)))
               (group-by-tag posts))))
 
@@ -88,7 +88,7 @@ with that TAG."
     (serialized-artifact
      "tags/index.html"
      (with-layout
-      fox-theme
+      (fox-theme)
       site
       "Tags"
       `(div (@ (class "content"))

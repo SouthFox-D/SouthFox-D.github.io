@@ -1,5 +1,6 @@
 (define-module (hole site)
   #:use-module (hole sxml)
+  #:use-module (hole i18n)
   #:use-module (haunt post)
   #:use-module (haunt site)
   #:use-module (haunt utils)
@@ -15,6 +16,7 @@
             inject-feed-only-section
             filter-feed-only
             filter-draft
+            filter-lang
             inject-expire-warning-section
             reverse-chronological-posts
             ))
@@ -111,6 +113,12 @@
                           posts)))
     (cons site filtered)))
 
+(define (filter-lang site posts)
+  (let ((filtered (filter (lambda (p)
+                            (not (equal? (post-ref p 'lang) (blog-language))))
+                          posts)))
+    (cons site filtered)))
+
 (define build-date (current-date))
 (define expire-days 720)
 (define (post-expire-warning lisp?)
@@ -145,13 +153,15 @@
         (posts/reverse-chronological posts)))
 
 (define (wrap-builders transformers . builders)
-  (lambda (site posts)
-    (let* ((result (fold (lambda (transformer acc)
-                           (transformer (car acc) (cdr acc)))
-                         (cons site posts)
-                         transformers))
-           (final-site (car result))
-           (final-posts (cdr result)))
-      (flat-map (lambda (builder)
-                  (builder final-site final-posts))
-                builders))))
+  (let ((current-blog-language (blog-language)))
+    (lambda (site posts)
+      (parameterize ((blog-language current-blog-language))
+        (let* ((result (fold (lambda (transformer acc)
+                               (transformer (car acc) (cdr acc)))
+                             (cons site posts)
+                             transformers))
+               (final-site (car result))
+               (final-posts (cdr result)))
+          (flat-map (lambda (builder)
+                      (builder final-site final-posts))
+                    builders))))))

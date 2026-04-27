@@ -20,9 +20,9 @@
   (lambda (site posts)
     (serialized-artifact
      file-name
-     (with-layout fox-theme site title `(div (@ (class "content"))
-                                         (main (@ (id "main-content") (tabindex "-1"))
-                                               ,body)))
+     (with-layout (fox-theme) site title `(div (@ (class "content"))
+                                           (main (@ (id "main-content") (tabindex "-1"))
+                                                 ,body)))
      sxml->html)))
 
 (define* (about-page)
@@ -125,7 +125,7 @@
     (serialized-artifact
      "archives/index.html"
      (with-layout
-      fox-theme
+      (fox-theme)
       site
       "Archives"
       `(div (@ (class "content"))
