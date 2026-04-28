@@ -800,6 +800,7 @@ header nav .burger {
 }
 
 [data-theme='frutiger-aero'] {
+    --accent-bg: #e6e9ef;
     --text: #212121;
     --text-light: #585858;
 
