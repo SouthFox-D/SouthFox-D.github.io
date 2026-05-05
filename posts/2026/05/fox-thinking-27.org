@@ -1,0 +1,22 @@
+#+title: 旅游中
+#+author: SouthFox
+#+date: 2026-05-03 18:28:09
+#+draft: t
+#+tags: FoxThinking
+
+Foo
+
+,(read-more)
+
+
+#+CAPTION: 图一：蓝天白云桌子下
+[[https://media.southfox.me/attachment/QmUn1LqVLCy3sFigJgYYkyzAW7Ss2mJzsfn6ccTYYvrmwv?filename=P20260503-140610.webp]]
+
+** 阅读
+***  [[https://theonion.com/at-long-last-infowars-is-ours/][At Long Last, InfoWars Is Ours - The Onion]]
+****  [[https://store.theonion.com/products/demon-guard][Demon Guard – The Onion Store]]
+
+*** 《哲学的殿堂》
+*** 《悉达多》
+*** 《德米安》
+
