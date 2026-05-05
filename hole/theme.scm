@@ -221,8 +221,8 @@
       (link (@ (rel "me")
                (href "https://codeberg.org/southfox")))
       (script
-       (raw "document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || '386');
-      document.documentElement.setAttribute('data-font', localStorage.getItem('font') || 'zpix');"))
+       (raw "document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'plain');
+      document.documentElement.setAttribute('data-font', localStorage.getItem('font') || 'plain');"))
       (link (@ (rel "stylesheet")
                (href "/assets/css/main.css")))
       (script (@ (src "/assets/js/lips.min.js") (defer "defer")))
