@@ -1,4 +1,4 @@
-#+title: FoxThinking #26: 旅游中
+#+title: FoxThinking #27: 旅游中
 #+author: SouthFox
 #+date: 2026-05-03 18:28:09
 #+draft: t
@@ -8,8 +8,8 @@
 
 ,(read-more)
 
-五一假期出去背景参加聚会，本想着参加完就马上回来躺着，但想着这样也太麻烦了，在哪趟不
-是趟呢？索性就待朋友家里，假装自己在这里「生活」着，看看书或者在附近活动活
+五一假期出去北京参加聚会，本想着参加完就马上回来躺着，但想着这样也太麻烦了，在哪躺不
+是躺呢？索性就待朋友家里，假装自己在这里「生活」着，看看书或者在附近活动活
 动……
 
 虽然做的事和之前差不太多，但似乎是因为环境的变化或者五一期间北京的好天气，在蓝得
@@ -22,7 +22,7 @@
 或许这就是旅行的好处吧。
 
 ** 阅读
-***  [[https://theonion.com/at-long-last-infowars-is-ours/][At Long Last, InfoWars Is Ours - The Onion]]
+*** [[https://theonion.com/at-long-last-infowars-is-ours/][At Long Last, InfoWars Is Ours - The Onion]]
 InfoWars 是由 Alex Jones 建立的极右阴谋论网站 [fn:1] ，并凭借阴谋论的恐慌兜售保健商品。
 在散播关于桑迪胡克小学枪击案 [fn:2] 的阴谋论后被受害者家属提起了诉讼，在 2022 年判出 14 亿美
 元的赔偿判决。
@@ -41,9 +41,56 @@ InfoWars 是由 Alex Jones 建立的极右阴谋论网站 [fn:1] ，并凭借阴
 ****  [[https://store.theonion.com/products/demon-guard][Demon Guard – The Onion Store]]
 比如这个「邪魔防护」创口帖，刚开始看到真是笑到喷水了。
 
+
+*** 《哲学家的最后一课》
+「未知死，焉知生？」
+
+死是一个过程，而死亡是最后的终点。除了突发来的意外，事物每继续存在一刻，「死气」就慢慢的缠了上来。死亡终将击碎
+事物，在这之前我想攥紧点什么？
+
+#+CAPTION: 图二：来源 [[https://science.nasa.gov/resource/voyager-pale-blue-dot-download/][NASA]] ，旅行者 1 号在即将驶出太阳系时，NASA 冒着风险发出指令让旅行者 1 号调整角度拍下了这张关于地球的照片。
+[[https://media.southfox.me/attachment/QmSgXJaj62EXtX29VUkrMjbRYxccwEvf4qRJF2cTxUauUQ?filename=PIA23645.webp]]
+
+**** [[https://www.solidot.org/story?sid=84088][NASA 关闭旅行者 1 号的 LECP 仪器以节省电力维持运行 - 奇客]]
+旅行者一号旅程仍在继续，只是终点已经越发清晰了。
+
 *** 《哲学的殿堂》
+写于二十世纪三十年代的书，就颇有见地的写出了原子化、自由主义带来的虚无以及……科学和哲学的关系 [fn:5] ：
+
+#+begin_quote
+科学与哲学的关系无须进一步澄清：各类科学是哲学观看世界的窗口，它们是哲学的感官，而
+哲学是它们的灵魂；没有哲学，只是就如同混乱头脑的所知所感，茫然无助，反而催生白痴。斯宾塞说
+得对：哲学是最普遍的知识；但他也错了：哲学不仅仅是知识。哲学意味着一种复杂且高明的视野，借
+由这个视野，孤立的知识被提升为整体的观点，进而使欲望的纷繁混沌变得有序澄澈，它所涉及的异乎
+寻常的特质，叫做智慧。
+#+end_quote
+
+还有作为哲学家的「好处」 [fn:6] ：
+
+#+begin_quote
+亚里士多德的科学几乎与今日科学完全矛盾，而今日科学最终也会被另一个时代人们抛弃，
+沦为笑柄和垃圾，但到那时，亚里士多德的哲学依旧能够启人心智、发人深省。
+#+end_quote
+
+不过即使这样，一个世纪过去后，这本书里的很多观点也显得有点陈旧，有点像是没什么修缮荒废了大段时间的殿堂。不过
+我喜欢这座「殿堂」的制式，后续建造自己的「殿堂」时会参考的上。
+
 *** 《悉达多》
+看得时候，哇哦，好标准的英雄之旅 [fn:7] ，看到最后，额，好像也不全是？
+
+看出版社收录的黑塞自述 [fn:8] :
+
+#+begin_quote
+在西方哲学家中，对我影响最大的是柏拉图、斯宾诺莎、叔本华、尼采，以及历史学家雅
+阁布·布克哈特。但他们对我的影响都没有印度哲学和稍后的中国哲学那样大。
+#+end_quote
+
+天哪，这简直就是我，我看了挺多庄老和柏拉图的哲学，现在开始对德国的哲学家产生兴趣，这可能也是
+我觉得黑塞的文本读起来比较对我电波吧。
+
 *** 《德米安》
+所以黑塞的小说怎么时不时就出现点「怪力乱神」的现象出来？是不是就和类似处在「大撕裂时代」的荣格，
+在火车上看到什么世界大战「可怖幻象」什么的？不过确实还挺对我电波的。
 
 * Footnotes
 
@@ -57,3 +104,11 @@ InfoWars 是由 Alex Jones 建立的极右阴谋论网站 [fn:1] ，并凭借阴
 [fn:3] [[https://variety.com/2024/digital/news/judge-blocks-onion-bid-infowars-auction-1236245464/][Bankruptcy Judge Blocks Onion Bid to Acquire Infowars Assets]]
 
 [fn:4] [[https://www.motherjones.com/politics/2026/04/onion-infowars-takeover/][The Onion’s Plan to Take Over Infowars Is Once Again in Jeopardy]]
+
+[fn:5] [美]威尔·杜兰特. 哲学的殿堂. 文汇出版社. 2026, 第 11 页.
+
+[fn:6] [美]威尔·杜兰特. 哲学的殿堂. 文汇出版社. 2026, 第 15 页.
+
+[fn:7] [[https://zh.wikipedia.org/zh-cn/%E8%8B%B1%E9%9B%84%E6%97%85%E7%A8%8B][英雄旅程 - 维基百科，自由的百科全书]]
+
+[fn:8] [德]赫尔曼·黑塞. 悉达多. 译林出版社. 2024, 第 04 页.
