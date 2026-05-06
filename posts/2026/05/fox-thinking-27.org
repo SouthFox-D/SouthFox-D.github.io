@@ -1,22 +1,59 @@
-#+title: 旅游中
+#+title: FoxThinking #26: 旅游中
 #+author: SouthFox
 #+date: 2026-05-03 18:28:09
 #+draft: t
 #+tags: FoxThinking
 
-Foo
+虽说是旅游但又不太像是旅游……
 
 ,(read-more)
 
+五一假期出去背景参加聚会，本想着参加完就马上回来躺着，但想着这样也太麻烦了，在哪趟不
+是趟呢？索性就待朋友家里，假装自己在这里「生活」着，看看书或者在附近活动活
+动……
 
-#+CAPTION: 图一：蓝天白云桌子下
+虽然做的事和之前差不太多，但似乎是因为环境的变化或者五一期间北京的好天气，在蓝得
+有点假的天空和舒适的温度下，感觉产生了一些神奇的抽离感，对于假期前烦躁的事（主要是工）也慢慢淡化
+了。
+
+#+CAPTION: 图一：晴空下的高层屋顶露台，墙前是白色长条吧台，远处是连绵山脉和城市建筑。
 [[https://media.southfox.me/attachment/QmUn1LqVLCy3sFigJgYYkyzAW7Ss2mJzsfn6ccTYYvrmwv?filename=P20260503-140610.webp]]
+
+或许这就是旅行的好处吧。
 
 ** 阅读
 ***  [[https://theonion.com/at-long-last-infowars-is-ours/][At Long Last, InfoWars Is Ours - The Onion]]
+InfoWars 是由 Alex Jones 建立的极右阴谋论网站 [fn:1] ，并凭借阴谋论的恐慌兜售保健商品。
+在散播关于桑迪胡克小学枪击案 [fn:2] 的阴谋论后被受害者家属提起了诉讼，在 2022 年判出 14 亿美
+元的赔偿判决。
+
+然后 24 年时，洋葱报出来说想要拍下无力赔偿而拿出来售卖的 InfoWars 网站，只是后来收购因
+为「不清晰」 [fn:3] 中止。现在，洋葱报找到了以租用的方式获得 InfoWars 网站方法 [fn:4] 。
+
+不过不得不说，InfoWars 很多时候也有点像是「搞笑」网站了，很多刻意产出的阴谋论离奇到让人难以理解到
+想笑，只要能去除对人或人群的愤怒、敌视，InfoWars 也不失一个图一乐的网站……不过对于 InfoWars 来
+说，肯定是不能的吧。
+
+现在——洋葱报，一个以制作假新闻的图一乐网站，我衷心希望能够顺利接管并马上开始大肆
+嘲弄，想出世上最解构、最戏弄的笑点，这就是对于这种撬动无知和恐慌牟利、肆意中
+伤他人网站的最佳「报复」。
+
 ****  [[https://store.theonion.com/products/demon-guard][Demon Guard – The Onion Store]]
+比如这个「邪魔防护」创口帖，刚开始看到真是笑到喷水了。
 
 *** 《哲学的殿堂》
 *** 《悉达多》
 *** 《德米安》
 
+* Footnotes
+
+[fn:1] 包括气象武器、心灵控制、登月伪造之类的……
+
+拓展可以看看这个视频： [[https://www.bilibili.com/video/BV1nPpuerEJb/][【自制熟肉】同性恋青蛙：一场深度调查【Oki's Weird Stories】 - bilibili]] ，虽
+然只给了 Alex Jones 几个镜头但也能从中一窥这个节目/网站的风格。
+
+[fn:2] [[https://zh.wikipedia.org/wiki/%E6%A1%91%E8%BF%AA%E8%83%A1%E5%85%8B%E5%B0%8F%E5%AD%A6%E6%9E%AA%E5%87%BB%E6%A1%88][桑迪胡克小学枪击案 - 维基百科，自由的百科全书]]
+
+[fn:3] [[https://variety.com/2024/digital/news/judge-blocks-onion-bid-infowars-auction-1236245464/][Bankruptcy Judge Blocks Onion Bid to Acquire Infowars Assets]]
+
+[fn:4] [[https://www.motherjones.com/politics/2026/04/onion-infowars-takeover/][The Onion’s Plan to Take Over Infowars Is Once Again in Jeopardy]]
