@@ -1,7 +1,6 @@
 #+title: FoxThinking #27: 旅游中
 #+author: SouthFox
-#+date: 2026-05-03 18:28:09
-#+draft: t
+#+date: 2026-05-08 15:35:33
 #+tags: FoxThinking
 
 虽说是旅游但又不太像是旅游……
@@ -12,8 +11,8 @@
 是躺呢？索性就待朋友家里，假装自己在这里「生活」着，看看书或者在附近活动活
 动……
 
-虽然做的事和之前差不太多，但似乎是因为环境的变化或者五一期间北京的好天气，在蓝得
-有点假的天空和舒适的温度下，感觉产生了一些神奇的抽离感，对于假期前烦躁的事（主要是工）也慢慢淡化
+虽然做的事和之前差不太多，但似乎因为环境的变化或五一期间北京的好天气，在蓝得
+有点假的天空和舒适的温度中，内心感觉产生了些神奇的抽离感，对于假期前烦躁的事（主要是工）也慢慢淡化
 了。
 
 #+CAPTION: 图一：晴空下的高层屋顶露台，墙前是白色长条吧台，远处是连绵山脉和城市建筑。
@@ -28,31 +27,30 @@ InfoWars 是由 Alex Jones 建立的极右阴谋论网站 [fn:1] ，并凭借阴
 元的赔偿判决。
 
 然后 24 年时，洋葱报出来说想要拍下无力赔偿而拿出来售卖的 InfoWars 网站，只是后来收购因
-为「不清晰」 [fn:3] 中止。现在，洋葱报找到了以租用的方式获得 InfoWars 网站方法 [fn:4] 。
+为「不清晰」 [fn:3] 中止。现在，洋葱报找到了通过以租用的方式获得 InfoWars 网站的方法 [fn:4] 。
 
 不过不得不说，InfoWars 很多时候也有点像是「搞笑」网站了，很多刻意产出的阴谋论离奇到让人难以理解到
-想笑，只要能去除对人或人群的愤怒、敌视，InfoWars 也不失一个图一乐的网站……不过对于 InfoWars 来
+想笑，只要能去除对人或人群的愤怒、敌视，InfoWars 也不失为图一乐的网站……不过对于 InfoWars 来
 说，肯定是不能的吧。
 
-现在——洋葱报，一个以制作假新闻的图一乐网站，我衷心希望能够顺利接管并马上开始大肆
+现在我衷心希望洋葱报——一个以制作假新闻的图一乐网站，能够顺利接管并马上开始大肆
 嘲弄，想出世上最解构、最戏弄的笑点，这就是对于这种撬动无知和恐慌牟利、肆意中
 伤他人网站的最佳「报复」。
 
 ****  [[https://store.theonion.com/products/demon-guard][Demon Guard – The Onion Store]]
 比如这个「邪魔防护」创口帖，刚开始看到真是笑到喷水了。
 
-
 *** 《哲学家的最后一课》
 「未知死，焉知生？」
 
 死是一个过程，而死亡是最后的终点。除了突发来的意外，事物每继续存在一刻，「死气」就慢慢的缠了上来。死亡终将击碎
-事物，在这之前我想攥紧点什么？
+事物，在这之前想攥紧点什么？
 
 #+CAPTION: 图二：来源 [[https://science.nasa.gov/resource/voyager-pale-blue-dot-download/][NASA]] ，旅行者 1 号在即将驶出太阳系时，NASA 冒着风险发出指令让旅行者 1 号调整角度拍下了这张关于地球的照片。
 [[https://media.southfox.me/attachment/QmSgXJaj62EXtX29VUkrMjbRYxccwEvf4qRJF2cTxUauUQ?filename=PIA23645.webp]]
 
 **** [[https://www.solidot.org/story?sid=84088][NASA 关闭旅行者 1 号的 LECP 仪器以节省电力维持运行 - 奇客]]
-旅行者一号旅程仍在继续，只是终点已经越发清晰了。
+旅行者一号旅程仍在继续，只是终点越发清晰。
 
 *** 《哲学的殿堂》
 写于二十世纪三十年代的书，就颇有见地的写出了原子化、自由主义带来的虚无以及……科学和哲学的关系 [fn:5] ：
@@ -72,7 +70,7 @@ InfoWars 是由 Alex Jones 建立的极右阴谋论网站 [fn:1] ，并凭借阴
 沦为笑柄和垃圾，但到那时，亚里士多德的哲学依旧能够启人心智、发人深省。
 #+end_quote
 
-不过即使这样，一个世纪过去后，这本书里的很多观点也显得有点陈旧，有点像是没什么修缮荒废了大段时间的殿堂。不过
+不过即使这样，一个世纪过去后，这本书里的很多观点也显得陈旧，有点像是没什么修缮荒废了的殿堂。不过
 我喜欢这座「殿堂」的制式，后续建造自己的「殿堂」时会参考的上。
 
 *** 《悉达多》
@@ -85,15 +83,66 @@ InfoWars 是由 Alex Jones 建立的极右阴谋论网站 [fn:1] ，并凭借阴
 阁布·布克哈特。但他们对我的影响都没有印度哲学和稍后的中国哲学那样大。
 #+end_quote
 
-天哪，这简直就是我，我看了挺多庄老和柏拉图的哲学，现在开始对德国的哲学家产生兴趣，这可能也是
+天哪，这简直就是我！我看了挺多庄老和柏拉图的哲学，现在开始对德国的哲学家产生兴趣，这可能也是
 我觉得黑塞的文本读起来比较对我电波吧。
 
 *** 《德米安》
-所以黑塞的小说怎么时不时就出现点「怪力乱神」的现象出来？是不是就和类似处在「大撕裂时代」的荣格，
+所以黑塞的小说怎么时不时就出现点「怪力乱神」的现象出来？是不是类似处在「大撕裂时代」的荣格，
 在火车上看到什么世界大战「可怖幻象」什么的？不过确实还挺对我电波的。
 
-* Footnotes
+*** [[https://theconversation.com/youd-better-start-paying-attention-to-the-manosphere-youre-living-in-it-279547][You’d better start paying attention to the manosphere. You’re living in it]]
+manosphere 这个词还真是巧妙，看起来经济衰退、全球危机、人际关系不断恶化的现在，产生的现象还是挺一致的额。
 
+*** [[http://ozark.hendrix.edu/~yorgey/forest/00FD/index.xml][To my students]]
+一位副教授对计算机领域学生说的话，挺好的。不过我也不意外（和理解）在 [[https://news.ycombinator.com/item?id=47928828][To my students | Hacker News]] 上[[https://news.ycombinator.com/item?id=47945707][Why I still reach for Lisp and Scheme instead of Haskell | Hacker News]]
+有人说「这是没在公司做过工程师的学者无关痛痒发言」。
+
+我想对于计算机领域来说可能处于「大撕裂时代前夜」吧，该怎么办？或许去看看处于一二战时期的哲学家
+或文学家作品会有所帮助吧。
+
+*** [[https://cupofjo.com/2026/04/27/how-to-make-new-friends-neighbors/][Who Are the Unexpected Friends in Your Life? | Cup of Jo]]
+#+begin_quote
+[...] some of life’s warmest, longest-lasting friendships are forged with the people we least expect.
+
+……生活中一些最温暖、最长久的友谊，往往是与我们最意想不到的人建立的。
+#+end_quote
+
+*** [[https://solar.lowtechmagazine.com/2026/04/rediscovering-the-handcart/][Rediscovering the Handcart | LOW←TECH MAGAZINE]]
+旅游时过重的袋子提绳子勒到手指痛的时候就想着有个推车就好了……
+
+*** [[https://mitchellh.com/writing/ghostty-leaving-github][Ghostty Is Leaving GitHub – Mitchell Hashimoto]]
+相关文章在 [[https://news.ycombinator.com/item?id=47939579][Ghostty is leaving GitHub | Hacker News]] 达到三千五百点点数，看起来 GitHub 的服务状况
+确实让很多人感到不满。
+
+**** [[https://github.blog/news-insights/company-news/an-update-on-github-availability/][An update on GitHub availability - The GitHub Blog]]
+以及 GitHub 方面对最近可用性状况的回应。
+
+*** [[https://jointhefreeworld.org/blog/articles/lisps/why-i-still-reach-for-scheme-instead-of-haskell/index.html][Why I Still Reach for Scheme and Lisp Instead of Haskell - jointhefreeworld]]
+一篇对比 Haskell 和 Scheme(Lisp) 讲为什么更倾向选择 Scheme 的文章。对于 Scheme 我倒
+是比较熟悉但 Haskell 的相关术语就看不动了（单子是自函子范畴上的幺半群什么的），或许我该找
+个时间看看 Haskell 了？
+
+这篇文章在 [[https://news.ycombinator.com/item?id=47945707][Hacker News]] 和 [[https://lobste.rs/s/tzqafn/why_i_still_reach_for_lisp_scheme_instead][Lobsters]] 上产生了大量讨论（对于 Lisp 话题来说可不多见啊）。
+
+** 观影
+*** 《挽救计划》
+什么，又是《挽救计划》？因为来到北京所以想去电影博物馆的 IMAX GT 逛逛看看。首先，说好的国内宣发不足没什么热度呢？怎
+么五一假期的场都排满了，没办法只能座前两排的座位。然后，是真的大啊，进场时真是被这六百平米的屏幕吓到了。临近开场时，估计是
+想着挂着博物馆的名字吧，还会煞有其事讲解下影片的背景，甚至放映前的片段都是在介绍 IMAX 技术而不是广告。不过就像是什么奇
+怪的片子一样，大家都带着在这巨幕观影期待来的，显得这些措施像是什么快进的可有可无的情节。
+
+《挽救计划》的胶片质感在这巨幕下撑得有点模糊了，带点暖糊味。坐在前排配这巨幕全程得仰着脖子看还是有点不适，不
+过坐在前排好处就是在前面的音墙首当其冲，音效上的体验很震撼。不过很多笑声都在笑点出现的前几秒就出来了，果然大半的人
+都是来重刷的吧！
+
+还是高兴有机会在这部影片即将下线的时候在 IMAX GT 场上能看到，下一次的这么震撼观影体验可能只能等 VR 场景真正
+落地了吧……
+
+** Present day, Present time
+这个月想参加下 [[https://www.emacswiki.org/emacs/CarnivalMay2026][Emacs CarnivalMay2026]] ，不过在这之前得把这个博
+客的 i18n 做好……
+
+** 脚注
 [fn:1] 包括气象武器、心灵控制、登月伪造之类的……
 
 拓展可以看看这个视频： [[https://www.bilibili.com/video/BV1nPpuerEJb/][【自制熟肉】同性恋青蛙：一场深度调查【Oki's Weird Stories】 - bilibili]] ，虽
