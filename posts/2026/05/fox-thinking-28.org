@@ -1,0 +1,21 @@
+#+title: FoxThinking #28: 解决之道，就在其中
+#+author: SouthFox
+#+date: 2026-05-12 16:56:24
+#+draft: t
+#+tags: FoxThinking
+
+Foo
+
+,(read-more)
+
+Bar
+
+
+** 阅读
+*** [[https://theconversation.com/what-is-the-grey-rock-method-for-dealing-with-narcissists-or-difficult-family-members-282047][What is the ‘grey rock’ method for dealing with narcissists or difficult family members?]]
+应付自恋、有毒之人的办法：假装自己是块无趣的「灰岩」，不管对方说什么都回个嗯啊就好了。
+
+虽然看起来很有效，不过这个办法没有真正科学研究证实过效用，只是从我的经验来说，「无趣」确实能避免很多麻烦……
+
+*** [[https://rmoff.net/2026/05/06/ai-slop-is-killing-online-communities/][AI Slop is Killing Online Communities]]
+这种起手抱怨然后列出观点再自己逐条反驳的文风真是看到我力竭了。
