@@ -18,4 +18,73 @@ Bar
 虽然看起来很有效，不过这个办法没有真正科学研究证实过效用，只是从我的经验来说，「无趣」确实能避免很多麻烦……
 
 *** [[https://rmoff.net/2026/05/06/ai-slop-is-killing-online-communities/][AI Slop is Killing Online Communities]]
-这种起手抱怨然后列出观点再自己逐条反驳的文风真是看到我力竭了。
+这种起手抱怨然后列出观点在逐条反驳的文风真是看到我力竭了。
+
+*** [[https://theconversation.com/ultra-processed-food-why-the-debate-needs-less-fear-and-more-clarity-278060][Ultra-processed food: why the debate needs less fear and more clarity]]
+超加工食物一直有「不健康」的名声，相关荟萃分析（ [[https://www.bmj.com/content/384/bmj-2023-077310][Ultra-processed food exposure and adverse health outcomes: umbrella review of epidemiological meta-analyses ]]） 也显示了接触超加工食物与健康不良存在相关关系。
+但其实关于「超加工食物」这个概念都不甚清晰没有达成一致共识，美国食品和营养部门（FNS）还就此概念在二五
+年征求过意见（[[https://www.fns.usda.gov/usda/fr-072525][Request for Information: Ultra-Processed Foods | Food and Nutrition Service]]）。
+
+简单提出避免池超加工食物然后去吃「真正的食物」[fn:1] 观点是不行的，这种带着点「高高在上」的建议只会给那些
+只能负担起超加工食物的贫困人家 [fn:2] 带来羞耻和焦虑。需要找到对于超加工食物更精确的描述以及更有效的建议，什么类别的超加
+工食物更有害？什么样的超加工食物能够多吃并能更健康？
+
+*** [[https://ratfactor.com/cards/text-files-as-ui][Text files as a user interface - ratfactor]]
+将文件作为用户交互的「中转」是个很方便和高校的做法，例如 crontab -e 或 visudo 。作者之后也提出了更
+多相关的例子，可我心里却一直在想着：「哦，感觉是 Emacs ]、「Emacs 能做到这个」……然后想着想着就想，直接
+在命令行中进行相关操作？然后就想到了 Eshell 。
+
+其实我很早就了解 Eshell 这个在 Emacs 里用 Elisp 实现的伪终端模拟器，可在命令
+中插入 Elisp 代码 [fn:3] 。不过我现在还处于「评估」阶段
+例如在一大堆有中文的文件中选择个文件传给 foo 程序，如果是在终端得自己切个输入法写
+点汉字然后祈祷前缀不会重复太多然后疯狂按 TAB ，但在 Eshell 里：
+
+#+begin_src shell
+λ foo (read-file-name "")
+#+end_src
+
+这样写就能呼出 read-file-name 然后在 emacs 享受我为其实现的拼音首字母搜索、模糊等等。
+
+甚至在临时糊个小操作场景中，比如返回文件大小最小的含有 fox 的文件名：
+
+#+begin_src shell
+λ (->> (directory-files-recursively "." (rx "fox")) (-sort (-on '< 'f-size)) car)
+./2026/02/fox-thinking-18.org
+#+end_src
+
+用 Elisp 实现的话，里面用到
+了 [[https://github.com/magnars/dash.el][magnars/dash.el:]] 提供操作列表以 - 开头的函数，
+和 [[https://github.com/rejeep/f.el][rejeep/f.el]] 提供的文件操作相关函数：
+
+首先 ->> 是参数操作宏，会将传递的代码变为这样 [fn:4] ：
+
+#+begin_src emacs-lisp
+(car ;; 取提供列表的第一个元素
+ (-sort ;; 对传递的列表进行排序
+  (-on '< 'f-size) ;; 对传递列表元素使用 f-size 获取大小然后用 < 比较，按照从小到大排序
+  (directory-files-recursively "." (rx "fox")))) ;; 递归获取当前目录中含有 fox 的所有文件
+
+;; PS: rx 这个 emacs 内置的语义友好正则表达式库写出来挺好读的，
+;; 例如对于取后缀名有 (rx ".org" word-end) 这种形式（嫌 word-end 太长也有 eow 这种缩写）。
+;; 或者对于可选项 (rx "http" (optional "s") "://")
+#+end_src
+
+对比 bash 脚本：
+
+#+begin_src shell
+$ find . -name "*fox*" -printf "%s %p\n" | sort -n | head -n 1 | awk '{print $2}'
+./2026/02/fox-thinking-18.org
+#+end_src
+
+嗯，只能说对于我这种一直记不清 find 和 awk 参数的健忘狐来说，还是不太喜欢用这种形式，每次都要先花个几分钟翻下
+文档。
+
+* Footnotes
+
+[fn:1] 在 [[/2026/01/fox-thinking-13/][FoxThinking #13: 节气差异]] 中提到的 [[https://realfood.gov/][Eat Real Food]]
+
+[fn:2] [[https://en.wikipedia.org/wiki/Food_desert][Food desert - Wikipedia]]
+
+[fn:3] 更多可参考： [[https://www.masteringemacs.org/article/complete-guide-mastering-eshell][Mastering Eshell - Mastering Emacs]]
+
+[fn:4] ->> 宏相关解释参见 clojure 那边： [[https://clojuredocs.org/clojure.core/-%3E%3E][->> - clojure.core | ClojureDocs - Community-Powered Clojure Documentation and Examples]]
