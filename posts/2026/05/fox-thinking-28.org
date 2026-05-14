@@ -10,7 +10,6 @@ Foo
 
 Bar
 
-
 ** 阅读
 *** [[https://theconversation.com/what-is-the-grey-rock-method-for-dealing-with-narcissists-or-difficult-family-members-282047][What is the ‘grey rock’ method for dealing with narcissists or difficult family members?]]
 应付自恋、有毒之人的办法：假装自己是块无趣的「灰岩」，不管对方说什么都回个嗯啊就好了。
@@ -76,8 +75,23 @@ $ find . -name "*fox*" -printf "%s %p\n" | sort -n | head -n 1 | awk '{print $2}
 ./2026/02/fox-thinking-18.org
 #+end_src
 
-嗯，只能说对于我这种一直记不清 find 和 awk 参数的健忘狐来说，还是不太喜欢用这种形式，每次都要先花个几分钟翻下
-文档。
+嗯，只能说对于我这种一直记不清 find 和 awk 参数的健忘狐来说，还是喜欢这种形式，每次都要
+先花个几分钟翻下文档，而且很多精力都是花在如何处理文本拿到自己想要数据上了。
+
+*** [[https://nooneshappy.com/article/appearing-productive-in-the-workplace/][Appearing Productive in The Workplace — No One's Happy]]
+又是在 [[https://news.ycombinator.com/item?id=48038001][Hacker News]] 上产生大量讨论的关于 LLM 的文章。
+
+LLM 就像一篇 500 字数要求的作文却交上 5000 字，这篇作文就没有谁能够耐心去读了……
+
+*** [[https://www.theringer.com/2026/05/04/tv/david-attenborough-voice-nature-earth-100-years][David Attenborough and the Voice That Revealed a Planet - The Ringer]]
+大卫·爱登堡在最近迎来了自己的一百岁生日，可喜可贺。
+
+这世上还有哪位叙事者能和大卫·爱登堡相比呢？
+
+人类中最能代表地球的声音
+
+*** [[https://davidoks.blog/p/why-airlines-are-always-going-bankrupt][Why airlines are always going bankrupt - David Oks]]
+为什么航空业是个糟糕的产业。
 
 * Footnotes
 
