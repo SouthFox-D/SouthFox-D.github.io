@@ -1,50 +1,81 @@
 #+title: FoxThinking #28: 解决之道，就在其中
 #+author: SouthFox
-#+date: 2026-05-12 16:56:24
-#+draft: t
+#+date: 2026-05-15 14:56:24
 #+tags: FoxThinking
 
-Foo
+从二四年末我就开始用着 [[https://hypr.land/][Hyprland]] 这个 WM ，因为配置强烈依赖 Super 键（Win 徽标
+键或 Mac Command 键？）而我会习惯用大拇指向内勾住去按 Super 键，导致用久后让大拇指不舒
+服。这下 Emacs 小拇指没损伤到却是成了 Hypr 大拇指损伤了。不过在最近我倒是找到了个解决方法：
 
 ,(read-more)
 
-Bar
+这就是 Homerow Mods ，方案很简单，就是将 asdf jkl; 映射成 Super Alt Ctrl Shift
+和 Shift Ctrl Alt Super 键并通过按键时间长短来区分，快速点按还是原来的键，但长按的
+话就切换成对应的修饰键。这个方案初看起来莫名奇妙，但我实际体验后发现惊为天人，非常好用。
+
+例如常用的复制粘贴需要按住 Ctrl 然后分别按下 c 和 v 键，但在 Homerow Mods 下，只需按住 k 键然后
+按下 c 和 v 键就好了，手指无需离开主行 [fn:1] 。对于 Emacs 使用场景更是有用了，无论是常见
+的 Ctrl + c Ctrl + c （对应按下 k 然后按下 c c）确认按键，还是 Alt + x （对应按下 l 然后按 x）的呼
+出 execute-extended-command 命令选择菜单或者 Hyprland 的切换工作区 Super + 数字键（对应按下 a 或 ; 然后按数字键）都
+能在无需离开主行的情况下使用。
+
+就算不是为了文本编辑器或者什么「小众」的 Wayland compositor ，用 Homerow Mods 应对大量依赖 Ctrl 和 Shift 组合快捷键的
+应用也是好方案。更多信息可参考 [[https://precondition.github.io/home-row-mods][A guide to home row mods]] 这篇文章，我现在
+践行 Homerow Mods 的方式也是用这篇文章推荐的 [[https://github.com/kmonad/kmonad][kmonad]] 这个软件，通过接管系统的输入然后根据配置（配置格式甚至是 s-expr 形式）进行
+判断然后作出相应操作。另外这个软件是用 haskell 写的，所以就算不是 Linux 系统的用户也可以使用？
+
+除了将 asdf jkl; 映射到修饰键外，我还做了额外的修改。
+
+- 第一个就是将大写锁定键 Caps Lock 映射到 Esc ，这个并没有什么，很多系统都支持这个配置，但我额外做了将
+  大写锁定键长按进行模式切换，然后在此时按下 hjkl 映射成 ←↑↓→ 方向键的配置，这样即使是方向键也不用离开主行了。
+- 第二个就是将右 Shift 点按映射成退格键而长按下保持原状，这样右手小拇指能少移点距离。
+
+对于 Homerow Mods 的这趟折腾给了我很大启发，首先就是老生常谈：
+
+#+begin_quote
+All problems in computer science can be solved by another level of indirection —— David J. Wheeler
+
+所有计算机科学的相关问题都能透过引入中间层进行解决 —— David J. Wheeler
+#+end_quote
+
+而我更惊讶的是：原来常用的物件里也蕴藏着很大潜力，就算是日用的键盘也能通过区分点按还是长按来挖掘
+出更多操作。
 
 ** 阅读
 *** [[https://theconversation.com/what-is-the-grey-rock-method-for-dealing-with-narcissists-or-difficult-family-members-282047][What is the ‘grey rock’ method for dealing with narcissists or difficult family members?]]
-应付自恋、有毒之人的办法：假装自己是块无趣的「灰岩」，不管对方说什么都回个嗯啊就好了。
+应付自恋、有毒之人办法：假装自己是块无趣的「灰岩」，不管对方说什么都回个嗯啊就好了。
 
-虽然看起来很有效，不过这个办法没有真正科学研究证实过效用，只是从我的经验来说，「无趣」确实能避免很多麻烦……
+虽然看起来很有效，不过这个办法没有真正科学研究证实过效用，不过从我的经验来说，「无趣」确实能避免很多麻烦……
 
 *** [[https://rmoff.net/2026/05/06/ai-slop-is-killing-online-communities/][AI Slop is Killing Online Communities]]
 这种起手抱怨然后列出观点在逐条反驳的文风真是看到我力竭了。
 
 *** [[https://theconversation.com/ultra-processed-food-why-the-debate-needs-less-fear-and-more-clarity-278060][Ultra-processed food: why the debate needs less fear and more clarity]]
-超加工食物一直有「不健康」的名声，相关荟萃分析（ [[https://www.bmj.com/content/384/bmj-2023-077310][Ultra-processed food exposure and adverse health outcomes: umbrella review of epidemiological meta-analyses ]]） 也显示了接触超加工食物与健康不良存在相关关系。
-但其实关于「超加工食物」这个概念都不甚清晰没有达成一致共识，美国食品和营养部门（FNS）还就此概念在二五
+超加工食物一直有「不健康」的名声，相关荟萃分析（ [[https://www.bmj.com/content/384/bmj-2023-077310][Ultra-processed food exposure and adverse health outcomes: umbrella review of epidemiological meta-analyses ]]） 也显示了接触超加工食物与健康不良影响存在相关关系。
+但其实关于「超加工食物」这个概念还不甚清晰没有达成一致共识，美国食品和营养部门（FNS）还就此概念在二五
 年征求过意见（[[https://www.fns.usda.gov/usda/fr-072525][Request for Information: Ultra-Processed Foods | Food and Nutrition Service]]）。
 
-简单提出避免池超加工食物然后去吃「真正的食物」[fn:1] 观点是不行的，这种带着点「高高在上」的建议只会给那些
-只能负担起超加工食物的贫困人家 [fn:2] 带来羞耻和焦虑。需要找到对于超加工食物更精确的描述以及更有效的建议，什么类别的超加
+简单提出避免吃超加工食物然后去吃「真正的食物」[fn:2] 观点是不行的，这种带着点「高高在上」的建议会给那些
+只能负担起超加工食物的贫困人家 [fn:3] 带来羞耻和焦虑。需要找到对于超加工食物更精确的描述以及更有效的建议，什么类别的超加
 工食物更有害？什么样的超加工食物能够多吃并能更健康？
 
 *** [[https://ratfactor.com/cards/text-files-as-ui][Text files as a user interface - ratfactor]]
-将文件作为用户交互的「中转」是个很方便和高校的做法，例如 crontab -e 或 visudo 。作者之后也提出了更
-多相关的例子，可我心里却一直在想着：「哦，感觉是 Emacs ]、「Emacs 能做到这个」……然后想着想着就想，直接
-在命令行中进行相关操作？然后就想到了 Eshell 。
+将文件作为用户交互的「中转」是个很方便和高效的做法，例如 crontab -e 或 visudo 。作者之后也提出了更
+多相关的例子，可我心里却一直在想着：「哦，感觉是 Emacs ]、「Emacs 能做到这个」……然后想着想着就想，为何不
+直接在命令行中进行相关操作？然后就想到了 Eshell 。
 
-其实我很早就了解 Eshell 这个在 Emacs 里用 Elisp 实现的伪终端模拟器，可在命令
-中插入 Elisp 代码 [fn:3] 。不过我现在还处于「评估」阶段
-例如在一大堆有中文的文件中选择个文件传给 foo 程序，如果是在终端得自己切个输入法写
-点汉字然后祈祷前缀不会重复太多然后疯狂按 TAB ，但在 Eshell 里：
+其实我很早就了解 Eshell 这个在 Emacs 里用 Elisp 实现的伪终端模拟器，不过我现在还处于「评估」阶段，并没有真正在日常使用。
+Eshell 的特点可在命令中插入 Elisp 代码 [fn:4] 。
+例如在一大堆有中文的文件中选择某个文件传给 foo 程序，如果是在终端得自己切个输入法写
+点汉字然后祈祷前缀不会重复太多然后按太多 TAB ，但在 Eshell 里：
 
 #+begin_src shell
 λ foo (read-file-name "")
 #+end_src
 
-这样写就能呼出 read-file-name 然后在 emacs 享受我为其实现的拼音首字母搜索、模糊等等。
+这样写就能呼出 read-file-name 命令然后在 emacs 享受我为其实现的拼音首字母搜索、模糊等等，选择后再传回 eshell 中
 
-甚至在临时糊个小操作场景中，比如返回文件大小最小的含有 fox 的文件名：
+甚至在临时糊个小操作场景中，比如返回目录文件大小最小的含有 fox 的文件名：
 
 #+begin_src shell
 λ (->> (directory-files-recursively "." (rx "fox")) (-sort (-on '< 'f-size)) car)
@@ -55,7 +86,7 @@ Bar
 了 [[https://github.com/magnars/dash.el][magnars/dash.el:]] 提供操作列表以 - 开头的函数，
 和 [[https://github.com/rejeep/f.el][rejeep/f.el]] 提供的文件操作相关函数：
 
-首先 ->> 是参数操作宏，会将传递的代码变为这样 [fn:4] ：
+首先 ->> 是参数操作宏，会将传递的代码变为这样 [fn:5] ：
 
 #+begin_src emacs-lisp
 (car ;; 取提供列表的第一个元素
@@ -68,37 +99,99 @@ Bar
 ;; 或者对于可选项 (rx "http" (optional "s") "://")
 #+end_src
 
-对比 bash 脚本：
+对比 bash ：
 
 #+begin_src shell
 $ find . -name "*fox*" -printf "%s %p\n" | sort -n | head -n 1 | awk '{print $2}'
 ./2026/02/fox-thinking-18.org
 #+end_src
 
-嗯，只能说对于我这种一直记不清 find 和 awk 参数的健忘狐来说，还是喜欢这种形式，每次都要
-先花个几分钟翻下文档，而且很多精力都是花在如何处理文本拿到自己想要数据上了。
+嗯，只能说对于我这种一直记不清 find 和 awk 参数的健忘狐来说，还是不喜欢这种形式，每次都要
+先花个几分钟翻下文档，而且很多精力都是花在如何处理文本并拿到自己想要数据上了。
 
 *** [[https://nooneshappy.com/article/appearing-productive-in-the-workplace/][Appearing Productive in The Workplace — No One's Happy]]
 又是在 [[https://news.ycombinator.com/item?id=48038001][Hacker News]] 上产生大量讨论的关于 LLM 的文章。
 
-LLM 就像一篇 500 字数要求的作文却交上 5000 字，这篇作文就没有谁能够耐心去读了……
+确实，LLM 感觉就像一篇 500 字数要求的作文却交上 5000 字，让这篇作文没谁能耐心去读了……
 
 *** [[https://www.theringer.com/2026/05/04/tv/david-attenborough-voice-nature-earth-100-years][David Attenborough and the Voice That Revealed a Planet - The Ringer]]
 大卫·爱登堡在最近迎来了自己的一百岁生日，可喜可贺。
 
-这世上还有哪位叙事者能和大卫·爱登堡相比呢？
-
-人类中最能代表地球的声音
+这世上还有哪位叙事者能和大卫·爱登堡相比呢？七十年的经验让大卫·爱登堡的声音带上了
+如先知般的气质，能轻松沉浸其中让人在旁聆听；七十年的经验也让大卫·爱登堡成了自然的「递话
+者」，成为了人类中发声里最能靠近自然、星球的声音。
 
 *** [[https://davidoks.blog/p/why-airlines-are-always-going-bankrupt][Why airlines are always going bankrupt - David Oks]]
-为什么航空业是个糟糕的产业。
+为什么航空业是个糟糕的产业，因为这个行业太不「稳定」了，就像在海滩旁的沙堡一样，无论有形还是无形的大手
+怎么揉捏都依然不稳定。
 
-* Footnotes
+*** 《没有我们的世界》
+环境保护怀理念旧服说是。
 
-[fn:1] 在 [[/2026/01/fox-thinking-13/][FoxThinking #13: 节气差异]] 中提到的 [[https://realfood.gov/][Eat Real Food]]
+快二十年过去了，人类没有走向最糟糕的结果，其中有些胜利 [fn:6] ，但更多是在
+会议室中互相扯皮和指摘。这不是众多时间线中最好的一条，不过至少不是最坏的一条。
 
-[fn:2] [[https://en.wikipedia.org/wiki/Food_desert][Food desert - Wikipedia]]
+** 观影
+*** 《给阿嬷的情书》
+整体真挚动人，没有资源去造「音墙」或者「大场面墙」，却有在故事逐渐展开后情感聚集在一起的「情感墙」。
+而且听着潮汕语中的詈语在字幕中没有「如实」打出还是有点忍俊不禁的。
 
-[fn:3] 更多可参考： [[https://www.masteringemacs.org/article/complete-guide-mastering-eshell][Mastering Eshell - Mastering Emacs]]
+** Dynamically typed
+这个周刊并不怎么分享「项目」。一方面是我很懒，光是读点东西写点点感想就没什么力气了；另一方面
+做这种事的人很多，倒是不缺我这一个。不过随着越来越多无法放到「阅读」栏目的条目出现，以及我
+慢慢开始从自己博客中翻找东西，就想着还是开个新栏目吧。
 
-[fn:4] ->> 宏相关解释参见 clojure 那边： [[https://clojuredocs.org/clojure.core/-%3E%3E][->> - clojure.core | ClojureDocs - Community-Powered Clojure Documentation and Examples]]
+这里取名叫 Dynamically typed 主要是看重 typed 也有打字的意思，一个小小双关。
+
+*** [[https://www.neopets.com/][NeoPets]]
+什么，一个 1999 年就出现的儿童向网页游戏，为什么会出现在这里？！
+
+总之也挺奇妙的，我为了测试 [[https://github.com/balta2ar/brotab][brotab]] 这个项目，需要生成大量浏览器标签以供
+测试。之后找到了 [[http://makeinternetnoise.com/][Internet Noise]](HTTP 网站警告)这个能大量生成随机站点的网站，然后
+在之间发现 [[https://www.jellyneo.net/][Jellyneo.net]] 这关于 NeoPets 的粉丝工具站点，然后就这么摸到了 NeoPets 。
+
+对于这种有着历史沉淀的大世界我立马就是一个垂直入坑，游戏内容倒是没体验什么，反而在到处「考古」，作为二十多年的儿童向网页游戏，发现还在玩
+的却似乎都是些「老人」，看论坛里相关话题都是些三十多岁的人。嗯，感觉还是挺奇妙的。
+
+将其放到我的 Fedi 站点中搜索，我还找到 Reddit 上 [[https://www.reddit.com/r/HobbyDrama/comments/18r8w2g/neopets_a_briefish_history_of_the_weirder_parts/][A brief(ish) history of the weirder parts of the internet's foremost petsite ]] 这个
+帖子，简短讲述了下 NeoPets 的沉浮。
+
+在 Hack News 搜索也找到了相关了讨论 [[https://news.ycombinator.com/item?id=37474780][Neopets is still around]] ，了解到 NeoPets 作为 1999 出现的网页游戏，就像那个时代很多网站一样，允
+许用户写点 HTML 装饰自己的主页。讨论帖上也有很多人说就是在 NeoPets 的影响下了解 HTML 并在之后做起开发工作的，甚至 NeoPets 允许玩
+家自由买卖物品形成的股票市场也刺激玩家了解金融学或自己开发自动化程序，不知道现在量化交易领域从业者中有没有是被 NeoPets 影响的。额，看起来这游
+戏对青少年的影响，不可估量！
+
+*** [[https://clojurecivitas.org/jank/hello.html][Hello, Jank – Clojure Civitas]]
+[[https://jank-lang.org/][Jank]] 是托管在 C++ 和 LLVM 上设计成与 Clojure 高度兼容的
+语言，希望能稳定并推广开来吧，这样之后要做和 C/C++ 库打交道的项目也算是多了张牌可打了 [fn:7]。
+
+*** [[https://github.com/ThatXliner/rust-but-lisp][ThatXliner/rust-but-lisp: Rust but LISP · GitHub]]
+一个像 [[https://fennel-lang.org/][Fennel]] 的将 lisp 转译成目标语言的转译器，我一直挺想要个 Rust 上的 lisp 转译器，因
+为 Rust 实在符号太——多——了 :: -> <> {} & => * 'a ，我必须得就着括号才能啃得下 Rust 代码（拌饭酱说是）。
+
+*** [[https://github.com/agzam/remoto.el][GitHub - agzam/remoto.el: Browse GitHub repos without cloning · GitHub]]
+很戳痛点的 Emacs 包了，很多时候只是想浏览一个文件但不想克隆仓库（例如 linux 内核仓库，连浅克隆都很耗资源），这里
+就可以通过 API 注册到 Emacs 的虚拟文件系统中来直接访问目录或具体的文件。
+
+走远点可以通过 API 获取文件的 log, blame 然后支持修改支持暂存然后……就得到了个浮在 HTTP 上的虚拟 git 仓库
+了，不过这就有点过头了。
+
+** Present day, Present time
+这个月打算参加下 [[https://itch.io/jam/spring-lisp-game-jam-2026][Spring Lisp Game Jam 2026]] ，不过在
+这之前……好似曾相识啊，上周说要参加 [[https://www.emacswiki.org/emacs/CarnivalMay2026][Emacs CarnivalMay2026]] 结果到现在
+也没有进展，希望这月能把这两件事都推动完吧！
+
+** 脚注
+[fn:1] 主行指的就是 asdf jkl; 这一行，因为很常用所以 f 和 j 键帽通常都会做额外突起方便用户进行定位。
+
+[fn:2] 在 [[/2026/01/fox-thinking-13/][FoxThinking #13: 节气差异]] 中提到的 [[https://realfood.gov/][Eat Real Food]]
+
+[fn:3] [[https://en.wikipedia.org/wiki/Food_desert][Food desert - Wikipedia]]
+
+[fn:4] 更多可参考： [[https://www.masteringemacs.org/article/complete-guide-mastering-eshell][Mastering Eshell - Mastering Emacs]]
+
+[fn:5] ->> 宏相关解释参见 clojure 那边： [[https://clojuredocs.org/clojure.core/-%3E%3E][->> - clojure.core | ClojureDocs - Community-Powered Clojure Documentation and Examples]]
+
+[fn:6] [[https://wmo.int/news/media-centre/wmo-bulletin-shows-successful-recovery-of-ozone-layer-driven-science][WMO Bulletin shows successful recovery of ozone layer, driven by science]]
+
+[fn:7] 多张牌的意思是存在其它牌，例如： [[https://github.com/janet-lang/janet][GitHub - janet-lang/janet: A dynamic language and bytecode vm]]
