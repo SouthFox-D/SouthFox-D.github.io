@@ -156,7 +156,7 @@ $ find . -name "*fox*" -printf "%s %p\n" | sort -n | head -n 1 | awk '{print $2}
 将其放到我的 Fedi 站点中搜索，我还找到 Reddit 上 [[https://www.reddit.com/r/HobbyDrama/comments/18r8w2g/neopets_a_briefish_history_of_the_weirder_parts/][A brief(ish) history of the weirder parts of the internet's foremost petsite ]] 这个
 帖子，简短讲述了下 NeoPets 的沉浮。
 
-在 Hack News 搜索也找到了相关了讨论 [[https://news.ycombinator.com/item?id=37474780][Neopets is still around]] ，了解到 NeoPets 作为 1999 出现的网页游戏，就像那个时代很多网站一样，允
+在 Hacker News 搜索也找到了相关了讨论 [[https://news.ycombinator.com/item?id=37474780][Neopets is still around]] ，了解到 NeoPets 作为 1999 出现的网页游戏，就像那个时代很多网站一样，允
 许用户写点 HTML 装饰自己的主页。讨论帖上也有很多人说就是在 NeoPets 的影响下了解 HTML 并在之后做起开发工作的，甚至 NeoPets 允许玩
 家自由买卖物品形成的股票市场也刺激玩家了解金融学或自己开发自动化程序，不知道现在量化交易领域从业者中有没有是被 NeoPets 影响的。额，看起来这游
 戏对青少年的影响，不可估量！
