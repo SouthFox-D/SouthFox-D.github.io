@@ -1,0 +1,12 @@
+#+title: fox-thinking-29
+#+author: SouthFox
+#+date: 2026-05-18 10:24:37
+#+draft: t
+#+tags: FoxThinking
+
+
+** Dynamically typed
+
+*** [[https://hyperpolyglot.org/lisp][Lisp: Common Lisp, Racket, Clojure, Emacs Lisp - Hyperpolyglot]]
+*** [[https://explorer.samismith.com/][Wikipedia File Explorer — Browse Wikipedia on a Windows XP desktop]]
+- [[https://news.ycombinator.com/item?id=48146129][Explore Wikipedia Like a Windows XP Desktop | Hacker News]]
