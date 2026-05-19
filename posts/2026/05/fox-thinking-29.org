@@ -4,9 +4,130 @@
 #+draft: t
 #+tags: FoxThinking
 
+** 阅读
+*** [[https://www.theguardian.com/books/ng-interactive/2026/may/12/the-100-best-novels-of-all-time][The 100 best novels of all time | Fiction | The Guardian]]
+《卫报》在今年评选的有史以来百大小说榜单。
+
+看到在讲这列表背后的评选背景的
+文章： [[https://www.theguardian.com/books/ng-interactive/2026/may/16/story-behind-100-best-novels-all-time][Who’s in, who’s out, and how many have you read? The story behind our 100 best novels]] 发
+现评论总体呈现「多半好评」的态势，前排高赞评论很多在说这列表非常无趣和无意义。
+
+我还发现了一五年时的榜单 [[https://www.theguardian.com/books/2015/aug/17/the-100-best-novels-written-in-english-the-full-list][The 100 best novels written in English: the full list | Books | The Guardian]] ，一五年的榜单是老白男（纯客观描述，非贬义）花两年时间排出来的，只针对英语地区作家的作品。今年榜单则由评审团
+评选，并把范围扩大到了只要有以英语出版的小说，入选了更多的女作家、少数群体作家的作品。即使有这么大的不同，我也
+觉得做个对比也是件有趣的事，索性就写了个脚本 [fn:1] 分析下：
+
+前三十名的变动（写全就有点凑字数的嫌疑了）如下；
+
+#+begin_src text
+001: Middlemarch                    (↑ 20)
+002: Beloved                        (New)
+003: Ulysses                        (↑ 43)
+004: To the Lighthouse              (New)
+005: In Search of Lost Time         (New)
+006: Anna Karenina                  (New)
+007: War and Peace                  (New)
+008: Jane Eyre                      (↑ 4)
+009: Pride and Prejudice            (New)
+010: Madame Bovary                  (New)
+011: The Great Gatsby               (↑ 40)
+012: Bleak House                    (New)
+013: Emma                           (↓ 6)
+014: Mrs Dalloway                   (↑ 36)
+015: Moby-Dick                      (↑ 2)
+016: Nineteen Eighty-Four           (↑ 54)
+017: One Hundred Years of Solitude  (New)
+018: Persuasion                     (New)
+019: The Life and Opinions of Tristram Shandy, Gentleman (↓ 13)
+020: Wuthering Heights              (↓ 7)
+021: The Portrait of a Lady         (New)
+022: Things Fall Apart              (New)
+023: Midnight's Children            (New)
+024: The Remains of the Day         (New)
+025: Lolita                         (↑ 50)
+026: Don Quixote                    (New)
+027: The Trial                      (New)
+028: The Brothers Karamazov         (New)
+029: Pale Fire                      (New)
+030: Frankenstein                   (↓ 22)
+#+end_src
+
+在一五年榜单前三十名但在今年榜单没入选的作品：
+
+#+begin_src text
+001: The Pilgrim’s Progress
+002: Robinson Crusoe
+003: Gulliver’s Travels
+004: Clarissa
+005: Tom Jones
+009: Nightmare Abbey
+010: The Narrative of Arthur Gordon Pym of Nantucket
+011: Sybil
+016: The Scarlet Letter
+018: Alice’s Adventures in Wonderland
+019: The Moonstone
+020: Little Women
+022: The Way We Live Now
+023: The Adventures of Huckleberry Finn
+024: Kidnapped
+025: Three Men in a Boat
+026: The Sign of Four
+027: The Picture of Dorian Gray
+028: New Grub Street
+030: The Red Badge of Courage
+#+end_src
+
+还是能看出之间的不同的，算是体现出了西方英语地区这十年的变迁吗？
+
+*** [[https://restofworld.org/2026/chinese-ai-researchers-silicon-valley/][Chinese AI engineers are Silicon Valley’s new power players - Rest of World]]
+中国里顶尖人才在硅谷的 AI 潮中的故事，毕业于顶尖学府、精通数学、无休止的工作、对构建
+通用人工智能热忱……
+
+我想说这些人才就像「木鸡」一样（这里我非褒非贬），我看到马上就有点想「反走矣」 [fn:2] 。
+
+*** [[https://sockpuppet.org/blog/2026/05/12/emacsification/][The Emacsification of Software — Quarrelsome]]
+pass
+
+*** [[https://ai-on-the-internet.github.io/][The Impact of AI-Generated Text on the Internet]]
+论文通过互联网档案馆抓取并分析二二年至二五年的网页，然后验证「随着人工智能生成文本增多……」情景下的
+五个假设：
+
+- ……独特思想和多元观点正在缩小——(ρ = 0.47, p = 0.004)显著成立
+- ……事实错误信息和幻觉的频率越来越高——没有统计上的显著相关性
+- ……线上文本变得越来越无味又带着虚伪的欢快——(ρ = 0.56, p = 0.0003)显著成立
+- ……文章越来越多只提供答案却不包含外部来源链接——没有统计上的显著相关性
+- ……文章字数越来越长，信息密度变得越来越低——没有统计上的显著相关性
+- ……独特的写作风格正在消失，剩下通用、统一的表达——没有统计上的显著相关性
+
+不过注意到论文 3.1 节数据获取中的一句话：「……and only English text is retained」，所以上述结论仅对应英语
+圈（不过就算分析所有语言也受限于数据来自互联网档案馆这个做法限制）。
+
+** 观影
+*** 《巅峰对决》
+pass
 
 ** Dynamically typed
 
 *** [[https://hyperpolyglot.org/lisp][Lisp: Common Lisp, Racket, Clojure, Emacs Lisp - Hyperpolyglot]]
+对于不同 Lisp 的速查 +作弊+ 表（Cheat sheet) ，从这里也能看出 Lisp 生态的分
+裂……不同 Lisp 语法和相关使用上就有很多不同。
+
 *** [[https://explorer.samismith.com/][Wikipedia File Explorer — Browse Wikipedia on a Windows XP desktop]]
 - [[https://news.ycombinator.com/item?id=48146129][Explore Wikipedia Like a Windows XP Desktop | Hacker News]]
+
+用电脑桌面的形式浏览维基百科，让我想到还有用抖音的形式浏览维基百科： [[https://wikitok.vercel.app/][WikiTok]] ……
+
+* Footnotes
+
+[fn:1] 脚本地址： [[https://git.southfox.me/southfox/dusty-stage/src/commit/f018231e31651272a5653fd8e31b72789b090038/theguardian-book-list-compare.hy][theguardian-book-list-compare.hy]]
+
+[fn:2] 典出《庄子・达生》 [[https://ctext.org/zhuangzi/full-understanding-of-life/zhs][达生 | 中国哲学书电子化计划]]
+
+#+begin_quote
+纪渻子为王养斗鸡。
+十日而问：“鸡已乎？”曰：“未也。方虚憍而恃气。”
+十日又问。曰：“未也。犹应向景。”
+十日又问。曰：“未也。犹疾视而盛气。”
+十日又问。曰：“几矣。鸡虽有鸣者，已无变矣，望之似木鸡矣，其德全矣，异鸡无敢应者，反走矣。”
+#+end_quote
+
+虽然没有什么人问但很明显本博客名就典出自此：表达了博主在面对这世上存在的「异鸡」时不得不「反走」的感悟。
