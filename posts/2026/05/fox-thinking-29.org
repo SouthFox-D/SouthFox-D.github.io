@@ -1,6 +1,6 @@
 #+title: FoxThinking #29: 我想知道我不知道
 #+author: SouthFox
-#+date: 2026-05-18 10:24:37
+#+date: 2026-05-20 16:24:08
 #+tags: FoxThinking
 
 老生常谈的「知之为知之，不知为不知」观点，但在现在这种环境下确实变成更「紧缺」的美
