@@ -1,22 +1,29 @@
-#+title: fox-thinking-29
+#+title: FoxThinking #29: 我想知道我不知道
 #+author: SouthFox
 #+date: 2026-05-18 10:24:37
-#+draft: t
 #+tags: FoxThinking
+
+老生常谈的「知之为知之，不知为不知」观点，但在现在这种环境下确实变成更「紧缺」的美
+德了。在工作上为了饭碗先假意装懂承接下来是不得已的选择，可只是为了展示自信或是显
+得博学什么的对着没怎么接触过的事物念着大模型的输出就不太「礼貌」了。
+
+,(read-more)
+
+我在想，「知道自己不知道」甚至是比「可判定」 [fn:1] 更为恐怖的「权柄」，后者只不过是让
+人能轻松证出孪生素数猜想、哥德巴赫猜想、冰雹猜想之类的难题，可前者或许能让人变成最有智慧
+的人。
 
 ** 阅读
 *** [[https://www.theguardian.com/books/ng-interactive/2026/may/12/the-100-best-novels-of-all-time][The 100 best novels of all time | Fiction | The Guardian]]
-《卫报》在今年评选的有史以来百大小说榜单。
-
-看到在讲这列表背后的评选背景的
+《卫报》在今年评选的有史以来百大小说榜单。看到在讲这列表背后的评选背景的
 文章： [[https://www.theguardian.com/books/ng-interactive/2026/may/16/story-behind-100-best-novels-all-time][Who’s in, who’s out, and how many have you read? The story behind our 100 best novels]] 发
-现评论总体呈现「多半好评」的态势，前排高赞评论很多在说这列表非常无趣和无意义。
+现评论总体呈现「多半好评」的态势，而且前排高赞评论很多在说这列表非常无趣和无意义。
 
-我还发现了一五年时的榜单 [[https://www.theguardian.com/books/2015/aug/17/the-100-best-novels-written-in-english-the-full-list][The 100 best novels written in English: the full list | Books | The Guardian]] ，一五年的榜单是老白男（纯客观描述，非贬义）花两年时间排出来的，只针对英语地区作家的作品。今年榜单则由评审团
+顺势发现一五年时的榜单 [[https://www.theguardian.com/books/2015/aug/17/the-100-best-novels-written-in-english-the-full-list][The 100 best novels written in English: the full list | Books | The Guardian]] ，一五年的榜单是老白男（纯客观描述，非贬义）花两年时间排出来的，只针对英语地区作家的作品。今年榜单则由评审团
 评选，并把范围扩大到了只要有以英语出版的小说，入选了更多的女作家、少数群体作家的作品。即使有这么大的不同，我也
-觉得做个对比也是件有趣的事，索性就写了个脚本 [fn:1] 分析下：
+觉得做个对比也是件有趣的事，索性就写了个脚本 [fn:2] 分析下。
 
-前三十名的变动（写全就有点凑字数的嫌疑了）如下；
+前三十名的变动（写全就有点凑字数的嫌疑了）如下：
 
 #+begin_src text
 001: Middlemarch                    (↑ 20)
@@ -76,51 +83,155 @@
 030: The Red Badge of Courage
 #+end_src
 
-还是能看出之间的不同的，算是体现出了西方英语地区这十年的变迁吗？
+还是能看出之间不同的，算是体现出了西方英语地区这十年对小说态度的变迁吗？
 
-*** [[https://restofworld.org/2026/chinese-ai-researchers-silicon-valley/][Chinese AI engineers are Silicon Valley’s new power players - Rest of World]]
-中国里顶尖人才在硅谷的 AI 潮中的故事，毕业于顶尖学府、精通数学、无休止的工作、对构建
+*** [[https://restofworld.org/2026/chinese-ai-researchers-silicon-valley/][The Chinese whiz kids of Silicon Valley - Rest of World]]
+中国顶尖人才在硅谷 AI 浪潮中的故事，毕业于顶尖学府、精通数学、无休止的工作、对构建
 通用人工智能热忱……
 
-我想说这些人才就像「木鸡」一样（这里我非褒非贬），我看到马上就有点想「反走矣」 [fn:2] 。
+我想说这些人才就像「木鸡」一样（这里我非褒非贬），我看到马上就有点想「反走矣」 [fn:3] 。
+
+*** [[https://theconversation.com/most-people-dont-know-what-they-dont-know-but-think-they-do-correcting-your-metaknowledge-can-make-you-a-better-teacher-and-learner-280905][Most people don’t know what they don’t know, but think they do – The Conversation]]
+这篇文章写的挺好，所以我就不「剑走偏锋」随意发散了。
+
+人们为什么觉得自己知道？第一，人们会把环境中的信息当成理解：
+
+#+begin_quote
+The information is out in the world but not actually in your head.
+With a bicycle or a zipper, all of the parts are visible to you,
+and you may confuse this transparency for an internal understanding
+of how they work. But until you go to use that knowledge by attempting
+to explain how they work, you may not recognize that you don’t understand how those parts interact.
+
+信息存在于世界，但实际上并不在你的脑海中。自行车或拉链所有部件都能看到，你可能会把这种透明误认为是内部
+对它们工作原理的理解。但除非你尝试用这些知识解释它们的工作原理，否则你可能不
+会意识到自己并不理解这些部分是如何相互作用的。
+#+end_quote
+
+相关概念： [[https://en.wikipedia.org/wiki/Desirable_difficulty][Desirable difficulty - Wikipedia]]
+
+第二，混淆不同层次：
+
+#+begin_quote
+People can often describe how something works at a very high level.
+You know that the engine of a car makes the car go, and the brakes slow
+and stop the vehicle. But confidence in your high-level understanding of
+the car may bias you to think you also have a good grasp of the finer
+details, like how the engine pistons and brake pads work.
+
+人们常常能在非常高层次上描述某样东西的工作原
+理。你知道汽车的发动机驱动汽车行驶，刹车减速并停车。但对汽车的高层理解的
+自信可能会让你误以为自己对发动机活塞和刹车片的工作原理也掌握得很好。
+#+end_quote
+
+这对计算机从业者来说体悟会更明显，因为这个行业高度依赖「黑盒抽象」运作。大体知道
+「打开网页浏览器输入网址打开网站」、「敲击键盘到屏幕上显示了所打字符」里头的链路的我
+也不敢说「懂」电脑。毕竟连计算机底层用的芯片，背后制造的技术也复杂的让人畏惧：
+- [[https://www.bilibili.com/video/BV1qXi4BbESM/][改变世界的机器以及其背后的工程 - 真理元素 - bilibili]]
+- [[https://www.youtube.com/watch?v=MiUHjLxm3V0][The World's Most Important Machine - Veritasium - YouTube]]
+
+第三，[[https://zh.wikipedia.org/zh-hans/%E7%9F%A5%E8%AD%98%E7%9A%84%E8%A9%9B%E5%92%92][知识的诅咒 - 维基百科，自由的百科全书]] ：
+
+#+begin_quote
+people can be blind to the ways their knowledge shapes their own perception.
+In one study, researchers had participants tap out the tune to a popular song.
+On average, the tappers thought listeners would be able to identify the song
+about 50% of the time. But when listeners had to identify the tapped song,
+they actually could identify it only 2.5% of the time. The tappers didn’t realize
+how much their knowledge was making identifying the song seem easy to them.
+
+人们可能对自己的知识如何塑造自身观念视而不见。在一项研究中，研究人员让参与者敲出一首流行歌曲的旋
+律。通常来说敲击者认为听众大约有 50% 能认出这首歌。但当听众必须识别敲击的歌曲时，实际上只有 2.5% 的概率
+能识别出来。敲击者们没意识到他们的认知让识别这首歌变得多么容易。
+#+end_quote
 
 *** [[https://sockpuppet.org/blog/2026/05/12/emacsification/][The Emacsification of Software — Quarrelsome]]
-pass
+如果构建自己的应用和微调真变得更加简单和低耗，那么就会出现 Emacs 化——任何人都在不断微调自己
+的「.emacs.d」配置文件似的应用，里头放着十几个用不了几次就丢掉的功能组合函数。
+
+然后这种情况继续下去，就会有框架出来试图统合这些需求形成或有人用或没人
+用的「发行版」，此时此刻……
 
 *** [[https://ai-on-the-internet.github.io/][The Impact of AI-Generated Text on the Internet]]
 论文通过互联网档案馆抓取并分析二二年至二五年的网页，然后验证「随着人工智能生成文本增多……」情景下的
 五个假设：
 
-- ……独特思想和多元观点正在缩小——(ρ = 0.47, p = 0.004)显著成立
-- ……事实错误信息和幻觉的频率越来越高——没有统计上的显著相关性
-- ……线上文本变得越来越无味又带着虚伪的欢快——(ρ = 0.56, p = 0.0003)显著成立
-- ……文章越来越多只提供答案却不包含外部来源链接——没有统计上的显著相关性
+- ……独特思想和多元观点正在缩小——(ρ = 0.47, p = 0.004)显著相关
+- ……事实错误和幻觉频率越来越高——没有统计上的显著相关性
+- ……线上文本变得越来越无味还带着虚伪的欢快——(ρ = 0.56, p = 0.0003)显著相关
+- ……越来越多只提供答案却不包含外部来源链接的文章——没有统计上的显著相关性
 - ……文章字数越来越长，信息密度变得越来越低——没有统计上的显著相关性
 - ……独特的写作风格正在消失，剩下通用、统一的表达——没有统计上的显著相关性
 
-不过注意到论文 3.1 节数据获取中的一句话：「……and only English text is retained」，所以上述结论仅对应英语
-圈（不过就算分析所有语言也受限于数据来自互联网档案馆这个做法限制）。
+不过注意到论文 3.1 节数据获取章节中的一句话：「……and only English text is retained」，所以上述结论
+仅对应英语圈（不过就算分析所有语言，也会受到数据来自互联网档案馆这个状况限制）。
+
+*** [[https://www.psypost.org/brooding-identified-as-a-major-driver-of-bedtime-procrastination-alongside-physical-markers-of-stress/][Brooding identified as a major driver of bedtime procrastination, alongside physical markers of stress]]
+研究了睡前拖延与生理（低心率变异性 [fn:4]）和心理（较低的行为和念头调控能力）之间的相关关系，并
+且消极反刍式思考（brooding）倾向的报告显著预测睡前拖延。
+
+所以，除了提醒要再次认识到某种症状出现要考虑生理和心理上的影响外，我更好奇有什么手段能应对消极
+反刍式思考？
+
+*** [[https://www.eff.org/deeplinks/2026/05/science-not-settled-how-weak-evidence-fueling-national-push-ban-social-media-youth][The Science is Not Settled: How Weak Evidence is Fueling a National Push to Ban Social Media for Youth | Electronic Frontier Foundation]]
+EFF 对青少年社交媒体禁令的看法，不愧是专业的，一出手就知道有没有哇。
+
+*** [[https://maurycyz.com/misc/search/][Search engine results are truly terrible (Maurycy's blog)]]
+对搜索引擎的测试，针对或大众或专业的搜索请求中，以前五个结果是否出现合理的结果为评判标准。评判结果是，大部分搜
+索引擎都很糟糕。
+
+不过以前五个结果作为评判我是觉得蛮苛刻了，可能是我一直在搜小众领域的东西吧，我甚至觉得只要前三页
+有符合关键词的结果就可以了，我从来都没奢求过 I'm Feeling Lucky 。
+
+要从搜索引擎几十上百的结果中筛选想要的信息，用生产力讨论场上的话来说，「搜商」还是
+挺重要的：会用搜索引擎的运算符 [fn:5] 、能综合不同结果联合分析自己想要的结果、能判断出来网站是好
+网站 [fn:6] 还是内容农场……
+
+*** [[https://mp.weixin.qq.com/s/1-OsiGbpq_YnLd_ZdLqG8Q][女儿抑郁症后，一位父亲的反思 - 微信公众号]]
+体悟、总结、反思。
+
+*** 《安史之乱：历史、宣传与神话》
+#+begin_quote
+宣传变成了神话，神话凝固成了历史。
+#+end_quote
+
+部头太大了！或者说我不该将其选为我随身携带的「通勤」阅读书。虽然没读
+完，但「尾声」部分 [fn:7] ：
+
+#+begin_quote
+李碧妍博士在一次对谈中曾经颇有意味地说道：“我们做政治史的时候，千万
+不要高估自己的能力，我们要明白，我们所面对的都是古代的那些一流的政治
+家、军事家，我们考虑的很多问题实际上他们早已考虑到了，所以千万不要低估
+古人的政治智慧，更不要随意褒贬，我们能做的也许只是尽自己的努力站在他们
+的立场，试图了解他们的所行所为，仅此而已。
+#+end_quote
+
+以及我们确实喜欢带有寓言性质的「故事」，王侯将相、成王败寇、昏庸皇帝听信了谗言、胆大包
+天的臣子吃拿卡要。但历史总是瞬息万变让人摸不着头脑，决策总会受到太多影响，可能
+连事件当事人里「知不知道他人知道」[fn:8] 的情况都会影响状况走势。
 
 ** 观影
 *** 《巅峰对决》
-pass
+我可能就是喜欢等热度过去了才慢悠悠回来找补吧，虽能够享受丰富产出却也错失在当时参与讨论去感受庆典欢腾感。不过还是
+等待并心怀希望的盼着二七年的第二季吧！
 
 ** Dynamically typed
-
 *** [[https://hyperpolyglot.org/lisp][Lisp: Common Lisp, Racket, Clojure, Emacs Lisp - Hyperpolyglot]]
 对于不同 Lisp 的速查 +作弊+ 表（Cheat sheet) ，从这里也能看出 Lisp 生态的分
-裂……不同 Lisp 语法和相关使用上就有很多不同。
+裂……不同 Lisp 在语法和相关使用上就有很多不同。
 
 *** [[https://explorer.samismith.com/][Wikipedia File Explorer — Browse Wikipedia on a Windows XP desktop]]
-- [[https://news.ycombinator.com/item?id=48146129][Explore Wikipedia Like a Windows XP Desktop | Hacker News]]
-
 用电脑桌面的形式浏览维基百科，让我想到还有用抖音的形式浏览维基百科： [[https://wikitok.vercel.app/][WikiTok]] ……
 
+** Present day, Present time
+第三十期！也是达到一个小小的目标了。
+
 * Footnotes
+[fn:1] [[https://en.wikipedia.org/wiki/Entscheidungsproblem][Entscheidungsproblem - Wikipedia]]
 
-[fn:1] 脚本地址： [[https://git.southfox.me/southfox/dusty-stage/src/commit/f018231e31651272a5653fd8e31b72789b090038/theguardian-book-list-compare.hy][theguardian-book-list-compare.hy]]
+[fn:2] 脚本地址： [[https://git.southfox.me/southfox/dusty-stage/src/commit/f018231e31651272a5653fd8e31b72789b090038/theguardian-book-list-compare.hy][theguardian-book-list-compare.hy]]
 
-[fn:2] 典出《庄子・达生》 [[https://ctext.org/zhuangzi/full-understanding-of-life/zhs][达生 | 中国哲学书电子化计划]]
+[fn:3] 典出《庄子・达生》 [[https://ctext.org/zhuangzi/full-understanding-of-life/zhs][达生 | 中国哲学书电子化计划]]
 
 #+begin_quote
 纪渻子为王养斗鸡。
@@ -130,4 +241,22 @@ pass
 十日又问。曰：“几矣。鸡虽有鸣者，已无变矣，望之似木鸡矣，其德全矣，异鸡无敢应者，反走矣。”
 #+end_quote
 
-虽然没有什么人问但很明显本博客名就典出自此：表达了博主在面对这世上存在的「异鸡」时不得不「反走」的感悟。
+虽然没有什么人问但很明显本博客名就典出自此：表达了博主在面对这世上存在的「异鸡」时不得不「反走」的心情。
+
+[fn:4] Heart Rate Variability (HRV)，简单来说心脏跳动间隔之间时间不是规律的，会有几分之一秒的差异（毕竟
+心脏是肉做的，里头没晶振），而这种不规律性越高表明压力越低，越能适应环境（是的，一般而言，心率变异度越高
+越好）；越低表明处于「战斗或逃跑」等高压力状态。
+
+- [[https://my.clevelandclinic.org/health/symptoms/21773-heart-rate-variability-hrv][Heart Rate Variability (HRV) | Cleveland Clinic]]
+- [[https://www.bbc.com/zhongwen/articles/cy82d3j2yydo/simp][你的心率没有你想的那麽平稳，而它揭示了什么健康状况？ - BBC News 中文]]
+
+[fn:5] [[https://support.google.com/websearch/answer/2466433?hl=zh-Hans][优化 Google 搜索范围 - Google 搜索帮助]]
+
+[fn:6] 比如我通过文章里发现的： [[https://www.explainthatstuff.com/][Explain that Stuff]] ，没翻看几下我就觉得是个好网站了。
+
+[fn:7] 在已经知道结局的时候我更喜欢看看尾声怎么说的，然后逐渐从开头和结尾「夹逼」完整本书，书可不一定要线性地
+读。总之，摘录出自：
+
+张诗坪. 安史之乱：历史、宣传与神话. 上海人民出版社. 2025, 第 599 页.
+
+[fn:8] [[https://zh.wikipedia.org/zh-cn/%E5%85%B1%E5%90%8C%E7%9F%A5%E8%AF%86][共同知识 - 维基百科，自由的百科全书]]
