@@ -216,7 +216,7 @@ clojure 的纪录片，讲述了 clojure 起始和发展的故事：
 
 [fn:8] [美]亨利·梭罗. 瓦尔登湖. 天津人民出版社. 2013, 第 11 页.
 
-[fn:9] [[https://news.ycombinator.com/item?id=47859916]]
+[fn:9] [[https://news.ycombinator.com/item?id=47866160]]
 
 [fn:10] [[https://zh.wikipedia.org/zh-cn/%E8%89%AF%E6%80%A7%E5%BA%94%E6%BF%80][良性应激 - 维基百科，自由的百科全书]]
 
