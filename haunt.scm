@@ -3,6 +3,7 @@
              (haunt builder assets)
              (haunt reader commonmark)
              (haunt site)
+             (haunt utils)
              (hole theme)
              (hole reader)
              (hole site)
@@ -16,6 +17,14 @@
 
 (setenv "LANG" "C.UTF-8")
 
+(define (group-by key-proc lst)
+  (let ((table (make-hash-table)))
+    (for-each (lambda (item)
+                (let ((k (key-proc item)))
+                  (hash-set! table k (cons item (hash-ref table k '())))))
+              lst)
+    (hash-map->list cons table)))
+
 (define (%base-transformers)
   (append
    (if (equal? (getenv "BUILD_DRAFTS") "t")
@@ -27,13 +36,31 @@
          (append (%base-transformers) specific-transformers)
          builders))
 
+(define (wrap-lang proc)
+  (lambda (site posts)
+    (let* ((default-lang (or (assoc-ref (site-default-metadata site) 'lang) "zh-CN"))
+           (groups-alist (group-by (lambda (p) (or (post-ref p 'lang) default-lang)) posts)))
+      (flat-map (lambda (pair)
+                  (let ((lang (car pair))
+                        (lang-posts (cdr pair)))
+                    (parameterize ((blog-language lang))
+                      (proc site lang-posts))))
+                groups-alist))))
+
 (define (site-builders)
   (with-transformers
    (list filter-feed-only)
-   (blog/collection->page
-    #:theme (fox-theme)
-    #:collections `((,(t_ 'collections-titles) "index.html" ,posts/reverse-chronological))
-    #:posts-per-page 10)
+   (wrap-lang
+    (lambda (site posts)
+      (let* ((default-lang (or (assoc-ref (site-default-metadata site) 'lang) "zh-CN"))
+             (current-lang (blog-language))
+             (prefix (if (equal? current-lang default-lang) "" current-lang)))
+        ((blog/collection->page
+          #:theme (fox-theme)
+          #:prefix prefix
+          #:collections `((,(t_ 'collections-titles) "index.html" ,posts/reverse-chronological))
+          #:posts-per-page 10)
+         site posts))))
    (about-page)
    (friends-page)
    (archives-page)
@@ -50,7 +77,8 @@
          inject-backlinks
          inject-feed-only-section
          inject-expire-warning-section)
-   (blog/post->page #:theme (fox-theme))
+   (wrap-lang
+    (blog/post->page #:theme (fox-theme)))
    (hole/atom-feed)
    (hole/rss-feed)))
 
@@ -62,7 +90,5 @@
         (lang   . "zh-CN"))
       #:posts-directory "posts"
       #:readers (list fox-commonmark-reader fox-org-mode-reader)
-      #:builders (parameterize ((blog-language "zh-CN"))
-                   (list (site-builders) (post-builders)))
+      #:builders (list (site-builders) (post-builders))
       #:make-slug hexo-post-slug)
-
