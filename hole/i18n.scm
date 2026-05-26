@@ -18,7 +18,9 @@
 (define (get-text key lang)
   (let ((lang-msgs (assoc-ref %lang-data lang)))
     (or (assoc-ref lang-msgs key)
-        (symbol->string key))))
+        (begin
+          (format #t "missing i18n key ~s in ~s ! ~%" (symbol->string key) lang)
+          (symbol->string key)))))
 
 (define (t_ key)
   (get-text key (blog-language)))
