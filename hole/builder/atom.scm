@@ -157,7 +157,7 @@
       (updated ,(date->string* (post-date post)))
       ,@(map (lambda (tag)
                `(category (@ (term ,(sxml->html-string tag)))))
-             (post-ref post 'tags))
+             (or (post-ref post 'tags) '("untagged")))
       (link (@ (href ,uri) (rel "alternate")))
       (content (@ (type "html"))
                ,(sxml->html-string (post-sxml post)))

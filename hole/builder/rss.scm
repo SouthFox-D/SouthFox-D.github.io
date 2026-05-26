@@ -148,7 +148,7 @@
       (description ,(sxml->html-string (parse-read-more post)))
       ,@(map (lambda (tag)
                `(category ,(sxml->html-string tag)))
-             (post-ref post 'tags))
+             (or (post-ref post 'tags) '("untagged")))
       (content:encoded ,(sxml->html-string (post-sxml post)))
       ,@(map (lambda (enclosure)
                `(link (@ (rel "enclosure")
