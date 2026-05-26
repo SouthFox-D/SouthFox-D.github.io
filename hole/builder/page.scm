@@ -7,6 +7,7 @@
   #:use-module (hole theme)
   #:use-module (hole builder blog)
   #:use-module (hole site)
+  #:use-module (hole i18n)
   #:use-module (ice-9 match)
   #:use-module (srfi srfi-19)
   #:export (static-page
@@ -27,7 +28,7 @@
 
 (define* (about-page)
   (static-page
-   "关于"
+   (t_ 'about)
    "about/index.html"
    `((h1 "关于")
      (p "欢迎点击这个页面，不管是自动执行的程序还是有血有肉的生物。在互联网闲逛到一些个人博客时，我通常都会首先点开关于页面
@@ -127,7 +128,7 @@
      (with-layout
       (fox-theme)
       site
-      "Archives"
+      (t_ 'archives)
       `(div (@ (class "content"))
         (main (@ (id "main-content") (tabindex "-1"))
               (h1 "归档")
@@ -142,13 +143,13 @@
 
 (define (search-page)
   (static-page
-   "Search"
+   (t_ 'search)
    "search/index.html"
     `((link (@ (href "/pagefind/pagefind-component-ui.css")
                (rel "stylesheet")))
       (script (@ (src "/pagefind/pagefind-component-ui.js")))
       (div (@ (class "content"))
-           (h1 "Search")
+           (h1 ,(t_ 'search))
            (pagefind-input)
            (pagefind-summary)
            (pagefind-results)))))
