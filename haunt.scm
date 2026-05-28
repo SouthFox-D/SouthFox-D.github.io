@@ -50,17 +50,18 @@
 (define (site-builders)
   (with-transformers
    (list filter-feed-only)
+   (blog/collection->page
+    #:theme (fox-theme)
+    #:collections `((,(t_ 'collections-titles) "index.html" ,posts/reverse-chronological))
+    #:posts-per-page 10)
    (wrap-lang
     (lambda (site posts)
-      (let* ((default-lang (or (assoc-ref (site-default-metadata site) 'lang) "zh-CN"))
-             (current-lang (blog-language))
-             (prefix (if (equal? current-lang default-lang) "" current-lang)))
-        ((blog/collection->page
-          #:theme (fox-theme)
-          #:prefix prefix
-          #:collections `((,(t_ 'collections-titles) "index.html" ,posts/reverse-chronological))
-          #:posts-per-page 10)
-         site posts))))
+      ((blog/collection->page
+        #:theme (fox-theme)
+        #:prefix (blog-language)
+        #:collections `((,(t_ 'collections-titles) "index.html" ,posts/reverse-chronological))
+        #:posts-per-page 10)
+       site posts)))
    (about-page)
    (friends-page)
    (archives-page)
