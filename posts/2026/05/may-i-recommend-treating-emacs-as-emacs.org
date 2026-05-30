@@ -1,0 +1,69 @@
+#+title: May I recommend... Treating Emacs as Emacs
+#+author: SouthFox
+#+date: 2026-05-30 23:46:32
+#+lang: en
+#+tags: Emacs
+
+This post is an entry for the [[https://www.emacswiki.org/emacs/CarnivalMay2026][Emacs Carnival]].
+
+Emacs is just Emacs!
+
+,(read-more)
+
+** Emacs is more than a text editor
+Emacs is a text editor. But it is also a living Emacs Lisp
+interpreter that happens to edit text.
+
+Think about movie tropes: a traditional samurai movie and a sci-fi movie
+where energy shields make guns useless, forcing everyone into close melee.
+Both are about sword fights, but they have completely different vibes.
+
+** Emacs is unlike other text editors
+When it comes to editing, other editors get you to your destination like motorcycles or cars.
+Emacs is a camper van. Once you arrive, you can set up a coffee machine and a
+barbecue grill right there.
+It might feel "heavy," but for those who need it, it is worth it.
+
+People often complain about Emacs startup speed. Of course, people can strip a
+camper van down to its bare engine, optimize every part,
+and rebuild it into a racing kart. But Emacs has a [[https://systemcrafters.net/emacs-tips/using-the-emacs-daemon/][daemon mode]]. This means Emacs
+doesn’t work like other editors that you open and close on a whim.
+
+I launch the Emacs daemon when my computer boots. It automatically opens a window
+in my first workspace with my dashboard. In other workspaces, whenever
+I need to choose something from my clipboard or launch an application [fn:1] , I just use
+emacsclient to open a frame.
+Quite often, I have hundreds of buffers running. They are much like browser tabs,
+but I can effortlessly navigate buffer using fuzzy search.
+
+** Stay close to the Emacs community
+Because Emacs has lived for so long, search engine results are a mixed bag of the
+fresh and the ancient. Some solutions out there are just outdated.
+
+It's a bit of a cliché, but a solid move is to check the Emacs [[https://github.com/emacs-tw/awesome-emacs][awesome list]].
+Maybe you will discover packages and starter kits currently thriving in the community.
+Browse through them for features you want. Testing one or two starter kits usually
+reveals plenty of QOL improvements.
+
+P.S. [[https://sachachua.com/blog/category/emacs-news/][Emacs news]] is also a great place to check out!
+
+** The "someday" moment...
+The most comforting part of Emacs is knowing, "Oh, I am sure there is an Emacs mode for that."
+But someday, you will have to write something of your own in Emacs Lisp:
+
+- A web service you use is terrible, but what if you could grab its API and handle it inside Emacs...?
+- A repetitive workflow is too tedious, can you stitch it all together...?
+
+At that point, facing Emacs Lisp is inevitable. Here is my hot
+take: to learn Emacs Lisp, you should start with an easier Lisp.
+
+Emacs (Lisp) has some quirks (though I have grown to like them).
+It left me bewildered: cadr? cadddar? rassq? assq? Why did my code
+just freeze the entire editor?
+If you are not in a rush to implement a feature immediately and want a structured learning
+experience, I recommend starting with Clojure.
+It offers a much smoother ride and widens your Lisp horizon.
+Once you have that perspective, coming back to Emacs Lisp feels far more manageable.
+
+** Footnotes
+[fn:1] [[https://github.com/armindarvish/consult-omni][GitHub - armindarvish/consult-omni: A Powerful Versatile Omni Search inside Emacs · GitHub]]
