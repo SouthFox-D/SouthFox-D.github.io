@@ -113,6 +113,11 @@
     (div (@ (class "widget"))
          (h4 ,(t_ 'links))
          (ul
+          (li (a (@ (href "/zh-CN/"))
+                 "zh-CN")
+              (span " / ")
+              (a (@ (href "/en/"))
+                 "en"))
           (li (a (@ (href "/friends/"))
                  "友链"))
           (li (a (@ (href "https://www.travellings.cn/train.html"))
