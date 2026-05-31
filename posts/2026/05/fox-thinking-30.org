@@ -1,0 +1,24 @@
+#+title: fox-thinking-30
+#+author: SouthFox
+#+date: 2026-05-31 23:43:38
+#+draft: t
+#+tags: FoxThinking
+
+,(read-more)
+
+
+** 阅读
+*** [[https://theonion.com/what-to-know-about-pope-leos-encyclical-on-ai/][What To Know About Pope Leo’s Encyclical On AI - The Onion]]
+
+*** [[https://techcrunch.com/2026/05/21/six-search-engines-worth-trying-now-that-google-isnt-really-google-anymore/][Six search engines worth trying now that Google isn’t really Google anymore | TechCrunch]]
+
+*** [[https://tante.cc/2026/05/20/on-google-declaring-war-on-the-web/][On Google declaring war on the Web]]
+
+*** 《国家为什么会破产：大周期》
+经济、民粹转向、大周期？
+
+该点技能点了
+
+** Dynamically typed
+*** [[https://valhovey.github.io/gaia-mary/][Hail Mary - Star Map]]
+*** [[https://git.southfox.me/lipusfox/lipusfox][lipusfox/lipusfox - Forgejo: Beyond coding. We Forge.]]
