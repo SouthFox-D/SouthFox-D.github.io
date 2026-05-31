@@ -373,14 +373,14 @@
      (div (@ (class "pagination"))
           ,(if previous-page
                `(a (@ (class "btn")
-                      (href ,previous-page))
+                      (href ,(in-vicinity "/" previous-page)))
                  ,(t_ 'previous-page))
                `(button (@ (class "btn disabled") (disabled "true"))
                  ,(t_ 'previous-page)))
           (a (@ (class "btn") (href "/")) ,(t_ 'home-page))
           ,(if next-page
                `(a (@ (class "btn")
-                      (href ,next-page))
+                      (href ,(in-vicinity "/" next-page)))
                  ,(t_ 'next-page))
                `(button (@ (class "btn disabled") (disabled "true"))
                  ,(t_ 'next-page)))))))
