@@ -1,13 +1,29 @@
-#+title: fox-thinking-30
+#+title: FoxThinking #30: 被现实打败
 #+author: SouthFox
 #+date: 2026-05-31 23:43:38
 #+draft: t
 #+tags: FoxThinking
 
+真空中的球形鸡就像地下室的喷火龙一样，无处不在。
+
 ,(read-more)
 
+经济学中的垄断理论有个科斯猜想 [fn:1] ，内容为：垄断（一般不能转售的）耐用品厂家，无法享受到垄断的
+利润。例如出现能用到海枯石烂久到发昏的电灯泡 [fn:2] ，一段时间后厂商会想降低价格「收割」持低价位
+预期的消费者，但在观望的消费者会知道厂商想收割而继续观望，厂商知道消费者会观望不得不继续压低价
+格……直到最后压到成本价。这种博弈过程很迅速，会在「眨眼间」完成。
+
+但根据 [[https://marginalrevolution.com/marginalrevolution/2026/05/a-beautiful-theory-falls-to-ugly-data.html][A Beautiful Theory Falls to Ugly Data - Marginal REVOLUTION]] 这篇文章来
+看， Alex Tabarrok 用电子书例子检验了这个猜想，发现事实并非如此。文章中提到的论
+文以进入到公众领域的电子书为例子（《傲慢与偏见》、《了不起的盖茨比》等），论证了就算是
+这种不能转售的耐用品的垄断者，也能获取到垄断利润。「优美」的理论败给了「丑陋」的现实。
+
+虽然对这篇论文还是有点疑惑，不过确实感叹：理论和现实间存在很大的鸿沟，一不小心就会掉下
+去。以及，对网上盛传的经济学「只能解释过去而不能着眼现在和将来」的刻板印象加深了！
 
 ** 阅读
+*** [[https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html][Encyclical Letter of His Holiness Leo XIV Magnifica Humanitas (15 May 2026)]]
+新任教皇（但到现在也「上线」）
 *** [[https://theonion.com/what-to-know-about-pope-leos-encyclical-on-ai/][What To Know About Pope Leo’s Encyclical On AI - The Onion]]
 
 *** [[https://techcrunch.com/2026/05/21/six-search-engines-worth-trying-now-that-google-isnt-really-google-anymore/][Six search engines worth trying now that Google isn’t really Google anymore | TechCrunch]]
@@ -22,3 +38,12 @@
 ** Dynamically typed
 *** [[https://valhovey.github.io/gaia-mary/][Hail Mary - Star Map]]
 *** [[https://git.southfox.me/lipusfox/lipusfox][lipusfox/lipusfox - Forgejo: Beyond coding. We Forge.]]
+
+* Footnotes
+
+[fn:1] [[https://en.wikipedia.org/wiki/Coase_conjecture][Coase conjecture - Wikipedia]]
+
+[fn:2] 当然，至少电灯泡来讲不可能，因为存在计划报废；
+
+- [[https://www.bilibili.com/video/BV13i4y1P7KX/][计划报废：为什么你的手机一过保修期就坏？【官方双语】【Veritasium真理元素】- bilibili]]
+- [[https://www.youtube.com/watch?v=j5v8D-alAKE][This is why we can't have nice things - Youtube]]
