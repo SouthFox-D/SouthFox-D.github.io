@@ -14,7 +14,7 @@
 格……直到最后压到成本价。这种博弈过程很迅速，会在「眨眼间」完成。
 
 但根据 [[https://marginalrevolution.com/marginalrevolution/2026/05/a-beautiful-theory-falls-to-ugly-data.html][A Beautiful Theory Falls to Ugly Data - Marginal REVOLUTION]] 这篇文章来
-看， Alex Tabarrok 用电子书例子检验了这个猜想，发现事实并非如此。文章中提到的论
+看， Alex Tabarrok 用电子书的例子检验了这个猜想，发现事实并非如此。文章中提到的论
 文以进入到公众领域的电子书为例子（《傲慢与偏见》、《了不起的盖茨比》等），论证了就算是
 这种不能转售的耐用品的垄断者，也能获取到垄断利润。「优美」的理论败给了「丑陋」的现实。
 
@@ -23,17 +23,71 @@
 
 ** 阅读
 *** [[https://www.vatican.va/content/leo-xiv/en/encyclicals/documents/20260515-magnifica-humanitas.html][Encyclical Letter of His Holiness Leo XIV Magnifica Humanitas (15 May 2026)]]
-新任教皇（但到现在也「上线」）
-*** [[https://theonion.com/what-to-know-about-pope-leos-encyclical-on-ai/][What To Know About Pope Leo’s Encyclical On AI - The Onion]]
+天主教新任教宗（到现在也「上线」一年了）良十四世在最近发表的关于人工智能通谕。
 
-*** [[https://techcrunch.com/2026/05/21/six-search-engines-worth-trying-now-that-google-isnt-really-google-anymore/][Six search engines worth trying now that Google isn’t really Google anymore | TechCrunch]]
+新任教宗选择 Leo(良) 这个教宗称号和在通谕里明确点出是在致敬发布一百三十五周年
+良十三世的《新事》通谕 [fn:3] ，清晰表明天主教会认为当下正处于一个类似
+于十九世纪末、万事万物都在剧烈变革的历史节点。《新事》通谕阐述了劳资权益、穷苦工人、社会
+正义这些动荡不安与充满变革的主题，和现在所处的状况是一样的吗？反正我是在观望。
+
+不过看得出来天主教这个牌桌上的「老玩家」感到了非常大的危机感，不管是人工智能，也有
+现在越发原子化的社会 [fn:4] 。嗯，总之加入到我的观察名单上 [fn:5] 吧。尊敬下天主教
+这个「千年老店」，看看之后的动作，或许也能参考下。
+
+**** [[https://theonion.com/what-to-know-about-pope-leos-encyclical-on-ai/][What To Know About Pope Leo’s Encyclical On AI - The Onion]]
+当然《洋葱报》怎么会放过这样的恶搞机会呢：
+
+#+begin_quote
+Q: Why did the pope write about AI?
+
+A: The Vatican’s SEO rankings have been plummeting for months.
+
+问：为什么教宗要写人工智能？
+
+答：梵蒂冈的搜索引擎优化 (SEO) 排名几个月来在直线下跌。
+
+[...]
+
+Q: What is his most controversial point?
+
+A: That human life is beautiful and worth saving.
+
+问：这里最值得争议的点是什么？
+
+答：认为人类是美的并值得拯救。
+#+end_quote
 
 *** [[https://tante.cc/2026/05/20/on-google-declaring-war-on-the-web/][On Google declaring war on the Web]]
+Yuck ，现在谷歌搜索框右边的按钮会默认使用大模型输出模式，至少现在现在还没有将 Enter 键「劫持」到大
+模型模式上（谷歌也知道会用 Enter 开始搜索的不太待见大模型输出），但也令人讨厌了。
+
+*** [[https://blog.mozilla.org/en/firefox/new-firefox-design/][Designing Firefox for the future]]
+点进去有点紧张，总感觉会看到一些假大空的东西，实际浏览下来松了口气。
+
+总之吉祥物很可爱，我也为继续用着 Firefox 浏览器感到自豪！
 
 *** 《国家为什么会破产：大周期》
-经济、民粹转向、大周期？
+这是 [[/2026/05/fox-thinking-29/][FoxThinking #29: 我想知道我不知道]] 周刊里中提到的《安史之乱：历史、宣传与神话》阅读后，
+发现安史之乱中有很多事件背后有很多经济的影响，转头翻出了去年买的这本书。去年读的时候并不
+怎么顺畅，然后就弃了。
 
-该点技能点了
+只是去年六月出版的书，现在重新读来对着安史之乱资料和这一年
+所发生的事，发现能映照的事变多了，读起来更有兴致了。
+
+#+begin_quote
+在这个阶段，政府现金紧缺，其通常会提高税率以试图满足融资需求。
+更高税收的预期给家庭和企业带来额外压力，这促使他们将可能的资产转移出境。
+#+end_quote
+
+所以……？[fn:6]
+
+#+begin_quote
+在各个国家内部，极右翼、温和中间派以及极左翼之间的民粹主义冲突正日益加剧，
+随之而来的是重大的政治转变（大多是向极右翼方向转变）以及由这些转变引发的
+革命性变革。
+#+end_quote
+
+嗯嗯…… [fn:7]
 
 ** Dynamically typed
 *** [[https://valhovey.github.io/gaia-mary/][Hail Mary - Star Map]]
@@ -47,3 +101,15 @@
 
 - [[https://www.bilibili.com/video/BV13i4y1P7KX/][计划报废：为什么你的手机一过保修期就坏？【官方双语】【Veritasium真理元素】- bilibili]]
 - [[https://www.youtube.com/watch?v=j5v8D-alAKE][This is why we can't have nice things - Youtube]]
+
+[fn:3] [[https://www.vatican.va/content/leo-xiii/en/encyclicals/documents/hf_l-xiii_enc_15051891_rerum-novarum.html][Rerum Novarum (May 15, 1891)]]
+
+[fn:4] [[https://theconversation.com/many-churches-synagogues-and-mosques-are-built-around-families-and-theyre-struggling-to-respond-to-rising-singles-278723][Many churches, synagogues and mosques are built around families – and they’re struggling to respond to rising singles]]
+
+不难发现很多信仰都建立在家庭这一「组织」上。
+
+[fn:5] 其实我并没有这种名单
+
+[fn:6] [[https://finance.eastmoney.com/a/202605223746801748.html][整治非法跨境证券经营不切断合规境外投资渠道 _ 东方财富网]]
+
+[fn:7] xxx
