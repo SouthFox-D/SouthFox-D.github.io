@@ -91,7 +91,22 @@ Yuck ，现在谷歌搜索框右边的按钮会默认使用大模型输出模式
 
 ** Dynamically typed
 *** [[https://valhovey.github.io/gaia-mary/][Hail Mary - Star Map]]
-*** [[https://git.southfox.me/lipusfox/lipusfox][lipusfox/lipusfox - Forgejo: Beyond coding. We Forge.]]
+电影《挽救计划》中的星图，挺酷的。
+
+*** [[https://glide-browser.app/][Glide]]
+一个 Firefox fork ，特点浏览器内里原生集成聚焦键盘操作，而不用等待页面加载完才能使
+用，很多次我用 [[https://github.com/tridactyl/tridactyl][tridactyl]] 插件的时候在
+加载页面时无法响应就很感沮丧。
+
+配置文件和按键绑定可以用 Typescript 编写，挺酷的。
+
+*** [[https://git.southfox.me/lipusfox/lipusfox][lipusfox/lipusfox]]
+但我还是没用上 Glide 浏览器项目，因为我从这个项目看到了折腾自己 Firefox fork 的可能。之前我就实验过
+用 Electron 搭建一个 Socket 并建立一个迷你 lisp 解释器然后不断执行从 Guile 里发送的 json 数据，简单
+实现了打开标签页和切换标签页。只是后续没继续推进了，因为我觉得这种架构有点破车而且我也更倾向于不使
+用 Chromium 内核的浏览器。
+
+现在「照虎画猫」了一下实现了自己的浏览器，不是
 
 * Footnotes
 
@@ -110,6 +125,8 @@ Yuck ，现在谷歌搜索框右边的按钮会默认使用大模型输出模式
 
 [fn:5] 其实我并没有这种名单
 
-[fn:6] [[https://finance.eastmoney.com/a/202605223746801748.html][整治非法跨境证券经营不切断合规境外投资渠道 _ 东方财富网]]
+[fn:6] [美]瑞·达利欧. 国家为什么会破产：大周期. 中信出版社. 2025, 第 133 页.
 
-[fn:7] xxx
+也想到了： [[https://finance.eastmoney.com/a/202605223746801748.html][整治非法跨境证券经营不切断合规境外投资渠道 _ 东方财富网]]
+
+[fn:7] [美]瑞·达利欧. 国家为什么会破产：大周期. 中信出版社. 2025, 第 332 页.
