@@ -1,7 +1,6 @@
 #+title: FoxThinking #30: 被现实打败
 #+author: SouthFox
-#+date: 2026-05-31 23:43:38
-#+draft: t
+#+date: 2026-06-03 11:43:38
 #+tags: FoxThinking
 
 真空中的球形鸡就像地下室的喷火龙一样，无处不在。
@@ -15,7 +14,7 @@
 
 但根据 [[https://marginalrevolution.com/marginalrevolution/2026/05/a-beautiful-theory-falls-to-ugly-data.html][A Beautiful Theory Falls to Ugly Data - Marginal REVOLUTION]] 这篇文章来
 看， Alex Tabarrok 用电子书的例子检验了这个猜想，发现事实并非如此。文章中提到的论
-文以进入到公众领域的电子书为例子（《傲慢与偏见》、《了不起的盖茨比》等），论证了就算是
+文以进入到公有领域的电子书为例子（《傲慢与偏见》、《了不起的盖茨比》等），论证了就算是
 这种不能转售的耐用品的垄断者，也能获取到垄断利润。「优美」的理论败给了「丑陋」的现实。
 
 虽然对这篇论文还是有点疑惑，不过确实感叹：理论和现实间存在很大的鸿沟，一不小心就会掉下
@@ -58,25 +57,27 @@ A: That human life is beautiful and worth saving.
 #+end_quote
 
 *** [[https://tante.cc/2026/05/20/on-google-declaring-war-on-the-web/][On Google declaring war on the Web]]
-Yuck ，现在谷歌搜索框右边的按钮会默认使用大模型输出模式，至少现在现在还没有将 Enter 键「劫持」到大
+Yuck ，现在谷歌搜索框右边的按钮会默认使用大模型输出模式，至少现在还没有将 Enter 键「劫持」到大
 模型模式上（谷歌也知道会用 Enter 开始搜索的不太待见大模型输出），但也令人讨厌了。
 
 *** [[https://blog.mozilla.org/en/firefox/new-firefox-design/][Designing Firefox for the future]]
 点进去有点紧张，总感觉会看到一些假大空的东西，实际浏览下来松了口气。
 
-总之吉祥物很可爱，我也为继续用着 Firefox 浏览器感到自豪！
+总之吉祥物很可爱，我也将继续「自豪地采用 Firefox」！
 
 *** 《国家为什么会破产：大周期》
 这是 [[/2026/05/fox-thinking-29/][FoxThinking #29: 我想知道我不知道]] 周刊里中提到的《安史之乱：历史、宣传与神话》阅读后，
-发现安史之乱中有很多事件背后有很多经济的影响，转头翻出了去年买的这本书。去年读的时候并不
-怎么顺畅，然后就弃了。
+发现安史之乱中有很多事件背后有巨大的经济影响。遂即转头翻出了去年买的这本书，去年读的时候并不
+怎么顺畅，然后就弃了，现在有了目标就能读下去了（不过依然有很多难理解的经济概念）。
 
-只是去年六月出版的书，现在重新读来对着安史之乱资料和这一年
+去年六月出版的书，现在重新读来对着安史之乱资料和这一年
 所发生的事，发现能映照的事变多了，读起来更有兴致了。
 
 #+begin_quote
 在这个阶段，政府现金紧缺，其通常会提高税率以试图满足融资需求。
 更高税收的预期给家庭和企业带来额外压力，这促使他们将可能的资产转移出境。
+对此，政府通常会实施资本管制以试图遏制资金外流，但此时经济和货币外逃的压
+力已超出政府控制能力，难以有效止血。
 #+end_quote
 
 所以……？[fn:6]
@@ -89,27 +90,59 @@ Yuck ，现在谷歌搜索框右边的按钮会默认使用大模型输出模式
 
 嗯嗯…… [fn:7]
 
+**** [[https://phys.org/news/2026-05-scientists-potential-super-el-nino.html][Something coming: what scientists know about a potential 'super' El Nino]]
+当然这本书认为影响整个周期的因素还有气候变化等自然事件，想起这个月关于厄尔尼诺的消息一直在我的订阅里
+出现，有种风雨欲来之势，希望世态不要变得更糟了……
+
+*** [[https://asteriskmag.com/issues/14/chinas-last-bus][Boarding China’s Last Bus—Asterisk]]
+我确实有种意向，认为新事物总能以摧枯拉朽的力量「改弦易张」、「改朝换代」推倒重来旧事物，在
+中国是一种普遍存在的意向 [fn:8] ？但随着看了相关的资料后，发现这种「颠覆性创新」 [fn:9] 并不总
+是像我以前认为的那样，尤其是在改朝换代的过程中，有多少代价被「支付」？在这种情况下谁会觉得自己一定就能处在浪潮上？
+
+#+CAPTION: 图一：中西人口发展对比图，来源: 张宏杰. 简读中国史：世界史坐标下的中国. 岳麓书社. 2019, 45%, 第二十五章 中国历史上人口的大起大落.
+[[https://media.southfox.me/attachment/QmT2XRkDBs6cNhaE2s1wDgd6rBrHgj2ycM8EetpuLJMQ6s?filename=中西人口发展对比图.webp]]
+
+在安史之乱中，唐朝廷向北方游牧民族回纥的借兵协议甚至是让其在攻下的城中烧杀抢掠 [fn:10] ：
+
+#+begin_quote
+克城之日，土地、士庶歸唐，金帛、子女皆歸回紇
+#+end_quote
+
+脑子里不由得就想起了「人为刀俎，我为鱼肉」这句话。
+
+#+CAPTION: 图二：“王子臣”青铜俎，来源: [[https://www.chnmuseum.cn/zp/zpml/csp/202209/t20220901_257155.shtml][中国国家博物馆]]
+[[https://media.southfox.me/attachment/QmWzrC1a3oSriisFdRFZmJAkHMfcAsf2RjApxXZoVLC3KR?filename=P020220901385252961831.webp]]
+
 ** Dynamically typed
 *** [[https://valhovey.github.io/gaia-mary/][Hail Mary - Star Map]]
 电影《挽救计划》中的星图，挺酷的。
 
 *** [[https://glide-browser.app/][Glide]]
 一个 Firefox fork ，特点浏览器内里原生集成聚焦键盘操作，而不用等待页面加载完才能使
-用，很多次我用 [[https://github.com/tridactyl/tridactyl][tridactyl]] 插件的时候在
-加载页面时无法响应就很感沮丧。
+用，很多次我用 [[https://github.com/tridactyl/tridactyl][tridactyl]] 插件的时候在加载页面时无法响应感到沮丧。
 
 配置文件和按键绑定可以用 Typescript 编写，挺酷的。
 
 *** [[https://git.southfox.me/lipusfox/lipusfox][lipusfox/lipusfox]]
-但我还是没用上 Glide 浏览器项目，因为我从这个项目看到了折腾自己 Firefox fork 的可能。之前我就实验过
+但我没用上 Glide 浏览器项目，因为我从这个项目看到了折腾自己 Firefox fork 的可能。之前我就实验过
 用 Electron 搭建一个 Socket 并建立一个迷你 lisp 解释器然后不断执行从 Guile 里发送的 json 数据，简单
 实现了打开标签页和切换标签页。只是后续没继续推进了，因为我觉得这种架构有点破车而且我也更倾向于不使
-用 Chromium 内核的浏览器。
+用 chromium 内核的浏览器。
 
-现在「照虎画猫」了一下实现了自己的浏览器，不是
+现在「照虎画猫」实现了自己的浏览器，简单注入了一个 js 模块实现了在打开时 alert 一个 Hello world ，为了实
+现这样一个简单的功能就要我的电脑全功率编译， CPU 温度传感器长时维持在七十度三十分钟，估计能煮熟小半个鸡蛋了。
 
-* Footnotes
+现在的想法是拿 [[https://clojurescript.org/][ClojureScript]] 作为配置环境，相关的用户配置是拿 clojure(sript) 来写。单兵折腾浏览器感觉像
+是向风车冲锋，不过这个过程挺有趣的，希望之后真能完善到能当作自己日用浏览器的程度吧。
 
+** Present day, Present time
+本期有挺多经济学的东西出现，我对经济这个领域的很多概念感兴趣，尤其在大家都在感叹「唉，在这种经济下……」的时候。之前我就
+买了曼昆的《经济学原理》但一直没翻开看，或许是时候了？
+
+当然不用担心，我并不想成为系着领带穿着西服拿着死贵死贵咖啡在 CBD 工作的那种金融从业者，我对于经济对于社会的影响更感兴
+趣，一种社会经济学 [fn:11] ，我估计这个领域应该是搞不了什么钱的吧。
+
+** 脚注
 [fn:1] [[https://en.wikipedia.org/wiki/Coase_conjecture][Coase conjecture - Wikipedia]]
 
 [fn:2] 当然，至少电灯泡来讲不可能，因为存在计划报废；
@@ -130,3 +163,12 @@ Yuck ，现在谷歌搜索框右边的按钮会默认使用大模型输出模式
 也想到了： [[https://finance.eastmoney.com/a/202605223746801748.html][整治非法跨境证券经营不切断合规境外投资渠道 _ 东方财富网]]
 
 [fn:7] [美]瑞·达利欧. 国家为什么会破产：大周期. 中信出版社. 2025, 第 332 页.
+
+[fn:8] 一个例子是《席德·梅尔的文明VI》游戏中给中国文明的能
+力就叫「朝代更替」 [[https://www.civilopedia.net/zh-CN/standard-rules/civilizations/civilization_china/][中国 - 主流文明 - 文明百科 - 文明VI]] ，不过我没玩过文明六，不清楚这能力在游戏内的表现。
+
+[fn:9] [[https://en.wikipedia.org/wiki/Disruptive_innovation][Disruptive innovation - Wikipedia]]
+
+[fn:10] [[https://zh.wikisource.org/wiki/%E8%B3%87%E6%B2%BB%E9%80%9A%E9%91%91/%E5%8D%B7220][資治通鑑/卷220 - 维基文库，自由的图书馆]]
+
+[fn:11] 所以这个学科的缩写真是我想得那样吗……
