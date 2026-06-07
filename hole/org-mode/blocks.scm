@@ -35,6 +35,7 @@
 (define re-empty-line (make-regexp "^ *$"))
 (define re-fenced-code (make-regexp "^ {0,3}(#\\+begin_src)([^`]*)$" regexp/icase))
 (define re-example-structure (make-regexp "^ {0,3}(#\\+begin_example)$" regexp/icase))
+(define re-verse (make-regexp "^ {0,3}(#\\+begin_verse)$" regexp/icase))
 (define re-shortcode (make-regexp "^,\\(.*\\)$"))
 (define re-bullet-list-marker (make-regexp "^ {0,3}([-+*])( +|$)"))
 (define re-ordered-list-marker (make-regexp "^ {0,3}([0-9]{1,9})([.)])( +|$)"))
@@ -85,6 +86,12 @@
 (define (example-structure-end? line)
   (regexp-exec (make-regexp "^ {0,3}(#\\+end_example)$" regexp/icase) line))
 
+(define (verse? line)
+  (regexp-exec re-verse line))
+
+(define (verse-end? line)
+  (regexp-exec (make-regexp "^ {0,3}(#\\+end_verse)$" regexp/icase) line))
+
 (define (shortcode? line)
   (regexp-exec re-shortcode line))
 
@@ -128,6 +135,7 @@
         ((attr-node? n) (parse-metadata-stack n l))
         ((caption-node? n) (parse-metadata-stack n l))
         ((pre-node? n) (parse-example-structure n l))
+        ((verse-node? n) (parse-verse n l))
         ((list-node? n) (parse-list n l))
         ((paragraph-node? n) (parse-paragraph n l))))
 
@@ -207,6 +215,20 @@
                                    (last-child n)
                                    "\n"
                                    (remove-min-spaces l (pre-start n)))))))
+
+(define (verse-start n)
+  (node-get-data n 'verse-start))
+
+(define (parse-verse n l)
+  (cond ((verse-end? l)
+         (close-node n))
+        ((no-children? n)
+         (add-child-node n (remove-min-spaces l (verse-start n))))
+        (else (replace-last-child n
+                                  (string-append
+                                   (last-child n)
+                                   "\n"
+                                   (remove-min-spaces l (verse-start n)))))))
 
 (define (list-type n)
   (node-get-data n 'type))
@@ -303,6 +325,7 @@
                             (node-closed? new-child)
                             (not (fenced-code-node? new-child))
                             (not (pre-node? new-child))
+                            (not (verse-node? new-child))
                             (not (block-quote-node? new-child))
                             (not (heading-node? new-child)))
                        (add-child-node (replace-last-child n new-child)
@@ -321,6 +344,7 @@
         ((code-block? l)          => make-code-block)
         ((fenced-code? l)         => make-fenced-code)
         ((example-structure? l)   => make-pre)
+        ((verse? l)               => make-verse)
         ((attr-keyword? l)        => make-attr)
         ((caption-keyword? l)     => make-caption)
         ((shortcode? l)           => make-shortcode)
@@ -361,6 +385,11 @@
   (make-pre-node
    `((pre . ,(match:substring match 1))
      (pre-start . ,(match:start match 1)))))
+
+(define (make-verse match)
+  (make-verse-node
+   `((verse . ,(match:substring match 1))
+     (verse-start . ,(match:start match 1)))))
 
 (define (make-attr match)
   (define (parse-attrs attr)

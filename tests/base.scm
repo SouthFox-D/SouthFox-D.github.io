@@ -43,6 +43,18 @@
     (hole/org->sxml "#+bEgiN_examPle\nhello\n#+enD_exaMple")
   '((pre "hello")))
 
+(test-equal
+    (hole/org->sxml "#+begin_verse\nhello\nworld\n#+end_verse")
+  '((p (@ (class "verse")) "hello\nworld")))
+
+(test-equal
+    (hole/org->sxml "#+bEgiN_verse\nhello\nworld\n#+enD_veRse")
+  '((p (@ (class "verse")) "hello\nworld")))
+
+(test-equal
+    (hole/org->sxml "#+begin_verse\n  indented line\n#+end_verse")
+  '((p (@ (class "verse")) "  indented line")))
+
 
 (test-equal
     (hole/org->sxml "[[https://foo/bar.jpg][foo]]")

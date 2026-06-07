@@ -43,6 +43,8 @@
             fenced-code-node?
             make-pre-node
             pre-node?
+            make-verse-node
+            verse-node?
             make-attr-node
             attr-node?
             make-caption-node
@@ -211,6 +213,13 @@
 ;; Node -> Boolean
 (define (pre-node? n)
   (node-type? n 'pre))
+
+(define (make-verse-node data)
+  (make-node 'verse data '()))
+
+;; Node -> Boolean
+(define (verse-node? n)
+  (node-type? n 'verse))
 
 (define (make-attr-node data)
   (make-node 'attr data '()))

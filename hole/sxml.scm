@@ -47,6 +47,7 @@
         ((code-block-node? n) (code-block-node->sxml n))
         ((fenced-code-node? n) (fenced-code-node->sxml n))
         ((pre-node? n) (pre-node->sxml n))
+        ((verse-node? n) (verse-node->sxml n))
         ((shortcode-node? n) (shortcode-node->sxml n))
         ((heading-node? n) (heading-node->sxml n))
         ((list-node? n) (list-node->sxml n))
@@ -101,6 +102,9 @@
 
 (define (pre-node->sxml n)
   `(pre ,@(node-children n)))
+
+(define (verse-node->sxml n)
+  `(p (@ (class "verse")) ,@(node-children n)))
 
 (define (mastodon-embed url)
   `(div
