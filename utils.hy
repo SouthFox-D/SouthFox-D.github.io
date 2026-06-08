@@ -114,27 +114,6 @@
     (json.dump {"img" (sorted now-img-list)} f))
   (download-ipfs-img download-need-img))
 
-(defn create-new-post [file-id]
-  (let [now (datetime.now)
-        year-dir (str now.year)
-        month-dir (.format "{:02d}" now.month)
-        target-dir (os.path.join "posts" year-dir month-dir)
-        file-path (os.path.join target-dir (+ file-id ".org"))
-        meta-data {"title" file-id
-                   "author" "SouthFox"
-                   "date" (now.strftime "%Y-%m-%d %H:%M:%S")
-                   "draft" "t"
-                   "tags" ""}
-        lines (lfor [k v] (.items meta-data) f"#+{k}: {v}")]
-    (os.makedirs target-dir :exist_ok True)
-    (if (os.path.exists file-path)
-      (print f"{file-path} already exists!")
-      (do
-        (with [f (open file-path "w")]
-          (f.write (.join "\n" lines))
-          (f.write "\n"))
-        (print f"Created new post at: {file-path}")))))
-
 (setv parser (argparse.ArgumentParser))
 (setv subparsers (parser.add_subparsers :dest "command"))
 (parser.add_argument "-p" :dest "pi" :action "store_true")
@@ -182,6 +161,4 @@
                        :print? False)))))
   (when args.backup
     (os.makedirs "newimg" :exist_ok True)
-    (backup-ipfs-img post-files))
-  (when (= args.command "new")
-    (create-new-post args.file_id)))
+    (backup-ipfs-img post-files)))

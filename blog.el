@@ -201,5 +201,19 @@ Only reads the first 4KB of the file for efficiency."
       (message "Created new post at: %s" file-path)
       (find-file file-path))))
 
+(defun blog-create-fox-thinking ()
+  "Automatically find the latest fox-thinking issue, and create a new one."
+  (interactive)
+  (let* ((posts (blog--get-posts))
+         (max-issue -1))
+    (dolist (post posts)
+      (let ((base-name (file-name-base (plist-get post :filename))))
+        (when (string-match "fox-thinking-\\([0-9]+\\)" base-name)
+          (let ((issue-num (string-to-number (match-string 1 base-name))))
+            (setq max-issue (max max-issue issue-num))))))
+    (when (> max-issue 0)
+      (let ((new-file-id (format "fox-thinking-%d" (1+ max-issue))))
+        (blog-create-new-post new-file-id)))))
+
 (provide 'blog)
 ;;; blog.el ends here
