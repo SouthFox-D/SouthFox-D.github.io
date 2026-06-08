@@ -94,7 +94,7 @@ Only reads the first 4KB of the file for efficiency."
   (let* ((keywords (org-collect-keywords '("TAGS")))
          (current-tags-str (car (cdr (assoc "TAGS" keywords))))
          (current-tags (if current-tags-str
-                           (split-string current-tags-str "[ \t]+" t)
+                           (split-string current-tags-str "[ \t:]+" t)
                          nil)))
     (unless (member new-tag current-tags)
       (let ((updated-tags-str (string-join (append current-tags (list new-tag)) ":")))
@@ -118,6 +118,41 @@ Only reads the first 4KB of the file for efficiency."
                   (save-buffer))
               (with-current-buffer (find-file-noselect file)
                 (blog--file-add-tag-internal tag)
+                (save-buffer)
+                (kill-buffer))))))
+      (tablist-revert)
+      (blog-refresh))))
+
+(defun blog--file-remove-tag-internal (tag)
+  "Remove TAG from the #+TAGS keyword in the current buffer."
+  (let* ((keywords (org-collect-keywords '("TAGS")))
+         (current-tags-str (car (cdr (assoc "TAGS" keywords))))
+         (current-tags (if current-tags-str
+                           (split-string current-tags-str "[ \t:]+" t)
+                         nil)))
+    (when (member tag current-tags)
+      (let* ((updated-tags (delete tag current-tags))
+             (updated-tags-str (string-join updated-tags ":")))
+        (blog-set-keyword "TAGS" updated-tags-str)))))
+
+(defun blog-tablist-remove-tag-from-marked (tag)
+  "Remove TAG from all marked blog posts."
+  (interactive "sRemove tag: ")
+  (let ((files (mapcar #'car (tablist-get-marked-items))))
+    (unless files
+      (when-let ((current-id (tabulated-list-get-id)))
+        (setq files (list current-id))))
+    (if (not files)
+        (user-error "No post selected")
+      (dolist (file files)
+        (when (file-exists-p file)
+          (let ((buf (find-buffer-visiting file)))
+            (if buf
+                (with-current-buffer buf
+                  (blog--file-remove-tag-internal tag)
+                  (save-buffer))
+              (with-current-buffer (find-file-noselect file)
+                (blog--file-remove-tag-internal tag)
                 (save-buffer)
                 (kill-buffer))))))
       (tablist-revert)
