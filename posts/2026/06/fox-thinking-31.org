@@ -4,26 +4,79 @@
 #+draft: t
 #+tags: FoxThinking
 
-Foo
+世道真奇妙。
 
 ,(read-more)
 
-- [[https://en.wikipedia.org/wiki/Self-fulfilling_prophecy][Self-fulfilling prophecy - Wikipedia]]
+自证预言是心理学的「热门」概念，讲得是当人相信某件事的发生，那么就会推动这则预言成真。经典例子是
+罗伯特·罗森塔尔做的实验：给某校学生做智商测验，从中随机抽样些学生告诉老师说「这些学生智商很高」。等
+到了实验结束后，这些随机抽样的学生成绩确实提高了，哪怕只是随机选择的。很明显，是老师将自己的期望交付给了
+这些学生，这些学生在期望中越来越活跃并形成正反馈。
 
-- [[https://www.simplypsychology.org/self-fulfilling-prophecy.html][Self-Fulfilling Prophecy In Psychology: Definition & Examples]]
+[[https://en.wikipedia.org/wiki/Self-fulfilling_prophecy][Self-fulfilling prophecy - Wikipedia]]
 
-- [[https://www.youtube.com/watch?v=clQA6WhwCeA][M. C. Escher - Artist, Mathematician, Man - Roger Penrose and Jon Chapman - Youtube]]
+[[https://www.simplypsychology.org/self-fulfilling-prophecy.html][Self-Fulfilling Prophecy In Psychology: Definition & Examples]]
 
-- [[https://fortune.com/2026/05/26/sam-altman-dario-amodei-walking-back-ai-jobs-apocalypse-prophecies-ipo/][Saam Altman and Dario Amodei are both walking back their AI jobs apocalypse prophecies as they eye blockbuster IPOs - Fortune]]
+还有个有趣的例子是埃舍尔（M. C. Escher），作为曾直言对学校没什么兴趣的人，却因为自己的创作被数学家、科学家给关注到了。
+这些数学家、科学家将自己的期待「强加」给埃舍尔，拉着他办展会、新论文也会寄给埃舍尔。在这种期待下，埃舍尔开始更多地创作
+出蕴含数学或科学色彩的作品来（自指、极限、悖论）。
+
+[[https://dangerousminds.net/comments/the_man_who_drew_maths_adventures_in_perception_with_m-_c-_escher/][The man who drew mathematics: ‘Adventures in Perception’ with M. C. Escher]]
+
+我在想在现在信息大量产出的信息社会，自我实现的预言就像是埃舍尔的《画手》 [fn:1] 一样，行为和环境反过来也影响了最初立下的
+预言，最近的例子就是 OpenAI 和 Anthropic 的 CEO 作出的「AI 末日」预言：「很多工作都会消失」、「百分之五十的白领工
+作都会消失」……现在他们都承认自己错了。
+
+[[https://fortune.com/2026/05/26/sam-altman-dario-amodei-walking-back-ai-jobs-apocalypse-prophecies-ipo/][Saam Altman and Dario Amodei are both walking back their AI jobs apocalypse prophecies as they eye blockbuster IPOs - Fortune]]
+
+对此我有个粗略的想法是，这恐怕是因为这两家公司都计划进入 IPO 阶段了。去年处于风头时，要大力鼓吹来扯大皮吸引风险投资；现在计划进
+入 IPO ，面对普遍对风险抱有厌恶的华尔街精算师们，就不免「不过话又说回来了……」。
+
+额，该少看点经济领域商业相关的东西，要不然确实变得「阴湿狐」了。
 
 ** 阅读
 *** [[https://knowablemagazine.org/content/article/mind/2026/genetic-disease-reveals-role-of-brain-amygdala][A social compass in the brain - Knowable Magazine]]
-*** [[https://mp.weixin.qq.com/s/o_IYMm88I0Gdi4fHNCjFCw][上万人在「奥德赛」中找答案：频繁离职，是我的问题吗？ - 微信公众号]]
-*** [[https://theconversation.com/why-sophrosyne-an-ancient-greek-virtue-matters-more-than-ever-in-the-age-of-ai-282665][Why sophrosyne, an ancient Greek virtue, matters more than ever in the age of AI]]
-*** [[https://theconversation.com/focus-apps-are-failing-neurodivergent-minds-new-research-finds-282330][Focus apps are failing neurodivergent minds, new research finds]]
+到底还要多少次疾呼，才能告诉人们大脑毕竟是肉做的？圣人与罪犯、帝王与农夫、英雄于懦夫背后到底有多少
+是被血肉之躯造就的。
+
+不过这不是什么灰暗的决定论，因为人本身的意愿同样也是其中的一环，哪怕是[[/2026/04/fox-thinking-24/][基因不算是生命的蓝图]]呢，当非要
+找出人是由什么决定的，就只能指着这如太极又像埃舍尔的《画手》又似 Lisp 的 EVAL-APPLY 求值循环
+的……「道」 [fn:2] ？
+
 *** [[https://oxfordamerican.org/magazine/issue-132-spring-2026/librarians-on-horseback][Librarians on Horseback - Oxford American]]
+马背上的图书馆。这篇故事读着读着我就不禁开始幻想：如果能让这些图书管理们见识到现在的
+互联网，她们该会有多么兴奋啊！
+
+*** [[https://mp.weixin.qq.com/s/o_IYMm88I0Gdi4fHNCjFCw][上万人在「奥德赛」中找答案：频繁离职，是我的问题吗？ - 微信公众号]]
+但其实我读《奥德赛》的时候是拿它当冒险小说来看的，对希腊众神又能化身成什么然后又
+会弄出什么「幺蛾子」感到兴致勃勃，没觉得主人公漂泊的时候多么困苦。
+
+可能我需要再看一遍……
+
+*** [[https://theconversation.com/why-sophrosyne-an-ancient-greek-virtue-matters-more-than-ever-in-the-age-of-ai-282665][Why sophrosyne, an ancient Greek virtue, matters more than ever in the age of AI]]
+sophrosyne ，意义是清醒的心态/开放的思想/节制/审慎，也是经典的柏拉图（或者也能说论语）式
+的「知道自己不知道」。
+
+这种美德在现在越来越衰败了吗？还是说这又是什么经典（或者也能说老调重弹）的
+礼崩乐坏式观点吗？
+
+*** [[https://theconversation.com/focus-apps-are-failing-neurodivergent-minds-new-research-finds-282330][Focus apps are failing neurodivergent minds, new research finds]]
+诶呀，果然我用番茄钟或者什么类似的 APP 用不下去的不只有我，不过遗憾的是我也没找到什么更适合我
+的专注方法，只是这么稀里糊涂撑到现在。
+
+文章里提到的三个点确实是个方向，或许我可以尝试先在 Emacs 里弄个原型出来？
+
 *** [[https://ianthehenry.com/posts/why-janet/][Why Janet?]]
+我知道 Janet 已经有段时间了，但一直没去尝试用过，毕竟现在耍着身上带着的 Lisp 有点应接不暇，难说能不能
+再塞个到手上。
+
+不过如果有天我要做面向 C 环境的项目的话，我肯定 Janet 绝对是个好选择的，编译个 Janet 运行时附上 lisp 代
+码。虽然这让编译出来的最小 Janet 的 Hello World 程序都多达 700K ，但这可是如
+太极又像埃舍尔的《画手》的 Lisp EVAL-APPLY 求值循环运行时啊，这个交易我想还是挺划算的。
+
 *** [[https://gratitude4life.substack.com/p/three-signs-that-youre-wise][Three Signs that You’re Wise]]
+是的，又是讨论智慧这个话题的文章，想起了之前我想[[/2026/04/fox-thinking-25/#Whatiswisdom,andcanitbetaught?][把智慧叫成睿知]] [fn:3]，现在看来，哪怕英文中也有将智
+慧（wisdom）和智力（intelligence）混为一谈的现象啊
 *** [[https://www.theguardian.com/books/ng-interactive/2026/jun/06/readers-top-100-novels-of-all-time][Readers’ top 100 novels of all time | Fiction | The Guardian]]
 *** 《斯通纳》
 *** 《在轮下》
@@ -44,3 +97,85 @@ Foo
 
 ** Present day, Present time
 Bar
+
+* Footnotes
+
+[fn:1] [[https://zh.wikipedia.org/zh-cn/%E7%95%AB%E6%89%8B][画手 - 维基百科，自由的百科全书]]
+
+[fn:2] 当我知道「知道」里有个「道」后，我就不太敢轻易说出知道这个词了
+
+[fn:3] 这里提到的文章 [[https://knowablemagazine.org/content/article/mind/2026/what-is-wisdom-can-it-be-taught][What is wisdom, and can it be taught? ]] 末尾的问卷也挺有意思的，索性就搬过来顺带翻译翻译。
+
+#+begin_verse
+Indicate how much you agree with the statements below on a scale of 1 to 5, with 1 representing “disagree completely” and 5 “agree completely.”
+请根据你对以下叙述赞同程度进行打分，分值范围为 1 到 5 分，1 分 = 完全不同意 5 分 = 完全同意
+
+1. My peace of mind is not easily upset.
+1. 我的宁静不会轻易打破。
+2. I have a good sense of humor about myself.
+2. 我善于自嘲。
+3. I have dealt with a great many different kinds of people during my lifetime.
+3. 我一生中我善于应付不同类型的人。
+4. I’ve learned valuable life lessons from others.
+4. 我从别人身上学到了宝贵的教训。
+5. At this point in my life, I find it easy to laugh at my mistakes.
+5. 在现在，我能轻松对自己犯下的错一笑而过。
+6. My happiness is not dependent on other people and things.
+6. 我的快乐不依赖其他人或事。
+7. I can accept the impermanence of things.
+7. 我能接受事物的变化无常。
+8. I like to read books that challenge me to think differently about issues.
+8. 我喜欢那些有挑战、能让我从不同角度思考的书。
+9. I am “tuned in” to my own emotions.
+9. 我能敏锐感知到我的情绪。
+10. I get either very angry or depressed if things go wrong.
+10. 我对事情搞砸会非常生气或沮丧。
+11. I am able to integrate the different aspects of my life.
+11. 我能将自己一生中不同方面进行整合。
+12. I often have a sense of oneness with nature.
+12. 我能经常感到融入自然。
+13. It seems I have a talent for reading other people’s emotions.
+13. 我似乎有种能看透别人情绪的能力。
+14. I feel that my individual life is a part of a greater whole.
+14. 我觉得我个人是某个宏大存在的一部分。
+15. There are some people I know I would never like.
+15. 我确信有些人我永远不会喜欢。
+16. I have grown as a result of losses I have suffered.
+16. 我曾遭受的失去让我成长。
+17. I can freely express my emotions without feeling like I might lose control.
+17. 我能自由表达我的感受并不担心失控。
+18. I’m very curious about other religious and/or philosophical belief systems.
+18. 我对其它宗教和/或哲学信仰体系充满好奇。
+19. I don’t worry about other people’s opinions of me.
+19. 我不在乎其他人对我的看法。
+20. Sometimes I get so charged up emotionally that I am unable to consider all ways of dealing with my problems.
+20. 有时我太情绪激烈甚至让我无法思考问题的解决办法。
+21. I always try to look at all sides of a problem.
+21. 我总是试图从各个方面看待问题。
+
+Scoring: First, invert your number for items 10, 15 and 20 (for these three questions ONLY, change a score of 1 to 5, 2 to 4, 4 to 2 and 5 to 1. A score of 3 remains unchanged.)
+打分：首先将第 10、15 和 20 题的分数进行反转（仅限这三道题：把 1 分换成 5 分，2 分换成 4 分，4 分换成 2 分，5 分换成 1 分。3 分保持不变）。
+
+Next, add these three inverted scores to your scores on the other 18 questions.
+下一步将调整后的这三道题的分数，与其余 18 道题分数相加。
+
+Divide that number by 21 to obtain your average.
+用总分除以 21，得到你的最终平均分。
+
+Note: The rating scale below is based on a data set that included only 769 people, and so should be understood as only a guide, not a standardized norm.
+注：以下评估标准基于一个值包含 769 人的数据集，因此仅作参考，而非基准。
+
+Below 3.59 = You scored at or below the median, which places you in the bottom half of wisdom self-raters.
+低于 3.59 分 = 你的得分在测算的中位数或以下，属于智慧自评得分较低的一半。
+
+3.6 to 3.99 = Your score puts you in the top 50 percent of wisdom self-raters.
+3.6 到 3.99 分 = 你的得分在智慧自评得分高于 50% 之中。
+
+4.0 to 4.39 = You scored in the top 20 percent, making you very wise.
+4.0 到 4.39 分 = 你的得分进入了前 20%，说明你有非凡智慧。
+
+4.4 or higher = You scored in the top 5 percent, making you extraordinarily wise.
+4.4 分或更高 = 你的得分进入了前 5%，说明你拥有惊世智慧。
+#+end_verse
+
+也提醒自己，不要忘了智慧是能够学习的！
