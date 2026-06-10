@@ -45,11 +45,11 @@
 
 (test-equal
     (hole/org->sxml "#+begin_verse\nhello\nworld\n#+end_verse")
-  '((p (@ (class "verse")) "hello\nworld")))
+  '((p (@ (class "verse")) "hello" (br) "world")))
 
 (test-equal
     (hole/org->sxml "#+bEgiN_verse\nhello\nworld\n#+enD_veRse")
-  '((p (@ (class "verse")) "hello\nworld")))
+  '((p (@ (class "verse")) "hello" (br) "world")))
 
 (test-equal
     (hole/org->sxml "#+begin_verse\n  indented line\n#+end_verse")

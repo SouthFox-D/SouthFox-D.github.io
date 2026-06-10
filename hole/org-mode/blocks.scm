@@ -224,11 +224,13 @@
          (close-node n))
         ((no-children? n)
          (add-child-node n (remove-min-spaces l (verse-start n))))
-        (else (replace-last-child n
-                                  (string-append
-                                   (last-child n)
-                                   "\n"
-                                   (remove-min-spaces l (verse-start n)))))))
+        (else
+         (let* ((current-children (node-children n))
+                (new-line-text (remove-min-spaces l (verse-start n)))
+                (updated-children (append current-children
+                                          (list (make-hardbreak-node)
+                                                new-line-text))))
+           (make-node (node-type n) (node-data n) updated-children)))))
 
 (define (list-type n)
   (node-get-data n 'type))

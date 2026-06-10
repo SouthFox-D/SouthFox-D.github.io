@@ -104,7 +104,12 @@
   `(pre ,@(node-children n)))
 
 (define (verse-node->sxml n)
-  `(p (@ (class "verse")) ,@(node-children n)))
+  `(p (@ (class "verse"))
+      ,@(map (lambda (child)
+               (cond ((string? child) child)
+                     ((and (pair? child) (eq? (car child) 'hardbreak)) '(br))
+                     (else child)))
+             (node-children n))))
 
 (define (mastodon-embed url)
   `(div
