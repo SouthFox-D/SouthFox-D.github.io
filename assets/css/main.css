@@ -413,6 +413,10 @@ pre code span {
 }
 
 /* Hole Theme */
+:root {
+    scroll-padding-top: 35px;
+}
+
 .verse {
     margin-inline-start: 2rem;
     margin-inline-end: 0;
@@ -669,10 +673,6 @@ header nav .burger {
 [data-theme='386'] {
     --bg: #000084;
     --text: #bbb;
-
-    & :root {
-        scroll-padding-top: 25px;
-    }
 
     & .nav {
         background: #000;
