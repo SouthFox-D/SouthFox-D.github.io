@@ -1,0 +1,11 @@
+#+title: fox-thinking-32
+#+author: SouthFox
+#+date: 2026-06-11 23:53:38
+#+draft: t
+#+tags: FoxThinking
+
+Foo
+
+,(read-more)
+
+Bar
