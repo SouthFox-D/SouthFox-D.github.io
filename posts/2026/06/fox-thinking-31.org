@@ -1,17 +1,14 @@
 #+title: FoxThinking #31: 自我修订的预言
 #+author: SouthFox
-#+date: 2026-06-09 15:49:28
-#+draft: t
+#+date: 2026-06-11 15:49:28
 #+tags: FoxThinking
-
-世道真奇妙。
-
-,(read-more)
 
 自证预言是心理学的「热门」概念，讲得是当人相信某件事的发生，那么就会推动这则预言成真。经典例子是
 罗伯特·罗森塔尔做的实验：给某校学生做智商测验，从中随机抽样些学生告诉老师说「这些学生智商很高」。等
 到了实验结束后，这些随机抽样的学生成绩确实提高了，哪怕只是随机选择的。很明显，是老师将自己的期望交付给了
 这些学生，这些学生在期望中越来越活跃并形成正反馈。
+
+,(read-more)
 
 [[https://en.wikipedia.org/wiki/Self-fulfilling_prophecy][Self-fulfilling prophecy - Wikipedia]]
 
@@ -27,7 +24,7 @@
 预言，最近的例子就是 OpenAI 和 Anthropic 的 CEO 作出的「AI 末日」预言：「很多工作都会消失」、「百分之五十的白领工
 作都会消失」……现在他们都承认自己错了。
 
-[[https://fortune.com/2026/05/26/sam-altman-dario-amodei-walking-back-ai-jobs-apocalypse-prophecies-ipo/][Saam Altman and Dario Amodei are both walking back their AI jobs apocalypse prophecies as they eye blockbuster IPOs - Fortune]]
+[[https://fortune.com/2026/05/26/sam-altman-dario-amodei-walking-back-ai-jobs-apocalypse-prophecies-ipo/][Sam Altman and Dario Amodei are both walking back their AI jobs apocalypse prophecies as they eye blockbuster IPOs - Fortune]]
 
 对此我有个粗略的想法是，这恐怕是因为这两家公司都计划进入 IPO 阶段了。去年处于风头时，要大力鼓吹来扯大皮吸引风险投资；现在计划进
 入 IPO ，面对普遍对风险抱有厌恶的华尔街精算师们，就不免「不过话又说回来了……」。
@@ -39,7 +36,7 @@
 到底还要多少次疾呼，才能告诉人们大脑毕竟是肉做的？圣人与罪犯、帝王与农夫、英雄于懦夫背后到底有多少
 是被血肉之躯造就的。
 
-不过这不是什么灰暗的决定论，因为人本身的意愿同样也是其中的一环，哪怕是[[/2026/04/fox-thinking-24/][基因不算是生命的蓝图]]呢，当非要
+不过这不是什么灰暗的决定论，因为人本身的意愿同样也是其中的一环，哪怕[[/2026/04/fox-thinking-24/][基因都该认为是生命的蓝图]]呢，当非要
 找出人是由什么决定的，就只能指着这如太极又像埃舍尔的《画手》又似 Lisp 的 EVAL-APPLY 求值循环
 的……「道」 [fn:2] ？
 
@@ -60,12 +57,6 @@ sophrosyne ，意义是清醒的心态/开放的思想/节制/审慎，也是经
 这种美德在现在越来越衰败了吗？还是说这又是什么经典（或者也能说老调重弹）的
 礼崩乐坏式观点吗？
 
-*** [[https://theconversation.com/focus-apps-are-failing-neurodivergent-minds-new-research-finds-282330][Focus apps are failing neurodivergent minds, new research finds]]
-诶呀，果然我用番茄钟或者什么类似的 APP 用不下去的不只有我，不过遗憾的是我也没找到什么更适合我
-的专注方法，只是这么稀里糊涂撑到现在。
-
-文章里提到的三个点确实是个方向，或许我可以尝试先在 Emacs 里弄个原型出来？
-
 *** [[https://ianthehenry.com/posts/why-janet/][Why Janet?]]
 我知道 Janet 已经有段时间了，但一直没去尝试用过，毕竟现在耍着身上带着的 Lisp 有点应接不暇，难说能不能
 再塞个到手上。
@@ -75,36 +66,168 @@ sophrosyne ，意义是清醒的心态/开放的思想/节制/审慎，也是经
 太极又像埃舍尔的《画手》的 Lisp EVAL-APPLY 求值循环运行时啊，这个交易我想还是挺划算的。
 
 *** [[https://gratitude4life.substack.com/p/three-signs-that-youre-wise][Three Signs that You’re Wise]]
-是的，又是讨论智慧这个话题的文章，想起了之前我想[[/2026/04/fox-thinking-25/#Whatiswisdom,andcanitbetaught?][把智慧叫成睿知]] [fn:3]，现在看来，哪怕英文中也有将智
-慧（wisdom）和智力（intelligence）混为一谈的现象啊
+#+begin_quote
+Psychologist Igor Grossman offers a helpful definition of wisdom–the
+ability to make sound judgments in complex situations that lack clear-cut answers.
+
+心理学家伊戈尔·格罗斯曼给出了份有用的智慧定义：在
+缺乏明确答案的复杂情景中做出妥当判断的能力。
+#+end_quote
+
+#+begin_quote
+This might feel counterintuitive. We tend to imagine wise people as advice-givers,
+not advice-seekers. But throughout the Book of Proverbs, wisdom is consistently linked to seeking guidance.
+
+这听起来可能有点反直觉。我们往往把有智慧的人想象成是给出建议的人，而不是寻求建议的人。
+但在《箴言》 [fn:3] 中，智慧始终与寻求指引相连。
+#+end_quote
+
+是的，又是讨论智慧的文章，想起了之前我想[[/2026/04/fox-thinking-25/#Whatiswisdom,andcanitbetaught?][把智慧叫成睿知]] [fn:4] 。
+
 *** [[https://www.theguardian.com/books/ng-interactive/2026/jun/06/readers-top-100-novels-of-all-time][Readers’ top 100 novels of all time | Fiction | The Guardian]]
+在 [[/2026/05/fox-thinking-29/#The100bestnovelsofalltime|Fiction|TheGuardian][FoxThinking #29: 我想知道我不知道]] 里提到的《卫报》百大小说名单的读者推荐版本。
+
 *** 《斯通纳》
+作者不愧是教创意写作课的，读起来就感觉是篇非常有「技巧」的小说。
+
+整体的氛围都很阴郁，越读越感觉被「我是否能坚持做自己？」这个问题所诘问，但到了结尾
+却有种宣泄过后的宁静……
+
 *** 《在轮下》
+黑塞的书，（至少我读过的）总感觉在遵守某种特定的模式：剧情发展总会要求主人公走入陌生的环境，然后总会节外
+生枝，反正就是不能「正常」收场。
+
+#+begin_quote
+这样就好，这样就对了，我亲爱的。千万别懈怠，否则你会被碾压在车轮下。
+#+end_quote
+
+作为已经好久没梦见赶不上考场、早早就跳车、优绩主义下的失败者，我很高兴终于不用忍受这些了。只是很多人依
+然像是绑在轮子上一样，身上总在散发着一种气场，我称之为「永恒的考场」，不仅折磨着自己还有身边的人。
+
+**** 菲利斯特人
+#+begin_quote
+「菲利斯特人」是与「幕斯的孩子」相对应的概念，指的是只关注世俗，对艺术、思想和心灵世界缺乏
+理解和兴趣的市民阶层。
+#+end_quote
+
+看到了最后姜乙的译后记才惊讶地发现，原来这本书竟暗含这个概念，读的时候完全没想到。想想之前在哪知道这个概念
+的？是叔本华的 [[/2026/04/fox-thinking-26/][《人生的智慧》]] ！这就不奇怪了，这就不奇怪了……
 
 ** 篝火旁
+为什么人们喜欢听音乐？可能这与音乐能纾解孤独感有关。
+
 [[https://nautil.us/when-you-listen-to-music-youre-never-alone-235834][When You Listen to Music, You’re Never Alone - Nautilus]]
 
-定居地球 247-248
+#+begin_quote
+“The brain interprets the structure of the music as intentionality that is coming from a
+human agent,” Molnar-Szakacs says. “This, combined with all the associations evoked by
+the music, is what makes the experience social.”
 
-*** 《Breakout》· Swing Out Sister
-- [[https://www.youtube.com/watch?v=IIOJdMdS56k][Swing Out Sister - Breakout (Official Music Video) - YouTube]]
-*** 《Tin Man》· America
-- [[https://www.youtube.com/watch?v=zGl4PP9xaaQ][America - Tin Man (Official Audio) - YouTube]]
-*** 《Fast Car》· Tracy Chapman
-- [[https://www.youtube.com/watch?v=AIOAlaACuv4][Tracy Chapman - Fast Car (Official Music Video) - Youtube]]
+莫尔纳-萨卡奇说：“大脑将音乐的结构解读为来自人类存在的意图。”“这些，加上音乐唤起的所有联想，才让体验变得社交。”
+#+end_quote
+
+可以说，音乐从一开始就是在社交上产生的 [fn:5] ：
+
+#+begin_quote
+放大（Amplification）是贯穿第2时空的主要题目。[...]在增强这些社会表现时，音乐和舞蹈的贡献是至关重要的。
+
+[...]身体是一种终极乐器，能够在没有技术帮助的情况下产生各种声音、节奏、手势和舞步(Blacking 1973)。
+当诸如骨笛之类的乐器最终在第3时空出现(第七章)时，它们将进一步放大社交聚会的欢腾体验，并放大它们的兴奋
+和魅力，而这些体验都已经存在了一段时间了（Gamble 2012）。
+#+end_quote
+
+有时候兴致来了，就戴着耳机听着音乐坐在街旁。用余光盯着来往的路人，反而神奇地满足了对社交的「渴望」。街口
+有点像是现代的篝火，只是这个部族已经太杂太大了，路过篝火旁的人不会认识我也不会跟我攀谈。
+
+总之，音乐和故事就是这个新栏目的主题，我很确定后续如果想开个讲艺术的栏目的话，应该起名叫「洞穴里」。
+
 *** 《99 Luftballons》· NENA
 - [[https://www.youtube.com/watch?v=Fpu5a0Bl8eY][NENA | 99 Luftballons [1983] [Offizielles HD Musikvideo] - Youtube]]
 
+#+begin_verse
+Hast du etwas Zeit für mich?
+如果你有时间陪着我
+Dann singe ich ein Lied für dich
+让我为你唱一首歌
+Von 99 Luftballons
+关于九十九个气球的歌
+#+end_verse
+
+九十年代，柏林墙在众人推中倒下，双边的人热烈的相拥在一起。只是时间过去，东西德的裂痕并没有完全弥合，反
+而越来越深。东德有很多社区在贫苦中，老旧的街道、无人的小镇、看不到未来的状况。不免让很多人觉得
+是「二等公民」，推动着越发极化的政党出来。 [fn:6]
+
+#+begin_verse
+Neunundneunzig Kriegsminister
+九十九个国防部长
+Streichholz und Benzinkanister
+手里拿着火柴和汽油桶
+Hielten sich für schlaue Leute
+自以为聪明绝顶
+#+end_verse
+
+我真不想说这是什么大周期，所谓的分久必合合久必分……
+
+#+begin_verse
+Mann, wer hätte das gedacht
+唉，谁能想到会有这一天
+Dass es einmal so weit kommt
+事情竟然会闹到这一步
+Wegen 99 Luftballons
+全是因为九十九个气球
+[...]
+Hab''nen Luftballon gefunden
+忽然我捡到了一个气球
+Denk'an dich und lass'ihn fliegen
+想起了你，于是放手让它飞走
+#+end_verse
+
+*** 《Breakout》· Swing Out Sister
+- [[https://www.youtube.com/watch?v=IIOJdMdS56k][Swing Out Sister - Breakout (Official Music Video) - YouTube]]
+
+流行乐常常会被认为「空洞无物」，但我认为正是这种空洞造就了流行乐的普世，就像容器一样 [fn:7] ，让人能够轻松
+投射其中。
+
+#+begin_verse
+When explanations make no sense
+当所有解释都成徒劳
+When every answer's wrong
+当每个答案都变错觉
+You're fighting with lost confidence
+你正与失落的自信暗自消磨
+All expectations gone
+所有期盼已成泡影
+The time has come to make or break
+时机已到或成或败
+Move on, don't hesitate
+行动吧，不用迟疑
+#+end_verse
+
+*** 《Tin Man》· America
+- [[https://www.youtube.com/watch?v=zGl4PP9xaaQ][America - Tin Man (Official Audio) - YouTube]]
+
+歌曲除了它本身，也取决于听者。这首歌是在一个深夏傍晚听的，正好的温度、迷幻的歌词、不远处肉店倒出飘着腥味烫过鸡鸭
+的水，都构成我对这首歌的体验。
+
 ** Present day, Present time
-Bar
+本期大量出现的摘抄，原因是……我实现了博客 org-mode 解析器 verse 结构块 [fn:8] ，本着不用浪费的观点大批量用了起
+来，就是这么无趣。
 
-* Footnotes
-
+** 脚注
 [fn:1] [[https://zh.wikipedia.org/zh-cn/%E7%95%AB%E6%89%8B][画手 - 维基百科，自由的百科全书]]
 
 [fn:2] 当我知道「知道」里有个「道」后，我就不太敢轻易说出知道这个词了
 
-[fn:3] 这里提到的文章 [[https://knowablemagazine.org/content/article/mind/2026/what-is-wisdom-can-it-be-taught][What is wisdom, and can it be taught? ]] 末尾的问卷也挺有意思的，索性就搬过来顺带翻译翻译。
+[fn:3] 《箴言》1:5
+
+#+begin_verse
+let the wise listen and add to their learning,
+使智慧人听见，增长学问，
+and let the discerning get guidance—
+使聪明人得着智谋——
+#+end_verse
+
+[fn:4] 这里提到的文章 [[https://knowablemagazine.org/content/article/mind/2026/what-is-wisdom-can-it-be-taught][What is wisdom, and can it be taught? ]] 末尾的问卷也挺有意思的，索性就搬过来顺带翻译翻译。
 
 #+begin_verse
 Indicate how much you agree with the statements below on a scale of 1 to 5, with 1 representing “disagree completely” and 5 “agree completely.”
@@ -115,7 +238,7 @@ Indicate how much you agree with the statements below on a scale of 1 to 5, with
 2. I have a good sense of humor about myself.
 2. 我善于自嘲。
 3. I have dealt with a great many different kinds of people during my lifetime.
-3. 我一生中我善于应付不同类型的人。
+3. 我一生中我善于与各种各样的人打交道。
 4. I’ve learned valuable life lessons from others.
 4. 我从别人身上学到了宝贵的教训。
 5. At this point in my life, I find it easy to laugh at my mistakes.
@@ -135,7 +258,7 @@ Indicate how much you agree with the statements below on a scale of 1 to 5, with
 12. I often have a sense of oneness with nature.
 12. 我能经常感到融入自然。
 13. It seems I have a talent for reading other people’s emotions.
-13. 我似乎有种能看透别人情绪的能力。
+13. 我似乎有种能读懂别人情绪的能力。
 14. I feel that my individual life is a part of a greater whole.
 14. 我觉得我个人是某个宏大存在的一部分。
 15. There are some people I know I would never like.
@@ -163,7 +286,7 @@ Divide that number by 21 to obtain your average.
 用总分除以 21，得到你的最终平均分。
 
 Note: The rating scale below is based on a data set that included only 769 people, and so should be understood as only a guide, not a standardized norm.
-注：以下评估标准基于一个值包含 769 人的数据集，因此仅作参考，而非基准。
+注：以下评估标准基于一个仅包含 769 人的数据集，因此仅作参考，而非基准。
 
 Below 3.59 = You scored at or below the median, which places you in the bottom half of wisdom self-raters.
 低于 3.59 分 = 你的得分在测算的中位数或以下，属于智慧自评得分较低的一半。
@@ -179,3 +302,15 @@ Below 3.59 = You scored at or below the median, which places you in the bottom h
 #+end_verse
 
 也提醒自己，不要忘了智慧是能够学习的！
+
+[fn:5]  [英]克莱夫·甘布尔. 定居地球. 山西人民出版社, 2023, 247-248
+
+[fn:6] [[https://www.dw.com/en/what-drives-the-far-right-afds-success-in-eastern-germany/a-50264353][What drives AfD voters in eastern Germany?]]
+
+[fn:7] [[https://ctext.org/dictionary.pl?if=gb&id=11602][道德經 -> 11 - 中國哲學書電子化計劃]]
+
+#+begin_quote
+埏埴以為器，当其无，有器之用
+#+end_quote
+
+[fn:8] [[https://orgmode.org/manual/Paragraphs.html][Paragraphs (The Org Manual)]]
