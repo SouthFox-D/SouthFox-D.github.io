@@ -36,7 +36,7 @@
 到底还要多少次疾呼，才能告诉人们大脑毕竟是肉做的？圣人与罪犯、帝王与农夫、英雄于懦夫背后到底有多少
 是被血肉之躯造就的。
 
-不过这不是什么灰暗的决定论，因为人本身的意愿同样也是其中的一环，哪怕[[/2026/04/fox-thinking-24/][基因都该认为是生命的蓝图]]呢，当非要
+不过这不是什么灰暗的决定论，因为人本身的意愿同样也是其中的一环，哪怕[[/2026/04/fox-thinking-24/][基因都不该认为是生命的蓝图]]呢，当非要
 找出人是由什么决定的，就只能指着这如太极又像埃舍尔的《画手》又似 Lisp 的 EVAL-APPLY 求值循环
 的……「道」 [fn:2] ？
 
@@ -238,7 +238,7 @@ Indicate how much you agree with the statements below on a scale of 1 to 5, with
 2. I have a good sense of humor about myself.
 2. 我善于自嘲。
 3. I have dealt with a great many different kinds of people during my lifetime.
-3. 我一生中我善于与各种各样的人打交道。
+3. 我一生中善于与各种各样的人打交道。
 4. I’ve learned valuable life lessons from others.
 4. 我从别人身上学到了宝贵的教训。
 5. At this point in my life, I find it easy to laugh at my mistakes.
@@ -254,9 +254,9 @@ Indicate how much you agree with the statements below on a scale of 1 to 5, with
 10. I get either very angry or depressed if things go wrong.
 10. 我对事情搞砸会非常生气或沮丧。
 11. I am able to integrate the different aspects of my life.
-11. 我能将自己一生中不同方面进行整合。
+11. 我能整合自己一生中的不同方面。
 12. I often have a sense of oneness with nature.
-12. 我能经常感到融入自然。
+12. 我经常感到融入自然。
 13. It seems I have a talent for reading other people’s emotions.
 13. 我似乎有种能读懂别人情绪的能力。
 14. I feel that my individual life is a part of a greater whole.
@@ -266,7 +266,7 @@ Indicate how much you agree with the statements below on a scale of 1 to 5, with
 16. I have grown as a result of losses I have suffered.
 16. 我曾遭受的失去让我成长。
 17. I can freely express my emotions without feeling like I might lose control.
-17. 我能自由表达我的感受并不担心失控。
+17. 我能自由表达我的感受而不担心失控。
 18. I’m very curious about other religious and/or philosophical belief systems.
 18. 我对其它宗教和/或哲学信仰体系充满好奇。
 19. I don’t worry about other people’s opinions of me.
