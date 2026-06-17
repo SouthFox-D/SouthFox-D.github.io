@@ -8,4 +8,54 @@ Foo
 
 ,(read-more)
 
-Bar
+** 阅读
+*** [[https://blog.unitedheroes.net/5751][Leaving Mozilla | jr conlin's ink stained banana]]
+#+begin_quote
+I'm not kidding when I said that Firefox is a niche browser.
+Folk have to actively look to use it. They have to search it out,
+figure out how to download it, ignore all the warnings and “suggestions”
+that they should keep using whatever the native browser is,
+[...]
+Firefox users are not normal. They are deeply abnormal, and frankly a lot of them are proud of that.
+
+我不开玩笑地说， Firefox 是个小众浏览器。人们必须主动寻找才能使用它。他们必须去寻找，弄清楚如何下载，
+忽略所有警告和“建议”让他们继续使用原生浏览器，
+[...]
+Firefox 用户并不正常。他们非常反常。甚至很多人为此感到自豪。
+#+end_quote
+
+对于一款现在占用率现在只有 2% [fn:1] 的小众浏览器来说，选择它是要有
+理由的。对我来说，首先是它是很多 Linux 发行版的默认浏览器，就这么用着用
+着就用着了；其次是为了尊重我的「设定」，我网名都起成这样了，再不用 Firefox 可就有失格之嫌。
+
+现在 Firefox 能存在很大程度上是谷歌在弄点钱包养 Mozilla ，削弱削弱下对于垄断的指控。
+而 Mozilla 也确实该想想和社区联系了，不要老是想着其它浏览器有的我就要有。
+
+*** [[https://ochagavia.nl/blog/the-undercover-generalist/][The undercover generalist | Adolfo Ochagavía]]
+#+begin_quote
+in theory all companies like adaptable people.
+In practice I find most job descriptions prefer specialists.
+
+理论上所有公司都喜欢适应能力强的人。可实际上我发现大多数职位描述更倾向于专家。
+#+end_quote
+
+感觉很多岗位都是如此，很多需求都高到匪夷所思，但实际要求其实自己都摸不明白，后续就开始
+问「那你会不会搞这个」？其实更倾向于「泛化种」，但表现出来更想要个「特化种」，所以哪怕
+是「泛化种」或者「多能种」（[[/2026/04/fox-thinking-25/][FoxThinking #25: 狐狸与刺猬]]），都得伪装成「特化种」。
+
+所以该如何说出对方想听到的话并认为你很「专业」？
+
+*** [[https://notnotp.com/notes/what-job-interviews-taught-me-about-kubernetes/][What job interviews taught me about Kubernetes]]
+可能这就是现在 React 或者 Vue 之类的框架繁杂却又流行的一个旁证，因为它的「可传递性」比
+较好。在计算机这个拿人力当「快消品」的行业，如何在交接时弄得不鸡飞狗跳？答案就是用一样的、模板
+化的东西。也许临时来的需求就只有两三台节点加一个小小的应用，没有什么高可用、节点亲和度、自动扩缩容的必要，但还是
+这么上了。然后这应用就要考虑 Ingress, Service, Pod 然后百八十个 Yaml 文件了，非常繁琐，但确实让这套
+流程可「预测」了，没有神秘遗漏的配置变量和依赖以及烂在角落里的奇怪脚本。
+
+在之前会这些繁琐技术的人还不多，但随着大公司出来的员工慢慢「下放」到中小公司后，招聘熟络这些繁琐技术的人难度
+也在慢慢下降，正反馈循环就这么被点着了。
+
+
+* Footnotes
+
+[fn:1] [[https://gs.statcounter.com/][Statcounter Global Stats - Browser, OS, Search Engine including Mobile Usage Share]]
