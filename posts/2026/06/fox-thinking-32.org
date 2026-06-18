@@ -1,12 +1,20 @@
-#+title: fox-thinking-32
+#+title: FoxThinking #32: 等待中
 #+author: SouthFox
-#+date: 2026-06-11 23:53:38
-#+draft: t
+#+date: 2026-06-18 17:33:38
 #+tags: FoxThinking
 
-Foo
+当有个事将要发生，那么这个事就会困住我。
 
 ,(read-more)
+
+甚至如果这件事是 Option （可选）的，那就更糟糕了。例如当时我在学车时，驾校教练可能会打电话叫我
+明天练车，也可能不会。那几周我就惴惴不安，一直心烦到下午，而过了下午，又为明天的情况开始心烦。
+
+这种被将要发生之事占住的情况，叫做「等待模式」（waiting mode）。
+
+[[https://theconversation.com/do-you-lose-your-whole-day-to-one-appointment-waiting-mode-may-be-why-280608][Do you lose your whole day to one appointment? ‘Waiting mode’ may be why]]
+
+焦虑、反复咀嚼、失认……不过这次，当状况又再度发生时，我希望能少等一点，多一点行动。
 
 ** 阅读
 *** [[https://blog.unitedheroes.net/5751][Leaving Mozilla | jr conlin's ink stained banana]]
@@ -26,10 +34,10 @@ Firefox 用户并不正常。他们非常反常。甚至很多人为此感到自
 
 对于一款现在占用率现在只有 2% [fn:1] 的小众浏览器来说，选择它是要有
 理由的。对我来说，首先是它是很多 Linux 发行版的默认浏览器，就这么用着用
-着就用着了；其次是为了尊重我的「设定」，我网名都起成这样了，再不用 Firefox 可就有失格之嫌。
+着就用下去了；其次是为了尊重「设定」，我网名都起成这样了，再不用 Firefox 可就有失格之嫌。
 
 现在 Firefox 能存在很大程度上是谷歌在弄点钱包养 Mozilla ，削弱削弱下对于垄断的指控。
-而 Mozilla 也确实该想想和社区联系了，不要老是想着其它浏览器有的我就要有。
+不过 Mozilla 也确实该想想如何加深与社区的联系，不要老是想着其它浏览器有的我就要有。
 
 *** [[https://ochagavia.nl/blog/the-undercover-generalist/][The undercover generalist | Adolfo Ochagavía]]
 #+begin_quote
@@ -39,23 +47,154 @@ In practice I find most job descriptions prefer specialists.
 理论上所有公司都喜欢适应能力强的人。可实际上我发现大多数职位描述更倾向于专家。
 #+end_quote
 
-感觉很多岗位都是如此，很多需求都高到匪夷所思，但实际要求其实自己都摸不明白，后续就开始
-问「那你会不会搞这个」？其实更倾向于「泛化种」，但表现出来更想要个「特化种」，所以哪怕
-是「泛化种」或者「多能种」（[[/2026/04/fox-thinking-25/][FoxThinking #25: 狐狸与刺猬]]），都得伪装成「特化种」。
-
-所以该如何说出对方想听到的话并认为你很「专业」？
+感觉很多岗位都是如此，很多要求都高到匪夷所思，但实际需求其实招聘方自己都摸不明白，后续就开始
+问「那你会不会搞这个」？其实更倾向于需求「泛化种」，但表现出来更想要个「特化种」。在现在
+哪怕是「泛化种」或者「多能种」（[[/2026/04/fox-thinking-25/][FoxThinking #25: 狐狸与刺猬]]），都得伪装成「特化种」。
 
 *** [[https://notnotp.com/notes/what-job-interviews-taught-me-about-kubernetes/][What job interviews taught me about Kubernetes]]
-可能这就是现在 React 或者 Vue 之类的框架繁杂却又流行的一个旁证，因为它的「可传递性」比
-较好。在计算机这个拿人力当「快消品」的行业，如何在交接时弄得不鸡飞狗跳？答案就是用一样的、模板
-化的东西。也许临时来的需求就只有两三台节点加一个小小的应用，没有什么高可用、节点亲和度、自动扩缩容的必要，但还是
-这么上了。然后这应用就要考虑 Ingress, Service, Pod 然后百八十个 Yaml 文件了，非常繁琐，但确实让这套
-流程可「预测」了，没有神秘遗漏的配置变量和依赖以及烂在角落里的奇怪脚本。
+在计算机这个拿人力当「快消品」的科技行业，如何在交接时不弄的鸡飞狗跳？答案就是用一样、模板
+化的东西。可能临时来的需求就只用两三台节点加一个小小的应用，没有什么高可用、自动扩缩容的必要，但还是
+照样上 K8S 。不管之后这应用要去考虑 Ingress, Service, Pod 和百八十个 Yaml 文件了，非常繁琐。但确实让这套
+流程可「预测」，没有神秘遗漏的配置变量和依赖，以及烂在角落里的奇怪脚本。如果这套系统还配成 Helm charts 的话，那
+么一个资深的 K8S 工程师看个一上午就能对整个架构有个大概印象。
 
-在之前会这些繁琐技术的人还不多，但随着大公司出来的员工慢慢「下放」到中小公司后，招聘熟络这些繁琐技术的人难度
-也在慢慢下降，正反馈循环就这么被点着了。
+在之前会这些繁重技术的人还不多，但随着大公司出来的员工慢慢「下放」到中小公司后，招聘熟稔这些繁琐技术的人难度
+也在慢慢下降，正反馈循环就这么被点着了。可能这也是现在 React 或者 Vue 之类的框架繁杂却又流行的一个佐证，因为
+这些事物它的「可传递性」比较好。
 
+*** [[https://www.psypost.org/perfectionism-is-skyrocketing-in-young-adults-and-economic-pressure-might-be-the-culprit/][Perfectionism is skyrocketing in young adults and economic pressure might be the culprit]]
+将不稳定经济、财富不平等与大学生群体完美主义关联的荟萃分析，真是未曾设想的角度。
+
+#+begin_quote
+“The acceleration begins around 2000, roughly a decade before
+smartphones saturated teenage life, which rubs up against the popular
+idea that phones are the prime suspect,” Curran said.
+He noted that the structural economic shifts offer a more consistent
+explanation for the timing of this psychological change.
+
+柯兰说：“加速始于2000年左右，大约比智能手机在青少年生活中普及早了十年，这与手机是主
+要嫌疑的通常观点相冲突。”他指出，结构性经济变化为这心理变化的时间提
+供了更一致的解释。
+#+end_quote
+
+研究团队还将数据上线做成了个工具网站：[[https://perfectionismobservatory.com/][Perfectionism Observatory]]，这倒是挺「亲民」的。
+
+*** [[https://vale.rocks/posts/game-console-browsers][Web Browsers on Video Game Consoles | Vale.Rocks]]
+游戏主机里的浏览器，我想起拿过 3DS 看过 Youtube ，不过效果不是挺好（意料之中）。而且确实，现在游戏
+主机已经不太会在系统里附带个通用浏览器了，因为浏览器是个非常复杂的东西，非常容易被利用成为破解的入口。
+
+*** [[https://taz.de/Flaschensammler-ueber-seinen-Lebensweg/!6181249/][Flaschensammler über seinen Lebensweg: „Unglück, ja, was ist das?“ | taz.de]]
+#+begin_quote
+taz: Wenn du das so sagst, dann klingt das unglücklich.
+Bist du ein unglücklicher Mensch?
+
+日报：听你这么说感觉挺不幸的。你是一个不幸的人吗？
+
+Leonhard: Ich war immer ein kämpferischer Mensch. Unglück, ja,
+was ist das? Unglück müsste man definieren. Unglück ist, wenn
+einem ein Blumentopf auf den Kopf fällt.
+
+莱昂哈德： 我一直是个充满斗志的人。不幸，哈，那是什么？这得
+看你怎么定义不幸了。要是头上砸下来一个花盆，那确实叫不幸。
+
+taz: Zum Beispiel.
+
+日报：例如说。
+
+Leonhard: Aber man kann kämpfen, sich einbringen, Widerstand leisten, was initiieren.
+Das perfekte Glück gibt es sowieso nicht. Was ist Glück? Geld? Pfff, weiß ich nicht.
+Kann man sich auch nicht alles mit kaufen. Nee, eigentlich, was mein Leben betrifft,
+bin ich nicht unglücklich. Du hast alles anders gemacht wie alle anderen oder die meisten.
+Und bist trotzdem durchgekommen, irgendwie. Und hast deinen Spaß gehabt.
+
+莱昂哈德： 但人是可以去抗争的，去投入、去反抗、去发起一些事。反正这世上本来就没有完美的长久幸福。
+幸福是什么？钱吗？呸，我可不这么认为，钱也买不到一切。不，其实就我这一生而言，我并不觉得不幸。
+你走了一条和所有人、或者说和大多数人都截然不同的路，但你还是挺过来了，总归是走过来了。
+#+end_quote
+
+是的呢，[[/2026/04/fox-thinking-26/][理性的人寻求的不是快乐，而是没有痛苦]]。
+
+*** [[https://bigthink.com/mini-philosophy/kairos-the-ancient-greek-art-of-knowing-when-to-act/][Kairos: The ancient Greek art of knowing when to act]]
+克洛诺斯（Chronos）代表着时间，作为这个世界的舞台，只有当真正意识到他的存在才知晓重要性。
+
+凯洛斯（Caerus）代表着时机/机遇，是舞台上戏剧高潮处聚光灯下的那位演员……他很重要，只是这出戏是不会重演的，不会
+有人清楚接下来发展。必须要面对他，抓住他才能推动剧情，否则这出戏就很难演下去了。
+
+凯洛斯的额头有几束头发垂下，在他走过来的时候正是抓住的时机。否则等凯洛斯溜过，他光秃秃的后脑勺将无法让人抓住
+了。或许，是因为事后才意识到时机重要性的人太多、反身抓住脑后头发的事出现太频繁，才让凯洛斯现在成为了个秃头吧。
+在合适的时刻作出正确的行动，时机，总是困难的……
+
+*** 《如何阅读一本书》
+对于读书这件事的「荟萃分析」。
+
+不是什么书都值得花同样的力气去读的，这点我深以为然。
+
+** 篝火旁
+*** 《Radio Ga Ga》· Queen
+- [[https://www.youtube.com/watch?v=azdwsXLmrHE][Queen - Radio Ga Ga (Official Video) - Youtube]]
+
+#+begin_verse
+You made 'em laugh, you made 'em cry
+你让他们欢笑，让他们哭泣
+You made us feel like we could fly
+你让我们觉得自己仿佛能够飞翔
+So don't become some background noise
+所以不要变成那喧嚣的背景
+#+end_verse
+
+所以，为什么这个栏目怎么都是些欧美的经典老歌，我是想显得我很有……品味吗？不，其实我对这些没那么大
+兴趣，Queen, David Bowie, Pink Floyd 这些我也只是简单了解过，并没有从头到尾听过一张完整专辑。
+
+我知道这些歌，主要是因为 [[https://radio.garden/][Radio Garden]] 这个能收听世界各地广播的的应
+用。而我，非常遵守自己「设定」的以 fox 作为关键词，搜出了两个电台：
+
+- [[https://923thefox.com/][92.3 The Fox - 92.3 The Fox]]
+- [[https://www.foxcincinnati.com/][92.5 THE FOX | WOFX-FM]]
+
+而这两个电台，都是经典的放经典流行、摇滚的音乐电台，在工的时候会听着这些电台，这就是我的音乐品味现在
+这么「老气」的原因了。不过，在算法推送大行其道的现在，试试由克洛诺斯这位「时间」神亲自编写的推荐歌单还是
+蛮不错的。
+
+#+begin_verse
+You had your time, you had the power
+你曾有过你的时代，风光无限
+You've yet to have your finest hour
+但你尚未迎来你最辉煌的时刻
+#+end_verse
+
+在手机都取消附带广播芯片的现在，广播电台依然未衰败，它的电波依然环绕在人们周围。我很好奇电台
+会不会和现在的播客有什么联系？先加入到我的研究清单吧 [fn:2] 。
+
+*** 《Sit And Wait》· SYDNEY YOUNGBLOOD
+- [[https://www.youtube.com/watch?v=RNJ9pet2scY][SYDNEY YOUNGBLOOD - Sit And Wait - YouTube]]
+
+#+begin_verse
+They say: All we can do is sit and wait
+他们说：我们所能做的一切就是坐着等待
+All we can do, yeah, that's what they say
+我们所能做的一切，是啊，他们是这么说的
+Sit and wait, sit and wait, just sit and wait
+坐着等，坐着等，就只是坐着等
+#+end_verse
+
+当有些歌能精准描述当下状态的时候，就忍不住翻出来听听。
+
+*** 《Changes》· David Bowie
+- [[https://www.youtube.com/watch?v=4BgF7Y3q-as][David Bowie - Changes (Official Lyric Video) - Youtube]]
+
+#+begin_verse
+Still don't know what I was waiting for
+至今仍不知自己在苦苦等待什么
+And my time was running wild, a million dead-end streets
+我的时间在荒野奔流，撞上无数条死胡同
+#+end_verse
+
+回过神来时就在单曲循环了，甚至还是在歌曲快结束时拉回开头手动单曲循环。有种：咦，这是什么？听一下……这是什么？听一下……
+
+** Present day, Present time
+不管怎么说，作出计划，开始行动。
 
 * Footnotes
-
 [fn:1] [[https://gs.statcounter.com/][Statcounter Global Stats - Browser, OS, Search Engine including Mobile Usage Share]]
+
+[fn:2] 现在我还没这个清单，但估计应该会有。不过我提到多少种清单了？或许我需要个关于清单的清单……
