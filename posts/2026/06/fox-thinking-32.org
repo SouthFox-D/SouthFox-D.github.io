@@ -194,7 +194,7 @@ And my time was running wild, a million dead-end streets
 ** Present day, Present time
 不管怎么说，作出计划，开始行动。
 
-* Footnotes
+** 脚注
 [fn:1] [[https://gs.statcounter.com/][Statcounter Global Stats - Browser, OS, Search Engine including Mobile Usage Share]]
 
 [fn:2] 现在我还没这个清单，但估计应该会有。不过我提到多少种清单了？或许我需要个关于清单的清单……
