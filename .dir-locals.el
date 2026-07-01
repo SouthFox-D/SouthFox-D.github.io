@@ -1,5 +1,5 @@
-((org-mode . ((eval . (let ((blog-config (expand-file-name "blog.el" (locate-dominating-file default-directory "blog.el"))))
-                        (when (and (file-exists-p blog-config)
+((org-mode . ((eval . (let ((blog-package (expand-file-name "blog.el" (locate-dominating-file default-directory "blog.el"))))
+                        (when (and (file-exists-p blog-package)
                                    (not (bound-and-true-p blog--package-loaded-p)))
-                          (load blog-config)
+                          (load blog-package)
                           (setq blog--package-loaded-p t)))))))

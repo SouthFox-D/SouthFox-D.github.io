@@ -22,6 +22,7 @@
 (require 'dash)
 (require 'projectile)
 (require 'org)
+(require 'rx)
 (require 'tablist)
 
 (defvar blog-root
@@ -48,41 +49,49 @@
           (goto-char (point-min)))
         (insert "#+" key ": " value)))))
 
+(defmacro blog--post-collect-keywords (&rest specs)
+  "Build a plist from org keywords declared by SPECS.
+Each spec is (KEY :or DEFAULT)."
+  (declare (indent defun))
+  (let ((keys (mapcar #'car specs)))
+    `(let ((kw-data (org-collect-keywords
+                     ',(mapcar (lambda (k) (upcase (symbol-name k))) keys))))
+       (list
+        ,@(cl-loop for (key . opts) in specs
+                   for kstr = (upcase (symbol-name key))
+                   for pkey = (intern (concat ":" (symbol-name key)))
+                   collect pkey
+                   collect `(let ((v (assoc ,kstr kw-data)))
+                              (or (cadr v)
+                                  ,(plist-get opts :or))))))))
+
 (defun blog--get-posts ()
   "Return a list of plists containing data for all org blog posts.
 Only reads the first 4KB of the file for efficiency."
   (let* ((posts-dir (expand-file-name "posts" blog-root))
          (post-files (when (file-directory-p posts-dir)
-                       (directory-files-recursively posts-dir "\\.org\\'"))))
+                       (directory-files-recursively posts-dir (rx ".org" eol)))))
     (mapcar
      (lambda (path)
        (with-temp-buffer
          (insert-file-contents path nil 0 4096)
          (org-mode)
-         (let* ((keywords (org-collect-keywords '("TITLE" "TAGS" "DATE" "DRAFT")))
-                (title-val (car (cdr (assoc "TITLE" keywords))))
-                (tags-val  (car (cdr (assoc "TAGS" keywords))))
-                (date-val  (car (cdr (assoc "DATE" keywords))))
-                (draft-val (car (cdr (assoc "DRAFT" keywords)))))
-           (list :title (if (and title-val (not (string-empty-p title-val)))
-                            (string-trim title-val)
-                          (file-name-base path))
-                 :filename path
-                 :tags (if tags-val (string-trim tags-val) "")
-                 :date (if date-val (string-trim date-val) "N/A")
-                 :draft (if draft-val (string-trim draft-val) "nil")))))
+         (nconc
+          (blog--post-collect-keywords
+            (title :or (file-name-base path))
+            (tags :or "")
+            (date :or "N/A")
+            (draft :or ""))
+          (list :filename path))))
      post-files)))
 
 (defun blog-entries ()
   "Format blog posts data for `tabulated-list-entries'."
   (mapcar
    (lambda (post)
-     (let ((filename (plist-get post :filename))
-           (title (plist-get post :title))
-           (tags (plist-get post :tags))
-           (date (plist-get post :date))
-           (draft (plist-get post :draft)))
-       (list filename (vector title tags date draft))))
+     (list (plist-get post :filename)
+           (vconcat (mapcar (lambda (key) (plist-get post key))
+                            '(:title :tags :date :draft)))))
    (blog--get-posts)))
 
 (defun blog-refresh ()
@@ -206,21 +215,21 @@ Only reads the first 4KB of the file for efficiency."
         (insert (org-link-make-string slug title))
       (user-error "No post selected"))))
 
-(defun blog-create-new-post (file-id)
-  "Create a new blog post with FILE-ID in posts/YEAR/MONTH/FILE-ID.org."
+(defun blog-create-new-post (file-id &optional tags)
+  "Create a new blog post with FILE-ID in posts/YEAR/MONTH/FILE-ID.org.
+Optionally explicit TAGS can be passed as a string."
   (interactive "sPost ID: ")
   (let* ((now (current-time))
          (year (format-time-string "%Y" now))
          (month (format-time-string "%m" now))
          (target-dir (expand-file-name (format "posts/%s/%s" year month) blog-root))
          (file-path (expand-file-name (concat file-id ".org") target-dir))
+         (final-tags (or tags ""))
          (keywords `(("title" . ,file-id)
                      ("author" . "SouthFox")
                      ("date" . ,(format-time-string "%Y-%m-%d %H:%M:%S" now))
                      ("draft" . "t")
-                     ("tags" . ,(if (string-match-p "fox-thinking" file-id)
-                                    "FoxThinking"
-                                  "")))))
+                     ("tags" . ,final-tags))))
     (make-directory target-dir t)
     (if (file-exists-p file-path)
         (message "%s already exists!" file-path)
@@ -243,12 +252,13 @@ Only reads the first 4KB of the file for efficiency."
          (max-issue -1))
     (dolist (post posts)
       (let ((base-name (file-name-base (plist-get post :filename))))
-        (when (string-match "fox-thinking-\\([0-9]+\\)" base-name)
+        (when (string-match (rx "fox-thinking-" (group (1+ digit))) base-name)
           (let ((issue-num (string-to-number (match-string 1 base-name))))
             (setq max-issue (max max-issue issue-num))))))
-    (when (> max-issue 0)
-      (let ((new-file-id (format "fox-thinking-%d" (1+ max-issue))))
-        (blog-create-new-post new-file-id)))))
+    (let* ((next-issue (if (> max-issue 0) (1+ max-issue) 1))
+           (new-file-id (format "fox-thinking-%d" next-issue))
+           (tags "FoxThinking"))
+      (blog-create-new-post new-file-id tags))))
 
 (provide 'blog)
 ;;; blog.el ends here
