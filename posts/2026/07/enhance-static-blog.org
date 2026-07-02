@@ -50,10 +50,10 @@
      post-files))
 #+end_src
 
-首先是扫描博文目录中 org 文件（md 文件我忽略了），然后为了性能可以只读取文件前 4KB 的内
-容。然后针对每个文件，插入前 4KB 文件内容然后用 org-mode 提供 org-collect-keywords 函数
-提取 org 文件的元数据（懒得管 md 文件原因就是感觉 front matter 提成结构化数据太累了）。
-然后写下这样的代码……
+首先是扫描博文目录中 org 文件，为了性能可以只读取文件前 4KB 的内
+容。然后用 org-mode 提供 org-collect-keywords 函数提
+取 org 文件的元数据（懒得管 md 文件原因就是感觉 front matter 提成结构化数据太累了）。
+马上就能写下这样的代码……
 
 #+begin_src emacs-lisp
 (let* ((keywords (org-collect-keywords '("TITLE" "TAGS" "DATE" "DRAFT")))
@@ -70,7 +70,7 @@
         :draft (if draft-val (string-trim draft-val) "")))))
 #+end_src
 
-能用，但是这样写太糟蹋自己了，而且之后想加减新的属性也很麻烦，可能之后用到的地方不多但还是寄出
+能用，但是这样写太糟蹋自己了，而且之后想加减新的属性也很麻烦，或许之后用到的地方不多但还是寄出
 宏这个「重型火炮」。
 
 #+begin_src emacs-lisp
@@ -91,9 +91,9 @@ Each spec is (KEY :or DEFAULT)."
                                   ,(plist-get opts :or))))))))
 #+end_src
 
-在这时候就不得不感叹 cl 里的 loop 是看起来非常没 lisp 味但用起来着实很爽的宏啊，虽然
-看着很扭曲，其实要做的事很简单，就是将代码往声明式靠拢，需要什么属性就生成什么属性
-给 org-collect-keywords 调用而降低修改的地方。例如：
+在这时就不得不感叹 cl 里的 loop 真是看起来非常没 lisp 味但用起来着实很爽的宏啊。这个宏虽
+然看着很扭曲，但其实要做的事很简单，就是将代码往声明式靠拢，需要什么属性就生成什么属性，
+以来降低修改的地方。例如：
 
 #+begin_src emacs-lisp
 (blog--post-collect-keywords
@@ -112,8 +112,11 @@ Each spec is (KEY :or DEFAULT)."
 #+end_src
 
 ** 应用
-将数据提出来立马就得到了好处，将相关数据丢到 consult 后，然后拼接点数据就能
+将数据提出来立马就得到了好处，相关数据丢到 consult 后，然后拼接点数据就能
 做到快速插入博客内文章链接功能了。
+
+#+CAPTION: 图一：编辑器截图，上面部分展示了插入的链接，下方输入栏 bk hl 命中了两个结果。
+[[https://media.southfox.me/attachment/Qmdx6QPVHb5xDuNZZsmtiWyVsBXkXyfSggfxs9C2JE1gVx?filename=2026-07-01_17-50-screenshot.webp]]
 
 #+begin_src emacs-lisp
 (defun blog-insert-post-link ()
@@ -142,13 +145,11 @@ Each spec is (KEY :or DEFAULT)."
       (user-error "No post selected"))))
 #+end_src
 
-#+CAPTION: 图一：编辑器截图，上面部分展示了插入的链接，下方输入栏 bk hl 命中了两个结果。
-[[https://media.southfox.me/attachment/Qmdx6QPVHb5xDuNZZsmtiWyVsBXkXyfSggfxs9C2JE1gVx?filename=2026-07-01_17-50-screenshot.webp]]
-
 ** 样板
 静态博客生成程序都会带个文章样板或者叫脚手架功能？可以预先定义一些模板，然后在生成时指定不同类型应用不同模板。
-不过这个功能我打算下放到 Emacs 里来做，这样灵活性更高一些。例如周刊系列模板在这里我就可以做到从数据中提出
-最后期数，然后实现创建时实现自动 +1 的效果。
+不过这个功能我打算下放到 Emacs 里来做，这样灵活性更高一些。例如周刊系列模板在这里我就可以
+做到从站点数据中提出最后期数，然后实现创建时实现自动 +1 的效果，再也不用劳心看上
+几遍去确定最后刊数是什么了。
 
 #+begin_src emacs-lisp
 (defun blog-create-fox-thinking ()
@@ -168,10 +169,47 @@ Each spec is (KEY :or DEFAULT)."
 #+end_src
 
 ** 仪表盘
-然后就是管理功能了，万幸这方面至少有前人的轮子，那就是 [[https://github.com/politza/tablist][tablist]] ，这个包提供
+然后就是管理功能了，这方面 Emacs 有自带的 [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Tabulated-List-Mode.html][Tabulated List Mode]] ，可以很方便的
+对列表进行展示和处理，列表处理语言（LISt Processing）名不虚传啊。
 
+#+begin_src emacs-lisp
+;; tabulated 接收 ((id [column-data column-data ...]) ...)
+;; 这样的数据
+(setq tabulated-list-entries
+      (mapcar
+       (lambda (post)
+         (list (plist-get post :filename)
+               (vconcat (mapcar (lambda (key) (plist-get post key))
+                                '(:title :tags :date :draft)))))
+       (blog--get-posts)))
+;; 定义各个列的列名、显示字符、是否排序、是否对齐
+(setq tabulated-list-format [("Title" 40 t nil)
+			     ("Tags"  20 t nil)
+			     ("Date"  20)
+			     ("Draft" 8 nil)])
+#+end_src
+
+不过 tabulated 原生支持多选（marks)和过滤（filters）等更高级的功能，
+万幸这里有有前人的轮子，就是 [[https://github.com/politza/tablist][tablist]] 包。还提供
+了 tablist-mark-items-regexp 这种命令，当光标放在对应列（放在标题就操作
+标题，放在标签就就操作标签上）时，可以调用此命令使用正则多选对应条目。最后使
+用 tablist-get-marked-items 函数就能获取对应选中的条目并对其作出对应操作
+了，例如：
+
+#+begin_src emacs-lisp
+(defun blog-tablist-add-tag-to-marked (tag)
+  "Add TAG to all marked blog posts."
+  (interactive "sAdd tag: ")
+  (let ((files (mapcar #'car (tablist-get-marked-items))))
+    (dolist (file files)
+      (let ((buf (find-buffer-visiting file)))
+        (with-current-buffer buf
+          (blog--file-add-tag-internal tag)
+          (save-buffer))))
+      (blog-refresh)))
+#+end_src
 
 #+CAPTION: 图二：编辑器页面截图，右半部分展示了一个列表，按照标题、标签、时间、草稿状态展示了博客的文章，展示了选中并添加了 foo 标签；左半部分展示了给选中文章添加了 foo 标签的 git 仓库改动效果
 [[https://media.southfox.me/media_attachments/files/116/713/745/337/745/931/original/b593197c3ee7f68b.png]]
 
-
+不用自己一个一个翻出对应文件查看有什么标签然后自己手修标签数据，还是挺畅快的。
