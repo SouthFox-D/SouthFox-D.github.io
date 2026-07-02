@@ -1,32 +1,31 @@
 #+title: 为静态博客「赋能」
 #+author: SouthFox
-#+date: 2026-07-01 14:24:06
-#+draft: t
-#+tags: 博客:Emacs
+#+date: 2026-07-02 09:24:06
+#+tags: 博客:Emacs:Lisp
 
-只要能接受得了仓库、Git、提交、修改、暂存区、工作区些奇怪的概念后，静态博客还是挺好的。如果
-还是那种自己写（或大改）静态博客生成器更奇怪的人，那肯定是知道其优势才会这么做的。弄点文本文
-件然后运行奇奇怪怪的程序就能输出个网站，最后丢到托管服务商那，整个过程在熟悉后甚至感到轻松
+只要能接受得了站点、Git、提交、修改、暂存区、工作区这些奇怪概念后，静态博客还是挺好的。如果
+还是那种自己写（或大改）静态博客生成器的「怪人」，那肯定更是知道其优势。弄点文本文
+件然后运行奇奇怪怪的程序就能输出个网站，最后丢到托管服务商那里，在熟悉后整个过程甚至感到轻松
 写意。
 
 ,(read-more)
 
-不过用久了静态博客，总会感到有些不便之处的：
+不过用久了静态博客，总会感到有些不便之处：
 
 - 首先就是管理面的缺失，该怎么管理一大堆文本文件呢？如果使用的标签中要进行迁移，例如
-  将「随笔」改成「随记」该怎么办？用一点 sed 「魔法」改名？但如果只是想一半改一半不改呢？一
-  些文章想换套标题另一些想换另一套，只能自己一篇篇文章打开然后改吗……
+  将「随笔」改成「随记」该怎么办？用一点 sed 「魔法」改名？但如果只是想一半改一半不改
+  呢？一些文章想换套标签，另一些想换另一套，只能自己一篇篇文章打开然后改吗……
   - 很多时候要纵览站点得构建站点后拉起 http 服务打开站点的归档页标签页，次数
     多了总感觉有点麻烦，这些文件都在本地了就不能直接分析吗？
   - 文章标题（很多时候还用来做 URI ）基本不太能跟文件名对上，例如
     对于 FoxThinking 这个周刊系列，我知道「FoxThinking #22: 逆炼摩尔定律」大概会讲什
     么内容，但面对 fox-thinking-22.org 我就一头雾水，最后还是不得不构建站点对着归档页
     翻找吗……
-- 很多时候出门在外闲来无事就想改改博客，但基本绑定 Git 和缺乏后台的静态博客很难在手机上修
-  改，安卓上安个 [[https://f-droid.org/en/packages/com.termux/][Termux]] 倒是能勉强解决这个问题。不过在移动设备虚拟键盘上
+- 很多时候出门在外闲来无事就想改改博客，但基本绑定 Git 和缺乏后台的静态博客很难在手机
+  上修改，安卓上安个 [[https://f-droid.org/en/packages/com.termux/][Termux]] 倒是能勉强解决这个问题。不过在移动设备虚拟键盘上
   进行 git pull, add, commit, push 这一套流程还是很折磨的。
 
-当然，这两个痛点也有前人轮子：
+当然，这两个痛点也有前人的轮子：
 
 - [[https://frontmatter.codes/][Headless CMS right in your code editor | Front Matter]] ，看起来像是通过扫描本地的文本文件造出了个仪表盘。
 - [[https://decapcms.org/][Decap CMS | Open-Source Content Management System]] ，看起来像是可以在 Hexo, Hugo 的项目
@@ -34,7 +33,7 @@
 
 可惜我现在无法装上这些圆形轮子，因为我现在用的是需要方形轮子的自造车
 （[[/2025/09/hello-haunt/][Hello Haunt, 又一次换了博客框架]]） ！不过好在我用着 Emacs ，想着
-做个简单的仪表盘应该不难，就来试试看吧。
+解决这些应该不难，就来试试看吧。
 
 ** 数据提取
 #+begin_src emacs-lisp
@@ -52,7 +51,8 @@
 
 首先是扫描博文目录中 org 文件，为了性能可以只读取文件前 4KB 的内
 容。然后用 org-mode 提供 org-collect-keywords 函数提
-取 org 文件的元数据（懒得管 md 文件原因就是感觉 front matter 提成结构化数据太累了）。
+取 org 文件的元数据（懒得管 md 文件就是感觉将 front matter 提取
+成结构化数据太累了）。
 马上就能写下这样的代码……
 
 #+begin_src emacs-lisp
@@ -93,7 +93,7 @@ Each spec is (KEY :or DEFAULT)."
 
 在这时就不得不感叹 cl 里的 loop 真是看起来非常没 lisp 味但用起来着实很爽的宏啊。这个宏虽
 然看着很扭曲，但其实要做的事很简单，就是将代码往声明式靠拢，需要什么属性就生成什么属性，
-以来降低修改的地方。例如：
+从而减少需要手动修改的地方。例如：
 
 #+begin_src emacs-lisp
 (blog--post-collect-keywords
@@ -148,8 +148,8 @@ Each spec is (KEY :or DEFAULT)."
 ** 样板
 静态博客生成程序都会带个文章样板或者叫脚手架功能？可以预先定义一些模板，然后在生成时指定不同类型应用不同模板。
 不过这个功能我打算下放到 Emacs 里来做，这样灵活性更高一些。例如周刊系列模板在这里我就可以
-做到从站点数据中提出最后期数，然后实现创建时实现自动 +1 的效果，再也不用劳心看上
-几遍去确定最后刊数是什么了。
+做到从站点数据中提出最后期数，然后实现创建时实现自动 +1 的效果，再也不用劳心多看上几遍去确
+定最后一刊的刊数。
 
 #+begin_src emacs-lisp
 (defun blog-create-fox-thinking ()
@@ -170,7 +170,7 @@ Each spec is (KEY :or DEFAULT)."
 
 ** 仪表盘
 然后就是管理功能了，这方面 Emacs 有自带的 [[https://www.gnu.org/software/emacs/manual/html_node/elisp/Tabulated-List-Mode.html][Tabulated List Mode]] ，可以很方便的
-对列表进行展示和处理，列表处理语言（LISt Processing）名不虚传啊。
+对列表进行展示和处理（列表处理语言 LISt Processing 名不虚传啊）。
 
 #+begin_src emacs-lisp
 ;; tabulated 接收 ((id [column-data column-data ...]) ...)
@@ -192,9 +192,8 @@ Each spec is (KEY :or DEFAULT)."
 不过 tabulated 并不支持多选（marks)和过滤（filters）等更高级的功能，
 万幸这里能用上前人造的轮子，就是 [[https://github.com/politza/tablist][tablist]] 包。还提供
 了 tablist-mark-items-regexp 这种命令，当光标放在对应列（放在标题就操作
-标题，放在标签就就操作标签上）时，可以调用此命令使用正则多选对应条目。最后使
-用 tablist-get-marked-items 函数就能获取对应选中的条目并对其作出对应操作
-了，例如：
+标题，放在标签就就操作标签），可以调用此命令使用正则多选对应条目。最后使
+用 tablist-get-marked-items 函数就能获取对应选中的条目并作出对应操作，例如：
 
 #+begin_src emacs-lisp
 (defun blog-tablist-add-tag-to-marked (tag)
@@ -215,15 +214,15 @@ Each spec is (KEY :or DEFAULT)."
 不用自己一个一个翻出对应文件查看有什么标签然后自己手修标签数据，还是挺畅快的。
 
 ** 随身畅写
-是的，这一段甚至就是在我的安卓手机上写的，如果真感兴趣
-，可以前往 [[https://git.southfox.me/southfox/pawmacs][配置仓库]] 看看。这里只讲下大概的思路，
+是的，这一段甚至就是在我的安卓手机上写的，这里只讲下大概的思
+路（如果真感兴趣，可以前往 [[https://git.southfox.me/southfox/pawmacs][配置仓库]] 看看。）。
 其实很简单，就是 Github, Gitea, Forgejo 这种代
 码 forge 服务都提供了直接读取和修改文件的 API 。只要
 有程序能处理 HTTP 请求和 JSON 数据，就能实现修改博
 客操作。
 理所当然浏览器可以，那么就有了 Decap CMS 这种
-项目;Emacs 原生也支持操作 HTTP 和 JSON 库，org-mode 方形轮子刚好也是我这博客需要的型号，那么就
-更是这么理所当然了。
+项目；Emacs 原生也支持操作 HTTP 和 JSON 库，org-mode 方形轮子刚好也是
+我这博客需要的型号，那么就更是这么理所当然了。
 
-不过当然，直接修改博文文件并不对应最后生成的产物，所以要完全发挥这套流程的潜力，还得为博客仓库配置对应
-的 CICD 流程。
+不过直接修改博文文件并不对应最后生成的产物，所以要完全发挥这套流程的潜力，还得
+为博客仓库配置对应的 CI/CD 流程。
