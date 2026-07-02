@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta property="og:title" content="FoxThinking #29: 我想知道我不知道 — 狐狸反走矣" /><meta property="og:site_name" content="狐狸反走矣" /><meta property="og:image" content="https://blog.southfox.me/favicon.png" /><meta name="fediverse:creator" content="SouthFox@foxsay.southfox.me" /><title>FoxThinking #29: 我想知道我不知道 — 狐狸反走矣</title><link rel="me" href="https://foxsay.southfox.me/@SouthFox" /><link rel="me" href="https://codeberg.org/southfox" /><script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'plain');
+      document.documentElement.setAttribute('data-font', localStorage.getItem('font') || 'plain');</script><link rel="stylesheet" href="/assets/css/main.css" /><script src="/assets/js/lips.min.js" defer="defer"></script><script type="text/x-scheme" defer="defer">(let ((theme (or (localStorage.getItem "theme") "386")) (font (or (localStorage.getItem "font") "zpix"))) (let ((theme-select (document.getElementById "theme-select")) (font-select (document.getElementById "font-select"))) (define (string=? a b) (== (a.cmp b) 0)) (define (loop-set select value) (define options select.options) (select.setAttribute "aria-hidden" "true") (let loop ((i 0)) (if (> i (- (length options) 1)) i (let ((option (get options i))) (if (string=? option.value value) (option.setAttribute "selected" #t) (loop (+ 1 i)))))) (select.removeAttribute "aria-hidden")) (loop-set theme-select theme) (loop-set font-select font) (define (set-theme theme-name) (localStorage.setItem "theme" theme-name) (document.documentElement.setAttribute "data-theme" theme-name)) (define (set-font font-name) (localStorage.setItem "font" font-name) (document.documentElement.setAttribute "data-font" font-name)) (theme-select.addEventListener "change" (lambda (event) (set-theme event.target.value))) (font-select.addEventListener "change" (lambda (event) (set-font event.target.value)))))</script><link rel="alternate" href="/feed.xml" title="狐狸反走矣" type="application/atom+xml" /><link rel="alternate" href="/rss2.xml" title="狐狸反走矣" type="application/rss+xml" /></head><body><header role="none"><nav class="nav" aria-label="站点导航"><a class="skip-link" href="#main-content">跳到主要内容</a><a href="/" class="brand" aria-label="狐狸反走矣 - 返回主页"><span>狐狸反走矣</span></a><input id="bmenub" type="checkbox" class="show" aria-label="打开菜单" /><label for="bmenub" class="burger pseudo button" aria-hidden="true">☰</label><div class="menu"><a href="/archives/">归档</a><a href="/tags/">标签</a><a href="/search/">搜索</a><a href="/about/">关于</a></div></nav></header><div class="container flex"><div class="content"><main data-pagefind-body="true" id="main-content" tabindex="-1"><div><h1 id="post-title">FoxThinking #29: 我想知道我不知道</h1><p class="post-meta"><span>by SouthFox</span><time data-pagefind-sort="date">2026-05-20</time></p><div><p>老生常谈的「知之为知之，不知为不知」观点，但在现在这种环境下确实变成更「紧缺」的美
+德了。在工作上为了饭碗先假意装懂承接下来是不得已的选择，可只是为了展示自信或是显
+得博学什么的对着没怎么接触过的事物念着大模型的输出就不太「礼貌」了。</p><span id="more"></span><p>我在想，「知道自己不知道」甚至是比「可判定」 <sup><a href="#1" id="1r" aria-label="脚注1r">1</a></sup> 更为恐怖的「权柄」，后者只不过是让
+人能轻松证出孪生素数猜想、哥德巴赫猜想、冰雹猜想之类的难题，可前者或许能让人变成最有智慧
+的人。</p><h2 id="阅读">阅读</h2><h3 id="The100bestnovelsofalltime|Fiction|TheGuardian"><a href="https://www.theguardian.com/books/ng-interactive/2026/may/12/the-100-best-novels-of-all-time" class="external_link">The 100 best novels of all time | Fiction | The Guardian</a></h3><p>《卫报》在今年评选的有史以来百大小说榜单。看到在讲这列表背后的评选背景的
+文章： <a href="https://www.theguardian.com/books/ng-interactive/2026/may/16/story-behind-100-best-novels-all-time" class="external_link">Who’s in, who’s out, and how many have you read? The story behind our 100 best novels</a> 发
+现评论总体呈现「多半好评」的态势，而且前排高赞评论很多在说这列表非常无趣和无意义。</p><p>顺势发现一五年时的榜单 <a href="https://www.theguardian.com/books/2015/aug/17/the-100-best-novels-written-in-english-the-full-list" class="external_link">The 100 best novels written in English: the full list | Books | The Guardian</a> ，一五年的榜单是老白男（纯客观描述，非贬义）花两年时间排出来的，只针对英语地区作家的作品。今年榜单则由评审团
+评选，并把范围扩大到了只要有以英语出版的小说，入选了更多的女作家、少数群体作家的作品。即使有这么大的不同，我也
+觉得做个对比也是件有趣的事，索性就写了个脚本 <sup><a href="#2" id="2r" aria-label="脚注2r">2</a></sup> 分析下。</p><p>前三十名的变动（写全就有点凑字数的嫌疑了）如下：</p><pre><code>001: Middlemarch                    (↑ 20)
+002: Beloved                        (New)
+003: Ulysses                        (↑ 43)
+004: To the Lighthouse              (New)
+005: In Search of Lost Time         (New)
+006: Anna Karenina                  (New)
+007: War and Peace                  (New)
+008: Jane Eyre                      (↑ 4)
+009: Pride and Prejudice            (New)
+010: Madame Bovary                  (New)
+011: The Great Gatsby               (↑ 40)
+012: Bleak House                    (New)
+013: Emma                           (↓ 6)
+014: Mrs Dalloway                   (↑ 36)
+015: Moby-Dick                      (↑ 2)
+016: Nineteen Eighty-Four           (↑ 54)
+017: One Hundred Years of Solitude  (New)
+018: Persuasion                     (New)
+019: The Life and Opinions of Tristram Shandy, Gentleman (↓ 13)
+020: Wuthering Heights              (↓ 7)
+021: The Portrait of a Lady         (New)
+022: Things Fall Apart              (New)
+023: Midnight's Children            (New)
+024: The Remains of the Day         (New)
+025: Lolita                         (↑ 50)
+026: Don Quixote                    (New)
+027: The Trial                      (New)
+028: The Brothers Karamazov         (New)
+029: Pale Fire                      (New)
+030: Frankenstein                   (↓ 22)</code></pre><p>在一五年榜单前三十名但在今年榜单没入选的作品：</p><pre><code>001: The Pilgrim’s Progress
+002: Robinson Crusoe
+003: Gulliver’s Travels
+004: Clarissa
+005: Tom Jones
+009: Nightmare Abbey
+010: The Narrative of Arthur Gordon Pym of Nantucket
+011: Sybil
+016: The Scarlet Letter
+018: Alice’s Adventures in Wonderland
+019: The Moonstone
+020: Little Women
+022: The Way We Live Now
+023: The Adventures of Huckleberry Finn
+024: Kidnapped
+025: Three Men in a Boat
+026: The Sign of Four
+027: The Picture of Dorian Gray
+028: New Grub Street
+030: The Red Badge of Courage</code></pre><p>还是能看出之间不同的，算是体现出了西方英语地区这十年对小说态度的变迁吗？</p><h3 id="TheChinesewhizkidsofSiliconValley-RestofWorld"><a href="https://restofworld.org/2026/chinese-ai-researchers-silicon-valley/" class="external_link">The Chinese whiz kids of Silicon Valley - Rest of World</a></h3><p>中国顶尖人才在硅谷 AI 浪潮中的故事，毕业于顶尖学府、精通数学、无休止的工作、对构建
+通用人工智能热忱……</p><p>我想说这些人才就像「木鸡」一样（这里我非褒非贬），我看到马上就有点想「反走矣」 <sup><a href="#3" id="3r" aria-label="脚注3r">3</a></sup> 。</p><h3 id="Mostpeopledon’tknowwhattheydon’tknow,butthinktheydo–TheConversation"><a href="https://theconversation.com/most-people-dont-know-what-they-dont-know-but-think-they-do-correcting-your-metaknowledge-can-make-you-a-better-teacher-and-learner-280905" class="external_link">Most people don’t know what they don’t know, but think they do – The Conversation</a></h3><p>这篇文章写的挺好，所以我就不「剑走偏锋」随意发散了。</p><p>人们为什么觉得自己知道？第一，人们会把环境中的信息当成理解：</p><blockquote><p>The information is out in the world but not actually in your head.
+With a bicycle or a zipper, all of the parts are visible to you,
+and you may confuse this transparency for an internal understanding
+of how they work. But until you go to use that knowledge by attempting
+to explain how they work, you may not recognize that you don’t understand how those parts interact.</p><p>信息存在于世界，但实际上并不在你的脑海中。自行车或拉链所有部件都能看到，你可能会把这种透明误认为是内部
+对它们工作原理的理解。但除非你尝试用这些知识解释它们的工作原理，否则你可能不
+会意识到自己并不理解这些部分是如何相互作用的。</p></blockquote><p>相关概念： <a href="https://en.wikipedia.org/wiki/Desirable_difficulty" class="external_link">Desirable difficulty - Wikipedia</a></p><p>第二，混淆不同层次：</p><blockquote><p>People can often describe how something works at a very high level.
+You know that the engine of a car makes the car go, and the brakes slow
+and stop the vehicle. But confidence in your high-level understanding of
+the car may bias you to think you also have a good grasp of the finer
+details, like how the engine pistons and brake pads work.</p><p>人们常常能在非常高层次上描述某样东西的工作原
+理。你知道汽车的发动机驱动汽车行驶，刹车减速并停车。但对汽车的高层理解的
+自信可能会让你误以为自己对发动机活塞和刹车片的工作原理也掌握得很好。</p></blockquote><p>这对计算机从业者来说体悟会更明显，因为这个行业高度依赖「黑盒抽象」运作。大体知道
+「打开网页浏览器输入网址打开网站」、「敲击键盘到屏幕上显示了所打字符」里头的链路的我
+也不敢说「懂」电脑。毕竟连计算机底层用的芯片，背后制造的技术也复杂的让人畏惧：</p><ul><li><a href="https://www.bilibili.com/video/BV1qXi4BbESM/" class="external_link">改变世界的机器以及其背后的工程 - 真理元素 - bilibili</a></li><li><a href="https://www.youtube.com/watch?v=MiUHjLxm3V0" class="external_link">The World's Most Important Machine - Veritasium - YouTube</a></li></ul><p>第三，<a href="https://zh.wikipedia.org/zh-hans/%E7%9F%A5%E8%AD%98%E7%9A%84%E8%A9%9B%E5%92%92" class="external_link">知识的诅咒 - 维基百科，自由的百科全书</a> ：</p><blockquote><p>people can be blind to the ways their knowledge shapes their own perception.
+In one study, researchers had participants tap out the tune to a popular song.
+On average, the tappers thought listeners would be able to identify the song
+about 50% of the time. But when listeners had to identify the tapped song,
+they actually could identify it only 2.5% of the time. The tappers didn’t realize
+how much their knowledge was making identifying the song seem easy to them.</p><p>人们可能对自己的知识如何塑造自身观念视而不见。在一项研究中，研究人员让参与者敲出一首流行歌曲的旋
+律。通常来说敲击者认为听众大约有 50% 能认出这首歌。但当听众必须识别敲击的歌曲时，实际上只有 2.5% 的概率
+能识别出来。敲击者们没意识到他们的认知让识别这首歌变得多么容易。</p></blockquote><h3 id="TheEmacsificationofSoftware—Quarrelsome"><a href="https://sockpuppet.org/blog/2026/05/12/emacsification/" class="external_link">The Emacsification of Software — Quarrelsome</a></h3><p>如果构建自己的应用和微调真变得更加简单和低耗，那么就会出现 Emacs 化——任何人都在不断微调自己
+的「.emacs.d」配置文件似的应用，里头放着十几个用不了几次就丢掉的功能组合函数。</p><p>然后这种情况继续下去，就会有框架出来试图统合这些需求形成或有人用或没人
+用的「发行版」，此时此刻……</p><h3 id="TheImpactofAI-GeneratedTextontheInternet"><a href="https://ai-on-the-internet.github.io/" class="external_link">The Impact of AI-Generated Text on the Internet</a></h3><p>论文通过互联网档案馆抓取并分析二二年至二五年的网页，然后验证「随着人工智能生成文本增多……」情景下的
+五个假设：</p><ul><li>……独特思想和多元观点正在缩小——(ρ = 0.47, p = 0.004)显著相关</li><li>……事实错误和幻觉频率越来越高——没有统计上的显著相关性</li><li>……线上文本变得越来越无味还带着虚伪的欢快——(ρ = 0.56, p = 0.0003)显著相关</li><li>……越来越多只提供答案却不包含外部来源链接的文章——没有统计上的显著相关性</li><li>……文章字数越来越长，信息密度变得越来越低——没有统计上的显著相关性</li><li>……独特的写作风格正在消失，剩下通用、统一的表达——没有统计上的显著相关性</li></ul><p>不过注意到论文 3.1 节数据获取章节中的一句话：「……and only English text is retained」，所以上述结论
+仅对应英语圈（不过就算分析所有语言，也会受到数据来自互联网档案馆这个状况限制）。</p><h3 id="Broodingidentifiedasamajordriverofbedtimeprocrastination,alongsidephysicalmarkersofstress"><a href="https://www.psypost.org/brooding-identified-as-a-major-driver-of-bedtime-procrastination-alongside-physical-markers-of-stress/" class="external_link">Brooding identified as a major driver of bedtime procrastination, alongside physical markers of stress</a></h3><p>研究了睡前拖延与生理（低心率变异性 <sup><a href="#4" id="4r" aria-label="脚注4r">4</a></sup>）和心理（较低的行为和念头调控能力）之间的相关关系，并
+且消极反刍式思考（brooding）倾向的报告显著预测睡前拖延。</p><p>所以，除了提醒要再次认识到某种症状出现要考虑生理和心理上的影响外，我更好奇有什么手段能应对消极
+反刍式思考？</p><h3 id="TheScienceisNotSettled:HowWeakEvidenceisFuelingaNationalPushtoBanSocialMediaforYouth|ElectronicFrontierFoundation"><a href="https://www.eff.org/deeplinks/2026/05/science-not-settled-how-weak-evidence-fueling-national-push-ban-social-media-youth" class="external_link">The Science is Not Settled: How Weak Evidence is Fueling a National Push to Ban Social Media for Youth | Electronic Frontier Foundation</a></h3><p>EFF 对青少年社交媒体禁令的看法，不愧是专业的，一出手就知道有没有哇。</p><h3 id="Searchengineresultsaretrulyterrible(Maurycy'sblog)"><a href="https://maurycyz.com/misc/search/" class="external_link">Search engine results are truly terrible (Maurycy's blog)</a></h3><p>对搜索引擎的测试，针对或大众或专业的搜索请求中，以前五个结果是否出现合理的结果为评判标准。评判结果是，大部分搜
+索引擎都很糟糕。</p><p>不过以前五个结果作为评判我是觉得蛮苛刻了，可能是我一直在搜小众领域的东西吧，我甚至觉得只要前三页
+有符合关键词的结果就可以了，我从来都没奢求过 I'm Feeling Lucky 。</p><p>要从搜索引擎几十上百的结果中筛选想要的信息，用生产力讨论场上的话来说，「搜商」还是
+挺重要的：会用搜索引擎的运算符 <sup><a href="#5" id="5r" aria-label="脚注5r">5</a></sup> 、能综合不同结果联合分析自己想要的结果、能判断出来网站是好
+网站 <sup><a href="#6" id="6r" aria-label="脚注6r">6</a></sup> 还是内容农场……</p><h3 id="女儿抑郁症后，一位父亲的反思-微信公众号"><a href="https://mp.weixin.qq.com/s/1-OsiGbpq_YnLd_ZdLqG8Q" class="external_link">女儿抑郁症后，一位父亲的反思 - 微信公众号</a></h3><p>体悟、总结、反思。</p><h3 id="《安史之乱：历史、宣传与神话》">《安史之乱：历史、宣传与神话》</h3><blockquote><p>宣传变成了神话，神话凝固成了历史。</p></blockquote><p>部头太大了！或者说我不该将其选为我随身携带的「通勤」阅读书。虽然没读
+完，但「尾声」部分 <sup><a href="#7" id="7r" aria-label="脚注7r">7</a></sup> ：</p><blockquote><p>李碧妍博士在一次对谈中曾经颇有意味地说道：“我们做政治史的时候，千万
+不要高估自己的能力，我们要明白，我们所面对的都是古代的那些一流的政治
+家、军事家，我们考虑的很多问题实际上他们早已考虑到了，所以千万不要低估
+古人的政治智慧，更不要随意褒贬，我们能做的也许只是尽自己的努力站在他们
+的立场，试图了解他们的所行所为，仅此而已。</p></blockquote><p>以及我们确实喜欢带有寓言性质的「故事」，王侯将相、成王败寇、昏庸皇帝听信了谗言、胆大包
+天的臣子吃拿卡要。但历史总是瞬息万变让人摸不着头脑，决策总会受到太多影响，可能
+连事件当事人里「知不知道他人知道」<sup><a href="#8" id="8r" aria-label="脚注8r">8</a></sup> 的情况都会影响状况走势。</p><h2 id="观影">观影</h2><h3 id="《巅峰对决》">《巅峰对决》</h3><p>我可能就是喜欢等热度过去了才慢悠悠回来找补吧，虽能够享受丰富产出却也错失在当时参与讨论去感受庆典欢腾感。不过还是
+等待并心怀希望的盼着二七年的第二季吧！</p><h2 id="Dynamicallytyped">Dynamically typed</h2><h3 id="Lisp:CommonLisp,Racket,Clojure,EmacsLisp-Hyperpolyglot"><a href="https://hyperpolyglot.org/lisp" class="external_link">Lisp: Common Lisp, Racket, Clojure, Emacs Lisp - Hyperpolyglot</a></h3><p>对于不同 Lisp 的速查 <del>作弊</del> 表（Cheat sheet) ，从这里也能看出 Lisp 生态的分
+裂……不同 Lisp 在语法和相关使用上就有很多不同。</p><h3 id="WikipediaFileExplorer—BrowseWikipediaonaWindowsXPdesktop"><a href="https://explorer.samismith.com/" class="external_link">Wikipedia File Explorer — Browse Wikipedia on a Windows XP desktop</a></h3><p>用电脑桌面的形式浏览维基百科，让我想到还有用抖音的形式浏览维基百科： <a href="https://wikitok.vercel.app/" class="external_link">WikiTok</a> ……</p><h2 id="Presentday,Presenttime">Present day, Present time</h2><p>第三十期！也是达到一个小小的目标了。</p><h2 id="脚注">脚注</h2><p><sup><a href="#1r" id="1" aria-label="脚注1">1</a></sup> <a href="https://en.wikipedia.org/wiki/Entscheidungsproblem" class="external_link">Entscheidungsproblem - Wikipedia</a></p><p><sup><a href="#2r" id="2" aria-label="脚注2">2</a></sup> 脚本地址： <a href="https://git.southfox.me/southfox/dusty-stage/src/commit/f018231e31651272a5653fd8e31b72789b090038/theguardian-book-list-compare.hy" class="external_link">theguardian-book-list-compare.hy</a></p><p><sup><a href="#3r" id="3" aria-label="脚注3">3</a></sup> 典出《庄子・达生》 <a href="https://ctext.org/zhuangzi/full-understanding-of-life/zhs#n2846" class="external_link">达生 | 中国哲学书电子化计划</a></p><blockquote><p>纪渻子为王养斗鸡。
+十日而问：“鸡已乎？”曰：“未也。方虚憍而恃气。”
+十日又问。曰：“未也。犹应向景。”
+十日又问。曰：“未也。犹疾视而盛气。”
+十日又问。曰：“几矣。鸡虽有鸣者，已无变矣，望之似木鸡矣，其德全矣，异鸡无敢应者，反走矣。”</p></blockquote><p>虽然没有什么人问但很明显本博客名就典出自此：表达了博主在面对这世上存在的「木鸡」时不得不「反走」的心情。</p><p><sup><a href="#4r" id="4" aria-label="脚注4">4</a></sup> Heart Rate Variability (HRV)，简单来说心脏跳动之间不是规律的，会有几十毫秒的差异（毕竟
+心脏是肉做的，里头没晶振），而这种不规律性越高表明压力越低，越能适应环境（是的，一般而言，心率变异度越高
+越好）；越低表明处于「战斗或逃跑」等高压力状态。</p><ul><li><a href="https://my.clevelandclinic.org/health/symptoms/21773-heart-rate-variability-hrv" class="external_link">Heart Rate Variability (HRV) | Cleveland Clinic</a></li><li><a href="https://www.bbc.com/zhongwen/articles/cy82d3j2yydo/simp" class="external_link">你的心率没有你想的那麽平稳，而它揭示了什么健康状况？ - BBC News 中文</a></li></ul><p><sup><a href="#5r" id="5" aria-label="脚注5">5</a></sup> <a href="https://support.google.com/websearch/answer/2466433?hl=zh-Hans" class="external_link">优化 Google 搜索范围 - Google 搜索帮助</a></p><p><sup><a href="#6r" id="6" aria-label="脚注6">6</a></sup> 比如我通过文章里发现的： <a href="https://www.explainthatstuff.com/" class="external_link">Explain that Stuff</a> ，没翻看几下我就觉得是个好网站了。</p><p><sup><a href="#7r" id="7" aria-label="脚注7">7</a></sup> 在已经知道结局的时候我更喜欢看看尾声怎么说的，然后逐渐从开头和结尾「夹逼」完整本书，书可不一定要线性地
+读。总之，摘录出自：</p><p>张诗坪. 安史之乱：历史、宣传与神话. 上海人民出版社. 2025, 第 599 页.</p><p><sup><a href="#8r" id="8" aria-label="脚注8">8</a></sup> <a href="https://zh.wikipedia.org/zh-cn/%E5%85%B1%E5%90%8C%E7%9F%A5%E8%AF%86" class="external_link">共同知识 - 维基百科，自由的百科全书</a></p></div></div></main><div class="pagination"><a class="btn" href="/2026/05/fox-thinking-28/">上一页</a><a class="btn" href="/">主页</a><a class="btn" href="/2026/06/fox-thinking-30/">下一页</a></div><div class="comment"><blockquote>如不想授权 Giscus 应用，也可以点击下方<strong>左上角数字</strong>直接跳转到 Github Discussions 进行评论。</blockquote><script src="https://giscus.app/client.js" data-repo="SouthFox-D/SouthFox-D.github.io" data-repo-id="MDEwOlJlcG9zaXRvcnkyMjg3NDM0MjQ=" data-category="博客评论" data-category-id="DIC_kwDODaJZAM4CA7bf" data-mapping="specific" data-term="/2026/05/fox-thinking-29/" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="top" data-theme="dark_dimmed" data-lang="zh-CN" data-loading="lazy" crossorigin="anonymous" async=""></script></div></div><div class="sidebar"><div class="widget"><h4>链接</h4><ul><li><a href="/zh-CN/">zh-CN</a><span> / </span><a href="/en/">en</a></li><li><a href="/friends/">友链</a></li><li><a href="https://www.travellings.cn/train.html">开往</a></li><li><a href="https://foreverblog.cn/go.html">虫洞</a></li><li><a href="/feed.xml">订阅 (Atom)</a></li><li><a href="/rss2.xml">订阅 (RSS)</a></li><li><a href="https://www.lisperati.com/logo.html"><img src="/assets/img/lisplogo_warning2_128.png" width="83" height="128" alt="Lisp logo warning" /></a></li><li><a href="https://www.fsf.org/appeal"><img src="/assets/img/6838639.png" width="180" height="45" alt="FSF appeal" /></a></li></ul><nav aria-label="IndieWeb WebRing"><a href="https://xn--sr8hvo.ws/previous" aria-label="上一个 IndieWeb 站点">←</a><a href="https://xn--sr8hvo.ws">IndieWeb Webring<span aria-hidden="true">💍</span></a><a href="https://xn--sr8hvo.ws/next" aria-label="下一个 IndieWeb 站点">→</a></nav><nav aria-label="Fediring"><a href="https://fediring.net/previous?host=blog.southfox.me" aria-label="上一个 FediRing 站点">←</a><a href="https://fediring.net">Fediring</a><a href="https://fediring.net/next?host=blog.southfox.me" aria-label="下一个 FediRing 站点">→</a></nav></div><div class="widget"><h4>设置</h4><div><label for="theme-select">主题：</label><select id="theme-select"><option value="plain">普通</option><option value="386">386</option><option value="frutiger-aero">Frutiger Aero</option></select></div><div><label for="font-select">字体：</label><select id="font-select"><option value="plain">普通</option><option value="zpix">像素</option></select></div></div><div class="widget"><h4>标签</h4><ul><li><a href="/tag/FoxThinking">FoxThinking</a></li></ul></div><div class="widget"><h4>反向链接</h4><ul><li><a href="/2026/06/fox-thinking-30/">FoxThinking #30: 被现实打败</a></li><li><a href="/2026/06/fox-thinking-31/">FoxThinking #31: 自我修订的预言</a></li></ul></div><div class="widget"><h4>目录</h4><ul><li><a href="#阅读">阅读</a></li><li><a href="#The100bestnovelsofalltime|Fiction|TheGuardian">The 100 best novels of all time | Fiction | The Guardian</a></li><li><a href="#TheChinesewhizkidsofSiliconValley-RestofWorld">The Chinese whiz kids of Silicon Valley - Rest of World</a></li><li><a href="#Mostpeopledon’tknowwhattheydon’tknow,butthinktheydo–TheConversation">Most people don’t know what they don’t know, but think they do – The Conversation</a></li><li><a href="#TheEmacsificationofSoftware—Quarrelsome">The Emacsification of Software — Quarrelsome</a></li><li><a href="#TheImpactofAI-GeneratedTextontheInternet">The Impact of AI-Generated Text on the Internet</a></li><li><a href="#Broodingidentifiedasamajordriverofbedtimeprocrastination,alongsidephysicalmarkersofstress">Brooding identified as a major driver of bedtime procrastination, alongside physical markers of stress</a></li><li><a href="#TheScienceisNotSettled:HowWeakEvidenceisFuelingaNationalPushtoBanSocialMediaforYouth|ElectronicFrontierFoundation">The Science is Not Settled: How Weak Evidence is Fueling a National Push to Ban Social Media for Youth | Electronic Frontier Foundation</a></li><li><a href="#Searchengineresultsaretrulyterrible(Maurycy'sblog)">Search engine results are truly terrible (Maurycy's blog)</a></li><li><a href="#女儿抑郁症后，一位父亲的反思-微信公众号">女儿抑郁症后，一位父亲的反思 - 微信公众号</a></li><li><a href="#《安史之乱：历史、宣传与神话》">《安史之乱：历史、宣传与神话》</a></li><li><a href="#观影">观影</a></li><li><a href="#《巅峰对决》">《巅峰对决》</a></li><li><a href="#Dynamicallytyped">Dynamically typed</a></li><li><a href="#Lisp:CommonLisp,Racket,Clojure,EmacsLisp-Hyperpolyglot">Lisp: Common Lisp, Racket, Clojure, Emacs Lisp - Hyperpolyglot</a></li><li><a href="#WikipediaFileExplorer—BrowseWikipediaonaWindowsXPdesktop">Wikipedia File Explorer — Browse Wikipedia on a Windows XP desktop</a></li><li><a href="#Presentday,Presenttime">Present day, Present time</a></li><li><a href="#脚注">脚注</a></li></ul></div></div></div><footer class="footer"><div class="copyright"><div><p>© SouthFox 2026 ,Font by <a href="https://github.com/SolidZORO/zpix-pixel-font">Zpix</a></p></div><div><p>Power by <a href="https://dthompson.us/projects/haunt.html">haunt</a> ,source can be found <a href="https://git.southfox.me/southfox/blog">here</a></p></div></div></footer></body></html>
