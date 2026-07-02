@@ -189,8 +189,8 @@ Each spec is (KEY :or DEFAULT)."
 			     ("Draft" 8 nil)])
 #+end_src
 
-不过 tabulated 原生支持多选（marks)和过滤（filters）等更高级的功能，
-万幸这里有有前人的轮子，就是 [[https://github.com/politza/tablist][tablist]] 包。还提供
+不过 tabulated 并不支持多选（marks)和过滤（filters）等更高级的功能，
+万幸这里能用上前人造的轮子，就是 [[https://github.com/politza/tablist][tablist]] 包。还提供
 了 tablist-mark-items-regexp 这种命令，当光标放在对应列（放在标题就操作
 标题，放在标签就就操作标签上）时，可以调用此命令使用正则多选对应条目。最后使
 用 tablist-get-marked-items 函数就能获取对应选中的条目并对其作出对应操作
@@ -213,3 +213,17 @@ Each spec is (KEY :or DEFAULT)."
 [[https://media.southfox.me/media_attachments/files/116/713/745/337/745/931/original/b593197c3ee7f68b.png]]
 
 不用自己一个一个翻出对应文件查看有什么标签然后自己手修标签数据，还是挺畅快的。
+
+** 随身畅写
+是的，这一段甚至就是在我的安卓手机上写的，如果真感兴趣
+，可以前往 [[https://git.southfox.me/southfox/pawmacs][配置仓库]] 看看。这里只讲下大概的思路，
+其实很简单，就是 Github, Gitea, Forgejo 这种代
+码 forge 服务都提供了直接读取和修改文件的 API 。只要
+有程序能处理 HTTP 请求和 JSON 数据，就能实现修改博
+客操作。
+理所当然浏览器可以，那么就有了 Decap CMS 这种
+项目;Emacs 原生也支持操作 HTTP 和 JSON 库，org-mode 方形轮子刚好也是我这博客需要的型号，那么就
+更是这么理所当然了。
+
+不过当然，直接修改博文文件并不对应最后生成的产物，所以要完全发挥这套流程的潜力，还得为博客仓库配置对应
+的 CICD 流程。
