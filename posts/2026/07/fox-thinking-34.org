@@ -1,7 +1,139 @@
-#+title: FoxThinking #34: 如何提升免疫力？
+#+title: FoxThinking #34: 提升免疫力？
 #+author: SouthFox
 #+date: 2026-07-05 01:55:26
 #+draft: t
 #+tags: FoxThinking
 
-如果都能无病无灾的话……
+健康是对病痛状态的否定，在病痛中才会想起健康的好，所以有没有办法能更好的抵抗疾病呢？例
+如……提升免疫力？
+
+,(read-more)
+
+那么来看看提升免疫力的状态是怎么样的吧：首先免疫系统会大量生产相关免疫细胞，这需要大量能量，这会减弱
+消化活动，因为消化活动本身需要大量能量；其次细胞会大量分泌相关因子，导致水肿或者炎症；然后为了
+
+* 阅读
+*** [[https://aeon.co/essays/it-doesnt-have-to-be-us-versus-nature][Zhuangzi and the case against meritocracy | Aeon Essays]]
+#+begin_quote
+Deeply embedded in the ideals of justice and fairness is the idea that we ought
+to get what we deserve. Deservingness is thus an intuitively compelling concept,
+because we want the world to be intelligible. If the good suffer and the wicked
+flourish, then the world not only becomes a painful place to live in, it also
+becomes a place of moral chaos.
+
+深植于正义与公平理想之中的，是这样一种观念：我们应当得到自己应得之物。「应得」是一个在直觉上极具说服
+力的概念，因为我们希望世界是可理解的。如果好人受苦、恶人得势，那么世界不仅会成为一个痛苦的生活场所，也
+会成为一个道德混乱之地。
+#+end_quote
+
+天堂与地狱、善有善报恶有恶报，这些都是深深根植于大多数人意识中的看法。
+
+[[https://en.wikipedia.org/wiki/Just-world_fallacy][Just-world fallacy - Wikipedia]]
+
+#+begin_quote
+Confucian political philosophy begins from a premise that appears strikingly
+egalitarian: the equality of opportunity. For Confucius and his successors,
+human beings are more or less equal in talent at birth. Everyone possesses
+the capacity for moral cultivation. Education, self-discipline and ethical
+refinement remain open paths that anyone can undertake, no matter where
+they’re from. This shared starting point anchors Confucian humanism: you
+can make it if you try.
+
+儒家政治哲学从一个看似惊人的平等主义前提出发：机会平等。对孔子及其后继者而言，人在天赋上或多或少
+是平等的。每个人都具有道德修养的潜能。学习、自律与伦理修养是对无论其出身如何、人人开放的道路，这
+一共同起点奠定了儒家人文主义：只要你努力，就能成功。
+#+end_quote
+
+#+begin_quote
+The Confucian philosopher Mencius (Mengzi) articulated this idea more systematically,
+which was later called ‘natural equality’: all human beings share the same basic moral
+capacity. Everyone possesses the potential for goodness. Since everyone has the same
+equality of opportunity, unequal outcomes and differences in social position follow
+differences in effort, discipline and development.
+
+儒家哲学家孟子更系统地阐述了后来被称之为「自然平等」的观念：人人都共享相同的基本道德能
+力。每个人都有成为善人的潜能。既然人人机会平等，那么不平等的结果与社会地位差异便源于努
+力、纪律与发展的差异。
+
+‘There are some sprouts that fail to flower, just as surely as there are some flowers
+that fail to bear fruit!’
+「苗之不秀者有矣夫，秀而不实者有矣夫！」（P.S. 中译英之后识别是什么中还是挺有趣的）
+#+end_quote
+
+另一方面，这也带来了 meritocracy （优绩主义/精英政治），如果你能更努力，你就能更能成
+功，以及，如果你不成功，那么肯定是你没有努力。这种在社会上弥漫的「永恒的功绩场」比我之前提到
+的[[/2026/06/fox-thinking-31/#《在轮下》][「永恒的考场」]]更加深入也更加隐蔽。幸好，庄子站了出来，用他那讥
+讽的语言回击 [fn:1] 以及点出：
+
+#+begin_quote
+Through such theatrics Zhuangzi developed a systematic critique of
+Confucianism’s moral justification of inequality, and the most essential
+part of that critique is his insistence that moral striving alienates us
+from life. For Zhuangzi, the drive to become xian invites a person to live
+for an abstraction, whether it be for reputation, moral purity or a sagely
+ideal of pursuing ‘the good’. This leads one to treat their own life as raw
+material for that abstract identity. One’s material body becomes an instrument
+for something immaterial.
+
+通过这些戏剧性的笔法，庄子发展出对儒家以道德不平等辩护的系统性批判；而这一批判最核心的部分
+在于：他坚持认为道德追求使我们疏离于生命。对庄子而言，成为贤者的冲动诱使人为一种抽象而活——无论
+是名誉、道德纯洁，还是追求“善”的圣人理想。这导致人将自己的生命当作那种抽象身份的原材。人的
+物质身体变成了某种非物质事物的工具。
+#+end_quote
+
+#+begin_quote
+A system that ranks people by virtue necessarily creates incentives for self-exploitation.
+Once virtue becomes something that can be measured, ranked and exchanged for authority,
+it turns human life into a resource to be spent. In other words, Confucian xian turns
+cultivation into moral capital, and moral capital demands extraction from the self.
+Indeed, one can see this kind of self-extraction in our modern neoliberal ‘hustle culture’
+even more clearly, where it is trendy to ‘rise and grind’ and forego basic necessities.
+
+一个以美德为人排序的体系必然会激励自我剥削。一旦美德成为可以衡量、排名并交换权威的东西，它就将人类生命变成了
+可花费的资源。换句话说，儒家将贤能转化为道德资本，而道德资本要求从自我中榨取。事实上在我们现代新自由主义的
+「奔波文化」中，这种自我剥削现象更为明显，「奋起奋斗」、放弃基本生活必需品成为潮流。
+#+end_quote
+
+不「养生」就算了，如果还追求「迫生」，那更是可悲。标榜贤圣，激励人们向这「景象」追
+逐、叫人放弃自我是「不道德」的，因为这违背了[[/2026/06/fox-thinking-33/#实践命令][不要将人当成手段]]的实践命令。
+
+我相信儒家这种道德美学「本意是好的，只是下面执行坏了」。这种「景象」初看很理想很有诱惑力，但在践行中很容易为了搞
+凸显而层层加码整得极端，最后「假大空」到让旁人心生疑惑。说到这，我之前还买了本《儒林外史》，感觉是时
+候来看看了。
+
+*** [[https://nonzerosum.games/effortocracy.html][EFFORTOCRACY | NON-ZERO-SUM GAMES]]
+#+begin_quote
+"In the middle ages, in England, when you met a very poor person, that person
+would be described as an "unfortunate"—literally someone who had not been blessed
+by fortune, an unfortunate. Nowadays, particularly in the United States,
+if you meet someone at the bottom of society, they may unkindly be described as
+a "loser"."—Alain de Botton
+
+“在中世纪的英格兰，当你遇到一个非常贫穷的人时，那个人会被称为'不幸者'——就是单纯指没有被幸运眷顾的
+不幸之人。如今，尤其是在美国，如果你遇到社会底层的人，他们可能会被不友好地称为「失败者」。——阿兰·德波顿
+#+end_quote
+
+non-zero-sum games 之前也写了篇关于优绩主义的文章。
+
+奖赏在道德里「公平公正」也是绕不开的讨论点，对于努力与回报，大体分为两种导向 [fn:2] ：
+
+- 功利主义：也即结果导向，奖励产出更多成果的人也有助于激励他产出更多结果，这在当前世界可能是最大众
+  最「默认」的观点？不过功利主义的问题是：以什么维度衡量结果？例如以儒家惯例的讨论场中，如果统治者
+  不以美德作为结果而是以自身愉悦作为结果，那么只会「产出」更多谄媚小人而压制君子。
+- 回报主义：也即努力导向，既是文章中提到的 EFFORTOCRACY ，如果你越努力就越应该得到奖赏。这种主义
+  指导下能够更能指导那些从爬出谷底的人——从谷底爬到水平面和从水平面爬到山顶的高度是一样的。但这种主
+  义的问题就是，会让较为有能力的人另谋高就。例如在讨论场  [fn:3] 上反复拿出来说的：欧洲因为更
+  加「敌视」有能力的人和重视公平，对高收入者征以重税，有能力的人都跑到美国去了，所以也导致现在欧洲的
+  经济一直低迷。
+
+*** [[https://guix.gnu.org/en/blog/2026/one-year-with-codeberg/][One year with Codeberg — 2026 — Blog — GNU Guix]]
+
+* Footnotes
+[fn:3] 当我说「讨论场」的时候，其实就是「网上说」、「大家说」、「其他人说」：我懒地查证但不过先拿出来就这么
+说了做法的一种更文绉绉的说法。
+
+[fn:2] [美]雅克·蒂落. 伦理学与生活（第11版）. 四川人民出版社. 2020, 第 127 页.
+
+[fn:1] 详情可参阅：
+- [[https://ctext.org/zhuangzi/cutting-open-satchels/zh][《胠篋》 - 庄子 | 中国哲学书电子化计划]]
+- [[https://ctext.org/zhuangzi/robber-zhi/zhs][《盗跖》 - 庄子 | 中国哲学书电子化计划]]
