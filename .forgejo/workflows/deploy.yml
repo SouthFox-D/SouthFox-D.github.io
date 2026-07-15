@@ -27,5 +27,6 @@ jobs:
     - name: Deploy
       env:
         BLOG_DEPLOY_TOKEN: ${{ secrets.BLOG_DEPLOY_TOKEN }}
+        BLOG_AP_TOKEN: ${{ secrets.BLOG_AP_TOKEN }}
       run: |
         hy utils.hy -d ci
