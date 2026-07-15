@@ -10,6 +10,7 @@
   #:use-module ((sxml xpath) #:select (sxpath))
   #:use-module (ice-9 string-fun)
   #:use-module (web uri)
+  #:use-module (rnrs bytevectors)
   #:export (hexo-post-slug
             hole/uri-encode
             wrap-builders
@@ -20,6 +21,7 @@
             filter-lang
             inject-expire-warning-section
             reverse-chronological-posts
+            post-public-id
             ))
 
 (define ascii-alnum-chars
@@ -50,6 +52,22 @@
                                       ".md" "/")
                                      ".org" "/")))
                       "/")))))
+
+
+(define (fnv-1a str)
+  (let ((bytes (string->utf8 str)))
+    (let loop ((i 0) (h 14695981039346656037))
+      (if (= i (bytevector-length bytes))
+          (number->string h 16)
+          (loop (+ i 1)
+                (logand (* (logxor h (bytevector-u8-ref bytes i))
+                           1099511628211)
+                        #xffffffffffffffff))))))
+
+(define (post-public-id site post)
+  (fnv-1a (format "~a+~a"
+                  (site-domain site)
+                  (site-post-slug site post))))
 
 (define (post-set post metadata p-sxml)
   (make-post (post-file-name post)
@@ -164,3 +182,4 @@
       (flat-map (lambda (builder)
                   (builder final-site final-posts))
                 builders))))
+

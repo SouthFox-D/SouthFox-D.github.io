@@ -205,11 +205,17 @@
            (meta (@ (name "viewport")
                     (content "width=device-width, initial-scale=1")))
            ,(if post
-                `(meta (@ (property "og:title")
-                          (content
-                           ,(string-append (post-ref post 'title)
-                                           " — "
-                                           (site-title site)))))
+                `((meta (@ (property "og:title")
+                           (content
+                            ,(string-append (post-ref post 'title)
+                                            " — "
+                                            (site-title site)))))
+                  (link (@ (href ,(string-append
+                                   "https://southfox.gay/tail/"
+                                   (post-public-id site post)))
+                           (rel "alternate")
+                           (title "ActivityPub (JSON)")
+                           (type "application/activity+json"))))
                 '())
            ,(if (and post (equal? (post-ref post 'feed-only) "t"))
                 `(meta (@ (name "robots") (content "noindex")))
