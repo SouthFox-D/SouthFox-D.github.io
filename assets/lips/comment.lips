@@ -1,0 +1,450 @@
+(define procedure? function?)
+(define list->vector list->array)
+(define vector->list array->list)
+(define string-append concat)
+
+(define (string=? a b)
+  (== (a.cmp b) 0))
+
+(define (symbol->string s)
+  (let ((name s.__name__))
+    (if name (name.toString) name)))
+
+(define (%else-literal? obj)
+  (and (symbol? obj)
+       (eq? obj 'else)))
+
+(define-macro (cond . list)
+  (if (pair? list)
+      (let* ((item (car list))
+             (value (gensym))
+             (first (car item))
+             (fn (and (not (null? (cdr item))) (eq? (cadr item) '=>)))
+             (expression (if fn
+                             (caddr item)
+                             (cdr item)))
+             (rest (cdr list)))
+        (if (%else-literal? first)
+            (quasiquote (begin
+                          ,@expression))
+            (quasiquote (let ((,value ,first))
+                          (if ,value
+                              ,(if fn
+                                   (quasiquote (,expression ,value))
+                                   (quasiquote (begin
+                                                 ,@expression)))
+                              ,(if (not (null? rest))
+                                   (quasiquote (cond ,@rest))))))))
+      '()))
+
+(define (make-element elem)
+  (document.createElement elem))
+
+(define (make-text-node text)
+  (document.createTextNode text))
+
+(define (element-reset! elem)
+  (if elem (set! elem.innerHTML "")))
+
+(define (element-value elem)
+  (if elem elem.value ""))
+
+(define (element-replace-with! elem new-elem)
+  (if (and elem elem.replaceWith)
+      (elem.replaceWith new-elem)))
+
+(define (get-element-by-id id)
+  (document.getElementById id))
+
+(define (add-event-listener! elem type proc)
+  (if elem (elem.addEventListener type proc)))
+
+(define (append-child! elem child)
+  (if (and elem child) (elem.appendChild child)))
+
+(define (set-attribute! elem attr val)
+  (if elem (elem.setAttribute (symbol->string attr) val)))
+
+(define set-html-supported?
+  (in "setHTML" Element.prototype))
+
+(define (element-set-html! elem html-string)
+  (cond
+   (set-html-supported?
+    (elem.setHTML html-string))
+   (else
+    (set! elem.textContent html-string))))
+
+(define (sxml->dom expr)
+  (cond
+    ((string? expr) (make-text-node expr))
+    ((pair? expr)
+     (if (eq? (car expr) 'raw-html)
+         (let ((span (make-element "span")))
+           (element-set-html! span (cadr expr))
+           span)
+         (let* ((have-attrs (and (not (null? (cdr expr)))
+                                 (pair? (cadr expr))
+                                 (eq? (caadr expr) '@)))
+                (attrs (if have-attrs (cdadr expr) '()))
+                (rest (if have-attrs (cddr expr) (cdr expr)))
+                (symbol (car expr))
+                (name (symbol->string symbol))
+                (elem (make-element name)))
+           (for-each (lambda (attr val)
+                       (if (procedure? val)
+                           (add-event-listener! elem attr val)
+                           (set-attribute! elem attr val)))
+                     (map car attrs)
+                     (map cadr attrs))
+           (for-each (lambda (child)
+                       (append-child! elem (sxml->dom child)))
+                     rest)
+           elem)))
+    (else (make-text-node (format "~a" expr)))))
+
+(define-macro (define-syntax name expr . rest)
+  "(define-syntax name expression [__doc__])
+
+   Defines a new hygienic macro using syntax-rules with optional documentation."
+  (let ((expr-name (gensym "expr-name")))
+    `(define ,name
+        (let ((,expr-name ,expr))
+          ,expr-name)
+        ,@rest)))
+
+(define-syntax ->
+  (syntax-rules (@)
+    ((_ x) x)
+    ((_ x (form @ more ...)) (apply form x more ...))
+    ((_ x (form more ...)) (form x more ...))
+    ((_ x form) (form x))
+    ((_ x form more ...) (-> (-> x form) more ...))))
+
+(define *backend-url* "https://southfox.gay/api")
+
+(define (get-canonical-url)
+  (let ((link (document.querySelector "link[rel='canonical']")))
+    (if (and link (string? link.href) (not (string=? link.href "")))
+        link.href
+        #f)))
+
+(define (get-webmention-endpoint)
+  (let ((link (document.querySelector "link[rel='webmention']")))
+    (if (and link (string? link.href) (not (string=? link.href "")))
+        link.href
+        #f)))
+
+(define (get-ap-alternate)
+  (let ((link (document.querySelector "link[type='application/activity+json']")))
+    (if (and link (string? link.href) (not (string=? link.href "")))
+        link.href
+        #f)))
+
+(define (send-webmention source-url target-url endpoint)
+  (let ((params (new URLSearchParams))
+        (options (Object)))
+    (params.append "source" source-url)
+    (params.append "target" target-url)
+
+    (set! options.method "POST")
+    (set! options.body params)
+    (fetch endpoint options)))
+
+(define (build-webmention-send-box slug)
+  (let ((endpoint (get-webmention-endpoint))
+        (canonical (get-canonical-url))
+        (input-id "webmention-source-input"))
+    `(div (@ (id "webmention-send-box"))
+      (div (@ (class "webmention-send-title"))
+           "🔗 发送 Webmention (引用本页)")
+      (div (@ (class "webmention-send-form"))
+           (input (@ (id ,input-id)
+                     (type "url")
+                     (class "input-text")
+                     (placeholder "输入引用本页文章 URL (https://...)")))
+           (button (@ (class "btn btn-primary")
+                      (click ,(lambda (e)
+                                (let* ((inp (get-element-by-id input-id))
+                                       (source-url (if inp (element-value inp) "")))
+                                  (if (or (not (string? source-url)) (string=? source-url ""))
+                                      (alert "请输入引用文章 URL")
+                                      (let ((res (send-webmention source-url canonical endpoint)))
+                                        (if (== res.status 202)
+                                            (alert "Webmention 已发送！")
+                                            (alert "Webmention 发送失败！"))
+                                        (element-replace-with!
+                                         (get-element-by-id "webmention-send-box")
+                                         (sxml->dom (build-webmention-send-box slug)))))))))
+                   "发送")))))
+
+(define (render-webmention-send-box slug)
+  (let ((endpoint (get-webmention-endpoint))
+        (canonical (get-canonical-url)))
+    (if (and endpoint canonical)
+        (build-webmention-send-box slug)
+        "")))
+
+(define (comment-api-request endpoint options)
+  (let* ((full-url (string-append *backend-url* endpoint))
+         (headers (Object))
+         (final-options (Object.assign (Object) options)))
+
+    (set! headers.content-type "application/json")
+    (set! headers.accept "application/json")
+    (set! final-options.headers headers)
+
+    (try
+     (let ((res (fetch full-url final-options)))
+       (if res.ok
+           (res.json)
+           (let ((err-obj (Object)))
+             (set! err-obj.error #t)
+             (set! err-obj.status res.status)
+             err-obj)))
+     (catch (e)
+       (console.error "API Error:" e)
+       (let ((err-obj (Object)))
+         (set! err-obj.error #t)
+         (set! err-obj.status 500)
+         err-obj)))))
+
+(define (fetch-comments slug)
+  (let ((get-options (Object)))
+    (set! get-options.method "GET")
+    (comment-api-request
+     (format "/site/resource/~a/interactions" slug)
+     get-options)))
+
+(define (post-comment slug content author-name author-site . rest)
+  (let ((parent-id (if (null? rest) #f (car rest)))
+        (post-options (Object))
+        (payload (Object))
+        (canonical-url (get-canonical-url)))
+    (set! payload.slug slug)
+    (set! payload.content content)
+    (set! payload.target_url canonical-url)
+
+    (if (and (string? author-name) (not (string=? "" author-name)))
+        (set! payload.author_name author-name))
+    (if (and (string? author-site) (not (string=? "" author-site)))
+        (set! payload.author_site author-site))
+
+    (if parent-id
+        (set! payload.parent_id (parseInt parent-id 10)))
+
+    (set! post-options.method "POST")
+    (set! post-options.body (JSON.stringify payload))
+    (comment-api-request
+     (format "/site/resource/~a/comment" slug)
+     post-options)))
+
+(define *active-reply-id* #f)
+
+(define (handle-submit slug name-id site-id content-id parent-id)
+  (let* ((name-input (get-element-by-id name-id))
+         (site-input (get-element-by-id site-id))
+         (content-input (get-element-by-id content-id))
+         (main-name-input (get-element-by-id "comment-author-name"))
+         (main-site-input (get-element-by-id "comment-author-site"))
+         (raw-name (if name-input (element-value name-input) ""))
+         (author-name (if (and (string? raw-name) (string=? "" raw-name) main-name-input)
+                          (element-value main-name-input)
+                          raw-name))
+         (raw-site (if site-input (element-value site-input) ""))
+         (author-site (if (and (string? raw-site) (string=? "" raw-site) main-site-input)
+                          (element-value main-site-input)
+                          raw-site))
+         (content (if content-input (element-value content-input) "")))
+    (if (or (not (string? content)) (string=? "" content))
+        (alert "请输入内容")
+        (begin
+          (post-comment slug content author-name author-site parent-id)
+          (set! *active-reply-id* #f)
+          (element-replace-with!
+           (get-element-by-id "reply-banner")
+           (sxml->dom `(div (@ (id "reply-banner")))))
+          (let ((res (fetch-comments slug)))
+            (render-app-container! slug res)
+            (alert "已发送评论")
+            (set! content-input.value ""))))))
+
+(define (update-reply-banner! target-author)
+  (let ((banner (get-element-by-id "reply-banner")))
+    (if banner
+        (if *active-reply-id*
+            (element-replace-with!
+             banner
+             (sxml->dom
+              `(div (@ (id "reply-banner"))
+                (span ,(string-append "回复 @" target-author " ")
+                      (button (@ (click
+                                  ,(lambda (e)
+                                     (set! *active-reply-id* #f)
+                                     (update-reply-banner! ""))))
+                              "取消")))))
+            (element-replace-with! banner (sxml->dom `(div (@ (id "reply-banner")))))))))
+
+(define (focus-main-input!)
+  (let ((textarea (get-element-by-id "comment-content")))
+    (if textarea
+        (begin
+          (textarea.scrollIntoView '(alignToTop: #f behavior: "smooth"))
+          (textarea.focus)))))
+
+(define (build-comment-form slug)
+  `(form (@ (class "comment-form")
+            (submit ,(lambda (e)
+                       (e.preventDefault)
+                       (handle-submit slug 
+                                      "comment-author-name" 
+                                      "comment-author-site" 
+                                      "comment-content" 
+                                      *active-reply-id*))))
+    (div (@ (id "reply-banner")))
+    (div (@ (class "form-meta"))
+         (input (@ (id "comment-author-name") (placeholder "昵称(选填)")))
+         (input (@ (id "comment-author-site") (placeholder "网址(选填)")))
+         (button (@ (type "submit")) "提交"))
+    (textarea (@ (id "comment-content") 
+                 (placeholder "写下评论...（支持 orgmode）") 
+                 (required "true")))))
+
+(define (normalize-url url)
+  (if (and (string? url) (not (string=? url "")))
+      (if (or (url.startsWith "http://")
+              (url.startsWith "https://"))
+          url
+          (string-append "https://" url))
+      #f))
+
+(define (render-comment item slug)
+  (let* ((comment-id item.id)
+         (author (if (and item.author (string? item.author.name)) item.author.name "匿名"))
+         (site (normalize-url item.author.site))
+         (created-at (if (string? item.created_at) item.created_at ""))
+         (content (if (string? item.content) item.content ""))
+         (source (if (string? item.source) item.source "web"))
+         (children (or item.children '()))
+         (can-reply? (not (string=? source "activitypub"))))
+
+    `(div (@ (class "comment-item") (id ,(string-append "comment-" (format "~a" comment-id))))
+      (div (@ (class "comment-header"))
+           (strong ,(if (and site (string? site) (not (string=? site "")))
+                        `(a (@ (href ,site) (target "_blank") (rel "noopener noreferrer")) ,author)
+                        author))
+           " • "
+           (span (@ (class "comment-date")) ,created-at)
+           ,(if can-reply?
+                `(button (@ (click
+                             ,(lambda (e)
+                                (console.log *active-reply-id*)
+                                (if (== (or *active-reply-id* -1)
+                                        (string->number comment-id))
+                                    (begin
+                                      (set! *active-reply-id* #f)
+                                      (update-reply-banner! ""))
+                                    (begin
+                                      (set! *active-reply-id* (string->number comment-id))
+                                      (update-reply-banner! author)
+                                      (focus-main-input!))))))
+                  "回复")
+                ""))
+      (div (@ (class "comment-body"))
+           (raw-html ,content))
+      ,(if (or (null? children) (== children.length 0))
+           ""
+           `(div (@ (class "comment-children"))
+             ,@(map (lambda (child) (render-comment child slug))
+                    (vector->list children)))))))
+
+(define (render-user-badge user-item)
+  (let* ((author (if (and user-item.author (string? user-item.author.name)) user-item.author.name ""))
+         (site (if (and user-item.author (string? user-item.author.site)) user-item.author.site #f)))
+    `(li ,(if (and site (string? site) (not (string=? site "")))
+                `(a (@ (href ,site) (target "_blank") (rel "noopener noreferrer")) ,author)
+                author))))
+
+(define (render-webmention item)
+  (let* ((author (if (and item.author (string? item.author.name)) item.author.name "Unknown"))
+         (site (if (and item.author (string? item.author.url)) item.author.url #f))
+         (created-at (if (string? item.created_at) item.created_at "")))
+    `(div (@ (class "webmention-item"))
+       (div (@ (class "webmention-header"))
+            (strong ,(if site
+                         `(a (@ (href ,site) (target "_blank") (rel "noopener noreferrer")) ,author)
+                         author))
+            " 提及了本文 "
+            (span (@ (class "webmention-date")) ,created-at)))))
+
+(define (render-interactions-section response-data)
+  (let* ((likes (if (and response-data response-data.likes) (vector->list response-data.likes) '()))
+         (reposts (if (and response-data response-data.reposts) (vector->list response-data.reposts) '()))
+         (webmentions (if (and response-data response-data.webmentions) (vector->list response-data.webmentions) '())))
+    `(div (@ (class "interactions-section"))
+      ,(if (null? likes)
+            ""
+            `(ul (@ (class "likes-list"))
+              (strong (@ (class "likes-label")) "❤️ Likes: ")
+              ,@(map render-user-badge likes)))
+      ,(if (null? reposts)
+            ""
+            `(ul (@ (class "reposts-list"))
+              (strong (@ (class "reposts-label")) "🔁 Reposts: ")
+              ,@(map render-user-badge reposts)))
+      ,(if (null? webmentions)
+            ""
+            `(ul (@ (class "webmentions-list"))
+              (strong (@ (class "webmentions-label")) "🔗 Webmentions: ")
+              ,@(map render-webmention webmentions))))))
+
+(define (render-app-container! slug res)
+  (element-replace-with!
+   (get-element-by-id "comment-list")
+   (sxml->dom
+    `(div (@ (id "comment-list"))
+      ,(if (or (null? res)
+               (null? res.comments)
+               (== res.comments.length 0))
+           '(p (@ (class "no-comments")) "暂无评论")
+           `(div (@ (class "comments-tree"))
+             ,@(map (lambda (item) (render-comment item slug))
+                    (vector->list res.comments))))
+      ,(render-interactions-section res)
+      ,(render-webmention-send-box slug)
+      ))))
+
+(define (build-comment-app slug)
+  (let ((ap-alternate (get-ap-alternate)))
+    (sxml->dom
+     `(div (@ (class "foxhole-comment-app"))
+       ,(build-comment-form slug)
+       ,(if ap-alternate
+            `(blockquote ,(format "或通过在 activityPub 应用查找 ~a 进行互动" ap-alternate))
+            '())
+       (div (@ (id "comment-list")) "加载评论中...")))))
+
+(define (get-data-attr key)
+  (let ((script-node (document.getElementById "foxhole-script")))
+    (if script-node (script-node.getAttribute key) #f)))
+
+(define (mount-comment-app target-id)
+  (let ((script-node (document.getElementById "foxhole-script")))
+    (if (not (null? script-node))
+        (let ((res (fetch-comments target-id)))
+          (console.log "API Response:" res)
+          
+          (if (and res res.error
+                   (and (not (null? res.status)) (== 404 res.status)))
+              (let ((app-div (document.createElement "div")))
+                (set! app-div.id "comment-app-container")
+                (script-node.parentNode.insertBefore app-div script-node.nextSibling))
+              (let ((app-div (document.createElement "div")))
+                (set! app-div.id "comment-app-container")
+                (app-div.appendChild (build-comment-app target-id))
+                (script-node.parentNode.insertBefore app-div script-node.nextSibling)
+                (render-app-container! target-id res))))
+        
+        (console.error "foxhole-script dom not found!"))))
+
+(mount-comment-app (get-data-attr "data-id"))
