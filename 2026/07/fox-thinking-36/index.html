@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" /><meta property="og:title" content="FoxThinking #36: 我想知道的，前人已经说过了 — 狐狸反走矣" /><link href="https://southfox.gay/tail/5e4c0ea72702337b" rel="alternate" title="ActivityPub (JSON)" type="application/activity+json" /><link href="https://blog.southfox.me/2026/07/fox-thinking-36/" rel="canonical" /><link href="https://southfox.gay/webmention" rel="webmention" /><meta property="og:site_name" content="狐狸反走矣" /><meta property="og:image" content="https://blog.southfox.me/favicon.png" /><meta name="fediverse:creator" content="SouthFox@foxsay.southfox.me" /><title>FoxThinking #36: 我想知道的，前人已经说过了 — 狐狸反走矣</title><link rel="me" href="https://foxsay.southfox.me/@SouthFox" /><link rel="me" href="https://codeberg.org/southfox" /><script>document.documentElement.setAttribute('data-theme', localStorage.getItem('theme') || 'plain');
+      document.documentElement.setAttribute('data-font', localStorage.getItem('font') || 'plain');</script><link rel="stylesheet" href="/assets/css/main.css" /><script src="/assets/js/lips.min.js" defer="defer"></script><script type="text/x-scheme" defer="defer">(let ((theme (or (localStorage.getItem "theme") "386")) (font (or (localStorage.getItem "font") "zpix"))) (let ((theme-select (document.getElementById "theme-select")) (font-select (document.getElementById "font-select"))) (define (string=? a b) (== (a.cmp b) 0)) (define (loop-set select value) (define options select.options) (select.setAttribute "aria-hidden" "true") (let loop ((i 0)) (if (> i (- (length options) 1)) i (let ((option (get options i))) (if (string=? option.value value) (option.setAttribute "selected" #t) (loop (+ 1 i)))))) (select.removeAttribute "aria-hidden")) (loop-set theme-select theme) (loop-set font-select font) (define (set-theme theme-name) (localStorage.setItem "theme" theme-name) (document.documentElement.setAttribute "data-theme" theme-name)) (define (set-font font-name) (localStorage.setItem "font" font-name) (document.documentElement.setAttribute "data-font" font-name)) (theme-select.addEventListener "change" (lambda (event) (set-theme event.target.value))) (font-select.addEventListener "change" (lambda (event) (set-font event.target.value)))))</script><link rel="alternate" href="/feed.xml" title="狐狸反走矣" type="application/atom+xml" /><link rel="alternate" href="/rss2.xml" title="狐狸反走矣" type="application/rss+xml" /></head><body><header role="none"><nav class="nav" aria-label="站点导航"><a class="skip-link" href="#main-content">跳到主要内容</a><a href="/" class="brand" aria-label="狐狸反走矣 - 返回主页"><span>狐狸反走矣</span></a><input id="bmenub" type="checkbox" class="show" aria-label="打开菜单" /><label for="bmenub" class="burger pseudo button" aria-hidden="true">☰</label><div class="menu"><a href="/archives/">归档</a><a href="/tags/">标签</a><a href="/search/">搜索</a><a href="/about/">关于</a></div></nav></header><div class="container flex"><div class="content"><main data-pagefind-body="true" id="main-content" tabindex="-1"><div><h1 id="post-title">FoxThinking #36: 我想知道的，前人已经说过了</h1><p class="post-meta"><span>by SouthFox</span><time data-pagefind-sort="date">2026-07-31</time></p><div><p>难得空闲时间，开始把之前堆在「想看」清单上的书都拿出来看了。</p><span id="more"></span><p>果然，也是印证梭罗的话 <sup><a href="#1" id="1r" aria-label="脚注1r">1</a></sup>：</p><blockquote><p>书籍在等待着我们，有时它会在为我们解密奇迹的同时展示另一番奇迹；
+我们会发现某些在眼下难以言说的现象却早已在别处获得了表达；那些折腾我们，
+让我们迷茫困惑的问题无一例外地叩问过所有智者，这些问题在他们那里一个都没
+有遗漏，他们都根据自己的才能，用自己的语言，结合自己的人生给予了解答。</p></blockquote><h2 id="阅读">阅读</h2><p>本来只是有点乘着闲暇消磨时间的阅读，没想到阅读越多，搞得有点像是《如何阅读一本书》中的主题阅读了。那么本次阅读
+栏目首先来 define-module 下，然后根据主题而不是书籍来讲述。</p><ul><li>[美]Steve McConnell. 代码大全：第2版. 电子工业出版社. 2006 ：虽然没拿来垫桌脚，但确实放在桌脚
+旁……打开这将近一千页的砖头书确实需要点勇气，不过真正开始看的时候发现还是很好看进去的。作为讲述一本
+变量起名、构建类、建造模块、控制语句、代码结构这些非常实用性质的书，将近八成的内容放在二十年后的今天
+也依然适用。对此我并不感到奇怪，因为软件构建确实是一项「进展缓慢」的领域啊。</li><li>[美]Neal Ford. 函数式编程思维. 人民邮电出版社. 2015 ：比起《代码大全》又是另外一个极端，作为一百五
+十页的小书，描述了函数式的大概形状以及 Java, Groovy, Scala, Clojure （好像都是在 JVM 上的语言）这
+些编程语言函数式的写法。我也挺喜欢里面的观点「将相关繁琐的工作让渡给语言运行时」，这样就能将更多精力投入在
+实际的逻辑上，用《人月神话》的话来说，就是减少了些软件开发的「次要困难」。距离本书出版十年后的现在，很多
+编程语言都加入了函数式工具，虽然不能说是函数式语言，但也能大体写出「函数式风味」代码了吧。</li><li>[美]小弗雷德里克·布鲁克斯. 人月神话（40 周年中文纪念版）. 清华大学出版社. 2015 ：五十年过去了，现在软件
+领域也不用像成书的时代有那么多硬件上的制约了，但软件开发依然是困难、混乱、泪水鼻涕横飞的领域，可预见下个十年
+同样也是如此。</li><li>[美]小弗雷德里克·布鲁克斯. 设计原本：计算机科学巨匠 Fredrick P. Brooks 的反思. 清华大学出版社. 2024 ：
+建筑设计果然和软件设计是「表亲」，或者说涉及到构建复杂系统的学科都有很多相关联之处。</li><li>[美]Robert C. Martin. 程序员的职业素养. 人民邮电出版社. 2012 ：回来重看我还是能说出（伴着点心虚）我确实
+在努力当一名「专业人士」，在提交代码时尽量保证功能正常、测试覆盖、设计先行等等等等。虽然大部分情况下我提
+出「要尽可能写测试啊」只会换来对方支支吾吾回答之后吧或者说进度优先之类的话，我只能无奈耸耸肩心里吐槽句，就像医
+生进手术室时不消毒……太业余了！</li><li>张建飞. 程序员的底层思维. 电子工业出版社. 2022 ：从思维模型上来探究软件设计，不过一些例子太过个人和具体，就感觉
+有点「登」味，而且还出现经典的 1.01^365 = 37.8 和 0.99^365 = 0.03 这种难绷例子但依然是本好书，也颇有
+点「荟萃分析」的味道。</li><li>[美]David Thomas. 程序员的修炼之道: 通向务实程序员的最高境界：第2版. 电子工业出版社. 2020 ：编程更多作为一
+种「匠艺」，「务实」确实是一种务实的选择。</li></ul><h3 id="复杂度的相变">复杂度的相变</h3><blockquote><p>履霜，坚冰至。 —— 《易经》</p></blockquote><ul><li>《代码大全》程序规模对构建的影响</li><li>《人月神话》外科手术队伍</li><li>《程序员修炼之道》话题 45 ：需求之坑</li></ul><p>站在坚冰上望着天边的浮云，谁会想着这两者其实是同一种东西呢？通过「水分子的运动剧烈程度」这一指标，
+就能区分出气体、液体、固体。软件开发也是如此，单单是复杂度这一描述，就能产生完全不同的
+软件项目。三名程序员之间的交流路径只有三条，十名程序员的交流路径就增长到了四十五条，到了五十名
+程序员则可能增加到一千两百条！这也是随着项目复杂度的增加，程序员会逐渐在文书工作上花费更多时间，因
+为不这样做，额外对接工作将会充斥着整个工作。对于复杂的大型系统来说，繁杂文书工作和冗长流程似乎
+是不可避免的，毕竟：</p><blockquote><p>对于真正意义上的大型系统，它太慢了。 —— 《人月神话》</p></blockquote><p>就算能整起极其优秀小型精干编程「梦之队」，里面每个人都有着十倍于普通程序员效率，在 5000 人年的大型系统前
+也不值一提了。</p><p>不能将面对较小复杂度系统上方法套到庞大复杂度的系统上（大题小作），当然，用适用于庞大复杂度系统上的方法套到
+简单系统上（小题大做）也是罪过。或许，可以做到「新建 profile」，在自己的脑海中建立多套面对不同复杂度的
+方案，然后因地制宜运用不同的方法。</p><h3 id="驯服复杂度">驯服复杂度</h3><ul><li>《设计原本》技术设计中的美学与风格</li><li>《代码大全》软件构建中的设计</li></ul><p>到现在，编程的「技艺」有哪些管理复杂度的方法？分而治之、隐藏封装、约定接口、提取复用、组合编排……这些都是程序
+员去学习并加以掌握的。不过在此，我想顺着最近的体会，聊聊为什么不要破坏封装。。</p><p>破坏封装就像是扎破真空包装袋一样，打破抽象屏障让两个环境混合在一起，通常情况下只会导致腐
+烂……在翻阅 python 的一个语法用法时，我看到了个视频，演讲者在讲了些例子后一转翻阅底层 python 的 C 源代码，然后开
+始讲字节码和源码调用路径。对我来说这倒是新鲜，不过，这有什么用呢？而且在翻阅评论时，也有人说在后续版本中，为了优
+化，这个字节码已经更改并且相关模块已经重构移动到其它地方了。</p><p>这就是分层封装的目的，能在不影响外在表现的情况下更新底层。对于这个理解某个 python 用法的例子，与其讲解容易腐化的
+场景，倒不如不讲。因此，我对如今铺天盖地的「深入底层 XXX」思想始终保持警惕——别再迷信所谓的「源码精讲」与「深入底层」
+了。深入底层并不意味着理解，处在什么层次就该干什么事，与其在抽象泄露或抽象不备的代码各种抽象层次起起伏伏，我更宁愿用
+对底层一概不知抽象完备的代码。</p><h3 id="编程是门匠艺">编程是门匠艺</h3><ul><li>《设计原本》理性主义与经验主义之争</li></ul><p>早在 1986 年 SICP 作者给惠普公司上的公开课 <sup><a href="#2" id="2r" aria-label="脚注2r">2</a></sup> 的一开始就提到了计算机科学，既不计算机也不科学。随着接触的概
+念越多，倒是越发理解了，计算机科学的概念倒是有点繁杂，不过粗略分可以分成：</p><p>lambda 演算、图灵机这些计算数学范畴，这些领域倒是可以符合刻板印象，一位大能抽着烟斗在摇摇椅上苦思冥想就能想出来
+了，是纯粹的数学过程，甚至不需要到计算机上运行。</p><p>程序构建、编码，这些说是科学就名不副实了，这些领域更应该当成一种「匠艺」，想想刚入职的程序员和十三十四世纪给
+教堂施工的建筑设计师所面临的情况，我该浏览下整套代码/我该看下现在的状况；我该看看现在的前人留下的接口/我该看看前人
+留下的设计；我得在前人的基础上开发新功能/我得在前人的基础上继续施工；不要破坏已有的功能同时风格保持一致/不要破坏之前
+的结构并保持与设计图上的风格相同。这面临的情况竟能如此相像？所以也不奇怪很多编程大家都会对建筑设计感兴趣了，因为很多
+时候建筑设计面临的困境与编程设计是有很多相同之处的。</p><p>落实到实处，编程是理性的还是经验的？迪杰斯特拉则是理性主义的忠实拥趸，并且
+为了让程序更有证明性而发话论证 goto 的有害性，因为 goto 会将程序的逻辑割裂而无法进行论证。到了现在 goto 确实
+少用但大家也没像迪杰斯特拉那样，通过形式化方法去证实软件。不过现在因为 LLM ，证明派似乎变得更有热度了，也推出了类
+似 Lean 4 这种语言。可形式化的证明并不能保证最终程序就是正确的，毕竟如果想要的是苹果，但在一开始设计时就论证橙
+子，那么不管怎么进行论证，都不可能证明橙子的正确性啊。</p><p>那么答案很明确，编程更多是经验的。如果身边真出现那种在摇摇椅上苦思冥想就想出系统设计然后
+还能一遍跑通，那我比起惊讶，更多的是惊恐，而且更会深深怀疑到了下一个系统也能如此吗？</p><h3 id="EVAL-APPLY">EVAL-APPLY</h3><ul><li>《程序员修炼之道》话题 12 ：曳光弹</li><li>《程序员修炼之道》话题 45 ：需求之坑</li><li>《设计原本》需求、原罪和契约</li><li>《设计原本》更好的设计过程模型是什么</li></ul><blockquote><p>你肯定看过那些人们用机关枪射击的电影、电视节目和电子游戏？在这些场景中，经常看到子弹在空中留下
+明亮的轨迹线。这些线条来自曳光弹。</p><p>曳光弹和普通弹药间隔着一起被压入弹夹。当曳光弹发射时，上面的磷就会被点燃在枪和击中物之间留下一
+道烟火轨迹。如果曳光弹击中了目标，那么之后的常规子也会击中。士兵们使用这些曳光弹来调整他们的瞄
+准：这是一种务实的方法，可以在真实条件下提供实时反馈。</p></blockquote><blockquote><p>人们普遍认为创新设计并不是先确定问题是什么，然后再去探寻令人满意的解题思路。相反，对于创新设计
+而言，问题和解题思路都是在不停地演进和改善的。通过在问题空间和解法空间之间不停地迭代，创新设计
+得以实现，每次迭代涉及问题分析、解法合成和效果评估这三个步骤。由马赫（ Maher）等人在1996年提
+出的创新设计模型，基于一种在问题空间和解法空间之间的“协同演化”（co-evolution）:通过在问题空
+间和解法空间之间的信息互换，这两个空间得以协同演进（co-evolve）。</p></blockquote><p>比起直接上手就干，有个指导模型是一项巨大的进步，但作为在一开始举例为了批判的「瀑布模型」，仍然大范围
+推广开来。不过很多时候，编程所面临的问题是：问题是什么？</p><p>有一则经典的笑话：嗯，挺好的，但我想……-&gt;我还想……-&gt;……-&gt;算了还是用初版吧。除了点出
+设计的易变之外，也说明了程序员（或者说设计领域的从业人员）最重要和最有价值的属性：「帮助人们理
+解他们想要什么」。也因为有这样的一个反馈过程，所以编程也要体现这种反馈：根据需求整出一个最小原型，然后
+根据原型印证反馈，然后根据新的反馈迭代新的原型。这种后面的输出影响到开头，好吧，是 EVAL-APPLY 、是太极、是
+双塔模型、是图灵机是兰顿蚂蚁……</p><h3 id="设计先行">设计先行</h3><ul><li>《人月神话》人月神话</li><li>《设计原本》案例研究</li></ul><p>就算是 OS/360 这种具有庞大复杂度的系统，小弗雷德里克也留了将近三分之一的项目时间给设计工作，而在后来他为
+自己的房屋修建和改建计划也留下了这样的感想：</p><blockquote><p>（1）一定要在设计上多投入时间。如果将设计者的工时也纳入产品价值，那么我们在每平方英尺上投入了超过成
+本效益的时间。在大部分 Linux 项目中也存在同样的情况。在 OS/360 项目中，在实施工作开始之前投入时间
+进行设计，对项目整体而言是大有裨益的。我认为这并不会增加产品的总成本。</p><p>（2）频繁地与主要用户进行深入的交谈，向他们展示易于理解的原型。</p><p>（3）进行各种各样的用例推演。</p><p>（4）反复核对专业人士（如建筑师、绘图专员和装饰师）的工作成果。确保你理解他们的工作成果，并且确定它们是准确无误的。</p></blockquote><blockquote><p>（1）为设计工作留出足够的项目时间。这可以让产品更加出色，使其具有更久的生命力，甚至能够通过减少重复性工作来更快速地交付。</p><p>（2）设计架构的时候，不免会被糟糕的折中设计所影响，当发现实现（通常是无意中）偏离了架构时，如果我们对同一
+款架构配备了多个同步并行的实现，那么这可以非常有力地减轻它所带来的影响。当只有一个实现时，更改手册而不是机
+器总是更容易、更经济、更快速的做法。The Mythical Man-Month 的第 6 章详细介绍了确保实现符合架
+构（而不是背离）的其他方法。</p></blockquote><h4 id="遇事不决就……">遇事不决就……</h4><ul><li>《函数式编程思维》</li><li>《程序员修炼之道》话题 12 ：曳光弹</li><li>EVAL-APPLY</li></ul><p>遇事不决就加个中间层吧，这在计算机领域就可谓自古有之，典型的就是 DNS 的设计，让 CDN 和一些高可用配置变成了
+可能。在看《函数式编程思维》的时候，发现瞄准 JVM 作为「宿主」的编程语言也是挺多的，甚至进一步想，连 JVM 就
+是「加中间层」这个思想下的结果， JVM 作为中间层最大的好处就是可以在运行时进行 profile 来动态优化，这样不管
+是怎样刁钻的业务逻辑也能在运行时结合实际状况进行优化，而不用全寄希望于静态编译器里那些唯有「大能」才能施展的
+优化魔法。</p><h3 id="失败案例">失败案例</h3><ul><li>《设计原本》设计专家是怎么犯错的</li></ul><p>当然也要记住和研究失败的案例……</p><blockquote><p>专业的设计团队为 JCL 的设计工作带来了过多的个人经验。JCL 的设计原本应该涉及更广泛的领域，然而设计者自以为是的经验阻碍了他
+们从头去构思这门语言。仅就这个案例而言，遵循范例反而造成了一场灾难。[…]</p><p>随之而来的问题是，JCL 从未被真正设计过，它只是逐步进化而来的。如果我们能意识到 JCL 是一种系统语言，或许我们可以利用语言设
+计专家的专业知识和经验，将它作为一种编程语言来设计。
+然而，设计者并没有把它当作一门编程语言。最初，设计者将它看作“几张控制卡片的罗列”，它只是设计者在设计任务调度器时随手设
+计的一个副产品。随着在 OS/360 系统设计过程中文件系统管理、远程处理网络管理等任务的增加，每个新的定时调
+度（schedule-time）功能或规范都需要附加到 JCL 中。由于该语言在灵活性，通用性和整体结构上都很差劲，新的规范最终发展
+成 DD 语句中新加入的关键字参数。因此，原本应该作为数据声明中形容词的内容变成了具有各种行为后果的命令动词。</p></blockquote><blockquote><p>（1）我们要仔细地研究失败的案例，甚至要比研究成功的更加细致。</p><p>（2）在取得成功后要警惕自己。成功会增强对设计技巧，
+身及自己的信心，但这些信心可能导致我们过于自负。</p><p>（3）针对设计对象及其应用场景，设计者要站在更高的层级上来制定假设，例如，当下是
+否存在范式的转变，假设是否在未来十年仍然奏效，是否正在设计正确的东西。</p></blockquote><h4 id="BASH之殇">BASH 之殇</h4><ul><li>《设计原本》制约因素是益友</li></ul><blockquote><p>通用性编程语言往往需要在表达能力、通用性和简洁性之间寻找到一个微妙的平衡，相比
+之下设计特定用途的编程语言要简单、直接的多、在特定用途的设计中，需要遵循的制约
+条件是更容易实现的。</p></blockquote><p>如果说我有什么倾向，那么对 Bash 的「敌视」算是一种吧，我并不「讨厌」 Bash 。可 Bash 真
+不能算是通用型编程语言，每次看到某位 Bash 仙人写了两三千行的脚本然后往里看到里面解析参数、逻
+辑判断等等操作都是在对字符串上死磕我就两眼一黑，Bash 没有像通用编程语言那样有专用的数据结构或
+工具是它的硬伤。</p><p>更何况它的潜在危害实在太大，例如：</p><pre><code>old_backup_path=$(get_backup_path)
+rm -rf $old_backup_path/</code></pre><p>这里如果 get_backup_path 返回了 &quot;&quot; 怎么办？那之后的命令就变成 rm -rf / ，真跑出这样的情况，那就祈
+祷人能跑吧……</p><p>所以我对 Bash 的看法是，五十行以内可以凑合用，超过这个量级的还是换一个更通用的编程语言吧……</p><h3 id="（表达（数据））">（表达（数据））</h3><ul><li>《人月神话》削足适履</li><li>《代码大全》表驱动法</li><li><a href="https://www.zhihu.com/question/20275578/answer/26577791" class="external_link">面向对象编程的弊端是什么？ - invalid s的回答 - 知乎</a></li></ul><blockquote><p>精湛的技艺出自创造，精炼、充分和快速的程序也是如此。技艺改进的结果往往是战略上的突破，而不仅仅是技巧上的提高。[…]
+更普遍的是，战略上突破常来自数据或表的重新表达——这是程序的核心所在。[…]</p><p>重新表达所带来好处的例子比容易被找到。我记得有一位年轻人承担了为 IBM650 开发精密控制台解释器的任务。他发现用
+户交互的频率低、速度慢，但所占用的空间却很昂贵。于是，他编写了一个解释器的解释器，使得最后程序所占的空间减少到
+不可思议的程度。[…]</p><p>[…]实际上，数据的表现形式是编程的根本。</p></blockquote><p>数据的表现形式是编程的根本我想有个生动的例子就是——阿拉伯数字，想象一下用罗马数字进行四则运算该有多么繁琐，在
+现在没多少人会这么做，阿拉伯数字和罗马数字背后对应的数据是一模一样的，但就是表现形式不一样而导致了两者的差别。</p><p>这也是我现在仍在鼓捣 lisp 的原因，因为将数据换着花样表示正是 lisp 一直在做的事，在不断通过宏系统揉捻列表中的
+数据时的我深刻体会到了这一点，可能之后会写篇相关的文章来「证道」下（挖坑了开始）。</p><h3 id="超越编程语言">超越编程语言</h3><ul><li>《代码大全》选择编程语言</li></ul><blockquote><p>过去数十年里，工具提供商和业界的权威人士都曾经许诺：用来消除编程的工具就在不远的地平线处。可能
+最具有讽刺意味的是，第一个获得这一绰号的工具就 是Fortran。Fortran 代表“Formula Translation
+Language/公式翻译语言”，人们设想科学家和工程师只需简单地输入公式就能做计算，据此推测能消除对程序员
+的需求。</p><p>Fortran 确实使科学家和工程师都能成功地写程序了，但是从我们今天的有利位置看，Fortran 看来是相对
+低级的编程语言。它根本不可能消除对程序员的需求，业界在 Fortran 方面的经历也是整个软件工业的发展过
+程的缩影。</p></blockquote><blockquote><p>编程语言影响程序员思维的证据随处可见。典型的故事类似下面的样子；“我们用 C++ 编写一个新系
+统，但大多数程序员没有太多 C++ 经验。他们具有 Fortran 语言背景。他们编写能用 C++ 编译
+的代码，但实际上编写的是伪装成 C++ 的 Fortran 代码。他们扭曲 C++ 来模拟 Fortran 的不
+良特性（例如 goto 语句和全局数据）并且忽略了 C++ 丰富的面向对象能力”这种现象多年来在整个
+行业当中随处可见。</p></blockquote><p>如果再让我听到「编程语言不重要，说到底最后都是一样的」这种说法，我就扎聋我的耳朵！事实上编程语言带来的影响现
+在看来还是很明显，不过比起用高灵活度模拟低灵活度语言，更难绷的是用高灵活度语言模拟其它语言的特性。例如在之前工
+作项目中，组长用 Python 实现了：每个函数都要返回正常值或 None 作为异常值，然后每次函数调用后面都要
+判断 if call() != None: ，很明显这是在学 Go 和一些具有不相交联合体 Either 类作为错误判断。但问题
+是 Python 有完善的异常错误处理并不需要学 Go ，而且在没有语法宏机制的 Python 上这么搞会大量产出样板代码搞得实现的
+人（我）苦不堪言。</p><p>而就算是有语法宏机制的语言，实现特定语法也是要小心的。例如在之前为了自己的个人 hylang （基于 python 的 lisp 语言）项
+目，我考察了下 clojure 异步的实现。里面的 channel 用了一大堆语法宏黑魔法让异常处理和错误分析变得困难，如果在异步流程中
+没有用到复杂的后续流程而只是简单收发些 JSON 数据，那么简单的 future 就够了。对应 Python 的话，简单的 asyncio 就好
+了。而且使用「黑魔法」的代价就是难以享受后续优化，clojure 团队在保证代码兼容性目标下，难以引入 Java 新版本的虚拟
+线程然后不得不搞出新的实现 <sup><a href="#3" id="3r" aria-label="脚注3r">3</a></sup> 。</p><h3 id="不要求简单，但一定要又全又简洁">不要求简单，但一定要又全又简洁</h3><ul><li>《函数式编程思维》多语言与多范式</li><li>《代码大全》工具环境</li></ul><blockquote><p>20 世纪 90 年代后期，各种 4GL 语言一时风光无限，它们都是上下文式设计思路的范本。它们把上下文内化成了
+语言的一部分：dBASE、FoxPro、Clipper、Paradox、PowerBuilder、Microsoft Access 以及其他
+同类型平台，全部在语言和配套工具中直接内置了数据库的相关设施。4GL 语言最终由于 Dietzler 定律而衰
+落，这条定律是我在 The Productive Programmer 书中根据同事 Terry Dietzler 维护 Access 项
+目的经验总结出来的。</p></blockquote><p>Dietzler 的 Access 定律：</p><blockquote><p>所有 Access 项目最后都会失败，原因是，在用户想要的功能里，有 80％ 实现起来既
+迅速又简单，还有 10％ 能实现但较困难，而最后的 10％ 是办不到的，因为不可能足
+够深地突破内建抽象去访问底层。可是，用户总想 100％ 地满足需求。</p></blockquote><blockquote><p>软件工业界不断地开发出新的工具，用于减少或消除编程过程中某些最单调乏味的工作的数量，像是：源代码中语句的
+排布细节、编辑/编译/链接/运行程序所需的一堆步骤、查找不匹配的括号、创建标准的消息框所需的若干步骤等等。每
+个新工具开始证明它对生产率有增益的时候，某些鼓吹者就会将这些增益外推至无穷大，设想这些增益最终能“消除对编程
+的需求”。但是实际上发生情况是，每一项新的编程改革都带有些许瑕疵。随着时间流逝，瑕疵被排除，该项改革的全部潜
+力都弄清楚了。无论如何，一旦了解了这种基本工具的概念，获得更大的增益的办法就是去除一些偶然性的
+困难（accidental dificulties），这样做的副作用就是创建出一些新的工具。消除这些偶然性的困难并不能从本质上
+提高生产率：它不过去掉了典型的“进两步、退一步”情况中的“退一步”而已。</p><p>在过去的数十年中，程序员已经看到到过无数的号称能“消除编程”的工具。先是第三代语言，其次是第四代语言，然后是自
+动编程，再然后是 CASE 工具，最后是可视化编程。以上各项进步都对计算机编程产生了价值可观的、增量式的改进——它
+们整体效应使得现在的“编程”对于那些在出现这些进步之前就学会编程的人来说已是面目全非了。但是，没有哪项改革成功
+地消除了编程。</p><p>出现这一对抗性态势的原因在于，就其本质而言，编程从根本上说就是困难的——即便有好的工具支援。无论
+能用到哪些工具，程序员都必须与凌乱的真实的原世界较力；我们须得严密地思考前后次序、依赖关系、异常
+情况；而且我们还要与无法说清楚自己想法的最终用户交往。我们始终要应对连接到其他软件或硬件
+的定义不清的接口，还要解决规章制度、业务规则以及其他复杂性之源，这些复杂性来自计算机编程之外的世界。
+始终需要人来填补真实世界里需要解决的问题和准备用来解决问题的计算机
+之间的鸿沟。这些人将会被称做程序员，无论他是以汇编语言操控机器寄存器，
+还是用 Microsoft Visual Basic 操控对话框。只要有计算机，就需要能告诉计算机该
+去做什么的人，这一活动将会被称做编程。当你听到某个工具厂商宣称“这一新工具将会消除计算机程序设计”时，躲
+开它！或者对这种厂商的幼稚的乐观主义一笑置之。</p></blockquote><p>所以最后 LLM 开发会不会像之前的 4GL 语言一样，因为不能满足百分之百的需求而逐渐放弃呢？拭目以待吧。</p><h2 id="一呼百应">一呼百应</h2><h3 id="明日方舟：沉沦者的黑流树海">明日方舟：沉沦者的黑流树海</h3><p>因为这次的换了比较新颖的走格子形式就难得来体验完了，把 n15 的一结局给通了就收手了。这次肉鸽似乎是吸取了上
+次的教训，将延后收益改成了能直接可见的形式，在主地图上能直观看到收益节点，就是一开始不熟悉的话算步数有点累。而
+且依然还是有些难受的 UIUX 问题，例如在切层的时候经常忘了身上的装备点机格子而导致浪费使用，另外比起选择装备然后
+选择格子，更方便的不应该是选择所在格然后列出能有什么装备能过去吗？</p><p>不过现在黑流树海还是处于没什么内容的阶段，没什么变招，还是等拓展包全出完了我再来看看吧。</p><h2 id="篝火旁">篝火旁</h2><h3 id="《SolsburyHill》·PeterGabriel">《Solsbury Hill》· Peter Gabriel</h3><ul><li><a href="https://www.youtube.com/watch?v=_OO2PuGz-H8" class="external_link">Peter Gabriel | Solsbury Hill- YouTube</a></li></ul><p>不管是歌词还是 MV 都很……魔幻？但里头表达的在面临新的状况、新的决定那种感受……我确实真切的感受到了。</p><h2 id="Presentday,Presenttime">Present day, Present time</h2><p>新的一月，新的可能。</p><h2 id="脚注">脚注</h2><p><sup><a href="#1r" id="1" aria-label="脚注1">1</a></sup> [美]亨利·戴维·梭罗. 瓦尔登湖. 译林出版社. 2020, 第 130 页.</p><p><sup><a href="#2r" id="2" aria-label="脚注2">2</a></sup> <a href="https://github.com/DeathKing/Learning-SICP" class="external_link">GitHub - DeathKing/Learning-SICP: MIT视频公开课《计算机程序的构造和解释》中文化项目及课程学习资料搜集。 · GitHub</a></p><p><sup><a href="#3r" id="3" aria-label="脚注3">3</a></sup> <a href="https://clojure.org/news/2026/03/11/async_virtual_threads" class="external_link">Clojure - core.async and Virtual Threads</a> ，同时 Rich Hickey 也在鼓捣新的异步实现 <a href="https://clojure.github.io/core.async/flow.html" class="external_link">Flow</a></p></div></div></main><div class="pagination"><a class="btn" href="/2026/07/fox-thinking-35/">上一页</a><a class="btn" href="/">主页</a><a class="btn" href="/2026/08/update-comment-system-again/">下一页</a></div><script type="text/x-scheme" id="foxhole-script" data-id="5e4c0ea72702337b" src="/assets/lips/comment.lips" async=""></script></div><div class="sidebar"><div class="widget"><h4>链接</h4><ul><li><a href="/zh-CN/">zh-CN</a><span> / </span><a href="/en/">en</a></li><li><a href="/friends/">友链</a></li><li><a href="https://www.travellings.cn/train.html">开往</a></li><li><a href="https://foreverblog.cn/go.html">虫洞</a></li><li><a href="/feed.xml">订阅 (Atom)</a></li><li><a href="/rss2.xml">订阅 (RSS)</a></li><li><a href="https://www.lisperati.com/logo.html"><img src="/assets/img/lisplogo_warning2_128.png" width="83" height="128" alt="Lisp logo warning" /></a></li><li><a href="https://www.fsf.org/appeal"><img src="/assets/img/6838639.png" width="180" height="45" alt="FSF appeal" /></a></li></ul><nav aria-label="IndieWeb WebRing"><a href="https://xn--sr8hvo.ws/previous" aria-label="上一个 IndieWeb 站点">←</a><a href="https://xn--sr8hvo.ws">IndieWeb Webring<span aria-hidden="true">💍</span></a><a href="https://xn--sr8hvo.ws/next" aria-label="下一个 IndieWeb 站点">→</a></nav><nav aria-label="Fediring"><a href="https://fediring.net/previous?host=blog.southfox.me" aria-label="上一个 FediRing 站点">←</a><a href="https://fediring.net">Fediring</a><a href="https://fediring.net/next?host=blog.southfox.me" aria-label="下一个 FediRing 站点">→</a></nav></div><div class="widget"><h4>设置</h4><div><label for="theme-select">主题：</label><select id="theme-select"><option value="plain">普通</option><option value="386">386</option><option value="frutiger-aero">Frutiger Aero</option></select></div><div><label for="font-select">字体：</label><select id="font-select"><option value="plain">普通</option><option value="zpix">像素</option></select></div></div><div class="widget"><h4>标签</h4><ul><li><a href="/tag/FoxThinking">FoxThinking</a></li></ul></div><div class="widget"><h4>目录</h4><ul><li><a href="#阅读">阅读</a></li><li><a href="#复杂度的相变">复杂度的相变</a></li><li><a href="#驯服复杂度">驯服复杂度</a></li><li><a href="#编程是门匠艺">编程是门匠艺</a></li><li><a href="#EVAL-APPLY">EVAL-APPLY</a></li><li><a href="#设计先行">设计先行</a></li><li><a href="#遇事不决就……">遇事不决就……</a></li><li><a href="#失败案例">失败案例</a></li><li><a href="#BASH之殇">BASH 之殇</a></li><li><a href="#（表达（数据））">（表达（数据））</a></li><li><a href="#超越编程语言">超越编程语言</a></li><li><a href="#不要求简单，但一定要又全又简洁">不要求简单，但一定要又全又简洁</a></li><li><a href="#一呼百应">一呼百应</a></li><li><a href="#明日方舟：沉沦者的黑流树海">明日方舟：沉沦者的黑流树海</a></li><li><a href="#篝火旁">篝火旁</a></li><li><a href="#《SolsburyHill》·PeterGabriel">《Solsbury Hill》· Peter Gabriel</a></li><li><a href="#Presentday,Presenttime">Present day, Present time</a></li><li><a href="#脚注">脚注</a></li></ul></div></div></div><footer class="footer"><div class="copyright"><div><p>© SouthFox 2026 ,Font by <a href="https://github.com/SolidZORO/zpix-pixel-font">Zpix</a></p></div><div><p>Power by <a href="https://dthompson.us/projects/haunt.html">haunt</a> ,source can be found <a href="https://git.southfox.me/southfox/blog">here</a></p></div></div></footer></body></html>
